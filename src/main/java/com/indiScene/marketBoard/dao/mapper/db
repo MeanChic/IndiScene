@@ -1,0 +1,6 @@
+insert into marketboard(board_num,subject,content) values(1, '1', '1');
+insert into marketboard(board_num,subject,content) values(2, '2', '2');
+insert into marketboard(board_num,subject,content) values(3, '3', '3');
+insert into marketboard(board_num,subject,content) values(4, '4', '4');
+select * from marketboard;
+
