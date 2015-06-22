@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="${root }/indiScene/write.do">시작해보자</a>
+	<a href="${root }/performBoard/write.do">시작해보자</a>
 
 </body>
 </html>

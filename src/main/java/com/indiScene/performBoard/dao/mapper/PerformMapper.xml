@@ -3,5 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.PerformMapper">
-
+	<select id="boardGroupNumberMax" resultType="int">
+		select nvl(max(group_number), 0) from performboard
+	</select>
+	
+	<update id="boardGroupNumberUpdate" parameterType="java.util.HashMap" >
+		<![CDATA[update performboard set seq_num=seq_num+1 
+		where group_num = #{group_num} and seq_num > #{seq_num}]]> 
+	</update>
 </mapper>
