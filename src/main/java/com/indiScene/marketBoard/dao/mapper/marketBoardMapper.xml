@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="dao.marketBoardMapper">
+
+	
+	<select id="marketBoardCount" resultType="int">
+		<![CDATA[
+			select count(*) from marketBoard
+		]]>
+	</select>
+	
+	<select id="marketBoardList" parameterType="java.util.HashMap">
+		<![CDATA[
+			select * from (select rownum rnum, a.* from(select * from marketboard order by num desc)a) where rnum >=#{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	
+</mapper>
