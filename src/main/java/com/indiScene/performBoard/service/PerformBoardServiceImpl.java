@@ -3,22 +3,25 @@ package com.indiScene.performBoard.service;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.indiScene.performBoard.dao.PlaceBoardDaoImpl;
-import com.indiScene.performBoard.dto.PlaceBoardDto;
+import com.indiScene.performBoard.dao.PerformBoardDaoImpl;
+import com.indiScene.performBoard.dto.PerformBoardDto;
 
 @Component
-public class PlaceBoardServiceImpl implements PlaceBoardService {
+public class PerformBoardServiceImpl implements PerformBoardService {
 	
 	@Autowired
-	private PlaceBoardDaoImpl boardDao;
+	private PerformBoardDaoImpl boardDao;
+	private final Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	public void boardWrite(ModelAndView mav){
 		Map<String, Object> map = mav.getModelMap();
@@ -50,17 +53,21 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	public void writeOk(ModelAndView mav){
 		Map<String, Object> map = mav.getModelMap();
 		MultipartHttpServletRequest request = (MultipartHttpServletRequest)map.get("request");
-		PlaceBoardDto boardDto = (PlaceBoardDto) map.get("boardDto");
+		PerformBoardDto boardDto = (PerformBoardDto) map.get("boardDto");
 		
 		boardDto.setRegister_date(new Date());
 		boardDto.setCount(0);
 		
 		
 		fileBoardWriteNumber(boardDto);
+		//logger.info("--" + request.getFile("file"));
 		
-		/*MultipartFile upFile = request.getFile("file");
+		MultipartFile upFile = request.getFile("file");
 		String fileName = upFile.getOriginalFilename();
-		String timeName = System.currentTimeMillis() + "_" + fileName ;
+	
+		
+		
+		/*String timeName = System.currentTimeMillis() + "_" + fileName ;
 		long fileSize = upFile.getSize();
 		
 		logger.info("ch fileName : " + fileName);
@@ -96,7 +103,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		
 	}
 	
-	public void fileBoardWriteNumber(PlaceBoardDto boardDto){
+	public void fileBoardWriteNumber(PerformBoardDto boardDto){
 	
 		String board_num = boardDto.getBoard_num();
 		int group_num = boardDto.getGroup_num();
@@ -134,7 +141,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		boardDto.setSeq_num(seq_num);
 		boardDto.setSeq_level(seq_level);
 		
-		System.out.println(group_num + "," + seq_num + "," + seq_level);
+		logger.info("--"+group_num + "," + seq_num + "," + seq_level);
 		
 		//logger.info("ch max : " + max);
 	}

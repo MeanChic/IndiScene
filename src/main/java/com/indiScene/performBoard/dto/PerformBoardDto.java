@@ -2,7 +2,7 @@ package com.indiScene.performBoard.dto;
 
 import java.util.Date;
 
-public class PlaceBoardDto {
+public class PerformBoardDto {
 	private String subject;	//문자	VARCHAR2(255)
 	private String content;	//문자	VARCHAR2(255)
 	private Date register_date; //날짜	DATE
