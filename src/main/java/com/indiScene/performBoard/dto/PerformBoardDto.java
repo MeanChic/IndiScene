@@ -18,7 +18,6 @@ public class PerformBoardDto {
 	private String artist_id;	//(FK)	문자	VARCHAR2(255)
 	private String board_num;	//(PK)	문자	VARCHAR2(255)
 	
-	
 	public String getSubject() {
 		return subject;
 	}

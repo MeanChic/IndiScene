@@ -11,4 +11,5 @@ public interface PerformBoardDao {
 	public int insert(PerformBoardDto boardDto);
 	public int getBoardCount();
 	public List<PerformBoardDto> getBoardList(int startRow, int endRow);
+	public PerformBoardDto read(String board_num);
 }

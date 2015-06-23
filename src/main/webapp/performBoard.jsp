@@ -10,6 +10,6 @@
 </head>
 <body>
 	<a href="${root }/performBoard/write.do">시작해보자</a>
-
+	<img src="${root }/resources/performResource/1435047117543_Desert.jpg">
 </body>
 </html>

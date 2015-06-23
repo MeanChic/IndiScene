@@ -9,6 +9,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${list.size}
+	//${boardList}
+	
+	<c:forEach var="list" items="${boardList}">
+	${list.file_path}
+		<li>
+			<a href="${root}/performBoard/read.do?board_num=${list.board_num}&pageNumber=${currentPage}">
+				<span><img src="${root}/resources/performResource/${list.file_path}" width="142" height="83"/></span><br/>
+				<span>${list.subject}</span>
+			</a>
+			<a><span>${list.artist_id}</span></a>
+		</li>
+		
+	</c:forEach>
 </body>
 </html>

@@ -28,6 +28,7 @@ public class PerformBoardDaoImpl implements PerformBoardDao {
 	
 	public int insert(PerformBoardDto boardDto){
 		int check = 0;
+		
 		if(boardDto.getFile_name() == null){
 			logger.info("-- no File=================");
 			check = sqlSession.insert("dao.PerformMapper.boardInsert", boardDto);
@@ -36,6 +37,7 @@ public class PerformBoardDaoImpl implements PerformBoardDao {
 			check = sqlSession.insert("dao.PerformMapper.boardInsertAll", boardDto);
 		}
 		logger.info("-- DAo Check" + check);
+		
 		return check;	
 	}
 	
@@ -51,4 +53,21 @@ public class PerformBoardDaoImpl implements PerformBoardDao {
 		return sqlSession.selectList("dao.PerformMapper.getBoardList", hMap);
 	}
 	
+	public PerformBoardDto read(String board_num){
+		
+		PerformBoardDto board = null;
+		int check = 0;
+		
+		try{
+			check = sqlSession.update("readCount" , board_num);
+			logger.info("ch Dao check : " + check);
+			if(check == 1){
+				board = sqlSession.selectOne("dao.PerformMapper.read", board_num);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return board;
+	}
 }
