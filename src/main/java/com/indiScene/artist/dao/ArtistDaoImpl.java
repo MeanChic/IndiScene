@@ -16,11 +16,11 @@ public class ArtistDaoImpl implements ArtistDao {
 		return sqlSession.insert("dao.memberMapper.register",artistDto);
 	}
 
-	int insert(ArtistDto artistDto)
+	/*int insert(ArtistDto artistDto)
 	int idCheck(String id)
 	int nickCheck(String nick)
 	int update(AtistDto artistDto)
 	int delete(HashMap<String,String> hMap)
 	ArtistDto select(String id)
-	List<ZipcodeList> getZipcodeList(String dong)
+	List<ZipcodeList> getZipcodeList(String dong)*/
 }
