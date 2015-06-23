@@ -1,7 +1,11 @@
 package com.indiScene.performBoard.service;
 
+import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -58,48 +62,65 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		boardDto.setRegister_date(new Date());
 		boardDto.setCount(0);
 		
+		String file_path = null;
+		String file_name = null;
 		
 		fileBoardWriteNumber(boardDto);
-		//logger.info("--" + request.getFile("file"));
+		/*for(int i = 1; i <= 10; i++){
+			logger.info("--" + request.getFile("file"+i));
+		}*/
 		
-		MultipartFile upFile = request.getFile("file");
-		String fileName = upFile.getOriginalFilename();
-	
+		for(int i = 1; i < 10; i++){
+			MultipartFile upFile = request.getFile("file" + i);
+			String fileName = upFile.getOriginalFilename();
 		
-		
-		/*String timeName = System.currentTimeMillis() + "_" + fileName ;
-		long fileSize = upFile.getSize();
-		
-		logger.info("ch fileName : " + fileName);
-		logger.info("ch timeName : " + timeName);
-		logger.info("ch fileSize : " + fileSize);
-		
-		if(fileSize != 0){
-			try{
-				//?��??경로
-				String dir="C:\\mavenSpring\\workspace\\mavenHomePage\\src\\main\\webapp\\resources";
-				
-				//?��??경로
-				//String dir=request.getSession().getServletContext().getRealPath("/resources");
-				
-				logger.info("ch dir : " + dir);
-				
-				File file = new File(dir, timeName);
-				upFile.transferTo(file);	//?��?��?��?��?�� ?��출력?�� ?��료됨
-				
-				fBDto.setPath(file.getAbsolutePath());
-				fBDto.setFileName(fileName);
-				fBDto.setFileSize(fileSize);
-				
-			}catch(Exception e){
-				logger.info("ch File Input Ouput Error");
+			
+			
+			String timeName = System.currentTimeMillis() + "_" + fileName ;
+			long fileSize = upFile.getSize();
+			
+			logger.info("-- fileName : " + fileName);
+			logger.info("-- timeName : " + timeName);
+			logger.info("-- fileSize : " + fileSize);
+			
+			if(fileSize != 0){
+				try{
+					//?��??경로
+					//String dir="C:\\mavenSpring\\workspace\\mavenHomePage\\src\\main\\webapp\\performResource";
+					
+					//?��??경로
+					String dir=request.getSession().getServletContext().getRealPath("/performResource");
+					
+					logger.info("ch dir : " + dir);
+					
+					File file = new File(dir, timeName);
+					upFile.transferTo(file);	//?��?��?��?��?�� ?��출력?�� ?��료됨
+					
+					
+				file_path += file.getAbsolutePath() + ",";
+				file_name += fileName + ",";
+				}catch(Exception e){
+					logger.info("ch File Input Ouput Error");
+				}
 			}
 		}
-		int check = fileDao.insert(fBDto);
+		boardDto.setFile_path(file_path);
+		boardDto.setFile_name(file_name);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy,MM,dd,hh");
+		try {
+			boardDto.setD_day(sdf.parse(request.getParameter("d_day1")));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//logger.info("-- "+Long.parseLong(request.getParameter("d_day1")));
+		int check = boardDao.insert(boardDto);
 		logger.info("ch check : " + check);
 		
 		mav.addObject("check" , check);
-		mav.setViewName("fileBoard/writeOk");*/
+		//mav.setViewName(null);
+		mav.setViewName("performBoard/writeOk");
 		
 	}
 	
@@ -144,6 +165,36 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		logger.info("--"+group_num + "," + seq_num + "," + seq_level);
 		
 		//logger.info("ch max : " + max);
+	}
+	
+	public void list(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		int boardSize = 10;
+		String pageNumber = request.getParameter("pageNumber");
+		if(pageNumber == null) pageNumber = "1";
+		
+		int currentPage = Integer.parseInt(pageNumber);
+		int startRow = (currentPage - 1)* boardSize + 1;
+		int endRow = currentPage*boardSize;
+		
+		int count = boardDao.getBoardCount();
+		logger.info("ch count : " + count);
+		
+		List<PerformBoardDto> list = boardDao.getBoardList(startRow, endRow);
+		logger.info("ch list : " + list.size());
+		
+		mav.addObject("boardList", list);
+		mav.addObject("count", count);
+		mav.addObject("boardSize", boardSize);
+		mav.addObject("currentPage", currentPage);
+		
+		mav.setViewName("performBoard/list");
+		//String viewPage="../fileBoard/list.jsp";
+		//mav.addObject("viewPage",viewPage);
+		//mav.setViewName("template/index1");
+				
 	}
 }
 

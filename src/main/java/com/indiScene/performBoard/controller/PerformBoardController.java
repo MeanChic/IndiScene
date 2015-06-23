@@ -43,4 +43,13 @@ public class PerformBoardController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/performBoard/list.do", method=RequestMethod.GET)
+	public ModelAndView list(HttpServletRequest request, ModelAndView mav){
+		logger.info("ch List =======================");
+		
+		mav.addObject("request", request);
+		service.list(mav);
+		return mav;
+	}
 }

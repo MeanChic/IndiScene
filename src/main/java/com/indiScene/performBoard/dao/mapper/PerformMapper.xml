@@ -11,4 +11,21 @@
 		<![CDATA[update performboard set seq_num=seq_num+1 
 		where group_num = #{group_num} and seq_num > #{seq_num}]]> 
 	</update>
+	
+	<insert id="boardInsert" parameterType="com.indiScene.performBoard.dto.PerformBoardDto">
+		insert into performboard(board_num, subject, content, register_date, count, zipcode, address, d_day, group_num, seq_level, seq_num, artist_id)
+		values('p'||performboard_seq.nextval, #{subject},#{content},#{register_date},#{count},#{zipcode},#{address },#{d_day },#{ group_num},#{seq_level },#{seq_num },#{artist_id})
+	</insert>
+	
+	<insert id="boardInsertAll" parameterType="com.indiScene.performBoard.dto.PerformBoardDto">
+		insert into performboard values('p'||performboard_seq.nextval, #{subject}, #{content}, #{register_date}, #{count}, #{file_path}, #{file_name}, #{zipcode}, #{address}, #{d_day}, #{group_num}, #{seq_level}, #{seq_num}, #{artist_id})
+	</insert>
+	
+	<select id="boardCount" resultType="int">
+		select count(*) from performboard
+	</select>
+	
+	<select id="getBoardList" resultMap="com.indiScene.performBoard.dto.PerformBoardDto" parameterType="java.util.HashMap">
+		<![CDATA[select * from (select rownum rnum, a.* from (select * from performboard order by group_num desc, seq_num asc)a) where rnum>=#{startRow} and rnum <= #{endRow}]]>
+	</select>
 </mapper>

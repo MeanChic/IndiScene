@@ -11,7 +11,7 @@ public class PerformBoardDto {
 	private String file_name;	//문자	VARCHAR2(255)
 	private String zipcode;	//문자	VARCHAR2(255)
 	private String address;	//문자	VARCHAR2(255)
-	private String d_day;	//날짜	DATE
+	private Date d_day;	//날짜	DATE
 	private int group_num;	//숫자	INTEGER
 	private int seq_level;	//숫자	INTEGER
 	private int seq_num;	//숫자	INTEGER
@@ -67,10 +67,10 @@ public class PerformBoardDto {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getD_day() {
+	public Date getD_day() {
 		return d_day;
 	}
-	public void setD_day(String d_day) {
+	public void setD_day(Date d_day) {
 		this.d_day = d_day;
 	}
 	public int getGroup_num() {
