@@ -22,7 +22,7 @@ import com.indiScene.performBoard.dto.PerformBoardDto;
 
 @Component
 public class PerformBoardServiceImpl implements PerformBoardService {
-	
+	String rootpath = "C:/Users/kosta/git/IndiScene/src/main/webapp/";
 	@Autowired
 	private PerformBoardDaoImpl boardDao;
 	private final Logger logger = Logger.getLogger(this.getClass().getName());
@@ -84,7 +84,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 					File file = new File(dir, timeName);
 					upFile.transferTo(file);	
 					
-					file_path += timeName + ",";
+					file_path += file.getAbsolutePath() + ",";
 					file_name += fileName + ",";
 				}catch(Exception e){
 					logger.info("ch File Input Ouput Error");
@@ -95,7 +95,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		boardDto.setFile_path(file_path);
 		boardDto.setFile_name(file_name);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy,MM,dd,hh");
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		try {
 			boardDto.setD_day(sdf.parse(request.getParameter("d_day1")));
 		} catch (ParseException e) {
@@ -167,9 +167,10 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		List<PerformBoardDto> list = boardDao.getBoardList(startRow, endRow);
 		logger.info("ch list : " + list.size());
 		
+	
 		for(int i = 0; i < list.size(); i++){
 			if(!(list.get(i).getFile_name()==null)){
-				list.get(i).setFile_path(list.get(i).getFile_path().split(",")[0]);
+				list.get(i).setFile_path(list.get(i).getFile_path().split(",")[0].substring(rootpath.length()));
 				list.get(i).setFile_name(list.get(i).getFile_name().split(",")[0]);
 			}
 		}
@@ -191,6 +192,15 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		
 		PerformBoardDto board = boardDao.read(board_num);
 		
+		String[] path = board.getFile_path().split(",");
+		for(int i = 0; i < path.length; i++){
+			path[i] = path[i].substring(rootpath.length());
+		}
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		String date = sdf.format(board.getD_day());
+		mav.addObject("date", date);
+		mav.addObject("path", path);
 		mav.addObject("pageNumber", pageNumber);
 		mav.addObject("board", board);
 		mav.setViewName("performBoard/read");
