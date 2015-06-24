@@ -8,18 +8,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link type="text/css" href="${root}/css/jquery-ui.css" rel="stylesheet"/>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript">
 	function checkForm(perform){
 		//alert("OK");
-		$("input[name='d_day1']").val($("select[name='yy']").val()+","+$("select[name='mm']").val()+","+$("select[name='dd']").val()+","+$("select[name='hh']").val());
-		alert($("input[name='d_day1']").val());
-		
-		
-		
+		$("input[name='d_day1']").val($("input[name='d_day1']").val() + " 12:00")
 	}
 	
 	$(function (){
+		$( "#datepicker" ).datepicker({
+		      showOn: "button",
+		      buttonImage: "images/calendar.gif",
+		      buttonImageOnly: true,
+		      buttonText: "Select date",
+		      changeMonth: true,
+		      changeYear: true
+		});
+		
 		$("input[id*='file']").click(function(){
 			alert("OK");
 			if(!($(this).attr("id")=="file2")){
@@ -80,12 +87,14 @@
 		<input type="hidden" value="${group_num}" name="group_num"/>
 		<input type="hidden" value="${seq_num}" name="seq_num"/>
 		<input type="hidden" value="${seq_level}" name="seq_level"/>
-		<input type="hidden" name="d_day1"/>
+		
 		
 		<span>제목</span><input id="subject" name="subject" type="text"/> <br/><br/>
 		<span>내용</span><textarea rows="20" cols="100" name="content" id="content"></textarea><br/><br/>
 		<span>일시</span>
-		<select name="yy">
+		
+		<input type="text" name="d_day1" id="datepicker">
+		<%-- <select name="yy">
 			<c:forEach var="i" begin="2015" end="2030"> 
 				<option>${i}</option>
 			</c:forEach>
@@ -108,7 +117,7 @@
 				<option>${i}</option>
 			</c:forEach>
 		</select>
-		시
+		시 --%>
 		
 		<br/><br/>
 		
