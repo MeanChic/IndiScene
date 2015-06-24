@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+ 	<bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
 		<property name="username" value="indi"/>
@@ -13,7 +13,7 @@
 		<property name="maxIdle" value="30"/>
 		<property name="maxWait" value="1000"/>
 		<property name="defaultAutoCommit" value="true"/>
-	</bean>
+	</bean> 
 	
 	<!-- Mapper Resource -->
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -24,14 +24,14 @@
 				<value>classpath:com/java/board/dao/mapper/BoardMapper.xml</value>
 			</list>
 		</property> -->
-		<property name="mapperLocations" value="classpath*:com/indiScene/**/**/**/*.xml"/>
-		
+ 		<property name="mapperLocations" value="classpath*:com/indiScene/**/**/**/*.xml"/>
+	
 		<!-- <property name="dataSource" ref="driverManagerDataSource"/> -->
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
 	<!-- SqlSessionFactoryBuilder().build(DriverManager, Mapper) -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactoryBean"/>
+		<constructor-arg ref="sqlSessionFactoryBean"/> 
 	</bean>	
 </beans>
