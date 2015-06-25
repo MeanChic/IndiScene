@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Artist</title>
+<script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript" src="${root}/js/artist.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 </head>
@@ -16,62 +18,58 @@
 	
 	<div id="RegisterForm">
 		<form name="artistForm" action="${root}/artist/register.do" method="POST" onsubmit="return registerForm(this)">
-			아티스트 아이디를 반환한다.
 			<div>
 				<label>Id</label>
-				<input type="text" name="id"/>
+				<input type="text" name="artist_id"/>
 				<input type="button" value="idCheck" onclick="idCheck(artistForm, '${root}')"/>
 			</div><br/>
-			아티스트 비밀번호를 입력받는다.
 			<div>
 				<label>Password</label>
-				<input type="password" name="password"/>
+				<input type="password" name="artist_password"/>
 				<label>Password Check</label>
 				<input type="password" name="passwordCheck"/>
 			</div><br/>
-			아티스트 이름을 입력받는다.
 			<div>
 				<label>Name</label>
-				<input type="text" name="name"/>
+				<input type="text" name="artist_name"/>
 			</div><br/>
-			아티스트 닉네임을 입력받는다.
 			<div>
 				<label>Nickname</label>
-				<input type="text" name="nickName"/>
-				<input type="button" value="nickNameCheck" onclick="nickNameCheck(artistForm, '${root}')"/>
+				<input type="text" name="artist_nickname"/>
+				<input type="button" value="nicknameCheck" onclick="nicknameCheck(artistForm, '${root}')"/>
 			</div><br/>
-			아티스트 전화번호 입력받는다.
 			<div>
 				<label>Phone</label>
-				<input type="text" name="phone"/>
+				<input type="text" name="artist_phone"/>
 			</div><br/>
-			아티스트 우편번호를 입력받는다.
 			<div>
 				<label>Zipcode</label>
-				<input type="text" name="zipcode"/>
-				<input type="button" value="Zipcode" onclick="zipcodeCheck(memberForm,'${root}')"/>
+				<input type="text" name="artist_zipcode"/>
+				<input type="button" value="Zipcode" onclick="zipcodeCheck(artistForm,'${root}')"/>
 			</div><br/>
-			아티스트 주소를 입력받는다.
 			<div>
 				<label>Address</label>
-				<input type="text" name="address"/>
+				<input type="text" name="artist_address"/>
 			</div><br/>
-			아티스트 생년월일을 입력받는다.
 			<div>
 				<label>Birth</label>
-				<input type="text" name="birth"/>
+				<input type="date" name="artist_birth"/>
 			</div><br/>
-			아티스트의 사진경로를 입력받는다.
 			<div>
 				<label>Profile Image</label>
-				<input type="text" name="picture"/>
-				<input type="button" name="picturePath"/>
+				<input type="text" name="artist_picture"/>
 				<div>
-					<img alt="" src="">
+					<!-- 
+					<input type="file" name="artist_picture"/>
+					<div>
+						<script type="text/javascript">
+							var path=$("input[name='artist_picture']").val();
+						</script>
+					</div>
+					-->
 				</div>				
 			</div><br/>
-			아티스트 레벨을 설정 받는다.
-			<input type="hidden" name="level" value="1"/>
+			<input type="hidden" name="artist_level" value="1"/>
 			<div>
 				<input type="submit" value="sign up"/>
 			</div><br/>

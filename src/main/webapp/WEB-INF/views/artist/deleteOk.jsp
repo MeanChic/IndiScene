@@ -7,13 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript" src="${root}/js/artist.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 </head>
 <body>
 	<c:if test="${check>0 }">
 		<c:remove var="id" scope="session"/>
-		<c:remove var="memberLevel" scope="session"/>
+		<c:remove var="level" scope="session"/>
 		
 		<script type="text/javascript">
 			alert("Thanks you. See you soon");
