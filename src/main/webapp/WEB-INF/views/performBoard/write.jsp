@@ -17,8 +17,8 @@
 		$("input[name='d_day1']").val($("input[name='d_day1']").val() + " 12:00")
 	}
 	
-	$(function (){
-		$("#file").click(function(){
+	 $(function (){
+		/*$("#file").click(function(){
 			if(window.File && window.FileList && window.FileReader)
 		    {
 		        var filesInput = document.getElementById("file");
@@ -56,7 +56,7 @@
 		    else
 		    {
 		        console.log("Your browser does not support File API");
-		    }
+		 	 } */
 		$( "#datepicker" ).datepicker({
 		      showOn: "button",
 		      buttonImage: "images/calendar.gif",
@@ -88,7 +88,7 @@
 			                picReader.addEventListener("load",function(event){		                    
 			                    var picFile = event.target;		                    
 			                    var div = document.createElement("div");		                    
-			                    div.innerHTML = "<img name='img' class='thumbnail' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>";
+			                    div.innerHTML = "<img name='img'  width='142' height='83' class='thumbnail' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>";
 			                   
 			                    
 			                    output.insertBefore(div,null);            
@@ -134,24 +134,7 @@
 		<span>일시</span>
 		
 		<input type="text" name="d_day1" id="datepicker">
-		<%-- <select name="yy">
-			<c:forEach var="i" begin="2015" end="2030"> 
-				<option>${i}</option>
-			</c:forEach>
-		</select>
-		년
-		<select name="mm">
-			<c:forEach var="i" begin="1" end="12"> 
-				<option>${i}</option>
-			</c:forEach>
-		</select>
-		월
-		<select name="dd">
-			<c:forEach var="i" begin="1" end="31"> 
-				<option>${i}</option>
-			</c:forEach>
-		</select>
-		일
+		
 		<select name="hh">
 			<c:forEach var="i" begin="00" end="24"> 
 				<option>${i}</option>

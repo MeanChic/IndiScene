@@ -14,6 +14,7 @@ public class MuseDto {
 	private String muse_comment; 	//문자	VARCHAR2(255)
 	private Date muse_date; 		//날짜	DATE
 	private String muse_filepath; 	//문자	VARCHAR2(255)
+	
 	public String getMuse_name() {
 		return muse_name;
 	}

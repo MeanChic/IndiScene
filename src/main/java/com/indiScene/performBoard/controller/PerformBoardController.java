@@ -15,6 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.indiScene.performBoard.dto.PerformBoardDto;
 import com.indiScene.performBoard.service.PerformBoardServiceImpl;
 
+/**
+ * @name:PerformBoardController
+ * @date :2015. 6. 25.
+ * @author: 김정승
+ * @description :	
+ */
 @Controller
 public class PerformBoardController {
 	
@@ -22,6 +28,12 @@ public class PerformBoardController {
 	private PerformBoardServiceImpl service;
 	private final Logger logger = Logger.getLogger(this.getClass().getName());
 	
+	/**
+	 * @name:write
+	 * @date :2015. 6. 25.
+	 * @author: 김정승
+	 * @description :	
+	 */
 	@RequestMapping(value="/performBoard/write.do", method=RequestMethod.GET)
 	public ModelAndView write(HttpServletRequest request, ModelAndView mav){
 		mav.addObject("request", request);
@@ -31,6 +43,12 @@ public class PerformBoardController {
 		return mav;
 	}
 	
+	/**
+	 * @name:write
+	 * @date :2015. 6. 25.
+	 * @author: 김정승
+	 * @description :	
+	 */
 	@RequestMapping(value="/performBoard/write.do", method=RequestMethod.POST)
 	public ModelAndView write(MultipartHttpServletRequest request, PerformBoardDto boardDto){
 		logger.info("-- Write Post=========================");
@@ -43,6 +61,12 @@ public class PerformBoardController {
 		return mav;
 	}
 	
+	/**
+	 * @name:list
+	 * @date :2015. 6. 25.
+	 * @author: 김정승
+	 * @description :	
+	 */
 	@RequestMapping(value="/performBoard/list.do", method=RequestMethod.GET)
 	public ModelAndView list(HttpServletRequest request, ModelAndView mav){
 		logger.info("ch List =======================");
@@ -52,6 +76,12 @@ public class PerformBoardController {
 		return mav;
 	}
 	
+	/**
+	 * @name:read
+	 * @date :2015. 6. 25.
+	 * @author: 김정승
+	 * @description :	
+	 */
 	@RequestMapping(value="/performBoard/read.do", method=RequestMethod.GET)
 	public ModelAndView read(HttpServletRequest request, ModelAndView mav){
 		logger.info("ch Read =========================");

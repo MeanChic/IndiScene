@@ -2,6 +2,12 @@ package com.indiScene.performBoard.dto;
 
 import java.util.Date;
 
+/**
+ * @name:PerformBoardDto
+ * @date :2015. 6. 25.
+ * @author: 김정승
+ * @description :	
+ */
 public class PerformBoardDto {
 	private String subject;	//문자	VARCHAR2(255)
 	private String content;	//문자	VARCHAR2(255)
