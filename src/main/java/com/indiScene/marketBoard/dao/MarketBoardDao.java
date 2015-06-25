@@ -9,4 +9,10 @@ public interface MarketBoardDao {
 	public int getCount();
 	
 	public List<MarketBoardDto> getMarketList(int startRow,int endRow);
+	
+	public int insert(MarketBoardDto marketBoardDto);
+	
+	public MarketBoardDto read(String boardNumber);
+	
+	public int count(String boardNumber);
 }
