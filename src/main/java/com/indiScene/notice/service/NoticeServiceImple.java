@@ -75,7 +75,6 @@ public class NoticeServiceImple implements NoticeService {
 		logger.info("check:"+check);
 		
 		int page_num=Integer.parseInt(request.getParameter("page_num"));
-		System.out.println("이것만 해결되면 "+page_num);
 		mav.addObject("page_num",page_num);
 		mav.addObject("check",check);
 		mav.setViewName("notice/writeOk");
@@ -146,13 +145,8 @@ public class NoticeServiceImple implements NoticeService {
 		if(count>0){
 			noticeList=noticeDao.getNoticeList(startRow, endRow);
 		}
-		logger.info("noticeList size: "+noticeList.size());
 		
-	  /*list.jsp에서 필요한 변수 -> 여기서 넘겨줘야하는 아이들
-	    count
-		boardList
-		boardSize
-		currentPage*/
+		logger.info("noticeList size: "+noticeList.size());
 		mav.addObject("boardSize",boardSize);
 		mav.addObject("currentPage",currentPage);
 		mav.addObject("count",count);
@@ -160,7 +154,124 @@ public class NoticeServiceImple implements NoticeService {
 	
 		mav.setViewName("notice/list");
 	}
+	@Override
+	public void noticeRead(ModelAndView mav) {
+		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
 
+		logger.info("noticeRead board_num: "+board_num+", pageNumber: "+pageNumber);
+		
+		NoticeDto noticeDto=noticeDao.noticeRead(board_num);
+		logger.info("noticeRead noticeDto: "+noticeDto);
+		
+		mav.addObject("notice",noticeDto);
+		mav.addObject("pageNumber",pageNumber);
+		mav.setViewName("notice/read");
+	}
+	@Override
+	public void noticeDelete(ModelAndView mav) {
+
+		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
+		logger.info("noticeDelete board_num: "+board_num+", pageNumber: "+pageNumber);
+		
+		mav.addObject("board_num",board_num);
+		mav.addObject("pageNumber",pageNumber);
+		
+		mav.setViewName("notice/delete");	
+	}
+
+	@Override
+	public void noticeDeleteOk(ModelAndView mav) {
+		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
+		logger.info("noticeDeleteOk board_num: "+board_num+", pageNumber: "+pageNumber);
+		
+		int check=noticeDao.noticeDelete(board_num);
+		logger.info("noticeDeleteOk check: "+check);
+		
+		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("check",check);
+		
+		mav.setViewName("notice/deleteOk");
+		
+		
+	}
+	
+/*
+	@Override
+	public void boardDeleteOk(ModelAndView mav) {
+		//delete.jsp로부터
+		//boardNumber, pageNumber, password 가 넘어옴.		
+		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		int boardNumber=Integer.parseInt(request.getParameter("boardNumber"));
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
+		String password=request.getParameter("password");
+		logger.info("boardDeleteOk boardNumber: "+boardNumber+", pageNumber: "+pageNumber+", password: "+password);
+		
+		int check=boardDao.boardDelete(boardNumber, password);
+		logger.info("boardDeleteOk check: "+check);
+		
+		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("check",check);
+		
+		mav.setViewName("board/deleteOk");
+		
+	}
+
+	@Override
+	public void boardUpdate(ModelAndView mav) {
+		// root + "/board/update.do?boardNumber="+boardNumber+"&pageNumber="+pageNumber
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		int boardNumber=Integer.parseInt(request.getParameter("boardNumber"));
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
+		
+		BoardDto board=boardDao.boardUpdateSelect(boardNumber);
+		logger.info("boardUpdate board:"+board);
+		
+		//board와 pageNumber를 updateOk.jsp에 넘겨줘야한다.
+		mav.addObject("board",board);
+		mav.addObject("pageNumber",pageNumber);
+		
+		mav.setViewName("board/update");
+		
+	}
+
+	@Override
+	public void boardUpdateOk(ModelAndView mav) {
+		//boardNumber, pageNumber, writer, subject, email, content, password
+		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		BoardDto boardDto=(BoardDto)map.get("boardDto");
+		
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
+		logger.info("boardUpdateOk boardDto: "+boardDto+", pageNumber: "+pageNumber);		
+		
+		int check=boardDao.boardUpdate(boardDto);
+		logger.info("boardUpdateOk check: "+check);
+		
+		//updateOk.jsp에는 check와 pageNumber를 넘겨줘야 한다.
+		mav.addObject("check",check);
+		mav.addObject("pageNumber",pageNumber);
+		
+		mav.setViewName("board/updateOk");
+		
+	}*/
+
+	
 
 
 }

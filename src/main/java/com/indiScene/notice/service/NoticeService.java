@@ -4,6 +4,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface NoticeService {
 
+
 	public void test(ModelAndView mav); 		//
 
 	public void noticeWrite(ModelAndView mav);	//
@@ -11,6 +12,12 @@ public interface NoticeService {
 	public void noticeWriteOk(ModelAndView mav);//
 
 	public void noticeList(ModelAndView mav);
+
+	public void noticeRead(ModelAndView mav);
+
+	public void noticeDelete(ModelAndView mav);
+
+	public void noticeDeleteOk(ModelAndView mav);
 
 
 }

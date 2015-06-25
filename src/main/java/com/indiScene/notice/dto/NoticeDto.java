@@ -11,6 +11,7 @@ public class NoticeDto {
 	private int seq_num;			//시퀀스 번호 	숫자 Integer 
 	private int group_num;			//그룹번호		숫자 Integer 
 	private String board_num;		//게시판순번 	숫자 Integer 
+
 	
 	
 	public String getSubject() {

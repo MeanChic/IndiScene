@@ -35,5 +35,16 @@
 	<select id="count" resultType="int">
 		<![CDATA[ select count(*) from notice ]]>
 	</select>
-	
+
+	<select id="read" parameterType="int" resultType="com.indiScene.notice.dto.NoticeDto">
+		<![CDATA[ select * from notice where board_num=#{board_num} ]]>
+	</select>
+
+	<delete id="delete" parameterType="int">
+		<![CDATA[ delete from notice where board_num=#{board_num} ]]>
+	</delete>
+
+	<update id="boardGroupNumberUpdate" parameterType="java.util.HashMap">
+		<![CDATA[update notice set seq_num=seq_num+1 where group_num=#{group_num} and seq_level>#{seq_level}]]> 
+	</update>
  </mapper>

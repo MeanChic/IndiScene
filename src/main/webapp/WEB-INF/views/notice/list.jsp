@@ -11,39 +11,28 @@
 	<title>게시판 목록보기</title>
 </head>
 <body>	
-		
-		
 		<c:if test="${count==0 }">
-			<table border="1" width="530" cellpadding="2" cellspacing="0" align="center">
-				<tr>
 					<td align="center">게시판에 저장된 글이 없습니다.</td>
-				</tr>
-			</table>
 		</c:if>
-
 		<c:if test="${count>0 }">
 			<table border="1" width="530" cellpadding="2" cellspacing="0" align="center">
 				<tr> 
 					<td align="center" width="30">번호</td>
 					<td align="center" width="250">제목</td>
-					<td align="center" width="70">작성자</td>
 					<td align="center" width="100">작성일</td>
 					<td align="center" width="50">조회수</td>
 				</tr>
-			
-			<!-- notice List -->
+		<!-- notice List -->
 		<c:forEach var="notice" items="${noticeList }">
 			<tr>
 				<td>${notice.board_num }</td>
 				<td>
 					<c:if test="${notice.seq_level>0 }">
 						<c:forEach begin="0" end="${notice.seq_level }" step="1">
-							&nbsp;&nbsp;
 						</c:forEach>
 					</c:if>
 					<a href="${root }/notice/read.do?board_num=${notice.board_num}&pageNumber=${currentPage }">${notice.subject }</a>
 				</td> 
-				<td>${notice.artist_Id }</td>
 				<td>
 					<fmt:formatDate value="${notice.register_date }" type="date"/>
 				</td>
