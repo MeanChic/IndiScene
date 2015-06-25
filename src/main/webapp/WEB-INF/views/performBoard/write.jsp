@@ -29,7 +29,7 @@
 		
 		$("input[id*='file']").click(function(){
 			alert("OK");
-			if(!($(this).attr("id")=="file2")){
+			if(!($(this).attr("id")=="file10")){
 				if(window.File && window.FileList && window.FileReader)
 			    {
 					
@@ -67,7 +67,9 @@
 			        console.log("Your browser does not support File API");
 			    }
 			}else{
+				
 				alert("9장까지 올릴수 있습니다.");
+				$("#hidd").append(this);
 			}
 			
 		});
