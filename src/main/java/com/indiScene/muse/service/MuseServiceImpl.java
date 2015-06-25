@@ -1,6 +1,7 @@
-package com.indiScene.performBoard.service;
+package com.indiScene.muse.service;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,17 +19,98 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.indiScene.muse.dao.MuseDaoImpl;
+import com.indiScene.muse.dto.MuseDto;
 import com.indiScene.performBoard.dao.PerformBoardDaoImpl;
 import com.indiScene.performBoard.dto.PerformBoardDto;
 
 @Component
-public class PerformBoardServiceImpl implements PerformBoardService {
+public class MuseServiceImpl implements MuseService {
 	String rootpath = "C:/Users/kosta/git/IndiScene/src/main/webapp/";
 	@Autowired
-	private PerformBoardDaoImpl boardDao;
+	private MuseDaoImpl museDao;
 	private final Logger logger = Logger.getLogger(this.getClass().getName());
 	
-	public void boardWrite(ModelAndView mav){
+	public void nameCheck(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
+		String muse_name = request.getParameter("muse_name");
+		
+		MuseDto museDto = museDao.nameCheck(muse_name);
+		logger.info("--" + museDto);
+		try{
+			if(museDto == null){
+				PrintWriter out = response.getWriter();
+				out.print("0");
+			}else if(museDto != null){
+				PrintWriter out = response.getWriter();
+				out.print("1");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void logup(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		MultipartHttpServletRequest request = (MultipartHttpServletRequest)map.get("request");
+		logger.info("--" +request.getParameter("check"));
+		MuseDto museDto = (MuseDto)map.get("museDto");
+		
+		museDto.setMuse_date(new Date());
+		
+		MultipartFile upFile = request.getFile("file");
+		String fileName = upFile.getOriginalFilename();
+		
+		String timeName = System.currentTimeMillis() + "_" + fileName ;
+		long fileSize = upFile.getSize();
+		
+		logger.info("-- fileName : " + fileName);
+		logger.info("-- timeName : " + timeName);
+		logger.info("-- fileSize : " + fileSize);
+		
+		if(fileSize != 0){
+			try{
+				String dir="C:\\Users\\kosta\\git\\IndiScene\\src\\main\\webapp\\resources\\museResources";
+				
+				logger.info("ch dir : " + dir);
+				
+				File file = new File(dir, timeName);
+				upFile.transferTo(file);	
+				
+				museDto.setMuse_filepath(file.getAbsolutePath());
+				
+			}catch(Exception e){
+				logger.info("ch File Input Ouput Error");
+			}
+		}
+		
+		int check = museDao.logup(museDto);
+		logger.info("-- muselogup check:" + check);
+	}
+	
+	public void museCheck(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
+		String artist_id = request.getParameter("artist_id");
+		logger.info("--d"+artist_id);
+		MuseDto museDto = museDao.museCheck(artist_id);
+		logger.info("--d" + museDto);
+		try{
+			if(museDto == null){
+				PrintWriter out = response.getWriter();
+				out.print("1");
+			}else if(museDto != null){
+				PrintWriter out = response.getWriter();
+				out.print("0");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	/*public void boardWrite(ModelAndView mav){
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
@@ -204,7 +287,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		mav.addObject("pageNumber", pageNumber);
 		mav.addObject("board", board);
 		mav.setViewName("performBoard/read");
-	}
+	}*/
 }
 
 

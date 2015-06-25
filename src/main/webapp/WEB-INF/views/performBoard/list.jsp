@@ -15,7 +15,12 @@
 	${list.file_path}
 		<li>
 			<a href="${root}/performBoard/read.do?board_num=${list.board_num}&pageNumber=${currentPage}">
-				<span><img src="${root}/resources/performResource/${list.file_path}" width="142" height="83"/></span><br/>
+			<c:if test="${list.file_path!=null}">
+				<span><img src="${root}/${list.file_path}" width="142" height="83"/></span><br/>
+			</c:if>
+			<c:if test="${list.file_path==null}">
+				<span><img src="${root}/resources/performResource/1435143705961_Koala.jpg" width="142" height="83"/></span><br/>
+			</c:if>	
 				<span>${list.subject}</span>
 			</a>
 			<a><span>${list.artist_id}</span></a>

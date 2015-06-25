@@ -12,13 +12,15 @@
 </head>
 <body>
 	<center>[Artist register]</center>
-	<div>
+	<a href="${root}/artist.jsp">artist page</a><br/><br/>
+	
+	<div id="RegisterForm">
 		<form name="artistForm" action="${root}/artist/register.do" method="POST" onsubmit="return registerForm(this)">
 			아티스트 아이디를 반환한다.
 			<div>
 				<label>Id</label>
 				<input type="text" name="id"/>
-				<input type="button" value="idCheck" onclick="idCheck(memberForm, '${root}')"/>
+				<input type="button" value="idCheck" onclick="idCheck(artistForm, '${root}')"/>
 			</div><br/>
 			아티스트 비밀번호를 입력받는다.
 			<div>
@@ -36,6 +38,7 @@
 			<div>
 				<label>Nickname</label>
 				<input type="text" name="nickName"/>
+				<input type="button" value="nickNameCheck" onclick="nickNameCheck(artistForm, '${root}')"/>
 			</div><br/>
 			아티스트 전화번호 입력받는다.
 			<div>
@@ -56,22 +59,7 @@
 			아티스트 생년월일을 입력받는다.
 			<div>
 				<label>Birth</label>
-				<input type="hidden" name="birth"/>
-				<select name="year">
-					<option></option>
-					<option value="2015">2015</option>
-					<option value="2014">2014</option>
-				</select>년&nbsp;
-				<select name="month">
-					<option></option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-				</select>월&nbsp;
-				<select name="day">
-					<option></option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-				</select>일&nbsp;
+				<input type="text" name="birth"/>
 			</div><br/>
 			아티스트의 사진경로를 입력받는다.
 			<div>
@@ -83,8 +71,9 @@
 				</div>				
 			</div><br/>
 			아티스트 레벨을 설정 받는다.
+			<input type="hidden" name="level" value="1"/>
 			<div>
-				<input type="submit" value="sign in"/>
+				<input type="submit" value="sign up"/>
 			</div><br/>
 		</form>
 	</div>

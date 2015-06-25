@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="dao.ArtistMapper">
+	<resultMap type="com.indiScene.artist.dto.ArtistDto" id="artistDto">
+		<result property="artist_id" column="artist_id"/>
+		<result property="atist_password" column="atist_password"/>
+		<result property="artist_name" column="artist_name"/>
+		<result property="artist_nickname" column="artist_nickname"/>
+		<result property="artist_phone" column="artist_phone"/>
+		<result property="artist_zipcode" column="artist_zipcode"/>
+		<result property="artist_address" column="artist_address"/>
+		<result property="artist_birth" column="artist_birth"/>
+		<result property="artist_picture" column="artist_picture"/>
+		<result property="artist_level" column="artist_level"/>
+	</resultMap>
+		
+	<insert id="register" parameterType="com.indiScene.artist.dto.ArtistDto"><!-- artist_num_seq.nextval -->
+		<![CDATA[ insert into artist values(#{artist_id},#{atist_password},#{artist_name},#{artist_nickname},#{artist_phone},#{artist_zipcode},#{artist_address},#{artist_birth},#{artist_picture},#{artist_level}) ]]>
+	</insert>
+	
+	<select id="idCheck" parameterType="String" resultType="String">
+		<![CDATA[ select id from artist where id=#{artist_id} ]]>	
+	</select>
+	
+	<select id="nicknameCheck" parameterType="String" resultType="String">
+		<![CDATA[ select id from artist where id=#{artist_nickname} ]]>	
+	</select>
+	
+	<select id="zipcode" parameterType="String" resultType="com.indiScene.artist.dto.ZipcodeDto">
+		<![CDATA[ select * from zipcode where dong like '%'||#{dong}||'%' ]]>
+	</select>
+	
+	<select id="login" parameterType="java.util.HashMap" resultMap="artistDto">
+		<![CDATA[ select * from artist where id=#{artist_id} and password=#{atist_password} ]]>
+	</select>
+	
+	<delete id="delete" parameterType="java.util.HashMap">
+		<![CDATA[ delete from artist where id=#{artist_id} and password=#{atist_password} ]]>
+	</delete>
+	
+	<select id="updateSelect" parameterType="String" resultMap="artistDto">
+		<![CDATA[ select * from artist where id=#{artist_id} ]]>
+	</select>
+	
+	<update id="update" parameterType="com.indiScene.artist.dto.ArtistDto">
+		<![CDATA[ update member set password=#{password}, name=#{name}, jumin1=#{jumin1}, jumin2=#{jumin2}, email=#{email}, zipcode=#{zipcode}, address=#{address}, job=#{job}, mailing=#{mailing}, interest=#{interest} where num=#{num} ]]>
+	</update>
+</mapper>
