@@ -34,6 +34,10 @@
 		            for(var i = 0; i< files.length; i++)
 		            {
 		                var file = files[i];		               
+		              	var newFile = document.createElement("input");
+		                $(newFile).attr("type","file"); 
+		               // $(newFile).val(file);
+		               // $("#fileList").append(newFile);
 		               //Only pics
 		                if(!file.type.match('image'))
 		                  continue;		                
@@ -42,8 +46,8 @@
 		                    var picFile = event.target;		                    
 		                    var div = document.createElement("div");		                    
 		                    div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>";
-		                    var input= Document.createElment("input");
-		                    
+		                    $(newFile).val(picFile.result);
+		                    $("#firstList").append(newFile);
 		                    output.insertBefore(div,null);            
 		           		});
 		                //Read the image
@@ -116,7 +120,8 @@
 		</div>
 		
 		<output id="result"></output>
-	
+		
+		<div id="fileList"></div>
 	</form>
 	
 </body>
