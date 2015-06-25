@@ -1,7 +1,11 @@
 package com.indiScene.performBoard.service;
 
+import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -18,7 +22,7 @@ import com.indiScene.performBoard.dto.PerformBoardDto;
 
 @Component
 public class PerformBoardServiceImpl implements PerformBoardService {
-	
+	String rootpath = "C:/Users/kosta/git/IndiScene/src/main/webapp/";
 	@Autowired
 	private PerformBoardDaoImpl boardDao;
 	private final Logger logger = Logger.getLogger(this.getClass().getName());
@@ -33,14 +37,11 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		int seq_level = 0;
 	
 		if(request.getParameter("board_num") != null){
-	
 			board_num = request.getParameter("board_num");
 			group_num = Integer.parseInt(request.getParameter("group_num"));
 			seq_num = Integer.parseInt(request.getParameter("seq_num"));
 			seq_level = Integer.parseInt(request.getParameter("seq_level"));
 		}
-		
-		//logger.info("ch =>" + boardNumber + "||" + groupNumber + "||" + sequenceNumber + "||" + sequenceLevel);
 		
 		mav.addObject("board_num" , board_num);
 		mav.addObject("group_num" , group_num);
@@ -51,56 +52,62 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 	}
 	
 	public void writeOk(ModelAndView mav){
+		
 		Map<String, Object> map = mav.getModelMap();
 		MultipartHttpServletRequest request = (MultipartHttpServletRequest)map.get("request");
 		PerformBoardDto boardDto = (PerformBoardDto) map.get("boardDto");
 		
 		boardDto.setRegister_date(new Date());
 		boardDto.setCount(0);
-		
-		
-		fileBoardWriteNumber(boardDto);
-		//logger.info("--" + request.getFile("file"));
-		
-		MultipartFile upFile = request.getFile("file");
-		String fileName = upFile.getOriginalFilename();
 	
+		fileBoardWriteNumber(boardDto);
+		String file_path="";
+		String file_name="";
 		
-		
-		/*String timeName = System.currentTimeMillis() + "_" + fileName ;
-		long fileSize = upFile.getSize();
-		
-		logger.info("ch fileName : " + fileName);
-		logger.info("ch timeName : " + timeName);
-		logger.info("ch fileSize : " + fileSize);
-		
-		if(fileSize != 0){
-			try{
-				//?��??경로
-				String dir="C:\\mavenSpring\\workspace\\mavenHomePage\\src\\main\\webapp\\resources";
-				
-				//?��??경로
-				//String dir=request.getSession().getServletContext().getRealPath("/resources");
-				
-				logger.info("ch dir : " + dir);
-				
-				File file = new File(dir, timeName);
-				upFile.transferTo(file);	//?��?��?��?��?�� ?��출력?�� ?��료됨
-				
-				fBDto.setPath(file.getAbsolutePath());
-				fBDto.setFileName(fileName);
-				fBDto.setFileSize(fileSize);
-				
-			}catch(Exception e){
-				logger.info("ch File Input Ouput Error");
+		for(int i = 1; i < 10; i++){
+			MultipartFile upFile = request.getFile("file" + i);
+			String fileName = upFile.getOriginalFilename();
+			
+			String timeName = System.currentTimeMillis() + "_" + fileName ;
+			long fileSize = upFile.getSize();
+			
+			logger.info("-- fileName : " + fileName);
+			logger.info("-- timeName : " + timeName);
+			logger.info("-- fileSize : " + fileSize);
+			
+			if(fileSize != 0){
+				try{
+					String dir="C:\\Users\\kosta\\git\\IndiScene\\src\\main\\webapp\\resources\\performResource";
+					
+					logger.info("ch dir : " + dir);
+					
+					File file = new File(dir, timeName);
+					upFile.transferTo(file);	
+					
+					file_path += file.getAbsolutePath() + ",";
+					file_name += fileName + ",";
+				}catch(Exception e){
+					logger.info("ch File Input Ouput Error");
+				}
 			}
 		}
-		int check = fileDao.insert(fBDto);
+		
+		boardDto.setFile_path(file_path);
+		boardDto.setFile_name(file_name);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		try {
+			boardDto.setD_day(sdf.parse(request.getParameter("d_day1")));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int check = boardDao.insert(boardDto);
 		logger.info("ch check : " + check);
 		
 		mav.addObject("check" , check);
-		mav.setViewName("fileBoard/writeOk");*/
-		
+		mav.setViewName("performBoard/writeOk");	
 	}
 	
 	public void fileBoardWriteNumber(PerformBoardDto boardDto){
@@ -113,10 +120,9 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		//logger.info("ch boardWriteNumber =>" + boardNumber + "||" + groupNumber + "||" + sequenceNumber + "||" + sequenceLevel);
 		
 		int max = 0;
-		if(board_num == "0"){
+		if(board_num.equals("0")){
 			//Root
 			max=boardDao.boardGroupNumberMax();
-			//logger.info("ch max : " + max);
 			if(max != 0){
 				max = max+1;
 			}else{
@@ -127,7 +133,6 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 			seq_num=boardDto.getSeq_num();
 			seq_level = boardDto.getSeq_level();
 		}else{
-			//?���?
 			HashMap<String, Integer> hMap = new HashMap<String, Integer>();
 			hMap.put("group_num", group_num);
 			hMap.put("seq_num", seq_num);
@@ -142,8 +147,63 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		boardDto.setSeq_level(seq_level);
 		
 		logger.info("--"+group_num + "," + seq_num + "," + seq_level);
+	}
+	
+	public void list(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
-		//logger.info("ch max : " + max);
+		int boardSize = 10;
+		String pageNumber = request.getParameter("pageNumber");
+		if(pageNumber == null) pageNumber = "1";
+		
+		int currentPage = Integer.parseInt(pageNumber);
+		int startRow = (currentPage - 1)* boardSize + 1;
+		int endRow = currentPage*boardSize;
+		
+		int count = boardDao.getBoardCount();
+		logger.info("ch count : " + count);
+		
+		List<PerformBoardDto> list = boardDao.getBoardList(startRow, endRow);
+		logger.info("ch list : " + list.size());
+		
+	
+		for(int i = 0; i < list.size(); i++){
+			if(!(list.get(i).getFile_name()==null)){
+				list.get(i).setFile_path(list.get(i).getFile_path().split(",")[0].substring(rootpath.length()));
+				list.get(i).setFile_name(list.get(i).getFile_name().split(",")[0]);
+			}
+		}
+		
+		mav.addObject("boardList", list);
+		mav.addObject("count", count);
+		mav.addObject("boardSize", boardSize);
+		mav.addObject("currentPage", currentPage);
+	
+		mav.setViewName("performBoard/list");	
+	}
+	
+	public void read(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		String board_num = request.getParameter("board_num");
+		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		
+		PerformBoardDto board = boardDao.read(board_num);
+		
+		String[] path = board.getFile_path().split(",");
+		for(int i = 0; i < path.length; i++){
+			path[i] = path[i].substring(rootpath.length());
+		}
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		String date = sdf.format(board.getD_day());
+		mav.addObject("date", date);
+		mav.addObject("path", path);
+		mav.addObject("pageNumber", pageNumber);
+		mav.addObject("board", board);
+		mav.setViewName("performBoard/read");
 	}
 }
 

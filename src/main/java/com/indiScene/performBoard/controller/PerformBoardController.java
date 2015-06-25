@@ -38,9 +38,28 @@ public class PerformBoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("request", request);
 		mav.addObject("boardDto", boardDto);
-		
 		service.writeOk(mav);
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/performBoard/list.do", method=RequestMethod.GET)
+	public ModelAndView list(HttpServletRequest request, ModelAndView mav){
+		logger.info("ch List =======================");
+		
+		mav.addObject("request", request);
+		service.list(mav);
+		return mav;
+	}
+	
+	@RequestMapping(value="/performBoard/read.do", method=RequestMethod.GET)
+	public ModelAndView read(HttpServletRequest request, ModelAndView mav){
+		logger.info("ch Read =========================");
+		mav.addObject("request", request);
+		
+		service.read(mav);
+		
+		return mav;
+	}
+	
 }
