@@ -17,7 +17,16 @@
 	<a href="${root}/museCreate/logup.do">muse개설</a>
 	<a href="${root}/museCreate/musemain.do">musemain</a>
 
-
-
+	<span>
+		
+	</span>
+	
+	<span>
+	
+	</span>
+	
+	<span>
+	
+	</span>
 </body>
 </html>

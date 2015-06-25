@@ -9,8 +9,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<script type="text/javascript">
+
+	<a href="${root}/test.do">테스트</a>
+	<!-- <script type="text/javascript">
 		location.href="${root}";
-	</script>
+	</script> -->
+<h3>게시판</h3>
+	<a href="${root }/notice/write.do">공지사항쓰기</a> 
+	<br/>
+	<a href="${root }/notice/list.do">공지사항 목록보기</a>
+	
 </body>
 </html>

@@ -104,44 +104,4 @@ public class MuseController {
 		mav.setViewName("museCreate/musemain");
 		return mav;
 	}
-	/*@RequestMapping(value="/performBoard/write.do", method=RequestMethod.GET)
-	public ModelAndView write(HttpServletRequest request, ModelAndView mav){
-		mav.addObject("request", request);
-		service.boardWrite(mav);
-		mav.setViewName("performBoard/write");
-		
-		return mav;
-	}
-	
-	@RequestMapping(value="/performBoard/write.do", method=RequestMethod.POST)
-	public ModelAndView write(MultipartHttpServletRequest request, PerformBoardDto boardDto){
-		logger.info("-- Write Post=========================");
-
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("request", request);
-		mav.addObject("boardDto", boardDto);
-		service.writeOk(mav);
-		
-		return mav;
-	}
-	
-	@RequestMapping(value="/performBoard/list.do", method=RequestMethod.GET)
-	public ModelAndView list(HttpServletRequest request, ModelAndView mav){
-		logger.info("ch List =======================");
-		
-		mav.addObject("request", request);
-		service.list(mav);
-		return mav;
-	}
-	
-	@RequestMapping(value="/performBoard/read.do", method=RequestMethod.GET)
-	public ModelAndView read(HttpServletRequest request, ModelAndView mav){
-		logger.info("ch Read =========================");
-		mav.addObject("request", request);
-		
-		service.read(mav);
-		
-		return mav;
-	}
-	*/
 }
