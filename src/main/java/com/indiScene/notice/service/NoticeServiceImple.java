@@ -206,72 +206,44 @@ public class NoticeServiceImple implements NoticeService {
 		
 		
 	}
-	
-/*
-	@Override
-	public void boardDeleteOk(ModelAndView mav) {
-		//delete.jsp로부터
-		//boardNumber, pageNumber, password 가 넘어옴.		
-		Map<String,Object> map=mav.getModelMap();
-		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		
-		int boardNumber=Integer.parseInt(request.getParameter("boardNumber"));
-		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-		String password=request.getParameter("password");
-		logger.info("boardDeleteOk boardNumber: "+boardNumber+", pageNumber: "+pageNumber+", password: "+password);
-		
-		int check=boardDao.boardDelete(boardNumber, password);
-		logger.info("boardDeleteOk check: "+check);
-		
-		mav.addObject("pageNumber",pageNumber);
-		mav.addObject("check",check);
-		
-		mav.setViewName("board/deleteOk");
-		
-	}
 
 	@Override
-	public void boardUpdate(ModelAndView mav) {
-		// root + "/board/update.do?boardNumber="+boardNumber+"&pageNumber="+pageNumber
+	public void noticeUpdate(ModelAndView mav) {
+				// root + "/board/update.do?boardNumber="+boardNumber+"&pageNumber="+pageNumber
 		Map<String, Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		
-		int boardNumber=Integer.parseInt(request.getParameter("boardNumber"));
+			
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
 		
-		BoardDto board=boardDao.boardUpdateSelect(boardNumber);
-		logger.info("boardUpdate board:"+board);
+		NoticeDto notice=noticeDao.noticeUpdateSelect(board_num);
+		logger.info("noticeUpdate notice:"+notice);
 		
 		//board와 pageNumber를 updateOk.jsp에 넘겨줘야한다.
-		mav.addObject("board",board);
+		mav.addObject("notice",notice);
 		mav.addObject("pageNumber",pageNumber);
 		
-		mav.setViewName("board/update");
-		
+		mav.setViewName("notice/update");
 	}
 
 	@Override
-	public void boardUpdateOk(ModelAndView mav) {
+	public void noticeUpdateOk(ModelAndView mav) {
+		
 		//boardNumber, pageNumber, writer, subject, email, content, password
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		BoardDto boardDto=(BoardDto)map.get("boardDto");
+		NoticeDto noticeDto=(NoticeDto)map.get("noticeDto");
 		
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-		logger.info("boardUpdateOk boardDto: "+boardDto+", pageNumber: "+pageNumber);		
+		logger.info("noticeUpdateOk noticeDto: "+noticeDto+", pageNumber: "+pageNumber);		
 		
-		int check=boardDao.boardUpdate(boardDto);
-		logger.info("boardUpdateOk check: "+check);
-		
+		int check=noticeDao.noticeUpdate(noticeDto);
+		logger.info("noticeUpdateOk check: "+check);
+	
 		//updateOk.jsp에는 check와 pageNumber를 넘겨줘야 한다.
 		mav.addObject("check",check);
 		mav.addObject("pageNumber",pageNumber);
 		
-		mav.setViewName("board/updateOk");
-		
-	}*/
-
-	
-
-
+		mav.setViewName("notice/updateOk");		
+	}
 }

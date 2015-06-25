@@ -76,51 +76,46 @@ public class NoticeController {
 	
 	@RequestMapping(value="/notice/delete.do", method=RequestMethod.GET)
 	public ModelAndView noticeDelete(HttpServletRequest request, HttpServletResponse response){
+		
 		logger.info("noticeDelete--------------");
-		
 		ModelAndView mav=new ModelAndView();
-		
 		mav.addObject("request",request);
-		
 		noticeService.noticeDelete(mav);
 		return mav;
 	}
 	
 	@RequestMapping(value="/notice/deleteOk.do", method=RequestMethod.POST)
-	public ModelAndView boardDeleteOk(HttpServletRequest request, HttpServletResponse response){
+	public ModelAndView noticeDeleteOk(HttpServletRequest request, HttpServletRequest response){
+		
 		logger.info("noticeDeleteOk--------------");
-		
 		ModelAndView mav=new ModelAndView();
-		
 		mav.addObject("request",request);
-		
 		noticeService.noticeDeleteOk(mav);
 		return mav;
 	}
-	/*
-	@RequestMapping(value="/board/update.do", method=RequestMethod.GET)
-	public ModelAndView boardUpdate(HttpServletRequest request, HttpServletResponse response){
-		logger.info("boardUpdate--------------");
+	
+	@RequestMapping(value="/notice/update.do", method=RequestMethod.GET)
+	public ModelAndView noticeUpdate(HttpServletRequest request, HttpServletResponse response){
 		
+		logger.info("noticeUpdate--------------");
 		ModelAndView mav=new ModelAndView();
-		
 		mav.addObject("request",request);
-		boardService.boardUpdate(mav);
+		noticeService.noticeUpdate(mav);
 		
 		return mav;
 	}
 	
-	@RequestMapping(value="/board/update.do", method=RequestMethod.POST)
-	public ModelAndView boardUpdate(HttpServletRequest request, HttpServletResponse response, BoardDto boardDto){
-		logger.info("boardUpdateOk--------------");
+	@RequestMapping(value="/notice/updateOk.do", method=RequestMethod.POST)
+	public ModelAndView noticeUpdateOk(HttpServletRequest request, HttpServletResponse response, NoticeDto noticeDto){
+		logger.info("noticeUpdateOk--------------");
 		
 		ModelAndView mav=new ModelAndView();
 		
-		mav.addObject("request",request);	//pageNumber
-		mav.addObject("boardDto",boardDto);	//boardNumber, writer, subject, email, content, password
-		boardService.boardUpdateOk(mav);
+		mav.addObject("request",request);		//pageNumber
+		mav.addObject("noticeDto",noticeDto);	//boardNumber, subject, content
+		noticeService.noticeUpdateOk(mav);
 		
 		return mav;
-	}*/
+	}
 	
 }

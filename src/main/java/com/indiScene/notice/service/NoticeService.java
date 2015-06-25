@@ -19,5 +19,11 @@ public interface NoticeService {
 
 	public void noticeDeleteOk(ModelAndView mav);
 
+	public void noticeUpdate(ModelAndView mav);
+
+	public void noticeUpdateOk(ModelAndView mav);
+
+	
+
 
 }

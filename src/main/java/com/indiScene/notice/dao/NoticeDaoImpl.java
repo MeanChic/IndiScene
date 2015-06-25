@@ -52,19 +52,34 @@ public class NoticeDaoImpl implements NoticeDao {
 		NoticeDto notice=null;
 		
 		try{
+		
 			sqlSession.update("dao.NoticeMapper.count",board_num);		//조회수 1증가
 			notice=sqlSession.selectOne("dao.NoticeMapper.read",board_num);	//해당 게시물을 가져옴.
+		
 		}catch(Exception e){
+			
 			sqlSession.rollback();
+			
 		}
-		return notice;
+			return notice;
 		}
 	
 	@Override
 	public int noticeDelete(int board_num) {
-	return sqlSession.delete("dao.NoticeMapper.delete",board_num);
+		
+		return sqlSession.delete("dao.NoticeMapper.delete",board_num);
 		
 		}
-	
+	@Override
+	public NoticeDto noticeUpdateSelect(int board_num) {
+		
+		return sqlSession.selectOne("dao.NoticeMapper.updateSelect",board_num);
+	}
 
+	@Override
+	public int noticeUpdate(NoticeDto noticeDto) {
+		
+		return sqlSession.update("dao.NoticeMapper.update",noticeDto);
+	}
+	
 }

@@ -44,7 +44,15 @@
 		<![CDATA[ delete from notice where board_num=#{board_num} ]]>
 	</delete>
 
-	<update id="boardGroupNumberUpdate" parameterType="java.util.HashMap">
+	<update id="noticeGroupNumberUpdate" parameterType="java.util.HashMap">
 		<![CDATA[update notice set seq_num=seq_num+1 where group_num=#{group_num} and seq_level>#{seq_level}]]> 
+	</update>
+	
+	<select id="updateSelect" resultType="com.indiScene.notice.dto.NoticeDto">
+		<![CDATA[ select * from notice where board_num=#{board_num} ]]>
+	</select>
+
+	<update id="update" parameterType="com.indiScene.notice.dto.NoticeDto">
+		<![CDATA[ update notice set subject=#{subject},content=#{content} where board_num=#{board_num}]]>
 	</update>
  </mapper>
