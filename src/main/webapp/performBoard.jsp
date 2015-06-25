@@ -11,6 +11,13 @@
 <body>
 	<a href="${root }/performBoard/write.do">시작해보자</a>
 	<a href="${root}/performBoard/list.do"> 리스트 보기 </a>	
-	<img src="${root }/resources/performResource/1435047117543_Desert.jpg">
+
+
+	
+	<a href="${root}/museCreate/logup.do">muse개설</a>
+	<a href="${root}/museCreate/musemain.do">musemain</a>
+
+
+
 </body>
 </html>
