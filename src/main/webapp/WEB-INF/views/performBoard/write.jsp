@@ -8,21 +8,67 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link type="text/css" href="${root}/css/jquery-ui.css" rel="stylesheet"/>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript">
 	function checkForm(perform){
 		//alert("OK");
-		$("input[name='d_day1']").val($("select[name='yy']").val()+","+$("select[name='mm']").val()+","+$("select[name='dd']").val()+","+$("select[name='hh']").val());
-		alert($("input[name='d_day1']").val());
-		
-		
-		
+		$("input[name='d_day1']").val($("input[name='d_day1']").val() + " 12:00")
 	}
 	
 	$(function (){
+		$("#file").click(function(){
+			if(window.File && window.FileList && window.FileReader)
+		    {
+		        var filesInput = document.getElementById("file");
+		        //$("#result").children().remove();
+		        alert("OK1");
+		        filesInput.addEventListener("change", function(event){
+		            alert("OK");
+		            var files = event.target.files; //FileList object
+		            var output = document.getElementById("result");
+		            
+		            for(var i = 0; i< files.length; i++)
+		            {
+		                var file = files[i];		               
+		              	var newFile = document.createElement("input");
+		                $(newFile).attr("type","file"); 
+		               // $(newFile).val(file);
+		               // $("#fileList").append(newFile);
+		               //Only pics
+		                if(!file.type.match('image'))
+		                  continue;		                
+		                var picReader = new FileReader();		                
+		                picReader.addEventListener("load",function(event){		                    
+		                    var picFile = event.target;		                    
+		                    var div = document.createElement("div");		                    
+		                    div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>";
+		                    $(newFile).val(picFile.result);
+		                    $("#firstList").append(newFile);
+		                    output.insertBefore(div,null);            
+		           		});
+		                //Read the image
+		                picReader.readAsDataURL(file);
+		            }                               
+		        });
+		    }
+		    else
+		    {
+		        console.log("Your browser does not support File API");
+		    }
+		$( "#datepicker" ).datepicker({
+		      showOn: "button",
+		      buttonImage: "images/calendar.gif",
+		      buttonImageOnly: true,
+		      buttonText: "Select date",
+		      changeMonth: true,
+		      changeYear: true
+		});
+		
 		$("input[id*='file']").click(function(){
 			alert("OK");
-			if(!($(this).attr("id")=="file2")){
+			if(!($(this).attr("id")=="file10")){
 				if(window.File && window.FileList && window.FileReader)
 			    {
 					
@@ -60,9 +106,10 @@
 			        console.log("Your browser does not support File API");
 			    }
 			}else{
+				
 				alert("9장까지 올릴수 있습니다.");
+				$("#hidd").append(this);
 			}
-			
 		});
 	});
 	
@@ -80,12 +127,14 @@
 		<input type="hidden" value="${group_num}" name="group_num"/>
 		<input type="hidden" value="${seq_num}" name="seq_num"/>
 		<input type="hidden" value="${seq_level}" name="seq_level"/>
-		<input type="hidden" name="d_day1"/>
+		
 		
 		<span>제목</span><input id="subject" name="subject" type="text"/> <br/><br/>
 		<span>내용</span><textarea rows="20" cols="100" name="content" id="content"></textarea><br/><br/>
 		<span>일시</span>
-		<select name="yy">
+		
+		<input type="text" name="d_day1" id="datepicker">
+		<%-- <select name="yy">
 			<c:forEach var="i" begin="2015" end="2030"> 
 				<option>${i}</option>
 			</c:forEach>
@@ -108,7 +157,7 @@
 				<option>${i}</option>
 			</c:forEach>
 		</select>
-		시
+		시 --%>
 		
 		<br/><br/>
 		
@@ -133,7 +182,8 @@
 		</div>
 		
 		<output id="result"></output>
-	
+		
+		<div id="fileList"></div>
 	</form>
 	
 </body>
