@@ -10,6 +10,12 @@ import org.springframework.stereotype.Component;
 
 import com.indiScene.performBoard.dto.PerformBoardDto;
 
+/**
+ * @name:PerformBoardDaoImpl
+ * @date :2015. 6. 25.
+ * @author: 김정승
+ * @description :	
+ */
 @Component
 public class PerformBoardDaoImpl implements PerformBoardDao {
 	

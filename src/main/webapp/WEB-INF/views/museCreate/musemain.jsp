@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="artist_id"  value="indiScene"/>
+<c:set var="artist_id"  value="A"/>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -13,13 +13,12 @@
 <script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript">
 $(function(){
-	alert("OK");
+	
 	var root = $("#root").val();
 	var artist_id=$("input[name='artist_id']").val();
 	var sendData= "artist_id=" + artist_id;
 	var url = root + "/museCreate/museCheck.do?" + sendData;
 	
-	alert(url);
 	 $.ajax({
 		url:url,
 		type:"get",
@@ -40,9 +39,6 @@ $(function(){
 			 location.href=root + "/museCreate/logup.do";
 		 }
 	 })
-		
-		 
-	
 });
 </script>
 </head>

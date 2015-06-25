@@ -20,6 +20,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.indiScene.performBoard.dao.PerformBoardDaoImpl;
 import com.indiScene.performBoard.dto.PerformBoardDto;
 
+/**
+ * @name:PerformBoardServiceImpl
+ * @date :2015. 6. 25.
+ * @author: 김정승
+ * @description :	
+ */
 @Component
 public class PerformBoardServiceImpl implements PerformBoardService {
 	String rootpath = "C:/Users/kosta/git/IndiScene/src/main/webapp/";
@@ -107,7 +113,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		logger.info("ch check : " + check);
 		
 		mav.addObject("check" , check);
-		mav.setViewName("performBoard/writeOk");	
+		mav.setViewName("performBoard/list");	
 	}
 	
 	public void fileBoardWriteNumber(PerformBoardDto boardDto){
@@ -199,10 +205,12 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		String date = sdf.format(board.getD_day());
+		
 		mav.addObject("date", date);
 		mav.addObject("path", path);
 		mav.addObject("pageNumber", pageNumber);
 		mav.addObject("board", board);
+		
 		mav.setViewName("performBoard/read");
 	}
 }

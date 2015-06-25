@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	//${boardList}
+	${check}
+	${boardList}
 	
 	<c:forEach var="list" items="${boardList}">
 	${list.file_path}

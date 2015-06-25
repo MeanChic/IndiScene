@@ -33,7 +33,8 @@ public class MuseDaoImpl implements MuseDao {
 	}
 	
 	public MuseDto museCheck(String artist_id){
-		return sqlSession.selectOne("dao.MuseMapper.nameCheck",artist_id);
+		
+		return sqlSession.selectOne("dao.MuseMapper.museCheck",artist_id);
 	}
 	/*public int boardGroupNumberMax(){
 		return sqlSession.selectOne("dao.PerformMapper.boardGroupNumberMax");
