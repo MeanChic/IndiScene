@@ -18,6 +18,45 @@
 	}
 	
 	$(function (){
+		$("#file").click(function(){
+			if(window.File && window.FileList && window.FileReader)
+		    {
+		        var filesInput = document.getElementById("file");
+		        //$("#result").children().remove();
+		        alert("OK1");
+		        filesInput.addEventListener("change", function(event){
+		            alert("OK");
+		            var files = event.target.files; //FileList object
+		            var output = document.getElementById("result");
+		            
+		            for(var i = 0; i< files.length; i++)
+		            {
+		                var file = files[i];		               
+		              	var newFile = document.createElement("input");
+		                $(newFile).attr("type","file"); 
+		               // $(newFile).val(file);
+		               // $("#fileList").append(newFile);
+		               //Only pics
+		                if(!file.type.match('image'))
+		                  continue;		                
+		                var picReader = new FileReader();		                
+		                picReader.addEventListener("load",function(event){		                    
+		                    var picFile = event.target;		                    
+		                    var div = document.createElement("div");		                    
+		                    div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>";
+		                    $(newFile).val(picFile.result);
+		                    $("#firstList").append(newFile);
+		                    output.insertBefore(div,null);            
+		           		});
+		                //Read the image
+		                picReader.readAsDataURL(file);
+		            }                               
+		        });
+		    }
+		    else
+		    {
+		        console.log("Your browser does not support File API");
+		    }
 		$( "#datepicker" ).datepicker({
 		      showOn: "button",
 		      buttonImage: "images/calendar.gif",
@@ -71,7 +110,6 @@
 				alert("9장까지 올릴수 있습니다.");
 				$("#hidd").append(this);
 			}
-			
 		});
 	});
 	
@@ -144,7 +182,8 @@
 		</div>
 		
 		<output id="result"></output>
-	
+		
+		<div id="fileList"></div>
 	</form>
 	
 </body>
