@@ -12,15 +12,16 @@ public interface FreeBoardService {
 
 	public void freeBoardRead(ModelAndView mav);
 
+	public void freeBoardDelete(ModelAndView mav);
+
+	public void freeBoardDeleteOk(ModelAndView mav);
+
+	public void freeBoardUpdate(ModelAndView mav);
+
+	public void freeBoardUpdateOk(ModelAndView mav);
+
 /*	
- * public void noticeWriteOk(ModelAndView mav);
-
-	public void noticeList(ModelAndView mav);
-
-	public void noticeRead(ModelAndView mav);
-
-	public void noticeDelete(ModelAndView mav);
-
+ * 
 	public void noticeDeleteOk(ModelAndView mav);
 
 	public void noticeUpdate(ModelAndView mav);

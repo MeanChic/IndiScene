@@ -21,24 +21,12 @@ public interface FreeBoardDao {
 
 	public FreeBoardDto freeBoardRead(int board_num);
 
+	public int count(int board_num);
 	
-	
-	/* 
-	
-	
-	public int noticeGroupNumberUpdate(HashMap<String, Integer> hMap);
-	
-	public int getCount();
-	
-	public List<NoticeDto> getNoticeList(int startRow, int endRow);
-	
-	public NoticeDto noticeRead(int board_num);
-	
-	public int noticeDelete(int board_num);
-	
-	public int noticeUpdate(NoticeDto noticeDto);
-	
-	public NoticeDto noticeUpdateSelect(int board_num);
+	public int freeBoardDelete(int board_num);
 
-	*/ 
+	public FreeBoardDto freeBoardUpdateSelect(int board_num);
+
+	public int freeBoardUpdate(FreeBoardDto freeBoardDto);
+
 }

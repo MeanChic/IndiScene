@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.freeboard.dao.FreeBoardDao;
 import com.indiScene.freeboard.dto.FreeBoardDto;
+import com.indiScene.notice.dto.NoticeDto;
 
 @Component
 public class FreeBoardServiceImpl implements FreeBoardService {
@@ -157,57 +158,28 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	
 	@Override
 	public void freeBoardRead(ModelAndView mav) {
+		
+		logger.info("freeboard SerdService-------------------------");
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-
-		logger.info("freeBoardRead board_num: "+board_num+", pageNumber: "+pageNumber);
-		
 		FreeBoardDto freeBoardDto=freeBoardDao.freeBoardRead(board_num);
+
+		if(freeBoardDto !=null){
+			freeBoardDto= freeBoardDao.freeBoardRead(board_num);
+		}
+		
+		logger.info("board_num:"+board_num);
 		logger.info("freeBoardRead freeBoardDto: "+freeBoardDto);
 		
 		mav.addObject("freeBoard",freeBoardDto);
 		mav.addObject("pageNumber",pageNumber);
 		mav.setViewName("freeBoard/read");
+		
 	}	
 /*
- * 
-	
-	@Override
-	public void noticeRead(ModelAndView mav) {
-		Map<String,Object> map=mav.getModelMap();
-		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		
-		int board_num=Integer.parseInt(request.getParameter("board_num"));
-		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-
-		logger.info("noticeRead board_num: "+board_num+", pageNumber: "+pageNumber);
-		
-		NoticeDto noticeDto=noticeDao.noticeRead(board_num);
-		logger.info("noticeRead noticeDto: "+noticeDto);
-		
-		mav.addObject("notice",noticeDto);
-		mav.addObject("pageNumber",pageNumber);
-		mav.setViewName("notice/read");
-	}
-	
-	@Override
-	public void noticeDelete(ModelAndView mav) {
-
-		Map<String,Object> map=mav.getModelMap();
-		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		
-		int board_num=Integer.parseInt(request.getParameter("board_num"));
-		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-		logger.info("noticeDelete board_num: "+board_num+", pageNumber: "+pageNumber);
-		
-		mav.addObject("board_num",board_num);
-		mav.addObject("pageNumber",pageNumber);
-		
-		mav.setViewName("notice/delete");	
-	}
 
 	@Override
 	public void noticeDeleteOk(ModelAndView mav) {
@@ -267,5 +239,75 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		mav.setViewName("notice/updateOk");		
 	}
 	*/
+	@Override
+	public void freeBoardDelete(ModelAndView mav) {
 
+		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
+		logger.info("freeBoardDelete board_num: "+board_num+", pageNumber: "+pageNumber);
+		
+		mav.addObject("board_num",board_num);
+		mav.addObject("pageNumber",pageNumber);
+		
+		mav.setViewName("freeBoard/delete");	
+		
 	}
+	@Override
+	public void freeBoardDeleteOk(ModelAndView mav) {
+		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
+		logger.info("freeBoardDeleteOk board_num: "+board_num+", pageNumber: "+pageNumber);
+		
+		int check=freeBoardDao.freeBoardDelete(board_num);
+		logger.info("freeBoardDeleteOk check: "+check);
+		
+		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("check",check);
+		
+		mav.setViewName("freeBoard/deleteOk");
+		
+	}
+	@Override
+	public void freeBoardUpdate(ModelAndView mav) {
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+			
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
+		
+		FreeBoardDto freeBoard=freeBoardDao.freeBoardUpdateSelect(board_num);
+		logger.info("freeBoardUpdate freeBoard:"+freeBoard);
+		
+		//board와 pageNumber를 updateOk.jsp에 넘겨줘야한다.
+		mav.addObject("freeBoard",freeBoard);
+		mav.addObject("pageNumber",pageNumber);
+		
+		mav.setViewName("freeBoard/update");
+		
+	}
+	@Override
+	public void freeBoardUpdateOk(ModelAndView mav) {
+
+		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		FreeBoardDto freeBoardDto=(FreeBoardDto)map.get("freeBoardDto");
+		
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
+		logger.info("freeBoardUpdateOk freeBoardDto: "+freeBoardDto+", pageNumber: "+pageNumber);		
+		
+		int check=freeBoardDao.freeBoardUpdate(freeBoardDto);
+		logger.info("freeBoardUpdateOk check: "+check);
+	
+		//updateOk.jsp에는 check와 pageNumber를 넘겨줘야 한다.
+		mav.addObject("check",check);
+		mav.addObject("pageNumber",pageNumber);
+			
+		mav.setViewName("freeBoard/updateOk");		
+		}
+}

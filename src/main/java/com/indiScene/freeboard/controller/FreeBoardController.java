@@ -14,6 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.indiScene.freeboard.dto.FreeBoardDto;
 import com.indiScene.freeboard.service.FreeBoardService;
 
+/**
+ * @name : FreeBoardController
+ * @date : 2015. 6. 26.
+ * @author : 손유진
+ * @description : 자유게시판 컨트롤러 
+ */
 @Controller
 public class FreeBoardController {
 	
@@ -34,7 +40,12 @@ public class FreeBoardController {
 		return mav;	
 	}
 
-
+	/**
+	 * @name : freeBoardWrite
+	 * @date : 2015. 6. 26.
+	 * @author : 손유진
+	 * @description : 자유게시글 등록 (자유롭게 이용가능 )
+	 */
 	@RequestMapping(value="/freeBoard/write.do",method=RequestMethod.POST)
 	
 	public ModelAndView freeBoardWrite(HttpServletRequest request, HttpServletRequest response,FreeBoardDto freeBoardDto){
@@ -44,10 +55,16 @@ public class FreeBoardController {
 		mav.addObject("request",request);
 		mav.addObject("freeBoardDto",freeBoardDto);
 		freeBoardService.freeBoardWriteOk(mav);
-		
+	
 		return mav;	
 	}
 
+	/**
+	 * @name : freeBoardList
+	 * @date : 2015. 6. 26.
+	 * @author : 손유진
+	 * @description : 자유게시판 리스트 
+	 */
 	@RequestMapping(value="/freeBoard/list.do", method=RequestMethod.GET)
 	public ModelAndView freeBoardList(HttpServletRequest request, ModelAndView mav){
 		logger.info("freeBoard List =======================");
@@ -57,6 +74,12 @@ public class FreeBoardController {
 		return mav;
 	}
 	
+	/**
+	 * @name : freeBoardRead
+	 * @date : 2015. 6. 26.
+	 * @author : 손유진
+	 * @description : 자유게시글 읽기 
+	 */
 	@RequestMapping(value="/freeBoard/read.do", method=RequestMethod.GET)
 	public ModelAndView freeBoardRead(HttpServletRequest request, HttpServletResponse response){
 		
@@ -66,89 +89,73 @@ public class FreeBoardController {
 		freeBoardService.freeBoardRead(mav);
 		return mav;
 	}
-	/*
-	*//**
-	 * @name : freeBoardRead
-	 * @date : 2015. 6. 26.
-	 * @author : 손유진
-	 * @description : 공지사항 읽기 
-	 *//*
-	@RequestMapping(value="/freeBoard/read.do", method=RequestMethod.GET)
-	public ModelAndView freeBoardRead(HttpServletRequest request, HttpServletResponse response){
-		
-		logger.info("freeBoardRead---------------");
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("request", request);
-		noticeService.noticeRead(mav);
-		return mav;
-	}
 	
-	*//**
-	 * @name : noticeDelete
+	/**
+	 * @name : freeBoardDelete
 	 * @date : 2015. 6. 26.
 	 * @author : 손유진
-	 * @description : 공지사항 삭제 
-	 *//*
-	@RequestMapping(value="/notice/delete.do", method=RequestMethod.GET)
-	public ModelAndView noticeDelete(HttpServletRequest request, HttpServletResponse response){
+	 * @description : 자유게시글 삭제 ( 본인만 가능 ) 
+	 */
+	@RequestMapping(value="/freeBoard/delete.do", method=RequestMethod.GET)
+	public ModelAndView freeBoardDelete(HttpServletRequest request, HttpServletResponse response){
 		
-		logger.info("noticeDelete--------------");
+		logger.info("freeBoardDelete--------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
-		noticeService.noticeDelete(mav);
+		freeBoardService.freeBoardDelete(mav);
+		
 		return mav;
 	}
-	
-	*//**
-	 * @name : noticeDeleteOk
+	/**
+	 * @name : freeBoardDeleteOk
 	 * @date : 2015. 6. 26.
 	 * @author : 손유진
-	 * @description : 공지사항 삭제확인
-	 *//*
-	@RequestMapping(value="/notice/deleteOk.do", method=RequestMethod.POST)
-	public ModelAndView noticeDeleteOk(HttpServletRequest request, HttpServletRequest response){
+	 * @description : 삭제 확인 
+	 */
+	@RequestMapping(value="/freeBoard/deleteOk.do", method=RequestMethod.POST)
+	public ModelAndView freeBoardDeleteOk(HttpServletRequest request, HttpServletRequest response){
 		
-		logger.info("noticeDeleteOk--------------");
+		logger.info("freeBoardDeleteOk--------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
-		noticeService.noticeDeleteOk(mav);
+		freeBoardService.freeBoardDeleteOk(mav);
 		return mav;
 	}
 	
-	*//**
-	 * @name : noticeUpdate
+
+	/**
+	 * @name : freeBoardUpdate
 	 * @date : 2015. 6. 26.
 	 * @author : 손유진
-	 * @description :  공지사항 수정 
-	 *//*
-	@RequestMapping(value="/notice/update.do", method=RequestMethod.GET)
-	public ModelAndView noticeUpdate(HttpServletRequest request, HttpServletResponse response){
+	 * @description : 자유게시판 게시글 수정
+	 */
+	@RequestMapping(value="/freeBoard/update.do", method=RequestMethod.GET)
+	public ModelAndView freeBoardUpdate(HttpServletRequest request, HttpServletResponse response){
 		
-		logger.info("noticeUpdate--------------");
+		logger.info("freeBoardUpdate--------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
-		noticeService.noticeUpdate(mav);
+		freeBoardService.freeBoardUpdate(mav);
 		
 		return mav;
 	}
-	
-	*//**
-	 * @name : noticeUpdateOk
+
+	/**
+	 * @name : freeBoardUpdateOk
 	 * @date : 2015. 6. 26.
 	 * @author : 손유진
-	 * @description : 공지사항 수정
-	 *//*
-	@RequestMapping(value="/notice/updateOk.do", method=RequestMethod.POST)
-	public ModelAndView noticeUpdateOk(HttpServletRequest request, HttpServletResponse response, NoticeDto noticeDto){ logger.info("noticeUpdateOk--------------");
+	 * @description : 수정 확인
+	 */
+	@RequestMapping(value="/freeBoard/updateOk.do", method=RequestMethod.POST)
+	public ModelAndView freeBoardUpdateOk(HttpServletRequest request, HttpServletResponse response, FreeBoardDto freeBoardDto){ logger.info("freeBoardUpdateOk--------------");
 		
 		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("request",request);		//pageNumber
-		mav.addObject("noticeDto",noticeDto);	//boardNumber, subject, content
-		noticeService.noticeUpdateOk(mav);
+		mav.addObject("freeBoardDto",freeBoardDto);	//boardNumber, subject, content
+		freeBoardService.freeBoardUpdateOk(mav);
 		
 		return mav;
 	}
-	*/
 	
 }

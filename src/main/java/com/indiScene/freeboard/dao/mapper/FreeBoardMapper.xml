@@ -29,19 +29,23 @@
 	<select id="read" parameterType="int" resultType="com.indiScene.freeboard.dto.FreeBoardDto">
 		<![CDATA[ select * from freeBoard where board_num=#{board_num} ]]>
 	</select>
-<!-- 
+	
+	<update id="readCount">
+	<![CDATA[ 	update freeBoard set count=count+1 where board_num+#{board_num} ]]>
+	
+	</update>
+
 	<delete id="delete" parameterType="int">
 		<![CDATA[ delete from freeBoard where board_num=#{board_num} ]]>
 	</delete>
 
-	
-	<select id="updateSelect" resultType="com.indiScene.notice.dto.NoticeDto">
-		<![CDATA[ select * from notice where board_num=#{board_num} ]]>
+	<select id="updateSelect" resultType="com.indiScene.freeboard.dto.FreeBoardDto">
+		<![CDATA[ select * from freeBoard where board_num=#{board_num} ]]>
 	</select>
 
-	<update id="update" parameterType="com.indiScene.notice.dto.NoticeDto">
-		<![CDATA[ update notice set subject=#{subject},content=#{content} where board_num=#{board_num}]]>
+	<update id="update" parameterType="com.indiScene.freeboard.dto.FreeBoardDto">
+		<![CDATA[ update freeBoard set subject=#{subject},content=#{content} where board_num=#{board_num}]]>
 	</update>
- -->
+
 </mapper>
    

@@ -9,11 +9,17 @@ import org.springframework.stereotype.Component;
 
 import com.indiScene.freeboard.dto.FreeBoardDto;
 
+/**
+ * @name : FreeBoardDaoImpl
+ * @date : 2015. 6. 26.
+ * @author : 손유진
+ * @description :  sql문을 사용하기 위한 dao
+ */
 @Component
 public class FreeBoardDaoImpl implements FreeBoardDao {
 	
 	@Autowired
-	SqlSessionTemplate sqlSession;
+	private SqlSessionTemplate sqlSession;
 	
 	@Override
 	public int insert(FreeBoardDto freeBoardDto) {
@@ -22,7 +28,7 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 
 	@Override
 	public int freeBoardGroupNumberUpdate(HashMap<String, Integer> hMap) {
-		 return sqlSession.update("dao.FMapper.freeBoardGroupNumberUpdate",hMap);
+		 return sqlSession.update("dao.FreeBoardMapper.freeBoardGroupNumberUpdate",hMap);
 		
 	}
 
@@ -49,58 +55,31 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 
 	@Override
 	public FreeBoardDto freeBoardRead(int board_num) {
-	
-			FreeBoardDto freeBoard=null;
-		
-		try{
-		
-			sqlSession.update("dao.freeBoardMapper.count",board_num);		//조회수 1증가
-			freeBoard=sqlSession.selectOne("dao.FreeBoardMapper.read",board_num);	//해당 게시물을 가져옴.
-		
-		}catch(Exception e){
-			
-			sqlSession.rollback();
-			
-		}
-			return freeBoard;
-	}
-	
-	/*	
-	@Override
-	public NoticeDto noticeRead(int board_num) {
-		
-		NoticeDto notice=null;
-		
-		try{
-		
-			sqlSession.update("dao.NoticeMapper.count",board_num);		//조회수 1증가
-			notice=sqlSession.selectOne("dao.NoticeMapper.read",board_num);	//해당 게시물을 가져옴.
-		
-		}catch(Exception e){
-			
-			sqlSession.rollback();
-			
-		}
-			return notice;
-		}
-	
-	@Override
-	public int noticeDelete(int board_num) {
-		
-		return sqlSession.delete("dao.NoticeMapper.delete",board_num);
-		
-		}
-	@Override
-	public NoticeDto noticeUpdateSelect(int board_num) {
-		
-		return sqlSession.selectOne("dao.NoticeMapper.updateSelect",board_num);
+		return sqlSession.selectOne("dao.FreeBoardMapper.read",board_num);	//해당 게시물을 가져옴.
 	}
 
 	@Override
-	public int noticeUpdate(NoticeDto noticeDto) {
-		
-		return sqlSession.update("dao.NoticeMapper.update",noticeDto);
+	public int count(int board_num) {
+		return sqlSession.insert("dao.FreeBoardMapper.readCount",board_num);//조회수 1증가
 	}
-	*/
+
+	@Override
+	public int freeBoardDelete(int board_num) {
+		return sqlSession.delete("dao.FreeBoardMapper.delete",board_num);
+	}
+	
+	
+	@Override
+	public FreeBoardDto freeBoardUpdateSelect(int board_num) {
+		
+		return sqlSession.selectOne("dao.FreeBoardMapper.updateSelect",board_num);
+	}
+
+	@Override
+	public int freeBoardUpdate(FreeBoardDto freeBoardDto) {
+		
+		return sqlSession.update("dao.FreeBoardMapper.update",freeBoardDto);
+	}
+	
 
 }

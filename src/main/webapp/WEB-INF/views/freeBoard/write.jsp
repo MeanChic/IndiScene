@@ -31,7 +31,9 @@
 		</div>
 		<div class="line">
 			<label class="subject">작성자</label>
-				<span class="content"><input type="text" size="50" name="artist_id" value="indi"/></span>
+				<span class="content">
+				<input type="text" size="50" name="artist_id" value="indi" />
+				</span>
 		</div>	
 		<br/>
 			<label class="title" style="height:230px;">내용</label>
