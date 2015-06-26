@@ -28,7 +28,7 @@ import com.indiScene.performBoard.dto.PerformBoardDto;
  * @name:MuseServiceImpl
  * @date :2015. 6. 25.
  * @author: 김정승
- * @description :	
+ * @description :	MuseService를 상속받은 클래스
  */
 @Component
 public class MuseServiceImpl implements MuseService {
@@ -101,9 +101,9 @@ public class MuseServiceImpl implements MuseService {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpServletResponse response = (HttpServletResponse)map.get("response");
 		String artist_id = request.getParameter("artist_id");
-		logger.info("--d"+artist_id);
+		
 		MuseDto museDto = museDao.museCheck(artist_id);
-		logger.info("--d" + museDto);
+		
 		try{
 			if(museDto == null){
 				PrintWriter out = response.getWriter();
@@ -115,6 +115,26 @@ public class MuseServiceImpl implements MuseService {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	public void museMain(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		String artist_id = request.getParameter("artist_id");
+		List<MuseDto> bestMuse = museDao.bestMuse();
+		List<HashMap<String, Object>> myMuse = museDao.myMuse(artist_id);
+		List<MuseDto> allMuse = museDao.allMuse(artist_id);
+		
+		
+		
+		mav.addObject("bestMuse", bestMuse);
+		mav.addObject("myMuse", myMuse);
+		mav.addObject("allMuse", allMuse);
+		
+		mav.setViewName("museCreate/musemain");
+		
+		logger.info("--" + bestMuse.size() + myMuse.size() + allMuse.size());
 	}
 }
 

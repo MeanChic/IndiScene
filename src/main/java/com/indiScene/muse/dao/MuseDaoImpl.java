@@ -15,7 +15,7 @@ import com.indiScene.performBoard.dto.PerformBoardDto;
  * @name:MuseDaoImpl
  * @date :2015. 6. 25.
  * @author: 김정승
- * @description :	
+ * @description :	MuseDao interface를 상속받은 class
  */
 @Component
 public class MuseDaoImpl implements MuseDao {
@@ -36,57 +36,16 @@ public class MuseDaoImpl implements MuseDao {
 		
 		return sqlSession.selectOne("dao.MuseMapper.museCheck",artist_id);
 	}
-	/*public int boardGroupNumberMax(){
-		return sqlSession.selectOne("dao.PerformMapper.boardGroupNumberMax");
+	
+	public List<MuseDto> bestMuse(){
+		return sqlSession.selectList("dao.MuseMapper.bestMuse");
 	}
 	
-	public int boardGroupNumberUpdate(HashMap<String, Integer> hMap){
-		
-		return sqlSession.update("dao.PerformMapper.boardGroupNumberUpdate",hMap );
+	public List<HashMap<String, Object>> myMuse(String artist_id){
+		return sqlSession.selectList("dao.MuseMapper.myMuse", artist_id);		
 	}
 	
-	public int insert(PerformBoardDto boardDto){
-		int check = 0;
-		
-		if(boardDto.getFile_name() == null){
-			logger.info("-- no File=================");
-			check = sqlSession.insert("dao.PerformMapper.boardInsert", boardDto);
-		}else{
-			logger.info("-- File=================");
-			check = sqlSession.insert("dao.PerformMapper.boardInsertAll", boardDto);
-		}
-		logger.info("-- DAo Check" + check);
-		
-		return check;	
+	public List<MuseDto> allMuse(String artist_id){
+		return sqlSession.selectList("dao.MuseMapper.allMuse", artist_id);
 	}
-	
-	public int getBoardCount(){
-		return sqlSession.selectOne("dao.PerformMapper.boardCount");
-	}
-	
-	public List<PerformBoardDto> getBoardList(int startRow, int endRow){
-		HashMap<String, Integer> hMap = new HashMap<String, Integer>();
-		hMap.put("startRow", startRow);
-		hMap.put("endRow", endRow);
-		
-		return sqlSession.selectList("dao.PerformMapper.getBoardList", hMap);
-	}
-	
-	public PerformBoardDto read(String board_num){
-		
-		PerformBoardDto board = null;
-		int check = 0;
-		
-		try{
-			check = sqlSession.update("readCount" , board_num);
-			logger.info("ch Dao check : " + check);
-			if(check == 1){
-				board = sqlSession.selectOne("dao.PerformMapper.read", board_num);
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		return board;
-	}*/
 }

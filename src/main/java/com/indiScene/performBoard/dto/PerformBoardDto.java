@@ -6,7 +6,7 @@ import java.util.Date;
  * @name:PerformBoardDto
  * @date :2015. 6. 25.
  * @author: 김정승
- * @description :	
+ * @description :	공연정보 게시글의 DTO
  */
 public class PerformBoardDto {
 	private String subject;	//문자	VARCHAR2(255)

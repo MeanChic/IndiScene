@@ -24,7 +24,7 @@ import com.indiScene.performBoard.dto.PerformBoardDto;
  * @name:PerformBoardServiceImpl
  * @date :2015. 6. 25.
  * @author: 김정승
- * @description :	
+ * @description :	PerformBoardService interface를 상속받은 method
  */
 @Component
 public class PerformBoardServiceImpl implements PerformBoardService {
