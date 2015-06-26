@@ -1,16 +1,27 @@
-package com.indiScene.notice.dao;
+package com.indiScene.freeboard.dao;
+
 
 import java.util.HashMap;
 import java.util.List;
 
-import com.indiScene.notice.dto.NoticeDto;
+import com.indiScene.freeboard.dto.FreeBoardDto;
 
+public interface FreeBoardDao {
 
-public interface NoticeDao {
+	 public int insert(FreeBoardDto freeBoardDto);
 
-	public int noticeGroupNumberMax();
+	public int freeBoardGroupNumberUpdate(HashMap<String, Integer> hMap);
+
+	public int freeBoardGroupNumberMax();
+
+	public int getCount();
+
+	public List<FreeBoardDto> getFreeBoardList(int startRow, int endRow);
+
 	
-	public int insert(NoticeDto noticeDto);
+	
+	/* 
+	
 	
 	public int noticeGroupNumberUpdate(HashMap<String, Integer> hMap);
 	
@@ -26,5 +37,5 @@ public interface NoticeDao {
 	
 	public NoticeDto noticeUpdateSelect(int board_num);
 
-
+	*/ 
 }

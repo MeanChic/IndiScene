@@ -1,4 +1,4 @@
-package com.indiScene.notice.controller;
+package com.indiScene.freeboard.controller;
 
 import java.util.logging.Logger;
 
@@ -11,96 +11,58 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.indiScene.notice.dto.NoticeDto;
-import com.indiScene.notice.service.NoticeService;
-
-
-
-
-/**
- * @name : NoticeController
- * @date : 2015. 6. 25.
- * @author : 손유진
- * @description : 공지사항 게시판 컨트롤러 
- */
+import com.indiScene.freeboard.dto.FreeBoardDto;
+import com.indiScene.freeboard.service.FreeBoardService;
 
 @Controller
-public class NoticeController {
+public class FreeBoardController {
 	
 	private final Logger logger=Logger.getLogger(this.getClass().getName());
-	
+
 	@Autowired
-	private NoticeService noticeService;
+	private FreeBoardService freeBoardService;
 	
+	@RequestMapping(value="/freeBoard/write.do", method=RequestMethod.GET)
+	public ModelAndView freeBoardWrite(HttpServletRequest request, HttpServletResponse response){
 	
-	@RequestMapping(value="/test.do", method=RequestMethod.GET)
-	public ModelAndView test(HttpServletRequest request, HttpServletResponse response){
+	logger.info("write test--------");	
 	
-		logger.info("test----------");	
-		ModelAndView mav=new ModelAndView();
-		noticeService.test(mav);
+	ModelAndView mav=new ModelAndView();
+	mav.addObject("request",request);
 	
-		return mav;
-	}
-	
-	
-	/**
-	 * @name : noticeWrite
-	 * @date : 2015. 6. 26.
-	 * @author : 손유진
-	 * @description : 공지사항글 등록 (관리자만 가능)
-	 */
-	@RequestMapping(value="/notice/write.do", method=RequestMethod.GET)
-	public ModelAndView noticeWrite(HttpServletRequest request, HttpServletResponse response){
-		
-		logger.info("write test--------");	
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("request",request);
-		noticeService.noticeWrite(mav);
-		
+	freeBoardService.freeBoardWrite(mav);
 		return mav;	
 	}
+
+
+	@RequestMapping(value="/freeBoard/write.do",method=RequestMethod.POST)
 	
-	/**
-	 * @name : noticeWrite
-	 * @date : 2015. 6. 26.
-	 * @author : 손유진
-	 * @description : 공지사항 글 등록확인
-	 */
-	@RequestMapping(value="/notice/write.do",method=RequestMethod.POST)
-	//보내준 정보가 잘 갔는지 확인하는 구문 
-	public ModelAndView noticeWrite(HttpServletRequest request, HttpServletRequest response,NoticeDto noticeDto){
+	public ModelAndView freeBoardWrite(HttpServletRequest request, HttpServletRequest response,FreeBoardDto freeBoardDto){
 		
 		logger.info("WriteOk------------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
-		mav.addObject("noticeDto",noticeDto);
-		noticeService.noticeWriteOk(mav);
+		mav.addObject("freeBoardDto",freeBoardDto);
+		freeBoardService.freeBoardWriteOk(mav);
 		
 		return mav;	
 	}
-	
-	/**
-	 * @name : noticeList
-	 * @date : 2015. 6. 26.
-	 * @author : 손유진
-	 * @description :  공지사항목록  
-	 */
-	@RequestMapping(value="/notice/list.do", method=RequestMethod.GET)
-	public ModelAndView noticeList(HttpServletRequest request, ModelAndView mav){
-		logger.info("notice List =======================");
+
+	@RequestMapping(value="/freeBoard/list.do", method=RequestMethod.GET)
+	public ModelAndView freeBoardList(HttpServletRequest request, ModelAndView mav){
+		logger.info("freeBoard List =======================");
 		
 		mav.addObject("request", request);
-		noticeService.noticeList(mav);
+		freeBoardService.freeBoardList(mav);
 		return mav;
 	}
-
-	/**
+	/*
+	*//**
 	 * @name : noticeRead
 	 * @date : 2015. 6. 26.
 	 * @author : 손유진
 	 * @description : 공지사항 읽기 
-	 */
+	 *//*
 	@RequestMapping(value="/notice/read.do", method=RequestMethod.GET)
 	public ModelAndView noticeRead(HttpServletRequest request, HttpServletResponse response){
 		
@@ -111,12 +73,12 @@ public class NoticeController {
 		return mav;
 	}
 	
-	/**
+	*//**
 	 * @name : noticeDelete
 	 * @date : 2015. 6. 26.
 	 * @author : 손유진
 	 * @description : 공지사항 삭제 
-	 */
+	 *//*
 	@RequestMapping(value="/notice/delete.do", method=RequestMethod.GET)
 	public ModelAndView noticeDelete(HttpServletRequest request, HttpServletResponse response){
 		
@@ -127,12 +89,12 @@ public class NoticeController {
 		return mav;
 	}
 	
-	/**
+	*//**
 	 * @name : noticeDeleteOk
 	 * @date : 2015. 6. 26.
 	 * @author : 손유진
 	 * @description : 공지사항 삭제확인
-	 */
+	 *//*
 	@RequestMapping(value="/notice/deleteOk.do", method=RequestMethod.POST)
 	public ModelAndView noticeDeleteOk(HttpServletRequest request, HttpServletRequest response){
 		
@@ -143,12 +105,12 @@ public class NoticeController {
 		return mav;
 	}
 	
-	/**
+	*//**
 	 * @name : noticeUpdate
 	 * @date : 2015. 6. 26.
 	 * @author : 손유진
 	 * @description :  공지사항 수정 
-	 */
+	 *//*
 	@RequestMapping(value="/notice/update.do", method=RequestMethod.GET)
 	public ModelAndView noticeUpdate(HttpServletRequest request, HttpServletResponse response){
 		
@@ -160,12 +122,12 @@ public class NoticeController {
 		return mav;
 	}
 	
-	/**
+	*//**
 	 * @name : noticeUpdateOk
 	 * @date : 2015. 6. 26.
 	 * @author : 손유진
 	 * @description : 공지사항 수정
-	 */
+	 *//*
 	@RequestMapping(value="/notice/updateOk.do", method=RequestMethod.POST)
 	public ModelAndView noticeUpdateOk(HttpServletRequest request, HttpServletResponse response, NoticeDto noticeDto){ logger.info("noticeUpdateOk--------------");
 		
@@ -177,5 +139,6 @@ public class NoticeController {
 		
 		return mav;
 	}
+	*/
 	
 }

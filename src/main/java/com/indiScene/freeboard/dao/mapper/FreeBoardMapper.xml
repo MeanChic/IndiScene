@@ -3,24 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
- <mapper namespace="dao.NoticeMapper">
+ <mapper namespace="dao.FreeBoardMapper">
 
-	<insert id="noticeInsert" parameterType="com.indiScene.notice.dto.NoticeDto">
-		<![CDATA[ insert into notice values(#{subject}, #{content}, #{register_date}, #{count}, #{seq_level},#{seq_num}, #{group_num},notice_num_seq.nextval) ]]>		
+	<insert id="freeBoardInsert" parameterType="com.indiScene.freeboard.dto.FreeBoardDto">
+		<![CDATA[ insert into freeBoard values(#{subject},#{content},#{register_date},#{count},#{seq_level},#{seq_num},#{group_num},#{artist_id},freeBoard_num_seq.nextval) ]]>		
 	</insert>
 	
-	<select id="noticeGroupNumberMax" resultType="int">
-		<![CDATA[select nvl(max(group_num), 0) from notice]]>
+	<select id="freeBoardGroupNumberMax" resultType="int">
+		<![CDATA[select nvl(max(group_num), 0) from freeBoard]]>
 	</select>
 	
-	<select id="noticeList" resultType="com.indiScene.notice.dto.NoticeDto" parameterType="java.util.HashMap">
+	<update id="freeBoardGroupNumberUpdate" parameterType="java.util.HashMap">
+		<![CDATA[update freeBoard set seq_num=seq_num+1 where group_num=#{group_num} and seq_level>#{seq_level}]]> 
+	</update>
+	
+	
+	<select id="freeBoardList" resultType="com.indiScene.freeBoard.dto.FreeBoardDto" parameterType="java.util.HashMap">
 		<![CDATA[ select * from (select rownum rnum, a.* from(select * from notice order by group_num desc, seq_num asc)a) where rnum>=#{startRow} and rnum<=#{endRow} ]]>
 	</select>
 	
 	<select id="count" resultType="int">
 		<![CDATA[ select count(*) from notice ]]>
 	</select>
-
+<!-- 
 	<select id="read" parameterType="int" resultType="com.indiScene.notice.dto.NoticeDto">
 		<![CDATA[ select * from notice where board_num=#{board_num} ]]>
 	</select>
@@ -29,9 +34,6 @@
 		<![CDATA[ delete from notice where board_num=#{board_num} ]]>
 	</delete>
 
-	<update id="noticeGroupNumberUpdate" parameterType="java.util.HashMap">
-		<![CDATA[update notice set seq_num=seq_num+1 where group_num=#{group_num} and seq_level>#{seq_level}]]> 
-	</update>
 	
 	<select id="updateSelect" resultType="com.indiScene.notice.dto.NoticeDto">
 		<![CDATA[ select * from notice where board_num=#{board_num} ]]>
@@ -40,4 +42,6 @@
 	<update id="update" parameterType="com.indiScene.notice.dto.NoticeDto">
 		<![CDATA[ update notice set subject=#{subject},content=#{content} where board_num=#{board_num}]]>
 	</update>
- </mapper>
+ -->
+</mapper>
+   

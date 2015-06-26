@@ -1,15 +1,17 @@
-package com.indiScene.notice.service;
+package com.indiScene.freeboard.service;
 
 import org.springframework.web.servlet.ModelAndView;
 
-public interface NoticeService {
+public interface FreeBoardService {
 
+	public void freeBoardWrite(ModelAndView mav);
 
-	public void test(ModelAndView mav); 		
+	public void freeBoardWriteOk(ModelAndView mav);
 
-	public void noticeWrite(ModelAndView mav);	
-	
-	public void noticeWriteOk(ModelAndView mav);
+	public void freeBoardList(ModelAndView mav);
+
+/*	
+ * public void noticeWriteOk(ModelAndView mav);
 
 	public void noticeList(ModelAndView mav);
 
@@ -22,8 +24,5 @@ public interface NoticeService {
 	public void noticeUpdate(ModelAndView mav);
 
 	public void noticeUpdateOk(ModelAndView mav);
-
-	
-
-
+	*/
 }

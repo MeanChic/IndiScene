@@ -1,15 +1,9 @@
-package com.indiScene.notice.dto;
+package com.indiScene.freeboard.dto;
 
 import java.util.Date;
 
-
-/**
- * @name : NoticeDto
- * @date : 2015. 6. 26.
- * @author : 손유진
- * @description : 공지사항  db를 처리하기위한 dto
- */
-public class NoticeDto {
+public class FreeBoardDto {
+	
 	private String subject;			//제목	
 	private String content;			//내용	
 	private Date register_date;		//날짜	
@@ -18,8 +12,7 @@ public class NoticeDto {
 	private int seq_num;			//시퀀스 번호 	
 	private int group_num;			//그룹번호		
 	private String board_num;		//게시판순번 	
-
-	
+	private String artist_id;       //아이디 
 	
 	public String getSubject() {
 		return subject;
@@ -69,7 +62,12 @@ public class NoticeDto {
 	public void setBoard_num(String board_num) {
 		this.board_num = board_num;
 	}
-
+	public String getArtist_id() {
+		return artist_id;
+	}
+	public void setArtist_id(String artist_id) {
+		this.artist_id = artist_id;
+	}
 	
 	
 	

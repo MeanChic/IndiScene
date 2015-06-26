@@ -1,4 +1,4 @@
-package com.indiScene.notice.dao;
+package com.indiScene.freeboard.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,36 +7,47 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.indiScene.notice.dto.NoticeDto;
+import com.indiScene.freeboard.dto.FreeBoardDto;
 
-
-/**
- * @name : NoticeDaoImpl
- * @date : 2015. 6. 26.
- * @author : 손유진
- * @description : 비지니스 로직에 접근하기위한 dao
- */
 @Component
-public class NoticeDaoImpl implements NoticeDao {
-		
+public class FreeBoardDaoImpl implements FreeBoardDao {
+	
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
 	@Override
-	public int insert(NoticeDto noticeDto) {
-		return sqlSession.insert("dao.NoticeMapper.noticeInsert",noticeDto);
+	public int insert(FreeBoardDto freeBoardDto) {
+		return sqlSession.insert("dao.FreeBoardMapper.freeBoardInsert",freeBoardDto);
 	}
-	
+
 	@Override
-	
-	public int noticeGroupNumberUpdate(HashMap<String, Integer> hMap) {	
-		 return sqlSession.update("dao.NoticeMapper.noticeGroupNumberUpdate",hMap);
+	public int freeBoardGroupNumberUpdate(HashMap<String, Integer> hMap) {
+		 return sqlSession.update("dao.FMapper.freeBoardGroupNumberUpdate",hMap);
+		
 	}
-	
+
 	@Override
-	public int noticeGroupNumberMax() {
-		return sqlSession.selectOne("dao.NoticeMapper.noticeGroupNumberMax");
+	public int freeBoardGroupNumberMax() {
+		
+		return sqlSession.selectOne("dao.FreeBoardMapper.freeBoardGroupNumberMax");
 	}
+
+	@Override
+	public int getCount() {
+		return sqlSession.selectOne("dao.freeBoardMapper.count");
+	}
+
+	@Override
+	public List<FreeBoardDto> getFreeBoardList(int startRow, int endRow) {
+		
+		HashMap<String, Integer> hMap=new HashMap<String, Integer>();
+		hMap.put("startRow", startRow);
+		hMap.put("endRow", endRow);
+		
+		return sqlSession.selectList("dao.FreeBoardMapper.freeBoardList",hMap);
+	}
+	
+	/*
 	
 	@Override
 	public int getCount() {
@@ -88,5 +99,6 @@ public class NoticeDaoImpl implements NoticeDao {
 		
 		return sqlSession.update("dao.NoticeMapper.update",noticeDto);
 	}
-	
+	*/
+
 }
