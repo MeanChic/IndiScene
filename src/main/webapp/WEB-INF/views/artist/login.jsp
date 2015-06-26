@@ -19,12 +19,12 @@
 		<table border="1" align="center" cellpadding="2" cellspacing="0">
 			<tr>
 				<td>ID</td>
-				<td><input type="text" name="id"/></td>
+				<td><input type="text" name="artist_id"/></td>
 			</tr>
 			
 			<tr>
 				<td>Password</td>
-				<td><input type="password" name="password" /></td>
+				<td><input type="password" name="artist_password" /></td>
 			</tr>
 			
 			<tr>

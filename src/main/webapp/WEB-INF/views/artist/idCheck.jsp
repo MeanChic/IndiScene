@@ -16,9 +16,9 @@
 	<c:if test="${check==1 }">	
 		<div align="center">
 			ID is already in use.
-			<form action="${root }/artist/idCheck.do" method="post">
-				<input type="text" name="id"/>
-				<input type="submit" value="확인"/>
+			<form action="${root }/artist/idCheck.do" method="GET">
+				<input type="text" name="artist_id"/>
+				<input type="submit" value="Duplicate Check"/>
 			</form>
 		</div>
 	</c:if>
@@ -35,7 +35,17 @@
 	</script>
 	
 	<div align="center">
-		<a href="javascript:self.close()">닫기</a>
+	<input type="button" value="close"/>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("input[type='button']").click(function(){
+					self.close();
+				})
+			})
+		</script>
 	</div>
 </body>
 </html>
+
+
+

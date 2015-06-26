@@ -13,22 +13,23 @@
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 </head>
 <body>
-	<c:if test="${level != null}">
-			<!-- session에 setAttribute하는 것 -> c:set의 scope속성을 사용해서 session에 데이터를 담는다.-->
-		<c:set var="id" value="${id }" scope="session"/>
-		<c:set var="artistLevel" value="${level }" scope="session"/>
-		
-		<script type="text/javascript">
-			alert("Login Success.");
-			location.href="${root}/artist.jsp";
-		</script>
-	</c:if>
-	
-	<c:if test="${level == null}">
-		<script type="text/javascript">
-			alert("You were entered the wrong information.");
-			location.href="${root}/artist/login.do";
-		</script>
-	</c:if>
+	<c:choose>
+		<c:when test="${artist_level !=null}">
+		<!-- session에 setAttribute하는 것 -> c:set의 scope속성을 사용해서 session에 데이터를 담는다.-->
+			<c:set var="artist_id" value="${artist_id }" scope="session"/>
+			<c:set var="artist_level" value="${artist_level }" scope="session"/>
+			
+			<script type="text/javascript">
+				alert("Login Success.");
+				location.href="${root}/artist.jsp";
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script type="text/javascript">
+				alert("You were entered the wrong information.");
+				location.href="${root}/artist/login.do";
+			</script>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>

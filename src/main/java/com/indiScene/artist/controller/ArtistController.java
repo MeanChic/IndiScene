@@ -30,28 +30,44 @@ public class ArtistController {
 	}
 	*/
 	
-//	회원가입
+	/**
+	 * @name : register
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 회원가입 요청을 받아 Service 클래스에 register메소드를 호출한다.
+	 */
 	@RequestMapping(value="/artist/register.do", method=RequestMethod.GET)
 	public String register(HttpServletRequest request, HttpServletResponse response){
-		logger.info("artistRegister----------------------");
+		logger.info("-----Controller artistRegister----------------------");
 
 		return "artist/register";
 	}
+
+	/**
+	 * @name : register
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 회원가입 정보를 받아 Service 클래스에 registerOk 메소드로 Dto를 보낸다.
+	 */
 	@RequestMapping(value="/artist/register.do", method=RequestMethod.POST)
 	public ModelAndView register(HttpServletRequest request, HttpServletResponse response, ArtistDto artistDto){
-		logger.info("artistRegisterOk----------------------");
-		
+		logger.info("-----Controller artistRegisterOk----------------------");
 		ModelAndView mav=new ModelAndView();
-		mav.addObject("ArtistDto",artistDto);
+		mav.addObject("artistDto",artistDto);
 		artistService.registerOk(mav);
 		
 		return mav;
 	}
 	
-//	아이디 중복체크
+	/**
+	 * @name : idCheck
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : ID 중복체크 요청을 받아 Service클래스 idCheck 함수 호출
+	 */
 	@RequestMapping(value="/artist/idCheck.do", method=RequestMethod.GET)
 	public ModelAndView idCheck(HttpServletRequest request, HttpServletResponse response){
-		logger.info("artistIdCheck----------------------");
+		logger.info("-----Controller artistIdCheck----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
 		artistService.idCheck(mav);
@@ -59,10 +75,15 @@ public class ArtistController {
 		return mav;
 	}
 	
-//	닉네임 중복체크
+	/**
+	 * @name : nickCheck
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 닉네임 중복체크 요청을 받아 Service클래스 nickCheck 함수 호출
+	 */
 	@RequestMapping(value="/artist/nicknameCheck.do", method=RequestMethod.GET)
 	public ModelAndView nickCheck(HttpServletRequest request, HttpServletResponse response){
-		logger.info("nicknameCheck----------------------");
+		logger.info("-----Controller nicknameCheck----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
 		artistService.nicknameCheck(mav);
@@ -70,19 +91,31 @@ public class ArtistController {
 		return mav;
 	}
 	
-//	회원정보 수정
+	/**
+	 * @name : update
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 회원정보 수정 요청을 입력받아 Service클래스 update 함수 호출
+	 */
 	@RequestMapping(value="/artist/update.do", method=RequestMethod.GET)
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response){
-		logger.info("artistUpdate----------------------");
+		logger.info("-----Controller artistUpdate----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
 		artistService.update(mav);
 		
 		return mav;
 	}
+	
+	/**
+	 * @name : update
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 회원 수정 정보를 받아 Service 클래스 updateOk 메소드에 Dto를 보낸다.
+	 */
 	@RequestMapping(value="/artist/update.do", method=RequestMethod.POST)
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response, ArtistDto artistDto){
-		logger.info("artistUpdateOk----------------------");
+		logger.info("-----Controller artistUpdateOk----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("artistDto",artistDto);
 		artistService.updateOk(mav);
@@ -90,16 +123,28 @@ public class ArtistController {
 		return mav;
 	}
 	
-//	회원탈퇴
+	/**
+	 * @name : delete
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 회원탈퇴 요청을 받아 Service클래스 delete메소드를 호출
+	 */
 	@RequestMapping(value="/artist/delete.do", method=RequestMethod.GET)
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response){
-		logger.info("artistDelete----------------------");
+		logger.info("-----Controller artistDelete----------------------");
 		
 		return null;
 	}
+	
+	/**
+	 * @name : delete
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 회원 탈퇴페이지에서 회원 비밀번호를 입력받아 Service클래스 deleteOk 메소드 호출
+	 */
 	@RequestMapping(value="/artist/delete.do", method=RequestMethod.POST)
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response, ArtistDto artistDto){
-		logger.info("artistDeleteOk----------------------");
+		logger.info("-----Controller artistDeleteOk----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
 		artistService.delete(mav);
@@ -107,38 +152,70 @@ public class ArtistController {
 		return mav;
 	}
 	
-//	로그인
+	/**
+	 * @name : login
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 로그인 페이지를 불러온다.
+	 */
 	@RequestMapping(value="/artist/login.do", method=RequestMethod.GET)
 	public String login(HttpServletRequest request, HttpServletResponse response){
-		logger.info("artistLogin----------------------");
+		logger.info("-----Controller artistLogin----------------------");
 		return "artist/login";
 	}
+	
+	/**
+	 * @name : login
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 로그인 요청을 받아 Service 클래스 login 메소드 호출
+	 */
 	@RequestMapping(value="/artist/login.do", method=RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ArtistDto artistDto){
-		logger.info("artistLoginOk----------------------");
+		logger.info("-----Controller artistLoginOk----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
-		artistService.login(mav);
+		artistService.loginOk(mav);
 		
 		return mav;
 	}
 	
-//	로그아웃
+	/**
+	 * @name : logout
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 로그아웃 요청을 받아 Service 클래스 logout 메소드 호출
+	 */
 	@RequestMapping(value="/artist/logout.do", method=RequestMethod.GET)
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response){
-		logger.info("artistLogout----------------------");
+		logger.info("-----Controller artistLogout----------------------");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request",request);
+		artistService.logout(mav);
 		
+		return mav;
+	}
+	
+	/**
+	 * @name : Zipcode
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 우편번호 검색창을 열어준다.
+	 */
+	@RequestMapping(value="/artist/Zipcode.do", method=RequestMethod.GET)
+		public ModelAndView Zipcode(HttpServletRequest request, HttpServletResponse response){
 		return null;
 	}
 	
-//	우편번호
-	@RequestMapping(value="/artist/Zipcode.do", method=RequestMethod.GET)
-	public ModelAndView Zipcode(HttpServletRequest request, HttpServletResponse response){
-		return null;
-	}
+	/**
+	 * @name : Zipcode
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : 주소의 '동' 정보를 입력받아 Service 클래스의 findZipcode메소드 호출
+	 */
 	@RequestMapping(value="/artist/Zipcode.do", method=RequestMethod.POST)
 	public ModelAndView Zipcode(HttpServletRequest request, HttpServletResponse response, String dong){
-		logger.info("artistZipcode----------------------");
+		logger.info("-----Controller artistZipcode----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
 		artistService.findZipcode(mav, dong);
