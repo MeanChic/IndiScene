@@ -16,7 +16,7 @@ public class ArtistDaoImpl implements ArtistDao {
 
 	@Override
 	public int insert(ArtistDto artistDto) {
-		return sqlSession.insert("dao.ArtistMapper.register",artistDto);
+		return sqlSession.insert("dao.ArtistMapper.insert",artistDto);
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class ArtistDaoImpl implements ArtistDao {
 	}
 
 	@Override
-	public int nickCheck(String nickname) {
+	public int nicknameCheck(String nickname) {
 		String nicknameCheck=sqlSession.selectOne("dao.ArtistMapper.nicknameCheck",nickname);
 		int value=0;
 		if(nicknameCheck!=null) value=1;
@@ -55,5 +55,10 @@ public class ArtistDaoImpl implements ArtistDao {
 		return sqlSession.selectList("dao.ArtistMapper.zipcode",dong);
 	}
 	*/
+
+	@Override
+	public ArtistDto login(HashMap<String, String> hMap) {
+		return null;
+	}
 
 }

@@ -17,35 +17,35 @@
 		<result property="artist_level" column="artist_level"/>
 	</resultMap>
 		
-	<insert id="register" parameterType="com.indiScene.artist.dto.ArtistDto"><!-- artist_num_seq.nextval -->
+	<insert id="insert" parameterType="com.indiScene.artist.dto.ArtistDto"><!-- artist_num_seq.nextval -->
 		<![CDATA[ insert into artist values(#{artist_id},#{atist_password},#{artist_name},#{artist_nickname},#{artist_phone},#{artist_zipcode},#{artist_address},#{artist_birth},#{artist_picture},#{artist_level}) ]]>
 	</insert>
 	
 	<select id="idCheck" parameterType="String" resultType="String">
-		<![CDATA[ select id from artist where id=#{artist_id} ]]>	
+		<![CDATA[ select artist_id from artist where artist_id=#{artist_id} ]]>	
 	</select>
 	
 	<select id="nicknameCheck" parameterType="String" resultType="String">
-		<![CDATA[ select id from artist where id=#{artist_nickname} ]]>	
+		<![CDATA[ select artist_nickname from artist where artist_nickname=#{artist_nickname} ]]>	
 	</select>
 	
 	<select id="zipcode" parameterType="String" resultType="com.indiScene.artist.dto.ZipcodeDto">
-		<![CDATA[ select * from zipcode where dong like '%'||#{dong}||'%' ]]>
+		<![CDATA[ select * from artist_zipcode where dong like '%'||#{dong}||'%' ]]>
 	</select>
 	
 	<select id="login" parameterType="java.util.HashMap" resultMap="artistDto">
-		<![CDATA[ select * from artist where id=#{artist_id} and password=#{atist_password} ]]>
+		<![CDATA[ select * from artist where artist_id=#{artist_id} and artist_password=#{atist_password} ]]>
 	</select>
 	
 	<delete id="delete" parameterType="java.util.HashMap">
-		<![CDATA[ delete from artist where id=#{artist_id} and password=#{atist_password} ]]>
+		<![CDATA[ delete from artist where artist_id=#{artist_id} and artist_password=#{atist_password} ]]>
 	</delete>
 	
 	<select id="updateSelect" parameterType="String" resultMap="artistDto">
-		<![CDATA[ select * from artist where id=#{artist_id} ]]>
+		<![CDATA[ select * from artist where artist_id=#{artist_id} ]]>
 	</select>
 	
 	<update id="update" parameterType="com.indiScene.artist.dto.ArtistDto">
-		<![CDATA[ update member set password=#{password}, name=#{name}, jumin1=#{jumin1}, jumin2=#{jumin2}, email=#{email}, zipcode=#{zipcode}, address=#{address}, job=#{job}, mailing=#{mailing}, interest=#{interest} where num=#{num} ]]>
+		<![CDATA[ update member set artist_id=#{artist_id},atist_password=#{atist_password},artist_name=#{artist_name},artist_nickname=#{artist_nickname},artist_phone=#{artist_phone},artist_zipcode=#{artist_zipcode},artist_address=#{artist_address},artist_birth=#{artist_birth},artist_picture=#{artist_picture} where artist_id=#{artist_id} ]]>
 	</update>
 </mapper>

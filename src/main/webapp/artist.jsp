@@ -7,8 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Artist</title>
-<!-- <script type="text/javascript" src="${root}/js/sample.js"></script>
-<link rel="stylesheet" type="text/css" href="${root}/css/sample.css"/> -->
+<script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
+<script type="text/javascript" src="${root}/js/artist.js"></script>
+<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 </head>
 <body>
 	<center>[Artist]</center>
@@ -18,11 +20,15 @@
 	</div>
 	 -->
 	<div>
-		<b>[Test Button]</b><br/>
-		1.<a href="${root}/artist/register.do">[회원가입]</a><br/>
-		2.<a href="${root}/artist/login.do">[로그인]</a><br/>
-		3.<a href="${root}/artist/update.do">[개인정보 수정]</a><br/>
-		4.<a href="${root}/artist/logout.do">[로그아웃]</a><br/>
+		<c:if test="${id == null}">
+			1.<a href="${root}/artist/register.do">[회원가입]</a><br/>
+			2.<a href="${root}/artist/login.do">[로그인]</a><br/>
+		</c:if>
+		
+		<c:if test="${id != null}">	
+			1.<a href="${root}/artist/update.do">[개인정보 수정]</a><br/>
+			2.<a href="${root}/artist/logout.do">[로그아웃]</a><br/>
+		</c:if>
 	</div>
 </body>
 </html>
