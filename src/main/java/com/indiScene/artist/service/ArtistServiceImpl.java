@@ -1,5 +1,8 @@
 package com.indiScene.artist.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -19,13 +22,14 @@ public class ArtistServiceImpl implements ArtistService {
 	
 	@Autowired
 	private ArtistDao artistDao;
-	
+	/* TestMethod
 	@Override
 	public void test(ModelAndView mav) {
 		logger.info("-----test-----");
 		mav.addObject("message", "-----Test-----");
 		mav.setViewName("artist/testing");
 	}
+	*/
 	
 	@Override
 	public void register(ModelAndView mav) {
@@ -34,11 +38,21 @@ public class ArtistServiceImpl implements ArtistService {
 	}
 	
 	@Override
-	public void registerOk(ModelAndView mav) {
+	public void registerOk(ModelAndView mav){
 		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		ArtistDto artistDto=(ArtistDto)map.get("artistDto");
-		
-		artistDto.setArtist_level(1);
+
+		int level=Integer.parseInt(request.getParameter("level"));
+		SimpleDateFormat date=new SimpleDateFormat("yyyy-MM-dd");
+		Date birth = null;
+		try {
+			birth = date.parse(request.getParameter("artist_birth"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		artistDto.setArtist_birth(birth);
+		artistDto.setArtist_level(level);
 		
 		int check=artistDao.insert(artistDto);
 		logger.info("artistRegisterOk check: "+check);
@@ -50,38 +64,38 @@ public class ArtistServiceImpl implements ArtistService {
 
 	@Override
 	public void idCheck(ModelAndView mav) {
-		//root+"/artist/idCheck.do?id="+form.id.value;
+		//root+"/artist/idCheck.do?artist_id="+form.artist_id.value;
 		Map<String, Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
-		String id=request.getParameter("id");
-		logger.info("artistIdCheck id: "+id);
+		String artist_id=request.getParameter("artist_id");
+		logger.info("artistIdCheck id: "+artist_id);
 		
-		int check=artistDao.idCheck(id);
+		int check=artistDao.idCheck(artist_id);
 		logger.info("artistIdCheck check: "+check);	
 		
 		//check와 id를 idCheck.jsp로 넘겨주면 된다.
 		mav.addObject("check",check);
-		mav.addObject("id",id);
+		mav.addObject("artist_id",artist_id);
 		
 		mav.setViewName("artist/idCheck");
 	}
 
 	@Override
-	public void nickCheck(ModelAndView mav) {
-	//root+"/artist/nicknameCheck.do?nickname="+form.nickname.value;
+	public void nicknameCheck(ModelAndView mav) {
+		//root+"/artist/nicknameCheck.do?artist_nickname="+form.artist_nickname.value;
 		Map<String, Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
-		String id=request.getParameter("id");
-		logger.info("artistNicknameCheck id: "+id);
+		String artist_nickname=request.getParameter("artist_nickname");
+		logger.info("artistNicknameCheck nickname: "+artist_nickname);
 		
-		int check=artistDao.idCheck(id);
+		int check=artistDao.nicknameCheck(artist_nickname);
 		logger.info("artistNicknameCheck check: "+check);	
 		
 		//check와 nickname를 nicknameCheck.jsp로 넘겨주면 된다.
 		mav.addObject("check",check);
-		mav.addObject("id",id);
+		mav.addObject("artist_nickname",artist_nickname);
 		
 		mav.setViewName("artist/nicknameCheck");
 	}
@@ -104,18 +118,16 @@ public class ArtistServiceImpl implements ArtistService {
 
 	@Override
 	public void updateOk(ModelAndView mav) {
-		/*
 		Map<String,Object> map=mav.getModelMap();
 		ArtistDto artistDto=(ArtistDto)map.get("ArtistDto");
 		
-		int check=ArtistDao.update(artistDto);
+		int check=artistDao.update(artistDto);
 		logger.info("artistUpdateOk check: "+check);
 		
 		//updateOk.jsp에는 check만 넘겨주면 된다.
 		mav.addObject("check",check);
 		
 		mav.setViewName("artist/updateOk");
-		*/	
 	}
 
 	@Override
@@ -145,11 +157,11 @@ public class ArtistServiceImpl implements ArtistService {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+//	로그인
 	@Override
 	public void login(ModelAndView mav) {
 		//id와 password를 가지고 넘어옴
-		/*
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		String id=request.getParameter("id");
@@ -162,17 +174,16 @@ public class ArtistServiceImpl implements ArtistService {
 		
 		ArtistDto artist=artistDao.login(hMap);
 		logger.info("artistLogin artist: "+artist);
-		//logger.info("memberLogin id: "+id);
-		//logger.info("memberLogin memberLevel: "+member.getMemberLevel());
+		logger.info("artistLogin id: "+id);
+		logger.info("artistLogin artistLevel: "+artist.getArtist_level());
 		
 		//level과 id를 loginOk로 보냄
 		if(artist!=null){
 			mav.addObject("id",artist.getArtist_id());
-			mav.addObject("memberLevel",artist.getArtist_level());
+			mav.addObject("artistLevel",artist.getArtist_level());
 		}
 		
 		mav.setViewName("artist/loginOk");
-		*/
 	}
 
 	@Override
@@ -202,5 +213,4 @@ public class ArtistServiceImpl implements ArtistService {
 		mav.setViewName("artist/zipcode");
 		*/
 	}
-
 }

@@ -4,22 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="dao.NoticeMapper">
- 	<!-- <resultMap type="com.indiScene.notice.dto.NoticeDto" id="NoticeDto">
-		<result property="subject" column="subject"/>
-		<result property="content" column="content"/>
-		<result property="register_date" column="register_date"/>
-		<result property="count" column="count"/>
-		<result property="seq_level" column="seq_level"/>
-		<result property="seq_num" column="seq_num"/>
-		<result property="group_num" column="group_num"/>
-		<result property="board_num" column="board_num"/>
-	</resultMap> -->
-		
-	<!-- <insert id="noticeInsert" parameterType="com.indiScene.notice.dto.NoticeDto">
-		<![CDATA[ insert into notice(board_num, subject, content, register_date , count, seq_level, seq_num, group_num)
-				values(notice_board_num_seq.nextval, #{subject}, #{content}, #{register_date}, #{count}, #{group_num}, #{seq_num}, #{seq_level}) ]]>		
-	</insert> -->
-	
+
 	<insert id="noticeInsert" parameterType="com.indiScene.notice.dto.NoticeDto">
 		<![CDATA[ insert into notice values(#{subject}, #{content}, #{register_date}, #{count}, #{seq_level},#{seq_num}, #{group_num},notice_num_seq.nextval) ]]>		
 	</insert>

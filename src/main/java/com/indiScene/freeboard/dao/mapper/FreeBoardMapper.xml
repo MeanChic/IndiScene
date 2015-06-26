@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="dao.FreeBoardMapper">
+
+	<insert id="freeBoardInsert" parameterType="com.indiScene.freeboard.dto.FreeBoardDto">
+		<![CDATA[ insert into freeBoard values(#{subject},#{content},#{register_date},#{count},#{seq_level},#{seq_num},#{group_num},freeBoard_num_seq.nextval,#{artist_id}) ]]>		
+	</insert>
+	
+	<select id="freeBoardGroupNumberMax" resultType="int">
+		<![CDATA[select nvl(max(group_num), 0) from freeBoard]]>
+	</select>
+	
+	<update id="freeBoardGroupNumberUpdate" parameterType="java.util.HashMap">
+		<![CDATA[update freeBoard set seq_num=seq_num+1 where group_num=#{group_num} and seq_level>#{seq_level}]]> 
+	</update>
+	
+	
+	<select id="freeBoardList" resultType="com.indiScene.freeboard.dto.FreeBoardDto" parameterType="java.util.HashMap">
+		<![CDATA[ select * from (select rownum rnum, a.* from(select * from freeBoard order by group_num desc, seq_num asc)a) where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	</select>
+	
+	<select id="count" resultType="int">
+		<![CDATA[ select count(*) from freeBoard ]]>
+	</select>
+
+	<select id="read" parameterType="int" resultType="com.indiScene.freeboard.dto.FreeBoardDto">
+		<![CDATA[ select * from freeBoard where board_num=#{board_num} ]]>
+	</select>
+<!-- 
+	<delete id="delete" parameterType="int">
+		<![CDATA[ delete from freeBoard where board_num=#{board_num} ]]>
+	</delete>
+
+	
+	<select id="updateSelect" resultType="com.indiScene.notice.dto.NoticeDto">
+		<![CDATA[ select * from notice where board_num=#{board_num} ]]>
+	</select>
+
+	<update id="update" parameterType="com.indiScene.notice.dto.NoticeDto">
+		<![CDATA[ update notice set subject=#{subject},content=#{content} where board_num=#{board_num}]]>
+	</update>
+ -->
+</mapper>
+   

@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript" src="${root}/js/artist.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 </head>
@@ -14,7 +16,7 @@
 	<c:if test="${level != null}">
 			<!-- session에 setAttribute하는 것 -> c:set의 scope속성을 사용해서 session에 데이터를 담는다.-->
 		<c:set var="id" value="${id }" scope="session"/>
-		<c:set var="memberLevel" value="${level }" scope="session"/>
+		<c:set var="artistLevel" value="${level }" scope="session"/>
 		
 		<script type="text/javascript">
 			alert("Login Success.");
