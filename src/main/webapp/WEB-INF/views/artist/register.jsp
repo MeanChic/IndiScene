@@ -21,7 +21,7 @@
 			<div>
 				<label>Id</label>
 				<input type="text" name="artist_id"/>
-				<input type="button" value="idCheck" onclick="idCheck(artistForm, '${root}')"/>
+				<input type="button" value="Duplicate Check" onclick="return idCheck(artistForm, '${root}')"/>
 			</div><br/>
 			<div>
 				<label>Password</label>
@@ -36,7 +36,7 @@
 			<div>
 				<label>Nickname</label>
 				<input type="text" name="artist_nickname"/>
-				<input type="button" value="nicknameCheck" onclick="nicknameCheck(artistForm, '${root}')"/>
+				<input type="button" value="Duplicate Check" onclick="nicknameCheck(artistForm, '${root}')"/>
 			</div><br/>
 			<div>
 				<label>Phone</label>
@@ -57,19 +57,18 @@
 			</div><br/>
 			<div>
 				<label>Profile Image</label>
-				<input type="text" name="artist_picture"/>
 				<div>
-					<!-- 
-					<input type="file" name="artist_picture"/>
+					<input type="file" name="artist_picturePath"/>
 					<div>
 						<script type="text/javascript">
-							var path=$("input[name='artist_picture']").val();
+							var path=$("input[name='artist_picturePath']").val();
+							$("input[name='artist_picturePath']").val()==path;
+							return false;
 						</script>
 					</div>
-					-->
-				</div>				
+					<input type="text" name="artist_picture"/>
+				</div>
 			</div><br/>
-			<input type="hidden" name="artist_level" value="1"/>
 			<div>
 				<input type="submit" value="sign up"/>
 			</div><br/>

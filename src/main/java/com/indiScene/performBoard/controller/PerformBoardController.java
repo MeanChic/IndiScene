@@ -19,7 +19,7 @@ import com.indiScene.performBoard.service.PerformBoardServiceImpl;
  * @name:PerformBoardController
  * @date :2015. 6. 25.
  * @author: 김정승
- * @description :	
+ * @description :	공연정보를 제공하는 게시판의 작성, 수정, 삭제를 위한 controller
  */
 @Controller
 public class PerformBoardController {
@@ -32,7 +32,7 @@ public class PerformBoardController {
 	 * @name:write
 	 * @date :2015. 6. 25.
 	 * @author: 김정승
-	 * @description :	
+	 * @description :	게시판 작성 페이지로 이동하는 method
 	 */
 	@RequestMapping(value="/performBoard/write.do", method=RequestMethod.GET)
 	public ModelAndView write(HttpServletRequest request, ModelAndView mav){
@@ -47,7 +47,7 @@ public class PerformBoardController {
 	 * @name:write
 	 * @date :2015. 6. 25.
 	 * @author: 김정승
-	 * @description :	
+	 * @description :	게시판 작성을 위해 service를 호출하는 method
 	 */
 	@RequestMapping(value="/performBoard/write.do", method=RequestMethod.POST)
 	public ModelAndView write(MultipartHttpServletRequest request, PerformBoardDto boardDto){
@@ -65,7 +65,7 @@ public class PerformBoardController {
 	 * @name:list
 	 * @date :2015. 6. 25.
 	 * @author: 김정승
-	 * @description :	
+	 * @description :	게시판 목록을 제공하기 위해 service를 호출하는 method
 	 */
 	@RequestMapping(value="/performBoard/list.do", method=RequestMethod.GET)
 	public ModelAndView list(HttpServletRequest request, ModelAndView mav){
@@ -80,7 +80,7 @@ public class PerformBoardController {
 	 * @name:read
 	 * @date :2015. 6. 25.
 	 * @author: 김정승
-	 * @description :	
+	 * @description :	작성글을 읽기위해 service를 호출하는 method
 	 */
 	@RequestMapping(value="/performBoard/read.do", method=RequestMethod.GET)
 	public ModelAndView read(HttpServletRequest request, ModelAndView mav){
@@ -90,6 +90,5 @@ public class PerformBoardController {
 		service.read(mav);
 		
 		return mav;
-	}
-	
+	}	
 }

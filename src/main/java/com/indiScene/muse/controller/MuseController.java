@@ -22,7 +22,7 @@ import com.indiScene.performBoard.service.PerformBoardServiceImpl;
  * @name:MuseController
  * @date :2015. 6. 25.
  * @author: 김정승
- * @description :	
+ * @description :	muse 동호회 개설및 관리 가입을 위한 controller
  */
 @Controller
 public class MuseController {
@@ -35,7 +35,7 @@ public class MuseController {
 	 * @name:logup
 	 * @date :2015. 6. 25.
 	 * @author: 김정승
-	 * @description :	
+	 * @description :	muse 개설을 위한 페이지 이동
 	 */
 	@RequestMapping(value="/museCreate/logup.do", method=RequestMethod.GET)
 	public ModelAndView logup(HttpServletRequest request, ModelAndView mav){
@@ -50,7 +50,7 @@ public class MuseController {
 	 * @name:logup
 	 * @date :2015. 6. 25.
 	 * @author: 김정승
-	 * @description :	
+	 * @description :	muse 개설을 위해 muse servie로 이동
 	 */
 	@RequestMapping(value="/museCreate/logup.do", method=RequestMethod.POST)
 	public ModelAndView logup(MultipartHttpServletRequest request, ModelAndView mav, MuseDto museDto){
@@ -65,7 +65,7 @@ public class MuseController {
 	 * @name:nameCheck
 	 * @date :2015. 6. 25.
 	 * @author: 김정승
-	 * @description :	
+	 * @description :	muse 이름을 체크하기 위해 service로 이동
 	 */
 	@RequestMapping(value="/museCreate/nameCheck.do", method=RequestMethod.GET)
 	public ModelAndView nameCheck(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
@@ -80,7 +80,7 @@ public class MuseController {
 	 * @name:museCheck
 	 * @date :2015. 6. 25.
 	 * @author: 김정승
-	 * @description :	
+	 * @description :	회원이 개설한 뮤즈가 있는지 확인하기 위해 service로 이동
 	 */
 	@RequestMapping(value="/museCreate/museCheck.do", method=RequestMethod.GET)
 	public ModelAndView museCheck(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
@@ -101,7 +101,9 @@ public class MuseController {
 	@RequestMapping(value="/museCreate/musemain.do", method=RequestMethod.GET)
 	public ModelAndView museMain(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
 		logger.info("--muse Check");
-		mav.setViewName("museCreate/musemain");
+		mav.addObject("request", request);
+		service.museMain(mav);
+		//mav.setViewName("museCreate/musemain");
 		return mav;
 	}
 }

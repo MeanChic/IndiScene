@@ -14,7 +14,7 @@ import com.indiScene.performBoard.dto.PerformBoardDto;
  * @name:PerformBoardDaoImpl
  * @date :2015. 6. 25.
  * @author: 김정승
- * @description :	
+ * @description :	PerformBoardDao interface를 상속받은 class
  */
 @Component
 public class PerformBoardDaoImpl implements PerformBoardDao {

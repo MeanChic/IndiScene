@@ -14,8 +14,8 @@
 </head>
 <body>
 	<!-- 로그아웃은 그냥 session에 담겨있는 id와 Level을 지워주면 끝! -->
-	<c:remove var="id" scope="session"/>	<!-- session안에서 다 지워 줄 것이다/ -->
-	<c:remove var="level" scope="session"/>
+	<c:remove var="artist_id" scope="session"/>	<!-- session안에서 다 지워 줄 것이다/ -->
+	<c:remove var="artist_level" scope="session"/>
 	
 	<script type="text/javascript">
 		alert("Logout success.");

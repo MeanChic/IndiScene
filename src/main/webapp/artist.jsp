@@ -20,15 +20,18 @@
 	</div>
 	 -->
 	<div>
-		<c:if test="${id == null}">
-			1.<a href="${root}/artist/register.do">[회원가입]</a><br/>
-			2.<a href="${root}/artist/login.do">[로그인]</a><br/>
-		</c:if>
-		
-		<c:if test="${id != null}">	
-			1.<a href="${root}/artist/update.do">[개인정보 수정]</a><br/>
-			2.<a href="${root}/artist/logout.do">[로그아웃]</a><br/>
-		</c:if>
+		<c:choose>
+			<c:when test="${artist_id ==null}">
+				<b>Welcom to Indi Scene</b><br/>
+				1.<a href="${root}/artist/register.do">[회원가입]</a><br/>
+				2.<a href="${root}/artist/login.do">[로그인]</a><br/>
+			</c:when>
+			<c:otherwise>
+				<b>Welcom to Indi Scene</b><br/>
+				1.<a href="${root}/artist/update.do">[개인정보 수정]</a><br/>
+				2.<a href="${root}/artist/logout.do">[로그아웃]</a><br/>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </body>
 </html>

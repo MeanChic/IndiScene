@@ -1,16 +1,14 @@
 package com.indiScene.artist.dto;
 
-import java.util.Date;
-
 public class ArtistDto {
 	private String artist_id;
-	private String atist_password;
+	private String artist_password;
 	private String artist_name;
 	private String artist_nickname;
 	private String artist_phone;
 	private String artist_zipcode;
 	private String artist_address;
-	private Date artist_birth;
+	private String artist_birth;
 	private String artist_picture;
 	private int artist_level;
 	
@@ -20,11 +18,11 @@ public class ArtistDto {
 	public void setArtist_id(String artist_id) {
 		this.artist_id = artist_id;
 	}
-	public String getAtist_password() {
-		return atist_password;
+	public String getArtist_password() {
+		return artist_password;
 	}
-	public void setAtist_password(String atist_password) {
-		this.atist_password = atist_password;
+	public void setArtist_password(String atist_password) {
+		this.artist_password = atist_password;
 	}
 	public String getArtist_name() {
 		return artist_name;
@@ -56,10 +54,10 @@ public class ArtistDto {
 	public void setArtist_address(String artist_address) {
 		this.artist_address = artist_address;
 	}
-	public Date getArtist_birth() {
+	public String getArtist_birth() {
 		return artist_birth;
 	}
-	public void setArtist_birth(Date artist_birth) {
+	public void setArtist_birth(String artist_birth) {
 		this.artist_birth = artist_birth;
 	}
 	public String getArtist_picture() {

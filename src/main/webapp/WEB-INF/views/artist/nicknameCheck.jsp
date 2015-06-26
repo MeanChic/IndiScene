@@ -16,9 +16,9 @@
 	<c:if test="${check==1 }">	
 		<div align="center">
 			NickName is already in use.
-			<form action="${root }/artist/nicknameCheck.do" method="post">
-				<input type="text" name="nickname"/>
-				<input type="submit" value="확인"/>
+			<form action="${root }/artist/nicknameCheck.do" method="GET">
+				<input type="text" name="artist_nickname"/>
+				<input type="submit" value="Duplicate Check"/>
 			</form>
 		</div>
 	</c:if>

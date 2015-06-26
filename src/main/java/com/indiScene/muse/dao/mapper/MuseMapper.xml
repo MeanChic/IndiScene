@@ -15,4 +15,25 @@
 	<select id="museCheck" parameterType="String" resultType="com.indiScene.muse.dto.MuseDto">
 		select * from muse where artist_id=#{artist_id}
 	</select>
+	
+	<select id="bestMuse" resultType="com.indiScene.muse.dto.MuseDto">
+		<![CDATA[
+		select * from (select rownum rnum, m.* from muse m, 
+		(select  muse_name from 
+		(select muse_name, count(muse_name) co from muse_signup GROUP BY muse_name) a 
+		order by a.co desc) a where m.muse_name = a.muse_name) where rnum < 4
+		]]>
+	</select>
+	
+	<select id="myMuse" parameterType="String" resultType="java.util.HashMap">
+		<![CDATA[
+			select * from (select rownum rnum, a.*, b.muse_yn from muse a, (select * from muse_signup where artist_id=#{artist_id}) b where a.muse_name = b.muse_name) where rnum < 4
+		]]>
+	</select>
+	
+	<select id="allMuse" parameterType="String"  resultType="com.indiScene.muse.dto.MuseDto">
+		<![CDATA[
+			select b.* from (select rownum rnum, a.* from muse a where a.muse_name not in (select muse_name from muse_signup where artist_id = #{artist_id}) order by a.muse_date desc) b where b.rnum < 4
+		]]>
+	</select>
 </mapper>

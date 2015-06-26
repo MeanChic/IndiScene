@@ -15,6 +15,7 @@ public interface ArtistService {
 	public void delete(ModelAndView mav);
 	public void deleteOk(ModelAndView mav);
 	public void login(ModelAndView mav);
+	public void loginOk(ModelAndView mav);
 	public void logout(ModelAndView mav);
 	public void findZipcode(ModelAndView mav, String dong);
 }

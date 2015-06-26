@@ -6,7 +6,7 @@ import java.util.Date;
  * @name:MuseDto
  * @date :2015. 6. 25.
  * @author: 김정승
- * @description :	
+ * @description :	muse 동호회 개설및 관리 가입을 위한 DTO
  */
 public class MuseDto {
 	private String muse_name; 		//(PK)	문자	VARCHAR2(255)
