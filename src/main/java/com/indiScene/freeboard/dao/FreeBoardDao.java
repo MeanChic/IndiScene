@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.indiScene.freeboard.dto.FreeBoardDto;
 
+
 public interface FreeBoardDao {
 
 	 public int insert(FreeBoardDto freeBoardDto);
@@ -17,6 +18,8 @@ public interface FreeBoardDao {
 	public int getCount();
 
 	public List<FreeBoardDto> getFreeBoardList(int startRow, int endRow);
+
+	public FreeBoardDto freeBoardRead(int board_num);
 
 	
 	

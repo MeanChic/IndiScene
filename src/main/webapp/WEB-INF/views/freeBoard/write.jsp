@@ -16,19 +16,13 @@
 		<input type="hidden" name="seq_num" value="${seq_num }"/>
 		<input type="hidden" name="seq_level" value="${seq_level }"/>
 		<input type="hidden" name="page_num" value="${page_num}"/>
-		<input type="hidden" name="artist_id" value="${artist_id}"/>
+		<%-- <input type="hidden" name="artist_id" value="${artist_id}"/> --%>
 			
 		
 				<a href="${root}/freeBoard/list.do">글목록</a>
 	
 		<br/><br/>
-			
-		<div class="line">
-			<label class="title">작성자</label>
-			<span class="content">
-				<input type="text" name="writer"/>
-			</span>
-		</div>
+
 		
 		<div class="line">
 			<label class="title">제목</label>
@@ -37,7 +31,7 @@
 		</div>
 		<div class="line">
 			<label class="subject">작성자</label>
-				<span class="content"><input type="text" size="50" name="artist_id" value="testId"/></span>
+				<span class="content"><input type="text" size="50" name="artist_id" value="indi"/></span>
 		</div>	
 		<br/>
 			<label class="title" style="height:230px;">내용</label>

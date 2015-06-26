@@ -137,6 +137,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		logger.info("boardList startRow: "+startRow+", endRow: "+endRow);
 		
 		int count=freeBoardDao.getCount();
+		
 		logger.info("freeBoardList count: "+count);
 		
 		List<FreeBoardDto> freeBoardList=null;
@@ -153,6 +154,24 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	
 		mav.setViewName("freeBoard/list");
 	}
+	
+	@Override
+	public void freeBoardRead(ModelAndView mav) {
+		Map<String,Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
+
+		logger.info("freeBoardRead board_num: "+board_num+", pageNumber: "+pageNumber);
+		
+		FreeBoardDto freeBoardDto=freeBoardDao.freeBoardRead(board_num);
+		logger.info("freeBoardRead freeBoardDto: "+freeBoardDto);
+		
+		mav.addObject("freeBoard",freeBoardDto);
+		mav.addObject("pageNumber",pageNumber);
+		mav.setViewName("freeBoard/read");
+	}	
 /*
  * 
 	
@@ -249,7 +268,4 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 	*/
 
-	
-
-
-}
+	}

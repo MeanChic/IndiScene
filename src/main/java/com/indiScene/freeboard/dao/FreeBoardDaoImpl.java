@@ -34,7 +34,7 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 
 	@Override
 	public int getCount() {
-		return sqlSession.selectOne("dao.freeBoardMapper.count");
+		return sqlSession.selectOne("dao.FreeBoardMapper.count");
 	}
 
 	@Override
@@ -46,24 +46,26 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 		
 		return sqlSession.selectList("dao.FreeBoardMapper.freeBoardList",hMap);
 	}
-	
-	/*
-	
+
 	@Override
-	public int getCount() {
-		return sqlSession.selectOne("dao.NoticeMapper.count");
+	public FreeBoardDto freeBoardRead(int board_num) {
+	
+			FreeBoardDto freeBoard=null;
+		
+		try{
+		
+			sqlSession.update("dao.freeBoardMapper.count",board_num);		//조회수 1증가
+			freeBoard=sqlSession.selectOne("dao.FreeBoardMapper.read",board_num);	//해당 게시물을 가져옴.
+		
+		}catch(Exception e){
+			
+			sqlSession.rollback();
+			
+		}
+			return freeBoard;
 	}
 	
-	@Override
-	public List<NoticeDto> getNoticeList(int startRow, int endRow){
-		
-		HashMap<String, Integer> hMap=new HashMap<String, Integer>();
-		hMap.put("startRow", startRow);
-		hMap.put("endRow", endRow);
-		
-		return sqlSession.selectList("dao.NoticeMapper.noticeList",hMap);
-	}
-	
+	/*	
 	@Override
 	public NoticeDto noticeRead(int board_num) {
 		

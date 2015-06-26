@@ -9,21 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<script type="text/javascript">
-			alert("안녕");
-	</script>
+	
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("글쓰기를 성공하였습니다.");
-			location.href="${root}/notice/list.do?page_num=${page_num}";
+			location.href="${root}/freeBoard/list.do?page_num=${page_num}";
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
 			alert("글쓰기를 실패하였습니다.");
-			location.href="${root}/notice/write.do?page_num=${page_num}";
+			location.href="${root}/freeBoard/write.do?page_num=${page_num}";
 		</script>
 	</c:if>
 

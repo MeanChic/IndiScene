@@ -11,6 +11,7 @@
 </head>
 <body>
 
+
 	<h3>자유게시판</h3>
 	
 	<a href="${root }/freeBoard/write.do">글쓰기</a> 

@@ -10,6 +10,8 @@ public interface FreeBoardService {
 
 	public void freeBoardList(ModelAndView mav);
 
+	public void freeBoardRead(ModelAndView mav);
+
 /*	
  * public void noticeWriteOk(ModelAndView mav);
 

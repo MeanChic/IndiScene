@@ -56,17 +56,27 @@ public class FreeBoardController {
 		freeBoardService.freeBoardList(mav);
 		return mav;
 	}
+	
+	@RequestMapping(value="/freeBoard/read.do", method=RequestMethod.GET)
+	public ModelAndView freeBoardRead(HttpServletRequest request, HttpServletResponse response){
+		
+		logger.info("freeBoard Read---------------");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request);
+		freeBoardService.freeBoardRead(mav);
+		return mav;
+	}
 	/*
 	*//**
-	 * @name : noticeRead
+	 * @name : freeBoardRead
 	 * @date : 2015. 6. 26.
 	 * @author : 손유진
 	 * @description : 공지사항 읽기 
 	 *//*
-	@RequestMapping(value="/notice/read.do", method=RequestMethod.GET)
-	public ModelAndView noticeRead(HttpServletRequest request, HttpServletResponse response){
+	@RequestMapping(value="/freeBoard/read.do", method=RequestMethod.GET)
+	public ModelAndView freeBoardRead(HttpServletRequest request, HttpServletResponse response){
 		
-		logger.info("noticeRead---------------");
+		logger.info("freeBoardRead---------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request", request);
 		noticeService.noticeRead(mav);
