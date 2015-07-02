@@ -16,12 +16,20 @@
 		select * from muse where artist_id=#{artist_id}
 	</select>
 	
-	<select id="bestMuse" resultType="com.indiScene.muse.dto.MuseDto">
+	<select id="bestMuse" resultType="java.util.HashMap">
 		<![CDATA[
-		select * from (select rownum rnum, m.* from muse m, 
-		(select  muse_name from 
-		(select muse_name, count(muse_name) co from muse_signup GROUP BY muse_name) a 
-		order by a.co desc) a where m.muse_name = a.muse_name) where rnum < 4
+	 select x.*, nvl(y.muse_yn,0) as muse_yn
+  	from (select * 
+  		from (select 
+  				rownum rnum, 
+  				m.* 
+  			from muse m, 
+ 				(select  muse_name 
+ 					from 
+ 						(select muse_name, 
+ 							count(muse_name) co 
+ 							from muse_signup GROUP BY muse_name) a order by a.co desc) e
+ where m.muse_name = e.muse_name) where rnum < 5) x, (select * from muse_signup where artist_id=#{artist_id}) y where x.muse_name=y.muse_name(+) order by rnum asc
 		]]>
 	</select>
 	
@@ -33,7 +41,19 @@
 	
 	<select id="allMuse" parameterType="String"  resultType="com.indiScene.muse.dto.MuseDto">
 		<![CDATA[
-			select b.* from (select rownum rnum, a.* from muse a where a.muse_name not in (select muse_name from muse_signup where artist_id = #{artist_id}) order by a.muse_date desc) b where b.rnum < 4
+			select b.* from (select rownum rnum, a.* from muse a where a.muse_name not in (select muse_name from muse_signup where artist_id = #{artist_id}) order by a.muse_date asc) b where b.rnum < 4
 		]]>
 	</select>
+	
+	<insert id="in" parameterType="com.indiScene.muse.dto.MuseDto">
+		<![CDATA[insert into muse_signup values(#{artist_id},'y',#{muse_name})]]>
+	</insert>
+	
+	<delete id="cancle" parameterType="java.util.HashMap">
+		delete from muse_signup where artist_id=#{artist_id} and muse_name=#{muse_name}
+	</delete>
+	
+	<insert id="signup" parameterType="java.util.HashMap">
+		<![CDATA[insert into muse_signup values(#{artist_id},'n',#{muse_name})]]>
+	</insert>
 </mapper>

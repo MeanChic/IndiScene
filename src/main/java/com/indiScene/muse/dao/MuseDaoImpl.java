@@ -29,7 +29,11 @@ public class MuseDaoImpl implements MuseDao {
 	}
 	
 	public int logup(MuseDto museDto){
-		return sqlSession.insert("dao.MuseMapper.logup", museDto);
+		int check = sqlSession.insert("dao.MuseMapper.logup", museDto);
+		if(check > 0){
+			sqlSession.insert("dao.MuseMapper.in", museDto);
+		}
+		return check;
 	}
 	
 	public MuseDto museCheck(String artist_id){
@@ -37,8 +41,8 @@ public class MuseDaoImpl implements MuseDao {
 		return sqlSession.selectOne("dao.MuseMapper.museCheck",artist_id);
 	}
 	
-	public List<MuseDto> bestMuse(){
-		return sqlSession.selectList("dao.MuseMapper.bestMuse");
+	public List<HashMap<String, Object>> bestMuse(String artist_id){
+		return sqlSession.selectList("dao.MuseMapper.bestMuse", artist_id);
 	}
 	
 	public List<HashMap<String, Object>> myMuse(String artist_id){
@@ -47,5 +51,21 @@ public class MuseDaoImpl implements MuseDao {
 	
 	public List<MuseDto> allMuse(String artist_id){
 		return sqlSession.selectList("dao.MuseMapper.allMuse", artist_id);
+	}
+	
+	public int museCancle(String artist_id, String muse_name){
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("artist_id", artist_id);
+		hMap.put("muse_name", muse_name);
+		
+		return sqlSession.delete("dao.MuseMapper.cancle", hMap);
+	}
+	
+	public int museSignup(String artist_id, String muse_name){
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("artist_id", artist_id);
+		hMap.put("muse_name", muse_name);
+		
+		return sqlSession.delete("dao.MuseMapper.signup", hMap);
 	}
 }

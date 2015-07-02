@@ -106,4 +106,33 @@ public class MuseController {
 		//mav.setViewName("museCreate/musemain");
 		return mav;
 	}
+	
+	@RequestMapping(value="/museCreate/museCancle.do", method=RequestMethod.GET)
+	public ModelAndView museCancle(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
+		logger.info("--muse Cancle");
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		
+		service.museCancle(mav);
+		
+		return null;
+	}
+	
+	@RequestMapping(value="/museCreate/museSignup.do", method=RequestMethod.GET)
+	public ModelAndView museSignup(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
+		logger.info("--muse Cancle");
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		
+		service.museSignup(mav);
+		
+		return null;
+	}
+	
+	@RequestMapping(value="/museCreate/goin.do", method=RequestMethod.GET)
+	public ModelAndView goin(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
+		
+		mav.setViewName("museCreate/goin");
+		return mav;
+	}
 }

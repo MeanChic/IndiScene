@@ -41,7 +41,7 @@ public interface MuseDao {
 	 * @author: 김정승
 	 * @description :	가입된 회원수가 많은 순으로 보여진다.
 	 */
-	public List<MuseDto> bestMuse();
+	public List<HashMap<String, Object>> bestMuse(String artist_id);
 	
 	/**
 	 * @name:myMuse

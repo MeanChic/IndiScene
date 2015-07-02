@@ -122,7 +122,7 @@ public class MuseServiceImpl implements MuseService {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
 		String artist_id = request.getParameter("artist_id");
-		List<MuseDto> bestMuse = museDao.bestMuse();
+		List<HashMap<String, Object>> bestMuse = museDao.bestMuse(artist_id);
 		List<HashMap<String, Object>> myMuse = museDao.myMuse(artist_id);
 		List<MuseDto> allMuse = museDao.allMuse(artist_id);
 		
@@ -135,6 +135,42 @@ public class MuseServiceImpl implements MuseService {
 		mav.setViewName("museCreate/musemain");
 		
 		logger.info("--" + bestMuse.size() + myMuse.size() + allMuse.size());
+	}
+	
+	public void museCancle(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
+		String artist_id = request.getParameter("artist_id");
+		String muse_name = request.getParameter("muse_name");
+		
+		int check = museDao.museCancle(artist_id, muse_name);
+		try{
+			
+				PrintWriter out = response.getWriter();
+				out.print(check);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void museSignup(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
+		String artist_id = request.getParameter("artist_id");
+		String muse_name = request.getParameter("muse_name");
+		
+		int check = museDao.museSignup(artist_id, muse_name);
+		try{
+			
+				PrintWriter out = response.getWriter();
+				out.print(check);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }
 
