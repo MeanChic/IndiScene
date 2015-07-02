@@ -102,8 +102,8 @@ function nicknameCheck(artistForm, root){
 	window.open(url,"","width=250, height=150");
 }
 
-function deleteCheck(addrForm, root){	
-	var url=root+"/addr/deleteOk.do?artist_name="+addrForm.artist_name.value;
+function deleteCheck(deleteForm, root){	
+	var url=root+"/artist/deleteOk.do?artist_id="+deleteForm.artist_id.value;
 	//프로젝트명은 변할 수 있으니까 직접 치지말고 delete.jsp로부터 프로젝트명을 받아와서 주소에 담아주자.
 	//alert(url);
 	

@@ -28,7 +28,7 @@
 			</c:when>
 			<c:otherwise>
 				<b>Welcom to Indi Scene</b><br/>
-				1.<a href="${root}/artist/update.do">[개인정보 수정]</a><br/>
+				1.<a href="${root}/artist/updatelogin.do">[개인정보 수정]</a><br/>
 				2.<a href="${root}/artist/logout.do">[로그아웃]</a><br/>
 			</c:otherwise>
 		</c:choose>

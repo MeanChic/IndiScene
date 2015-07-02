@@ -92,6 +92,18 @@ public class ArtistController {
 	}
 	
 	/**
+	 * @name : updatelogin
+	 * @date : 2015. 6. 26.
+	 * @author : 오경선
+	 * @description : update로그인 페이지를 불러온다.
+	 */
+	@RequestMapping(value="/artist/updatelogin.do", method=RequestMethod.GET)
+	public String updatelogin(HttpServletRequest request, HttpServletResponse response){
+		logger.info("-----Controller Update artistLogin----------------------");
+		return "artist/updatelogin";
+	}
+	
+	/**
 	 * @name : update
 	 * @date : 2015. 6. 26.
 	 * @author : 오경선
@@ -130,10 +142,9 @@ public class ArtistController {
 	 * @description : 회원탈퇴 요청을 받아 Service클래스 delete메소드를 호출
 	 */
 	@RequestMapping(value="/artist/delete.do", method=RequestMethod.GET)
-	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response){
+	public String delete(HttpServletRequest request, HttpServletResponse response){
 		logger.info("-----Controller artistDelete----------------------");
-		
-		return null;
+		return "artist/delete";
 	}
 	
 	/**
@@ -147,7 +158,7 @@ public class ArtistController {
 		logger.info("-----Controller artistDeleteOk----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
-		artistService.delete(mav);
+		artistService.deleteOk(mav);
 		
 		return mav;
 	}

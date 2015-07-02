@@ -13,26 +13,30 @@
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 </head>
 <body>
-	<form action="${root }/artist/delete.do" method="post">
-		<table border="1" align="center" cellpadding="2" cellspacing="0">
-			<tr>
-				<td>회원ID</td>
-				<td><input type="text" name="id"  value="${id }"/>
-				<!-- value로 찍어준 id는 session에 담겨있는 id를 가져온 것이다. -->
-			</tr>
-			
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="password"/></td>				
-			</tr>
-			
-			<tr>
-				<td colspan="2" align="center">
-					<input type="submit" value="회원탈퇴"/>
-					<input type="reset" value="취소"/>
-				</td>
-			</tr>
-		</table>
-	</form>
+	<div id="deleteForm">
+		<form action="${root }/artist/delete.do" method="post" onsubmit="return deleteCheck(this)">
+			<table border="1" align="center" cellpadding="2" cellspacing="0">
+				<tr>
+					<td>회원ID</td>
+					<td>
+						<input type="text" name="artist_idView"  value="${artist_id}" disabled="disabled"/>
+						<input type="hidden" name="artist_id"  value="${artist_id}"/>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" name="artist_password"/></td>				
+				</tr>
+				
+				<tr>
+					<td colspan="2" align="center">
+						<input type="submit" value="회원탈퇴"/>
+						<input type="reset" value="취소"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
