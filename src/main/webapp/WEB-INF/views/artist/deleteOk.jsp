@@ -14,8 +14,8 @@
 </head>
 <body>
 	<c:if test="${check>0 }">
-		<c:remove var="id" scope="session"/>
-		<c:remove var="level" scope="session"/>
+		<c:remove var="artist_id" scope="session"/>
+		<c:remove var="artist_level" scope="session"/>
 		
 		<script type="text/javascript">
 			alert("Thanks you. See you soon");

@@ -48,8 +48,6 @@ public class ArtistServiceImpl implements ArtistService {
 		ArtistDto artistDto=(ArtistDto)map.get("artistDto");
 
 		artistDto.setArtist_level(1);
-		logger.info("artist_birth : "+artistDto.getArtist_birth());
-		
 		int check=artistDao.insert(artistDto);
 		logger.info("artistRegisterOk check: "+check);
 		
@@ -89,16 +87,17 @@ public class ArtistServiceImpl implements ArtistService {
 		
 		mav.setViewName("artist/nicknameCheck");
 	}
-
+	
 	@Override
 	public void update(ModelAndView mav) {
 		logger.info("-----Servlet artist update-----");
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
+
+		String artist_id=request.getParameter("artist_id");
+		logger.info(artist_id);
 		
-		String id=request.getParameter("id");
-		
-		ArtistDto artist=artistDao.select(id);
+		ArtistDto artist=artistDao.select(artist_id);
 		logger.info("artistUpdate artist:"+artist);
 		
 		mav.addObject("artist",artist);
@@ -110,7 +109,13 @@ public class ArtistServiceImpl implements ArtistService {
 	public void updateOk(ModelAndView mav) {
 		logger.info("-----Servlet artist updateOk-----");
 		Map<String,Object> map=mav.getModelMap();
-		ArtistDto artistDto=(ArtistDto)map.get("ArtistDto");
+		ArtistDto artistDto=(ArtistDto)map.get("artistDto");
+		
+		logger.info("artist_id : "+artistDto.getArtist_id());
+		logger.info("artist_password : "+artistDto.getArtist_password());
+		logger.info("artist_nickname : "+artistDto.getArtist_nickname());
+		logger.info("artist_birth : "+artistDto.getArtist_birth());
+		logger.info("artist_level : "+artistDto.getArtist_level());
 		
 		int check=artistDao.update(artistDto);
 		logger.info("artistUpdateOk check: "+check);
@@ -123,16 +128,22 @@ public class ArtistServiceImpl implements ArtistService {
 	@Override
 	public void delete(ModelAndView mav) {
 		logger.info("-----Servlet artist delete-----");
+		mav.setViewName("artist/delete");
+	}
+	
+	@Override
+	public void deleteOk(ModelAndView mav) {
+		logger.info("-----Servlet artist deleteOk-----");
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
-		String id=request.getParameter("id");
-		String password=request.getParameter("password");
+		String artist_id=request.getParameter("artist_id");
+		String artist_password=request.getParameter("artist_password");
 		
 		HashMap<String,String> hMap=new HashMap<String,String>();
-		hMap.put("id",id);
-		hMap.put("password", password);
-		logger.info("artistDelete id: "+id+", password: "+password);
+		hMap.put("artist_id",artist_id);
+		hMap.put("artist_password", artist_password);
+		logger.info("artistDelete artist_id: "+artist_id+", artist_password: "+artist_password);
 		
 		int check=artistDao.delete(hMap);
 		logger.info("artistDelete check: "+check);
@@ -140,11 +151,6 @@ public class ArtistServiceImpl implements ArtistService {
 		mav.addObject("check",check);
 		
 		mav.setViewName("artist/deleteOk");
-	}
-
-	@Override
-	public void deleteOk(ModelAndView mav) {
-		
 	}
 	
 	@Override

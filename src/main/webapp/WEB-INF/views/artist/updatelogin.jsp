@@ -13,18 +13,18 @@
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 </head>
 <body>
-	<c:if test="${check>0 }">
-		<script type="text/javascript">
-			alert("Update succeess.");
-			location.href="${root}/artist.jsp";
-		</script>
-	</c:if>
+	<a href="${root}/artist.jsp">artist page</a><br/><br/>
 	
-	<c:if test="${check==0 }">
-		<script type="text/javascript">
-			alert("fail update.");
-			location.href="${root}/artist/update.do";
-		</script>
-	</c:if>
+	<form action="${root }/artist/update.do" method="GET">
+		<table border="1" align="center" cellpadding="2" cellspacing="0">
+			<tr>
+				<td colspan="2" align="center">
+					<input type="hidden" name="artist_id" value="${artist_id}"/>
+					<input type="submit" value="회원정보수정"/>
+					<input type="button" value="회원탈퇴" OnClick="location.href='${root}/artist/delete.do'"/>
+				</td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>

@@ -41,11 +41,11 @@
 		<![CDATA[ delete from artist where artist_id=#{artist_id} and artist_password=#{artist_password} ]]>
 	</delete>
 	
-	<select id="updateSelect" parameterType="String" resultMap="artistDto">
+	<select id="updateSelect" resultMap="artistDto">
 		<![CDATA[ select * from artist where artist_id=#{artist_id} ]]>
 	</select>
 	
 	<update id="update" parameterType="com.indiScene.artist.dto.ArtistDto">
-		<![CDATA[ update member set artist_id=#{artist_id},artist_password=#{artist_password},artist_name=#{artist_name},artist_nickname=#{artist_nickname},artist_phone=#{artist_phone},artist_zipcode=#{artist_zipcode},artist_address=#{artist_address},artist_birth=#{artist_birth},artist_picture=#{artist_picture} where artist_id=#{artist_id} ]]>
+		<![CDATA[ update artist set artist_password=#{artist_password},artist_name=#{artist_name},artist_nickname=#{artist_nickname},artist_phone=#{artist_phone},artist_zipcode=#{artist_zipcode},artist_address=#{artist_address},artist_birth=to_date(#{artist_birth}, 'yyyy-mm-dd'),artist_picture=#{artist_picture},artist_level=#{artist_level} where artist_id=#{artist_id} ]]>
 	</update>
 </mapper>

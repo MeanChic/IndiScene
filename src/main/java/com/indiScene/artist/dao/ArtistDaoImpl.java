@@ -69,11 +69,10 @@ public class ArtistDaoImpl implements ArtistDao {
 		return sqlSession.selectList("dao.ArtistMapper.zipcode",dong);
 	}
 	*/
-
+	
 	@Override
 	public ArtistDto login(HashMap<String, String> hMap) {
 		logger.info("-----Dao artist login-----");
 		return sqlSession.selectOne("dao.ArtistMapper.login",hMap);
 	}
-
 }
