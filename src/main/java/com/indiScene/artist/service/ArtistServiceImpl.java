@@ -1,6 +1,7 @@
 package com.indiScene.artist.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.artist.dao.ArtistDao;
 import com.indiScene.artist.dto.ArtistDto;
+import com.indiScene.artist.dto.ZipcodeDto;
 
 /**
  * @type : ArtistServiceImpl
@@ -189,10 +191,9 @@ public class ArtistServiceImpl implements ArtistService {
 	}
 
 	@Override
-	public void findZipcode(ModelAndView mav, String dong) {
+	public void findZipcode(ModelAndView mav) {
 		logger.info("-----Servlet artist findZipcode-----");
 		//root+"/artist/zipcode.do";
-		/*
 		Map<String, Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
@@ -201,13 +202,12 @@ public class ArtistServiceImpl implements ArtistService {
 		
 		List<ZipcodeDto> list=null;
 		if(dong!=null){
-			list=artistDao.zipcode(dong);
+			list=artistDao.ZipcodeList(dong);
 			logger.info("artistZipcode list size:"+list.size());
 		}
 		
 		mav.addObject("list",list);
 		
 		mav.setViewName("artist/zipcode");
-		*/
 	}
 }

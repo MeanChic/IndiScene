@@ -32,12 +32,11 @@
 				<c:forEach var="zipcode" items="${list }">
 					<tr>
 						<td>
-							<a href="javascript:sendAddress('${zipcode.zipcode}', '${zipcode.sido }', '${zipcode.gugun }', '${zipcode.dong}', '${zipcode.ri}', '${zipcode.bunji}')">
-								${zipcode.zipcode} ${zipcode.sido } ${zipcode.gugun } ${zipcode.dong} ${zipcode.ri} ${zipcode.bunji}
+							<a href="javascript:sendAddress('${zipcode.zipcode}', '${zipcode.sido }', '${zipcode.gugun }', '${zipcode.dong}', '${zipcode.ri}', '${zipcode.bldg}', '${zipcode.bunji}')">
+								${zipcode.zipcode} ${zipcode.sido } ${zipcode.gugun } ${zipcode.dong} ${zipcode.ri} ${zipcode.bldg} ${zipcode.bunji}
 							</a>
 						</td>
 					</tr>
-					
 				</c:forEach>
 			</table>
 		</div>
