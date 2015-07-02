@@ -213,9 +213,10 @@ public class ArtistController {
 	 * @author : 오경선
 	 * @description : 우편번호 검색창을 열어준다.
 	 */
-	@RequestMapping(value="/artist/Zipcode.do", method=RequestMethod.GET)
-		public ModelAndView Zipcode(HttpServletRequest request, HttpServletResponse response){
-		return null;
+	@RequestMapping(value="/artist/zipcode.do", method=RequestMethod.GET)
+		public String Zipcode(HttpServletRequest request, HttpServletResponse response){
+		logger.info("-----Controller Zipcode page----------------------");
+		return "artist/zipcode";
 	}
 	
 	/**
@@ -224,12 +225,12 @@ public class ArtistController {
 	 * @author : 오경선
 	 * @description : 주소의 '동' 정보를 입력받아 Service 클래스의 findZipcode메소드 호출
 	 */
-	@RequestMapping(value="/artist/Zipcode.do", method=RequestMethod.POST)
+	@RequestMapping(value="/artist/zipcode.do", method=RequestMethod.POST)
 	public ModelAndView Zipcode(HttpServletRequest request, HttpServletResponse response, String dong){
-		logger.info("-----Controller artistZipcode----------------------");
+		logger.info("-----Controller find Zipcode----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
-		artistService.findZipcode(mav, dong);
+		artistService.findZipcode(mav);
 		
 		return mav;
 	}

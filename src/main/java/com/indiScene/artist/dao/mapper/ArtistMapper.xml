@@ -30,7 +30,7 @@
 	</select>
 	
 	<select id="zipcode" parameterType="String" resultType="com.indiScene.artist.dto.ZipcodeDto">
-		<![CDATA[ select * from artist_zipcode where dong like '%'||#{dong}||'%' ]]>
+		<![CDATA[ select * from zipcode where dong like '%'||#{dong}||'%' ]]>
 	</select>
 	
 	<select id="login" parameterType="java.util.HashMap" resultMap="artistDto">

@@ -1,6 +1,7 @@
 package com.indiScene.artist.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.indiScene.artist.dto.ArtistDto;
+import com.indiScene.artist.dto.ZipcodeDto;
 
 /**
  * @type : ArtistDaoImpl
@@ -63,16 +65,15 @@ public class ArtistDaoImpl implements ArtistDao {
 		logger.info("-----Dao artist delete-----");
 		return sqlSession.delete("dao.ArtistMapper.delete",hMap);
 	}
-	/*
-	@Override
-	public List<ZipcodeList> getZipcodeList(String dong) {
-		return sqlSession.selectList("dao.ArtistMapper.zipcode",dong);
-	}
-	*/
 	
 	@Override
 	public ArtistDto login(HashMap<String, String> hMap) {
 		logger.info("-----Dao artist login-----");
 		return sqlSession.selectOne("dao.ArtistMapper.login",hMap);
+	}
+
+	@Override
+	public List<ZipcodeDto> ZipcodeList(String dong) {
+		return sqlSession.selectList("dao.ArtistMapper.zipcode",dong);
 	}
 }
