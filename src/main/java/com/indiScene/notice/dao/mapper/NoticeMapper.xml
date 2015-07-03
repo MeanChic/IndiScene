@@ -17,12 +17,8 @@
 		<![CDATA[ select * from (select rownum rnum, a.* from(select * from notice order by group_num desc, seq_num asc)a) where rnum>=#{startRow} and rnum<=#{endRow} ]]>
 	</select>
 	
-	<select id="count" resultType="int">
+	<select id="noticeCount" resultType="int">
 		<![CDATA[ select count(*) from notice ]]>
-	</select>
-
-	<select id="read" parameterType="int" resultType="com.indiScene.notice.dto.NoticeDto">
-		<![CDATA[ select * from notice where board_num=#{board_num} ]]>
 	</select>
 
 	<delete id="delete" parameterType="int">
@@ -40,4 +36,13 @@
 	<update id="update" parameterType="com.indiScene.notice.dto.NoticeDto">
 		<![CDATA[ update notice set subject=#{subject},content=#{content} where board_num=#{board_num}]]>
 	</update>
+	
+	<update id="count" parameterType="int">
+		<![CDATA[ update notice set count=count+1 where board_num=#{board_num} ]]>
+	</update>
+	
+	<select id="read" parameterType="int" resultType="com.indiScene.notice.dto.NoticeDto">
+		<![CDATA[ select * from notice where board_num=#{board_num} ]]>
+	</select>
+	
  </mapper>

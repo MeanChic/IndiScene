@@ -15,18 +15,17 @@ public interface FreeBoardDao {
 
 	public int freeBoardGroupNumberMax();
 
-	public int getCount();
-
 	public List<FreeBoardDto> getFreeBoardList(int startRow, int endRow);
 
 	public FreeBoardDto freeBoardRead(int board_num);
-
-	public int count(int board_num);
 	
 	public int freeBoardDelete(int board_num);
 
 	public FreeBoardDto freeBoardUpdateSelect(int board_num);
 
 	public int freeBoardUpdate(FreeBoardDto freeBoardDto);
+
+	public int getFreeBoardCount();
+
 
 }

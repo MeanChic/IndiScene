@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.freeboard.dao.FreeBoardDao;
 import com.indiScene.freeboard.dto.FreeBoardDto;
-import com.indiScene.notice.dto.NoticeDto;
 
 @Component
 public class FreeBoardServiceImpl implements FreeBoardService {
@@ -137,7 +136,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		int endRow=currentPage*boardSize;
 		logger.info("boardList startRow: "+startRow+", endRow: "+endRow);
 		
-		int count=freeBoardDao.getCount();
+		int count=freeBoardDao.getFreeBoardCount();
 		
 		logger.info("freeBoardList count: "+count);
 		
@@ -165,13 +164,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-		FreeBoardDto freeBoardDto=freeBoardDao.freeBoardRead(board_num);
-
-		if(freeBoardDto !=null){
-			freeBoardDto= freeBoardDao.freeBoardRead(board_num);
-		}
 		
-		logger.info("board_num:"+board_num);
+		logger.info("board_num:"+board_num+",pageNumber:"+pageNumber);
+
+		FreeBoardDto freeBoardDto=freeBoardDao.freeBoardRead(board_num);
 		logger.info("freeBoardRead freeBoardDto: "+freeBoardDto);
 		
 		mav.addObject("freeBoard",freeBoardDto);
@@ -179,66 +175,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		mav.setViewName("freeBoard/read");
 		
 	}	
-/*
 
-	@Override
-	public void noticeDeleteOk(ModelAndView mav) {
-		Map<String,Object> map=mav.getModelMap();
-		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		
-		int board_num=Integer.parseInt(request.getParameter("board_num"));
-		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-		logger.info("noticeDeleteOk board_num: "+board_num+", pageNumber: "+pageNumber);
-		
-		int check=noticeDao.noticeDelete(board_num);
-		logger.info("noticeDeleteOk check: "+check);
-		
-		mav.addObject("pageNumber",pageNumber);
-		mav.addObject("check",check);
-		
-		mav.setViewName("notice/deleteOk");
-	}
-
-	@Override
-	public void noticeUpdate(ModelAndView mav) {
-				// root + "/board/update.do?boardNumber="+boardNumber+"&pageNumber="+pageNumber
-		Map<String, Object> map=mav.getModelMap();
-		HttpServletRequest request=(HttpServletRequest)map.get("request");
-			
-		int board_num=Integer.parseInt(request.getParameter("board_num"));
-		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-		
-		NoticeDto notice=noticeDao.noticeUpdateSelect(board_num);
-		logger.info("noticeUpdate notice:"+notice);
-		
-		//board와 pageNumber를 updateOk.jsp에 넘겨줘야한다.
-		mav.addObject("notice",notice);
-		mav.addObject("pageNumber",pageNumber);
-		
-		mav.setViewName("notice/update");
-	}
-
-	@Override
-	public void noticeUpdateOk(ModelAndView mav) {
-		
-		//boardNumber, pageNumber, writer, subject, email, content, password
-		Map<String,Object> map=mav.getModelMap();
-		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		NoticeDto noticeDto=(NoticeDto)map.get("noticeDto");
-		
-		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-		logger.info("noticeUpdateOk noticeDto: "+noticeDto+", pageNumber: "+pageNumber);		
-		
-		int check=noticeDao.noticeUpdate(noticeDto);
-		logger.info("noticeUpdateOk check: "+check);
-	
-		//updateOk.jsp에는 check와 pageNumber를 넘겨줘야 한다.
-		mav.addObject("check",check);
-		mav.addObject("pageNumber",pageNumber);
-		
-		mav.setViewName("notice/updateOk");		
-	}
-	*/
 	@Override
 	public void freeBoardDelete(ModelAndView mav) {
 

@@ -44,7 +44,7 @@
 		
 		<tr>
 			<td align="center"  height="20" width="125">작성일</td>
-			<td align="center"  height="20" width=5"><fmt:formatDate value="${notice.register_date }" type="date"/></td>
+			<td align="center"  height="20" width="5"><fmt:formatDate value="${notice.register_date }" type="date"/></td>
 		</tr>
 		
 		<tr>
