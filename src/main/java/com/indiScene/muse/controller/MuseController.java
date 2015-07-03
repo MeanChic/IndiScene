@@ -131,8 +131,48 @@ public class MuseController {
 	
 	@RequestMapping(value="/museCreate/goin.do", method=RequestMethod.GET)
 	public ModelAndView goin(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
-		
+		mav.addObject("request",request);
+		String muse_name = request.getParameter("muse_name");
+		mav.addObject("muse_name",muse_name);
 		mav.setViewName("museCreate/goin");
 		return mav;
+	}
+	
+	@RequestMapping(value="/museCreate/masterCheck.do", method=RequestMethod.GET)
+	public ModelAndView masterCheck(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
+		logger.info("--masterCheck Ok");
+		
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		
+		service.masterCheck(mav);
+		return null;
+	}
+	
+	@RequestMapping(value="/museCreate/museMember.do", method=RequestMethod.GET)
+	public ModelAndView museMember(HttpServletRequest request, ModelAndView mav){
+		mav.addObject("request", request);
+		logger.info("-- museMember");
+		service.museMember(mav);
+		return mav;
+	}
+	
+	@RequestMapping(value="/museCreate/outMember.do", method=RequestMethod.GET)
+	public ModelAndView outMember(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
+		logger.info("--muse Check");
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		
+		service.outMember(mav);
+		return null;
+	}
+	@RequestMapping(value="/museCreate/inviteMember.do", method=RequestMethod.GET)
+	public ModelAndView inviteMember(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){	
+		logger.info("--muse Check");
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		
+		service.inviteMember(mav);
+		return null;
 	}
 }

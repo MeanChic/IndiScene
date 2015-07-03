@@ -56,4 +56,20 @@
 	<insert id="signup" parameterType="java.util.HashMap">
 		<![CDATA[insert into muse_signup values(#{artist_id},'n',#{muse_name})]]>
 	</insert>
+	
+	<select id="masterCheck" parameterType="java.util.HashMap" resultType="com.indiScene.muse.dto.MuseDto">
+		<![CDATA[select * from muse where artist_id=#{artist_id} and muse_name=#{muse_name}]]>
+	</select>
+	
+	<select id="nonMember" parameterType="String" resultType="java.util.HashMap">
+		<![CDATA[select * from muse_signup where muse_name=#{muse_name} and muse_yn='n']]>
+	</select>
+	
+	<select id="joinMember" parameterType="String" resultType="java.util.HashMap">
+		<![CDATA[select * from muse_signup where muse_name=#{muse_name} and muse_yn='y']]>
+	</select>
+	
+	<update id="inviteMember" parameterType="java.util.HashMap">
+		<![CDATA[update muse_signup set muse_yn='y' where artist_id=#{artist_id} and muse_name=#{muse_name}]]>
+	</update>	
 </mapper>

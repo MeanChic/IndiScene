@@ -66,6 +66,39 @@ public class MuseDaoImpl implements MuseDao {
 		hMap.put("artist_id", artist_id);
 		hMap.put("muse_name", muse_name);
 		
-		return sqlSession.delete("dao.MuseMapper.signup", hMap);
+		return sqlSession.insert("dao.MuseMapper.signup", hMap);
+	}
+	
+	public MuseDto masterCheck(String artist_id, String muse_name){
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("artist_id", artist_id);
+		hMap.put("muse_name", muse_name);
+		
+		return sqlSession.selectOne("dao.MuseMapper.masterCheck", hMap);
+		
+	}
+	
+	public List<HashMap<String, Object>> joinMember(String muse_name){
+		return sqlSession.selectList("dao.MuseMapper.joinMember", muse_name);
+	}
+	
+	public List<HashMap<String, Object>> nonMember(String muse_name){
+		return sqlSession.selectList("dao.MuseMapper.nonMember", muse_name);	
+	}
+	
+	public int inviteMember(String artist_id, String muse_name){
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("artist_id", artist_id);
+		hMap.put("muse_name", muse_name);
+		
+		return sqlSession.update("dao.MuseMapper.inviteMember", hMap);
+	}
+	
+	public int outMember(String artist_id, String muse_name){
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("artist_id", artist_id);
+		hMap.put("muse_name", muse_name);
+		
+		return sqlSession.delete("dao.MuseMapper.cancle", hMap);
 	}
 }

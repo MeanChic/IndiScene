@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="artist_id"  value="E"/>
+<c:set var="artist_id"  value="A"/>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -25,9 +25,12 @@
 			dataType:"text",
 			success:function (data){
 				if(data == "0"){
-					$("input[name='create']").val("입장")
+					$("#master").text("회원보기");
+					$("#master").attr("href","a");
 				}else{
-					$("input[name='create']").val("개설하기")
+					$("#master").text("회원관리");
+					$("#master").attr("href",root+"/museCreate/museMember.do?muse_name="+muse_name);
+					//alert(muse_name);
 				}
 			}
 		});
@@ -39,8 +42,8 @@
 	<input type="hidden" id="muse_name" name="muse_name" value="${muse_name}"/>
 	<input type="hidden" id="artist_id" value="${artist_id}" name="artist_id"/>
 	<input type="hidden" id="root" value="${root}"/>
+	<a id="master"></a>
 
-	
 
 </body>
 </html>

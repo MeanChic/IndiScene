@@ -107,10 +107,10 @@ public class MuseServiceImpl implements MuseService {
 		try{
 			if(museDto == null){
 				PrintWriter out = response.getWriter();
-				out.print("1");
+				out.print("0");
 			}else if(museDto != null){
 				PrintWriter out = response.getWriter();
-				out.print("0");
+				out.print(museDto.getMuse_name());
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -163,6 +163,85 @@ public class MuseServiceImpl implements MuseService {
 		String muse_name = request.getParameter("muse_name");
 		
 		int check = museDao.museSignup(artist_id, muse_name);
+		try{
+			
+				PrintWriter out = response.getWriter();
+				out.print(check);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void masterCheck(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
+		String artist_id = request.getParameter("artist_id");
+		String muse_name = request.getParameter("muse_name");
+		logger.info("-- " + artist_id + "," + muse_name);
+		MuseDto museDto = museDao.masterCheck(artist_id, muse_name);
+		
+		try{
+			
+			PrintWriter out = response.getWriter();
+			if(museDto != null){
+				out.print("1");
+			}else{
+				out.print("0");
+			}
+			logger.info("--museDto" + museDto);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void museMember(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		
+		String muse_name = request.getParameter("muse_name");
+		
+		List<HashMap<String, Object>> joinMember = museDao.joinMember(muse_name);
+		List<HashMap<String, Object>> nonMember = museDao.nonMember(muse_name);
+		
+		logger.info("--" + joinMember.size() + " , " + nonMember.size());
+		
+		mav.addObject("joinMember", joinMember);
+		mav.addObject("nonMember", nonMember);
+		mav.addObject("muse_name", muse_name);
+		mav.setViewName("museCreate/member");
+	}
+	
+	
+	public void inviteMember(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
+		String artist_id = request.getParameter("artist_id");
+		String muse_name = request.getParameter("muse_name");
+		logger.info("-- " + artist_id + "," + muse_name);
+		
+		int check = museDao.inviteMember(artist_id, muse_name);
+		try{
+			
+				PrintWriter out = response.getWriter();
+				out.print(check);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void outMember(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
+		String artist_id = request.getParameter("artist_id");
+		String muse_name = request.getParameter("muse_name");
+		logger.info("-- " + artist_id + "," + muse_name);
+		
+		int check = museDao.outMember(artist_id, muse_name);
 		try{
 			
 				PrintWriter out = response.getWriter();

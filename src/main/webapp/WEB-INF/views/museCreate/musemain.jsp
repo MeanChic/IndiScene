@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="artist_id"  value="E"/>
+<c:set var="artist_id"  value="A"/>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -18,24 +18,28 @@ $(function(){
 	var artist_id=$("input[name='artist_id']").val();
 	var sendData= "artist_id=" + artist_id;
 	var url = root + "/museCreate/museCheck.do?" + sendData;
-	
+	var muse_name;
 	 $.ajax({
 		url:url,
 		type:"get",
 		dataType:"text",
 		success:function (data){
 			if(data == "0"){
-				$("input[name='create']").val("입장")
-			}else{
 				$("input[name='create']").val("개설하기")
+				
+			}else{
+				$("input[name='create']").val("입장")
+				$("input[name='muse_name']").val(data);	
+				muse_name = $("input[name='muse_name']").val();	
 			}
 		}
 	});
 	 
 	 $("input[name='create']").click(function(){
-		 alert($(this).val());
+		 //alert(muse_name);
+		 
 		 if($(this).val()=="입장"){
-			 location.href=root + "/museCreate/goin.do";
+			 location.href=root + "/museCreate/goin.do?muse_name="+muse_name;
 		 }else{
 			 location.href=root + "/museCreate/logup.do";
 		 }
@@ -81,7 +85,7 @@ function signup(artist_id, muse_name){
 		success:function (data){
 			$("."+muse_name+"> input").val("대기중/신청취소");
 			$("."+muse_name+"> input").attr("onclick","cancle('"+artist_id+"','"+muse_name+"')");
-			var a = $("#best>."+muse_name).clone();
+			var a = $("#best>."+ muse_name).clone();
 			$("#my").prepend(a);
 		}
 	});
@@ -95,6 +99,7 @@ function signup(artist_id, muse_name){
 <body>
 	<input type="hidden" name="artist_id" value="${artist_id}"/>
 	<input type="hidden" id="root" value="${root}"/>
+	<input type="hidden" name="muse_name"/>
 	<input type="button" name="create"/>
 
 	============================<br/>
