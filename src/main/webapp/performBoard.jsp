@@ -17,7 +17,9 @@
 	
 	<a href="${root}/museCreate/logup.do">muse개설</a>
 	<a href="${root}/museCreate/musemain.do?artist_id=${artist_id}">musemain</a>
-
+	
+	
+	<a href="${root}/museGuest/guest.do?muse_name=abc">guest</a>
 	<span>
 		
 	</span>

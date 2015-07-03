@@ -133,6 +133,7 @@ public class MuseController {
 	public ModelAndView goin(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
 		mav.addObject("request",request);
 		String muse_name = request.getParameter("muse_name");
+		logger.info("--" + muse_name);
 		mav.addObject("muse_name",muse_name);
 		mav.setViewName("museCreate/goin");
 		return mav;
@@ -153,6 +154,8 @@ public class MuseController {
 	public ModelAndView museMember(HttpServletRequest request, ModelAndView mav){
 		mav.addObject("request", request);
 		logger.info("-- museMember");
+		String check = request.getParameter("check");
+		mav.addObject("check", check);
 		service.museMember(mav);
 		return mav;
 	}
@@ -175,4 +178,6 @@ public class MuseController {
 		service.inviteMember(mav);
 		return null;
 	}
+	
+	
 }

@@ -65,6 +65,7 @@
 	<input type="hidden" id="artist_id" value="${artist_id}" name="artist_id"/>
 	<input type="hidden" id="root" value="${root}"/>
 	
+	<c:if test="${check != 0 }">
 	<div id="join">
 	<c:forEach var="join" items="${joinMember }">
 		<c:if test="${join.ARTIST_ID != artist_id}">
@@ -75,7 +76,7 @@
 		</c:if>
 	</c:forEach>
 	</div>
-	
+	===================================================
 	<c:forEach var="non" items="${nonMember }">
 		<div id="${non.ARTIST_ID}" >
 			${non.ARTIST_ID} , ${non.MUSE_YN}, ${non.MUSE_NAME}
@@ -83,6 +84,16 @@
 			<input type="button" value="거부" onclick="outMember('${muse_name}','${non.ARTIST_ID}')">
 		</div>
 	</c:forEach>
+	</c:if>
 	
+	<c:if test="${check == 0}">
+	<c:forEach var="join" items="${joinMember }">
+		<c:if test="${join.ARTIST_ID != artist_id}">
+		<div>
+			${join.ARTIST_ID} , ${join.MUSE_YN}, ${join.MUSE_NAME}
+		</div>
+		</c:if>
+	</c:forEach>
+	</c:if>
 </body>
 </html>

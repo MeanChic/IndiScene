@@ -26,7 +26,7 @@
 			success:function (data){
 				if(data == "0"){
 					$("#master").text("회원보기");
-					$("#master").attr("href","a");
+					$("#master").attr("href",root+"/museCreate/museMember.do?muse_name="+muse_name+"&check=0");
 				}else{
 					$("#master").text("회원관리");
 					$("#master").attr("href",root+"/museCreate/museMember.do?muse_name="+muse_name);
@@ -39,6 +39,7 @@
 </script>
 </head>
 <body>
+${muse_name}
 	<input type="hidden" id="muse_name" name="muse_name" value="${muse_name}"/>
 	<input type="hidden" id="artist_id" value="${artist_id}" name="artist_id"/>
 	<input type="hidden" id="root" value="${root}"/>
