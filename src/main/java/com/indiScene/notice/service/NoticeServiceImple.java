@@ -144,7 +144,7 @@ public class NoticeServiceImple implements NoticeService {
 		int endRow=currentPage*boardSize;
 		logger.info("noticeList startRow: "+startRow+", endRow: "+endRow);
 		
-		int count=noticeDao.getCount();
+		int count=noticeDao.getNoticeCount();
 		logger.info("noticeList count: "+count);
 		
 		List<NoticeDto> noticeList=null;
@@ -163,19 +163,22 @@ public class NoticeServiceImple implements NoticeService {
 	
 	@Override
 	public void noticeRead(ModelAndView mav) {
+		
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-
 		logger.info("noticeRead board_num: "+board_num+", pageNumber: "+pageNumber);
 		
+		//넘겨받은 해당 boardNumber의 조회수를 1증가시킨 뒤 (BoardDaoImpl에서 처리)
+		//해당 boardNumber의 데이터들을 noticeDto로 반환받는다.
 		NoticeDto noticeDto=noticeDao.noticeRead(board_num);
 		logger.info("noticeRead noticeDto: "+noticeDto);
 		
 		mav.addObject("notice",noticeDto);
 		mav.addObject("pageNumber",pageNumber);
+		//read.jsp에서는 board와 pageNumber만 필요 
 		mav.setViewName("notice/read");
 	}
 	

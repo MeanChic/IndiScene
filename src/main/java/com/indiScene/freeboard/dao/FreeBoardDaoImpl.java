@@ -22,25 +22,22 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public int insert(FreeBoardDto freeBoardDto) {
-		return sqlSession.insert("dao.FreeBoardMapper.freeBoardInsert",freeBoardDto);
+	public int freeBoardGroupNumberMax() {
+		return sqlSession.selectOne("dao.FreeBoardMapper.freeBoardGroupNumberMax");
 	}
-
 	@Override
 	public int freeBoardGroupNumberUpdate(HashMap<String, Integer> hMap) {
 		 return sqlSession.update("dao.FreeBoardMapper.freeBoardGroupNumberUpdate",hMap);
 		
 	}
-
 	@Override
-	public int freeBoardGroupNumberMax() {
-		
-		return sqlSession.selectOne("dao.FreeBoardMapper.freeBoardGroupNumberMax");
+	public int insert(FreeBoardDto freeBoardDto) {
+		return sqlSession.insert("dao.FreeBoardMapper.freeBoardInsert",freeBoardDto);
 	}
 
 	@Override
-	public int getCount() {
-		return sqlSession.selectOne("dao.FreeBoardMapper.count");
+	public int getFreeBoardCount() {
+		return sqlSession.selectOne("dao.FreeBoardMapper.freeBoardCount");
 	}
 
 	@Override
@@ -55,12 +52,10 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 
 	@Override
 	public FreeBoardDto freeBoardRead(int board_num) {
-		return sqlSession.selectOne("dao.FreeBoardMapper.read",board_num);	//해당 게시물을 가져옴.
-	}
-
-	@Override
-	public int count(int board_num) {
-		return sqlSession.insert("dao.FreeBoardMapper.readCount",board_num);//조회수 1증가
+		FreeBoardDto board =null;
+		sqlSession.update("dao.FreeBoardMapper.count",board_num);//조회수 증가 
+		board = sqlSession.selectOne("dao.FreeBoardMapper.read",board_num);	//해당 게시물을 가져옴.
+		return board;
 	}
 
 	@Override

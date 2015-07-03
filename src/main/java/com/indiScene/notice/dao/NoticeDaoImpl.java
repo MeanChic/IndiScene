@@ -23,29 +23,25 @@ public class NoticeDaoImpl implements NoticeDao {
 	SqlSessionTemplate sqlSession;
 	
 	@Override
+	public int noticeGroupNumberMax() {
+		return sqlSession.selectOne("dao.NoticeMapper.noticeGroupNumberMax");
+	}
+	@Override
+	public int noticeGroupNumberUpdate(HashMap<String, Integer> hMap) {	
+		 return sqlSession.update("dao.NoticeMapper.noticeGroupNumberUpdate",hMap);
+	}
+	@Override
 	public int insert(NoticeDto noticeDto) {
 		return sqlSession.insert("dao.NoticeMapper.noticeInsert",noticeDto);
 	}
 	
 	@Override
-	
-	public int noticeGroupNumberUpdate(HashMap<String, Integer> hMap) {	
-		 return sqlSession.update("dao.NoticeMapper.noticeGroupNumberUpdate",hMap);
-	}
-	
-	@Override
-	public int noticeGroupNumberMax() {
-		return sqlSession.selectOne("dao.NoticeMapper.noticeGroupNumberMax");
-	}
-	
-	@Override
-	public int getCount() {
-		return sqlSession.selectOne("dao.NoticeMapper.count");
+	public int getNoticeCount() {
+		return sqlSession.selectOne("dao.NoticeMapper.noticeCount"); 
 	}
 	
 	@Override
 	public List<NoticeDto> getNoticeList(int startRow, int endRow){
-		
 		HashMap<String, Integer> hMap=new HashMap<String, Integer>();
 		hMap.put("startRow", startRow);
 		hMap.put("endRow", endRow);
@@ -54,23 +50,12 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 	
 	@Override
-	public NoticeDto noticeRead(int board_num) {
-		
-		NoticeDto notice=null;
-		
-		try{
-		
-			sqlSession.update("dao.NoticeMapper.count",board_num);		//조회수 1증가
-			notice=sqlSession.selectOne("dao.NoticeMapper.read",board_num);	//해당 게시물을 가져옴.
-		
-		}catch(Exception e){
-			
-			sqlSession.rollback();
-			
+	public NoticeDto noticeRead(int board_num) {			
+		NoticeDto board =null;
+		sqlSession.update("dao.NoticeMapper.count",board_num);//조회수 증가 
+		board = sqlSession.selectOne("dao.NoticeMapper.read",board_num);	//해당 게시물을 가져옴.
+		return board;
 		}
-			return notice;
-		}
-	
 	@Override
 	public int noticeDelete(int board_num) {
 		

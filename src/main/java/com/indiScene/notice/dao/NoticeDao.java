@@ -14,8 +14,6 @@ public interface NoticeDao {
 	
 	public int noticeGroupNumberUpdate(HashMap<String, Integer> hMap);
 	
-	public int getCount();
-	
 	public List<NoticeDto> getNoticeList(int startRow, int endRow);
 	
 	public NoticeDto noticeRead(int board_num);
@@ -26,5 +24,8 @@ public interface NoticeDao {
 	
 	public NoticeDto noticeUpdateSelect(int board_num);
 
+	public int getNoticeCount();
+
+	
 
 }

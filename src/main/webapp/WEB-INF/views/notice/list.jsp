@@ -11,6 +11,8 @@
 	<title>게시판 목록보기</title>
 </head>
 <body>	
+		<a href="${root }/notice/write.do">공지사항쓰기</a>
+		<br/><br/><br/>
 		<c:if test="${count==0 }">
 					<td align="center">게시판에 저장된 글이 없습니다.</td>
 		</c:if>
@@ -33,6 +35,7 @@
 					</c:if>
 					<a href="${root }/notice/read.do?board_num=${notice.board_num}&pageNumber=${currentPage }">${notice.subject }</a>
 				</td> 
+				
 				<td>
 					<fmt:formatDate value="${notice.register_date }" type="date"/>
 				</td>
@@ -46,6 +49,8 @@
 		<!-- 페이지 번호 -->
 		<center>
 			<c:if test="${count>0 }">
+	
+				 
 				<c:set var="pageBlock" value="${5}"/>
 				<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0 ? 0:1 )}"/>
 				
@@ -68,6 +73,8 @@
 				<c:if test="${endPage<pageCount }">
 					<a href="${root }/notice/list.do?pageNumber=${startPage+pageBlock}">[다음]</a>
 				</c:if>
+				
+				<br/>
 			</c:if>
 		</center>
 	</c:if>
