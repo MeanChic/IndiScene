@@ -3,6 +3,7 @@ package com.indiScene.museGuest.controller;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,17 +22,27 @@ public class MuseGuestController {
 	private final Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	@RequestMapping(value="/museGuest/guest.do", method=RequestMethod.GET)
-	public ModelAndView guest(HttpServletRequest request, ModelAndView mav){
-		String muse_name = request.getParameter("muse_name");
-		mav.addObject("muse_name", muse_name);
-		mav.setViewName("museGuest/guest");
-		return mav;
+	public ModelAndView guest(HttpServletRequest request, ModelAndView mav, HttpServletResponse response){
+		//String muse_name = request.getParameter("muse_name");
+		//mav.addObject("muse_name", muse_name);
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		
+		
+		
+		return service.getList(mav);
 	}
 	
 	@RequestMapping(value="/museGuest/guest.do", method=RequestMethod.POST)
-	public ModelAndView guest(HttpServletRequest request,MuseGuestDto guestDto, ModelAndView mav){
+	public ModelAndView guest(HttpServletRequest request, HttpServletResponse response, MuseGuestDto guestDto){
 		logger.info("--" + request.getParameter("artist_id"));
-		logger.info("-- id : " + guestDto.getArtist_id() + guestDto.getMuse_name());
+		logger.info("-- id : " + guestDto.getArtist_id() + guestDto.getMuse_name() + guestDto.getGuest_content() + guestDto.getGuest_num());
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("guestDto", guestDto);
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		service.write(mav);
 		return null;
 	}
 }

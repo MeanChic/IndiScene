@@ -3,5 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.MuseGuestMapper">
+	<insert id="write" parameterType="com.indiScene.museGuest.dto.MuseGuestDto">
+		<![CDATA[insert into guest values(museguest_seq.nextval, #{muse_name}, #{artist_id}, #{guest_content}, #{guest_date})]]>
+	</insert>
 	
+	<select id="count" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from guest where muse_name = #{muse_name}]]>
+	</select>
+	
+	<select id="getlist" parameterType="java.util.HashMap" resultType="com.indiScene.museGuest.dto.MuseGuestDto">
+		<![CDATA[select * from (select rownum rnum, a.* from (select * from guest order by guest_date desc) a where muse_name=#{muse_name}) b where rnum > #{startpage} and rnum <= #{endpage}]]>
+	</select>
 </mapper>
