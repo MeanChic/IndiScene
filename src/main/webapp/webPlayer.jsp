@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script type="text/javascript">
 /* 
 		@name : Web Player
@@ -97,9 +99,10 @@
 		
 		/* 음악 진행 바의 value 변경시 음원 재생시간 변경 */
 		$("#musicBar").bind("change",function(){
-			audio.pause();
+		//	audio.pause();
+			alert($(this).val());
 			audio.currentTime=$(this).val();
-			audio.play();
+		//	audio.play();
 		});
 		
 		/* 음악 진행 바에 음악 길이 셋팅. */
@@ -122,9 +125,11 @@
 		
 	</div>
 	
-	<input type="checkbox" name="musicList" value="music/Gift.mp3"><label class="musicName">박효신-Gift</label>
-	<input type="checkbox" name="musicList" value="music/Love Ballad.mp3"><label class="musicName">브라운아이드소울 - Love Ballad</label>
-	<input type="checkbox" name="musicList" value="music/Rush.mp3"><label class="musicName">리쌍-Rush</label>
+	<input type="checkbox" name="musicList" value="${root}/resources/musicResource/Gift.mp3"><label class="musicName">박효신-Gift</label>
+	<input type="checkbox" name="musicList" value="${root}/resources/musicResource/Love Ballad.mp3"><label class="musicName">브라운아이드소울 - Love Ballad</label>
+	<input type="checkbox" name="musicList" value="${root}/resources/musicResource/Rush.mp3"><label class="musicName">리쌍-Rush</label>
+	<input type="checkbox" name="musicList" value="${root}/resources/musicResource/ar2.wav"><label class="musicName">김건모-잠못드는밤비는내리고</label>
+	<input type="checkbox" name="musicList" value="${root}/resources/musicResource/ar3.wav"><label class="musicName">김건모-잠못드는밤비는내리고2</label>
 	<input type="button" id="listBtn" value="추가하기"/>
 	<br/>
 	<input type="button" id="prev" value="prev"/>
