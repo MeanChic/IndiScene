@@ -188,7 +188,7 @@
 	<div id="fb-root"></div>
 	<div id="soribadaWrapper"> <!-- soribadaWrapper -->	
 		<div id="header"> <!-- header -->
-			<a href="/" tabindex="1"><h1 id="logo"><span class="hide">soribada</span></h1></a>
+			<a href="/" tabindex="1"><h1 id="logo"><span class="hide">Indi</span></h1></a>
 			
 			<!-- 검색 -->
 			<div id="searchSection">

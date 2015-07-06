@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+h1, h2, h3, h4, h5, h6, div, span, center, a{ margin:0px; }
+div{ display:block; }
+/* mainBoard */
+#mainBoard{ width:100%; margin:0; }
+#indiWrapper{ width:100%; height:100%; }
+/*----- head -----*/
+	#head{ min-width:1024px; background:green; position:fixed; }
+/* headLogin */
+	#headLogin{ height:60px; float:right; }
+	/* COMMON */
+	#headLoginStyle{width:300px; height:24px; float:right; }
+	#logintable{ float:right; margin-right:10px; }
+/* headLogo */
+	#headLogo{ width:200px; height:60px; float:left; }
+	
+/*----- containers -----*/
+#containers{ min-width:1024px; top:60px; position:absolute; background:#f1f1f1; }
+/* Left */
+tr td{ margin:0px; border:solid 1px black; }
+#leftContainer{ min-width:180px; min-height:300px; float:left; }
+/* leftContents */
+	/* COMMON */
+		ul { margin:0px; padding:0px; }
+		li { display:block; float:left; }
+		#leftContents { margin:0; min-height:300px; top:60px; clear:both; background:yellow; overflow:hidden; float:left; }
+		#leftContents ul li a { margin-top:10px; width:180px; height:20px; float:left; display:inline; text-indent:-1000em; overflow:hidden; background:none no-repeat left top; }
+	/* normal */
+		#leftContents ul li.brandNewMusic a { margin-top:20px; width:180px; background-position:0px -20px; }
+		#leftContents ul li.bestMusic a { width:180px; background-position:0px -50px; }
+		#leftContents ul li.indisMusic a { width:180px; background-position:0px -80px; }
+		#leftContents ul li.performanceInfo a { width:180px; background-position:0px -110px; }
+		#leftContents ul li.marketPlace a { width:180px; background-position:0px -140px; }
+		
+	/* hover */
+		#leftContents ul li.brandNewMusic a:hover { background-position:0px -200px; }
+		#leftContents ul li.bestMusic a:hover { background-position:0px -230px; }
+		#leftContents ul li.indisMusic a:hover { background-position:0px -260px; }
+		#leftContents ul li.performanceInfo a:hover { background-position:0px -290px; }
+		#leftContents ul li.marketPlace a:hover { background-position:0px -320px; }
+		
+/* center */
+#centerContainer{ width:100%; height:100%; }
+/* centerContents */
+	/* COMMON */
+	#centerContents{ margin-left:180px; display:block; }
+/* right */
+#right{ width:200px; display:inline-block; }
+/*----- tail -----*/
+#tail{ width:940px; height:200px; display:table-row; background:linear-gradient(0deg, #FFFFFF, #D1B2FF); }
