@@ -29,8 +29,8 @@
 			
 			<tr>
 				<td colspan="2" align="center">
-					<input type="submit" value="확인"/>
-					<input type="reset" value="취소"/>
+					<input class="ui-button" type="submit" value="확인"/>
+					<input class="ui-button" type="reset" value="취소"/>
 				</td>
 			</tr>
 		</table>

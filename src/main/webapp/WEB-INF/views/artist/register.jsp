@@ -62,6 +62,7 @@
 					<div>
 						<script type="text/javascript">
 							var path=$("input[name='artist_picturePath']").val();
+							alert("picturePath : "+path);
 							$("input[name='artist_picturePath']").val()==path;
 							return false;
 						</script>
