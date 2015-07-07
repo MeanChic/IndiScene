@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
+<html>
+<head>
+<meta charset="UTF-8">
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript" src="${root}/js/artist.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
-
+</head>
+<body>
 <div id="RegisterForm">
 	<form name="artistForm" onsubmit="return registerForm(this)">
 		<div>
@@ -16,7 +21,7 @@
 		</div><br/>
 		<div>
 			<label>Password</label>
-			<input type="password" name="artist_password"/>
+			<input type="password" name="artist_password"/><br/>
 			<label>Password Check</label>
 			<input type="password" name="passwordCheck"/>
 		</div><br/>
@@ -44,11 +49,11 @@
 		</div><br/>
 		<div>
 			<label>Birth</label>
-			<input type="text" name="artist_birth"/>
+			<input type="date" name="artist_birth"/>
 		</div><br/>
 		<div>
 			<label>Profile Image</label>
-			<div>
+			<div class="artist_pictureForm">
 				<input type="file" name="artist_picturePath"/>
 				<div>
 					<script type="text/javascript">
@@ -58,11 +63,13 @@
 						return false;
 					</script>
 				</div>
-				<input type="text" name="artist_picture"/>
+				<input type="text" name="artist_picture" class="artist_picture"/>
 			</div>
 		</div><br/>
-		<div>
-			<input type="submit" name="registerOk" value="sign up"/>
+		<div class="registerOkButton">
+			<input type="submit" name="registerOk" value="Create Account"/>
 		</div><br/>
 	</form>
 </div>
+</body>
+</html>

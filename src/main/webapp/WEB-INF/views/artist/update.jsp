@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript" src="${root}/js/artist.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
-
-<center>[Artist update]</center>
+</head>
+<body>
 	<div id="RegisterForm">
 		<form name="artistForm" onsubmit="return registerForm(this)">
 			<div>
@@ -66,5 +72,6 @@
 			</div><br/>
 		</form>
 	</div>
-
+</body>
+</html>
 

@@ -48,6 +48,7 @@ public class ArtistServiceImpl implements ArtistService {
 		logger.info("artistRegisterOk check: "+check);
 		
 		mav.addObject("check",check);
+		mav.setViewName("artist/registerOk");
 	}
 
 	@Override
