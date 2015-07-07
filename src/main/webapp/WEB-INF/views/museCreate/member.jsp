@@ -19,7 +19,7 @@
 		var sendData= "muse_name=" + muse_name + "&artist_id=" + artist_id;
 		var url = root + "/museCreate/outMember.do?" + sendData;
 		
-		alert(url);
+		//alert(url);
 		 $.ajax({
 			url:url,
 			type:"get",
@@ -40,7 +40,7 @@
 		var sendData= "muse_name=" + muse_name + "&artist_id=" + artist_id;
 		var url = root + "/museCreate/inviteMember.do?" + sendData;
 		
-		alert(url);
+		//alert(url);
 		 $.ajax({
 			url:url,
 			type:"get",

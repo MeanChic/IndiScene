@@ -20,7 +20,7 @@
 			var sendData= "muse_name=" + name;
 			var url = root + "/museCreate/nameCheck.do?" + sendData;
 			
-			alert(url);
+			//alert(url);
 			 $.ajax({
 				url:url,
 				type:"get",
