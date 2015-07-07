@@ -7,6 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+	
+	function body(){
+		
+	}
+</script>
 </head>
 <body>
 
@@ -14,9 +20,13 @@
 	
 	<h3>게시판</h3>
 	
-	<a href="${root }/notice/write.do">공지사항쓰기</a> 
+	<a href="${root }/notice/write.do" id="write">공지사항쓰기</a> 
 	<br/>
-	<a href="${root }/notice/list.do">공지사항 목록보기</a>
+	<a href="${root }/notice/list.do" id="list">공지사항 목록보기</a>
 	
+	<div id="body" style="background:pink; height: 300px; padding: 10px  20px  30px  20px ; " >
+		
+	h
+	</div>
 </body>
 </html>
