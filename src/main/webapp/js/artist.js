@@ -151,6 +151,8 @@ $(document).ready(function(){
 	$("input[name='artist_address']").attr("placeholder", "상세주소를 입력하세요.");
 	$("input[name='artist_picture']").attr("placeholder", "Profile사진을 설정해주세요.");
 	
+	$("input[name='artist_birth']").datepicker();
+	
 	$(this).attr("value","");
 	
 	$("input[type='file']").click(function(){
