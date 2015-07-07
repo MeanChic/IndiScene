@@ -38,12 +38,6 @@ public class ArtistServiceImpl implements ArtistService {
 	*/
 	
 	@Override
-	public void register(ModelAndView mav) {
-		logger.info("-----Servlet artist register-----");
-		mav.setViewName("artist/register");
-	}
-	
-	@Override
 	public void registerOk(ModelAndView mav){
 		logger.info("-----Servlet artist registerOk-----");
 		Map<String,Object> map=mav.getModelMap();
@@ -54,8 +48,6 @@ public class ArtistServiceImpl implements ArtistService {
 		logger.info("artistRegisterOk check: "+check);
 		
 		mav.addObject("check",check);
-		
-		mav.setViewName("artist/registerOk");
 	}
 
 	@Override
@@ -153,12 +145,6 @@ public class ArtistServiceImpl implements ArtistService {
 		mav.addObject("check",check);
 		
 		mav.setViewName("artist/deleteOk");
-	}
-	
-	@Override
-	public void login(ModelAndView mav) {
-		logger.info("-----Servlet artist login-----");
-		mav.setViewName("artist/login");
 	}
 	
 	@Override

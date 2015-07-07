@@ -1,23 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Artist</title>
-<script type="text/javascript" src="${root}/js/jquery.js"></script>
-<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript" src="${root}/js/artist.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
-</head>
-<body>
-	<center>[Artist update]</center>
-	<a href="${root}/artist.jsp">artist page</a><br/><br/>
-	
+
+<center>[Artist update]</center>
 	<div id="RegisterForm">
-		<form name="artistForm" action="${root}/artist/update.do" method="POST" onsubmit="return registerForm(this)">
+		<form name="artistForm" onsubmit="return registerForm(this)">
 			<div>
 				<label>Id</label>
 				<input type="text" name="artist_idView" value="${artist.artist_id}" disabled="disabled"/>
@@ -71,11 +61,10 @@
 			</div><br/>
 			<input type="hidden" name="artist_level" value="${artist.artist_level}"/>
 			<div>
-				<input type="submit" value="submit"/>
+				<input type="submit" name="updateOk" value="submit"/>
 				<input type="button" value="cancel"/>
 			</div><br/>
 		</form>
 	</div>
-</body>
-</html>
+
 

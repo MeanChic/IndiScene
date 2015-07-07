@@ -21,7 +21,7 @@
 			
 			<script type="text/javascript">
 				alert("Login Success.");
-				location.href="${root}/artist.jsp";
+				location.href="${root}/Template.jsp";
 			</script>
 		</c:when>
 		<c:otherwise>

@@ -2,10 +2,10 @@
 h1, h2, h3, h4, h5, h6, div, span, center, a{ margin:0px; }
 div{ display:block; }
 /* mainBoard */
-#mainBoard{ width:100%; margin:0; }
-#indiWrapper{ width:100%; height:100%; }
+#mainBoard{ width:100%; height:100%; margin:0; }
+#indiWrapper{ width:100%; height:100%; display:inherit; }
 /*----- head -----*/
-	#head{ min-width:1024px; background:green; position:fixed; }
+	#head{ position:fixed; left:0; top:0; right:0; min-width:1024px; height:60px; background:green; z-index:100000; }
 /* headLogin */
 	#headLogin{ height:60px; float:right; }
 	/* COMMON */
@@ -15,10 +15,10 @@ div{ display:block; }
 	#headLogo{ width:200px; height:60px; float:left; }
 	
 /*----- containers -----*/
-#containers{ min-width:1024px; top:60px; position:absolute; background:#f1f1f1; }
-/* Left */
+#containers{ position:absolute; left:0; right:0; top:60px; bottom:70px; min-width:1024px; background:#C8C8C8;. z-index:10; }
+/*--- Left ---*/
 tr td{ margin:0px; border:solid 1px black; }
-#leftContainer{ min-width:180px; min-height:300px; float:left; }
+#leftContainer{ position:absolute; left:0; top:0; bottom:0; width:180px; padding:0!important; background:#orange; z-index:10000; }
 /* leftContents */
 	/* COMMON */
 		ul { margin:0px; padding:0px; }
@@ -31,20 +31,28 @@ tr td{ margin:0px; border:solid 1px black; }
 		#leftContents ul li.indisMusic a { width:180px; background-position:0px -80px; }
 		#leftContents ul li.performanceInfo a { width:180px; background-position:0px -110px; }
 		#leftContents ul li.marketPlace a { width:180px; background-position:0px -140px; }
-		
 	/* hover */
-		#leftContents ul li.brandNewMusic a:hover { background-position:0px -200px; }
-		#leftContents ul li.bestMusic a:hover { background-position:0px -230px; }
-		#leftContents ul li.indisMusic a:hover { background-position:0px -260px; }
-		#leftContents ul li.performanceInfo a:hover { background-position:0px -290px; }
-		#leftContents ul li.marketPlace a:hover { background-position:0px -320px; }
-		
-/* center */
-#centerContainer{ width:100%; height:100%; }
+		#leftContents ul li.brandNewMusic a:hover { background-position:-180px -20px; }
+		#leftContents ul li.bestMusic a:hover { background-position:-180px -50px; }
+		#leftContents ul li.indisMusic a:hover { background-position:-180px -80px; }
+		#leftContents ul li.performanceInfo a:hover { background-position:-180px -110px; }
+		#leftContents ul li.marketPlace a:hover { background-position:-180px -140px; }
+	/* active */
+		#leftContents ul li.brandNewMusic a:active { background-position:-360px -20px; }
+		#leftContents ul li.bestMusic a:active { background-position:-360px -50px; }
+		#leftContents ul li.indisMusic a:active { background-position:-360px -80px; }
+		#leftContents ul li.performanceInfo a:active { background-position:-360px -110px; }
+		#leftContents ul li.marketPlace a:active { background-position:-360px -140px; }
+/*--- center ---*/
+#centerContainer{ margin-left:180px; min-width:640px; height:100%; position:relative; display:block; }
 /* centerContents */
 	/* COMMON */
-	#centerContents{ margin-left:180px; display:block; }
-/* right */
-#right{ width:200px; display:inline-block; }
-/*----- tail -----*/
+	#centerContents{ display:block; }
+/*--- right ---*/
+#rightContainer{ min-width:200px; height:100%; float:right; display:block; }
+/* rightContents */
+	/* COMMON */
+	#rightContents{ display:block; }
+
+/*----- footer -----*/
 #tail{ width:940px; height:200px; display:table-row; background:linear-gradient(0deg, #FFFFFF, #D1B2FF); }

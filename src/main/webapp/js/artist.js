@@ -136,6 +136,8 @@ function sendAddress(zipcode, sido, gugun, dong, ri, bldg, bunji){
 
 // Jquery
 $(document).ready(function(){
+	var root = $("#root").val();
+	
 	$("#accordion").accordion();
 	$("#accordion").css("width","500px");
 	$("#artist > button").button();
@@ -180,6 +182,107 @@ $(document).ready(function(){
 	        console.log("Your browser does not support File API");
 	    }
 	});
+	
+	$("button[name='register']").click(function(){
+		if($("#artistRegister").val()==undefined){
+			$("#centerContents").append("<div id='artistRegister' class='hasPaddingContents'></div>")
+			$("#artistRegister").css("display","block");
+			$("#artistRegister").siblings().css("display","none");
+			$.ajax({
+				url:root+"/artist/register.do",
+				type:"GET",
+				dataType:"html",
+				success:function(data){
+					//alert(data);	//Test
+					$("#artistRegister").append(data);
+				}
+			})
+		}else{
+			$("#artistRegister").css("display","block");
+			$("#artistRegister").siblings().css("display","none");
+		}
+	})
+	
+	$("input[name='registerOk']").click(function(){
+		var sendData="artist_id="+$("input[name='artist_id']").val()+"&artist_password="+$("input[name='artist_password']").val()+"&artist_name="+$("input[name='artist_name']").val()+"&artist_nickname="+$("input[name='artist_nickname']").val()+"&artist_phone="+$("input[name='artist_phone']").val()+"&artist_zipcode="+$("input[name='artist_zipcode']").val()+"&artist_address="+$("input[name='artist_address']").val()+"&artist_birth="+$("input[name='artist_birth']").val()+"&artist_picture="+$("input[name='artist_picture']").val();
+		$.ajax({
+			data:sendData,
+			url:root+"/artist/register.do",
+			type:"POST",
+			dataType:"json",
+			success:function(data){
+				/* 회원가입 완료 */
+			}
+		})
+	})
+	
+	$("button[name='login']").click(function(){
+		location.href=root+"/artist/login.do";
+	})
+	
+	$("button[name='updatelogin']").click(function(){
+		if($("#artistUpdateLogin").val()==undefined){
+			$("#centerContents").append("<div id='artistUpdateLogin' class='hasPaddingContents'></div>")
+			$("#artistUpdateLogin").css("display","block");
+			$("#artistUpdateLogin").siblings().css("display","none");
+			$.ajax({
+				url:root+"/artist/updatelogin.do",
+				type:"GET",
+				dataType:"html",
+				success:function(data){
+					//alert(data);	//Test
+					$("#artistUpdateLogin").append(data);
+				}
+			})
+		}else{
+			$("#artistUpdateLogin").css("display","block");
+			$("#artistUpdateLogin").siblings().css("display","none");
+		}
+	})
+	
+	$("button[name='logout']").click(function(){
+		location.href=root+"/artist/logout.do";
+	})
+	
+	$("button[name='update']").click(function(){
+		var artist_id=$("input[name='artist_id']").val();
+		var sendData="?artist_id="+artist_id;
+		
+		if($("#artistUpdate").val()==undefined){
+			$("#centerContents").append("<div id='artistUpdate' class='hasPaddingContents'></div>")
+			$("#artistUpdate").css("display","block");
+			$("#artistUpdate").siblings().css("display","none");
+			$.ajax({
+				url:root+"/artist/update.do"+sendData,
+				type:"GET",
+				dataType:"html",
+				success:function(data){
+					//alert(data);	//Test
+					$("#artistUpdate").append(data);
+				}
+			})
+		}else{
+			$("#artistUpdate").css("display","block");
+			$("#artistUpdate").siblings().css("display","none");
+		}
+	})
+	
+	$("input[name='updateOk']").click(function(){
+		var sendData="artist_id="+$("input[name='artist_id']").val()+"&artist_password="+$("input[name='artist_password']").val()+"&artist_name="+$("input[name='artist_name']").val()+"&artist_nickname="+$("input[name='artist_nickname']").val()+"&artist_phone="+$("input[name='artist_phone']").val()+"&artist_zipcode="+$("input[name='artist_zipcode']").val()+"&artist_address="+$("input[name='artist_address']").val()+"&artist_birth="+$("input[name='artist_birth']").val()+"&artist_picture="+$("input[name='artist_picture']").val()+"&artist_level="+$("input[name='artist_level']").val();
+		$.ajax({
+			data:sendData,
+			url:root+"/artist/update.do",
+			type:"POST",
+			dataType:"json",
+			success:function(data){
+				/* 개인정보 수정 완료 */
+			}
+		})
+	})
+	
+	$("button[name='delete']").click(function(){
+		location.href=root+"/artist/delete.do";
+	})
 })
 
 
