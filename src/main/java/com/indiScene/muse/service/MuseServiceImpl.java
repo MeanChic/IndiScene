@@ -21,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.muse.dao.MuseDaoImpl;
 import com.indiScene.muse.dto.MuseDto;
+import com.indiScene.museGuest.dao.MuseGuestDaoImpl;
+import com.indiScene.museGuest.dto.MuseGuestDto;
 import com.indiScene.performBoard.dao.PerformBoardDaoImpl;
 import com.indiScene.performBoard.dto.PerformBoardDto;
 
@@ -35,6 +37,9 @@ public class MuseServiceImpl implements MuseService {
 	String rootpath = "C:/Users/kosta/git/IndiScene/src/main/webapp/";
 	@Autowired
 	private MuseDaoImpl museDao;
+	
+	@Autowired
+	private MuseGuestDaoImpl guestDao;
 	private final Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	public void nameCheck(ModelAndView mav){
@@ -93,7 +98,13 @@ public class MuseServiceImpl implements MuseService {
 		}
 		
 		int check = museDao.logup(museDto);
+		if(check > 0){
+			int musenew = guestDao.createMuse(museDto.getMuse_name());
+			logger.info("-- new create muse write : " + musenew);
+		}
 		logger.info("-- muselogup check:" + check);
+		mav.addObject("check",check);
+		mav.setViewName("museCreate/logup");
 	}
 	
 	public void museCheck(ModelAndView mav){
@@ -250,6 +261,22 @@ public class MuseServiceImpl implements MuseService {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	public void goin(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		String muse_name = request.getParameter("muse_name");
+		HashMap<String, Object> hmap = new HashMap<String, Object>();
+		hmap.put("startpage", 0);
+		hmap.put("endpage", 4);
+		hmap.put("muse_name", muse_name);
+		List<MuseGuestDto> list = guestDao.getList(hmap);
+		logger.info("-- list : " + list.size());
+		
+		mav.addObject("muse_name", muse_name);
+		mav.addObject("list", list);
+		mav.setViewName("museCreate/goin");
 	}
 }
 

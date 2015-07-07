@@ -14,4 +14,12 @@
 	<select id="getlist" parameterType="java.util.HashMap" resultType="com.indiScene.museGuest.dto.MuseGuestDto">
 		<![CDATA[select * from (select rownum rnum, a.* from (select * from guest order by guest_date desc) a where muse_name=#{muse_name}) b where rnum > #{startpage} and rnum <= #{endpage}]]>
 	</select>
+	
+	<update id="update" parameterType="java.util.HashMap">
+		update guest set guest_content = #{guest_content} where guest_num=#{guest_num}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from guest where guest_num=#{guest_num}
+	</delete>
 </mapper>

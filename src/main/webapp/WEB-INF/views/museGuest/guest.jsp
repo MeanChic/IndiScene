@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="artist_id"  value="A"/>
+<c:set var="artist_id"  value="C"/>
 
 <head>
 <meta charset="UTF-8">
@@ -59,11 +59,6 @@
 		alert("하하");
 	} */
 	function next(muse_name, pagenum){
-		/* form=$("form");
-		var artist_id = $("form input[name = 'artist_id']").val();
-		var muse_name = $("form input[name = 'muse_name']").val();
-		var guest_content = $("form textarea[name = 'guest_content']").val();*/
-		//alert(muse_name + " , " + pagenum);
 		var root = $("#root").val(); 
 		
 		var sendData="muse_name="+muse_name+"&pagenum="+pagenum;
@@ -77,6 +72,7 @@
 			contentType:"application/x-www-form-urlencoded;charset=utf-8",
 			dataType:"text",
 			success:function(data){
+				//$("body").html(data);
 				if(data != null){
 					var line = data.split("/");
 					var boardnum = Number($("input[name='boardnum']").val());
@@ -85,7 +81,11 @@
 						for(var i = 0; i < line.length-1; i++){
 							var up = line[i].split(",");
 							var sun = $("#guestline > div:eq("+i+")");
-							sun.attr('id',"'"+up[0]+"'");
+							sun.attr('id',up[0]);
+							sun.children("a:eq(0)").attr('href','javascript:update('+"'"+up[0]+"','"+up[4]+"'"+')');
+							sun.children("a:eq(1)").attr('href','javascript:guestdel('+"'"+up[0]+"'"+')');
+							sun.children("form").children("input:eq(0)").attr('onclick','upcon('+"'"+up[0]+"'"+')');
+							sun.children("form").children("input:eq(1)").attr('onclick','remo('+"'"+up[0]+"'"+')');
 							for(var j = 0; j < up.length; j++){
 								if(j == 0){}else{
 									sun.children("span:eq("+(j-1)+")").text(up[j]);
@@ -101,7 +101,12 @@
 							var up = line[i].split(",");
 							var sun = $("#guestline > div:eq("+i+")");
 							sun.attr('style','display:block');
-							sun.attr('id',"'"+up[0]+"'");
+							sun.attr('id',up[0]);
+							
+							sun.children("a:eq(0)").attr('href','javascript:update('+"'"+up[0]+"','"+up[4]+"'"+')');
+							sun.children("a:eq(1)").attr('href','javascript:guestdel('+"'"+up[0]+"'"+')');
+							sun.children("form").children("input:eq(0)").attr('onclick','upcon('+"'"+up[0]+"'"+')');
+							sun.children("form").children("input:eq(1)").attr('onclick','remo('+"'"+up[0]+"'"+')');
 							for(var j = 0; j < up.length; j++){
 								if(j == 0){}else{
 									sun.children("span:eq("+(j-1)+")").text(up[j]);
@@ -109,6 +114,7 @@
 							}
 						}
 					}
+					
 					var a = Number(pagenum);
 					$("input[name='pagenum']").val(a);
 					//alert("페이지 넘버: " + $("input[name='pageCount']").val());
@@ -123,7 +129,7 @@
 						}
 					}else{
 						$("#minus").attr('style','display:none');
-						alert("최초 페이지 입니다.");
+						//alert("최초 페이지 입니다.");
 					}
 					$("#plus").attr('href','javascript:next('+"'"+muse_name+"'"+",'"+(a+1)+"'"+')');
 				}
@@ -140,20 +146,75 @@
 	}
 	
 	function update(guest_num, guest_content){
+		//alert("OK");
 		$("#guestline").find("form").attr('style','display:none');
 		$("#guestline").find(".con").attr('style','');
 		$("#"+guest_num+">.con").attr('style','display:none');
 		$("#"+guest_num+">form>textarea").val(guest_content);
 		$("#"+guest_num+">form").attr('style','display:block');
-		
-		
-		
 	}
 	
 	function remo(guest_num){
 		$("#"+guest_num+">.con").attr('style','');
-		$("#"+guest_num+"> form").attr('style','display:none');
+		$("#"+guest_num+"> form").attr('style','display:none');	
+	}
+	
+	function upcon(guest_num){
+		//alert($("#"+guest_num).children("form").children("textarea").val());
 		
+		var root = $("#root").val(); 
+		var pagenum = $("input[name='pagenum']").val();
+		var muse_name = $("input[name='muse_name']").val();
+		var sendData="guest_num="+guest_num+"&guest_content="+$("#"+guest_num).children("form").children("textarea").val();
+		//alert(sendData);
+		var url = root + "/museGuest/update.do?";
+		//alert(url);
+		$.ajax({
+			url: url,
+			type:"get",
+			data:sendData,
+			contentType:"application/x-www-form-urlencoded;charset=utf-8",
+			dataType:"text",
+			success:function(data){
+				//alert("OK");
+				if(data == "0"){
+					alert("수정되지 않았습니다.");
+					remo(guest_num);
+				}else{
+					alert("수정이 완료되었습니다.");
+					remo(guest_num);
+					next(muse_name, pagenum);
+				}
+			}
+		});
+	}
+	
+	function guestdel(guest_num){
+		//alert(guest_num);
+		var root = $("#root").val(); 
+		var pagenum = $("input[name='pagenum']").val();
+		var muse_name = $("input[name='muse_name']").val();
+		var sendData="guest_num="+guest_num;
+		//alert(sendData);
+		var url = root + "/museGuest/delete.do?";
+		//alert(url);
+		$.ajax({
+			url: url,
+			type:"get",
+			data:sendData,
+			contentType:"application/x-www-form-urlencoded;charset=utf-8",
+			dataType:"text",
+			success:function(data){
+				//alert("OK");
+				if(data == "0"){
+					alert("삭제되지 않았습니다.");
+					
+				}else{
+					alert("삭제가 완료되었습니다.");
+					next(muse_name, pagenum);
+				}
+			}
+		});
 	}
 </script>
 </head>
@@ -162,7 +223,7 @@
 	<input name = "count" type="hidden" value="${count}"/>
 	<input name="boardnum" type="hidden" value="${boardnum}"/>
 	<input name="pageCount" type="hidden" value="${count/boardnum}"/>
-	<input name="pagenum" type="hidden"/>
+	<input name="pagenum" type="hidden" value="${pagenum }"/>
 	
 	<form>
 	<input type="hidden" name="muse_name" value="${muse_name}">
@@ -177,42 +238,43 @@
 			<div id = "${guest.guest_num}">
 				<span> ${guest.artist_id}</span> <span>${guest.guest_date}</span> <br/>
 				<span >${guest.muse_name}</span> , <span class="con">${guest.guest_content}</span>
-				<form style="display:none"><textarea></textarea><input type="button"  value="전송" onclick="send()"/><input type="button" value="취소" onclick="remo('${guest.guest_num}')"/></form>
+				<form style="display:none"><textarea></textarea><input type="button"  value="수정하기" onclick="upcon('${guest.guest_num}')"/><input type="button" value="취소" onclick="remo('${guest.guest_num}')"/></form>
 				<c:if test="${artist_id == guest.artist_id}">
-					<input type="button" value="수정" onclick="update('${guest.guest_num}','${guest.guest_content}')"/>
-					<input type="button" value="삭제" onclick="delete('${guest.guest_num}')"/>
+					<%-- <input type="button" value="수정" onclick="update('${guest.guest_num}','${guest.guest_content}')"/>
+					<input type="button" value="삭제" onclick="delete('${guest.guest_num}')"/> --%>
+					<a href="javascript:update('${guest.guest_num}','${guest.guest_content}')">수정</a>
+					<a href="javascript:guestdel('${guest.guest_num}')">삭제</a>
 				</c:if>
 			</div>
 		</c:forEach>
+		
+		<c:if test="${count < boardnum}">
+			<c:forEach var="i" begin="${count+1}" end="${boardnum}">
+			<div>
+				<span></span> <span></span> <br/>
+				<span ></span> , <span class="con"></span>
+				<form style="display:none"><textarea></textarea><input type="button"  value="수정하기" onclick="upcon()"/><input type="button" value="취소" onclick="remo()"/></form>
+				<c:if test="${artist_id == guest.artist_id}">
+					<%-- <input type="button" value="수정" onclick="update('${guest.guest_num}','${guest.guest_content}')"/>
+					<input type="button" value="삭제" onclick="delete('${guest.guest_num}')"/> --%>
+					<a href="javascript:update()">수정</a>
+					<a href="javascript:guestdel()">삭제</a>
+				</c:if>
+			</div>
+			</c:forEach>
+		</c:if>
 	</div>
 	
-	<c:if test="${count > 0}">
-			<%-- <c:set var="pageBlock" value="${3}"/>
-			
-			<fmt:parseNumber var="rs" value="${(pagenum-1)/pageBlock}" integerOnly="true"/>
-			
-			<c:set var="startPage" value="${rs*pageBlock+1}"/>
-			<c:set var="endPage" value="${startPage+pageBlock-1}"/>
-			
-			<c:set var="pageCount" value="${count/boardnum+(count%boardnum==0 ? 0:1)}"/>
-			
-			<c:if test="${endPage > pageCount}">
-				<c:set var="endPage" value="${pageCount}"/>
-			</c:if> --%>
-			
-			<c:if test="${pagenum != '1'}">
-				<a style=""href="javascript:next('${muse_name}','${pagenum-1}')">[이전]</a>
-			</c:if>
-			
-		<%-- 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				<a href="javascript:next('${muse_name}','${i}')">[${i}]</a>
-			</c:forEach>
-	 --%>
-			<c:if test="${count > 0}">
-				<a id="minus" style="display:none" href="javascript:next('${muse_name}','${pagenum-1}')">[이전]</a>
-				<a id="plus" href="javascript:next('${muse_name}','${pagenum+1}')">[다음]</a>
-			</c:if>
+	<c:if test="${count/boardnum > 1}">
+		<c:if test="${pagenum != '1'}">
+			<a style=""href="javascript:next('${muse_name}','${pagenum-1}')">[이전]</a>
 		</c:if>
+	
+		<c:if test="${count > 0}">
+			<a id="minus" style="display:none" href="javascript:next('${muse_name}','${pagenum-1}')">[이전]</a>
+			<a id="plus" href="javascript:next('${muse_name}','${pagenum+1}')">[다음]</a>
+		</c:if>
+	</c:if>
 	
 </body>
 </html>

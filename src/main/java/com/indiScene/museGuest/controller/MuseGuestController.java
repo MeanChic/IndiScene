@@ -45,4 +45,28 @@ public class MuseGuestController {
 		service.write(mav);
 		return null;
 	}
+	
+	@RequestMapping(value="/museGuest/update.do", method=RequestMethod.GET)
+	public ModelAndView update(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
+		
+		
+		
+		
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		service.update(mav);
+		return null;
+	}
+	
+	@RequestMapping(value="/museGuest/delete.do", method=RequestMethod.GET)
+	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
+		
+		
+		
+		
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		service.delete(mav);
+		return null;
+	}
 }

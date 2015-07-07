@@ -34,7 +34,7 @@ public class MuseGuestServiceImpl implements MuseGuestService {
 		guestDto.setGuest_date(new Date());
 		
 		int check = guestDao.write(guestDto);
-		logger.info("-- check : " + check);
+		//logger.info("-- check : " + check);
 		
 		try {
 			PrintWriter out = response.getWriter();
@@ -58,7 +58,7 @@ public class MuseGuestServiceImpl implements MuseGuestService {
 		count = guestDao.getCount(muse_name);
 		
 		
-		logger.info("-- count : " + count + "pagenum : " + pagenum);
+		//logger.info("-- count : " + count + "pagenum : " + pagenum);
 		int startpage = boardnum * (Integer.parseInt(pagenum)-1);
 		int endpage = boardnum * Integer.parseInt(pagenum);
 		if(endpage > count) endpage=count;
@@ -69,11 +69,11 @@ public class MuseGuestServiceImpl implements MuseGuestService {
 		List<MuseGuestDto> list = guestDao.getList(hmap);
 		response.setCharacterEncoding("utf-8");
 		
-		logger.info("-- pagenum : " + pagenum);
+		//logger.info("-- pagenum : " + pagenum);
 		
 		if(pagenum == "1"){
 			
-			logger.info("-- pagenum 1 : " + pagenum);
+			//logger.info("-- pagenum 1 : " + pagenum);
 			//count = guestDao.getCount(muse_name);
 			
 			
@@ -81,6 +81,7 @@ public class MuseGuestServiceImpl implements MuseGuestService {
 			mav.addObject("muse_name", muse_name);
 			mav.addObject("count", count);
 			mav.addObject("list", list);
+			mav.addObject("listsize", list.size());
 			mav.addObject("boardnum", boardnum);
 			mav.addObject("pagenum", pagenum);
 			mav.setViewName("museGuest/guest");
@@ -91,7 +92,7 @@ public class MuseGuestServiceImpl implements MuseGuestService {
 				
 				for(int i = 0; i < list.size(); i++){
 					MuseGuestDto guest = list.get(i);
-					out.print(guest.getGuest_num() +","+guest.getArtist_id() + "," + guest.getGuest_date() + "," + guest.getGuest_content()+","+guest.getMuse_name() + "/" );
+					out.print(guest.getGuest_num() +","+guest.getArtist_id() + "," + guest.getGuest_date() + "," + guest.getMuse_name() +","+guest.getGuest_content() + "/" );
 					
 					/*String[] k = guest.getGuest_content().split("/");
 					k.*/
@@ -102,6 +103,43 @@ public class MuseGuestServiceImpl implements MuseGuestService {
 			}
 			
 			return null;
+		}
+	}
+	
+	public void update(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
+		String guest_num = request.getParameter("guest_num");
+		String guest_content = request.getParameter("guest_content");
+		
+		//logger.info("-- guest num + guest_content : " + guest_num + " ,, " + guest_content);
+		int check = guestDao.update(guest_num, guest_content);
+		logger.info("-- guestupdate check : " + check );
+		try {
+			PrintWriter out = response.getWriter();
+			out.print(check);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void delete(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
+		String guest_num = request.getParameter("guest_num");
+		
+		logger.info("-- guest num : " + guest_num);
+		int check = guestDao.delete(guest_num);
+		logger.info("-- g check : " + check );
+		try {
+			PrintWriter out = response.getWriter();
+			out.print(check);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

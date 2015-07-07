@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="artist_id"  value="A"/>
+<c:set var="artist_id"  value="C"/>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -44,7 +44,19 @@ ${muse_name}
 	<input type="hidden" id="artist_id" value="${artist_id}" name="artist_id"/>
 	<input type="hidden" id="root" value="${root}"/>
 	<a id="master"></a>
-
-
+	
+	<br/><br/>
+	방명록=======================================
+	<c:forEach var="guest" items="${list}">
+		<div id = "${guest.guest_num}">
+			<span> ${guest.artist_id}</span> <span>${guest.guest_date}</span> <br/>
+			<span >${guest.muse_name}</span> , <span class="con">${guest.guest_content}</span>
+		</div>
+	</c:forEach>
+	<a href="${root}/museGuest/guest.do?muse_name=${muse_name}">더보기</a>
+	
+	<br/><br/>
+	게시판=======================================
+	
 </body>
 </html>

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="artist_id"  value="A"/>
+<c:set var="artist_id"  value="C"/>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -71,6 +71,17 @@
 </head>
 <body>
 <input type="hidden" id="root" value="${root}"/>
+<input type="hidden" id="artist_id" value="${artist_id}"/>
+
+	<c:if test="${check != null}">
+		<c:if test="${check=='1'}">
+			<script type="text/javascript">
+				
+				location.href=$("#root").val()+"/museCreate/musemain.do?artist_id="+$("#artist_id").val();
+			</script>
+		</c:if>
+	</c:if>
+	
 <form action="${root}/museCreate/logup.do" enctype="multipart/form-data" method="post">
 	<input type="hidden" name="artist_id" value="${artist_id}"/>
 	Muse Name : <input type="text" name="muse_name"/><input type="button" name="check" value="중복확인"/><br/><br/>

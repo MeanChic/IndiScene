@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,8 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.muse.dto.MuseDto;
 import com.indiScene.muse.service.MuseServiceImpl;
-import com.indiScene.performBoard.dto.PerformBoardDto;
-import com.indiScene.performBoard.service.PerformBoardServiceImpl;
 
 /**
  * @name:MuseController
@@ -132,10 +129,12 @@ public class MuseController {
 	@RequestMapping(value="/museCreate/goin.do", method=RequestMethod.GET)
 	public ModelAndView goin(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
 		mav.addObject("request",request);
-		String muse_name = request.getParameter("muse_name");
+		
+		service.goin(mav);
+		/*String muse_name = request.getParameter("muse_name");
 		logger.info("--" + muse_name);
 		mav.addObject("muse_name",muse_name);
-		mav.setViewName("museCreate/goin");
+		mav.setViewName("museCreate/goin");*/
 		return mav;
 	}
 	
@@ -169,6 +168,7 @@ public class MuseController {
 		service.outMember(mav);
 		return null;
 	}
+	
 	@RequestMapping(value="/museCreate/inviteMember.do", method=RequestMethod.GET)
 	public ModelAndView inviteMember(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){	
 		logger.info("--muse Check");

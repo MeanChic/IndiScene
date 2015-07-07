@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="artist_id"  value="A"/>
+<c:set var="artist_id"  value="C"/>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
