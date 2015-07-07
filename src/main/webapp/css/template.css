@@ -5,7 +5,7 @@ div{ display:block; }
 #mainBoard{ width:100%; height:100%; margin:0; }
 #indiWrapper{ width:100%; height:100%; display:inherit; }
 /*----- head -----*/
-	#head{ position:fixed; left:0; top:0; right:0; min-width:1024px; height:60px; background:green; z-index:100000; }
+	#head{ position:fixed; left:0; top:0; right:0; min-width:1024px; height:60px; background:green; z-index:100000; position:fixed; }
 /* headLogin */
 	#headLogin{ height:60px; float:right; }
 	/* COMMON */
@@ -15,44 +15,74 @@ div{ display:block; }
 	#headLogo{ width:200px; height:60px; float:left; }
 	
 /*----- containers -----*/
-#containers{ position:absolute; left:0; right:0; top:60px; bottom:70px; min-width:1024px; background:#C8C8C8;. z-index:10; }
+#containers{ position:absolute; left:0; right:0; top:60px; bottom:80px; min-width:1024px; background:#C8C8C8;. z-index:10; }
 /*--- Left ---*/
 tr td{ margin:0px; border:solid 1px black; }
-#leftContainer{ position:absolute; left:0; top:0; bottom:0; width:180px; padding:0!important; background:#orange; z-index:10000; }
-/* leftContents */
+#leftContainer{ position:absolute; left:0; top:0; bottom:0; width:180px; padding:0!important; background:white; z-index:10000; }
+/* leftContents01 */
 	/* COMMON */
 		ul { margin:0px; padding:0px; }
 		li { display:block; float:left; }
-		#leftContents { margin:0; min-height:300px; top:60px; clear:both; background:yellow; overflow:hidden; float:left; }
-		#leftContents ul li a { margin-top:10px; width:180px; height:20px; float:left; display:inline; text-indent:-1000em; overflow:hidden; background:none no-repeat left top; }
+		#leftContents01 { width:auto; margin:0; top:60px; clear:both; background:yellow; overflow:hidden; float:left; vertical-align:baseline; }
+		#leftContents01 ul li a { margin-top:0px; width:180px; height:30px; float:left; display:inline; text-indent:-1000em; overflow:hidden; background:none no-repeat left top; }
+		#leftContents01 { width:180px; background-image:url("../css/images/menubar01.png"); border-bottom:solid 1px black;  }
+		#leftContents01 ul li a { background-image:url("../css/images/menubar01.png"); }
 	/* normal */
-		#leftContents ul li.brandNewMusic a { margin-top:20px; width:180px; background-position:0px -20px; }
-		#leftContents ul li.bestMusic a { width:180px; background-position:0px -50px; }
-		#leftContents ul li.indisMusic a { width:180px; background-position:0px -80px; }
-		#leftContents ul li.performanceInfo a { width:180px; background-position:0px -110px; }
-		#leftContents ul li.marketPlace a { width:180px; background-position:0px -140px; }
+		#leftContents01 ul li.brandNewMusic a { margin-top:20px; width:180px; background-position:0px -20px; }
+		#leftContents01 ul li.bestMusic a { width:180px; background-position:0px -50px; }
+		#leftContents01 ul li.indisMusic a { width:180px; background-position:0px -80px; }
+		#leftContents01 ul li.performanceInfo a { width:180px; background-position:0px -110px; }
+		#leftContents01 ul li.marketPlace a { margin-bottom:20px; width:180px; background-position:0px -140px; }
 	/* hover */
-		#leftContents ul li.brandNewMusic a:hover { background-position:-180px -20px; }
-		#leftContents ul li.bestMusic a:hover { background-position:-180px -50px; }
-		#leftContents ul li.indisMusic a:hover { background-position:-180px -80px; }
-		#leftContents ul li.performanceInfo a:hover { background-position:-180px -110px; }
-		#leftContents ul li.marketPlace a:hover { background-position:-180px -140px; }
+		#leftContents01 ul li.brandNewMusic a:hover { background-position:-180px -20px; }
+		#leftContents01 ul li.bestMusic a:hover { background-position:-180px -50px; }
+		#leftContents01 ul li.indisMusic a:hover { background-position:-180px -80px; }
+		#leftContents01 ul li.performanceInfo a:hover { background-position:-180px -110px; }
+		#leftContents01 ul li.marketPlace a:hover { background-position:-180px -140px; }
 	/* active */
-		#leftContents ul li.brandNewMusic a:active { background-position:-360px -20px; }
-		#leftContents ul li.bestMusic a:active { background-position:-360px -50px; }
-		#leftContents ul li.indisMusic a:active { background-position:-360px -80px; }
-		#leftContents ul li.performanceInfo a:active { background-position:-360px -110px; }
-		#leftContents ul li.marketPlace a:active { background-position:-360px -140px; }
+		#leftContents01 ul li.brandNewMusic a:active { background-position:-360px -20px; }
+		#leftContents01 ul li.bestMusic a:active { background-position:-360px -50px; }
+		#leftContents01 ul li.indisMusic a:active { background-position:-360px -80px; }
+		#leftContents01 ul li.performanceInfo a:active { background-position:-360px -110px; }
+		#leftContents01 ul li.marketPlace a:active { background-position:-360px -140px; }
+/* leftContents02 */
+		#leftContents02 { width:auto; margin:0; top:60px; clear:both; background:yellow; overflow:hidden; float:left; vertical-align:baseline; }
+		#leftContents02 ul li a { margin-top:0px; width:180px; height:30px; float:left; display:inline; text-indent:-1000em; overflow:hidden; background:none no-repeat left top; }
+		#leftContents02 { width:180px; background-image:url("../css/images/menubar02.png"); border-bottom:solid 1px black;  }
+		#leftContents02 ul li a { background-image:url("../css/images/menubar02.png"); }
+	/* normal */
+		#leftContents02 ul li.myMusic a { margin-top:20px; width:180px; background-position:0px -20px; }
+		#leftContents02 ul li.indisMuse a { margin-bottom:20px; width:180px; background-position:0px -50px; }
+	/* hover */
+		#leftContents02 ul li.myMusic a:hover { background-position:-180px -20px; }
+		#leftContents02 ul li.indisMuse a:hover { background-position:-180px -50px; }
+	/* active */
+		#leftContents02 ul li.myMusic a:active { background-position:-360px -20px; }
+		#leftContents02 ul li.indisMuse a:active { background-position:-360px -50px; }
+/* leftContents03 */
+		#leftContents03 { width:auto; margin:0; top:60px; clear:both; background:yellow; overflow:hidden; float:left; vertical-align:baseline; }
+		#leftContents03 ul li a { margin-top:0px; width:180px; height:30px; float:left; display:inline; text-indent:-1000em; overflow:hidden; background:none no-repeat left top; }
+		#leftContents03 { width:180px; background-image:url("../css/images/menubar03.png"); border-bottom:solid 1px black;  }
+		#leftContents03 ul li a { background-image:url("../css/images/menubar03.png"); }
+	/* normal */
+		#leftContents03 ul li.notice a { margin-top:20px; width:180px; background-position:0px -20px; }
+		#leftContents03 ul li.freeboard a { margin-bottom:20px; width:180px; background-position:0px -50px; }
+	/* hover */
+		#leftContents03 ul li.notice a:hover { background-position:-180px -20px; }
+		#leftContents03 ul li.freeboard a:hover { background-position:-180px -50px; }
+	/* active */
+		#leftContents03 ul li.notice a:active { background-position:-360px -20px; }
+		#leftContents03 ul li.freeboard a:active { background-position:-360px -50px; }
 /*--- center ---*/
-#centerContainer{ margin-left:180px; min-width:640px; height:100%; position:relative; display:block; }
+#centerContainer{ margin-left:180px; margin-right:200px; min-width:640px; height:100%; position:relative; display:block; }
 /* centerContents */
 	/* COMMON */
 	#centerContents{ display:block; }
 /*--- right ---*/
-#rightContainer{ min-width:200px; height:100%; float:right; display:block; }
+#rightContainer{ position:absolute; right:0; top:0; bottom:0; width:200px; padding:0!important; background:orange; z-index:10000; }
 /* rightContents */
 	/* COMMON */
 	#rightContents{ display:block; }
 
 /*----- footer -----*/
-#tail{ width:940px; height:200px; display:table-row; background:linear-gradient(0deg, #FFFFFF, #D1B2FF); }
+#footer{ min-width:1024px; position:fixed; left:0; right:0; bottom:0; z-index:10000; height:80px; display:table-row; background:blue; }

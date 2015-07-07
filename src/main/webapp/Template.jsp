@@ -12,10 +12,6 @@
 <script type="text/javascript" src="${root}/js/artist.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/template.css"/>
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
-<style type="text/css">
-#leftContents { width:180px; background-image:url("${root}/css/images/menubar.png"); }
-#leftContents ul li a { background-image:url("${root}/css/images/menubar.png"); }
-</style>
 </head>
 <body id="mainBoard">
 	<input type="hidden" id="root" value="${root }"/>
@@ -44,13 +40,25 @@
 		
 		<div id="containers"><!-- BODY -->
 			<div id="leftContainer"><!-- Left part -->
-				<div id="leftContents">
+				<div id="leftContents01">
 					<ul>
 						<li class="brandNewMusic"><a>Brand New Music</a></li>
 						<li class="bestMusic"><a>Best Music</a></li>
 						<li class="indisMusic"><a>Indi's Music</a></li>
 						<li class="performanceInfo"><a>Performance Info</a></li>
 						<li class="marketPlace"><a>Market Place</a></li>
+					</ul>
+				</div>
+				<div id="leftContents02">
+					<ul>
+						<li class="myMusic"><a>My Music</a></li>
+						<li class="indisMuse"><a>Indi's Muse</a></li>
+					</ul>
+				</div>
+				<div id="leftContents03">
+					<ul>
+						<li class="notice"><a>Notice</a></li>
+						<li class="freeboard"><a>Free Board</a></li>
 					</ul>
 				</div>
 			</div>

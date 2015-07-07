@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
+<script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript" src="${root}/js/artist.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 
@@ -42,7 +44,7 @@
 		</div><br/>
 		<div>
 			<label>Birth</label>
-			<input type="date" name="artist_birth"/>
+			<input type="text" name="artist_birth"/>
 		</div><br/>
 		<div>
 			<label>Profile Image</label>
