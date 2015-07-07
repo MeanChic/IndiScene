@@ -5,7 +5,7 @@
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script type="text/javascript">
@@ -15,11 +15,12 @@
 		@author : Kim Min Sic
 		@description : Music Player in Web using javavscript 
 */
+	var audio = document.createElement("audio");
 	$(function(){
 		/* 오디오 태그 생성을 통한  웹플레이어 준비*/
-		var audio = document.createElement("audio");
 		var index = 0 ;
 		audio.volume = 0.5;
+		$(audio).attr("preload","auto");
 		
 		/* 음원 재생 끝날 시 다음 곡 재생 */
 		$(audio).bind("ended",function(){
@@ -34,11 +35,7 @@
 		});
 		
 		/* 시간 진행에 따른 시간 재생 바 변경 */
-		$(audio).bind("timeupdate",function(){
-			//alert("now playing"); 
-			$("#musicBar").val(audio.currentTime);
-			document.getElementById("demo").innerHTML = audio.currentTime + "<br/>" + $("#musicBar").attr("max");
-		});
+		$(audio).bind("timeupdate",timeChange);
 		
 		/* 재생 리스트 추가 시 플레이 리스트에 추가. */
 		$("#listBtn").click(function(){
@@ -56,7 +53,7 @@
 		var duration =0;			// 음원 총 길이
 		
 		/* 음원 준비 완료 시 설정 */
-		audio.addEventListener("loadedmetadata", function() {
+		audio.addEventListener("loadeddata", function() {
 		    duration= audio.duration;
 		    setTime(duration);
 		    if(currentTime!=0){
@@ -70,8 +67,10 @@
 		$("#play").click(function(){
 			/* alert($(".musicPath:eq(0)").val()); */
 			if(audio.paused == true){
+				$(audio).bind("timeUpdate",timeChange);
 				$(audio).attr("src",$(".musicPath:eq("+index+")").val());
 			}else{
+				$(audio).unbind("timeUpdate",timeChange);
 				currentTime=audio.currentTime;
  				audio.pause(); 
 			}
@@ -99,10 +98,11 @@
 		
 		/* 음악 진행 바의 value 변경시 음원 재생시간 변경 */
 		$("#musicBar").bind("change",function(){
-		//	audio.pause();
-			alert($(this).val());
+			audio.pause();
+			$(audio).unbind("timeUpdate",timeChange);
 			audio.currentTime=$(this).val();
-		//	audio.play();
+			audio.play();
+			$(audio).bind("timeUpdate",timeChange);
 		});
 		
 		/* 음악 진행 바에 음악 길이 셋팅. */
@@ -117,7 +117,22 @@
 			audio.volume=$(this).val()*0.01;
 			$("#volumeText").text($(this).val());
 		});
+		
+		$("#prevMoment").click(function(){
+			audio.currentTime= audio.currentTime-10;
+		});
+		
+		$("#nextMoment").click(function(){
+			audio.currentTime= audio.currentTime+10;
+		});
 	});
+	
+	function timeChange(){
+		//alert("now playing"); 
+		$("#musicBar").val(audio.currentTime);
+		document.getElementById("demo").innerHTML = audio.currentTime + "<br/>" + $("#musicBar").attr("max");
+		document.getElementById("buffer").innerHTML="버퍼링된 구역 : " + audio.buffered.end(0)+"<br/>탐색가능구역 : " +audio.seekable.end(0)+"<br/>"+audio.seekable.length;
+	}
 </script>
 </head>
 <body>
@@ -136,12 +151,17 @@
 	<input type="button" id="play" value="Play/Pause"/>
 	<input type="button" id="next" value="next"/>
 	<br/>
+	<input id="prevMoment" type="button" value="-10초"/>
 	<input id="musicBar" type="range" max="" min="0" step="1" value="0" style="width:300px;"/>
+	<input id="nextMoment" type="button" value="+10초"/>
 	<input id="volumeBar" type="range" max="100" min="0" step="1" value="50"/>
 	<span id="volumeText"></span>
 	<div id="demo"></div>
 	<ul id="audioList">
 		
 	</ul>
+	
+	<br/>
+	<div id="buffer"></div>
 </body>
 </html>

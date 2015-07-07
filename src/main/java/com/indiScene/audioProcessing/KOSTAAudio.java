@@ -12,6 +12,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import org.springframework.stereotype.Component;
+
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.filters.HighPass;
 import be.tarsos.dsp.filters.LowPassFS;
@@ -25,13 +27,8 @@ import be.tarsos.dsp.io.jvm.WaveformWriter;
  * @author : Kim Min Sic
  * @description : Class to processing Audio File (merge, reduce noise, audio save(wave file))
  */
+
 public class KOSTAAudio {
-	public static KOSTAAudio instance = new KOSTAAudio();
-	
-	public KOSTAAudio getInstance(){
-		return instance;
-	}
-	
 	/**
 	 * @name : mergeAudio
 	 * @date : 2015. 7. 6.
