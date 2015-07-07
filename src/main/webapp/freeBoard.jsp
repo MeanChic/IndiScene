@@ -78,11 +78,9 @@
 		<a href="javascript:list('${root }')">자유게시판 목록보기</a>
       </div>
       
-      <div id="content1">
+      <div id="content">
         <h2>Content</h2>
-        	<div id="content">
         	
-        	</div>
         </div>
       <div id="sidebar">
         <h2>Sidebar</h2>
