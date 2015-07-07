@@ -36,7 +36,7 @@ public class UploadBoardController {
 		}*/
 		
 		mav.addObject("str1","success1");
-		mav.addObject("str2","µÇ³ª?");
+		mav.addObject("str2","ddddd");
 		mav.setViewName("uploadBoard/write");
 		
 		return mav;

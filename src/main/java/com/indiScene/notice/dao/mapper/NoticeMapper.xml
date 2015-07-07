@@ -6,7 +6,7 @@
  <mapper namespace="dao.NoticeMapper">
 
 	<insert id="noticeInsert" parameterType="com.indiScene.notice.dto.NoticeDto">
-		<![CDATA[ insert into notice values(#{subject}, #{content}, #{register_date}, #{count}, #{seq_level},#{seq_num}, #{group_num},notice_num_seq.nextval) ]]>		
+		<![CDATA[ insert into notice values(#{subject}, #{content}, #{register_date}, #{count}, #{seq_level},#{seq_num}, #{group_num},notice_seq.nextval) ]]>		
 	</insert>
 	
 	<select id="noticeGroupNumberMax" resultType="int">
