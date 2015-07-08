@@ -12,6 +12,6 @@
 <body>
 	<script type="text/javascript" src="${root}/js/uploadBoard.js"></script>
 	<a href="javascript:write('${root}')">글쓰기</a>
-	<div id="centerContents"></div>
+	<div id="centerContents"><h1>가나다라마바사아장차카타파하</h1></div>
 </body>
 </html>

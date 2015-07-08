@@ -45,4 +45,13 @@ public class UploadBoardController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/uploadBoard/record.do", method=RequestMethod.POST)
+	public ModelAndView record(MultipartHttpServletRequest request, HttpServletResponse response){
+		logger.info("record start");
+		
+		service.record(request,response);
+		
+		return null;
+	}
 }

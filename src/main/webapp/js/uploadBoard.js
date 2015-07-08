@@ -6,9 +6,11 @@ function write(root){
 		success:function(data){
 			//alert(data);
 			var realData = data.split("<body>");
-			var realData = realData[1].split("</body>")[0];
-			alert(realData);
+			realData = realData[1].split("</body>")[0];
+		//	alert(realData);
 			$("#centerContents").html(realData);
+			$.getScript(root+"/js/recorderjs/recorderInit.js");
+			$.getScript(root+"/js/recorderjs/recorder.js");
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -33,10 +35,12 @@ function writeOk(root){
 }
 
 function record(artist_id,root){
-	if($("#recordButton img").attr("src")==root+"/resources/uploadBoard/Mic.jpg"){
-		$("#recordButton img").attr("src",root+"/resources/uploadBoard/Mic2.jpg");
+	if($("#recordButton > img").attr("src")==root+"/resources/uploadBoard/Mic.jpg"){
+		$("#recordButton > img").attr("src",root+"/resources/uploadBoard/Mic2.jpg");
 		recorderSetting();
+		$("#recordBox").css("display","inline");
 	}else{
-		$("#recordButton img").attr("src",root+"/resources/uploadBoard/Mic.jpg");
+		$("#recordButton > img").attr("src",root+"/resources/uploadBoard/Mic.jpg");
+		$("#recordBox").css("display","none");
 	}
 }

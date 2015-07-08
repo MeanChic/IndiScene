@@ -2,6 +2,7 @@ package com.indiScene.uploadBoard.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,8 @@ import com.indiScene.uploadBoard.dto.UploadBoardDto;
 
 @Controller
 public class UploadBoardServiceImpl implements UploadBoardService {
-
+	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
+	
 	@Autowired
 	private UploadBoardDaoImpl dao;
 	private Logger logger = Logger.getLogger(this.getClass().getName());
@@ -75,12 +78,11 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		uploadBoardDto.setRegister_date(new java.util.Date());
 		uploadBoardDto.setCount(0);
 		
-		String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/uploadBoard/";
 		String coverImage = uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(0).getOriginalFilename();
 		String musicFile = uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(1).getOriginalFilename();
 		
-		File coverImageFile = new File(dir+"cover/",coverImage);
-		File uploadMusicFile = new File(dir+"music/",musicFile);
+		File coverImageFile = new File(dir+"uploadBoard/cover/",coverImage);
+		File uploadMusicFile = new File(dir+"uploadBoard/music/",musicFile);
 		
 		uploadBoardDto.setFile_name(fileList.get(1).getOriginalFilename());
 		uploadBoardDto.setFile_path(uploadMusicFile.getAbsolutePath());
@@ -137,6 +139,35 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		boardDto.setSeq_level(seq_level);
 		
 		logger.info("--"+group_num + "," + seq_num + "," + seq_level);
+	}
+
+	@Override
+	public void record(MultipartHttpServletRequest request,
+			HttpServletResponse response) {
+		logger.info("upload Record Service Start");
+		
+		String artistId= request.getParameter("artist_id");
+		Iterator<String> iter = request.getFileNames();
+		MultipartFile mpf = request.getFile(iter.next());
+	    String recordFile = artistId+"_"+System.currentTimeMillis()+"_"+"RecordingFile.wav";
+		
+	    File record =new File(dir+"TemporaryMusic/",recordFile);
+	    try {
+			mpf.transferTo(record);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    
+	    PrintWriter pw=null;
+		try {
+			pw = response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    pw.write(recordFile);
+//		System.out.println("artist id = " +request.getParameter("artist_id"));
 	}
 	
 }

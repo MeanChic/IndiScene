@@ -3,14 +3,15 @@
 <%@ taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
+<c:set var="artist_id" value="indi"/>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<script type="text/javascript" src="${root}/js/recorderjs/recorderInit.js"></script>
-	<script type="text/javascript" src="${root}/js/recorderjs/recorder.js"></script>
+	<%-- <script type="text/javascript" src="${root}/js/recorderjs/recorderInit.js"></script>
+	<script type="text/javascript" src="${root}/js/recorderjs/recorder.js"></script> --%>
 		"board_num" , ${board_num}
 		"group_num" , ${group_num}
 		"seq_num" , ${seq_num}
@@ -25,17 +26,26 @@
 		
 		<span>제목</span><input id="subject" name="subject" type="text"/> <br/><br/>
 		<span>일시</span>
-		<span>커버사진</span><input type="file" name="coverImage" accept="image/*"/><span>음악파일</span><input type="file" name="musicFile" accept="audio/*"/><span>녹음파일</span><a href="javascript:record('${artist_id}','${root}')" id="recordButton"><img style="width:3%; height: 3%;" src="${root}/resources/uploadBoard/Mic.jpg"/></a><br/><br/>
+		<span>커버사진</span><input type="file" name="coverImage" accept="image/*"/><span>음악파일</span><input type="file" name="musicFile" accept="audio/*"/><span>녹음파일</span><a href="javascript:record('${artist_id}','${root}')" id="recordButton"><img style="width:3%; height: 3%;" src="${root}/resources/uploadBoard/Mic.jpg"/></a>
+		<span id="recordBox" style="display:none;position:relative; float:none;"><img src="${root}/resources/uploadBoard/rec.png" onclick="toggleRecording(this)"/></span><br/><br/>
 		<span>내용</span><textarea rows="20" cols="100" name="content" id="content"></textarea><br/><br/>
 		<br/><br/>
 		
 		<div>
 			<input type="submit" value="글쓰기"/>
 			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/fileBoard/list.do'"/>
+			<input type="button" value="목록보기" onclick="location.href='${root}/uploadBoard/list.do'"/>
 		</div>
 	</form>
 	
-	<span id="recordBox" 
+	<input type="hidden" id="root" value="${root}"/>
+	<input type="hidden" id="uploadPath" value=""/>
+	<input type="hidden" id="originalMusicPath" value=""/> 
+	<script type="text/javascript">
+	//	alert($("#recordButton").css("left"));
+	//	$("#recordBox").css("left",$("#recordButton").css("left"));
+		$("#recordBox").css($("#recordButton").css("height"));
+		//$("#recordButton").nextSibling().insertBefore($("#recordBox"));
+	</script>
 </body>
 </html>

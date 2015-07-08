@@ -108,18 +108,14 @@ DEALINGS IN THE SOFTWARE.
 
   Recorder.setupDownload = function(blob, filename){
     var url = (window.URL || window.webkitURL).createObjectURL(blob);
-    var link = document.getElementById("save");
-/*    link.href = url;
-    link.download = filename || 'output.wav';*/
     
     var data = new FormData();
-/*    $.each($(url).files, function(i, file) {          
-        data.append('file-' + i, file);
-    });*/
-    data.append("file-",blob);
+    data.append("recordFile",blob);
+    data.append("artist_id",$("input[name='artist_id']").val());
+    
     
     $.ajax({
-        url: $("#root").val()+'/record.test',
+        url: $("#root").val()+'/uploadBoard/record.do',
         type: "post",
         dataType: "text",
         data: data,
@@ -127,7 +123,8 @@ DEALINGS IN THE SOFTWARE.
         processData: false,
         contentType: false,
         success: function(data, textStatus, jqXHR) {
-            alert(data);
+//            alert(data);
+        	$("#uploadPath").val($("#root").val()+"/resources/TemporaryMusic/"+data);
         }, error: function(jqXHR, textStatus, errorThrown) {},
     });
   }
