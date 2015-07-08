@@ -15,4 +15,13 @@ public interface MarketBoardDao {
 	public MarketBoardDto read(String boardNumber);
 	
 	public int count(String boardNumber);
+	
+	public String passCheck(String artist_id);
+	
+	public int delete(String board_num);
+	
+	public MarketBoardDto update(String board_num);
+	
+	public int updateOk(MarketBoardDto marketBoardDto);
+	
 }

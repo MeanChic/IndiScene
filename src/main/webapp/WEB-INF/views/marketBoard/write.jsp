@@ -9,14 +9,15 @@
 <title>거래 게시판 글쓰기 </title>
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <script src="${root }/resources/ckfinder/ckfinder.js"></script>
+<script src="${root }/js/jquery.js" type="text/javascript" ></script>
+<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 	<script type="text/javascript" src="${root }/css/marketBoard/script.js"></script>
 	<!--  <link rel="stylesheet" type="text/css" href="${root }/css/marketBoard/style.css"/>-->
 </head>
 <body>
 
-	<form class="form_style"  action="${root }/marketBoard/write.do"  method="post" onsubmit="return checkForm(this)">	
+	<form class="form_style"  action="${root }/marketBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<!-- <input type="hidden" name="board_num" value="${boardNumber }"/>-->
-
 			
 		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
 				<a href="${root}/marketBoard/enterBoard.do">글목록</a>
@@ -40,14 +41,16 @@
 				
 				 CKEDITOR.replace( 'content',
 						 {///IndiScene_basic/src/main/webapp/resources/ckfinder
-						 	filebrowserBrowseUrl : '/resources/ckfinder/ckfinder.html',
-						 	filebrowserImageBrowseUrl : '/resources/ckfinder/ckfinder.html?type=Images',
-						 	filebrowserFlashBrowseUrl : '/resources/ckfinder/ckfinder.html?type=Flash',
-						 	
-						 	filebrowserUploadUrl: '${root}/marketBoard/fileUpload.do' // 파일 업로드를 처리 할 경로 설정.
+						 	filebrowserUploadUrl: '${root}/marketBoard/imageUpload.do' // 파일 업로드를 처리 할 경로 설정.
 						 });
 	  	</script>
 			</span>
+		</div>	
+		
+		<div class="line">
+			<label class="subject">파일</label>
+				<span class="content"><input class="multi" type="file" name="file[]" multiple></span>
+				                    
 		</div>	
 		
 		<div class="line" style= text-align:center;>

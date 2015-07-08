@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.util.*" %>
+<%@ page import="org.springframework.web.servlet.ModelAndView" %>
+
 
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
@@ -12,14 +15,16 @@
 
 </head>
 <body>
-<div> 
-		<input type="button" value="글쓰기 " onclick="location.href='${root}/marketBoard/write.do'"/>
 
-		<c:forEach var="market" items="${list }">
+		<input type="button" value="글쓰기 " onclick="location.href='${root}/marketBoard/write.do'"/>
+	
+		<c:forEach  items="${list }" varStatus="s">
+		<c:set var="market" value="${requestScope.list[s.count - 1]}" /> 
+		<c:set var="image" value="${requestScope.mainImageList[s.count - 1]}" /> 
+
 			<div class="form_style" style="height:130px;">
 				<div class="disp" style="border-width:1px;">
-					${market.file_path } &nbsp;
-					<a href="${root }/marketBoard/read.do?board_num=${market.board_num}&pageNumber=${currentPage}"><img src="${market.file_path}"><br>${market.subject }<br/></a>
+					<a href="${root }/marketBoard/read.do?board_num=${market.board_num}&pageNumber=${pageNumber}"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/></a>
 					<fmt:formatDate value="${market.register_date }" type="date"/> &nbsp;&nbsp;
 				</div>
 				<div class="disp-content">
@@ -38,7 +43,7 @@
 			<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0?0:1) }"/>	
 				
 				<%-- 시작 페이지 번호 --%>
-			<fmt:parseNumber var="rs" value="${((currentPage-1)/pageBlock) }" integerOnly="true"/>	<%--((currentPage-1)/pageBlock)의 결과값을 int로 형변환하기위해 parseNumber를 사용  --%>
+			<fmt:parseNumber var="rs" value="${((pageNumber-1)/pageBlock) }" integerOnly="true"/>	<%--((pageNumber-1)/pageBlock)의 결과값을 int로 형변환하기위해 parseNumber를 사용  --%>
 			<c:set var="startPage" value="${rs*pageBlock+1 }"/>	
 				
 				<%-- 끝 페이지 번호 --%>
@@ -58,12 +63,7 @@
 			<c:if test="${endPage<pageCount }">
 				<a href="${root }/marketBoard/enterBoard.do?pageNumber=${startPage+pageBlock }">[다음]</a>
 			</c:if>
-			
 		</c:if>
-
-</div>
-
-
 
 </body>
 </html>
