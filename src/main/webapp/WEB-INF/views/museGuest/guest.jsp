@@ -219,47 +219,49 @@
 </script>
 </head>
 <body>
-	작성자 : ${artist_id} 뮤즈이름:${muse_name}
+	
 	<input name = "count" type="hidden" value="${count}"/>
 	<input name="boardnum" type="hidden" value="${boardnum}"/>
 	<input name="pageCount" type="hidden" value="${count/boardnum}"/>
 	<input name="pagenum" type="hidden" value="${pagenum }"/>
 	
-	<form>
+	<form style="width:40%; height:180px; display:block; border:solid 1px black;">
+	<span>작성자 : ${artist_id}</span> <span style="align:right;">뮤즈이름:${muse_name}</span>
 	<input type="hidden" name="muse_name" value="${muse_name}">
 	<input type="hidden" name="artist_id" value="${artist_id}">
 	<input type="hidden" id="root" value="${root }"/>
-	<textarea name="guest_content" rows="5" cols="30"></textarea>
+	<textarea name="guest_content" rows="8" cols="50" ></textarea>
 	<input type="button"  value="전송" onclick="send()"/>
 	</form>
 	
-	<div id="guestline">	
+	<div id="guestline" >	
 		<c:forEach var="guest" items="${list}">
 			<div id = "${guest.guest_num}">
-				<span> ${guest.artist_id}</span> <span>${guest.guest_date}</span> <br/>
-				<span >${guest.muse_name}</span> , <span class="con">${guest.guest_content}</span>
-				<form style="display:none"><textarea></textarea><input type="button"  value="수정하기" onclick="upcon('${guest.guest_num}')"/><input type="button" value="취소" onclick="remo('${guest.guest_num}')"/></form>
 				<c:if test="${artist_id == guest.artist_id}">
 					<%-- <input type="button" value="수정" onclick="update('${guest.guest_num}','${guest.guest_content}')"/>
 					<input type="button" value="삭제" onclick="delete('${guest.guest_num}')"/> --%>
 					<a href="javascript:update('${guest.guest_num}','${guest.guest_content}')">수정</a>
 					<a href="javascript:guestdel('${guest.guest_num}')">삭제</a>
 				</c:if>
+				<span> ${guest.artist_id}</span> <span>${guest.guest_date}</span> <br/>
+				<span >${guest.muse_name}</span> , <span class="con">${guest.guest_content}</span>
+				<form style="display:none"><textarea></textarea><input type="button"  value="수정하기" onclick="upcon('${guest.guest_num}')"/><input type="button" value="취소" onclick="remo('${guest.guest_num}')"/></form>
+				
 			</div>
 		</c:forEach>
 		
 		<c:if test="${count < boardnum}">
 			<c:forEach var="i" begin="${count+1}" end="${boardnum}">
 			<div>
-				<span></span> <span></span> <br/>
-				<span ></span> , <span class="con"></span>
-				<form style="display:none"><textarea></textarea><input type="button"  value="수정하기" onclick="upcon()"/><input type="button" value="취소" onclick="remo()"/></form>
 				<c:if test="${artist_id == guest.artist_id}">
 					<%-- <input type="button" value="수정" onclick="update('${guest.guest_num}','${guest.guest_content}')"/>
 					<input type="button" value="삭제" onclick="delete('${guest.guest_num}')"/> --%>
 					<a href="javascript:update()">수정</a>
 					<a href="javascript:guestdel()">삭제</a>
 				</c:if>
+				<span></span> <span></span> <br/>
+				<span ></span> , <span class="con"></span>
+				<form style="display:none"><textarea></textarea><input type="button"  value="수정하기" onclick="upcon()"/><input type="button" value="취소" onclick="remo()"/></form>
 			</div>
 			</c:forEach>
 		</c:if>

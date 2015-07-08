@@ -116,10 +116,10 @@
 </script>
 </head>
 <body>
-		"board_num" , ${board_num}
+		<%-- "board_num" , ${board_num}
 		"group_num" , ${group_num}
 		"seq_num" , ${seq_num}
-		"seq_level" , ${seq_level}
+		"seq_level" , ${seq_level} --%>
 		
 	<form action="${root}/performBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<input type="hidden" value="${artist_id}" name="artist_id"/>
@@ -161,7 +161,7 @@
 		<div>
 			<input type="submit" value="글쓰기"/>
 			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/fileBoard/list.do'"/>
+			<input type="button" value="목록보기" onclick="location.href='${root}/performBoard/list.do'"/>
 		</div>
 		
 		<output id="result"></output>

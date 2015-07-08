@@ -63,7 +63,6 @@ function cancle(artist_id, muse_name){
 				$("."+muse_name+"> input").attr("onclick","signup('"+artist_id+"','"+muse_name+"')");
 				$("#my").children("."+muse_name).remove();
 			}
-			
 		}
 	}); 
 }

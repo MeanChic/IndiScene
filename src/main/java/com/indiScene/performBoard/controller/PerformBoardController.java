@@ -51,7 +51,7 @@ public class PerformBoardController {
 	 */
 	@RequestMapping(value="/performBoard/write.do", method=RequestMethod.POST)
 	public ModelAndView write(MultipartHttpServletRequest request, PerformBoardDto boardDto){
-		logger.info("-- Write Post=========================");
+		//logger.info("-- Write Post=========================");
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("request", request);
@@ -69,7 +69,7 @@ public class PerformBoardController {
 	 */
 	@RequestMapping(value="/performBoard/list.do", method=RequestMethod.GET)
 	public ModelAndView list(HttpServletRequest request, ModelAndView mav){
-		logger.info("ch List =======================");
+		//logger.info("ch List =======================");
 		
 		mav.addObject("request", request);
 		service.list(mav);
@@ -84,11 +84,20 @@ public class PerformBoardController {
 	 */
 	@RequestMapping(value="/performBoard/read.do", method=RequestMethod.GET)
 	public ModelAndView read(HttpServletRequest request, ModelAndView mav){
-		logger.info("ch Read =========================");
+		//logger.info("ch Read =========================");
 		mav.addObject("request", request);
 		
 		service.read(mav);
 		
 		return mav;
-	}	
+	}
+	
+	@RequestMapping(value="/performBoard/update.do", method=RequestMethod.GET)
+	public ModelAndView update(HttpServletRequest request, ModelAndView mav){
+		//logger.info("-- Update ");
+		mav.addObject("request", request);
+		service.update(mav);
+		
+		return mav;
+	}
 }

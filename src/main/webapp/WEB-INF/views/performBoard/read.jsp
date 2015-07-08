@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
+<c:set var="artist_id" value="indiScene"/>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -58,10 +59,12 @@
 </script>
 </head>
 <body>
-	${pageNumber}<br/>${board.register_date}<br/>
-	${board.subject}<br/>
-	${board.artist_id}<br/>
-	${board.content}<br/>
+	<a href="${root}/performBoard/write.do">글쓰기</a><a style="margin:0 0 0 600px"href="${root}/performBoard/list.do">리스트로 돌아가기</a>
+	<div style="border:solid 1px black; width:700px; margin:100px 0 100px 20px ">
+	<span>${pageNumber}</span><span>${board.register_date}</span>
+	<div style="border:solid 1px black">${board.subject}</div>
+	<div style="border:solid 1px black">${board.artist_id}</div>
+	<div style="border:solid 1px black; height:100px;">${board.content}</div>
 	${board.d_day}<br/>
 	${board.count}<br/>
 	
@@ -70,13 +73,21 @@
 	</c:forEach> 
 	
 	<input type="hidden" id="address" value="${board.zipcode} ${board.address}"/>
-	<input type="hidden" id="date" value="${date }" name="d_day"/>
+	<input type="hidden" id="date" value="${date}" name="d_day"/>
 	<br/><br/>
     
     ${board.zipcode} ${board.address}
     <br/><br/>
-    <div id="map_canvas" style="width:50%; height:50%"></div>
     
-    <div id="datepicker"></div>
+    <div id="map_canvas" style="width:300px; height:300px"></div>
+    
+    <div style="width:300px;" id="datepicker"></div>
+	<div style="margin:0 0 0 400px">
+	<c:if test="${board.artist_id == artist_id }">
+	<input type="button" value="수정" onclick="javascript:location.href='${root}/performBoard/update.do?board_num=${board.board_num}'">
+	<input type="button" value="삭제" onclick="javascript:location.href='${root}/performBoard/delete.do?board_num=${board.board_num}'">
+	</c:if>
+	</div>
+	</div>
 </body>
 </html>

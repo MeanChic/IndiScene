@@ -286,6 +286,47 @@ $(function(){
 	$("button[name='delete']").click(function(){
 		location.href=root+"/artist/delete.do";
 	})
+	
+	$("#indisMusic").click(function(){
+		var artist_id=$("input[name='artist_id']").val();
+		var sendData="?artist_id="+artist_id;
+		
+		if($("#artistUpdate").val()==undefined){
+			$("#centerContents").append("<div id='artistUpdate' class='hasPaddingContents'></div>")
+			$("#artistUpdate").css("display","block");
+			$("#artistUpdate").siblings().css("display","none");
+			$.ajax({
+				url:root+"/museCreate/musemain.do"+sendData,
+				type:"GET",
+				dataType:"html",
+				success:function(data){
+//					var realData = data.split("<body>");
+//					var realData = realData[1].split("</body>")[0];
+					$("#artistUpdate").append(data);
+				}
+			})
+		}else{
+			$("#artistUpdate").css("display","block");
+			$("#artistUpdate").siblings().css("display","none");
+		}
+	})
+	
+	$("input[name='updateOk']").click(function(){
+		var sendData="artist_id="+$("input[name='artist_id']").val()+"&artist_password="+$("input[name='artist_password']").val()+"&artist_name="+$("input[name='artist_name']").val()+"&artist_nickname="+$("input[name='artist_nickname']").val()+"&artist_phone="+$("input[name='artist_phone']").val()+"&artist_zipcode="+$("input[name='artist_zipcode']").val()+"&artist_address="+$("input[name='artist_address']").val()+"&artist_birth="+$("input[name='artist_birth']").val()+"&artist_picture="+$("input[name='artist_picture']").val()+"&artist_level="+$("input[name='artist_level']").val();
+		$.ajax({
+			data:sendData,
+			url:root+"/artist/update.do",
+			type:"POST",
+			dataType:"json",
+			success:function(data){
+				/* 개인정보 수정 완료 */
+			}
+		})
+	})
+	
+	$("button[name='delete']").click(function(){
+		location.href=root+"/artist/delete.do";
+	})
 })
 
 

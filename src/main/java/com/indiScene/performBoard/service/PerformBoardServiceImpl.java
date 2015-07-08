@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.indiScene.performBoard.dao.PerformBoardDao;
 import com.indiScene.performBoard.dao.PerformBoardDaoImpl;
 import com.indiScene.performBoard.dto.PerformBoardDto;
 
@@ -30,7 +31,7 @@ import com.indiScene.performBoard.dto.PerformBoardDto;
 public class PerformBoardServiceImpl implements PerformBoardService {
 	String rootpath = "C:/Users/kosta/git/IndiScene/src/main/webapp/";
 	@Autowired
-	private PerformBoardDaoImpl boardDao;
+	private PerformBoardDao boardDao;
 	private final Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	public void boardWrite(ModelAndView mav){
@@ -77,15 +78,15 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 			String timeName = System.currentTimeMillis() + "_" + fileName ;
 			long fileSize = upFile.getSize();
 			
-			logger.info("-- fileName : " + fileName);
-			logger.info("-- timeName : " + timeName);
-			logger.info("-- fileSize : " + fileSize);
+			//logger.info("-- fileName : " + fileName);
+			//logger.info("-- timeName : " + timeName);
+			//logger.info("-- fileSize : " + fileSize);
 			
 			if(fileSize != 0){
 				try{
 					String dir="C:\\Users\\kosta\\git\\IndiScene\\src\\main\\webapp\\resources\\performResource";
 					
-					logger.info("ch dir : " + dir);
+					//logger.info("ch dir : " + dir);
 					
 					File file = new File(dir, timeName);
 					upFile.transferTo(file);	
@@ -110,7 +111,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		}
 		
 		int check = boardDao.insert(boardDto);
-		logger.info("ch check : " + check);
+		//logger.info("ch check : " + check);
 		
 		mav.addObject("check" , check);
 		mav.setViewName("performBoard/list");	
@@ -152,7 +153,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		boardDto.setSeq_num(seq_num);
 		boardDto.setSeq_level(seq_level);
 		
-		logger.info("--"+group_num + "," + seq_num + "," + seq_level);
+		//logger.info("--"+group_num + "," + seq_num + "," + seq_level);
 	}
 	
 	public void list(ModelAndView mav){
@@ -168,10 +169,10 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		int endRow = currentPage*boardSize;
 		
 		int count = boardDao.getBoardCount();
-		logger.info("ch count : " + count);
+		//logger.info("ch count : " + count);
 		
 		List<PerformBoardDto> list = boardDao.getBoardList(startRow, endRow);
-		logger.info("ch list : " + list.size());
+		//logger.info("ch list : " + list.size());
 		
 	
 		for(int i = 0; i < list.size(); i++){
@@ -197,10 +198,12 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		
 		PerformBoardDto board = boardDao.read(board_num);
-		
-		String[] path = board.getFile_path().split(",");
-		for(int i = 0; i < path.length; i++){
-			path[i] = path[i].substring(rootpath.length());
+		String[] path = null;
+		if(board.getFile_path() != null){
+			path = board.getFile_path().split(",");
+			for(int i = 0; i < path.length; i++){
+				path[i] = path[i].substring(rootpath.length());
+			}
 		}
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -212,6 +215,18 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		mav.addObject("board", board);
 		
 		mav.setViewName("performBoard/read");
+	}
+	
+	public void update(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		String board_num = request.getParameter("board_num");
+		
+		PerformBoardDto boardDto = boardDao.read(board_num);
+		//logger.info("--" + boardDto.getBoard_num() + " ,, " + board_num);
+		
+		mav.addObject("board", boardDto);
+		mav.setViewName("performBoard/update");
 	}
 }
 
