@@ -35,5 +35,7 @@
 			<input type="button" value="목록보기" onclick="location.href='${root}/fileBoard/list.do'"/>
 		</div>
 	</form>
+	
+	<span id="recordBox" 
 </body>
 </html>

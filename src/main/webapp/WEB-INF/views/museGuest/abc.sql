@@ -26,7 +26,7 @@ increment by 1;
 insert into artist(ARTIST_ID,ATIST_PASSWORD,ARTIST_NAME,ARTIST_NICKNAME,ARTIST_PHONE,ARTIST_ZIPCODE, 			   
  ARTIST_ADDRESS, 			   
  ARTIST_BIRTH)			   
- values('testId','1','testId','0','a','a','0',to_date('1990-12-27', 'yyyy-mm-dd'))
+ values('indi','1','testId','0','a','a','0',to_date('1990-12-27', 'yyyy-mm-dd'))
  
  select * from ARTIST;
  
