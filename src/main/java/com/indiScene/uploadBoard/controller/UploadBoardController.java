@@ -26,13 +26,10 @@ public class UploadBoardController {
 	public ModelAndView write(HttpServletRequest request, HttpServletResponse response){
 		logger.info("upload Write Start ------ ");
 		ModelAndView mav= new ModelAndView();
-		/*try {
-			PrintWriter writer =response.getWriter();
-			writer.write("success");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
-		mav.setViewName("uploadBoard/write");
+		
+		mav.addObject("request",request);
+
+		service.write(mav);	
 		return mav;
 	}
 	
@@ -44,7 +41,7 @@ public class UploadBoardController {
 		mav.addObject("request", request);
 		mav.addObject("uploadBoardDto", uploadBoardDto);
 		
-		service.write(mav);
+		service.writeOk(mav);
 		
 		return mav;
 	}

@@ -3,4 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.UploadMapper">
+	<insert id="boardInsert" parameterType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+		<![CDATA[
+			insert into uploadBoard values(
+				'u'||uploadBoard_seq.nextval,
+				#{board_like},
+				#{subject},
+				#{content},
+				#{register_date},
+				#{count},
+				#{file_path},
+				#{file_name},
+				#{seq_level},
+				#{group_num},
+				#{artist_id},
+				#{genre_code},
+				#{image_path}
+				)
+		]]>
+	</insert>
+	
+	<select id="GroupNumberMax" resultType="int">
+		select nvl(max(group_num), 0) from uploadboard
+	</select>
+	
+	<update id="GroupNumberUpdate" parameterType="java.util.HashMap" >
+		<![CDATA[update performboard set seq_num=seq_num+1 
+		where group_num = #{group_num} and seq_num > #{seq_num}]]> 
+	</update>
 </mapper>

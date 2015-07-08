@@ -20,7 +20,7 @@ public class MarketBoardDaoImpl implements MarketBoardDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
+	                          
 	@Override
 	public int getCount() {
 		System.out.println("daoImpl");
@@ -50,4 +50,26 @@ public class MarketBoardDaoImpl implements MarketBoardDao {
 	public int count(String boardNumber) {
 		return sqlSession.insert("dao.marketBoardMapper.readCount", boardNumber);
 	}
+
+	@Override
+	public String passCheck(String artist_id) {
+		return sqlSession.selectOne("dao.marketBoardMapper.passCheck",artist_id);
+	}
+
+	@Override
+	public int delete(String board_num) {
+		return sqlSession.delete("dao.marketBoardMapper.delete",board_num);
+	}
+
+	@Override
+	public MarketBoardDto update(String board_num) {
+		return sqlSession.selectOne("dao.marketBoardMapper.boardRead", board_num);
+	}
+
+	@Override
+	public int updateOk(MarketBoardDto marketBoardDto) {
+		return sqlSession.update("dao.marketBoardMapper.update", marketBoardDto);
+	}
+	
+	
 }

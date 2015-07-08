@@ -84,7 +84,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 			
 			if(fileSize != 0){
 				try{
-					String dir="C:\\Users\\kosta\\git\\IndiScene\\src\\main\\webapp\\resources\\performResource";
+					String dir="C:/SPB_Data/git/IndiScene/src/main/webapp/resources/performResource";
 					
 					//logger.info("ch dir : " + dir);
 					

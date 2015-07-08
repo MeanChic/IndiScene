@@ -14,14 +14,14 @@
 	
 	<select id="boardList" parameterType="java.util.HashMap" resultType="com.indiScene.marketBoard.dto.MarketBoardDto">
 		<![CDATA[
-			select * from (select rownum rnum, a.* from(select * from marketboard order by board_num desc)a) where rnum >=#{startRow} and rnum <= #{endRow}
+			select * from (select rownum rnum, a.* from(select * from marketboard order by register_date desc)a) where rnum >=#{startRow} and rnum <= #{endRow}
 		]]>
 	</select>
 	
 	<insert id="boardInsert" parameterType="com.indiScene.marketBoard.dto.MarketBoardDto">
 		<![CDATA[
-		insert into marketboard(SUBJECT,CONTENT,REGISTER_DATE,BOARD_NUM,ARTIST_ID,COUNT) 
-		values(#{subject},#{content},#{register_date},'m' || marketboard_seq.nextval,#{artist_id},0)
+		insert into marketboard(SUBJECT,CONTENT,REGISTER_DATE,BOARD_NUM,ARTIST_ID,COUNT,file_name,file_path) 
+		values(#{subject},#{content},#{register_date},'m' || marketboard_seq.nextval,#{artist_id},0,#{file_name},#{file_path})
 		]]>
 	</insert>
 	
@@ -31,6 +31,21 @@
 	
 	<update id="readCount" >
 		update marketboard set count=count+1 where board_num=#{boardNumber}
+	</update>
+	
+	<select id="passCheck" parameterType="java.lang.String" resultType="java.lang.String">
+		select artist_password from artist where artist_id=#{artist_id}
+	</select>
+	
+	<delete id="delete" parameterType="java.lang.String" >
+		delete from marketBoard where board_num=#{board_num}
+	</delete>
+	
+	<update id="update" parameterType="com.indiScene.marketBoard.dto.MarketBoardDto">
+		update marketBoard set
+			subject=#{subject}
+		,content=#{content}
+		where board_num=#{board_num}
 	</update>
 	
 	

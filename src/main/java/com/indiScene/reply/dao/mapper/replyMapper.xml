@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="dao.replyMapper">
+  
+  	<select id="replyRead" resultType="com.indiScene.reply.dto.ReplyDto">
+		select * from reply where board_num=#{board_num} order by reply_date desc
+	</select>
+	
+	
+	<insert id="replyInsert" parameterType="com.indiScene.reply.dto.ReplyDto" >
+		insert into reply values(#{board_num},(select to_char(to_number(nvl(max(reply_num),0))+1,'9999') from reply where board_num=#{board_num}),#{reply_content},#{reply_date},#{artist_id})
+	</insert>
+	
+	<select id="replyGetBunho" resultType="int">
+		select a.reply_num from(select reply_num from reply where board_num=#{board_num} order by reply_date desc) a where rownum=1
+	</select>
+	</mapper>
+	
