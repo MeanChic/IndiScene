@@ -1,5 +1,7 @@
 package com.indiScene.uploadBoard.service;
 
-public interface UploadBoardService {
+import org.springframework.web.servlet.ModelAndView;
 
+public interface UploadBoardService {
+	public void write(ModelAndView mav);
 }

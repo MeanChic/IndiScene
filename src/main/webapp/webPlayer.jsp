@@ -133,6 +133,24 @@
 		document.getElementById("demo").innerHTML = audio.currentTime + "<br/>" + $("#musicBar").attr("max");
 		document.getElementById("buffer").innerHTML="버퍼링된 구역 : " + audio.buffered.end(0)+"<br/>탐색가능구역 : " +audio.seekable.end(0)+"<br/>"+audio.seekable.length;
 	}
+	
+	function write(root){
+		$.ajax({
+			url:root+"/uploadBoard/write.do",
+			type:"get",
+			dataType:"html",
+			success:function(data){
+				//alert(data);
+				var realData = data.split("<body>");
+				var realData = realData[1].split("</body>")[0];
+				alert(realData);
+				$("#centerContent").html(realData);
+			},
+			error:function(xhr,status,error){
+				alert(xhr+"\n"+status+"\n"+error);
+			}
+		}); 
+	}
 </script>
 </head>
 <body>
@@ -163,5 +181,9 @@
 	
 	<br/>
 	<div id="buffer"></div>
+	
+	
+	<a href="javascript:write('${root}')">글쓰기</a>
+	<div id="centerContent"></div>
 </body>
 </html>
