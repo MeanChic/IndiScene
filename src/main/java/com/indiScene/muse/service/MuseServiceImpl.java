@@ -96,7 +96,8 @@ public class MuseServiceImpl implements MuseService {
 		
 		if(fileSize != 0){
 			try{
-				String dir="C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources";
+				String dir="C:/Users/kosta/git/IndiScene/src/main/webapp/resources/museResources";
+				//String dir="C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources";
 				
 				//logger.info("ch dir : " + dir);
 				
