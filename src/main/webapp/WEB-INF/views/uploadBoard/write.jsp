@@ -9,13 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${board_num == null}">
-		<c:set var="board_num" value="${0}"/>
-		<c:set var="group_num" value="${1}"/>
-		<c:set var="seq_num" value="${0}"/>
-		<c:set var="seq_level" value="${0}"/>
-	</c:if>
-	
+	<script type="text/javascript" src="${root}/js/recorderjs/recorderInit.js"></script>
+	<script type="text/javascript" src="${root}/js/recorderjs/recorder.js"></script>
 		"board_num" , ${board_num}
 		"group_num" , ${group_num}
 		"seq_num" , ${seq_num}
@@ -30,7 +25,7 @@
 		
 		<span>제목</span><input id="subject" name="subject" type="text"/> <br/><br/>
 		<span>일시</span>
-		<span>커버사진</span><input type="file" name="coverImage"/><span>음악파일</span><input type="file" name="musicFile"/><span>녹음파일</span><a href="javascript:record('${artist_id}','${root}')" id="recordButton"><img/></a><br/><br/>
+		<span>커버사진</span><input type="file" name="coverImage" accept="image/*"/><span>음악파일</span><input type="file" name="musicFile" accept="audio/*"/><span>녹음파일</span><a href="javascript:record('${artist_id}','${root}')" id="recordButton"><img style="width:3%; height: 3%;" src="${root}/resources/uploadBoard/Mic.jpg"/></a><br/><br/>
 		<span>내용</span><textarea rows="20" cols="100" name="content" id="content"></textarea><br/><br/>
 		<br/><br/>
 		
