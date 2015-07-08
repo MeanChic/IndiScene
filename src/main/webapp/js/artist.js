@@ -135,7 +135,7 @@ function sendAddress(zipcode, sido, gugun, dong, ri, bldg, bunji){
 }
 
 // Jquery
-$(document).ready(function(){
+$(function(){
 	var root = $("#root").val();
 	
 	$("#accordion").accordion();
@@ -150,8 +150,6 @@ $(document).ready(function(){
 	$("input[name='artist_zipcode']").attr("placeholder", "집 주소를 입력하세요.");
 	$("input[name='artist_address']").attr("placeholder", "상세주소를 입력하세요.");
 	$("input[name='artist_picture']").attr("placeholder", "Profile사진을 설정해주세요.");
-	
-	$("input[name='artist_birth']").datepicker();
 	
 	$(this).attr("value","");
 	
@@ -195,7 +193,8 @@ $(document).ready(function(){
 				type:"GET",
 				dataType:"html",
 				success:function(data){
-					//alert(data);	//Test
+//					var realData = data.split("<body>");
+//					var realData = realData[1].split("</body>")[0];
 					$("#artistRegister").append(data);
 				}
 			})
@@ -232,7 +231,8 @@ $(document).ready(function(){
 				type:"GET",
 				dataType:"html",
 				success:function(data){
-					//alert(data);	//Test
+//					var realData = data.split("<body>");
+//					var realData = realData[1].split("</body>")[0];
 					$("#artistUpdateLogin").append(data);
 				}
 			})
@@ -259,7 +259,8 @@ $(document).ready(function(){
 				type:"GET",
 				dataType:"html",
 				success:function(data){
-					//alert(data);	//Test
+//					var realData = data.split("<body>");
+//					var realData = realData[1].split("</body>")[0];
 					$("#artistUpdate").append(data);
 				}
 			})

@@ -2,6 +2,12 @@ package com.indiScene.museGuest.dto;
 
 import java.util.Date;
 
+/**
+ * @name:MuseGuestDto
+ * @date :2015. 7. 7.
+ * @author: 김정승
+ * @description :	방명록의 저장되는 내용을 보관하는 DTO class
+ */
 public class MuseGuestDto {
 	private int guest_num;
 	private String muse_name;

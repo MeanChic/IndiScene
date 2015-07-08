@@ -1,3 +1,8 @@
 @CHARSET "UTF-8";
-
-#RegisterForm{ width:640px; border:solid 2px #000; margin:auto; }
+form div{ margin-left:20px; margin-right:20px; }
+form div label{ width:120px; display:inline-block; }
+form div input{ width:200px; display:inline-block; }
+.artist_pictureForm{ margin:0; display:inline-block; }
+.artist_picture{ display:inline-block; }
+.registerOkButton{ margin:auto; text-align:center; }
+#RegisterForm{ width:580px; padding:inherit; margin:auto; }

@@ -165,7 +165,6 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		int board_num=Integer.parseInt(request.getParameter("board_num"));
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
 		
-		logger.info("board_num:"+board_num+",pageNumber:"+pageNumber);
 
 		FreeBoardDto freeBoardDto=freeBoardDao.freeBoardRead(board_num);
 		logger.info("freeBoardRead freeBoardDto: "+freeBoardDto);
@@ -208,7 +207,6 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		mav.addObject("check",check);
 		
 		mav.setViewName("freeBoard/deleteOk");
-		
 	}
 	@Override
 	public void freeBoardUpdate(ModelAndView mav) {

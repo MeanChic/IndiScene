@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.muse.dto.MuseDto;
+import com.indiScene.muse.service.MuseService;
 import com.indiScene.muse.service.MuseServiceImpl;
 
 /**
@@ -25,7 +26,7 @@ import com.indiScene.muse.service.MuseServiceImpl;
 public class MuseController {
 	
 	@Autowired
-	private MuseServiceImpl service;
+	private MuseService service;
 	private final Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	/**
@@ -37,7 +38,6 @@ public class MuseController {
 	@RequestMapping(value="/museCreate/logup.do", method=RequestMethod.GET)
 	public ModelAndView logup(HttpServletRequest request, ModelAndView mav){
 		mav.addObject("request", request);
-		
 		mav.setViewName("museCreate/logup");
 		
 		return mav;
@@ -66,10 +66,11 @@ public class MuseController {
 	 */
 	@RequestMapping(value="/museCreate/nameCheck.do", method=RequestMethod.GET)
 	public ModelAndView nameCheck(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
-		logger.info("--name Check");
+		//logger.info("--name Check");
 		mav.addObject("request", request);
 		mav.addObject("response", response);
 		service.nameCheck(mav);
+		
 		return null;
 	}
 	
@@ -81,11 +82,11 @@ public class MuseController {
 	 */
 	@RequestMapping(value="/museCreate/museCheck.do", method=RequestMethod.GET)
 	public ModelAndView museCheck(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
-		logger.info("--muse Check");
+		//logger.info("--muse Check");
 		mav.addObject("request", request);
-		
 		mav.addObject("response", response);
 		service.museCheck(mav);
+		
 		return null;
 	}
 	
@@ -97,16 +98,22 @@ public class MuseController {
 	 */
 	@RequestMapping(value="/museCreate/musemain.do", method=RequestMethod.GET)
 	public ModelAndView museMain(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
-		logger.info("--muse Check");
+		//logger.info("--muse Check");
 		mav.addObject("request", request);
 		service.museMain(mav);
-		//mav.setViewName("museCreate/musemain");
+		
 		return mav;
 	}
 	
+	/**
+	 * @name:museCancle
+	 * @date :2015. 7. 7.
+	 * @author: 김정승
+	 * @description :	muse 가입신청을 취소하기위해 service class를 호출하는 method
+	 */
 	@RequestMapping(value="/museCreate/museCancle.do", method=RequestMethod.GET)
 	public ModelAndView museCancle(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
-		logger.info("--muse Cancle");
+		//logger.info("--muse Cancle");
 		mav.addObject("request", request);
 		mav.addObject("response", response);
 		
@@ -115,6 +122,12 @@ public class MuseController {
 		return null;
 	}
 	
+	/**
+	 * @name:museSignup
+	 * @date :2015. 7. 7.
+	 * @author: 김정승
+	 * @description :	muse를 가입을 위해 service class를 호출하는 method
+	 */
 	@RequestMapping(value="/museCreate/museSignup.do", method=RequestMethod.GET)
 	public ModelAndView museSignup(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
 		logger.info("--muse Cancle");
@@ -126,58 +139,88 @@ public class MuseController {
 		return null;
 	}
 	
+	/**
+	 * @name:goin
+	 * @date :2015. 7. 7.
+	 * @author: 김정승
+	 * @description :	가입되어 있는 muse로 입장하기 위해 service class를 호출하는 method
+	 */
 	@RequestMapping(value="/museCreate/goin.do", method=RequestMethod.GET)
 	public ModelAndView goin(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
 		mav.addObject("request",request);
-		
 		service.goin(mav);
-		/*String muse_name = request.getParameter("muse_name");
-		logger.info("--" + muse_name);
-		mav.addObject("muse_name",muse_name);
-		mav.setViewName("museCreate/goin");*/
+		
 		return mav;
 	}
 	
+	/**
+	 * @name:masterCheck
+	 * @date :2015. 7. 7.
+	 * @author: 김정승
+	 * @description :	muse개설자인지 확인하기 위해 service class를 호출하는 method
+	 */
 	@RequestMapping(value="/museCreate/masterCheck.do", method=RequestMethod.GET)
 	public ModelAndView masterCheck(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
-		logger.info("--masterCheck Ok");
+		//logger.info("--masterCheck Ok");
 		
 		mav.addObject("request", request);
 		mav.addObject("response", response);
 		
 		service.masterCheck(mav);
+		
 		return null;
 	}
 	
+	/**
+	 * @name:museMember
+	 * @date :2015. 7. 7.
+	 * @author: 김정승
+	 * @description :	muse에 가입되어있는 회원 명단을 확인하기 위해 service class를 호출하는 method
+	 */
 	@RequestMapping(value="/museCreate/museMember.do", method=RequestMethod.GET)
 	public ModelAndView museMember(HttpServletRequest request, ModelAndView mav){
+		//logger.info("-- museMember");
+		
 		mav.addObject("request", request);
-		logger.info("-- museMember");
 		String check = request.getParameter("check");
 		mav.addObject("check", check);
+		
 		service.museMember(mav);
+		
 		return mav;
 	}
 	
+	/**
+	 * @name:outMember
+	 * @date :2015. 7. 7.
+	 * @author: 김정승
+	 * @description :	가입되어 있는 회원을 삭제하거나 가입 요청을 거부하기 위해 service class를 호출하는 method
+	 */
 	@RequestMapping(value="/museCreate/outMember.do", method=RequestMethod.GET)
 	public ModelAndView outMember(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
-		logger.info("--muse Check");
+		//logger.info("--muse Check");
 		mav.addObject("request", request);
 		mav.addObject("response", response);
 		
 		service.outMember(mav);
+		
 		return null;
 	}
 	
+	/**
+	 * @name:inviteMember
+	 * @date :2015. 7. 7.
+	 * @author: 김정승
+	 * @description :	가입요청을한 회원을 승인하기 위해 service class를 호출하는 method
+	 */
 	@RequestMapping(value="/museCreate/inviteMember.do", method=RequestMethod.GET)
 	public ModelAndView inviteMember(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){	
-		logger.info("--muse Check");
+		//logger.info("--muse Check");
 		mav.addObject("request", request);
 		mav.addObject("response", response);
 		
 		service.inviteMember(mav);
+		
 		return null;
 	}
-	
-	
 }

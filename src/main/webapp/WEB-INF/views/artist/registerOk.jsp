@@ -6,22 +6,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Insert title here</title>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript" src="${root}/js/artist.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 </head>
 <body>
-	<div id="updateLogin">
-		<table border="1" align="center" cellpadding="2" cellspacing="0">
-			<tr>
-				<td colspan="2" align="center">
-					<input type="hidden" name="artist_id" value="${artist_id}"/>
-					<button name="update">회원정보수정</button>
-					<button name="delete">회원탈퇴</button>
-				</td>
-			</tr>
-		</table>
-	</div>
+	<c:choose>
+		<c:when test="${check !=null}">
+			<script type="text/javascript">
+				alert("Success create an account.");
+				location.href="${root}/Template.jsp";
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script type="text/javascript">
+				alert("Fail sign up.");
+				location.href="${root}/Template.jsp";
+			</script>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>
