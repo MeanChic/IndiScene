@@ -1,9 +1,15 @@
 package com.indiScene.uploadBoard.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,9 +25,38 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 
 	@Autowired
 	private UploadBoardDaoImpl dao;
+	private Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	@Override
 	public void write(ModelAndView mav) {
+		logger.info("UploadBoard Write Service");
+		
+		Map<String, Object> map = mav.getModel();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		String board_num = "0";
+		int group_num = 1;
+		int seq_num = 0;
+		int seq_level = 0;
+	
+		if(request.getParameter("board_num") != null){
+			board_num = request.getParameter("board_num");
+			group_num = Integer.parseInt(request.getParameter("group_num"));
+			seq_num = Integer.parseInt(request.getParameter("seq_num"));
+			seq_level = Integer.parseInt(request.getParameter("seq_level"));
+		}
+		
+		mav.addObject("board_num" , board_num);
+		mav.addObject("group_num" , group_num);
+		mav.addObject("seq_num" , seq_num);
+		mav.addObject("seq_level" , seq_level);
+		
+		mav.setViewName("uploadBoard/write");
+	}
+
+	@Override
+	public void writeOk(ModelAndView mav) {
+		logger.info("UploadBoard WriteOk Service");
 		Map<String, Object> map = mav.getModel();
 		MultipartHttpServletRequest request = (MultipartHttpServletRequest) map.get("request");
 		UploadBoardDto uploadBoardDto = (UploadBoardDto) map.get("uploadBoardDto");
@@ -33,12 +68,75 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 			String fileStr = iter.next();
 			MultipartFile mf = request.getFile(fileStr);
 			fileList.add(mf);
-			
-			System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
+//			
+//			System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
 		}
 		
 		uploadBoardDto.setRegister_date(new java.util.Date());
+		uploadBoardDto.setCount(0);
 		
+		String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/uploadBoard/";
+		String coverImage = uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(0).getOriginalFilename();
+		String musicFile = uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(1).getOriginalFilename();
+		
+		File coverImageFile = new File(dir+"cover/",coverImage);
+		File uploadMusicFile = new File(dir+"music/",musicFile);
+		
+		uploadBoardDto.setFile_name(fileList.get(1).getOriginalFilename());
+		uploadBoardDto.setFile_path(uploadMusicFile.getAbsolutePath());
+		uploadBoardDto.setImage_path(coverImageFile.getAbsolutePath());
+		uploadBoardDto.setBoard_like(0);
+		
+		try {
+			fileList.get(0).transferTo(coverImageFile);
+			fileList.get(1).transferTo(uploadMusicFile);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		uploadBoardWriteNumber(uploadBoardDto);
+		dao.write(uploadBoardDto);		
 	}
-
+	
+	public void uploadBoardWriteNumber(UploadBoardDto boardDto){
+		
+		String board_num = boardDto.getBoard_num();
+		int group_num = boardDto.getGroup_num();
+		int seq_num = boardDto.getSeq_num();
+		int seq_level = boardDto.getSeq_level();
+		
+		//logger.info("ch boardWriteNumber =>" + boardNumber + "||" + groupNumber + "||" + sequenceNumber + "||" + sequenceLevel);
+		
+		int max = 0;
+		if(board_num.equals("0")){
+			//Root
+			max=dao.boardGroupNumberMax();
+			if(max != 0){
+				max = max+1;
+			}else{
+				max = boardDto.getGroup_num();
+			}
+			
+			group_num=max;
+			seq_num=boardDto.getSeq_num();
+			seq_level = boardDto.getSeq_level();
+		}else{
+			HashMap<String, Integer> hMap = new HashMap<String, Integer>();
+			hMap.put("group_num", group_num);
+			hMap.put("seq_num", seq_num);
+			
+			dao.boardGroupNumberUpdate(hMap);
+			seq_level+=1;
+			seq_num+=1;
+		}
+		
+		boardDto.setGroup_num(group_num);
+		boardDto.setSeq_num(seq_num);
+		boardDto.setSeq_level(seq_level);
+		
+		logger.info("--"+group_num + "," + seq_num + "," + seq_level);
+	}
+	
 }
