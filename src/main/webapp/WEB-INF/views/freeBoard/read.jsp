@@ -10,47 +10,9 @@
 <html>
 <title>FreeBoard Read</title>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/freeBoard.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/freeBoard.css"/>
-<script type="text/javascript">
 
-function replyFun(root, board_num, group_num, seq_num, seq_level, pageNumber){
-	$.ajax({
-		url:root+"/freeBoard/read.do",
-		type:"get",
-		dataType:"html",
-		success:function(data){
-			//alert(data);
-			var realData = data.split("<body>");
-			var realData = realData[1].split("</body>")[0];
-			//alert(realData);
-			$("#content").html(realData);
-		},
-		error:function(xhr,status,error){
-			alert(xhr+"\n"+status+"\n"+error);
-		}
-	}); 
-}
-
-	/* function replyFun(root, board_num, group_num, seq_num, seq_level, pageNumber){
-		var url=root + "/freeBoard/write.do?board_num="+board_num;
-		url+="&group_num="+group_num +"&seq_num="+seq_num+"&seq_level="+seq_level+"&pageNumber="+pageNumber;
-		//alert(url);
-		location.href=url;
-	}
-	
-	
-	function deleteFun(root, board_num, pageNumber){
-		var url=root + "/freeBoard/delete.do?board_num="+board_num+"&pageNumber="+pageNumber;
-		//alert(url);
-		location.href=url;
-	}
-	
-	function updateFun(root, board_num, pageNumber){
-		var url=root + "/freeBoard/update.do?board_num="+board_num+"&pageNumber="+pageNumber;
-		//alert(url);
-		location.href=url;
-	} */
-</script>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>게시판 읽기</title>

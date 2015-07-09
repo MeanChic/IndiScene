@@ -3,52 +3,54 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<c:set var="root" value="${pageContext.request.contextPath }"></c:set>
+<c:set var="root" value="${pageContext.request.contextPath }"/>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert Freeboard</title>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/freeBoard.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/freeBoard.css"/>
+<!-- 
 <script type="text/javascript">
 
-	function write(root){
-		$.ajax({
-			url:root+"/freeBoard/write.do",
-			type:"get",
-			dataType:"html",
-			success:function(data){
-				//alert(data);
-				var realData = data.split("<body>");
-				var realData = realData[1].split("</body>")[0];
-				//alert(realData);
-				$("#content").html(realData);
-			},
-			error:function(xhr,status,error){
-				alert(xhr+"\n"+status+"\n"+error);
-			}
-		}); 
-	}
-	
-	function list(root){
-		$.ajax({
-			url:root+"/freeBoard/list.do",
-			type:"get",
-			dataType:"html",
-			success:function(data){
-				//alert(data);
-				var realData = data.split("<body>");
-				var realData = realData[1].split("</body>")[0];
-			//	alert(realData);
-				$("#content").html(realData);
-			},
-			error:function(xhr,status,error){
-				alert(xhr+"\n"+status+"\n"+error);
-			}
-		}); 
-	}
-	
+function write(root){
+	$.ajax({
+		url:root+"/freeBoard/write.do",
+		type:"get",
+		dataType:"html",
+		success:function(data){
+			//alert(data);
+			var realData = data.split("<body>");
+			var realData = realData[1].split("</body>")[0];
+			//alert(realData);
+			$("#content").html(realData);
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	}); 
+}
+
+function list(root){
+	$.ajax({
+		url:root+"/freeBoard/list.do",
+		type:"get",
+		dataType:"html",
+		success:function(data){
+			//alert(data);
+			var realData = data.split("<body>");
+			var realData = realData[1].split("</body>")[0];
+		//	alert(realData);
+			$("#content").html(realData);
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	}); 
+}
 </script>
+ -->
 </head>
 <body>
 
@@ -68,7 +70,7 @@
 	<a href="${root }/freeBoard/list.do">목록보기</a>
 	
 	==========================================================================
-		
+		 
 	 --%>
 	<div id="container">
       <div id="header">
