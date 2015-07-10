@@ -113,7 +113,6 @@ DEALINGS IN THE SOFTWARE.
     data.append("recordFile",blob);
     data.append("artist_id",$("input[name='artist_id']").val());
     
-    
     $.ajax({
         url: $("#root").val()+'/uploadBoard/record.do',
         type: "post",

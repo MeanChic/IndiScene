@@ -59,8 +59,10 @@
 		    if(currentTime!=0){
 				audio.currentTime=currentTime;
 		//		alert(audio.currentTime);
+				audio.play();
+			}else{
+				audio.play();
 			}
-			audio.play();
 		});
 		
 		/* 재생 버튼 눌렀을 시 이벤트. */

@@ -35,7 +35,7 @@ public class KOSTAAudio {
 	 * @author : Kim Min Sic
 	 * @description : merge two diffrent audio file and save new one
 	 */
-	public String mergeAudio(String filePath1, String filePath2,String userId){
+	public String mergeAudio(String filePath1, String filePath2,String userId, double syncSecond){
 		byte[] outArray = null;
 		AudioInputStream ais1=null;
 		AudioInputStream ais2=null;
@@ -59,11 +59,27 @@ public class KOSTAAudio {
 			}
 			outArray = new byte[numBytes1];
 			
-			for(int i = 0 ; i < buffer2.length; i++){
-				if(i <45){
-					outArray[i] = buffer2[i];
+			long sync = (long)(syncSecond*ais1.getFormat().getSampleRate()*ais1.getFormat().getChannels()*ais1.getFormat().getSampleSizeInBits()/8);
+			
+			for(int i = 0 ; i < Math.max(buffer1.length, buffer2.length); i++){
+				if(i <= buffer1.length && i <= buffer2.length){
+					if(i <45){
+						outArray[i] = buffer2[i];
+					}else{
+						if(sync>=0){
+							if(i>=sync)
+								outArray[i] = (byte) ((int)(buffer1[i]*0.5 + buffer2[i]*0.5));
+							else
+								outArray[i] = buffer1[i];
+						}else{
+							if(i>=(sync*(-1)))
+								outArray[i] = (byte) ((int)(buffer1[i]*0.5 + buffer2[i]*0.5));
+							else
+								outArray[i] = buffer2[i];
+						}
+					}
 				}else{
-					outArray[i] = (byte) ((int)(buffer1[i]*0.5 + buffer2[i]*0.5));
+					outArray[i] = buffer1.length>buffer2.length?buffer1[i]:buffer2[i];
 				}
 			}
 		} catch (UnsupportedAudioFileException e) {

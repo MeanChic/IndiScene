@@ -1,6 +1,7 @@
 package com.indiScene.uploadBoard.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,20 @@ public class UploadBoardDaoImpl implements UploadBoardDao {
 	@Override
 	public void boardGroupNumberUpdate(HashMap<String,Integer> hMap) {
 		sqlSession.update("dao.UploadMapper.GroupNumberUpdate",hMap);
+	}
+
+	@Override
+	public int getBoardCount() {
+		return sqlSession.selectOne("dao.UploadMapper.getBoardCount");
+	}
+
+	@Override
+	public List<UploadBoardDto> getBoardList(HashMap<String,Integer> rowMap) {
+		return sqlSession.selectList("dao.UploadMapper.getBoardList", rowMap);
+	}
+
+	@Override
+	public UploadBoardDto read(String board_num) {
+		return sqlSession.selectOne("dao.UploadMapper.read", board_num);
 	}
 }

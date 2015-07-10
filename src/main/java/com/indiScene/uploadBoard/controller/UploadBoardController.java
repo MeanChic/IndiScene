@@ -54,4 +54,25 @@ public class UploadBoardController {
 		
 		return null;
 	}
+	
+	@RequestMapping(value="/uploadBoard/list.do", method=RequestMethod.GET)
+	public ModelAndView list(HttpServletRequest request){
+		logger.info("uploadBoard List Start----");
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request", request);
+		service.list(mav);
+		
+		return mav;
+	}
+	
+	public ModelAndView read(HttpServletRequest request){
+		logger.info("uploadBoard Read Start~~~~~~~");
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("request", request);
+		service.read(mav);
+		
+		return mav;
+	}
 }

@@ -3,6 +3,7 @@ package com.indiScene.uploadBoard.service;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -72,7 +73,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 			MultipartFile mf = request.getFile(fileStr);
 			fileList.add(mf);
 //			
-//			System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
+			System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
 		}
 		
 		uploadBoardDto.setRegister_date(new java.util.Date());
@@ -81,8 +82,11 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		String coverImage = uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(0).getOriginalFilename();
 		String musicFile = uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(1).getOriginalFilename();
 		
-		File coverImageFile = new File(dir+"uploadBoard/cover/",coverImage);
-		File uploadMusicFile = new File(dir+"uploadBoard/music/",musicFile);
+//		String dirCover = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/cover");
+//		String dirMusic = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/music");
+		
+		File coverImageFile = new File(dir+"/uploadBoard/cover/",coverImage);
+		File uploadMusicFile = new File(dir+"/uploadBoard/music/",musicFile);
 		
 		uploadBoardDto.setFile_name(fileList.get(1).getOriginalFilename());
 		uploadBoardDto.setFile_path(uploadMusicFile.getAbsolutePath());
@@ -99,7 +103,10 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		}
 		
 		uploadBoardWriteNumber(uploadBoardDto);
-		dao.write(uploadBoardDto);		
+		int check = dao.write(uploadBoardDto);
+		mav.addObject("check", check);
+		
+		mav.setViewName("uploadBoard/writeOk");
 	}
 	
 	public void uploadBoardWriteNumber(UploadBoardDto boardDto){
@@ -151,7 +158,9 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		MultipartFile mpf = request.getFile(iter.next());
 	    String recordFile = artistId+"_"+System.currentTimeMillis()+"_"+"RecordingFile.wav";
 		
-	    File record =new File(dir+"TemporaryMusic/",recordFile);
+//	    String dir =request.getSession().getServletContext().getRealPath("/resources/TemporaryMusic");
+	    
+	    File record =new File(dir+"/TemporaryMusic/",recordFile);
 	    try {
 			mpf.transferTo(record);
 		} catch (IllegalStateException e) {
@@ -169,5 +178,61 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 	    pw.write(recordFile);
 //		System.out.println("artist id = " +request.getParameter("artist_id"));
 	}
-	
+
+	@Override
+	public void list(ModelAndView mav) {
+		logger.info("upload List Service Start");
+		
+		Map<String,Object> hMap = mav.getModel();
+		HttpServletRequest request=(HttpServletRequest)hMap.get("request");
+		
+		int boardSize =10;
+		String pageNumber = request.getParameter("pageNumber");
+		if(pageNumber == null) pageNumber ="1";
+		
+		int currentPage = Integer.parseInt(pageNumber);
+		int startRow = (currentPage - 1) * boardSize +1;
+		int endRow = currentPage*boardSize;
+		
+		int count = dao.getBoardCount();
+		
+		HashMap<String,Integer> rowMap = new HashMap<String,Integer>();
+		rowMap.put("startRow", startRow);
+		rowMap.put("endRow", endRow);
+		
+		List<UploadBoardDto> list= dao.getBoardList(rowMap);
+		
+		for(UploadBoardDto dto:list){
+//			System.out.println(dto.getFile_path());
+			dto.setFile_path(dto.getFile_path().substring(dto.getFile_path().indexOf("\\resources")).replace('\\', '/'));
+			dto.setImage_path(dto.getImage_path().substring(dto.getImage_path().indexOf("\\resources")).replace('\\','/'));
+		}
+		
+		mav.addObject("boardList",list);
+		mav.addObject("count",count);
+		mav.addObject("boardSize",boardSize);
+		mav.addObject("currentPage",currentPage);
+		
+		mav.setViewName("uploadBoard/list");
+	}
+
+	@Override
+	public void read(ModelAndView mav) {
+		Map<String, Object> map=mav.getModel();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		String board_num = request.getParameter("boardNum");
+		String pageNumber = request.getParameter("pageNumber");
+		
+		UploadBoardDto boardDto = dao.read(board_num);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		String date= sdf.format(boardDto.getRegister_date());
+		
+		mav.addObject("date",date);
+		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("boardDto",boardDto);
+		
+		mav.setViewName("uploadBoard/read");
+	}
 }
