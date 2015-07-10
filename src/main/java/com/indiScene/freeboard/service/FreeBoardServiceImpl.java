@@ -84,7 +84,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		int seq_num=freeBoardDto.getSeq_num();
 		int seq_level=freeBoardDto.getSeq_level();
 		
-		logger.info("boardNumber:" + board_num);
+		logger.info("-----boardNumber:" + board_num);
 		logger.info("groupNumber:"+ group_num);
 		logger.info("sequenceNumber:"+seq_num);
 		logger.info("sequenceLevel:"+seq_level);

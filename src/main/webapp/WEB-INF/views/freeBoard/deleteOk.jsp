@@ -12,18 +12,20 @@
 </head>
 <body>	
 	<c:if test="${check>0 }">
-		<script type="text/javascript">
+	<!-- 	<script type="text/javascript">
 			alert("삭제가 완료되었습니다.");
 			location.href="${root}/freeBoard/list.do?pageNumber=${pageNumber}";
-		</script>
+		</script> -->
+		
 	</c:if>
 	
 	<c:if test="${check==0 }">
-		<script type="text/javascript">
+		<!-- <script type="text/javascript">
 			alert("삭제가 실패되었습니다.");
 			location.href="${root}/freeBoard/list.do?pageNumber=${pageNumber}";
-		</script>
-	</c:if>
+		</script>-->
+ 		
+ 	</c:if>
 
 </body>
 </html>

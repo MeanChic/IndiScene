@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="artist_id"  value="indi"/>
+<%-- <c:set var="artist_id"  value="indi"/> --%>
 
 <head>
 <meta charset="UTF-8">
@@ -14,22 +14,23 @@
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript">
-	function send(){
+	function send(form){
 		//alert("OK");
-		form=$("form");
+		//form=$("form");
 		var artist_id = $("form input[name = 'artist_id']").val();
 		var muse_name = $("form input[name = 'muse_name']").val();
 		var guest_content = $("form textarea[name = 'guest_content']").val();
 		var root = $("#root").val();
 		
 		var sendData="artist_id="+artist_id+"&muse_name="+muse_name+"&guest_content="+guest_content;
+		//var form = document.getElementById("formtag");
 		//alert(sendData);
 		var url = root + "/museGuest/guest.do?";
 		//alert(url);
 		$.ajax({
 			url: url,
 			type:"post",
-			data:sendData,
+			data:form,
 			contentType:"application/x-www-form-urlencoded;charset=utf-8",
 			dataType:"text",
 			success:function(data){
@@ -225,13 +226,13 @@
 	<input name="pageCount" type="hidden" value="${count/boardnum}"/>
 	<input name="pagenum" type="hidden" value="${pagenum }"/>
 	
-	<form style="width:40%; height:180px; display:block; border:solid 1px black;">
-	<span>작성자 : ${artist_id}</span> <span style="align:right;">뮤즈이름:${muse_name}</span>
-	<input type="hidden" name="muse_name" value="${muse_name}">
-	<input type="hidden" name="artist_id" value="${artist_id}">
-	<input type="hidden" id="root" value="${root }"/>
-	<textarea name="guest_content" rows="8" cols="50" ></textarea>
-	<input type="button"  value="전송" onclick="send()"/>
+	<form  action="javascirpt:send(this)" style="width:40%; height:180px; display:block; border:solid 1px black;">
+		<span>작성자 : ${artist_id}</span> <span style="align:right;">뮤즈이름:${muse_name}</span>
+		<input type="hidden" name="muse_name" value="${muse_name}">
+		<input type="hidden" name="artist_id" value="${artist_id}">
+		<input type="hidden" id="root" value="${root }"/>
+		<textarea name="guest_content" rows="8" cols="50" ></textarea>
+		<input type="submit"  value="전송" />
 	</form>
 	
 	<div id="guestline" >	
