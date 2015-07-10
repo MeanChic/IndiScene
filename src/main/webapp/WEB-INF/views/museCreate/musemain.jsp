@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="artist_id"  value="indi"/>
+<%-- <c:set var="artist_id"  value="indi"/> --%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -39,15 +39,19 @@ $(function(){
 		 //alert(muse_name);
 		 
 		 if($(this).val()=="입장"){
-			 location.href=root + "/museCreate/goin.do?muse_name="+muse_name;
+			// location.href=root + "/museCreate/goin.do?muse_name="+muse_name;
+			goinmuse(muse_name);
+			//goinmuse
 		 }else{
-			 location.href=root + "/museCreate/logup.do";
+			//location.href=root + "/museCreate/logup.do";
+			logupmuse();
 		 }
 	}); 
 });
 
+
 function cancle(artist_id, muse_name){
-	//alert(artist_id + ",,," + muse_name);
+	alert(artist_id + ",,," + muse_name);
 	var root = $("#root").val();
 	
 	var sendData= "artist_id=" + artist_id +"&muse_name=" + muse_name;
@@ -68,7 +72,7 @@ function cancle(artist_id, muse_name){
 }
 
 function signup(artist_id, muse_name){
-	//alert(artist_id + ",,," + muse_name);
+	alert(artist_id + ",,," + muse_name);
 	var root = $("#root").val();
 	
 	var sendData= "artist_id=" + artist_id +"&muse_name=" + muse_name;
@@ -79,6 +83,7 @@ function signup(artist_id, muse_name){
 		type:"get",
 		dataType:"text",
 		success:function (data){
+			alert(data);
 			$("."+muse_name+"> input").val("대기중/신청취소");
 			$("."+muse_name+"> input").attr("onclick","cancle('"+artist_id+"','"+muse_name+"')");
 			var a = $("#best>."+ muse_name).clone();
@@ -100,9 +105,9 @@ function signup(artist_id, muse_name){
 	<div id="best">
 	<c:forEach var="best" items="${bestMuse}">
 	<div class="${best.MUSE_NAME}">
-		${best.MUSE_NAME} ${best.MUSE_COMMENT} ${best.MUSE_DATE} 
+		${best.ARTIST_ID }${best.MUSE_NAME} ${best.MUSE_COMMENT} ${best.MUSE_DATE} ${best.MUSE_YN }
 		<c:if test="${best.MUSE_YN == 'n'}"><input type="button" value="대기중/신청취소" onclick="cancle('${artist_id}','${best.MUSE_NAME}')"/></c:if>
-		<c:if test="${best.MUSE_YN == 'y'}"><a href="${root}/museCreate/goin.do?muse_name=${best.MUSE_NAME}"><input type="button" value="입장" /></a></c:if> 
+		<c:if test="${best.MUSE_YN == 'y'}"><a <%-- href="${root}/museCreate/goin.do?muse_name=${best.MUSE_NAME} --%>href="javascript:goinmuse('${best.MUSE_NAME}')"><input type="button" value="입장" /></a></c:if> 
 		<c:if test="${best.MUSE_YN == '0'}"><input type="button" value="가입신청" onclick="signup('${artist_id}','${best.MUSE_NAME}')"/></c:if><br/>
 	</div>
 	</c:forEach>
@@ -114,7 +119,7 @@ function signup(artist_id, muse_name){
 		
 		${my.MUSE_NAME} ${my.MUSE_COMMENT} ${my.MUSE_DATE} 
 		<c:if test="${my.MUSE_YN == 'n'}"><input type="button" value="대기중/신청취소" onclick="cancle('${artist_id}','${my.MUSE_NAME}')"/></c:if>
-		<c:if test="${my.MUSE_YN == 'y'}"><a href="${root}/museCreate/goin.do?muse_name=${my.MUSE_NAME}"><input type="button" value="입장"/></a></c:if> <br/>
+		<c:if test="${my.MUSE_YN == 'y'}"><a href="javascript:goinmuse('${best.MUSE_NAME}')"<%-- href="${root}/museCreate/goin.do?muse_name=${my.MUSE_NAME}" --%>><input type="button" value="입장"/></a></c:if> <br/>
 		</div>
 	</c:forEach>
 	</div>

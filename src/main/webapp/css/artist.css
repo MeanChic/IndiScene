@@ -1,8 +1,23 @@
 @CHARSET "UTF-8";
+
 form div{ margin-left:20px; margin-right:20px; }
 form div label{ width:120px; display:inline-block; }
 form div input{ width:200px; display:inline-block; }
-.artist_pictureForm{ margin:0; display:inline-block; }
+.artist_size{
+	width:100%;
+}
+.artist_input{ margin-left:10px;
+	width:95%;
+	float:left;
+	display:inline-block; 
+	position: relative;
+  	min-height: 1px;
+  	padding-right: 15px;
+  	padding-left: 15px;
+}
 .artist_picture{ display:inline-block; }
-.registerOkButton{ margin:auto; text-align:center; }
-#RegisterForm{ width:580px; padding:inherit; margin:auto; }
+.registerOkButton{ margin-top:20px; text-align:center; }
+#RegisterForm{ text-align:left; width:740px; padding:inherit; margin:auto; }
+#centerContents{ margin-bottom:30px; margin-top:30px; }
+
+#registerButton, #loginButton, #updateloginButton, #logoutButton{ margin-top:20px; margin-right:20px; float:right; }

@@ -5,70 +5,95 @@
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-<meta charset="UTF-8">
-<script type="text/javascript" src="${root}/js/jquery.js"></script>
-<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
-<script type="text/javascript" src="${root}/js/artist.js"></script>
-<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Momentio - single page html template by GraphBerry.com</title>
+	<!-- Load google font -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+	<!-- Load styles -->
+	<link href="${root}/css/bootstrap.css" rel="stylesheet">
+	<link href="${root}/css/style.css" rel="stylesheet">
+	<link href="${root}/css/icons.css" rel="stylesheet">
+	<link href="${root}/css/colorbox.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
+	
+	<!-- Load javascrips libraries-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="${root}/js/jquery.bxslider.js"></script>
+	<script src="${root}/js/jquery.easypiechart.js"></script>
+	<script src="${root}/js/jquery.colorbox.js"></script>
+	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="${root}/js/artist.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
 </head>
 <body>
 <div id="RegisterForm">
-	<form name="artistForm" onsubmit="return registerForm(this)">
-		<div>
-			<label>Id</label>
-			<input type="text" name="artist_id"/>
-			<input type="button" value="Duplicate Check" onclick="return idCheck(artistForm, '${root}')"/>
-		</div><br/>
-		<div>
-			<label>Password</label>
-			<input type="password" name="artist_password"/><br/>
-			<label>Password Check</label>
-			<input type="password" name="passwordCheck"/>
-		</div><br/>
-		<div>
-			<label>Name</label>
-			<input type="text" name="artist_name"/>
-		</div><br/>
-		<div>
-			<label>Nickname</label>
-			<input type="text" name="artist_nickname"/>
-			<input type="button" value="Duplicate Check" onclick="nicknameCheck(artistForm, '${root}')"/>
-		</div><br/>
-		<div>
-			<label>Phone</label>
-			<input type="text" name="artist_phone"/>
-		</div><br/>
-		<div>
-			<label>Zipcode</label>
-			<input type="text" name="artist_zipcode"/>
-			<input type="button" value="Zipcode" onclick="zipcodeCheck(artistForm,'${root}')"/>
-		</div><br/>
-		<div>
-			<label>Address</label>
-			<input type="text" name="artist_address"/>
-		</div><br/>
-		<div>
-			<label>Birth</label>
-			<input type="date" name="artist_birth"/>
-		</div><br/>
-		<div>
-			<label>Profile Image</label>
-			<div class="artist_pictureForm">
-				<input type="file" name="artist_picturePath"/>
-				<div>
-					<script type="text/javascript">
-						var path=$("input[name='artist_picturePath']").val();
-						alert("picturePath : "+path);
-						$("input[name='artist_picturePath']").val()==path;
-						return false;
-					</script>
-				</div>
-				<input type="text" name="artist_picture" class="artist_picture"/>
+	<form name="artistForm" class="form-inline" onsubmit="return registerForm(this)">
+		<div class="form-group artist_size">
+			<label class="col-sm-2 control-label">Id</label>
+		    <div class="artist_input">
+				<input class="form-control" type="text" name="artist_id"/>
+				<input class="form-control" type="button" value="Duplicate Check" onclick="return idCheck(artistForm, '${root}')"/>
 			</div>
-		</div><br/>
-		<div class="registerOkButton">
-			<input type="submit" name="registerOk" value="Create Account"/>
-		</div><br/>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Password</label>
+		    <div class="artist_input">
+				<input class="form-control" type="password" name="artist_password"/>
+				<input class="form-control" type="password" name="passwordCheck"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Name</label>
+		    <div class="artist_input">
+				<input class="form-control" type="text" name="artist_name"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Nickname</label>
+		    <div class="artist_input">
+				<input class="form-control" type="text" name="artist_nickname"/>
+				<input class="form-control" type="button" value="Duplicate Check" onclick="nicknameCheck(artistForm, '${root}')"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Phone</label>
+			<div class="artist_input">
+				<input class="form-control" type="text" name="artist_phone"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Zipcode</label>
+			<div class="artist_input">
+				<input class="form-control" type="text" name="artist_zipcode"/>
+				<input class="form-control" type="button" value="Zipcode" onclick="zipcodeCheck(artistForm,'${root}')"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Address</label>
+			<div class="artist_input">
+				<input class="form-control" type="text" name="artist_address"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Birth</label>
+			<div class="artist_input">
+				<input class="form-control" type="date" name="artist_birth"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Profile Image</label>
+			<div class="artist_input">
+				<input class="form-control" type="file" name="artist_picture"/>
+			</div>
+		</div>
+		<div class="registerOkButton form-group">
+    		<div class="col-sm-offset-2 col-sm-10">
+				<input type="submit" name="registerOk" class="btn btn-default" value="Sign up"/>
+			</div>
+		</div>
 	</form>
 </div>
 </body>

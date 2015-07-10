@@ -79,9 +79,9 @@
     ${board.zipcode} ${board.address}
     <br/><br/>
     
-    <div id="map_canvas" style="width:300px; height:300px"></div>
+    <div id="map_canvas" style="width:300px; height:300px;float:left;"></div>
     
-    <div style="width:300px;" id="datepicker"></div>
+    <div style="width:300px; float:left;" id="datepicker"></div>
 	<div style="margin:0 0 0 400px">
 	<c:if test="${board.artist_id == artist_id }">
 	<input type="button" value="수정" onclick="javascript:location.href='${root}/performBoard/update.do?board_num=${board.board_num}'">
