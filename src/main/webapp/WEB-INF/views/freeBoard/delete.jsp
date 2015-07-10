@@ -10,7 +10,7 @@
 	<title>게시판 삭제</title>
 </head>
 <body>
-	<form method="post" action="${root }/freeBoard/deleteOk.do">
+	<form method="post" action="${root }/freeBoard/delete.do">
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<table border="1" width="300" cellpadding="2" cellspacing="0" align="center">

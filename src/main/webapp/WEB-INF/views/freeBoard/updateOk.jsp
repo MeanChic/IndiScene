@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
+<script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/freeBoard.js"></script>
+<link rel="stylesheet" type="text/css" href="${root}/css/freeBoard.css"/>
 </head>
 <body>
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
@@ -14,14 +17,16 @@
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("수정이 완료되었습니다.");
-			location.href="${root}/freeBoard/list.do?pageNumber=${pageNumber}";
+			/* location.href="${root}/freeBoard/list.do?pageNumber=${pageNumber}" */
+			updateFunOk('${root }','${board_num}','${pageNumber}') ;
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
 			alert("수정이 실패되었습니다.");
-			location.href="${root}/freeBoard/list.do?pageNumber=${pageNumber}";
+		/* 	location.href="${root}/freeBoard/list.do?pageNumber=${pageNumber}"; */
+			list('${root }');
 		</script>
 	</c:if>
 

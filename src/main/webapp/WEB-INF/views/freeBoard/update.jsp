@@ -9,7 +9,7 @@
 	<title>게시판 수정</title>
 </head>
 <body>
-	<form action="${root}/freeBoard/updateOk.do" method="post" onsubmit="return checkForm()">
+	<form action="${root}/freeBoard/update.do" method="post" onsubmit="return updateFunOk()">
 		<input type="hidden" name="board_num" value="${freeBoard.board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		

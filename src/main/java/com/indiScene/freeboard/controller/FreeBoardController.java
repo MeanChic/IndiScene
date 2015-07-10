@@ -47,9 +47,8 @@ public class FreeBoardController {
 	 * @description : 자유게시글 등록 (자유롭게 이용가능 )
 	 */
 	@RequestMapping(value="/freeBoard/write.do",method=RequestMethod.POST)
-	
 	public ModelAndView freeBoardWrite(HttpServletRequest request, HttpServletRequest response,FreeBoardDto freeBoardDto){
-		
+		logger.info("board_Number ***" + freeBoardDto.getBoard_num());
 		logger.info("WriteOk------------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
@@ -112,8 +111,8 @@ public class FreeBoardController {
 	 * @author : 손유진
 	 * @description : 삭제 확인 
 	 */
-	@RequestMapping(value="/freeBoard/deleteOk.do", method=RequestMethod.POST)
-	public ModelAndView freeBoardDeleteOk(HttpServletRequest request, HttpServletRequest response){
+	@RequestMapping(value="/freeBoard/delete.do", method=RequestMethod.POST)
+	public ModelAndView freeBoardDelete(HttpServletRequest request, HttpServletRequest response){
 		
 		logger.info("freeBoardDeleteOk--------------");
 		ModelAndView mav=new ModelAndView();
@@ -146,8 +145,10 @@ public class FreeBoardController {
 	 * @author : 손유진
 	 * @description : 수정 확인
 	 */
-	@RequestMapping(value="/freeBoard/updateOk.do", method=RequestMethod.POST)
-	public ModelAndView freeBoardUpdateOk(HttpServletRequest request, HttpServletResponse response, FreeBoardDto freeBoardDto){ logger.info("freeBoardUpdateOk--------------");
+	@RequestMapping(value="/freeBoard/update.do", method=RequestMethod.POST)
+	public ModelAndView freeBoardUpdateOk(HttpServletRequest request, HttpServletResponse response, FreeBoardDto freeBoardDto){ 
+		
+		logger.info("freeBoardUpdateOk--------------");
 		
 		ModelAndView mav=new ModelAndView();
 		

@@ -10,7 +10,7 @@
 </head>
 <body>
 	
-<form class="form_style"  action="${root}/freeBoard/write.do"  method="post" onsubmit="return checkForm(this)">	
+<form ><!-- onsubmit="return checkForm(this)" --><%-- class="form_style"  action="${root}/freeBoard/write.do"  method="post" --%> 
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="group_num" value="${group_num }"/>
 		<input type="hidden" name="seq_num" value="${seq_num }"/>
@@ -42,7 +42,7 @@
 			
 	
 			<br/>
-			<input type="submit" value="글쓰기"/>
+			<input type="button" value="글쓰기" onclick="writeOk('${root}')"/>
 			<input type="reset" value="다시작성"/>
 			<input type="button" value="목록보기" onclick="location.href='${root}/freeBoard/list.do'"/>
 		
