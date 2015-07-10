@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="artist_id"  value="indi"/>
+<%-- <c:set var="artist_id"  value="indi"/> --%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -26,10 +26,10 @@
 			success:function (data){
 				if(data == "0"){
 					$("#master").text("회원보기");
-					$("#master").attr("href",root+"/museCreate/museMember.do?muse_name="+muse_name+"&check=0");
+					$("#master").attr("href","javascript:membermuse('"+muse_name+"','0')"/* root+"/museCreate/museMember.do?muse_name="+muse_name+"&check=0" */);
 				}else{
 					$("#master").text("회원관리");
-					$("#master").attr("href",root+"/museCreate/museMember.do?muse_name="+muse_name);
+					$("#master").attr("href","javascript:guestmuse('"+muse_name+"')"/* root+"/museCreate/museMember.do?muse_name="+muse_name */);
 					//alert(muse_name);
 				}
 			}
@@ -52,7 +52,7 @@ ${muse_name}
 			<span >${guest.muse_name}</span> , <span class="con">${guest.guest_content}</span>
 		</div>
 	</c:forEach>
-	<a href="${root}/museGuest/guest.do?muse_name=${muse_name}">더보기</a>
+	<a href="javascript:guestboardmuse('${muse_name}')<%-- ${root}/museGuest/guest.do?muse_name=${muse_name} --%>">더보기</a>
 	
 	<br/><br/>
 	게시판=======================================

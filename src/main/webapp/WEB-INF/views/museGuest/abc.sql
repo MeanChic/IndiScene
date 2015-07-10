@@ -8,7 +8,7 @@ create table muse_signup(
 	FOREIGN KEY(muse_name) REFERENCES muse(muse_name)
 );
 
-
+select * from reply;
 TRUNCATE TABLE muse_signup;
 
 ALTER TABLE muse_signup DROP COLUMN muse_name;
@@ -23,10 +23,10 @@ start with 1
 increment by 1;
 
 
-insert into artist(ARTIST_ID,ATIST_PASSWORD,ARTIST_NAME,ARTIST_NICKNAME,ARTIST_PHONE,ARTIST_ZIPCODE, 			   
+insert into artist(ARTIST_ID,ARTIST_PASSWORD,ARTIST_NAME,ARTIST_NICKNAME,ARTIST_PHONE,ARTIST_ZIPCODE, 			   
  ARTIST_ADDRESS, 			   
  ARTIST_BIRTH)			   
- values('indi','1','testId','0','a','a','0',to_date('1990-12-27', 'yyyy-mm-dd'))
+ values('indi','12345','testId','0','a','a','0',to_date('1990-12-27', 'yyyy-mm-dd'))
  
  select * from ARTIST;
  
@@ -62,6 +62,7 @@ insert into artist(ARTIST_ID,ATIST_PASSWORD,ARTIST_NAME,ARTIST_NICKNAME,ARTIST_P
  
  insert into MUSE_SIGNUP values('E','n','bb');
  
+ select artist_id,artist_password from artist;
  
   insert into MUSE_SIGNUP values('A','n','dd');
  
@@ -182,10 +183,73 @@ guest_date DATE	NOT NULL
 
 select count(*) from guest where muse_name='abc';
 
+update MUSE_SIGNUP set muse_yn='y' where artist_id='indi';
+
 create sequence museguest_seq
 start with 1
 increment by 1;
 
 select * from (select rownum rnum, a.* from guest a where muse_name='abc' order by guest_date desc) b where rnum < 5 ;
  
+
+
 select * from (select rownum rnum, a.* from (select * from guest order by guest_date desc) a where muse_name='abc') b where rnum > 0 and rnum <= 5;
+
+
+
+create sequence marketboard_seq  
+start with 1
+increment by 1;
+ --1 ������ ����(�ʼ�)
+
+insert into artist(ARTIST_ID,ATIST_PASSWORD,ARTIST_NAME,ARTIST_NICKNAME,ARTIST_PHONE,ARTIST_ZIPCODE, 			   
+ ARTIST_ADDRESS, 			   
+ ARTIST_BIRTH)			   
+ values('testId','1','testId','0','a','a','0',to_date('1990-12-27', 'yyyy-mm-dd'))
+ --2 marketBoard �׽�Ʈ�Ҷ� �� �ӽ� ���̵� ���� (�ʼ�)
+ 
+ alter table marketboard modify(content VARCHAR2(4000));
+ --3 ���� �ʵ� ũ�Ⱑ �ʹ� �۾Ƽ� Ȯ��
+ 
+  ALTER TABLE artist RENAME COLUMN atist_password TO artist_password;
+ --4 atist�� �Ǿ� �ִ°� artist��(�ʼ�)
+ 
+ alter table reply modify(reply_num NUMBER);
+ 
+  alter table reply drop constraint fk_freeboard_to_reply cascade;  !--답글에서 자유게시판으로 물려진 참조키 삭제하기
+ alter table reply drop constraint fk_placeboard_to_reply cascade; 
+ alter table reply drop constraint fk_performboard_to_reply cascade; 
+ alter table reply drop constraint fk_BESTBOARD_to_reply cascade; 
+ alter table reply drop constraint fk_uploadBoard_to_reply cascade; 
+ alter table reply drop constraint fk_artist_to_reply cascade;
+ 
+ 
+  alter table reply drop constraint pk_reply cascade;
+
+
+
+ select to_number(nvl(max(reply_num),0))+1 from reply where board_num=1;
+ 
+ select constraint_name, constraint_type 
+from all_constraints;   !--제약조건 전부 확인하기
+ 
+ alter table reply drop constraint fk_freeboard_to_reply cascade;  !--답글에서 자유게시판으로 물려진 참조키 삭제하기
+ alter table reply drop constraint fk_placeboard_to_reply cascade; 
+ alter table reply drop constraint fk_performboard_to_reply cascade; 
+ alter table reply drop constraint fk_BESTBOARD_to_reply cascade; 
+ alter table reply drop constraint fk_uploadBoard_to_reply cascade; 
+ alter table reply drop constraint fk_artist_to_reply cascade;
+ 
+ alter table reply drop constraint pk_reply cascade;
+ 
+ 
+ select * from reply;
+ delete reply;
+ 
+
+select rownum, a.* from(select reply_num from reply where board_num='m122' order by reply_date desc) a where rownum=1
+ 
+select to_char(to_number(nvl(max(reply_num),0))+1,'9999') from reply where board_num='m122'
+
+
+
