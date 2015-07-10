@@ -144,6 +144,7 @@ $(function(){
 	
 	$("input[name='artist_id']").attr("placeholder", "5자 이상 20자 이하로 쓰세요.");
 	$("input[name='artist_password']").attr("placeholder", "5자 이상 20자 이하로 쓰세요.");
+	$("input[name='passwordCheck']").attr("placeholder", "Password Check");
 	$("input[name='artist_name']").attr("placeholder", "3자 이상 30자 이하로 만드세요.");
 	$("input[name='artist_nickname']").attr("placeholder", "3자 이상 30자 이하로 만드세요.");
 	$("input[name='artist_phone']").attr("placeholder", "예)000-1111-2222");
@@ -183,11 +184,12 @@ $(function(){
 	    }
 	});
 	
-	$("button[name='register']").click(function(){
-		if($("#artistRegister").val()==undefined){
-			$("#centerContents").append("<div id='artistRegister' class='hasPaddingContents'></div>")
-			$("#artistRegister").css("display","block");
-			$("#artistRegister").siblings().css("display","none");
+	$("#registerButton").click(function(){
+//		if($("#artistRegister").val()==undefined){
+//			$("#centerContents").append("<div id='artistRegister' class='hasPaddingContents'></div>")
+//			$("#artistRegister").css("display","block");
+//			$("#artistRegister").siblings().css("display","none");
+			alert("Test");
 			$.ajax({
 				url:root+"/artist/register.do",
 				type:"GET",
@@ -195,13 +197,14 @@ $(function(){
 				success:function(data){
 //					var realData = data.split("<body>");
 //					var realData = realData[1].split("</body>")[0];
-					$("#artistRegister").append(data);
+//					$("#artistRegister").append(data);
+					$("#centerContents").html(data);
 				}
 			})
-		}else{
-			$("#artistRegister").css("display","block");
-			$("#artistRegister").siblings().css("display","none");
-		}
+//		}else{
+//			$("#artistRegister").css("display","block");
+//			$("#artistRegister").siblings().css("display","none");
+//		}
 	})
 	
 	$("input[name='registerOk']").click(function(){
@@ -217,15 +220,15 @@ $(function(){
 		})
 	})
 	
-	$("button[name='login']").click(function(){
+	$("#loginButton").click(function(){
 		location.href=root+"/artist/login.do";
 	})
 	
-	$("button[name='updatelogin']").click(function(){
-		if($("#artistUpdateLogin").val()==undefined){
-			$("#centerContents").append("<div id='artistUpdateLogin' class='hasPaddingContents'></div>")
-			$("#artistUpdateLogin").css("display","block");
-			$("#artistUpdateLogin").siblings().css("display","none");
+	$("#updateloginButton").click(function(){
+//		if($("#artistUpdateLogin").val()==undefined){
+//			$("#centerContents").append("<div id='artistUpdateLogin' class='hasPaddingContents'></div>")
+//			$("#artistUpdateLogin").css("display","block");
+//			$("#artistUpdateLogin").siblings().css("display","none");
 			$.ajax({
 				url:root+"/artist/updatelogin.do",
 				type:"GET",
@@ -233,16 +236,17 @@ $(function(){
 				success:function(data){
 //					var realData = data.split("<body>");
 //					var realData = realData[1].split("</body>")[0];
-					$("#artistUpdateLogin").append(data);
+//					$("#artistUpdateLogin").append(data);
+					$("#centerContents").html(data);
 				}
 			})
-		}else{
-			$("#artistUpdateLogin").css("display","block");
-			$("#artistUpdateLogin").siblings().css("display","none");
-		}
+//		}else{
+//			$("#artistUpdateLogin").css("display","block");
+//			$("#artistUpdateLogin").siblings().css("display","none");
+//		}
 	})
 	
-	$("button[name='logout']").click(function(){
+	$("#logoutButton").click(function(){
 		location.href=root+"/artist/logout.do";
 	})
 	
@@ -250,10 +254,10 @@ $(function(){
 		var artist_id=$("input[name='artist_id']").val();
 		var sendData="?artist_id="+artist_id;
 		
-		if($("#artistUpdate").val()==undefined){
-			$("#centerContents").append("<div id='artistUpdate' class='hasPaddingContents'></div>")
-			$("#artistUpdate").css("display","block");
-			$("#artistUpdate").siblings().css("display","none");
+//		if($("#artistUpdate").val()==undefined){
+//			$("#centerContents").append("<div id='artistUpdate' class='hasPaddingContents'></div>")
+//			$("#artistUpdate").css("display","block");
+//			$("#artistUpdate").siblings().css("display","none");
 			$.ajax({
 				url:root+"/artist/update.do"+sendData,
 				type:"GET",
@@ -261,13 +265,14 @@ $(function(){
 				success:function(data){
 //					var realData = data.split("<body>");
 //					var realData = realData[1].split("</body>")[0];
-					$("#artistUpdate").append(data);
+//					$("#artistUpdate").append(data);
+					$("#centerContents").html(data);
 				}
 			})
-		}else{
-			$("#artistUpdate").css("display","block");
-			$("#artistUpdate").siblings().css("display","none");
-		}
+//		}else{
+//			$("#artistUpdate").css("display","block");
+//			$("#artistUpdate").siblings().css("display","none");
+//		}
 	})
 	
 	$("input[name='updateOk']").click(function(){
@@ -291,10 +296,10 @@ $(function(){
 		var artist_id=$("input[name='artist_id']").val();
 		var sendData="?artist_id="+artist_id;
 		
-		if($("#artistUpdate").val()==undefined){
-			$("#centerContents").append("<div id='artistUpdate' class='hasPaddingContents'></div>")
-			$("#artistUpdate").css("display","block");
-			$("#artistUpdate").siblings().css("display","none");
+//		if($("#artistUpdate").val()==undefined){
+//			$("#centerContents").append("<div id='artistUpdate' class='hasPaddingContents'></div>")
+//			$("#artistUpdate").css("display","block");
+//			$("#artistUpdate").siblings().css("display","none");
 			$.ajax({
 				url:root+"/museCreate/musemain.do"+sendData,
 				type:"GET",
@@ -302,13 +307,14 @@ $(function(){
 				success:function(data){
 //					var realData = data.split("<body>");
 //					var realData = realData[1].split("</body>")[0];
-					$("#artistUpdate").append(data);
+//					$("#artistUpdate").append(data);
+					$("#centerContents").html(data);
 				}
 			})
-		}else{
-			$("#artistUpdate").css("display","block");
-			$("#artistUpdate").siblings().css("display","none");
-		}
+//		}else{
+//			$("#artistUpdate").css("display","block");
+//			$("#artistUpdate").siblings().css("display","none");
+//		}
 	})
 	
 	$("input[name='updateOk']").click(function(){

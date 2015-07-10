@@ -1,0 +1,148 @@
+body {
+	font-family:'Questrial';
+	
+	font-size:15px;
+	color:#BCBEC2;
+	
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family:'Questrial';
+}
+h2, h3 {
+	color:#FB6816;
+}
+h2 {
+	text-transform:uppercase;
+}
+h3 {
+	margin-top:0;
+	padding:0;
+}
+p {
+	color:#44495e;
+}
+
+/**************************************************** SERVICES *********************************************/
+
+.services .intro {
+	text-align:center;
+	margin-bottom:50px;
+}
+.services .intro h2 {
+	border-bottom:none;
+}
+.services .intro .text {
+	background:#202835;
+	border-top:6px solid #FB6816;
+	font-size:20px;
+	padding:20px;
+}
+.services .intro .text p {
+	color:#fff;
+}
+	
+	.delimiter-hbl {
+	position: absolute;
+	left:0;
+	bottom:0;
+	width:95%;
+	border-bottom:1px solid red;
+}
+.delimiter-hbr {
+	position: absolute;
+	right:0;
+	bottom:0;
+	width:95%;
+	border-bottom:1px solid red;
+}
+.delimiter-vrb {
+	position: absolute;
+	right:0;
+	bottom:0;
+	height:90%;
+	border-right:1px solid red;
+}
+.delimiter-vrt {
+	position: absolute;
+	right:0;
+	top:0;
+	height:90%;
+	border-right:1px solid red;
+}
+.boxicon {
+	padding-top:50px;
+	padding-bottom:50px;
+	z-index:20;
+}
+.boxicon-icon {
+	position:absolute;
+	top:50px;
+	left:0;
+	text-align: center;
+	font-size: 72px;
+	line-height: 100px;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	background-color: #202835;
+	color: #fff;
+}
+.boxicon-icon i {
+	vertical-align: top;
+	line-height: inherit;
+}
+.boxicon.left .boxicon-text {
+	margin-left:105px;
+	padding-right:20px;
+}
+.boxicon.right .boxicon-icon {
+	right:0;
+	left:auto;
+}
+.boxicon .boxicon-text p {
+	font-size:15px;
+}
+.boxicon.right .boxicon-text {
+	margin-right:105px;
+	text-align:right;
+	padding-left:20px;
+}
+.right-align {
+	text-align:right;
+}
+
+/*
+Intros
+*************************************************/
+ .intro-second {
+	margin-top:100px;
+	margin-bottom:50px;
+}
+.intro-second .title {
+	border-bottom:1px solid #FB6816;
+}
+.intro-second h2 {
+	text-transform:none;
+	color:#202835;
+	font-size:25px;
+}
+.intro-second .intro-text {
+	font-size:20px;
+	color:#44495e;
+	text-align:center;
+	padding:50px 0 70px 0;
+}
+.intro {
+	margin:80px auto;
+}
+.intro h2 {
+	border-bottom:1px solid #FB6816;
+	text-align:center;
+	padding-bottom:10px;
+}
+.intro .intro-text {
+	font-size:20px;
+	color:#44495e;
+	text-align:center;
+	padding:20px 0;
+}

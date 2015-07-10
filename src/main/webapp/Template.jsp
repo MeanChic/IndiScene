@@ -21,20 +21,20 @@
 				<center>Indi Scene</center>
 			</div>
 			<div id="headLogin">
-			<c:choose>
-			<c:when test="${artist_id ==null}">
-				<div id="artist">
-					<button name="register">회원가입</button>
-					<button name="login">로그인</button>
-				</div>
-			</c:when>
-			<c:otherwise>
-				<div id="artist">
-					<button name="updatelogin">개인정보 관리</button>
-					<button name="logout">로그아웃</button>
-				</div>
-			</c:otherwise>
-		</c:choose>
+				<c:choose>
+					<c:when test="${artist_id ==null}">
+						<div id="artist">
+							<button name="register">회원가입</button>
+							<button name="login">로그인</button>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div id="artist">
+							<button name="updatelogin">개인정보 관리</button>
+							<button name="logout">로그아웃</button>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		
