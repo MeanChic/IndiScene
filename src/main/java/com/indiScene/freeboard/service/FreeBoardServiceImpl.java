@@ -55,9 +55,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		mav.addObject("page_num",page_num);
 		
 		mav.setViewName("freeBoard/write");
-		
-		
 	}
+	
 	@Override
 	public void freeBoardWriteOk(ModelAndView mav) {
 		Map<String,Object>map=mav.getModel();
@@ -167,6 +166,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		
 
 		FreeBoardDto freeBoardDto=freeBoardDao.freeBoardRead(board_num);
+		freeBoardDto = freeBoardDao.freeBoardRead(pageNumber);
 		logger.info("freeBoardRead freeBoardDto: "+freeBoardDto);
 		
 		mav.addObject("freeBoard",freeBoardDto);
@@ -217,6 +217,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
 		
 		FreeBoardDto freeBoard=freeBoardDao.freeBoardUpdateSelect(board_num);
+	/*	freeBoard=freeBoardDao.freeBoardUpdateSelect(pageNumber);*/
 		logger.info("freeBoardUpdate freeBoard:"+freeBoard);
 		
 		//board와 pageNumber를 updateOk.jsp에 넘겨줘야한다.

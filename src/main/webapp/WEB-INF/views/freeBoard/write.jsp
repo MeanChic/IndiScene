@@ -7,44 +7,58 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>자유게시판</title>
+<%-- <script src="${root }/resources/ckEditor/ckeditor.js"></script> --%>
+<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
+
 </head>
 <body>
-	
-<form ><!-- onsubmit="return checkForm(this)" --><%-- class="form_style"  action="${root}/freeBoard/write.do"  method="post" --%> 
+
+<form id="FreeBoardWriteForm" class="form_style" method="post"> 
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="group_num" value="${group_num }"/>
 		<input type="hidden" name="seq_num" value="${seq_num }"/>
 		<input type="hidden" name="seq_level" value="${seq_level }"/>
 		<input type="hidden" name="page_num" value="${page_num}"/>
 		<%-- <input type="hidden" name="artist_id" value="${artist_id}"/> --%>
-			
+			<c:if test="${page_num ==null}">
+				<c:set var="page_num" value="${1}"/>
+			</c:if>
 		
-				<a href="${root}/freeBoard/list.do">글목록</a>
-	
 		<br/><br/>
 
 		
 		<div class="line">
 			<label class="title">제목</label>
-			<span class="content"><input type="text" size="50" name="subject"/></span>
+			<span class="content2"><input type="text" size="50" name="subject"/></span>
 		
 		</div>
 		<div class="line">
 			<label class="subject">작성자</label>
-				<span class="content">
+				<span class="content2">
 				<input type="text" size="50" name="artist_id" value="indi" />
 				</span>
 		</div>	
 		<br/>
-			<label class="title" style="height:230px;">내용</label>
-			<textarea rows="14" cols="58" name="content"></textarea>
+			<label class="title">내용</label>
+			<span class="content">
+				<textarea id="textInput" rows="14" cols="58" name="content1" id="content1"></textarea><br/><br/>
+		<!-- 		
+			<script>
+			 CKEDITOR.replace( 'content1',
+					 {///IndiScene_basic/src/main/webapp/resources/ckfinder
+					 	filebrowserUploadUrl: '${root}/marketBoard/imageUpload.do' // 파일 업로드를 처리 할 경로 설정.
+					 });
+ 			
+			</script>
+			 -->
+				</span>
 			<br/>
 			
 	
 			<br/>
-			<input type="button" value="글쓰기" onclick="writeOk('${root}')"/>
+			<input type="button" value="글쓰기" onclick="writeOk('${root}','${page_num}')"/>
 			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/freeBoard/list.do'"/>
+			<input type="button" value="목록보기" onclick="list('${root}','${page_num}')"/>
 		
 		
 	</form>

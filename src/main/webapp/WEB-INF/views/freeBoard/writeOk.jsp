@@ -17,13 +17,13 @@
 			alert("글쓰기를 성공하였습니다.");
 			/* location.href="${root}/freeBoard/list.do?page_num=${page_num}"; */
 			var root = $("#root").val();
-			list(root);
+			list(root,1);
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
-		var root = $("#root").val();
+			var root = $("#root").val();
 			alert("글쓰기를 실패하였습니다.");
 			list(root);
 			/* location.href="${root}/freeBoard/write.do?page_num=${page_num}"; */

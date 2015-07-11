@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert Freeboard</title>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <script type="text/javascript" src="${root}/js/freeBoard.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/freeBoard.css"/>
 <!-- 
@@ -76,11 +77,12 @@ function list(root){
       <div id="header">
         <h1>FreeBoard</h1>
       	<a href="javascript:write('${root }')">자유게시판 글쓰기</a>
+      	<%-- <a href="${root}/freeBoard/write.do">자유게시판 글쓰기</a> --%>
 		&nbsp;&nbsp;&nbsp;
-		<a href="javascript:list('${root }')">자유게시판 목록보기</a>
+		<a href="javascript:list('${root }','1')">자유게시판 목록보기</a>
       </div>
       
-      <div id="content">
+      <div id="centerContents">
         <h2>Content</h2>
         	
         </div>

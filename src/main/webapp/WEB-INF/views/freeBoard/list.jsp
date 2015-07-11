@@ -32,8 +32,10 @@
 						<c:forEach begin="0" end="${freeBoard.seq_level }" step="1">
 						</c:forEach>
 					</c:if>
-					<a href="${root }/freeBoard/read.do?board_num=${freeBoard.board_num}&pageNumber=${currentPage }">${freeBoard.subject }</a>
-				</td> 
+<%-- 				<a href="${root }/freeBoard/read.do?board_num=${freeBoard.board_num}&pageNumber=${currentPage }">${freeBoard.subject }</a> --%>
+	
+					<a href="javascript:read('${root }','${freeBoard.board_num }','${currentPage }')">${freeBoard.subject }</a> 
+ 				</td> 
 				<td>
 					<fmt:formatDate value="${freeBoard.register_date }" type="date"/>
 				</td>
@@ -59,15 +61,17 @@
 				</c:if>
 				
 				<c:if test="${startPage>pageBlock }">
-					<a href="${root }/freeBoard/list.do?pageNumber=${startPage-pageBlock}">[이전]</a>
+					<%-- <a href="${root }/freeBoard/list.do?pageNumber=${startPage-pageBlock}">[이전]</a> --%> 
+					<a href="javascript:list('${root }','${startPage-pageBlock}')">[이전]</a>	
 				</c:if>
 				
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<a href="${root }/freeBoard/list.do?pageNumber=${i}">[${i}]</a>
+					<a href="javascript:list('${root }','${i}')">[${i}]</a>
 				</c:forEach>
 				
 				<c:if test="${endPage<pageCount }">
-					<a href="${root }/freeBoard/list.do?pageNumber=${startPage+pageBlock}">[다음]</a>
+					<%-- <a href="${root }/freeBoard/list.do?pageNumber=${startPage+pageBlock}">[다음]</a> --%>
+					<a href="javascript:list('${root }','${startPage+pageBlock}')">[다음]</a>				
 				</c:if>
 			</c:if>
 		</center>

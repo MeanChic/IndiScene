@@ -18,7 +18,9 @@
 		<script type="text/javascript">
 			alert("수정이 완료되었습니다.");
 			/* location.href="${root}/freeBoard/list.do?pageNumber=${pageNumber}" */
-			updateFunOk('${root }','${board_num}','${pageNumber}') ;
+			var root=$("#root").val();
+	
+			list(root,1);
 		</script>
 	</c:if>
 	

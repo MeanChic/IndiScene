@@ -54,7 +54,7 @@
 		</div>	
 		
 		<div class="line" style= text-align:center;>
-			<input type="submit" value="글쓰기"/>
+			<input type="submit" value="글쓰기" onclick="location.href='${root}/marketBoard/enterBoard.do'"/>
 			<input type="reset" value="다시작성"/>
 			<input type="button" value="목록보기" onclick="location.href='${root}/marketBoard/enterBoard.do'"/>
 		</div>

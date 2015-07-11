@@ -9,14 +9,14 @@
 	<title>게시판 수정</title>
 </head>
 <body>
-	<form action="${root}/freeBoard/update.do" method="post" onsubmit="return updateFunOk()">
+	<form id="updateForm" method="post" onsubmit="return updateFunOk()">
 		<input type="hidden" name="board_num" value="${freeBoard.board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		
-		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
+<%-- 		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
 				<a href="${root }/freeBoard/list.do?pageNumber=${pageNumber}">글목록</a>
-		</div>
-		
+		</div> --%>
+		 
 		<div class="line">
 			<label class="title">제목</label>
 				<span class="content"><input type="text" size="50" name="subject"  value="${freeBoard.subject}"/></span>
@@ -35,9 +35,9 @@
 
 		
 		<div class="line" style="width:598px; border-width:2px; text-align:center;">
-			<input type="submit" value="글수정"/>
+			<input type="button" value="글수정" onclick="updateFunOk('${root}','${freeBoard.board_num }','${pageNumber }')"/>
 			<input type="reset" value="취소"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/freeBoard/list.do?pageNumber=${pageNumber}'">
+			<input type="button" value="글목록" onclick="list('${root}','${pageNumber}')"/>
 		</div>
 	</form>
 </body>
