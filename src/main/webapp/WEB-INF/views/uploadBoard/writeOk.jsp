@@ -13,7 +13,7 @@
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("글쓰기를 성공하였습니다.");
-			write('${root}');
+			uploadList('${root}','1');
 		</script>
 	</c:if>
 	

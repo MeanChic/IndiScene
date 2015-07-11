@@ -13,13 +13,13 @@
 	<a style="margin:0 0 0 600px"href="javascript:uploadList('${root}','${pageNumber}')">리스트로 돌아가기</a>
 	<div style="border:solid 1px black; width:700px; margin:100px 0 100px 20px ">
 	<span>${pageNumber}</span><span>${board.register_date}</span>
-	<div style="border:solid 1px black;float:left;"><img alt="" src="${board.image_path}"></div>
-	<div style="border:solid 1px black">${board.subject}</div>
-	<div style="border:solid 1px black; float:left"><audio controls src="${board.file_path}"></audio></div>
-	<div style="border:solid 1px black">${board.artist_id}</div>
-	<div style="border:solid 1px black; height:100px;">${board.content}</div>
-	${board.d_day}<br/>
-	${board.count}<br/>
+	<div style="border:solid 1px black;float:left;"><img alt="" src="${boardDto.image_path}"></div>
+	<div style="border:solid 1px black">${boardDto.subject}</div>
+	<div style="border:solid 1px black; float:left"><audio controls src="${boardDto.file_path}"></audio></div>
+	<div style="border:solid 1px black">${boardDto.artist_id}</div>
+	<div style="border:solid 1px black; height:100px;">${boardDto.content}</div>
+	${boardDto.d_day}<br/>
+	${boardDto.count}<br/>
 	
 	</div>
 </body>

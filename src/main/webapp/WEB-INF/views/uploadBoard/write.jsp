@@ -30,6 +30,12 @@
 		<span id="recordBox" style="display:none;position:relative; float:none;"><img src="${root}/resources/uploadBoard/rec.png" onclick="toggleRecording(this)"/></span><br/><br/>
 		<div><span>장르</span><input type="radio" name="genre" value="1"/>락<input type="radio" name="genre" value="0"/> 발라드 <input type="radio" name="genre" value="2"/> 힙합</div>	
 		<span>내용</span><textarea rows="20" cols="100" name="content" id="content"></textarea><br/><br/>
+		<script type="text/javascript">
+		CKEDITOR.replace( 'content',
+				 {///IndiScene_basic/src/main/webapp/resources/ckfinder
+				 	filebrowserUploadUrl: '${root}/marketBoard/imageUpload.do' // 파일 업로드를 처리 할 경로 설정.
+				 });
+		</script>
 		<br/><br/>
 		
 		<div>

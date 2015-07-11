@@ -20,7 +20,8 @@ function uploadWrite(root){
 
 function uploadWriteOk(root){
 	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
-	
+//	alert(CKEDITOR.instances.content.getData());
+	dataSet.append("content",CKEDITOR.instances.content.getData());
 	$.ajax({
 		url:root+"/uploadBoard/write.do",
 		type:"post",

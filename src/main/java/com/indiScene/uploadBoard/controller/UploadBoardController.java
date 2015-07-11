@@ -66,6 +66,7 @@ public class UploadBoardController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/uploadBoard/read.do",method=RequestMethod.GET)
 	public ModelAndView read(HttpServletRequest request){
 		logger.info("uploadBoard Read Start~~~~~~~");
 		ModelAndView mav = new ModelAndView();
