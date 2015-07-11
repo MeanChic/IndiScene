@@ -19,26 +19,34 @@
 		 
 		<div class="line">
 			<label class="title">제목</label>
-				<span class="content"><input type="text" size="50" name="subject"  value="${freeBoard.subject}"/></span>
+				<span class="content2"><input type="text" size="50" name="subject"  value="${freeBoard.subject}"/></span>
 		</div>
 		<div class="line">
 			<label class="title">작성자</label>
-				<span class="content"><input type="text" size="50" name="artist_id" disabled="disabled"  value="${freeBoard.artist_id}"/></span>
+				<span class="content2"><input type="text" size="50" name="artist_id" disabled="disabled"  value="${freeBoard.artist_id}"/></span>
 		</div>
 	
-		<div class="line" style="height:230px;">
-			<label class="title" style="height:230px;">내용</label>
-			<span class="content" style="height:230px;">
-				<textarea rows="14" cols="58" name="content">${freeBoard.content}</textarea>
+	
+			<label class="title">내용</label>
+			<span class="content">
+				<textarea id="content" rows="14" cols="58" name="content">${freeBoard.content}</textarea><br/><br/>
+			
+			<script>
+			 CKEDITOR.replace( 'content',
+					 {///IndiScene_basic/src/main/webapp/resources/ckfinder
+					 	filebrowserUploadUrl: '${root}/marketBoard/imageUpload.do' // 파일 업로드를 처리 할 경로 설정.
+					 }); 
+ 			
+			</script>
+			
 			</span>
-		</div>
 
 		
-		<div class="line" style="width:598px; border-width:2px; text-align:center;">
-			<input type="button" value="글수정" onclick="updateFunOk('${root}','${freeBoard.board_num }','${pageNumber }')"/>
-			<input type="reset" value="취소"/>
-			<input type="button" value="글목록" onclick="list('${root}','${pageNumber}')"/>
-		</div>
+			<div class="line" style="width:598px; border-width:2px; text-align:center;">
+				<input type="button" value="글수정" onclick="updateFunOk('${root}','${freeBoard.board_num}','${page_num }')"/>
+				<input type="reset" value="취소"/>
+				<input type="button" value="글목록" onclick="list('${root}','${pageNumber}')"/>
+			</div>
 	</form>
 </body>
 </html>

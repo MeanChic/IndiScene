@@ -41,16 +41,16 @@
 		<br/>
 			<label class="title">내용</label>
 			<span class="content">
-				<textarea id="textInput" rows="14" cols="58" name="content1" id="content1"></textarea><br/><br/>
-		<!-- 		
+				<textarea id="content" rows="14" cols="58" name="content"></textarea><br/><br/>
+			
 			<script>
-			 CKEDITOR.replace( 'content1',
+			 CKEDITOR.replace( 'content',
 					 {///IndiScene_basic/src/main/webapp/resources/ckfinder
 					 	filebrowserUploadUrl: '${root}/marketBoard/imageUpload.do' // 파일 업로드를 처리 할 경로 설정.
 					 });
  			
 			</script>
-			 -->
+			
 				</span>
 			<br/>
 			

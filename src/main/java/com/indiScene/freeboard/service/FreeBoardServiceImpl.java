@@ -165,8 +165,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
 		
 
-		FreeBoardDto freeBoardDto=freeBoardDao.freeBoardRead(board_num);
-		freeBoardDto = freeBoardDao.freeBoardRead(pageNumber);
+		FreeBoardDto freeBoardDto= freeBoardDao.freeBoardRead(board_num);
 		logger.info("freeBoardRead freeBoardDto: "+freeBoardDto);
 		
 		mav.addObject("freeBoard",freeBoardDto);
