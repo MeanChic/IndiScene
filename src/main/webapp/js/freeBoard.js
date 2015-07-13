@@ -26,7 +26,7 @@
 		}); 
 	}
 
-	function writeOk(root,page_num){
+	function writeOk(root,pageNumber){
 		var dataSet = new FormData(document.getElementById("FreeBoardWriteForm"));
 			
  		alert(CKEDITOR.instances.content.getData());
@@ -104,8 +104,8 @@
 		
 		function deleteFun(root, board_num, pageNumber){
 			$.ajax({
-				url:root+"/freeBoard/delete.do",
-				type:"post",
+				url:root+"/freeBoard/delete.do?board_num="+board_num+"&pageNumber="+pageNumber,
+				type:"get",
 				dataType:"html",
 				success:function(data){
 					//alert(data);
@@ -121,7 +121,7 @@
 		}
 		function deleteFunOk(root, board_num, pageNumber){
 			$.ajax({
-				url:root+"/freeBoard/delete.do",
+				url:root+"/freeBoard/delete.do?boardNumber="+board_num+"&pageNumber="+pageNumber,
 				type:"post",
 				dataType:"html",
 				success:function(data){

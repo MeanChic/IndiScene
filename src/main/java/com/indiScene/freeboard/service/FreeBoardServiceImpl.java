@@ -45,14 +45,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		logger.info("seq_num:"+seq_num);
 		logger.info("seq_level:"+seq_level);
 		
-		String page_num=request.getParameter("page_num");
-		if(page_num==null) page_num="1";
+		String pageNumber=request.getParameter("pageNumber");
+		if(pageNumber==null) pageNumber="1";
 		
 		mav.addObject("board_num", board_num);
 		mav.addObject("group_num", group_num);
 		mav.addObject("seq_num", seq_num);
 		mav.addObject("seq_level", seq_level);
-		mav.addObject("page_num",page_num);
+		mav.addObject("pageNumber",pageNumber);
 		
 		mav.setViewName("freeBoard/write");
 	}
@@ -70,8 +70,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		int check = freeBoardDao.insert(freeBoardDto);
 		logger.info("check:"+check);
 		
-		int page_num=Integer.parseInt(request.getParameter("page_num"));
-		mav.addObject("page_num",page_num);
+		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
+		mav.addObject("pageNumber",pageNumber);
 		mav.addObject("check",check);
 		mav.setViewName("freeBoard/writeOk");
 		

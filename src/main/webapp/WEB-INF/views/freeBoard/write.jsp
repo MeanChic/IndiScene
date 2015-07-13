@@ -18,10 +18,10 @@
 		<input type="hidden" name="group_num" value="${group_num }"/>
 		<input type="hidden" name="seq_num" value="${seq_num }"/>
 		<input type="hidden" name="seq_level" value="${seq_level }"/>
-		<input type="hidden" name="page_num" value="${page_num}"/>
+		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<%-- <input type="hidden" name="artist_id" value="${artist_id}"/> --%>
-			<c:if test="${page_num ==null}">
-				<c:set var="page_num" value="${1}"/>
+			<c:if test="${pageNumber ==null}">
+				<c:set var="pageNumber" value="${1}"/>
 			</c:if>
 		
 		<br/><br/>
@@ -56,9 +56,9 @@
 			
 	
 			<br/>
-			<input type="button" value="글쓰기" onclick="writeOk('${root}','${page_num}')"/>
+			<input type="button" value="글쓰기" onclick="writeOk('${root}','${pageNumber}')"/>
 			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="list('${root}','${page_num}')"/>
+			<input type="button" value="목록보기" onclick="list('${root}','${pageNumber}')"/>
 		
 		
 	</form>
