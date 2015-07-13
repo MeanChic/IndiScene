@@ -15,7 +15,7 @@
 			<input type="checkbox" value="${list.board_num}"/>
 			<img src="${root}${list.image_path}" style="width:50px; height:50px;"/>
 			<a href="javascript:uploadRead('${root}','${list.board_num}','${currentPage}')">${list.subject}</a>
-			<audio controls src="${root}${list.file_path}"></audio>
+			<%-- <audio controls src="${root}${list.file_path}"></audio> --%>
 		</div>
 	</c:forEach>
 </body>

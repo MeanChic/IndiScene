@@ -43,4 +43,14 @@ public class UploadBoardDaoImpl implements UploadBoardDao {
 	public UploadBoardDto read(String board_num) {
 		return sqlSession.selectOne("dao.UploadMapper.read", board_num);
 	}
+
+	@Override
+	public void readCount(String board_num) {
+		sqlSession.update("dao.UploadMapper.readCount",board_num);
+	}
+
+	@Override
+	public int delete(String board_num) {
+		return sqlSession.delete("dao.UploadMapper.delete",board_num);
+	}
 }

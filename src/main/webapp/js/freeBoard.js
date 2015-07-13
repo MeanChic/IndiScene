@@ -28,17 +28,16 @@
 
 	function writeOk(root,pageNumber){
 		var dataSet = new FormData(document.getElementById("FreeBoardWriteForm"));
+			
+ 		alert(CKEDITOR.instances.content.getData());
+//		dataSet.append("content",CKEDITOR.instances.content.getData());
+		$("#content").val(CKEDITOR.instances.content.getData());
 		
-	/*	
- 		alert(CKEDITOR.instances.content1);
-		dataSet.append("content",CKEDITOR.instances.content1);
-		alert("textInput:"+textInput);
-		
- 	*/
-	/* 수정전	*/	
+ 
+	/* 수정전		
 		dataSet.append("pageNumber",pageNumber);
 		dataSet.append("content",$("#textInput").val());
-		
+		*/
 		//alert("여기는 writeOk입니다.");
 		$.ajax({
 			url:root+"/freeBoard/write.do",
@@ -81,8 +80,9 @@
 		}); 
 	}	
 		
-	
-		function read(root,pageNumber,board_num){
+	/*----------------read.jsp-----------------------*/
+
+		function read(root,board_num,pageNumber){
 		//alert(root);
 		
 			$.ajax({
@@ -101,12 +101,11 @@
 				}
 			}); 
 		}
-/*----------------read.jsp-----------------------*/
 		
 		function deleteFun(root, board_num, pageNumber){
 			$.ajax({
-				url:root+"/freeBoard/delete.do",
-				type:"post",
+				url:root+"/freeBoard/delete.do?board_num="+board_num+"&pageNumber="+pageNumber,
+				type:"get",
 				dataType:"html",
 				success:function(data){
 					//alert(data);
@@ -122,7 +121,7 @@
 		}
 		function deleteFunOk(root, board_num, pageNumber){
 			$.ajax({
-				url:root+"/freeBoard/delete.do",
+				url:root+"/freeBoard/delete.do?boardNumber="+board_num+"&pageNumber="+pageNumber,
 				type:"post",
 				dataType:"html",
 				success:function(data){
@@ -140,7 +139,7 @@
 			}); 
 		}
 			
-		function updateFun(root, pageNumber, board_num){
+		function updateFun(root, board_num, pageNumber){
 			alert(root);
 			
 			$.ajax({
@@ -162,10 +161,15 @@
 		
 		function updateFunOk(root, pageNumber, board_num){
 		
-			var sendData=new FormData(document.getElementById("updateForm"));
+			var dataSet = new FormData(document.getElementById("updateForm"));
+			
+//			alert(dataSet.content);
+		//	dataSet.append("content",CKEDITOR.instances.content.getData());
+			$("#content").val(CKEDITOR.instances.content.getData());
+			
 			$.ajax({
 				url:root+"/freeBoard/update.do?board_num="+board_num+"&pageNumber="+pageNumber,
-				data:sendData,
+				data:dataSet,
 				type:"post",
 				contentType:false,
 				dataType:"html",

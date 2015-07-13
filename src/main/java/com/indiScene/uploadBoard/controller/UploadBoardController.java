@@ -13,13 +13,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.uploadBoard.dto.UploadBoardDto;
-import com.indiScene.uploadBoard.service.UploadBoardServiceImpl;
+import com.indiScene.uploadBoard.service.UploadBoardService;
 
 @Controller
 public class UploadBoardController {
 	
 	@Autowired
-	private UploadBoardServiceImpl service;
+	private UploadBoardService service;
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	@RequestMapping(value="/uploadBoard/write.do", method=RequestMethod.GET)
@@ -73,6 +73,41 @@ public class UploadBoardController {
 
 		mav.addObject("request", request);
 		service.read(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/uploadBoard/update.do", method=RequestMethod.GET)
+	public ModelAndView upload(HttpServletRequest request){
+		logger.info("uploadBoard Update Start~~~~~~~");
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("request", request);
+		service.update(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/uploadBoard/update.do", method=RequestMethod.POST)
+	public ModelAndView upload(MultipartHttpServletRequest request, UploadBoardDto uploadBoard){
+		logger.info("upload UpdateOK Start ---------");
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request", request);
+		mav.addObject("uploadBoard", uploadBoard);
+		
+		service.updateOk(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/uploadBoard/delete.do",method=RequestMethod.GET)
+	public ModelAndView delete(HttpServletRequest request){
+		logger.info("uploadBoard Delete Start~~~~~~~");
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("request", request);
+		service.delete(mav);
 		
 		return mav;
 	}

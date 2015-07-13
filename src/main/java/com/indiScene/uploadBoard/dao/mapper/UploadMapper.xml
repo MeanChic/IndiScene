@@ -51,4 +51,12 @@
 			select * from uploadboard where board_num=#{board_num}
 		]]>
 	</select>
+	
+	<update id="readCount" parameterType="String">
+		<![CDATA[update uploadboard set count=count+1 where board_num = #{board_num}]]>
+	</update>
+	
+	<delete id="delete">
+		<![CDATA[delete from uploadboard where board_num=#{board_num}]]>
+	</delete>
 </mapper>

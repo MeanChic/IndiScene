@@ -43,7 +43,7 @@
 			<audio id="prevAudio" controls src=""></audio>
 			<input type=button value="글쓰기" onclick="javascript:uploadWriteOk('${root}')"/>
 			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/uploadBoard/list.do'"/>
+			<input type="button" value="목록보기" onclick="uploadList('${root}','1')"/>
 		</div>
 	</form>
 	

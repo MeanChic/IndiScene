@@ -12,4 +12,6 @@ public interface UploadBoardDao {
 	public int getBoardCount();
 	public List<UploadBoardDto> getBoardList(HashMap<String,Integer> rowMap);
 	public UploadBoardDto read(String board_num);
+	public void readCount(String board_num);
+	public int delete(String board_num);
 }
