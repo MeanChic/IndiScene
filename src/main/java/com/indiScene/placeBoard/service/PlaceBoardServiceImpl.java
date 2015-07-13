@@ -304,8 +304,9 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		if(password.equals(realPass)){
 			
 			PlaceBoardDto marketBoardDto=marketBoardDao.read(board_num);
-			
-			if(marketBoardDto.getFile_name()!=null){
+			logger.info("==" + marketBoardDto.getFile_name());
+			if(marketBoardDto.getFile_name()!=null || !(marketBoardDto.getFile_name().equals(";"))){
+				logger.info("==" + marketBoardDto.getFile_name());
 				File file=null;
 				String fileNameForDto=marketBoardDto.getFile_name();
 				String filePathForDto=marketBoardDto.getFile_path();

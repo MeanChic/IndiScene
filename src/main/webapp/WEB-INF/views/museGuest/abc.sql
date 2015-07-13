@@ -190,7 +190,7 @@ increment by 1;
 
 select * from (select rownum rnum, a.* from guest a where muse_name='abc' order by guest_date desc) b where rnum < 5 ;
  
-<<<<<<< HEAD
+
  alter table reply modify(reply_num number(10));
 
 select * from (select rownum rnum, a.* from (select * from guest order by guest_date desc) a where muse_name='abc') b where rnum > 0 and rnum <= 5;
