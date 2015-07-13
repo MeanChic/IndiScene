@@ -21,13 +21,13 @@
 			
 			<script type="text/javascript">
 				alert("Login Success.");
-				location.href="${root}/Template.jsp";
+				location.href="${root}/Test01.jsp";
 			</script>
 		</c:when>
 		<c:otherwise>
 			<script type="text/javascript">
 				alert("You were entered the wrong information.");
-				location.href="${root}/artist/login.do";
+				location.href="${root}/Test01.jsp";
 			</script>
 		</c:otherwise>
 	</c:choose>
