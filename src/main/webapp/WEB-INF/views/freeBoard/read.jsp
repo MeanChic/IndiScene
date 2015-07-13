@@ -49,9 +49,9 @@
 		
 		<tr>
 			<td height="30" colspan="4" align="center">
-				<input type="button" value="글수정" onclick="updateFun('${root}','${freeBoard.board_num}', '${pageNumber}')" />
+				<input type="button" value="글수정" onclick="updateFun('${root}','${freeBoard.board_num}','${pageNumber}')" />
 				<!-- boardNumber를 넘길경우 board_num이아닌 freeBoard.board_num을 명시해줘야 넘어간다. -->
-				<input type="button" value="글삭제" onclick="deleteFun('${root}','${freeBoard.board_num }', '${pageNumber}')"/>
+				<input type="button" value="글삭제" onclick="deleteFun('${root}','${freeBoard.board_num}','${pageNumber}')"/>
 				<input type="button" value="글목록" onclick="list('${root}','${pageNumber }')"/>
 			</td>
 		</tr>

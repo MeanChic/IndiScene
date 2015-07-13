@@ -25,8 +25,9 @@
 			
 			<tr>
 				<td align="center">
-					<input type="submit" value="글삭제"/>
-					<input type="button" value="목록보기" onclick="location.href='${root}/freeBoard/list.do?pageNumber=${pageNumber}'">
+					<input type="submit" value="글삭제" onclick="deleteFunOk('${root}','${ pageNumber}')"/>
+					<input type="button" value="취소" onclick="read('${root}','${freeBoard.board_num}','${pageNumber}')"/>
+					<%-- 					<input type="button" value="삭제 취소" onclick="location.href='${root}/freeBoard/list.do?pageNumber=${pageNumber}'"> --%>					
 				</td>
 			</tr>
 		</table>
