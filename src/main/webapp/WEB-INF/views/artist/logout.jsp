@@ -20,7 +20,7 @@
 	<script type="text/javascript">
 		alert("Logout success.");
 		/* location.href="${root}/member/login.do"; */
-		$(location).attr("href","${root}/Template.jsp");
+		$(location).attr("href","${root}/Test01.jsp");
 	</script>
 </body>
 </html>
