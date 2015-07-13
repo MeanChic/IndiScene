@@ -8,7 +8,7 @@
 	
 	<select id="boardCount" resultType="int">
 		<![CDATA[
-			select count(*) from marketBoard
+			select count(*) from placeboard
 		]]>
 	</select>
 	

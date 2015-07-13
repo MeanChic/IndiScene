@@ -20,7 +20,7 @@
 		<input type="hidden" name="pageNumber" value="${pageNumber }"/>
 		
 		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-				<a href="${root }/placeBoard/list.do?pageNumber=${pageNumber}">글목록</a>
+				<a href="${root}/placeBoard/enterBoard.do?pageNumber=${pageNumber}">글목록</a>
 		</div>
 			
 		<div class="line">
@@ -44,7 +44,7 @@
 				 CKEDITOR.replace( 'content',
 						 {///IndiScene_basic/src/main/webapp/resources/ckfinder
 						 	
-						 	filebrowserUploadUrl: '${root}/placeBoard/fileUpload.do' // 파일 업로드를 처리 할 경로 설정.
+						 	filebrowserUploadUrl: '${root}/placeBoard/imageUpload.do' // 파일 업로드를 처리 할 경로 설정.
 						 });
 	  	</script>
 			</span>

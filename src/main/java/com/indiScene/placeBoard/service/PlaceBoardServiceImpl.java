@@ -96,10 +96,11 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	
 	@Override
 	public List<String> mainImageFind(List<PlaceBoardDto> marketList) {
+		
 		List<String> mainImageList=new ArrayList<String>();
 		String contentForImg=null;
 		for(int i=0;i<marketList.size();i++){
-			contentForImg=marketList.get(i).getContent();
+			contentForImg=((PlaceBoardDto)marketList.get(i)).getContent();
 			//System.out.println(contentForImg);
 			//logger.info("내용추출" +contentForImg);
 			Pattern p=Pattern.compile("src=\".*.\" style"); //표준정규식 만듬
