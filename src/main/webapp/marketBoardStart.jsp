@@ -12,7 +12,6 @@
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
-
 <script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
 <script src="${root }/js/reply.js" type="text/javascript" ></script>
 
