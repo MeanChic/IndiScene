@@ -51,7 +51,7 @@ $(function(){
 
 
 function cancle(artist_id, muse_name){
-	alert(artist_id + ",,," + muse_name);
+	//alert(artist_id + ",,," + muse_name);
 	var root = $("#root").val();
 	
 	var sendData= "artist_id=" + artist_id +"&muse_name=" + muse_name;
@@ -72,7 +72,7 @@ function cancle(artist_id, muse_name){
 }
 
 function signup(artist_id, muse_name){
-	alert(artist_id + ",,," + muse_name);
+	//alert(artist_id + ",,," + muse_name);
 	var root = $("#root").val();
 	
 	var sendData= "artist_id=" + artist_id +"&muse_name=" + muse_name;
@@ -83,7 +83,7 @@ function signup(artist_id, muse_name){
 		type:"get",
 		dataType:"text",
 		success:function (data){
-			alert(data);
+			//alert(data);
 			$("."+muse_name+"> input").val("대기중/신청취소");
 			$("."+muse_name+"> input").attr("onclick","cancle('"+artist_id+"','"+muse_name+"')");
 			var a = $("#best>."+ muse_name).clone();

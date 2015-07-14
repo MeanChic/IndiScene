@@ -68,6 +68,12 @@
 	<c:if test="${check != 0 }">
 	<div id="join">
 	<c:forEach var="join" items="${joinMember }">
+		<c:if test="${join.ARTIST_ID = artist_id}">
+			<div id="${join.ARTIST_ID}" >
+				${join.ARTIST_ID} , ${join.MUSE_YN}, ${join.MUSE_NAME}
+				<input type="button" value="뮤즈 삭제하기" onclick="outMember('${muse_name}','${join.ARTIST_ID}')">
+			</div>
+		</c:if>
 		<c:if test="${join.ARTIST_ID != artist_id}">
 		<div id="${join.ARTIST_ID}" >
 			${join.ARTIST_ID} , ${join.MUSE_YN}, ${join.MUSE_NAME}

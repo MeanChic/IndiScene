@@ -9,6 +9,7 @@ import java.util.Date;
  * @description :	공연정보 게시글의 DTO
  */
 public class PerformBoardDto {
+	
 	private String subject;	//문자	VARCHAR2(255)
 	private String content;	//문자	VARCHAR2(255)
 	private Date register_date; //날짜	DATE
