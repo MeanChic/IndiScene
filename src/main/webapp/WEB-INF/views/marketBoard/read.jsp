@@ -10,6 +10,8 @@
 <title>Insert title here</title>
 <script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
 <script src="${root }/js/replyWrite.js" type="text/javascript" ></script>
+<script src="${root }/js/replyDelete.js" type="text/javascript" ></script>
+<script src="${root }/js/replyUpdate.js" type="text/javascript" ></script>
 <script type="text/javascript">
 	function delFun(root, board_num, pageNumber,artist_id){
 		var dd =confirm("정말 삭제하시겠습니까?");
@@ -18,17 +20,22 @@
 			location.href=url;
 		}
 	}
+	function DeleteToServer(a,b,c){
+		//alert(a+b+c);
+	}
 	
 </script>
 </head>
-<body>
+
 <body>
 	<c:set var="root" value="${pageContext.request.contextPath }" />
-
+	
+	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
 	<table border="1" width="510" cellpadding="2" cellspacing="0"align="center">
 		<tr>
 			<td align="center" height="20" width="125">글번호</td>
 			<td align="center" height="20" width="125">${marketBoard.board_num }</td>
+			
 
 			<td align="center" height="20" width="125">조회수</td>
 			<td align="center" height="20" width="125">${marketBoard.count }</td>
@@ -54,16 +61,15 @@
 				<td align="center" height="20" width="125">파일명</td>
 				<td colspan="3">
 				
-				<c:forTokens var="file_path" items="${marketBoard.file_path}" delims=";" varStatus="k" begin="1" end="1">
-				<p> ${file_path}</p>
-				</c:forTokens>
-			
-				<c:forTokens var="file_name" items="${marketBoard.file_name}" delims=";" varStatus="s" >
-					<c:forTokens var="file_path" items="${marketBoard.file_path}" delims=";" begin="${s.index}" end="${s.index }">
-						<a href="${root}/marketBoard/download.do?board_num=${marketBoard.board_num}&file_name=${file_name}&file_path=${file_path}">${file_name}, ${s.index}
+				
+				<!-- 다중파일 read 처리 -->
+				<c:forTokens var="file_name" items="${marketBoard.file_name}" delims="<>" varStatus="s" >
+					<c:forTokens var="file_path" items="${marketBoard.file_path}" delims="<>" begin="${s.index}" end="${s.index }"> <!--파일 네임과 동일한 s번째순번의 path를 사용한다-->
+						<a href="${root}/CommonIO/download.do?board_num=${marketBoard.board_num}&file_name=${file_name}&file_path=${file_path}">${file_name}, ${s.index}
 						</a><br/>
 					</c:forTokens>
 				</c:forTokens>
+				 
 				</td>
 			</tr>
 		</c:if>
@@ -71,20 +77,19 @@
 		<tr>
 			<td height="30" colspan="4" align="center"><input type="button"
 				value="글수정"
-				onclick="location.href='${root}/marketBoard/update.do?board_num=${marketBoard.board_num}&pageNumber=${pageNumber}'" />
+				onclick="javascript:marketBoardUpdate('${marketBoard.board_num}','${pageNumber}')" />
 				<input type="button" value="글삭제"
-				onclick="location.href='${root}/marketBoard/delete.do?board_num=${marketBoard.board_num}&pageNumber=${pageNumber}&artist_id=${marketBoard.artist_id}'"/>
+				onclick="javascript:marketBoardDelete('${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')"/>
 				<!-- onclick="delFun('${root}','${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')" />  -->
 				<input type="button" value="글목록"
-				onclick="location.href='${root}/marketBoard/enterBoard.do?pageNumber=${pageNumber}'" />
+				onclick="javascript:enterMarketBoard('${root}','${pageNumber}')" />
 			</td>
 		</tr>
 	</table>
 	<!-- ---------------한줄댓글 ----------------------------------------------->
-	<c:set var="artistid" value="testId"/> <!-- session 적용하면 지울것 -->
-	
-	<c:set var="root" value="${pageContext.request.contextPath }"/>
+
 	${marketBoard.board_num }
+	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	<div>한줄 댓글이 가능합니다.</div>
 	<br/>
 	
@@ -93,7 +98,8 @@
 		<input id="writeReply" type="text" name="reply_content" size="45"/>
 		<input type="button" value="한줄답글작성" onclick="writeToServer('${root}','${marketBoard.board_num }')"/> 
 	</div>
-	
+
+	 
 	<div></div>
 	
 	<!-- 새로운 데이터 -->
@@ -107,8 +113,8 @@
 			<span class="cssReply">${reply.reply_content }</span>
 			<span class="cssDate">${reply.reply_date }</span>
 			<span class="cssUpDel">
-				<a href="javascript:upSelectToServer('${reply.reply_num }','${root}')">수정</a>
-				<a href="javascript:deleteToServer('${reply.reply_num }','${root}')">삭제</a>
+				<a href="javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">수정</a>
+				<a href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">삭제</a>
 			</span>
 		</div>
 	</c:forEach>

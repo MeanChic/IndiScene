@@ -10,10 +10,27 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<audio id="playCheck" src="${root}${board.file_path}"></audio>
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
-			alert("글쓰기를 성공하였습니다.");
-			uploadList('${root}','1');
+/* 			var checkAudio = document.getElementById("playCheck");
+			checkAudio.oncanplay=function(){ */
+				alert("글쓰기를 성공하였습니다.");
+				uploadList('${root}','1');
+			/* };
+			checkAudio.onabort=function(){
+				alert("실패했쪄염뿌우");
+				checkAudio.load();
+			}
+			while(checkAudio.readyState!=3){
+				checkAudio.load();
+				if(checkAudio.networkState==2){
+					while(checkAudio.readyState!=3){}
+					break;
+				}
+				alert(checkAudio.readyState);
+				alert(checkAudio.networkState);
+			} */
 		</script>
 	</c:if>
 	

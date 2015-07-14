@@ -13,20 +13,20 @@ ${board_num }
 	<c:if test="${check==1}">
 		<script type="text/javascript">
 			alert("삭제되었습니다. 리스트로 이동합니다.");
-			location.href="${root}/marketBoard/enterBoard.do?pageNumber=${pageNumber}";
+			location.href="javascript:enterMarketBoard('${root}','${pageNumber}')";
 		</script>
 	</c:if>
 	<c:if test="${check == 2}">
 		<script type="text/javascript">
-			alert("비밀번호가 틀립니다. 리스트로 이동합니다.");
-			location.href="${root }/marketBoard/read.do?board_num=${board_num}&pageNumber=${pageNumber}";
+			alert("비밀번호가 틀립니다. 기존글로 이동합니다.");
+			location.href="javascript:marketBoardRead('${board_num}','${pageNumber}')";
 		</script>
 	</c:if>
 	
 	<c:if test="${check == 0}">
 		<script type="text/javascript">
 			alert("삭제오류");
-			location.href="${root }/marketBoard/read.do?board_num=${board_num}&pageNumber=${pageNumber}";
+			location.href="javascript:marketBoardRead('${board_num}','${pageNumber}')";
 		</script>
 	</c:if>
 

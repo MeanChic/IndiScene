@@ -9,8 +9,8 @@
 	<title>게시판 수정</title>
 </head>
 <body>
-	<form id="updateForm" method="post" onsubmit="return updateFunOk()">
-		<input type="hidden" name="board_num" value="${freeBoard.board_num}"/>
+	<form id="updateForm" method="post">
+		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		
 <%-- 		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
@@ -31,20 +31,20 @@
 			<span class="content">
 				<textarea id="content" rows="14" cols="58" name="content">${freeBoard.content}</textarea><br/><br/>
 			
-	<!-- 		<script>
+	 		<script>
 			 CKEDITOR.replace( 'content',
 					 {///IndiScene_basic/src/main/webapp/resources/ckfinder
 					 	filebrowserUploadUrl: '${root}/marketBoard/imageUpload.do' // 파일 업로드를 처리 할 경로 설정.
 					 }); 
  			
 			</script>
-			 -->
+			
 			</span>
 
 		
 			<div class="line" style="width:598px; border-width:2px; text-align:center;">
-				<input type="button" value="글수정" onclick="updateFunOk('${root}','${freeBoard.board_num}','${page_num }')"/>
-				<input type="button" value="취소" onclick="read('${root}','${freeBoard.board_num}','${pageNumber}'	)"/>
+				<input type="button" value="글수정" onclick="updateFunOk('${root}','${freeBoard.board_num}','${pageNumber }')"/>
+				<input type="button" value="취소" onclick="freeBoardRead('${root}','${freeBoard.board_num}','${pageNumber}'	)"/>
 				
 				
 			<%-- 	<input type="button" value="글목록" onclick="list('${root}','${pageNumber}')"/> --%>

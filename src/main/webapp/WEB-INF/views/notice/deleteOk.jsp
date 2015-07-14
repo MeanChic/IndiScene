@@ -14,14 +14,15 @@
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("삭제가 완료되었습니다.");
-			location.href="${root}/notice/list.do?pageNumber=${pageNumber}";
+			/* location.href="${root}/notice/list.do?pageNumber=${pageNumber}"; */
+			list('${root}','${pageNumber}');
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
 			alert("삭제가 실패되었습니다.");
-			location.href="${root}/notice/list.do?pageNumber=${pageNumber}";
+			list('${root}','${pageNumber}');
 		</script>
 	</c:if>
 

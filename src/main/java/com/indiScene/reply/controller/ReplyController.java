@@ -35,13 +35,38 @@ public class ReplyController {
 	@description :한줄댓글 작정을 누르면 내용을 mav에 담아 replyService로 보낸다
 	 */
 	@RequestMapping(value="/replyWrite.do", method=RequestMethod.POST)
-	public ModelAndView write(HttpServletRequest request,HttpServletResponse response,ReplyDto replyDto) throws IOException{
+	public void write(HttpServletRequest request,HttpServletResponse response,ReplyDto replyDto) throws IOException{
+		logger.info("replyWrite--------------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
 		mav.addObject("response",response);
 		replyService.write(mav);
 		
-		return null;
 		
+	}
+	
+	@RequestMapping(value="/replyDelete.do", method=RequestMethod.GET)
+	public void delete(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		logger.info("replyDelete--------------------------");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request",request);
+		mav.addObject("response",response);
+		replyService.delete(mav);
+		
+		
+	}
+	
+	@RequestMapping(value="/replySelect.do", method=RequestMethod.GET)
+	public void upSelect(HttpServletRequest request, HttpServletResponse response) throws Throwable{
+		logger.info("replyUpSelect-------------------------------");
+		
+		replyService.upSelect(request,response);
+	}
+	
+	@RequestMapping(value="/replyUpdate.do", method=RequestMethod.GET)
+	public void update(HttpServletRequest request,HttpServletResponse response) throws Throwable{
+		logger.info("replyUpdate-----------------------------");
+		
+		replyService.update(request, response);
 	}
 }

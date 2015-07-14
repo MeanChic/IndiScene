@@ -1,15 +1,15 @@
 
 select * from marketboard;
 
-create sequence placeboard_seq  
+create sequence marketboard_seq  
 start with 1
 increment by 1;
  --1 ������ ����(�ʼ�)
 
-insert into artist(ARTIST_ID,ARTIST_PASSWORD,ARTIST_NAME,ARTIST_NICKNAME,ARTIST_PHONE,ARTIST_ZIPCODE, 			   
+insert into artist(ARTIST_ID,ATIST_PASSWORD,ARTIST_NAME,ARTIST_NICKNAME,ARTIST_PHONE,ARTIST_ZIPCODE, 			   
  ARTIST_ADDRESS, 			   
  ARTIST_BIRTH)			   
- values('testId','1','indi','0','a','a','0',to_date('1990-12-27', 'yyyy-mm-dd'))
+ values('testId','1','testId','0','a','a','0',to_date('1990-12-27', 'yyyy-mm-dd'))
  --2 marketBoard �׽�Ʈ�Ҷ� �� �ӽ� ���̵� ���� (�ʼ�)
  
  alter table marketboard modify(content VARCHAR2(4000));

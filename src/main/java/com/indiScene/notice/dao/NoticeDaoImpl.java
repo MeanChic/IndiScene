@@ -50,20 +50,20 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 	
 	@Override
-	public NoticeDto noticeRead(int board_num) {			
+	public NoticeDto noticeRead(String board_num) {			
 		NoticeDto board =null;
 		sqlSession.update("dao.NoticeMapper.count",board_num);//조회수 증가 
 		board = sqlSession.selectOne("dao.NoticeMapper.read",board_num);	//해당 게시물을 가져옴.
 		return board;
 		}
 	@Override
-	public int noticeDelete(int board_num) {
+	public int noticeDelete(String board_num) {
 		
 		return sqlSession.delete("dao.NoticeMapper.delete",board_num);
 		
 		}
 	@Override
-	public NoticeDto noticeUpdateSelect(int board_num) {
+	public NoticeDto noticeUpdateSelect(String board_num) {
 		
 		return sqlSession.selectOne("dao.NoticeMapper.updateSelect",board_num);
 	}

@@ -1,8 +1,8 @@
-/*FreeBoard*/
+/*FreeBoard javascript*/
 
 
 	function write(root){
-		//var sendData="board_num=0"
+		
 		$.ajax({
 			url:root+"/freeBoard/write.do",
 			/*data:sendData,*/
@@ -53,16 +53,15 @@
 				var realData = realData[1].split("</body>")[0];
 				//alert(realData);
 				$("#centerContents").html(realData);
-				
 			},
 			error:function(xhr,status,error){
 				alert(xhr+"\n"+status+"\n"+error);
-			}
+			} 	
 		}); 
 	}
 	
-	function list(root,pageNumber){
-	//	if(pageNumber=="")pageNumber=1;
+	function freeBoardList(root,pageNumber){
+	//if(pageNumber=="")pageNumber=1;
 		$.ajax({
 			url:root+"/freeBoard/list.do?pageNumber="+pageNumber,
 			type:"get",
@@ -82,7 +81,7 @@
 		
 	/*----------------read.jsp-----------------------*/
 
-		function read(root,board_num,pageNumber){
+		function freeBoardRead(root,board_num,pageNumber){
 		//alert(root);
 		
 			$.ajax({
@@ -120,17 +119,21 @@
 			}); 
 		}
 		function deleteFunOk(root, board_num, pageNumber){
-			$.ajax({
-				url:root+"/freeBoard/delete.do?boardNumber="+board_num+"&pageNumber="+pageNumber,
+			var dataSet = new FormData(document.getElementById("deleteForm"));
+		$.ajax({
+				url:root+"/freeBoard/delete.do",
 				type:"post",
+				contentType:false,
+				data:dataSet,
 				dataType:"html",
+				processData:false,
 				success:function(data){
 					//alert(data);
 					var realData = data.split("<body>");
 					var realData = realData[1].split("</body>")[0];
 					//alert(realData);
 					$("#centerContents").html(realData);
-					$.getScript(root+"/js/freeBoard.js");
+					///$.getScript(root+"/js/freeBoard.js");
 
 				},
 				error:function(xhr,status,error){
@@ -159,21 +162,21 @@
 			}); 
 		} 
 		
-		function updateFunOk(root, pageNumber, board_num){
-		
-			var dataSet = new FormData(document.getElementById("updateForm"));
+		function updateFunOk(root, board_num, pageNumber){
+			alert("이건 업데이트 OK");
 			
 //			alert(dataSet.content);
 		//	dataSet.append("content",CKEDITOR.instances.content.getData());
 			$("#content").val(CKEDITOR.instances.content.getData());
-			
+			var dataSet = new FormData(document.getElementById("updateForm"));
+
 			$.ajax({
-				url:root+"/freeBoard/update.do?board_num="+board_num+"&pageNumber="+pageNumber,
+				url:root+"/freeBoard/update.do",
 				data:dataSet,
 				type:"post",
-				contentType:false,
 				dataType:"html",
 				processData:false,
+				contentType:false,
 				success:function(data){
 					alert(data);
 					var realData = data.split("<body>");

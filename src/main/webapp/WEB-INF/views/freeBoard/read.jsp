@@ -9,15 +9,14 @@
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 
 <html>
-<title>FreeBoard Read</title>
+<title>Notice Read</title><%-- 
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script type="text/javascript" src="${root}/js/freeBoard.js"></script>
-<link rel="stylesheet" type="text/css" href="${root}/css/freeBoard.css"/>
+<link rel="stylesheet" type="text/css" href="${root}/css/freeBoard.css"/> --%>
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>게시판 읽기</title>
-
 </head>
 <body>
 
@@ -52,7 +51,7 @@
 				<input type="button" value="글수정" onclick="updateFun('${root}','${freeBoard.board_num}','${pageNumber}')" />
 				<!-- boardNumber를 넘길경우 board_num이아닌 freeBoard.board_num을 명시해줘야 넘어간다. -->
 				<input type="button" value="글삭제" onclick="deleteFun('${root}','${freeBoard.board_num}','${pageNumber}')"/>
-				<input type="button" value="글목록" onclick="list('${root}','${pageNumber }')"/>
+				<input type="button" value="글목록" onclick="freeBoardList('${root}','${pageNumber}')"/>
 			</td>
 		</tr>
 	</table>

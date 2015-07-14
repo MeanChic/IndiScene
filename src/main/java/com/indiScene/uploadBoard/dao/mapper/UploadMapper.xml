@@ -59,4 +59,38 @@
 	<delete id="delete">
 		<![CDATA[delete from uploadboard where board_num=#{board_num}]]>
 	</delete>
+	
+	<update id="update" parameterType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+		<![CDATA[
+			update uploadboard set 
+			subject=#{subject},
+			content=#{content},
+			register_date=sysdate,
+			file_path=#{file_path},
+			file_name=#{file_name},
+			genre_code=#{genre_code},
+			image_path=#{image_path}
+			where board_num=#{board_num}
+		]]>
+	</update>
+	
+	<select id="likeCheck" parameterType="java.util.HashMap" resultType="int">
+		<![CDATA[select count(*) from board_like where artist_id=#{artist_id} and board_num=#{board_num}]]>
+	</select>
+	
+	<insert id="like" parameterType="java.util.HashMap">
+		<![CDATA[insert into board_like values(#{artist_id}, #{board_num}, sysdate)]]>
+	</insert>
+	
+	<update id="likeUpdate" parameterType="java.util.HashMap">
+		<![CDATA[update uploadboard set board_like=board_like+1 where board_num=#{board_num} and not artist_id=#{artist_id}]]>
+	</update>
+	
+	<select id="checkLike" parameterType="java.util.HashMap" resultType="int">
+		<![CDATA[select board_like from uploadboard where board_num=#{board_num}]]>	
+	</select>
+	
+	<insert id="copyBest" parameterType="String">
+		<![CDATA[insert into bestboard (select a.*, sysdate from (select * from uploadboard where board_num=#{board_num}) a)]]>
+	</insert>
 </mapper>

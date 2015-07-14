@@ -45,11 +45,12 @@
 			<input type="reset" value="다시작성"/>
 			<input type="button" value="목록보기" onclick="uploadList('${root}','1')"/>
 		</div>
+		<input type="hidden" name="recordFile" id="uploadPath" value=""/>
 	</form>
 	
 	<input type="hidden" id="root" value="${root}"/>
-	<input type="hidden" id="uploadPath" value=""/>
 	<input type="hidden" id="originalMusicPath" value=""/> 
+	<input type="button" onclick="test()" value="테스트"/>
 	<script type="text/javascript">
 		$("#recordBox").css($("#recordButton").css("height"));
 		 $("#prevListen").bind("click",function(){

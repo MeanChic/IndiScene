@@ -91,7 +91,7 @@ public class MuseGuestServiceImpl implements MuseGuestService {
 		response.setCharacterEncoding("utf-8");
 		//logger.info("-- pagenum : " + pagenum);
 		
-		if(pagenum == "1"){
+		/*if(pagenum == "1"){*/
 			//logger.info("-- pagenum 1 : " + pagenum);
 			//count = guestDao.getCount(muse_name);
 			
@@ -104,7 +104,7 @@ public class MuseGuestServiceImpl implements MuseGuestService {
 			mav.setViewName("museGuest/guest");
 			
 			return mav;
-		}else{
+		/*}else{
 			try {
 				PrintWriter out = response.getWriter();
 				
@@ -118,7 +118,7 @@ public class MuseGuestServiceImpl implements MuseGuestService {
 			}
 			
 			return null;
-		}
+		}*/
 	}
 	
 	/**

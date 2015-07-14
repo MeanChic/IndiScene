@@ -17,5 +17,19 @@
 	<select id="replyGetBunho" resultType="int">
 		select a.reply_num from(select reply_num from reply where board_num=#{board_num} order by reply_date desc) a where rownum=1
 	</select>
+	
+	<delete id="replyDelete">
+		delete from reply where board_num=#{board_num} and reply_num=#{reply_num}
+	</delete>
+	
+	<select id="replySelect" resultType="com.indiScene.reply.dto.ReplyDto">
+		select * from reply where board_num=#{board_num} and reply_num=#{reply_num}
+	</select>
+	
+    <update id="replyUpdate" parameterType="com.indiScene.reply.dto.ReplyDto">
+		update reply set reply_content=#{reply_content} where board_num=#{board_num} and reply_num=#{reply_num}
+		
+	</update>
+	
 	</mapper>
 	

@@ -7,9 +7,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>자유게시판</title>
-<%-- <script src="${root }/resources/ckEditor/ckeditor.js"></script> --%>
+<script src="${root }/resources/ckEditor/ckeditor.js"></script>
+<script src="${root }/resources/ckfinder/ckfinder.js"></script>
+<script src="${root }/js/jquery.js" type="text/javascript" ></script>
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
-
+	<script type="text/javascript" src="${root }/css/freeBoard/script.js"></script>
 </head>
 <body>
 
@@ -19,29 +21,31 @@
 		<input type="hidden" name="seq_num" value="${seq_num }"/>
 		<input type="hidden" name="seq_level" value="${seq_level }"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
-		<%-- <input type="hidden" name="artist_id" value="${artist_id}"/> --%>
-			<c:if test="${pageNumber ==null}">
-				<c:set var="pageNumber" value="${1}"/>
-			</c:if>
-		
+	
+		<c:if test="${pageNumber ==null}">
+			<c:set var="pageNumber" value="${1}"/>
+		</c:if>
 		<br/><br/>
 
 		
 		<div class="line">
-			<label class="title">제목</label>
-			<span class="content2"><input type="text" size="50" name="subject"/></span>
-		
+			<label class="subject">제목</label>
+			<span class="content">
+				<input type="text" size="50" name="subject"/>
+			</span>
 		</div>
+		
 		<div class="line">
 			<label class="subject">작성자</label>
-				<span class="content2">
+			<span class="content">
 				<input type="text" size="50" name="artist_id" value="indi" />
-				</span>
+			</span>
 		</div>	
 		<br/>
 			<label class="title">내용</label>
 			<span class="content">
-				<textarea id="content" rows="14" cols="58" name="content"></textarea><br/><br/>
+				<textarea id="content" rows="14" cols="58" name="content">
+				</textarea><br/><br/>
 			
 			<script>
 			 CKEDITOR.replace( 'content',
@@ -51,14 +55,11 @@
  			
 			</script>
 			
-				</span>
-			<br/>
-			
-	
-			<br/>
+			</span>
+			<br/><br/>
 			<input type="button" value="글쓰기" onclick="writeOk('${root}','${pageNumber}')"/>
 			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="list('${root}','${pageNumber}')"/>
+			<input type="button" value="목록보기" onclick="freeBoardList('${root}','${pageNumber}')"/>
 		
 		
 	</form>

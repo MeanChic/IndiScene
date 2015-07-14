@@ -17,11 +17,11 @@ public interface FreeBoardDao {
 
 	public List<FreeBoardDto> getFreeBoardList(int startRow, int endRow);
 
-	public FreeBoardDto freeBoardRead(int board_num);
+	public FreeBoardDto freeBoardRead(String board_num);
 	
-	public int freeBoardDelete(int board_num);
+	public int freeBoardDelete(String board_num);
 
-	public FreeBoardDto freeBoardUpdateSelect(int board_num);
+	public FreeBoardDto freeBoardUpdateSelect(String board_num);
 
 	public int freeBoardUpdate(FreeBoardDto freeBoardDto);
 

@@ -19,7 +19,7 @@
 			alert("수정이 완료되었습니다.");
 			/* location.href="${root}/freeBoard/list.do?pageNumber=${pageNumber}" */
 					
-			list('${root}','${pageNumber}');
+			freeBoardList('${root}','${pageNumber}');
 			</script>
 			
 	</c:if>
@@ -28,7 +28,7 @@
 		<script type="text/javascript">
 			alert("수정이 실패되었습니다.");
 		/* 	location.href="${root}/freeBoard/list.do?pageNumber=${pageNumber}"; */
-			list('${root }');
+			freeBoardlist('${root }','${pageNumber}');
 		</script>
 	</c:if>
 
