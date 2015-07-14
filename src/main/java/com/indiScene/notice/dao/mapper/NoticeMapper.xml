@@ -21,7 +21,7 @@
 		<![CDATA[ select count(*) from notice ]]>
 	</select>
 
-	<delete id="delete" parameterType="int">
+	<delete id="delete" parameterType="String">
 		<![CDATA[ delete from notice where board_num=#{board_num} ]]>
 	</delete>
 
@@ -37,11 +37,11 @@
 		<![CDATA[ update notice set subject=#{subject},content=#{content} where board_num=#{board_num}]]>
 	</update>
 	
-	<update id="count" parameterType="int">
+	<update id="count">
 		<![CDATA[ update notice set count=count+1 where board_num=#{board_num} ]]>
 	</update>
 	
-	<select id="read" parameterType="int" resultType="com.indiScene.notice.dto.NoticeDto">
+	<select id="read" parameterType="String" resultType="com.indiScene.notice.dto.NoticeDto">
 		<![CDATA[ select * from notice where board_num=#{board_num} ]]>
 	</select>
 	

@@ -10,7 +10,7 @@
 	<title>게시판 삭제</title>
 </head>
 <body>
-	<form method="post" action="${root }/notice/deleteOk.do">
+	<form id="deleteForm" method="post">
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<table border="1" width="300" cellpadding="2" cellspacing="0" align="center">
@@ -25,8 +25,8 @@
 			
 			<tr>
 				<td align="center">
-					<input type="submit" value="글삭제"/>
-					<input type="button" value="목록보기" onclick="location.href='${root}/notice/list.do?pageNumber=${pageNumber}'">
+					<input type="button" value="글삭제" onclick="deleteFunOk('${root}','${board_num}','${ pageNumber}')"/>
+					<input type="button" value="취소" onclick="read('${root}','${board_num}','${pageNumber }')"/>
 				</td>
 			</tr>
 		</table>

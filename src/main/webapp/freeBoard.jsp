@@ -77,13 +77,13 @@ function list(root){
       	<a href="javascript:write('${root }')">자유게시판 글쓰기</a>
       	<%-- <a href="${root}/freeBoard/write.do">자유게시판 글쓰기</a> --%>
 		&nbsp;&nbsp;&nbsp;
-		<a href="javascript:list('${root }','1')">자유게시판 목록보기</a>
+		<a href="javascript:freeBoardList('${root }','1')">자유게시판 목록보기</a>
       </div>
       
       <div id="centerContents">
         <h2>Content</h2>
-        	
-        </div>
+      </div>
+      
       <div id="sidebar">
         <h2>Sidebar</h2>
         <ul>

@@ -11,8 +11,7 @@
 	<title>게시판 목록보기</title>
 </head>
 <body>	
-		<a href="${root }/notice/write.do">공지사항쓰기</a>
-		<br/><br/><br/>
+
 		<c:if test="${count==0 }">
 					<td align="center">게시판에 저장된 글이 없습니다.</td>
 		</c:if>
@@ -24,18 +23,19 @@
 					<td align="center" width="100">작성일</td>
 					<td align="center" width="50">조회수</td>
 				</tr>
-		<!-- notice List -->
+		<!-- Notice List -->
 		<c:forEach var="notice" items="${noticeList }">
 			<tr>
 				<td>${notice.board_num }</td>
 				<td>
 					<c:if test="${notice.seq_level>0 }">
-						<c:forEach begin="0" end="${notice.seq_level }" step="1">
+						<c:forEach begin="0" end="${freeBoard.seq_level }" step="1">
 						</c:forEach>
 					</c:if>
-					<a href="${root }/notice/read.do?board_num=${notice.board_num}&pageNumber=${currentPage }">${notice.subject }</a>
-				</td> 
-				
+<%-- 				<a href="${root }/freeBoard/read.do?board_num=${freeBoard.board_num}&pageNumber=${currentPage }">${freeBoard.subject }</a> --%>
+	
+					<a href="javascript:read('${root }','${notice.board_num }','${currentPage }')">${notice.subject }</a> 
+ 				</td> 
 				<td>
 					<fmt:formatDate value="${notice.register_date }" type="date"/>
 				</td>
@@ -49,10 +49,8 @@
 		<!-- 페이지 번호 -->
 		<center>
 			<c:if test="${count>0 }">
-	
-				 
 				<c:set var="pageBlock" value="${5}"/>
-				<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0 ? 0:1 )}"/>
+				<c:set var="pageCount" value="${count/noticeSize+(count%noticeSize==0 ? 0:1 )}"/>
 				
 				<fmt:parseNumber var="rs" value="${(currentPage-1)/pageBlock }" integerOnly="true"/>
 				<c:set var="startPage" value="${rs*pageBlock+1 }"/>
@@ -63,18 +61,18 @@
 				</c:if>
 				
 				<c:if test="${startPage>pageBlock }">
-					<a href="${root }/notice/list.do?pageNumber=${startPage-pageBlock}">[이전]</a>
+					<%-- <a href="${root }/notice/list.do?pageNumber=${startPage-pageBlock}">[이전]</a> --%> 
+					<a href="javascript:list('${root }','${startPage-pageBlock}')">[이전]</a>	
 				</c:if>
 				
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<a href="${root }/notice/list.do?pageNumber=${i}">[${i}]</a>
+					<a href="javascript:list('${root }','${i}')">[${i}]</a>
 				</c:forEach>
 				
 				<c:if test="${endPage<pageCount }">
-					<a href="${root }/notice/list.do?pageNumber=${startPage+pageBlock}">[다음]</a>
+					<%-- <a href="${root }/notice/list.do?pageNumber=${startPage+pageBlock}">[다음]</a> --%>
+					<a href="javascript:list('${root }','${startPage+pageBlock}')">[다음]</a>				
 				</c:if>
-				
-				<br/>
 			</c:if>
 		</center>
 	</c:if>

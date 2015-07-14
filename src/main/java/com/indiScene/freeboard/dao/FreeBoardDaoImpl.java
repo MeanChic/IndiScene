@@ -51,7 +51,7 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 	}
 
 	@Override
-	public FreeBoardDto freeBoardRead(int board_num) {
+	public FreeBoardDto freeBoardRead(String board_num) {
 		FreeBoardDto board =null;
 		sqlSession.update("dao.FreeBoardMapper.count",board_num);//조회수 증가 
 		board = sqlSession.selectOne("dao.FreeBoardMapper.read",board_num);	//해당 게시물을 가져옴.
@@ -59,13 +59,13 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 	}
 
 	@Override
-	public int freeBoardDelete(int board_num) {
+	public int freeBoardDelete(String board_num) {
 		return sqlSession.delete("dao.FreeBoardMapper.delete",board_num);
 	}
 	
 	
 	@Override
-	public FreeBoardDto freeBoardUpdateSelect(int board_num) {
+	public FreeBoardDto freeBoardUpdateSelect(String board_num) {
 		
 		return sqlSession.selectOne("dao.FreeBoardMapper.updateSelect",board_num);
 	}

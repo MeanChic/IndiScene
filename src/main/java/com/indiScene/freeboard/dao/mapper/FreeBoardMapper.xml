@@ -6,7 +6,7 @@
  <mapper namespace="dao.FreeBoardMapper">
  
 	<insert id="freeBoardInsert" parameterType="com.indiScene.freeboard.dto.FreeBoardDto">
-		<![CDATA[ insert into freeBoard values(#{subject},#{content},#{register_date},#{count},#{seq_level},#{seq_num},#{group_num},freeBoard_seq.nextval,#{artist_id}) ]]>		
+		<![CDATA[ insert into freeBoard values(#{subject},#{content},#{register_date},#{count},#{seq_level},#{seq_num},#{group_num},'f'||freeBoard_seq.nextval,#{artist_id}) ]]>		
 	</insert>
 
 	<select id="freeBoardGroupNumberMax" resultType="int">
@@ -21,7 +21,7 @@
 		<![CDATA[ select count(*) from freeboard ]]>
 	</select>
 	
-	<delete id="delete" parameterType="int">
+	<delete id="delete" parameterType="String">
 		<![CDATA[ delete from freeBoard where board_num=#{board_num} ]]>
 	</delete> 
 	
@@ -41,7 +41,7 @@
 		<![CDATA[ update freeBoard set count=count+1 where board_num=#{board_num} ]]>
 	</update>
 
-	<select id="read" parameterType="int" resultType="com.indiScene.freeboard.dto.FreeBoardDto">
+	<select id="read" parameterType="String" resultType="com.indiScene.freeboard.dto.FreeBoardDto">
 		<![CDATA[ select * from freeBoard where board_num=#{board_num} ]]>
 	</select>
 	

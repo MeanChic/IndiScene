@@ -16,13 +16,13 @@ public interface NoticeDao {
 	
 	public List<NoticeDto> getNoticeList(int startRow, int endRow);
 	
-	public NoticeDto noticeRead(int board_num);
+	public NoticeDto noticeRead(String board_num);
 	
-	public int noticeDelete(int board_num);
+	public int noticeDelete(String board_num);
 	
 	public int noticeUpdate(NoticeDto noticeDto);
 	
-	public NoticeDto noticeUpdateSelect(int board_num);
+	public NoticeDto noticeUpdateSelect(String board_num);
 
 	public int getNoticeCount();
 
