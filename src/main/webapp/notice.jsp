@@ -1,82 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<c:set var="root" value="${pageContext.request.contextPath}"/>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<c:set var="root" value="${pageContext.request.contextPath }"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert Notice</title>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="${root}/css/freeBoard.css"/>
-<script type="text/javascript">
+<script type="text/javascript" src="${root}/js/notice.js"></script>
+<script src="${root }/resources/ckEditor/ckeditor.js"></script>
+<link rel="stylesheet" type="text/css" href="${root}/css/notice.css"/>
 
-function write(root){
-	$.ajax({
-		url:root+"/freeBoard/write.do",
-		type:"get",
-		dataType:"html",
-		success:function(data){
-			//alert(data);
-			var realData = data.split("<body>");
-			var realData = realData[1].split("</body>")[0];
-			//alert(realData);
-			$("#content").html(realData);
-		},
-		error:function(xhr,status,error){
-			alert(xhr+"\n"+status+"\n"+error);
-		}
-	}); 
-}
-
-function list(root){
-	$.ajax({
-		url:root+"/notice/list.do",
-		type:"get",
-		dataType:"html",
-		success:function(data){
-			//alert(data);
-			var realData = data.split("<body>");
-			var realData = realData[1].split("</body>")[0];
-		//	alert(realData);
-			$("#content").html(realData);
-		},
-		error:function(xhr,status,error){
-			alert(xhr+"\n"+status+"\n"+error);
-		}
-	}); 
-}
-</script>
 </head>
 <body>
-<%-- 
-	<a href="${root}/test.do">Å×½ºÆ®</a>
-	 --%>
-	
+
 	<div id="container">
       <div id="header">
         <h1>NoticeBoard</h1>
-      	<a href="javascript:write('${root }')">°øÁö»çÇ×¾²±â</a>
+      	<a href="javascript:write('${root }')">ê³µì§€ì‚¬í•­ì“°ê¸°</a>
 		&nbsp;&nbsp;&nbsp;
-		<a href="javascript:list('${root }')">°øÁö»ç¶û ¸ñ·Ïº¸±â</a>
+		<a href="javascript:list('${root }','1')">ê³µì§€ì‚¬í•­ ëª©ë¡ë³´ê¸°</a>
       </div>
       
-      <div id="content">
+      <div id="centerContents">
         <h2>Content</h2>	
-        </div>
+      </div>
+      
       <div id="sidebar">
         <h2>Sidebar</h2>
         <ul>
-          <li>±¤°í</li>
-          <li>±¤°í</li>
-          <li>±¤°í</li>
+          <li>ê´‘ê³ </li>
+          <li>ê´‘ê³ </li>
+          <li>ê´‘ê³ </li>
         </ul>
       </div>
       <div id="footer">
         <p>Copyright</p>
       </div>
     </div>
-	
-	</div>
+
 </body>
 </html>

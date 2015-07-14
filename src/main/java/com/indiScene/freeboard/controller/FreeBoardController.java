@@ -30,14 +30,14 @@ public class FreeBoardController {
 	
 	@RequestMapping(value="/freeBoard/write.do", method=RequestMethod.GET)
 	public ModelAndView freeBoardWrite(HttpServletRequest request, HttpServletResponse response){
-	
-	logger.info("write test--------");	
-	
-	ModelAndView mav=new ModelAndView();
-	mav.addObject("request",request);
-	
-	freeBoardService.freeBoardWrite(mav);
-		return mav;	
+		
+		logger.info("write test--------");	
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request",request);
+		
+		freeBoardService.freeBoardWrite(mav);
+			return mav;	
 	}
 
 	/**

@@ -9,12 +9,12 @@
 	<title>게시판 수정</title>
 </head>
 <body>
-	<form action="${root}/notice/updateOk.do" method="post" onsubmit="return checkForm()">
+	<form id="updateForm" method="post" >
 		<input type="hidden" name="board_num" value="${notice.board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		
 		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-				<a href="${root }/notice/list.do?pageNumber=${pageNumber}">글목록</a>
+				
 		</div>
 		
 		<div class="line">
@@ -22,18 +22,25 @@
 				<span class="content"><input type="text" size="50" name="subject"  value="${notice.subject}"/></span>
 		</div>
 	
-		<div class="line" style="height:230px;">
-			<label class="title" style="height:230px;">내용</label>
-			<span class="content" style="height:230px;">
-				<textarea rows="14" cols="58" name="content">${notice.content}</textarea>
-			</span>
-		</div>
-
 		
+			<label class="title">내용</label>
+			<span class="content">
+				<textarea id="content" rows="14" cols="58" name="content">${notice.content}</textarea><br/><br/>
+			
+	 		<script>
+			 CKEDITOR.replace( 'content',
+					 {///IndiScene_basic/src/main/webapp/resources/ckfinder
+					 	filebrowserUploadUrl: '${root}/marketBoard/imageUpload.do' // 파일 업로드를 처리 할 경로 설정.
+					 }); 
+ 			
+			</script>
+			</span>
+
 		<div class="line" style="width:598px; border-width:2px; text-align:center;">
-			<input type="submit" value="글수정"/>
-			<input type="reset" value="취소"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/notice/list.do?pageNumber=${pageNumber}'">
+			<input type="button" value="글수정" onclick="updateFunOk('${root}','${notice.board_num }','${pageNumber }')"/>
+			<input type="button" value="취소" onclick="read('${root}','${notice.board_num }','${pageNumber }')"/>
+		
+<%-- 		<input type="button" value="목록보기" onclick="location.href='${root}/notice/list.do?pageNumber=${pageNumber}'">--%>		
 		</div>
 	</form>
 </body>

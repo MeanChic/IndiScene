@@ -157,13 +157,13 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	@Override
 	public void freeBoardRead(ModelAndView mav) {
 		
-		logger.info("freeboard SerdService-------------------------");
+		logger.info("freeboard ServerService-------------------------");
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		
-		int board_num=Integer.parseInt(request.getParameter("board_num"));
+			
+		/*	int board_num=Integer.parseInt(request.getParameter("board_num")); */
+		String board_num=request.getParameter("board_num");
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-		
 
 		FreeBoardDto freeBoardDto= freeBoardDao.freeBoardRead(board_num);
 		logger.info("freeBoardRead freeBoardDto: "+freeBoardDto);
@@ -180,7 +180,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
-		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		String board_num=request.getParameter("board_num");
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
 		logger.info("freeBoardDelete board_num: "+board_num+", pageNumber: "+pageNumber);
 		
@@ -195,7 +195,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
-		int board_num=Integer.parseInt(request.getParameter("board_num"));
+	/*	int board_num=Integer.parseInt(request.getParameter("board_num"));*/
+		String board_num=request.getParameter("board_num");
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
 		logger.info("freeBoardDeleteOk board_num: "+board_num+", pageNumber: "+pageNumber);
 		
@@ -212,9 +213,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		Map<String, Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 			
-		int board_num=Integer.parseInt(request.getParameter("board_num"));
+		/*int board_num=Integer.parseInt(request.getParameter("board_num"));*/
+		String board_num=request.getParameter("board_num");
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-		
+	
 		FreeBoardDto freeBoard=freeBoardDao.freeBoardUpdateSelect(board_num);
 	/*	freeBoard=freeBoardDao.freeBoardUpdateSelect(pageNumber);*/
 		logger.info("freeBoardUpdate freeBoard:"+freeBoard);
@@ -232,7 +234,6 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		Map<String,Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		FreeBoardDto freeBoardDto=(FreeBoardDto)map.get("freeBoardDto");
-		
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
 		logger.info("freeBoardUpdateOk freeBoardDto: "+freeBoardDto+", pageNumber: "+pageNumber);		
 		
