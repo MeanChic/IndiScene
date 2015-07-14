@@ -24,7 +24,7 @@
 
 			<div class="form_style" style="height:130px;">
 				<div class="disp" style="border-width:1px;">
-					<a href="javascript:marketBoardRead('${market.board_num}','${pageNumber}')"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/></a>
+					<a href="javascript:marketBoardRead('${market.board_num}','${pageNumber}')"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/>${market.board_num }<br/>${image}</a>
 					<fmt:formatDate value="${market.register_date }" type="date"/> &nbsp;&nbsp;
 				</div>
 				<div class="disp-content">
