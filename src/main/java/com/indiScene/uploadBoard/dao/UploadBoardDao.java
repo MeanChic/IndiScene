@@ -14,4 +14,10 @@ public interface UploadBoardDao {
 	public UploadBoardDto read(String board_num);
 	public void readCount(String board_num);
 	public int delete(String board_num);
+	public int update(UploadBoardDto upload);
+	public int likeCheck(HashMap<String,String> hMap);
+	public int like(HashMap<String,String> hMap);
+	public int likeUpdate(HashMap<String,String> hMap);
+	public int checkLike(HashMap<String,String> hMap);
+	public void copyBest(String board_num);
 }

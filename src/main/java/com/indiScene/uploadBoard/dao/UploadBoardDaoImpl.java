@@ -53,4 +53,34 @@ public class UploadBoardDaoImpl implements UploadBoardDao {
 	public int delete(String board_num) {
 		return sqlSession.delete("dao.UploadMapper.delete",board_num);
 	}
+
+	@Override
+	public int update(UploadBoardDto upload) {
+		return sqlSession.update("dao.UploadMapper.update",upload);
+	}
+
+	@Override
+	public int likeCheck(HashMap<String, String> hMap) {
+		return sqlSession.selectOne("dao.UploadMapper.likeCheck",hMap);
+	}
+
+	@Override
+	public int like(HashMap<String, String> hMap) {
+		return sqlSession.insert("dao.UploadMapper.like",hMap);
+	}
+
+	@Override
+	public int likeUpdate(HashMap<String, String> hMap) {
+		return sqlSession.update("dao.UploadMapper.likeUpdate",hMap);
+	}
+
+	@Override
+	public int checkLike(HashMap<String, String> hMap) {
+		return sqlSession.selectOne("dao.UploadMapper.checkLike",hMap);
+	}
+
+	@Override
+	public void copyBest(String board_num) {
+		sqlSession.insert("dao.UploadMapper.copyBest",board_num);
+	}
 }
