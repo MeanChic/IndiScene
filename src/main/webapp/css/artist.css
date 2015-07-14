@@ -6,7 +6,8 @@ form div input{ width:200px; display:inline-block; }
 .artist_size{
 	width:100%;
 }
-.artist_input{ margin-left:10px;
+.artist_input{ 
+	margin-left:10px;
 	width:95%;
 	float:left;
 	display:inline-block; 
@@ -15,9 +16,44 @@ form div input{ width:200px; display:inline-block; }
   	padding-right: 15px;
   	padding-left: 15px;
 }
-.artist_picture{ display:inline-block; }
-.registerOkButton{ margin-top:20px; text-align:center; }
-#RegisterForm{ text-align:left; width:740px; padding:inherit; margin:auto; }
+#RegisterForm{ text-align:left; width:740px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EAEAEA; border-radius:20px; }
 #centerContents{ margin-bottom:30px; margin-top:30px; }
-
 #registerButton, #loginButton, #updateloginButton, #logoutButton{ margin-top:20px; margin-right:20px; float:right; }
+
+.controlArtistForm{  }
+.controlArtistForm .form-controlArtist{ display:block; margin-left:30px; margin-right:30px; margin-top:10px; margin-bottom:10px; width:620px; }
+.controlArtistForm .form-controlArtist .form-inlineblock{ display:inline-block; }
+.controlArtistForm .form-controlArtist .label-color{ color:#151515; }
+.marginCenter{ display:block; margin:auto; }
+
+.form-controllerler {
+  width: 220px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+          transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.form-controller:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.form-controller[disabled],
+.form-controller[readonly],
+fieldset[disabled] .form-controller {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+}
+textarea.form-controller {
+  height: auto;
+}

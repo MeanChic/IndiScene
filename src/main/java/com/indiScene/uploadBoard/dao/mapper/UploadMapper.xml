@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UploadMapper">
+	<insert id="boardInsert" parameterType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+		<![CDATA[
+			insert into uploadBoard values(
+				'u'||uploadBoard_seq.nextval,
+				#{board_like},
+				#{subject},
+				#{content},
+				#{register_date},
+				#{count},
+				#{file_path},
+				#{file_name},
+				#{seq_level},
+				#{seq_num},
+				#{group_num},
+				#{artist_id},
+				#{image_path},
+				#{genre_code}
+				)
+		]]>
+	</insert>
+	
+	<select id="GroupNumberMax" resultType="int">
+		<![CDATA[select nvl(max(group_num), 0) from uploadboard]]>
+	</select>
+	
+	<update id="GroupNumberUpdate" parameterType="java.util.HashMap" >
+		<![CDATA[update performboard set seq_num=seq_num+1 
+		where group_num = #{group_num} and seq_num > #{seq_num}]]> 
+	</update>
+	
+	<select id="getBoardCount" resultType="int">
+		<![CDATA[select count(*) from uploadboard]]>
+	</select>
+	
+	<select id="getBoardList" parameterType="java.util.HashMap" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+		<![CDATA[
+			select * from(
+			select rownum rnum, a.* from(
+			select * from uploadboard order by group_num desc, seq_num asc) a)
+			where rnum>=#{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="read" parameterType="String" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+		<![CDATA[
+			select * from uploadboard where board_num=#{board_num}
+		]]>
+	</select>
+	
+	<update id="readCount" parameterType="String">
+		<![CDATA[update uploadboard set count=count+1 where board_num = #{board_num}]]>
+	</update>
+	
+	<delete id="delete">
+		<![CDATA[delete from uploadboard where board_num=#{board_num}]]>
+	</delete>
+</mapper>

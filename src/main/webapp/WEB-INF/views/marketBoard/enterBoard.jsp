@@ -16,15 +16,15 @@
 </head>
 <body>
 
-		<input type="button" value="글쓰기 " onclick="location.href='${root}/marketBoard/write.do'"/>
+		<input type="button" value="글쓰기 " onclick="javascript:marketBoardWrite()"/>
 	
-		<c:forEach  items="${list }" varStatus="s">
-		<c:set var="market" value="${requestScope.list[s.count - 1]}" /> 
-		<c:set var="image" value="${requestScope.mainImageList[s.count - 1]}" /> 
+		<c:forEach  items="${list }" varStatus="s">								<!-- mav에 넘어오는 리스트 갯수만큼 돌린다 이름확인  -->
+		<c:set var="market" value="${requestScope.list[s.index]}" /> 			<!-- 넘어오는 리스트 갯수만큼 돌린다 리스트 S번째 List 객체화 한다. -->
+		<c:set var="image" value="${requestScope.mainImageList[s.index]}" /> 	<!-- list 갯수와 동일하게 mav에 넣어져서 오는 s번째 mainImage 객체화한다  -->
 
 			<div class="form_style" style="height:130px;">
 				<div class="disp" style="border-width:1px;">
-					<a href="${root }/marketBoard/read.do?board_num=${market.board_num}&pageNumber=${pageNumber}"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/></a>
+					<a href="javascript:marketBoardRead('${market.board_num}','${pageNumber}')"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/></a>
 					<fmt:formatDate value="${market.register_date }" type="date"/> &nbsp;&nbsp;
 				</div>
 				<div class="disp-content">
@@ -53,15 +53,15 @@
 			</c:if>
 			<%------------------------------------------------------------------ --%>
 			<c:if test="${startPage>pageBlock }">
-				<a href="${root }/marketBoard/enterBoard.do?pageNumber=${startPage-pageBlock }">[이전]</a>
+				<a href="javascript:enterMarketBoard('${root}','${startPage-pageBlock }')">[이전]</a>
 			</c:if>
 			
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
-				<a href="${root }/marketBoard/enterBoard.do?pageNumber=${i}">[${i }]</a>
+				<a href="javascript:enterMarketBoard('${root}','${i}')">[${i }]</a>
 			</c:forEach>
 			
 			<c:if test="${endPage<pageCount }">
-				<a href="${root }/marketBoard/enterBoard.do?pageNumber=${startPage+pageBlock }">[다음]</a>
+				<a href="javascript:enterMarketBoard('${root}','${startPage+pageBlock }')">[다음]</a>
 			</c:if>
 		</c:if>
 

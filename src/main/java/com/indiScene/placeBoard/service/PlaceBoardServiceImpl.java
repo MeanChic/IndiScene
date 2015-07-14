@@ -96,10 +96,11 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	
 	@Override
 	public List<String> mainImageFind(List<PlaceBoardDto> marketList) {
+		
 		List<String> mainImageList=new ArrayList<String>();
 		String contentForImg=null;
 		for(int i=0;i<marketList.size();i++){
-			contentForImg=marketList.get(i).getContent();
+			contentForImg=((PlaceBoardDto)marketList.get(i)).getContent();
 			//System.out.println(contentForImg);
 			//logger.info("내용추출" +contentForImg);
 			Pattern p=Pattern.compile("src=\".*.\" style"); //표준정규식 만듬
@@ -304,8 +305,9 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		if(password.equals(realPass)){
 			
 			PlaceBoardDto marketBoardDto=marketBoardDao.read(board_num);
-			
-			if(marketBoardDto.getFile_name()!=null){
+			logger.info("==" + marketBoardDto.getFile_name());
+			if(marketBoardDto.getFile_name()!=null || !(marketBoardDto.getFile_name().equals(";"))){
+				logger.info("==" + marketBoardDto.getFile_name());
 				File file=null;
 				String fileNameForDto=marketBoardDto.getFile_name();
 				String filePathForDto=marketBoardDto.getFile_path();

@@ -15,11 +15,15 @@ ALTER TABLE muse_signup DROP COLUMN muse_name;
 select a.sid, a.serial# from v$session a, v$lock b, dba_objects c 
 where a.sid=b.sid and b.id1=c.object_id and b.type='TM' and c.object_name='muse_signup';
 
-select * from marketboard;
+select * from performboard;
 
-create sequence marketboard_seq
+create sequence placeboard_seq;
 start with 1
 increment by 1;
+select * from muse where artist_id='indis';
+select * from placeboard;
+
+drop sequence placeboard_seq;
 
 
 insert into artist(ARTIST_ID,ARTIST_PASSWORD,ARTIST_NAME,ARTIST_NICKNAME,ARTIST_PHONE,ARTIST_ZIPCODE, 			   
@@ -190,7 +194,7 @@ increment by 1;
 
 select * from (select rownum rnum, a.* from guest a where muse_name='abc' order by guest_date desc) b where rnum < 5 ;
  
-<<<<<<< HEAD
+
  alter table reply modify(reply_num number(10));
 
 select * from (select rownum rnum, a.* from (select * from guest order by guest_date desc) a where muse_name='abc') b where rnum > 0 and rnum <= 5;

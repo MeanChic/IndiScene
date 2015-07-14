@@ -15,7 +15,7 @@
 <script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script type="text/javascript">
 	function send(form){
-		//alert("OK");
+		alert("OK");
 		//form=$("form");
 		var artist_id = $("form input[name = 'artist_id']").val();
 		var muse_name = $("form input[name = 'muse_name']").val();
@@ -234,7 +234,7 @@
 		<textarea name="guest_content" rows="8" cols="50" ></textarea>
 		<input type="submit"  value="전송" />
 	</form>
-	
+	<br/><br/><br/><br/>
 	<div id="guestline" >	
 		<c:forEach var="guest" items="${list}">
 			<div id = "${guest.guest_num}">

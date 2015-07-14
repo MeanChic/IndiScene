@@ -26,72 +26,71 @@
 	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
 </head>
 <body>
 <div id="RegisterForm">
-	<form name="artistForm" class="form-inline" onsubmit="return registerForm(this)">
-		<div class="form-group artist_size">
-			<label class="col-sm-2 control-label">Id</label>
-		    <div class="artist_input">
-				<input class="form-control" type="text" name="artist_id"/>
-				<input class="form-control" type="button" value="Duplicate Check" onclick="return idCheck(artistForm, '${root}')"/>
+	<form name="artistForm" class="controlArtistForm" onsubmit="return registerForm(this)">
+		<div class="form-controlArtist">
+			<label class="form-inlineblock label-color">Id</label>
+		    <div class="form-inlineblock">
+				<input class="form-inlineblock form-controllerler" type="text" name="artist_id"/>
+				<input class="form-inlineblock form-controllerler" type="button" value="Duplicate Check" onclick="return idCheck(artistForm, '${root}')"/>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Password</label>
-		    <div class="artist_input">
-				<input class="form-control" type="password" name="artist_password"/>
-				<input class="form-control" type="password" name="passwordCheck"/>
+		<div class="form-controlArtist">
+			<label class="form-inlineblock label-color">Password</label>
+		    <div class="form-inlineblock">
+				<input class="form-inlineblock form-controllerler" type="password" name="artist_password"/>
+				<input class="form-inlineblock form-controllerler" type="password" name="passwordCheck"/>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Name</label>
-		    <div class="artist_input">
-				<input class="form-control" type="text" name="artist_name"/>
+		<div class="form-controlArtist">
+			<label class="form-inlineblock label-color">Name</label>
+		    <div class="form-inlineblock">
+				<input class="form-inlineblock form-controllerler" type="text" name="artist_name"/>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Nickname</label>
-		    <div class="artist_input">
-				<input class="form-control" type="text" name="artist_nickname"/>
-				<input class="form-control" type="button" value="Duplicate Check" onclick="nicknameCheck(artistForm, '${root}')"/>
+		<div class="form-controlArtist">
+			<label class="form-inlineblock label-color">Nickname</label>
+		    <div class="form-inlineblock">
+				<input class="form-inlineblock form-controllerler" type="text" name="artist_nickname"/>
+				<input class="form-inlineblock form-controllerler" type="button" value="Duplicate Check" onclick="nicknameCheck(artistForm, '${root}')"/>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Phone</label>
-			<div class="artist_input">
-				<input class="form-control" type="text" name="artist_phone"/>
+		<div class="form-controlArtist">
+			<label class="form-inlineblock label-color">Phone</label>
+			<div class="form-inlineblock">
+				<input class="form-inlineblock form-controllerler" type="text" name="artist_phone"/>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Zipcode</label>
-			<div class="artist_input">
-				<input class="form-control" type="text" name="artist_zipcode"/>
-				<input class="form-control" type="button" value="Zipcode" onclick="zipcodeCheck(artistForm,'${root}')"/>
+		<div class="form-controlArtist">
+			<label class="form-inlineblock label-color">Zipcode</label>
+			<div class="form-inlineblock">
+				<input class="form-inlineblock form-controllerler" type="text" name="artist_zipcode"/>
+				<input class="form-inlineblock form-controllerler" type="button" value="Zipcode" onclick="zipcodeCheck(artistForm,'${root}')"/>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Address</label>
-			<div class="artist_input">
-				<input class="form-control" type="text" name="artist_address"/>
+		<div class="form-controlArtist">
+			<label class="form-inlineblock label-color">Address</label>
+			<div class="form-inlineblock">
+				<input class="form-inlineblock form-controllerler" type="text" name="artist_address"/>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Birth</label>
-			<div class="artist_input">
-				<input class="form-control" type="date" name="artist_birth"/>
+		<div class="form-controlArtist">
+			<label class="form-inlineblock label-color">Birth</label>
+			<div class="form-inlineblock">
+				<input class="form-inlineblock form-controllerler" type="date" name="artist_birth"/>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Profile Image</label>
-			<div class="artist_input">
-				<input class="form-control" type="file" name="artist_picture"/>
+		<div class="form-controlArtist">
+			<label class="form-inlineblock label-color">Profile Image</label>
+			<div class="form-inlineblock">
+				<input class="form-inlineblock form-controllerler" type="file" name="artist_picture"/>
 			</div>
 		</div>
-		<div class="registerOkButton form-group">
-    		<div class="col-sm-offset-2 col-sm-10">
-				<input type="submit" name="registerOk" class="btn btn-default" value="Sign up"/>
+		<div class="form-controlArtist" style="margin-top:35px;">
+    		<div>
+				<input type="submit" name="registerOk" class="btn btn-default marginCenter" value="Sign up"/>
 			</div>
 		</div>
 	</form>

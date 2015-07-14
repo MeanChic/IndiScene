@@ -16,10 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.indiScene.marketBoard.dto.MarketBoardDto;
 import com.indiScene.marketBoard.service.MarketBoardService;
 
-
-
-
-
 /**
 @name  : MarketBoardController
 @date  : 2015. 6. 25.
@@ -48,7 +44,6 @@ public class MarketBoardController  {
 	marketBoardService.enterBoard(mav);
 	
 	return mav;
-	
 	}
 	
 	/**
@@ -86,24 +81,25 @@ public class MarketBoardController  {
 		return mav;
 	}
 
-	/**
-	@name  : fileUpload
-	@date  : 2015. 6. 25.
-	@auther: 나혁진
-	@description :이미지 업로드를 위해 service를 호출한다
-	 */
-	@RequestMapping(value="/marketBoard/imageUpload.do", method = RequestMethod.POST)
-	public ModelAndView imageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile upload) {
-        logger.info("FileUpload-----------------------------------------"); 
-             
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("request",request);
-		mav.addObject("upFile",upload);
-	
-		marketBoardService.imageUpload(mav);
-		
-		return mav;
-	}
+//	/**  commonIO로 독립시킴
+//	@name  : imageUpload
+//	@date  : 2015. 6. 25.
+//	@auther: 나혁진
+//	@description :이미지 업로드를 위해 service를 호출한다
+//	 */
+//	@RequestMapping(value="/marketBoard/imageUpload.do", method = RequestMethod.POST)
+//	public ModelAndView imageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile upload) {
+//        logger.info("imageUpload-----------------------------------------"); 
+//             
+//		ModelAndView mav=new ModelAndView();
+//		mav.addObject("request",request);
+//		mav.addObject("upFile",upload);
+//	
+//		marketBoardService.imageUpload(mav);
+//		
+//		return mav;
+//	}
+
 	
 		/**
 	@name  : read
@@ -171,19 +167,20 @@ public class MarketBoardController  {
 		return mav;
 	}
 	
-	@RequestMapping(value="/marketBoard/download.do", method=RequestMethod.GET)
-	public ModelAndView download(HttpServletRequest request, HttpServletResponse response)throws Throwable{
-		logger.info("download------------------------------------");
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("request", request);
-		mav.addObject("response", response);
-		
-		marketBoardService.download(mav); 
-		
-		return null;
-	}
-	
+	//CommonIOController 로 독립함
+//	@RequestMapping(value="/marketBoard/download.do", method=RequestMethod.GET)
+//	public ModelAndView download(HttpServletRequest request, HttpServletResponse response)throws Throwable{
+//		logger.info("download------------------------------------");
+//		
+//		ModelAndView mav = new ModelAndView();
+//		mav.addObject("request", request);
+//		mav.addObject("response", response);
+//		
+//		marketBoardService.download(mav); 
+//		
+//		return null;
+//	}
+
 	
 	
 }

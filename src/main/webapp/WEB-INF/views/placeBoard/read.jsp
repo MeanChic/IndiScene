@@ -71,12 +71,12 @@
 		<tr>
 			<td height="30" colspan="4" align="center"><input type="button"
 				value="글수정"
-				onclick="location.href='${root}/marketBoard/update.do?board_num=${marketBoard.board_num}&pageNumber=${pageNumber}'" />
+				onclick="location.href='${root}/placeBoard/update.do?board_num=${marketBoard.board_num}&pageNumber=${pageNumber}'" />
 				<input type="button" value="글삭제"
-				onclick="location.href='${root}/marketBoard/delete.do?board_num=${marketBoard.board_num}&pageNumber=${pageNumber}&artist_id=${marketBoard.artist_id}'"/>
+				onclick="location.href='${root}/placeBoard/delete.do?board_num=${marketBoard.board_num}&pageNumber=${pageNumber}&artist_id=${marketBoard.artist_id}'"/>
 				<!-- onclick="delFun('${root}','${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')" />  -->
 				<input type="button" value="글목록"
-				onclick="location.href='${root}/marketBoard/enterBoard.do?pageNumber=${pageNumber}'" />
+				onclick="location.href='${root}/placeBoard/enterBoard.do?pageNumber=${pageNumber}'" />
 			</td>
 		</tr>
 	</table>

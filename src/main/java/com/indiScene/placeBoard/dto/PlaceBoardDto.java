@@ -22,7 +22,7 @@ public class PlaceBoardDto {
 	private String file_name;
 	
 	private String artist_id;
-
+	
 	public String getBoard_num() {
 		return board_num;
 	}

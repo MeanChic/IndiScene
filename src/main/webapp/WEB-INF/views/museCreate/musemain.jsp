@@ -119,7 +119,7 @@ function signup(artist_id, muse_name){
 		
 		${my.MUSE_NAME} ${my.MUSE_COMMENT} ${my.MUSE_DATE} 
 		<c:if test="${my.MUSE_YN == 'n'}"><input type="button" value="대기중/신청취소" onclick="cancle('${artist_id}','${my.MUSE_NAME}')"/></c:if>
-		<c:if test="${my.MUSE_YN == 'y'}"><a href="javascript:goinmuse('${best.MUSE_NAME}')"<%-- href="${root}/museCreate/goin.do?muse_name=${my.MUSE_NAME}" --%>><input type="button" value="입장"/></a></c:if> <br/>
+		<c:if test="${my.MUSE_YN == 'y'}"><a href="javascript:goinmuse('${my.MUSE_NAME}')"<%-- href="${root}/museCreate/goin.do?muse_name=${my.MUSE_NAME}" --%>><input type="button" value="입장"/></a></c:if> <br/>
 		</div>
 	</c:forEach>
 	</div>

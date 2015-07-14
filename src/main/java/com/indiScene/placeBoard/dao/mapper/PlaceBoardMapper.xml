@@ -8,29 +8,29 @@
 	
 	<select id="boardCount" resultType="int">
 		<![CDATA[
-			select count(*) from marketBoard
+			select count(*) from placeboard
 		]]>
 	</select>
 	
 	<select id="boardList" parameterType="java.util.HashMap" resultType="com.indiScene.placeBoard.dto.PlaceBoardDto">
 		<![CDATA[
-			select * from (select rownum rnum, a.* from(select * from marketboard order by register_date desc)a) where rnum >=#{startRow} and rnum <= #{endRow}
+			select * from (select rownum rnum, a.* from(select * from placeboard order by register_date desc)a) where rnum >=#{startRow} and rnum <= #{endRow}
 		]]>
 	</select>
 	
 	<insert id="boardInsert" parameterType="com.indiScene.placeBoard.dto.PlaceBoardDto">
 		<![CDATA[
-		insert into marketboard(SUBJECT,CONTENT,REGISTER_DATE,BOARD_NUM,ARTIST_ID,COUNT,file_name,file_path) 
-		values(#{subject},#{content},#{register_date},'m' || marketboard_seq.nextval,#{artist_id},0,#{file_name},#{file_path})
+		insert into placeboard(SUBJECT,CONTENT,REGISTER_DATE,BOARD_NUM,ARTIST_ID,COUNT,file_name,file_path) 
+		values(#{subject},#{content},#{register_date},'l' || placeboard_seq.nextval,#{artist_id},0,#{file_name},#{file_path})
 		]]>
 	</insert>
 	
 	<select id="boardRead" resultType="com.indiScene.placeBoard.dto.PlaceBoardDto">
-		select * from marketboard where board_num=#{board_num}
+		select * from placeboard where board_num=#{board_num}
 	</select>
 	
 	<update id="readCount" >
-		update marketboard set count=count+1 where board_num=#{boardNumber}
+		update placeboard set count=count+1 where board_num=#{boardNumber}
 	</update>
 	
 	<select id="passCheck" parameterType="java.lang.String" resultType="java.lang.String">
@@ -38,11 +38,11 @@
 	</select>
 	
 	<delete id="delete" parameterType="java.lang.String" >
-		delete from marketBoard where board_num=#{board_num}
+		delete from placeboard where board_num=#{board_num}
 	</delete>
 	
 	<update id="update" parameterType="com.indiScene.placeBoard.dto.PlaceBoardDto">
-		update marketBoard set
+		update placeboard set
 			subject=#{subject}
 		,content=#{content}
 		where board_num=#{board_num}

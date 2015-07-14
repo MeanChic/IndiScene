@@ -30,7 +30,7 @@ ${board_num} ${pageNumber} ${artist_id }
 			<tr>
 				<td align="center">
 					<input type="submit" value="글삭제"/>
-					<input type="button" value="목록보기" onclick="location.href='${root}/placeBoard/list.do?pageNumber=${pageNumber}'">
+					<input type="button" value="목록보기" onclick="location.href='${root}/placeBoard/enterBoard.do?pageNumber=${pageNumber}'">
 				</td>
 			</tr>
 		</table>
