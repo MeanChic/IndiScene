@@ -1,6 +1,8 @@
 package com.indiScene.reply.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +36,29 @@ public class ReplyDaoImpl implements ReplyDao {
 	public int getReplyNum(String board_num) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("dao.replyMapper.replyGetBunho", board_num);
+	}
+
+	@Override
+	public int delete(String board_num, int reply_num) {
+		// TODO Auto-generated method stub
+		Map<String,Object> hMap=new HashMap<String,Object>();
+		hMap.put("board_num", board_num);
+		hMap.put("reply_num", reply_num);
+		return sqlSession.delete("dao.replyMapper.replyDelete",hMap);
+		
+	}
+
+	@Override
+	public ReplyDto upSelect(String board_num, int reply_num) {
+		Map<String,Object> hMap=new HashMap<String,Object>();
+		hMap.put("board_num", board_num);
+		hMap.put("reply_num", reply_num);
+		return sqlSession.selectOne("dao.replyMapper.replySelect",hMap);
+	}
+
+	@Override
+	public int update(ReplyDto replyDto) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("dao.replyMapper.replyUpdate",replyDto);
 	}
 }

@@ -24,6 +24,6 @@ select rownum, a.* from(select reply_num from reply where board_num='m122' order
  
 select to_char(to_number(nvl(max(reply_num),0))+1,'9999') from reply where board_num='m122'
 
-
+select * from reply where board_num='m123' and reply_num=39
 
 

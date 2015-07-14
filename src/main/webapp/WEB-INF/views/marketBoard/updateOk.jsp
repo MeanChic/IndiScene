@@ -10,15 +10,17 @@
 <body>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 	<c:if test="${check > 0}">
+		
 		<script type="text/javascript">
 			alert("수정완료.");
-			location.href="${root}/marketBoard/read.do?board_num=${marketBoardDto.board_num}&pageNumber=${pageNumber}";
+			alert('${board_num}','${pageNumber}');
+			marketBoardRead('${board_num}','${pageNumber}');
 		</script>
 	</c:if>
 	<c:if test="${check == 0}">
 		<script type="text/javascript">
 			alert("수정취소.");
-			location.href="${root}/marketBoard/read.do?board_num=${marketBoardDto.board_num}&pageNumber=${pageNumber}";
+			location.href="javascript:marketBoardRead('${board_num}','${pageNumber}')";
 		</script>
 	</c:if>
 </body>
