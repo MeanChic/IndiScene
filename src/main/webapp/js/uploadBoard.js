@@ -114,7 +114,7 @@ function uploadUpdateOk(root){
 	alert($("#content").val());
 //	alert(CKEDITOR.instances.content);
 	$.ajax({
-		url:root+"/uploadBoard/upload.do",
+		url:root+"/uploadBoard/update.do",
 		type:"post",
 		dataType:"html",
 		data:dataSet,
@@ -147,4 +147,9 @@ function uploadDelete(root,boardNum,currentPage){
 			}
 		});
 	}
+}
+
+function test(){
+//	alert($("#coverImage").val()=="");
+	alert($("#uploadPath").val()=="");
 }
