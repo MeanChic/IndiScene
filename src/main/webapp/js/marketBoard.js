@@ -4,7 +4,7 @@
 var root=null;
 function enterMarketBoard(requestRoot,pageNumber){
 	root=requestRoot;
-	alert(pageNumber);
+	//alert(pageNumber);
 	sendData="?pageNumber="+ ((pageNumber==null || pageNumber=="") ? 1 : pageNumber);
 	$.ajax({
 		url:root +"/marketBoard/enterBoard.do"+sendData,
@@ -28,7 +28,7 @@ function enterMarketBoard(requestRoot,pageNumber){
 function marketBoardDelete(board_num,pageNumber,artist_id){
 	//alert(pageNumber);
 	sendData="?pageNumber="+pageNumber +"&board_num="+board_num+"&artist_id="+artist_id;
-	alert(pageNumber+","+board_num+","+artist_id);
+	//alert(pageNumber+","+board_num+","+artist_id);
 	$.ajax({
 		url:root +"/marketBoard/delete.do"+sendData,
 		type:"get",
@@ -50,7 +50,7 @@ function marketBoardDelete(board_num,pageNumber,artist_id){
 function marketBoardDeleteOk(){
 	var dataSet = new FormData(document.getElementById("marketBoardDeleteForm"));
 	//alert(CKEDITOR.instances.content.getData());
-	alert(dataSet);
+	//alert(dataSet);
 	$.ajax({
 		url:root +"/marketBoard/delete.do",
 		type:"post",
@@ -125,10 +125,10 @@ function marketBoardRead(board_num,pageNumber){
 		type:"get",
 		dataType:"html",
 		success:function(data){
-			alert(data);
+			//alert(data);
 			var realData=data.split("<body>");
 			realData=realData[1].split("</body>")[0];
-			alert(realData);
+			//alert(realData);
 			$("#centerContents").html(realData)
 		},
 		error:function(xhr,status,error){
@@ -144,10 +144,10 @@ function marketBoardUpdate(board_num,pageNumber){
 		type:"get",
 		dataType:"html",
 		success:function(data){
-			alert(data);
+			//alert(data);
 			var realData=data.split("<body>");
 			realData=realData[1].split("</body>")[0];
-			alert(realData);
+			//alert(realData);
 			$("#centerContents").html(realData)
 		},
 		error:function(xhr,status,error){
