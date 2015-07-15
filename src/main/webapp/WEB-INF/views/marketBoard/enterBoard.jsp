@@ -4,14 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.*" %>
 <%@ page import="org.springframework.web.servlet.ModelAndView" %>
-
-
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>enter MarketBoard</title>
 
 </head>
 <body>

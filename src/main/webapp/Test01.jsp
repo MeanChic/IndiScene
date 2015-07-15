@@ -16,6 +16,7 @@
 	<link href="${root}/css/style.css" rel="stylesheet">
 	<link href="${root}/css/colorbox.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
+	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
 	
 	<!-- Load javascrips libraries-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -49,9 +50,9 @@
 			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root }')">Market Place</a></li>
 		</ul>
 		<hr>
-		<ul class="nav nav-p ills nav-stacked">
+		<ul class="nav nav-pills nav-stacked">
 			<li class="myMusic"><a href="#myMusic">My Music</a></li>
-			<li class="indisMuse"><a href="indisMuse">Indi's Muse</a></li>
+			<li class="indisMuse"><a href="#indisMuse">Indi's Muse</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
