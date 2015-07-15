@@ -167,8 +167,9 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
 		FreeBoardDto freeBoardDto= freeBoardDao.freeBoardRead(board_num);
 		logger.info("freeBoardRead freeBoardDto: "+freeBoardDto);
-		
+		logger.info("ssfsdfsdfsdf:"+freeBoardDto.getContent());
 		mav.addObject("freeBoard",freeBoardDto);
+		
 		mav.addObject("pageNumber",pageNumber);
 		mav.setViewName("freeBoard/read");
 		

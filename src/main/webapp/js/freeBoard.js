@@ -28,12 +28,10 @@
 
 	function writeOk(root,pageNumber){
 		var dataSet = new FormData(document.getElementById("FreeBoardWriteForm"));
-			
  		alert(CKEDITOR.instances.content.getData());
-//		dataSet.append("content",CKEDITOR.instances.content.getData());
-		$("#content").val(CKEDITOR.instances.content.getData());
+ 		//$("#contentFreeBoard").val(CKEDITOR.instances.content.getData());
+		dataSet.append("content",CKEDITOR.instances.content.getData());  //content에서  contentFreeBoard로 바꿈
 		
- 
 	/* 수정전		
 		dataSet.append("pageNumber",pageNumber);
 		dataSet.append("content",$("#textInput").val());
@@ -167,7 +165,7 @@
 			
 //			alert(dataSet.content);
 		//	dataSet.append("content",CKEDITOR.instances.content.getData());
-			$("#content").val(CKEDITOR.instances.content.getData());
+			$("#contentFreeBoard").val(CKEDITOR.instances.content.getData());
 			var dataSet = new FormData(document.getElementById("updateForm"));
 
 			$.ajax({
