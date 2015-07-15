@@ -123,4 +123,15 @@ public class UploadBoardController {
 		
 		return null;
 	}
+	
+	@RequestMapping(value="/uploadBoard/collabo.do", method=RequestMethod.GET)
+	public ModelAndView collabo(HttpServletRequest request){
+		logger.info("uploadBoard Collabo Start-----------------");
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request",request);
+		service.collabo(mav);
+		
+		return mav;
+	}
 }

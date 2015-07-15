@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="javascript:uploadWrite('${root}')">글쓰기</a>
+	<a href="javascript:uploadWrite('${root}','0','1')">글쓰기</a>
 	<c:set value="${currentPage}" var="currentPage"/>
 	<c:forEach var="list" items="${boardList}">
 		<div>

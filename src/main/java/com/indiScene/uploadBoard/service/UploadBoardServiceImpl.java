@@ -50,14 +50,22 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 			group_num = Integer.parseInt(request.getParameter("group_num"));
 			seq_num = Integer.parseInt(request.getParameter("seq_num"));
 			seq_level = Integer.parseInt(request.getParameter("seq_level"));
+			
+			mav.setViewName("uploadBoard/collabo");
+		}else{
+			String pageNumber = request.getParameter("pageNumber");
+			
+			UploadBoardDto board = dao.read(board_num);
+			
+			mav.addObject("pageNumber",pageNumber);
+			mav.addObject("board",board);
+			mav.setViewName("uploadBoard/write");
 		}
 		
 		mav.addObject("board_num" , board_num);
 		mav.addObject("group_num" , group_num);
 		mav.addObject("seq_num" , seq_num);
 		mav.addObject("seq_level" , seq_level);
-		
-		mav.setViewName("uploadBoard/write");
 	}
 
 	@Override
@@ -420,5 +428,23 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 				}
 			}
 		}
+	}
+
+	@Override
+	public void collabo(ModelAndView mav) {
+		logger.info("UploadBoard Collabo Service");
+		
+		Map<String, Object> map = mav.getModel();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+
+		String board_num = request.getParameter("boardNum");
+		String pageNumber = request.getParameter("pageNumber");
+		
+		UploadBoardDto board = dao.read(board_num);
+		
+		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("board",board);
+
+		mav.setViewName("uploadBoard/collabo");
 	}
 }
