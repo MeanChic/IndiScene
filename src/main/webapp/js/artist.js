@@ -281,7 +281,17 @@ $(function(){
 	})
 	
 	$("#artistDelete").click(function(){
-		location.href=root+"/artist/delete.do";
+		$.ajax({
+			url:root+"/artist/delete.do",
+			type:"GET",
+			dataType:"html",
+			success:function(data){
+//				var realData = data.split("<body>");
+//				var realData = realData[1].split("</body>")[0];
+//				$("#artistRegister").append(data);
+				$("#centerContents").html(data);
+			}
+		})
 	})
 	
 	$("#indisMusic").click(function(){
