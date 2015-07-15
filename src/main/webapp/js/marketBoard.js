@@ -16,6 +16,7 @@ function enterMarketBoard(requestRoot,pageNumber){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
+			//
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
