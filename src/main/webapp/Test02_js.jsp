@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
@@ -27,6 +27,21 @@
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
 	<script type="text/javascript" src="${root}/js/muse.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="${root}/js/performBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/placeBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
+<script type="text/javascript" src="${root}/js/freeBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/notice.js"></script>
+	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
+	<script src="${root}/js/uploadBoard.js" type="text/javascript"></script>
+	<script src="${root}/js/webPlayer.js" type="text/javascript"></script>
+
+	
+	<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
+	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
+
+	<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
+	<script src="${root }/js/reply.js" type="text/javascript" ></script>
 	<script type="text/javascript">
 		function backpageStart(){
 			alert("OKKKKKKKKK");
@@ -44,9 +59,9 @@
 		<ul class="nav nav-pills nav-stacked">
 			<li class="brandNewMusic"><a href="#brandNewMusic">Brand New Music</a></li>
 			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
-			<li class="indisMusic"><a href="#indisMusic">Indi's Music</a></li>
+			<li class="indisMusic"><a href="javascript:uploadList('${root}','1')">Indi's Music</a></li>
 			<li class="performanceInfo"><a href="#performanceInfo">Performance Info</a></li>
-			<li class="marketPlace"><a href="#marketPlace">Market Place</a></li>
+			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root}')">Market Place</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
@@ -55,8 +70,8 @@
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="notice"><a href="#notice">Notice</a></li>
-			<li class="freeboard"><a href="#freeboard">Free Board</a></li>
+			<li class="notice"><a href="javascript:list('${root }','1')">Notice</a></li>
+			<li class="freeboard"><a href="javascript:freeBoardList('${root }','1')">Free Board</a></li>
 		</ul>
 	</nav>
 	<!-- Offsite canvas navigation end -->
@@ -116,6 +131,18 @@
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="navbar-inner">
 			<a href="">Music Player</a>
+		<input type="button" id="prev" value="prev"/>
+		<input type="button" id="play" value="Play/Pause"/>
+		<input type="button" id="next" value="next"/>
+		<input id="prevMoment" type="button" value="-10초"/>
+		<input id="musicBar" type="range" max="" min="0" step="1" value="0" style="width:300px;"/>
+		<input id="nextMoment" type="button" value="+10초"/>
+		<input id="volumeBar" type="range" max="100" min="0" step="1" value="50"/>
+		<span id="volumeText"></span>
+		<div id="demo"></div>
+		<ul id="audioList">
+		
+		</ul>
 		</div>
 	</div>
 	<!-- Music Player end -->

@@ -12,8 +12,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import org.springframework.stereotype.Component;
-
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.filters.HighPass;
 import be.tarsos.dsp.filters.LowPassFS;
@@ -57,12 +55,13 @@ public class KOSTAAudio {
 			while (count !=-1){
 				count=ais2.read(buffer2,0,numBytes2);
 			}
-			outArray = new byte[numBytes1];
+			outArray = new byte[Math.max(numBytes1, numBytes2)];
+			System.out.println(buffer1.length +"\n" + buffer2.length+"\n"+outArray.length);
 			
 			long sync = (long)(syncSecond*ais1.getFormat().getSampleRate()*ais1.getFormat().getChannels()*ais1.getFormat().getSampleSizeInBits()/8);
 			
 			for(int i = 0 ; i < Math.max(buffer1.length, buffer2.length); i++){
-				if(i <= buffer1.length && i <= buffer2.length){
+				if(i < buffer1.length && i < buffer2.length){
 					if(i <45){
 						outArray[i] = buffer2[i];
 					}else{
@@ -100,7 +99,8 @@ public class KOSTAAudio {
 		} catch (LineUnavailableException e) {
 			e.printStackTrace();
 		}finally{
-			new File(mergeFile).delete();
+			File tempFile =new File(mergeFile);
+			tempFile.delete();
 		}
 		
 		return outputFilePath;
@@ -112,7 +112,7 @@ public class KOSTAAudio {
 	 * @author : Kim Min Sic
 	 * @description : merged audio byte array to audio File / return new audio file path
 	 */
-	public String makeFile(byte[] byteBuffer, AudioInputStream ais, String userId) throws IOException{
+	private String makeFile(byte[] byteBuffer, AudioInputStream ais, String userId) throws IOException{
 		String timeName = userId+"_"+System.currentTimeMillis();
 		String outputFilePath = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/MergeMusic/"+timeName;
 		
@@ -128,13 +128,13 @@ public class KOSTAAudio {
 	 * @author : Kim Min Sic
 	 * @description : analyze audio file to the frequency and cut off 100Hz ~ 4000Hz
 	 */
-	public String filters(String filePath,String userId) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
+	private String filters(String filePath,String userId) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
 		AudioInputStream ais=AudioSystem.getAudioInputStream(new File(filePath));
 		TarsosDSPAudioFormat format = new TarsosDSPAudioFormat(ais.getFormat().getSampleRate(), ais.getFormat().getSampleSizeInBits(), ais.getFormat().getChannels(), true, ais.getFormat().isBigEndian());
 		byte [] byteBuffer =audioToByteArray(ais);
 		float[] floatBuffer = convertToFloat(byteBuffer);
 
-		String timeName = userId+"_"+System.currentTimeMillis();
+		String timeName = userId+"_"+System.currentTimeMillis()+"_Collabo.wav";
 		String outputFilePath = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/MergeMusic/"+timeName;
 		
 		
@@ -157,7 +157,7 @@ public class KOSTAAudio {
 	 * @author : Kim Min Sic
 	 * @description : convert audio file to byte array
 	 */
-	public byte[] audioToByteArray(AudioInputStream ais){
+	private byte[] audioToByteArray(AudioInputStream ais){
 		byte[] byteArray =null;
 //		System.out.println("Audio To Byte Array Start");
 		
@@ -184,7 +184,7 @@ public class KOSTAAudio {
 	 * @author : Kim Min Sic
 	 * @description : convert byte array to float array
 	 */
-	public float[] convertToFloat(byte[] array){
+	private float[] convertToFloat(byte[] array){
 //		System.out.println("Convert To Float Start");
 		int size=0;
 		byte[] newArray = null;

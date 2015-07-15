@@ -19,7 +19,7 @@
 	<title>게시판 읽기</title>
 </head>
 <body>
-
+	<div id="freeBoardRead">
 	<table border="1" width="510" cellpadding="2"  cellspacing="0" align="center">
 		<tr>
 			<td align="center"  height="20" width="125">글번호</td>
@@ -88,8 +88,6 @@
 			</span>
 		</div>
 	</c:forEach>
-		
-	
-	
+	</div>
 </body>
 </html>

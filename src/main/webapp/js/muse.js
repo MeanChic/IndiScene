@@ -100,7 +100,7 @@ function guestboardmuse(muse_name){
 }
 
 function perform(){
-	alert("OK");
+	//alert("OK");
 	$("#centerContents").append("<div id='perform' class='hasPaddingContents'></div>")
 	$("#perform").css("display","block");
 	$("#perform").siblings().css("display","none");
