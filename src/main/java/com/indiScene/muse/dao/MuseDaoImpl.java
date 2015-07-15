@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.indiScene.muse.dto.MuseDto;
-import com.indiScene.performBoard.dto.PerformBoardDto;
+
 
 /**
  * @name:MuseDaoImpl

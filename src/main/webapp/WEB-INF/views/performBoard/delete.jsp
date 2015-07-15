@@ -10,7 +10,7 @@
 <body>
 ${board_num} ${pageNumber} ${artist_id }
 <c:set var="root" value="${pageContext.request.contextPath }"/>
-	<form method="post" id="marketBoardDeleteForm" action="javascript:placeBoardDeleteOk()">
+	<form method="post" id="marketBoardDeleteForm" action="javascript:performBoardDeleteOk()">
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<input type="hidden" name="artist_id" value="${artist_id }"/>
@@ -30,7 +30,7 @@ ${board_num} ${pageNumber} ${artist_id }
 			<tr>
 				<td align="center">
 					<input type="submit" value="글삭제"/>
-					<input type="button" value="목록보기" onclick="javascript:enterPlaceBoard('${root}','${pageNumber}')">
+					<input type="button" value="목록보기" onclick="javascript:enterPerformBoard('${root}','${pageNumber}')">
 				</td>
 			</tr>
 		</table>

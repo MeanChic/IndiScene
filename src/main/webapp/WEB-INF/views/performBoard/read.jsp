@@ -1,93 +1,123 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
-<c:set var="artist_id" value="indiScene"/>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <title>Insert title here</title>
-<style type="text/css">
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
-      #map_canvas { height: 100% }
-    </style>
-    
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true">
-    </script>
-   <link type="text/css" href="${root}/css/jquery-ui.css" rel="stylesheet"/>
-<script type="text/javascript" src="${root}/js/jquery.js"></script>
-<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
+<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
+<script src="${root }/js/replyWrite.js" type="text/javascript" ></script>
+<script src="${root }/js/replyDelete.js" type="text/javascript" ></script>
+<script src="${root }/js/replyUpdate.js" type="text/javascript" ></script>
 <script type="text/javascript">
-	$(function(){
-    	//$( "#datepicker" ).datepicker("setDate","24/06/2015");	
-    	$( "#datepicker" ).datepicker({
-    		defaultDate: $("#date").val()
-    	});
-    	
-      	function initialize() {
-    		geocoder = new google.maps.Geocoder();
-        	var mapOptions = {
-            	center: new google.maps.LatLng(36.5240220, 126.9265940),
-				zoom: 15,    
-            };
-          
-    	  	var address = document.getElementById('address').value;
-		  	geocoder.geocode( { 'address': address}, function(results, status) {
-		    
-			if (status == google.maps.GeocoderStatus.OK) {
-				map.setCenter(results[0].geometry.location);
-		    	var marker = new google.maps.Marker({
-		        	map: map,
-		       	 	position: results[0].geometry.location
-		     	});
-		    } else {
-		    	alert('Geocode was not successful for the following reason: ' + status);
-		    }
-		});
-		  
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
-            mapOptions);
+	function delFun(root, board_num, pageNumber,artist_id){
+		var dd =confirm("정말 삭제하시겠습니까?");
+			var url=root+"/performBoard/delete.do?board_num="+boardNumber+"&pageNumber="+pageNumber+"&artist_id="+artist_id;
+		if(dd == true){
+			location.href=url;
 		}
-      
-		google.maps.event.addDomListener(window, 'load', initialize);
-   });
+	}
+	function DeleteToServer(a,b,c){
+		//alert(a+b+c);
+	}
+	
 </script>
 </head>
+
 <body>
-	<a href="${root}/performBoard/write.do">글쓰기</a><a style="margin:0 0 0 600px"href="${root}/performBoard/list.do">리스트로 돌아가기</a>
-	<div style="border:solid 1px black; width:700px; margin:100px 0 100px 20px ">
-	<span>${pageNumber}</span><span>${board.register_date}</span>
-	<div style="border:solid 1px black">${board.subject}</div>
-	<div style="border:solid 1px black">${board.artist_id}</div>
-	<div style="border:solid 1px black; height:100px;">${board.content}</div>
-	${board.d_day}<br/>
-	${board.count}<br/>
+	<c:set var="root" value="${pageContext.request.contextPath }" />
 	
-	<c:forEach var="path1" items="${path}">
-		<img  width="142" height="83" src="${root}/${path1}">
-	</c:forEach> 
+	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
+	<table border="1" width="510" cellpadding="2" cellspacing="0"align="center">
+		<tr>
+			<td align="center" height="20" width="125">글번호</td>
+			<td align="center" height="20" width="125">${marketBoard.board_num }</td>
+			
+
+			<td align="center" height="20" width="125">조회수</td>
+			<td align="center" height="20" width="125">${marketBoard.count }</td>
+		</tr>
+
+		<tr>
+			<td align="center" height="20" width="125">작성자</td>
+			<td align="center" height="20" width="125">${marketBoard.artist_id}</td>
+
+			<td align="center" height="20" width="125">작성일</td>
+			<td align="center" height="20" width="125">
+			<fmt:formatDate
+					value="${marketBoard.register_date}" type="date" /></td>
+		</tr>
+
+		<tr>
+			<td align="center" height="200" width="125">글내용</td>
+			<td valign="top" height="200" colspan="3">${marketBoard.content }</td>
+		</tr>
+		
+		<c:if test="${marketBoard.file_name !=null }">
+			<tr>
+				<td align="center" height="20" width="125">파일명</td>
+				<td colspan="3">
+				
+				
+				<!-- 다중파일 read 처리 -->
+				<c:forTokens var="file_name" items="${marketBoard.file_name}" delims="<>" varStatus="s" >
+					<c:forTokens var="file_path" items="${marketBoard.file_path}" delims="<>" begin="${s.index}" end="${s.index }"> <!--파일 네임과 동일한 s번째순번의 path를 사용한다-->
+						<a href="${root}/CommonIO/download.do?board_num=${marketBoard.board_num}&file_name=${file_name}&file_path=${file_path}">${file_name}, ${s.index}
+						</a><br/>
+					</c:forTokens>
+				</c:forTokens>
+				 
+				</td>
+			</tr>
+		</c:if>
+
+		<tr>
+			<td height="30" colspan="4" align="center"><input type="button"
+				value="글수정"
+				onclick="javascript:performBoardUpdate('${marketBoard.board_num}','${pageNumber}')" />
+				<input type="button" value="글삭제"
+				onclick="javascript:performBoardDelete('${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')"/>
+				<!-- onclick="delFun('${root}','${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')" />  -->
+				<input type="button" value="글목록"
+				onclick="javascript:enterPerformBoard('${root}','${pageNumber}')" />
+			</td>
+		</tr>
+	</table>
+	<!-- ---------------한줄댓글 ----------------------------------------------->
+
+	${marketBoard.board_num }
+	<c:set var="root" value="${pageContext.request.contextPath }"/>
+	<div>한줄 댓글이 가능합니다.</div>
+	<br/>
 	
-	<input type="hidden" id="address" value="${board.zipcode} ${board.address}"/>
-	<input type="hidden" id="date" value="${date}" name="d_day"/>
-	<br/><br/>
-    
-    ${board.zipcode} ${board.address}
-    <br/><br/>
-    
-    <div id="map_canvas" style="width:300px; height:300px;float:left;"></div>
-    
-    <div style="width:300px; float:left;" id="datepicker"></div>
-	<div style="margin:0 0 0 400px">
-	<c:if test="${board.artist_id == artist_id }">
-	<input type="button" value="수정" onclick="javascript:location.href='${root}/performBoard/update.do?board_num=${board.board_num}'">
-	<input type="button" value="삭제" onclick="javascript:location.href='${root}/performBoard/delete.do?board_num=${board.board_num}'">
-	</c:if>
+	<div>
+		<input id="writeId" type="text" name="artist_id"  size="7" />
+		<input id="writeReply" type="text" name="reply_content" size="45"/>
+		<input type="button" value="한줄답글작성" onclick="writeToServer('${root}','${marketBoard.board_num }')"/> 
 	</div>
-	</div>
+
+	 
+	<div></div>
+	
+	<!-- 새로운 데이터 -->
+	<div id="newReply"></div>
+	
+	<!--  기존데이타 -->
+	<c:forEach var="reply" items="${replyList }">
+		<div class="replyDiv" id="${reply.reply_num }">   <!-- div를 통해 한번에 삭제하기위함,, 자식들도 삭제되므로! -->
+			<span class="cssBunho">${reply.reply_num }</span>
+			<span class="cssAritist">${reply.artist_id }</span>
+			<span class="cssReply">${reply.reply_content }</span>
+			<span class="cssDate">${reply.reply_date }</span>
+			<span class="cssUpDel">
+				<a href="javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">수정</a>
+				<a href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">삭제</a>
+			</span>
+		</div>
+	</c:forEach>
+		
 </body>
 </html>

@@ -1,56 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+
 <!DOCTYPE html>
-<c:set var="root" value="${pageContext.request.contextPath}"/>
+<c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>거래 게시판 업데이트</title>
+<c:set var="root" value="${pageContext.request.contextPath }"/>
+<script src="${root }/resources/ckEditor/ckeditor.js"></script>
+<script src="${root }/js/jquery.js" type="text/javascript" ></script>
+<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 </head>
 <body>
-	<form action="${root}/performBoard/update.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
-		<input type="hidden" value="${artist_id}" name="artist_id"/>
+
+	<form id="marketBoardUpdateForm" action="javascript:performBoardUpdateOk()" method="post">
+		<input type="hidden" name="board_num" value="${board.board_num }"/>
+		<input type="hidden" name="pageNumber" value="${pageNumber }"/>
 		
-		<span>제목</span><input id="subject" name="subject" type="text" value="${board.subject }"/> <br/><br/>
-		<span>내용</span><textarea rows="20" cols="100" name="content" id="content">${board.content}</textarea><br/><br/>
-		<span>일시</span>
-		
-		<input type="text" name="d_day1" id="datepicker">
-		
-		<select name="hh">
-			<c:forEach var="i" begin="00" end="24"> 
-				<option>${i}</option>
-			</c:forEach>
-		</select>
-		
-		
-		<br/><br/>
-		
-		주소<input type="text" name="zipcode" value="${board.zipcode }"/> <button>우편번호</button><br/></br>
-		<input type="text" name="address" value="${board.address}"/><br/><br/>
-		파일<input type="file" name="file1" id="file1">
-		<div id="hidd" style="display:none">
-			<input type="file" name="file2" id="file2">
-			<input type="file" name="file3" id="file3">
-			<input type="file" name="file4" id="file4">
-			<input type="file" name="file5" id="file5">
-			<input type="file" name="file6" id="file6">
-			<input type="file" name="file7" id="file7">
-			<input type="file" name="file8" id="file8">
-			<input type="file" name="file9" id="file9">
-			<input type="file" name="file10" id="file10">
+		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
+				<a href="javascript:enterPerformBoard('${root}','${pageNumber}')">글목록</a>
 		</div>
-		<div>
-			<input type="submit" value="글쓰기"/>
-			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/performBoard/list.do'"/>
+			
+		<div class="line">
+			<label class="title">작성자</label>
+			<span class="content">
+				<input type="text" name="writer" value="${board.artist_id }" disabled="disabled" />
+			</span>
 		</div>
 		
-		<output id="result"></output>
+		<div class="line">
+			<label class="title">제목</label>
+				<span class="content"><input type="text" size="50" name="subject"  value="${board.subject }"/></span>
+		</div>
 		
-		<div id="fileList"></div>
+		<div class="line" >
+			<label class="title" >내용</label>
+			<span class="content" >
+				<textarea  name="content" >${board.content }</textarea>		
+			<script >
+				
+				var folderName='${pageContext.request.servletPath }';
+				folderName=folderName.split("views/");
+				folderName=folderName[1].split("/");
+				//var id=document.getElementById(folderName);
+				//id.value=folderName[0]; //멀티파일폴더 만들때
+				$("#folderName").val(folderName[0]);
+				alert(folderName[0])
+				 CKEDITOR.replace( 'content',
+						 {///IndiScene_basic/src/main/webapp/resources/ckfinder
+						 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
+						 });
+	  	</script>
+			</span>
+		</div>	
+		
+		<div class="line">
+			
+		</div>	
+		
+		
+		<div class="line" style="width:598px; border-width:2px; text-align:center;">
+			<input type="submit" value="글수정"/>
+			<input type="reset" value="취소"/>
+			<input type="button" value="목록보기" onclick="location.href='${root}/performBoard/enterBoard.do?pageNumber=${pageNumber}'">
+		</div>
 	</form>
+
 </body>
 </html>

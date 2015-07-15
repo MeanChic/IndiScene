@@ -2,7 +2,6 @@ package com.indiScene.performBoard.dao;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,69 +10,66 @@ import org.springframework.stereotype.Component;
 import com.indiScene.performBoard.dto.PerformBoardDto;
 
 /**
- * @name:PerformBoardDaoImpl
- * @date :2015. 6. 25.
- * @author: 김정승
- * @description :	PerformBoardDao interface를 상속받은 class
+@name  : MarketBoardDaoImpl
+@date  : 2015. 6. 25.
+@auther: 나혁진
+@description : 거래게시판 비지니스 로직에 접근하기위한 dao
  */
 @Component
 public class PerformBoardDaoImpl implements PerformBoardDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	private final Logger logger = Logger.getLogger(this.getClass().getName());
-	
-	public int boardGroupNumberMax(){
-		return sqlSession.selectOne("dao.PerformMapper.boardGroupNumberMax");
+	                          
+	@Override
+	public int getCount() {
+		System.out.println("daoImpl");
+		return sqlSession.selectOne("dao.performBoardMapper.boardCount");
 	}
-	
-	public int boardGroupNumberUpdate(HashMap<String, Integer> hMap){
-		
-		return sqlSession.update("dao.PerformMapper.boardGroupNumberUpdate",hMap );
-	}
-	
-	public int insert(PerformBoardDto boardDto){
-		int check = 0;
-		
-		if(boardDto.getFile_name() == null){
-			//logger.info("-- no File=================");
-			check = sqlSession.insert("dao.PerformMapper.boardInsert", boardDto);
-		}else{
-			//logger.info("-- File=================");
-			check = sqlSession.insert("dao.PerformMapper.boardInsertAll", boardDto);
-		}
-		//logger.info("-- DAo Check" + check);
-		
-		return check;	
-	}
-	
-	public int getBoardCount(){
-		return sqlSession.selectOne("dao.PerformMapper.boardCount");
-	}
-	
-	public List<PerformBoardDto> getBoardList(int startRow, int endRow){
-		HashMap<String, Integer> hMap = new HashMap<String, Integer>();
-		hMap.put("startRow", startRow);
+
+	@Override
+	public List<PerformBoardDto> getMarketList(int startRow, int endRow) {
+		HashMap<String, Integer> hMap=new HashMap<String,Integer>();
+		hMap.put("startRow",startRow);
 		hMap.put("endRow", endRow);
 		
-		return sqlSession.selectList("dao.PerformMapper.getBoardList", hMap);
+		return sqlSession.selectList("dao.performBoardMapper.boardList", hMap); //SelectList Dto瑜� �옄�룞�쑝濡� 諛쏆븘�꽌 �젮二쇰뒗 �뿭�븷  
+	}
+
+	@Override
+	public int insert(PerformBoardDto marketBoardDto) {
+		return sqlSession.insert("dao.performBoardMapper.boardInsert", marketBoardDto);
+	}
+
+	@Override
+	public PerformBoardDto read(String boardNumber) {
+		return sqlSession.selectOne("dao.performBoardMapper.boardRead", boardNumber);
+	}
+
+	@Override
+	public int count(String boardNumber) {
+		return sqlSession.insert("dao.performBoardMapper.readCount", boardNumber);
+	}
+
+	@Override
+	public String passCheck(String artist_id) {
+		return sqlSession.selectOne("dao.performBoardMapper.passCheck",artist_id);
+	}
+
+	@Override
+	public int delete(String board_num) {
+		return sqlSession.delete("dao.performBoardMapper.delete",board_num);
+	}
+
+	@Override
+	public PerformBoardDto update(String board_num) {
+		return sqlSession.selectOne("dao.performBoardMapper.boardRead", board_num);
+	}
+
+	@Override
+	public int updateOk(PerformBoardDto marketBoardDto) {
+		return sqlSession.update("dao.performBoardMapper.update", marketBoardDto);
 	}
 	
-	public PerformBoardDto read(String board_num){
-		
-		PerformBoardDto board = null;
-		int check = 0;
-		
-		try{
-			check = sqlSession.update("dao.PerformMapper.readCount" , board_num);
-			//logger.info("ch Dao check : " + check);
-			if(check == 1){
-				board = sqlSession.selectOne("dao.PerformMapper.read", board_num);
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		return board;
-	}
+	
 }

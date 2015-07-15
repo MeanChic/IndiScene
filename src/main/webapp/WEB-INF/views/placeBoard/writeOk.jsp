@@ -13,14 +13,14 @@
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("글쓰기 성공");
-			location.href="${root}/placeBoard/enterBoard.do";
+			enterPlaceBoard(root);
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
 			alert("글쓰기 실패");
-			location.href="${root}/placeBoard/write.do";
+			placeBoardWrite();
 		</script>
 	</c:if>
 

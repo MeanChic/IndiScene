@@ -14,13 +14,13 @@
 		<script type="text/javascript">
 			alert("수정완료.");
 			alert('${board_num}','${pageNumber}');
-			placeBoardRead('${board_num}','${pageNumber}');
+			performBoardRead('${board_num}','${pageNumber}');
 		</script>
 	</c:if>
 	<c:if test="${check == 0}">
 		<script type="text/javascript">
 			alert("수정취소.");
-			location.href="javascript:placeBoardRead('${board_num}','${pageNumber}')";
+			location.href="javascript:performBoardRead('${board_num}','${pageNumber}')";
 		</script>
 	</c:if>
 </body>

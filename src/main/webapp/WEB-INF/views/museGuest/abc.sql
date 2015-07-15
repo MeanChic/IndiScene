@@ -6,6 +6,7 @@ create table muse_signup(
 	muse_name VARCHAR2(255)
 
 );
+select * from REPLY;
 
 select * from reply;
 TRUNCATE TABLE muse_signup;
