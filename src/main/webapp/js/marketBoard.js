@@ -4,7 +4,7 @@
 var root=null;
 function enterMarketBoard(requestRoot,pageNumber){
 	root=requestRoot;
-	//alert(pageNumber);
+	//alert("ok");
 	sendData="?pageNumber="+ ((pageNumber==null || pageNumber=="") ? 1 : pageNumber);
 	$.ajax({
 		url:root +"/marketBoard/enterBoard.do"+sendData,

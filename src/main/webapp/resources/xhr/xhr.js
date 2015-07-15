@@ -17,7 +17,7 @@ function createXHR(){
 function sendRequest(method, url , callback, params){
 	
 	xhr=createXHR();
-	alert("XMLHttpRequest:" + xhr);
+	//alert("XMLHttpRequest:" + xhr);
 	
 	var httpMethod=method;
 	if(httpMethod!="GET" && httpMethod!="POST"){
@@ -31,11 +31,11 @@ function sendRequest(method, url , callback, params){
 	if(httpMethod=="GET" && httpParams !=null){
 		httpUrl+="?"+httpParams;
 	}
-	//alert(httpUrl);
+	////alert(httpUrl);
 	xhr.open(httpMethod, httpUrl , true);
 	xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xhr.send(httpMethod=="POST" ? httpParams:null);
 	xhr.onreadystatechange=callback;
 	
-	alert(httpMethod+"," + httpUrl );
+	//alert(httpMethod+"," + httpUrl );
 }

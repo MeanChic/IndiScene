@@ -28,6 +28,7 @@
 </head>
 
 <body>
+<div id="barketBoardread">
 	<c:set var="root" value="${pageContext.request.contextPath }" />
 	
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
@@ -118,6 +119,6 @@
 			</span>
 		</div>
 	</c:forEach>
-		
+</div>		
 </body>
 </html>

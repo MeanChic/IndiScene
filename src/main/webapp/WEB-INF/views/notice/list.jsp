@@ -10,8 +10,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>게시판 목록보기</title>
 </head>
-<body>	
-
+<body>
+	
+		<a href="javascript:write('${root }')">공지사항쓰기</a>
+		<br/>
+		
 		<c:if test="${count==0 }">
 					<td align="center">게시판에 저장된 글이 없습니다.</td>
 		</c:if>

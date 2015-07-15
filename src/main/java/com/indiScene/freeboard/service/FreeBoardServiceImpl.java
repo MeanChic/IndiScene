@@ -143,7 +143,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		if(count>0){
 			freeBoardList=freeBoardDao.getFreeBoardList(startRow, endRow);
 		}
-		logger.info("freeBoardList size: "+freeBoardList.size());
+		if(freeBoardList!=null)logger.info("freeBoardList size: "+freeBoardList.size());
 		
 	  
 		mav.addObject("freeBoardSize",boardSize);

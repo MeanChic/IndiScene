@@ -15,6 +15,7 @@
 	<!--  <link rel="stylesheet" type="text/css" href="${root }/css/marketBoard/style.css"/>-->
 </head>
 <body>
+<div id="barketBoardWrite">
 	<form id="marketBoardWriteForm" class="form_style"  action="${root }/marketBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		 <input type="hidden" id="folderName" name="folderName" />
 			
@@ -66,5 +67,6 @@
 			<input type="button" value="목록보기" onclick="location.href='${root}/marketBoard/enterBoard.do'"/>
 		</div>
 	</form>
+</div>
 </body>
 </html>

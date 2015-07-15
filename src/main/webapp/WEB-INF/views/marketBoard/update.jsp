@@ -14,6 +14,7 @@
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 </head>
 <body>
+<div id="barketBoardUpdate">
 
 	<form id="marketBoardUpdateForm" action="javascript:marketBoardUpdateOk()" method="post" >
 		<input type="hidden" name="board_num" value="${board.board_num }"/>
@@ -47,7 +48,7 @@
 				//var id=document.getElementById(folderName);
 				//id.value=folderName[0]; //멀티파일폴더 만들때
 				$("#folderName").val(folderName[0]);
-				alert(folderName[0])
+				//alert(folderName[0])
 				 CKEDITOR.replace( 'content',
 						 {///IndiScene_basic/src/main/webapp/resources/ckfinder
 						 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
@@ -68,6 +69,6 @@
 			<input type="button" value="목록보기" onclick="location.href='${root}/marketBoard/enterBoard.do?pageNumber=${pageNumber}'">
 		</div>
 	</form>
-
+</div>
 </body>
 </html>

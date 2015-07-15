@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-
 <html>
 <head>
 	<meta charset="utf-8">
@@ -39,7 +38,7 @@
 	<input type="hidden" id="root" value="${root}"/>
 	<!-- Offsite canvas navigation start -->
 	<nav class="main-nav">
-		<a href="#" class="close"><i class="icon-cancel"></i></a>
+		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
 		<img class="logo" src=" " alt="logo">
 		<h2>Indi Scene</h2>
 		<hr>
@@ -65,7 +64,7 @@
 	
 	<!-- Button login, update navigation start -->
 	<nav class="sub-nav">
-		<a href="#" class="close"><i class="icon-cancel"></i></a>
+		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
 		<img class="logo" src=" " alt="logo">
 		<h2>Indi Scene</h2>
 		<hr>
@@ -78,14 +77,14 @@
 	<!-- Header Part start -->
 	<div class="navbar navbar-head">
 		<div class="navbar-inner">
-			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><i class="glyphicon glyphicon-list"></i>&nbsp;&nbsp;Menu</a>
+			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Menu</a>
 			<c:choose>
 				<c:when test="${artist_id ==null}">
-					<a href="#" id="loginButton" class="nav-expander pull-right btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a>
+					<a href="#" id="loginButton" class="sub-expander pull-right btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a>
 					<a id="registerButton" class="nav-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Join</a>
 				</c:when>
 				<c:otherwise>
-					<a href="#" id="updateloginButton" class="nav-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;PIM</a>
+					<a href="#" id="updateloginButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;PIM</a>
 					<a id="logoutButton" class="nav-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a>
 				</c:otherwise>
 			</c:choose>
@@ -166,15 +165,6 @@ $('#nav-expander').on('click', function(e) {
 	e.preventDefault();
 	$('.main-nav').toggleClass('nav-expanded');
 });
-
-$('.marketPlace a').on('click', function(e) {
-	enterMarketBoard('${root}')
-	e.preventDefault();
-	$('.main-nav').toggleClass('nav-expanded');
-});
-
-
-
 $('.main-nav .close').on('click', function(e) {
 	e.preventDefault();
 	$('.main-nav').toggleClass('nav-expanded');
@@ -184,7 +174,6 @@ $('#loginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
 });
-
 $('.sub-nav .close').on('click', function(e) {
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
