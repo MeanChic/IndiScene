@@ -32,14 +32,14 @@
 			<div class="form-controlArtist">
 				<label class="form-inlineblock label-color">ID</label>
 			    <div class="form-inlineblock">
-					<input class="form-inlineblock form-controllerler" name="artist_idView"  value="${artist_id}" disabled="disabled"/>
+					<input class="form-inlineblock form-controller" name="artist_idView"  value="${artist_id}" disabled="disabled"/>
 					<input type="hidden" name="artist_id"  value="${artist_id}"/>
 				</div>
 			</div>
 			<div class="form-controlArtist">
 				<label class="form-inlineblock label-color">Password</label>
 			    <div class="form-inlineblock">
-					<input class="form-inlineblock form-controllerler" type="password" name="artist_password"/>
+					<input class="form-inlineblock form-controller" type="password" name="artist_password"/>
 				</div>
 			</div>
 			<div class="form-controlArtist">

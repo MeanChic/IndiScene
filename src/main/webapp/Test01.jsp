@@ -88,7 +88,7 @@
 		<div class="jumbotron" id="homeTag">
 			<img class="logo" src="${root}/css/images/logo-full.png" alt="logo">
 			<hr>
-			<p>We created the <span>Indi Scene</span> and now they control the world.</p>
+			<p>Your Music Career Start Here. Music & Collaboration <span>Indi Scene</span> is for You.</p>
 		</div>
 	</div>
 	<!-- Main slider end -->
@@ -97,7 +97,7 @@
 	<div class="footer">
 		<div class="brand"><p>Indi Scene</p></div>
 		<div class="container">
-			<img class="logo" src="${root}/css/images/logo-img.png" alt="logo">
+			<a href=""><img class="logo" src="${root}/css/images/logo-img.png" alt="logo"></a>
 			<a href="#" class="toTop">Back to top</a>
 			<p class="copiright">&copy; Copyright 2015 <a target="_blank" href="http://grapberry.com>ref=momentio">. All Rights Reserved.</p>
 		</div>
