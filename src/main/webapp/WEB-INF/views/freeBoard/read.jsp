@@ -55,5 +55,41 @@
 			</td>
 		</tr>
 	</table>
+	
+	<!-- ---------------한줄댓글 ----------------------------------------------->
+
+	${freeBoard.board_num }
+	<c:set var="root" value="${pageContext.request.contextPath }"/>
+	<div>한줄 댓글이 가능합니다.</div>
+	<br/>
+	
+	<div>
+		<input id="writeId" type="text" name="artist_id"  size="7" />
+		<input id="writeReply" type="text" name="reply_content" size="45"/>
+		<input type="button" value="한줄답글작성" onclick="writeToServer('${root}','${freeBoard.board_num }')"/> 
+	</div>
+
+	 
+	<div></div>
+	
+	<!-- 새로운 데이터 -->
+	<div id="newReply"></div>
+	
+	<!--  기존데이타 -->
+	<c:forEach var="reply" items="${replyList }">
+		<div class="replyDiv" id="${reply.reply_num }">   <!-- div를 통해 한번에 삭제하기위함,, 자식들도 삭제되므로! -->
+			<span class="cssBunho">${reply.reply_num }</span>
+			<span class="cssAritist">${reply.artist_id }</span>
+			<span class="cssReply">${reply.reply_content }</span>
+			<span class="cssDate">${reply.reply_date }</span>
+			<span class="cssUpDel">
+				<a href="javascript:upSelectToServer('${freeBoard.board_num }','${reply.reply_num }','${root}')">수정</a>
+				<a href="javascript:deleteToServer('${freeBoard.board_num }','${reply.reply_num }','${root}')">삭제</a>
+			</span>
+		</div>
+	</c:forEach>
+		
+	
+	
 </body>
 </html>

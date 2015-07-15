@@ -89,7 +89,7 @@ function idCheck(artistForm, root){
 		return false;
 	}
 	var url=root+"/artist/idCheck.do?artist_id="+artistForm.artist_id.value;
-	window.open(url,"","width=250, height=150");
+	window.open(url,"","width=330, height=140");
 }	
 
 function nicknameCheck(artistForm, root){
@@ -99,7 +99,7 @@ function nicknameCheck(artistForm, root){
 		return false;
 	}
 	var url=root+"/artist/nicknameCheck.do?artist_nickname="+artistForm.artist_nickname.value;
-	window.open(url,"","width=250, height=150");
+	window.open(url,"","width=330, height=140");
 }
 
 function deleteCheck(deleteForm, root){	
@@ -142,8 +142,8 @@ $(function(){
 	$("#accordion").css("width","500px");
 	$("#artist > button").button();
 	
-	$("input[name='artist_id']").attr("placeholder", "5자 이상 20자 이하로 쓰세요.");
-	$("input[name='artist_password']").attr("placeholder", "5자 이상 20자 이하로 쓰세요.");
+	$("input[name='artist_id']").attr("placeholder", "ID");
+	$("input[name='artist_password']").attr("placeholder", "Password");
 	$("input[name='passwordCheck']").attr("placeholder", "Password Check");
 	$("input[name='artist_name']").attr("placeholder", "3자 이상 30자 이하로 만드세요.");
 	$("input[name='artist_nickname']").attr("placeholder", "3자 이상 30자 이하로 만드세요.");

@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id="freeBoardList" resultType="com.indiScene.freeboard.dto.FreeBoardDto" parameterType="java.util.HashMap">
-		<![CDATA[ select * from (select rownum rnum, a.* from(select * from freeBoard order by group_num desc, seq_num asc)a) where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+		<![CDATA[ select * from (select rownum rnum, a.* from(select * from freeBoard order by group_num desc, register_date asc)a) where rnum>=#{startRow} and rnum<=#{endRow} ]]>
 	</select>
 	
 	<select id="freeBoardCount" resultType="int">

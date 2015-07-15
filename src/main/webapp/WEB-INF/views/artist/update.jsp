@@ -90,8 +90,8 @@
 		</div>
 		<div class="form-controlArtist" style="margin-top:35px;">
 			<input type="hidden" name="artist_level" value="${artist.artist_level}"/>
-    		<div class="marginCenter" style="float:right;">
-				<input type="submit" name="updateOk" class="btn btn-default" value="submit"/>
+    		<div class="form-inlineblock button-control">
+				<input type="submit" class="btn btn-default" value="submit" name="updateOk"/>
 				<input type="button" class="btn btn-default" value="cancel"/>
 			</div>
 		</div>

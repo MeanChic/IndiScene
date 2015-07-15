@@ -78,7 +78,7 @@ public class UploadBoardController {
 	}
 	
 	@RequestMapping(value="/uploadBoard/update.do", method=RequestMethod.GET)
-	public ModelAndView upload(HttpServletRequest request){
+	public ModelAndView update(HttpServletRequest request){
 		logger.info("uploadBoard Update Start~~~~~~~");
 		ModelAndView mav = new ModelAndView();
 
@@ -89,7 +89,7 @@ public class UploadBoardController {
 	}
 	
 	@RequestMapping(value="/uploadBoard/update.do", method=RequestMethod.POST)
-	public ModelAndView upload(MultipartHttpServletRequest request, UploadBoardDto uploadBoard){
+	public ModelAndView update(MultipartHttpServletRequest request, UploadBoardDto uploadBoard){
 		logger.info("upload UpdateOK Start ---------");
 		ModelAndView mav = new ModelAndView();
 		
@@ -108,6 +108,29 @@ public class UploadBoardController {
 
 		mav.addObject("request", request);
 		service.delete(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/uploadBoard/like.do",method=RequestMethod.GET)
+	public ModelAndView like(HttpServletRequest request, HttpServletResponse response){
+		logger.info("uploadBoard Like Start-----------------");
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request",request);
+		mav.addObject("response", response);
+		service.like(mav);
+		
+		return null;
+	}
+	
+	@RequestMapping(value="/uploadBoard/collabo.do", method=RequestMethod.GET)
+	public ModelAndView collabo(HttpServletRequest request){
+		logger.info("uploadBoard Collabo Start-----------------");
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request",request);
+		service.collabo(mav);
 		
 		return mav;
 	}

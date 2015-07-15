@@ -1,6 +1,6 @@
-function uploadWrite(root){
+function uploadWrite(root,boardNum,pageNumber){
 	$.ajax({
-		url:root+"/uploadBoard/write.do",
+		url:root+"/uploadBoard/write.do?boardNum="+boardNum+"&pageNumer="+pageNumber,
 		type:"get",
 		dataType:"html",
 		success:function(data){
@@ -114,7 +114,7 @@ function uploadUpdateOk(root){
 	alert($("#content").val());
 //	alert(CKEDITOR.instances.content);
 	$.ajax({
-		url:root+"/uploadBoard/upload.do",
+		url:root+"/uploadBoard/update.do",
 		type:"post",
 		dataType:"html",
 		data:dataSet,
@@ -147,4 +147,121 @@ function uploadDelete(root,boardNum,currentPage){
 			}
 		});
 	}
+}
+
+function prepareCollabo(){
+	var audio1=document.createElement("audio");
+	var audio2=document.createElement("audio");
+	var audio1Can = false;
+	var audio2Can = false;
+	
+	audio1.src=$("#originalMusicPath").val();
+	
+	$("#prevListen").click(function(){
+		audio2.src=$("#uploadPath").val();
+	});
+	
+	audio1.onloadeddata=function(){
+		audio1Can=true;
+//		alert(audio1Can);
+	}
+	
+	audio2.onloadeddata=function(){
+		audio2Can=true;
+		$("#syncControl").css("display","block");
+//		alert(audio2Can);
+	}
+	
+	$("#playCollabo").click(function(){
+		audio1.volume=0.5;
+		audio2.volume=0.5;
+
+		audio1.load();
+		audio2.load();
+		
+		if(audio1Can && audio2Can){
+			audio1.play();
+			audio2.play();
+		}else{
+			alert("음원이 아직 준비가 되지 않았습니다. 잠시후 다시 버튼을 눌러주세요");
+		}
+	});
+	
+	$("#originalVolumeUp").click(function(){
+		if(audio1.volume!=1){
+			audio1.volume=audio1.volume+0.1;
+		}
+	});
+	$("#originalVolumeDown").click(function(){
+		if(audio1.volume!=0){
+			audio1.volume=audio1.volume-0.1;
+		}
+	});
+	
+	$("#extraVolumeUp").click(function(){
+		if(audio2.volume!=1){
+			audio2.volume=audio2.volume+0.1;
+		}
+	});
+	$("#extraVolumeDown").click(function(){
+		if(audio2.volume!=0){
+			audio2.volume=audio2.volume-0.1;
+		}
+	});
+	$("#syncController").bind("change",function(){
+		var sync=$("#syncController").val();
+		var prevSync= $("#syncSave").val();
+		
+		if(prevSync>=0){
+			audio2.currentTime=audio2.currentTime-prevSync;
+		}else{
+			audio1.currentTime=audio1.currentTime+prevSync;
+		}
+		
+		if(sync>=0){
+			audio2.currentTime= audio2.currentTime+sync;
+		}else{
+			audio1.currentTime= audio1.currentTime-sync;
+		}
+		
+		$("#syncSave").val(sync);
+	});
+	$("#syncAdopt").click(function(){
+		
+	});
+	
+	var audioPlaying=false;
+	$("#recordToggleImg").click(function(){
+		if(audioPlaying){
+			audio1.pause();
+			audio1.currentTime=0;
+			audioPlaying=false;
+		}else{
+			audio1.play();
+			audioPlaying=true;
+		}
+	});
+}
+
+function uploadCollabo(root, boardNum,pageNumber){
+	$.ajax({
+		url:root+"/uploadBoard/collabo.do?boardNum="+boardNum+"&pageNumber="+pageNumber,
+		type:"get",
+		dataType:"html",
+		success:function(data){
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
+			$.getScript(root+"/js/recorderjs/recorderInit.js");
+			$.getScript(root+"/js/recorderjs/recorder.js");
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	});
+}
+
+function test(){
+//	alert($("#coverImage").val()=="");
+	alert($("#uploadPath").val()=="");
 }

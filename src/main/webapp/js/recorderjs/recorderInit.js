@@ -13,6 +13,7 @@ var rafID = null;
 var analyserContext = null;
 var canvasWidth, canvasHeight;
 var recIndex = 0;
+var tempAudio=documnet.createElement("audio");
 
 function toggleRecording( e ) {
     if (e.classList.contains("recording")) {
@@ -20,6 +21,7 @@ function toggleRecording( e ) {
         audioRecorder.stop();
         e.classList.remove("recording");
         audioRecorder.getBuffers( gotBuffers );
+        $("#recordToggleImg").attr("src",$("#root").val()+"/resources/uploadBoard/recB.png");
     } else {
         // start recording
         if (!audioRecorder)
@@ -27,6 +29,7 @@ function toggleRecording( e ) {
         e.classList.add("recording");
         audioRecorder.clear();
         audioRecorder.record();
+        $("#recordToggleImg").attr("src",$("#root").val()+"/resources/uploadBoard/rec.png");
     }
 }
 

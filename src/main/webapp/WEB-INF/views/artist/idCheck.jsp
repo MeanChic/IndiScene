@@ -5,44 +5,59 @@
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="${root}/js/jquery.js"></script>
-<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
-<script type="text/javascript" src="${root}/js/artist.js"></script>
-<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<!-- Load google font -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+	<!-- Load styles -->
+	<link href="${root}/css/bootstrap.css" rel="stylesheet">
+	<link href="${root}/css/style.css" rel="stylesheet">
+	<link href="${root}/css/icons.css" rel="stylesheet">
+	<link href="${root}/css/colorbox.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
+	
+	<!-- Load javascrips libraries-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="${root}/js/jquery.bxslider.js"></script>
+	<script src="${root}/js/jquery.easypiechart.js"></script>
+	<script src="${root}/js/jquery.colorbox.js"></script>
+	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="${root}/js/artist.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 </head>
-<body>
-	<c:if test="${check==1 }">	
+<body class="duplicateWindow">
+	<div class="duplicateWindow">
+		<c:if test="${check==1 }">	
+			<div align="center" class="form-controlArtist">
+				<label class="form-inlineblock label-color">ID is already in use.</label>
+				<div>
+					<form class="form-inlineblock" action="${root }/artist/idCheck.do" method="GET">
+						<input class="form-inlineblock form-controllerler" type="text" name="artist_id"/>
+						<input class="form-inlineblock form-controllerler" type="submit" value="Duplicate Check"/>
+					</form>
+				</div>
+			</div>
+		</c:if>
+		
+		<c:if test="${check==0 }">
+			<div align="center" class="form-controlArtist">
+				<label class="form-inlineblock label-color">Can use ID.</label>
+			</div>
+		</c:if>
+		<br/>
+		
 		<div align="center">
-			ID is already in use.
-			<form action="${root }/artist/idCheck.do" method="GET">
-				<input type="text" name="artist_id"/>
-				<input type="submit" value="Duplicate Check"/>
-			</form>
-		</div>
-	</c:if>
-	
-	<c:if test="${check==0 }">
-		<div align="center">
-			Can use ID.
-		</div>
-	</c:if>
-	<br/>
-	
-	<script type="text/javascript">
-		opener.artistForm.id.value="${id}";
-	</script>
-	
-	<div align="center">
-	<input type="button" value="close"/>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$("input[type='button']").click(function(){
-					self.close();
+		<input type="button" value="close"/>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$("input[type='button']").click(function(){
+						opener.artistForm.artist_id.value="${artist_id}";
+						self.close();
+					})
 				})
-			})
-		</script>
+			</script>
+		</div>
 	</div>
 </body>
 </html>

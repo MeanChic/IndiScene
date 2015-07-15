@@ -10,6 +10,8 @@
 <script type="text/javascript" src="${root}/js/freeBoard.js"></script>
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/freeBoard.css"/>
+<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
+<script src="${root }/js/reply.js" type="text/javascript" ></script>
 <!-- 
 <script type="text/javascript">
 

@@ -1,6 +1,8 @@
 package com.indiScene.uploadBoard.service;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -48,14 +50,22 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 			group_num = Integer.parseInt(request.getParameter("group_num"));
 			seq_num = Integer.parseInt(request.getParameter("seq_num"));
 			seq_level = Integer.parseInt(request.getParameter("seq_level"));
+			
+			mav.setViewName("uploadBoard/collabo");
+		}else{
+			String pageNumber = request.getParameter("pageNumber");
+			
+			UploadBoardDto board = dao.read(board_num);
+			
+			mav.addObject("pageNumber",pageNumber);
+			mav.addObject("board",board);
+			mav.setViewName("uploadBoard/write");
 		}
 		
 		mav.addObject("board_num" , board_num);
 		mav.addObject("group_num" , group_num);
 		mav.addObject("seq_num" , seq_num);
 		mav.addObject("seq_level" , seq_level);
-		
-		mav.setViewName("uploadBoard/write");
 	}
 
 	@Override
@@ -80,22 +90,51 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		uploadBoardDto.setCount(0);
 		
 		String coverImage = uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(0).getOriginalFilename();
-		String musicFile = uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(1).getOriginalFilename();
+		
+		String musicFile = null;
+		
+		if(fileList.size() == 2){		// 녹음파일일 경우.
+			musicFile =uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(1).getOriginalFilename();
+		}
 		
 //		String dirCover = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/cover");
 //		String dirMusic = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/music");
 		
 		File coverImageFile = new File(dir+"/uploadBoard/cover/",coverImage);
-		File uploadMusicFile = new File(dir+"/uploadBoard/music/",musicFile);
+		File uploadMusicFile = null;
+		File recordFile=null;
 		
-		uploadBoardDto.setFile_name(fileList.get(1).getOriginalFilename());
+		if(musicFile !=null){		// 녹음파일일 경우.
+			uploadMusicFile = new File(dir+"/uploadBoard/music/",musicFile);
+		}else{
+			uploadMusicFile = new File(dir+"/uploadBoard/music/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
+			recordFile = new File(dir+"/TemporaryMusic/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
+		}
+		uploadBoardDto.setFile_name(uploadMusicFile.getName());
 		uploadBoardDto.setFile_path(uploadMusicFile.getAbsolutePath());
 		uploadBoardDto.setImage_path(coverImageFile.getAbsolutePath());
 		uploadBoardDto.setBoard_like(0);
 		
 		try {
 			fileList.get(0).transferTo(coverImageFile);
-			fileList.get(1).transferTo(uploadMusicFile);
+			if(fileList.size()==2){
+				fileList.get(1).transferTo(uploadMusicFile);
+			}else{
+				if(!recordFile.renameTo(uploadMusicFile)){
+					byte[] buf= new byte[1024];
+					FileInputStream fis = new FileInputStream(recordFile);
+					FileOutputStream fos = new FileOutputStream(uploadMusicFile);
+					
+					int read= 0;
+					while((read=fis.read(buf, 0, buf.length))!=-1){
+						fos.write(buf,0,read);
+					}
+					
+					fis.close();
+					fos.close();
+					recordFile.delete();
+				}
+			}
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -106,9 +145,9 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		uploadBoardDto.setImage_path(uploadBoardDto.getImage_path().substring(uploadBoardDto.getImage_path().indexOf("\\resources")).replace('\\','/'));
 		
 		uploadBoardWriteNumber(uploadBoardDto);
-//		uploadBoardDto.setContent(uploadBoardDto.getContent().substring(1));
 		int check = dao.write(uploadBoardDto);
 		mav.addObject("check", check);
+		mav.addObject("board", uploadBoardDto);
 		
 		mav.setViewName("uploadBoard/writeOk");
 	}
@@ -261,25 +300,64 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 
 	@Override
 	public void updateOk(ModelAndView mav) {
-		logger.info("UploadBoard WriteOk Service");
+		logger.info("UploadBoard UpdateOk Service");
 		Map<String, Object> map = mav.getModel();
 		MultipartHttpServletRequest request = (MultipartHttpServletRequest) map.get("request");
-		UploadBoardDto uploadBoardDto = (UploadBoardDto) map.get("uploadBoardDto");
+		UploadBoardDto uploadBoardDto = (UploadBoardDto) map.get("uploadBoard");
+		UploadBoardDto originalDto = dao.read(uploadBoardDto.getBoard_num());
+		
+		String coverImage = null;
+		String musicFile = null;
 		
 		Iterator<String> iter = request.getFileNames();
 		
-		Map<String, MultipartFile> fileList = new HashMap<String, MultipartFile>();
 		while(iter.hasNext()){
 			String fileStr = iter.next();
 			MultipartFile mf = request.getFile(fileStr);
-			if(mf!=null){
-				fileList.put(fileStr, mf);
-				
+			if(!mf.isEmpty()){
+				if(fileStr.equals("coverImage")){
+					coverImage=uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+mf.getOriginalFilename();
+					
+					File oldFile = new File(dir+"/uploadBoard/cover/",originalDto.getImage_path().substring(originalDto.getImage_path().lastIndexOf("/")+1));
+					oldFile.delete();
+					File newFile = new File(dir+"/uploadBoard/cover/",coverImage);
+					uploadBoardDto.setImage_path(newFile.getAbsolutePath().substring(newFile.getAbsolutePath().indexOf("\\resources")).replace('\\','/'));
+
+					try {
+						mf.transferTo(newFile);
+					} catch (IllegalStateException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}else if(fileStr.equals("musicFile")){
+					musicFile = uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+mf.getOriginalFilename();
+					File oldFile = new File(dir+"/uploadBoard/cover/",originalDto.getFile_path().substring(originalDto.getFile_path().lastIndexOf("/")+1));
+					oldFile.delete();
+					File newFile = new File(dir+"/uploadBoard/cover/",musicFile);
+					
+					uploadBoardDto.setFile_name(mf.getOriginalFilename());
+					uploadBoardDto.setFile_path(newFile.getAbsolutePath().substring(newFile.getAbsolutePath().indexOf("\\resources")).replace('\\', '/'));
+					
+					try {
+						mf.transferTo(newFile);
+					} catch (IllegalStateException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}else{
+				if(fileStr.equals("coverImage")){
+					uploadBoardDto.setImage_path(originalDto.getImage_path());
+				}else if(fileStr.equals("musicFile")){
+				}	uploadBoardDto.setFile_path(originalDto.getFile_path());
 			}
 			
 			System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
 		}
 		
+		dao.update(uploadBoardDto);
 	}
 
 	@Override
@@ -292,11 +370,81 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		String board_num = request.getParameter("boardNum");
 		String pageNumber = request.getParameter("pageNumber");
 		
+		UploadBoardDto originalDto = dao.read(board_num);
+		
+		File oldImg = new File(dir+"/uploadBoard/cover/",originalDto.getImage_path().substring(originalDto.getImage_path().lastIndexOf("/")+1));
+		File oldMusic = new File(dir+"/uploadBoard/cover/",originalDto.getFile_path().substring(originalDto.getFile_path().lastIndexOf("/")+1));
+		
+		oldImg.delete();
+		oldMusic.delete();
+		
 		int check = dao.delete(board_num);
 		
 		mav.addObject("pageNumber",pageNumber);
 		mav.addObject("check",check);
 
 		mav.setViewName("uploadBoard/delete");
+	}
+	
+	@Override
+	public void like(ModelAndView mav) {
+		logger.info("UploadBoard like Service");
+
+		Map<String, Object> map = mav.getModel();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		HttpServletResponse response = (HttpServletResponse) map.get("response");
+		
+		String board_num = request.getParameter("boardNum");
+		String artist_id= request.getParameter("artist_id");
+		
+		HashMap <String, String> hMap = new HashMap<String,String>();
+		hMap.put("board_num", board_num);
+		hMap.put("artist_id", artist_id);
+		
+		int count = dao.likeCheck(hMap);
+		PrintWriter pw = null;;
+		response.setContentType("text/html; charset=UTF-8");
+		try {
+			pw = response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		if(count>0){
+			pw.write("이미 추천한 게시물입니다.");
+		}else{
+			int likeCheck = dao.likeUpdate(hMap);
+			if(likeCheck ==0){
+				pw.write("본인의 게시물은 추천할 수 없습니다.");
+			}else{
+				int check = dao.like(hMap);
+				if(check>0){
+					pw.write("추천되었습니다.");
+					int likeCount = dao.checkLike(hMap);
+					
+					if(likeCount == 30){
+						dao.copyBest(board_num);
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public void collabo(ModelAndView mav) {
+		logger.info("UploadBoard Collabo Service");
+		
+		Map<String, Object> map = mav.getModel();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+
+		String board_num = request.getParameter("boardNum");
+		String pageNumber = request.getParameter("pageNumber");
+		
+		UploadBoardDto board = dao.read(board_num);
+		
+		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("board",board);
+
+		mav.setViewName("uploadBoard/collabo");
 	}
 }
