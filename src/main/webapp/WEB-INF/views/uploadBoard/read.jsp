@@ -27,6 +27,7 @@
 	<input type="button" value="수정" onclick="uploadUpdate('${root}','${board_num}','${pageNumber}')">
 	<input type="button" value="삭제" onclick="uploadDelete('${root}','${board_num}','${pageNumber}')">
 	</c:if>
+	<input type="button" value="콜라보" onclick="uploadCollabo('${root}','${board_num}','${pageNumber}')"/>
 	</div>
 	
 	</div>
