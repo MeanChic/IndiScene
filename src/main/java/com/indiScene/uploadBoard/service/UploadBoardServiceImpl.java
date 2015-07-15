@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.indiScene.audioProcessing.KOSTAAudio;
 import com.indiScene.uploadBoard.dao.UploadBoardDao;
 import com.indiScene.uploadBoard.dto.UploadBoardDto;
 
@@ -446,5 +447,97 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		mav.addObject("board",board);
 
 		mav.setViewName("uploadBoard/collabo");
+	}
+
+	@Override
+	public void collaboAdopt(ModelAndView mav) {
+		logger.info("UploadBoard collaboAdopt Service");
+		Map<String, Object> map = mav.getModel();
+		MultipartHttpServletRequest request = (MultipartHttpServletRequest) map.get("request");
+		HttpServletResponse response = (HttpServletResponse) map.get("response");
+		UploadBoardDto uploadBoardDto = (UploadBoardDto) map.get("uploadBoard");
+		
+		Iterator<String> iter = request.getFileNames();
+		MultipartFile mf = null;
+		
+		while(iter.hasNext()){
+			String fileStr = iter.next();
+			if(fileStr.equals("musicFile")){
+				mf = request.getFile(fileStr);
+				System.out.println(fileStr+"\t"+mf.getOriginalFilename());
+			}
+			System.out.println(fileStr +"\t"+ request.getFile(fileStr));
+		}
+		
+//		uploadBoardDto.setRegister_date(new java.util.Date());
+//		uploadBoardDto.setCount(0);
+		
+		String musicFile = null;
+		
+		if(mf!=null){		// 녹음파일일 경우.
+			musicFile =uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+mf.getOriginalFilename();
+		}
+		
+//		String dirCover = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/cover");
+//		String dirMusic = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/music");
+		
+		File uploadMusicFile = null;
+		File recordFile=null;
+		
+		if(musicFile !=null){		// 녹음파일일 경우.
+			uploadMusicFile = new File(dir+"/uploadBoard/music/",musicFile);
+		}else{
+			uploadMusicFile = new File(dir+"/uploadBoard/music/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
+			recordFile = new File(dir+"/TemporaryMusic/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
+		}
+//		uploadBoardDto.setFile_name(uploadMusicFile.getName());
+//		uploadBoardDto.setFile_path(uploadMusicFile.getAbsolutePath());
+//		uploadBoardDto.setImage_path(coverImageFile.getAbsolutePath());
+//		uploadBoardDto.setBoard_like(0);
+		
+		try {
+			if(mf!=null){
+				mf.transferTo(uploadMusicFile);
+			}else{
+				if(!recordFile.renameTo(uploadMusicFile)){
+					byte[] buf= new byte[1024];
+					FileInputStream fis = new FileInputStream(recordFile);
+					FileOutputStream fos = new FileOutputStream(uploadMusicFile);
+					
+					int read= 0;
+					while((read=fis.read(buf, 0, buf.length))!=-1){
+						fos.write(buf,0,read);
+					}
+					
+					fis.close();
+					fos.close();
+					recordFile.delete();
+				}
+			}
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		File originalFile = new File(dir+"/uploadBoard/music/",request.getParameter("originalFile").substring(request.getParameter("originalFile").lastIndexOf("/")+1));
+		
+		KOSTAAudio kostaAudio = new KOSTAAudio();
+		
+		String mergeFile = kostaAudio.mergeAudio(originalFile.getAbsolutePath(), uploadMusicFile.getAbsolutePath(), uploadBoardDto.getArtist_id(), 0);
+		
+		try {
+			PrintWriter pw = response.getWriter();
+			pw.write(mergeFile.substring(mergeFile.indexOf("/resources")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		uploadBoardDto.setFile_path(uploadMusicFile.getAbsolutePath().substring(uploadMusicFile.getAbsolutePath().indexOf("\\resources")).replace('\\', '/'));
+		
+//		uploadBoardWriteNumber(uploadBoardDto);
+//		int check = dao.write(uploadBoardDto);
+//		mav.addObject("check", check);
+//		mav.addObject("board", uploadBoardDto);
+		
 	}
 }
