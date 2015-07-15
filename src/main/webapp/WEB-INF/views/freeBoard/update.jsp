@@ -9,9 +9,14 @@
 	<title>게시판 수정</title>
 </head>
 <body>
+<div id="freeBoardUpdate">
+
  ${board_num}
 ${pageNumber}
 	<form id="updateForm" method="post" action="javascript:updateFunOk('${root}','${freeBoard.board_num}','${pageNumber }')">
+
+
+
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		
@@ -47,7 +52,6 @@ ${pageNumber}
 			</script>
 			
 			</span>
-
 		
 			<div class="line" style="width:598px; border-width:2px; text-align:center;">
 				<!-- <input type="button" value="글수정" onclick="updateFunOk('${root}','${freeBoard.board_num}','${pageNumber }')"/>  -->
@@ -58,5 +62,6 @@ ${pageNumber}
 			<%-- 	<input type="button" value="글목록" onclick="list('${root}','${pageNumber}')"/> --%>
 			</div>
 	</form>
+	</div>
 </body>
 </html>

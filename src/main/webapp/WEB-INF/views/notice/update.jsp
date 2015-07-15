@@ -9,6 +9,7 @@
 	<title>게시판 수정</title>
 </head>
 <body>
+	<div id="noticeUpdate">
 	<form id="updateForm" method="post" >
 		<input type="hidden" name="board_num" value="${notice.board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
@@ -50,5 +51,6 @@
 <%-- 		<input type="button" value="목록보기" onclick="location.href='${root}/notice/list.do?pageNumber=${pageNumber}'">--%>		
 		</div>
 	</form>
+	</div>
 </body>
 </html>

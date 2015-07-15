@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>	
+	<div id="noticedeleteOk">
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("삭제가 완료되었습니다.");
@@ -25,6 +26,6 @@
 			list('${root}','${pageNumber}');
 		</script>
 	</c:if>
-
+	</div>
 </body>
 </html>

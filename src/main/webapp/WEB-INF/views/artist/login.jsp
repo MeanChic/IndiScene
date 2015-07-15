@@ -13,7 +13,6 @@
 	<!-- Load styles -->
 	<link href="${root}/css/bootstrap.css" rel="stylesheet">
 	<link href="${root}/css/style.css" rel="stylesheet">
-	<link href="${root}/css/icons.css" rel="stylesheet">
 	<link href="${root}/css/colorbox.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 	
@@ -32,13 +31,13 @@
 		<div class="form-controlArtist">
 			<label class="form-inlineblock label-color">ID</label>
 		    <div class="form-inlineblock">
-				<input class="form-inlineblock form-controllerler" type="text" name="artist_id"/>
+				<input class="form-inlineblock form-controller220" type="text" name="artist_id"/>
 			</div>
 		</div>
 		<div class="form-controlArtist">
 			<label class="form-inlineblock label-color">Password</label>
 		    <div class="form-inlineblock">
-				<input class="form-inlineblock form-controllerler" type="password" name="artist_password"/>
+				<input class="form-inlineblock form-controller220" type="password" name="artist_password"/>
 			</div>
 		</div>
 		<div class="form-controlArtist">
