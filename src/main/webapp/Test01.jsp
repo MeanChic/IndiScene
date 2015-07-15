@@ -24,6 +24,14 @@
 	<script src="${root}/js/jquery.colorbox.js"></script>
 	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
+	
+	<!-- Load javaScript for Hyuckjin-->
+	<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
+	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
+	<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
+	<script src="${root }/js/reply.js" type="text/javascript" ></script> 
+	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
+	
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>
@@ -38,7 +46,7 @@
 			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
 			<li class="indisMusic"><a href="#indisMusic">Indi's Music</a></li>
 			<li class="performanceInfo"><a href="#performanceInfo">Performance Info</a></li>
-			<li class="marketPlace"><a href="#marketPlace">Market Place</a></li>
+			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root }')">Market Place</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
@@ -159,6 +167,7 @@ $(".portfolio-search").colorbox({
  * Show or hide offsite navigation.
  *
  */
+ 
 $('#nav-expander').on('click', function(e) {
 	e.preventDefault();
 	$('.main-nav').toggleClass('nav-expanded');
@@ -172,7 +181,6 @@ $('#loginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
 });
-
 $('#updateloginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
@@ -183,6 +191,12 @@ $('.sub-nav .close').on('click', function(e) {
 	$('.sub-nav').toggleClass('sub-expanded');
 });
 
+/* 메뉴 버튼 들어가기 */
+$('.marketPlace a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
+});
 
 
 /*

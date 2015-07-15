@@ -37,7 +37,7 @@
 		<c:if test="${count>0 }">
 		
 				<%-- 한 페이지에서 이동가능한 페이지 개수 [1][2][3]...[10] --%> 
-			<c:set var="pageBlock" value="${3 }"/>	
+			<c:set var="pageBlock" value="${3}"/>	
 				
 				<%-- 총페이지 번호 --%>
 			<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0?0:1) }"/>	
