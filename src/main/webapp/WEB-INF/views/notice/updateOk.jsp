@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="${root}/css/notice.css"/>
 </head>
 <body>
+	<div id="noticeUpdateOk">
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	
 	<c:if test="${check>0 }">
@@ -27,6 +28,6 @@
 			location.href="${root}/notice/list.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>
-
+	</div>
 </body>
 </html>

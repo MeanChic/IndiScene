@@ -14,60 +14,59 @@
 	<script type="text/javascript" src="${root }/css/freeBoard/script.js"></script>
 </head>
 <body>
-
-<form id="FreeBoardWriteForm" class="form_style" method="post"> 
-		<input type="hidden" name="board_num" value="${board_num}"/>
-		<input type="hidden" name="group_num" value="${group_num }"/>
-		<input type="hidden" name="seq_num" value="${seq_num }"/>
-		<input type="hidden" name="seq_level" value="${seq_level }"/>
-		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
-	
-		<c:if test="${pageNumber ==null}">
-			<c:set var="pageNumber" value="${1}"/>
-		</c:if>
-		<br/><br/>
-
+	<div id="freeBoardWrite">
+		<form id="FreeBoardWriteForm" class="form_style" method="post"> 
+			<input type="hidden" name="board_num" value="${board_num}"/>
+			<input type="hidden" name="group_num" value="${group_num }"/>
+			<input type="hidden" name="seq_num" value="${seq_num }"/>
+			<input type="hidden" name="seq_level" value="${seq_level }"/>
+			<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		
-		<div class="line">
-			<label class="subject">제목</label>
-			<span class="content">
-				<input type="text" size="50" name="subject"/>
-			</span>
-		</div>
-		
-		<div class="line">
-			<label class="subject">작성자</label>
-			<span class="content">
-				<input type="text" size="50" name="artist_id" value="indi" />
-			</span>
-		</div>	
-		<br/>
-			<label class="title">내용</label>
-			<span class="content">
-				<textarea id="content" rows="14" cols="58" name="content">
-				</textarea><br/><br/>
-			
-			<script>
-			var folderName='${pageContext.request.servletPath }';
-			folderName=folderName.split("views/");
-			folderName=folderName[1].split("/");
-			//var id=document.getElementById(folderName);
-			//id.value=folderName[0]; //멀티파일폴더 만들때
-			$("#folderName").val(folderName[0]);
-			//alert(folderName[0])
-			 CKEDITOR.replace( 'content',
-					 {///IndiScene_basic/src/main/webapp/resources/ckfinder
-					 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
-					 });
-			</script>
-			
-			</span>
+			<c:if test="${pageNumber ==null}">
+				<c:set var="pageNumber" value="${1}"/>
+			</c:if>
 			<br/><br/>
-			<input type="button" value="글쓰기" onclick="writeOk('${root}','${pageNumber}')"/>
-			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="freeBoardList('${root}','${pageNumber}')"/>
-		
-		
-	</form>
-</body>
+	
+			
+			<div class="line">
+				<label class="subject">제목</label>
+				<span class="content">
+					<input type="text" size="50" name="subject"/>
+				</span>
+			</div>
+			
+			<div class="line">
+				<label class="subject">작성자</label>
+				<span class="content">
+					<input type="text" size="50" name="artist_id" value="indi" />
+				</span>
+			</div>	
+			<br/>
+				<label class="title">내용</label>
+				<span class="content">
+					<textarea id="content" rows="14" cols="58" name="content">
+					</textarea><br/><br/>
+				
+				<script>
+				var folderName='${pageContext.request.servletPath }';
+				folderName=folderName.split("views/");
+				folderName=folderName[1].split("/");
+				//var id=document.getElementById(folderName);
+				//id.value=folderName[0]; //멀티파일폴더 만들때
+				$("#folderName").val(folderName[0]);
+				//alert(folderName[0])
+				 CKEDITOR.replace( 'content',
+						 {///IndiScene_basic/src/main/webapp/resources/ckfinder
+						 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
+						 });
+				</script>
+				
+				</span>
+				<br/><br/>
+				<input type="button" value="글쓰기" onclick="writeOk('${root}','${pageNumber}')"/>
+				<input type="reset" value="다시작성"/>
+				<input type="button" value="목록보기" onclick="freeBoardList('${root}','${pageNumber}')"/>
+		</form>
+	</div>		
+	</body>
 </html>

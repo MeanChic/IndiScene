@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<div id="freeBoardWriteOk">	
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	<input type="hidden" id="root" value="${root }"/>
 	<c:if test="${check>0 }">
@@ -28,6 +28,6 @@
 			/* location.href="${root}/freeBoard/write.do?page_num=${page_num}"; */
 		</script>
 	</c:if>
-
+	</div>
 </body>
 </html>

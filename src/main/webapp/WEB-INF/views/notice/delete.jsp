@@ -10,6 +10,7 @@
 	<title>게시판 삭제</title>
 </head>
 <body>
+	<div id=noticeDelete>
 	<form id="deleteForm" method="post">
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
@@ -31,5 +32,6 @@
 			</tr>
 		</table>
 	</form>
+	</div>
 </body>
 </html>

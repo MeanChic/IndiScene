@@ -150,11 +150,9 @@ public class NoticeServiceImple implements NoticeService {
 		List<NoticeDto> noticeList=null;
 		if(count>0){
 			noticeList=noticeDao.getNoticeList(startRow, endRow);
-		
-		logger.info("noticeList size: "+noticeList.size());
 		}
 		
-		
+		if(noticeList!=null) logger.info("noticeList size: "+noticeList.size());
 		
 		mav.addObject("noticeSize",boardSize);
 		mav.addObject("currentPage",currentPage);
