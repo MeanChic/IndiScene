@@ -3,7 +3,7 @@
  */
 var root=null;  //root를 전역변수로 선언해서 사용! 
 function writeToServer(requestRoot,board_num){
-	alert(requestRoot + "," + board_num);
+//	alert(requestRoot + "," + board_num);
 	root=requestRoot;
 	
 	var reply_content=document.getElementById("writeReply").value;
@@ -28,7 +28,7 @@ function writeReplyProcess(responseText){
 	var reply_date=result[3].trim();
 	var board_num=result[4].trim();
 	
-	alert(reply_num + "," + artist_id+","+reply_content+"," +reply_date +"," +board_num);
+//	alert(reply_num + "," + artist_id+","+reply_content+"," +reply_date +"," +board_num);
 	
 	document.getElementById("writeReply").value="";
 	/*<div id="newReply">
