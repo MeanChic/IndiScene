@@ -10,9 +10,11 @@
 <script type="text/javascript" src="${root}/js/notice.js"></script>
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/css/notice.css"/>
+<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
+<script src="${root }/js/reply.js" type="text/javascript" ></script>
 
 </head>
-<body>
+<body onload="javascript:list('${root }','1')">
 
 	<div id="container">
       <div id="header">
@@ -22,8 +24,9 @@
 		<a href="javascript:list('${root }','1')">공지사항 목록보기</a>
       </div>
       
-      <div id="centerContents">
-        <h2>Content</h2>	
+      <div id="centerContents" >
+        <h2>Content</h2>
+        	
       </div>
       
       <div id="sidebar">

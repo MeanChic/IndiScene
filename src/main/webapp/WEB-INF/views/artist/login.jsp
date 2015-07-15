@@ -7,7 +7,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<title>Momentio - single page html template by GraphBerry.com</title>
 	<!-- Load google font -->
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
@@ -28,25 +27,27 @@
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 </head>
 <body>
+<div id="artistLoginForm">
 	<form id="artistLoginForm" action="${root }/artist/login.do" method="post">
-		<table border="1" align="center" cellpadding="2" cellspacing="0">
-			<tr>
-				<td>ID</td>
-				<td><input type="text" name="artist_id"/></td>
-			</tr>
-			
-			<tr>
-				<td>Password</td>
-				<td><input type="password" name="artist_password" /></td>
-			</tr>
-			
-			<tr>
-				<td colspan="2" align="center">
-					<input class="ui-button" type="submit" value="확인"/>
-					<input class="ui-button" type="reset" value="취소"/>
-				</td>
-			</tr>
-		</table>
+		<div class="form-controlArtist">
+			<label class="form-inlineblock label-color">ID</label>
+		    <div class="form-inlineblock">
+				<input class="form-inlineblock form-controllerler" type="text" name="artist_id"/>
+			</div>
+		</div>
+		<div class="form-controlArtist">
+			<label class="form-inlineblock label-color">Password</label>
+		    <div class="form-inlineblock">
+				<input class="form-inlineblock form-controllerler" type="password" name="artist_password"/>
+			</div>
+		</div>
+		<div class="form-controlArtist">
+    		<div class="form-inlineblock button-control">
+				<input type="submit" class="btn btn-default size-control1" style="width:49%;" value="submit"/>
+				<input type="reset" class="btn btn-default size-control1" style="width:49%;" value="cancel"/>
+			</div>
+		</div>
 	</form>
+</div>
 </body>
 </html>

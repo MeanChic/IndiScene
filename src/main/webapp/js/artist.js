@@ -89,7 +89,7 @@ function idCheck(artistForm, root){
 		return false;
 	}
 	var url=root+"/artist/idCheck.do?artist_id="+artistForm.artist_id.value;
-	window.open(url,"","width=250, height=150");
+	window.open(url,"","width=330, height=140");
 }	
 
 function nicknameCheck(artistForm, root){
@@ -99,7 +99,7 @@ function nicknameCheck(artistForm, root){
 		return false;
 	}
 	var url=root+"/artist/nicknameCheck.do?artist_nickname="+artistForm.artist_nickname.value;
-	window.open(url,"","width=250, height=150");
+	window.open(url,"","width=330, height=140");
 }
 
 function deleteCheck(deleteForm, root){	
@@ -142,8 +142,8 @@ $(function(){
 	$("#accordion").css("width","500px");
 	$("#artist > button").button();
 	
-	$("input[name='artist_id']").attr("placeholder", "5자 이상 20자 이하로 쓰세요.");
-	$("input[name='artist_password']").attr("placeholder", "5자 이상 20자 이하로 쓰세요.");
+	$("input[name='artist_id']").attr("placeholder", "ID");
+	$("input[name='artist_password']").attr("placeholder", "Password");
 	$("input[name='passwordCheck']").attr("placeholder", "Password Check");
 	$("input[name='artist_name']").attr("placeholder", "3자 이상 30자 이하로 만드세요.");
 	$("input[name='artist_nickname']").attr("placeholder", "3자 이상 30자 이하로 만드세요.");
@@ -185,26 +185,17 @@ $(function(){
 	});
 	
 	$("#registerButton").click(function(){
-//		if($("#artistRegister").val()==undefined){
-//			$("#centerContents").append("<div id='artistRegister' class='hasPaddingContents'></div>")
-//			$("#artistRegister").css("display","block");
-//			$("#artistRegister").siblings().css("display","none");
-			alert("Test");
-			$.ajax({
-				url:root+"/artist/register.do",
-				type:"GET",
-				dataType:"html",
-				success:function(data){
-//					var realData = data.split("<body>");
-//					var realData = realData[1].split("</body>")[0];
-//					$("#artistRegister").append(data);
-					$("#centerContents").html(data);
-				}
-			})
-//		}else{
-//			$("#artistRegister").css("display","block");
-//			$("#artistRegister").siblings().css("display","none");
-//		}
+		$.ajax({
+			url:root+"/artist/register.do",
+			type:"GET",
+			dataType:"html",
+			success:function(data){
+//				var realData = data.split("<body>");
+//				var realData = realData[1].split("</body>")[0];
+//				$("#artistRegister").append(data);
+				$("#centerContents").html(data);
+			}
+		})
 	})
 	
 	$("input[name='registerOk']").click(function(){
@@ -221,14 +212,25 @@ $(function(){
 	})
 	
 	$("#loginButton").click(function(){
-		location.href=root+"/artist/login.do";
+		if($("#artistLoginForm").val()==undefined){
+			$.ajax({
+				url:root+"/artist/login.do",
+				type:"GET",
+				dataType:"html",
+				success:function(data){
+//					var realData = data.split("<body>");
+//					var realData = realData[1].split("</body>")[0];
+//					$("#sub-navDiv").append(data);
+					$("#sub-navDiv").html(data);
+				}
+			})
+		}else{
+			/* 이미 한번 가져온 경우 아무것도 하지않는다. */
+		}
 	})
 	
 	$("#updateloginButton").click(function(){
-//		if($("#artistUpdateLogin").val()==undefined){
-//			$("#centerContents").append("<div id='artistUpdateLogin' class='hasPaddingContents'></div>")
-//			$("#artistUpdateLogin").css("display","block");
-//			$("#artistUpdateLogin").siblings().css("display","none");
+		if($("#updateLoginForm").val()==undefined){
 			$.ajax({
 				url:root+"/artist/updatelogin.do",
 				type:"GET",
@@ -237,42 +239,32 @@ $(function(){
 //					var realData = data.split("<body>");
 //					var realData = realData[1].split("</body>")[0];
 //					$("#artistUpdateLogin").append(data);
-					$("#centerContents").html(data);
+					$("#sub-navDiv").html(data);
 				}
 			})
-//		}else{
-//			$("#artistUpdateLogin").css("display","block");
-//			$("#artistUpdateLogin").siblings().css("display","none");
-//		}
+		}else{
+			/* 이미 한번 가져온 경우 아무것도 하지않는다. */
+		}
 	})
 	
 	$("#logoutButton").click(function(){
 		location.href=root+"/artist/logout.do";
 	})
 	
-	$("button[name='update']").click(function(){
+	$("#artistUpdate").click(function(){
 		var artist_id=$("input[name='artist_id']").val();
 		var sendData="?artist_id="+artist_id;
-		
-//		if($("#artistUpdate").val()==undefined){
-//			$("#centerContents").append("<div id='artistUpdate' class='hasPaddingContents'></div>")
-//			$("#artistUpdate").css("display","block");
-//			$("#artistUpdate").siblings().css("display","none");
-			$.ajax({
-				url:root+"/artist/update.do"+sendData,
-				type:"GET",
-				dataType:"html",
-				success:function(data){
-//					var realData = data.split("<body>");
-//					var realData = realData[1].split("</body>")[0];
-//					$("#artistUpdate").append(data);
-					$("#centerContents").html(data);
-				}
-			})
-//		}else{
-//			$("#artistUpdate").css("display","block");
-//			$("#artistUpdate").siblings().css("display","none");
-//		}
+		$.ajax({
+			url:root+"/artist/update.do"+sendData,
+			type:"GET",
+			dataType:"html",
+			success:function(data){
+//				var realData = data.split("<body>");
+//				var realData = realData[1].split("</body>")[0];
+//				$("#artistUpdate").append(data);
+				$("#centerContents").html(data);
+			}
+		})
 	})
 	
 	$("input[name='updateOk']").click(function(){
@@ -288,33 +280,35 @@ $(function(){
 		})
 	})
 	
-	$("button[name='delete']").click(function(){
-		location.href=root+"/artist/delete.do";
+	$("#artistDelete").click(function(){
+		$.ajax({
+			url:root+"/artist/delete.do",
+			type:"GET",
+			dataType:"html",
+			success:function(data){
+//				var realData = data.split("<body>");
+//				var realData = realData[1].split("</body>")[0];
+//				$("#artistRegister").append(data);
+				$("#centerContents").html(data);
+			}
+		})
 	})
 	
 	$("#indisMusic").click(function(){
 		var artist_id=$("input[name='artist_id']").val();
 		var sendData="?artist_id="+artist_id;
 		
-//		if($("#artistUpdate").val()==undefined){
-//			$("#centerContents").append("<div id='artistUpdate' class='hasPaddingContents'></div>")
-//			$("#artistUpdate").css("display","block");
-//			$("#artistUpdate").siblings().css("display","none");
-			$.ajax({
-				url:root+"/museCreate/musemain.do"+sendData,
-				type:"GET",
-				dataType:"html",
-				success:function(data){
-//					var realData = data.split("<body>");
-//					var realData = realData[1].split("</body>")[0];
-//					$("#artistUpdate").append(data);
-					$("#centerContents").html(data);
-				}
-			})
-//		}else{
-//			$("#artistUpdate").css("display","block");
-//			$("#artistUpdate").siblings().css("display","none");
-//		}
+		$.ajax({
+			url:root+"/museCreate/musemain.do"+sendData,
+			type:"GET",
+			dataType:"html",
+			success:function(data){
+//				var realData = data.split("<body>");
+//				var realData = realData[1].split("</body>")[0];
+//				$("#artistUpdate").append(data);
+				$("#centerContents").html(data);
+			}
+		})
 	})
 	
 	$("input[name='updateOk']").click(function(){

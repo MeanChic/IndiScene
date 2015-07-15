@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="root" value="${pageContext.request.contextPath}"/>
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -33,7 +33,6 @@
 	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
 	<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
 	<script src="${root }/js/reply.js" type="text/javascript" ></script> 
-	
 	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
 </head>
 <body>
@@ -167,6 +166,15 @@ $('#nav-expander').on('click', function(e) {
 	e.preventDefault();
 	$('.main-nav').toggleClass('nav-expanded');
 });
+
+$('.marketPlace a').on('click', function(e) {
+	enterMarketBoard('${root}')
+	e.preventDefault();
+	$('.main-nav').toggleClass('nav-expanded');
+});
+
+
+
 $('.main-nav .close').on('click', function(e) {
 	e.preventDefault();
 	$('.main-nav').toggleClass('nav-expanded');
@@ -176,6 +184,7 @@ $('#loginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
 });
+
 $('.sub-nav .close').on('click', function(e) {
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');

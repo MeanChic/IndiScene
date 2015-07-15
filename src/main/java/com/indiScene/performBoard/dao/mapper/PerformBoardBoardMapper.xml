@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="dao.performBoardMapper">
+
+	
+	<select id="boardCount" resultType="int">
+		<![CDATA[
+			select count(*) from performboard
+		]]>
+	</select>
+	
+	<select id="boardList" parameterType="java.util.HashMap" resultType="com.indiScene.performBoard.dto.PerformBoardDto">
+		<![CDATA[
+			select * from (select rownum rnum, a.* from(select * from performboard order by register_date desc)a) where rnum >=#{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	<insert id="boardInsert" parameterType="com.indiScene.performBoard.dto.PerformBoardDto">
+		<![CDATA[
+		insert into performboard(SUBJECT,CONTENT,REGISTER_DATE,BOARD_NUM,ARTIST_ID,COUNT,file_name,file_path) 
+		values(#{subject},#{content},#{register_date},'p' || performboard_seq.nextval,#{artist_id},0,#{file_name},#{file_path})
+		]]>
+	</insert>
+	
+	<select id="boardRead" resultType="com.indiScene.performBoard.dto.PerformBoardDto">
+		select * from performboard where board_num=#{board_num}
+	</select>
+	
+	<update id="readCount" >
+		update performboard set count=count+1 where board_num=#{boardNumber}
+	</update>
+	
+	<select id="passCheck" parameterType="java.lang.String" resultType="java.lang.String">
+		select artist_password from artist where artist_id=#{artist_id}
+	</select>
+	
+	<delete id="delete" parameterType="java.lang.String" >
+		delete from performboard where board_num=#{board_num}
+	</delete>
+	
+	<update id="update" parameterType="com.indiScene.performBoard.dto.PerformBoardDto">
+		update performboard set
+			subject=#{subject}
+		,content=#{content}
+		where board_num=#{board_num}
+	</update>
+	
+	
+</mapper>

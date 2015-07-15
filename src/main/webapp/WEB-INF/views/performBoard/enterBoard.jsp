@@ -16,7 +16,7 @@
 </head>
 <body>
 
-		<input type="button" value="글쓰기 " onclick="javascript:placeBoardWrite()"/>
+		<input type="button" value="글쓰기 " onclick="javascript:performBoardWrite()"/>
 	
 		<c:forEach  items="${list }" varStatus="s">								<!-- mav에 넘어오는 리스트 갯수만큼 돌린다 이름확인  -->
 		<c:set var="market" value="${requestScope.list[s.index]}" /> 			<!-- 넘어오는 리스트 갯수만큼 돌린다 리스트 S번째 List 객체화 한다. -->
@@ -24,7 +24,7 @@
 
 			<div class="form_style" style="height:130px;">
 				<div class="disp" style="border-width:1px;">
-					<a href="javascript:placeBoardRead('${market.board_num}','${pageNumber}')"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/></a>
+					<a href="javascript:performBoardRead('${market.board_num}','${pageNumber}')"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/></a>
 					<fmt:formatDate value="${market.register_date }" type="date"/> &nbsp;&nbsp;
 				</div>
 				<div class="disp-content">
@@ -35,7 +35,7 @@
 		<!-- 페이지 번호 -->
 
 		<c:if test="${count>0 }">
-		
+		${count }
 				<%-- 한 페이지에서 이동가능한 페이지 개수 [1][2][3]...[10] --%> 
 			<c:set var="pageBlock" value="${3 }"/>	
 				
@@ -51,17 +51,19 @@
 			<c:if test="${endPage > pageCount }">
 				<c:set var="endPage" value="${pageCount }"/>
 			</c:if>
+			
+			
 			<%------------------------------------------------------------------ --%>
 			<c:if test="${startPage>pageBlock }">
-				<a href="javascript:enterPlaceBoard('${root}','${startPage-pageBlock }')">[이전]</a>
+				<a href="javascript:enterPerformBoard('${root}','${startPage-pageBlock }')">[이전]</a>
 			</c:if>
 			
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
-				<a href="javascript:enterPlaceBoard('${root}','${i}')">[${i }]</a>
+				<a href="javascript:enterPerformBoard('${root}','${i}')">[${i }]</a>
 			</c:forEach>
 			
 			<c:if test="${endPage<pageCount }">
-				<a href="javascript:enterPlaceBoard('${root}','${startPage+pageBlock }')">[다음]</a>
+				<a href="javascript:enterPerformBoard('${root}','${startPage+pageBlock }')">[다음]</a>
 			</c:if>
 		</c:if>
 

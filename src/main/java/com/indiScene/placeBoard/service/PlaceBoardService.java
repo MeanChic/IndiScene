@@ -16,7 +16,8 @@ public interface PlaceBoardService {
 	
 	public void read(ModelAndView mav);
 	
-	public void imageUpload(ModelAndView mav);
+	//public void imageUpload(ModelAndView mav);
+	//CommonIOServce로 독립함
 	
 	public void delete(ModelAndView mav);
 	
@@ -25,9 +26,11 @@ public interface PlaceBoardService {
 	public void update(ModelAndView mav);
 	
 	public void updateOk(ModelAndView mav);
+
 	
-	public List<String> mainImageFind(List<PlaceBoardDto> marketList); 
+	//public List<String> mainImageFind(List<MarketBoardDto> marketList); 
+	//CommonIOServce로 독립함
 	
-	public void download(ModelAndView mav) throws Throwable;
-	
+	//public void download(ModelAndView mav) throws Throwable;
+	//CommonIOServce로 독립함
 }

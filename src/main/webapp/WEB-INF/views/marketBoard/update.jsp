@@ -15,7 +15,7 @@
 </head>
 <body>
 
-	<form id="marketBoardUpdateForm" action="javascript:marketBoardUpdateOk()" method="post" onsubmit="return checkForm(this)">
+	<form id="marketBoardUpdateForm" action="javascript:marketBoardUpdateOk()" method="post" >
 		<input type="hidden" name="board_num" value="${board.board_num }"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber }"/>
 		
