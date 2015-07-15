@@ -51,9 +51,8 @@
 			var folderName='${pageContext.request.servletPath }';
 			folderName=folderName.split("views/");
 			folderName=folderName[1].split("/");
-			//var id=document.getElementById(folderName);
-			//id.value=folderName[0]; //멀티파일폴더 만들때
-			$("#folderName").val(folderName[0]);
+			var id=document.getElementById(folderName);
+			$("#folderName").val(folderName[0]);//멀티파일폴더 만들때
 			//alert(folderName[0])
 			 CKEDITOR.replace( 'content',
 					 {///IndiScene_basic/src/main/webapp/resources/ckfinder

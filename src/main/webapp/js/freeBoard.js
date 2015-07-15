@@ -161,18 +161,19 @@
 		} 
 		
 		function updateFunOk(root, board_num, pageNumber){
-			alert("이건 업데이트 OK");
+			alert("이건 업데이트 OK" +root +"," + board_num+"," + pageNumber);
 			
-//			alert(dataSet.content);
-		//	dataSet.append("content",CKEDITOR.instances.content.getData());
-			$("#contentFreeBoard").val(CKEDITOR.instances.content.getData());
 			var dataSet = new FormData(document.getElementById("updateForm"));
-
+			
+			alert($("textarea").val());
+			//$("#contentFreeBoard").val(CKEDITOR.instances.contentFreeBoard.getData());
+			//dataSet.append("contentFreeBoard",CKEDITOR.instances.contentFreeBoard.getData());
+			
 			$.ajax({
 				url:root+"/freeBoard/update.do",
-				data:dataSet,
 				type:"post",
 				dataType:"html",
+				data:dataSet,
 				processData:false,
 				contentType:false,
 				success:function(data){

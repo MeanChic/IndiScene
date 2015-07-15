@@ -27,7 +27,7 @@
 		<div class="line">
 			<label class="title">작성자</label>
 			<span class="content">
-				<input type="text" name="writer" value="${board.artist_id }" disabled="disabled" />
+				<input type="text" name="artist_id" value="${board.artist_id }" disabled="disabled" />
 			</span>
 		</div>
 		

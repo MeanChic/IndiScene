@@ -45,7 +45,7 @@
 			<br/><br/>
 			
 			<script>
-			var folderName='${pageContext.request.servletPath }';
+	        var folderName='${pageContext.request.servletPath }';
 			folderName=folderName.split("views/");
 			folderName=folderName[1].split("/");
 			//var id=document.getElementById(folderName);

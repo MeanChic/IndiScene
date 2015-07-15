@@ -133,9 +133,8 @@ public class NoticeController {
 	 * @author : 손유진
 	 * @description : 공지사항 삭제확인
 	 */
-	@RequestMapping(value="/notice/deleteOk.do", method=RequestMethod.POST)
-	public ModelAndView noticeDeleteOk(HttpServletRequest request, HttpServletRequest response){
-		
+	@RequestMapping(value="/notice/delete.do", method=RequestMethod.POST)
+	public ModelAndView noticeDeleteOk(HttpServletRequest request, HttpServletResponse response){
 		logger.info("noticeDeleteOk--------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
@@ -166,7 +165,7 @@ public class NoticeController {
 	 * @author : 손유진
 	 * @description : 공지사항 수정
 	 */
-	@RequestMapping(value="/notice/updateOk.do", method=RequestMethod.POST)
+	@RequestMapping(value="/notice/update.do", method=RequestMethod.POST)
 	public ModelAndView noticeUpdateOk(HttpServletRequest request, HttpServletResponse response, NoticeDto noticeDto){ logger.info("noticeUpdateOk--------------");
 		
 		ModelAndView mav=new ModelAndView();

@@ -43,7 +43,7 @@
 			<li class="marketPlace"><a href="#marketPlace">Market Place</a></li>
 		</ul>
 		<hr>
-		<ul class="nav nav-pills nav-stacked">
+		<ul class="nav nav-p ills nav-stacked">
 			<li class="myMusic"><a href="#myMusic">My Music</a></li>
 			<li class="indisMuse"><a href="indisMuse">Indi's Muse</a></li>
 		</ul>

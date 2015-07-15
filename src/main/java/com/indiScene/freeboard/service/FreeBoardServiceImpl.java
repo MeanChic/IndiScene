@@ -225,6 +225,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		//board와 pageNumber를 updateOk.jsp에 넘겨줘야한다.
 		mav.addObject("freeBoard",freeBoard);
 		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("board_num",board_num);
 		
 		mav.setViewName("freeBoard/update");
 		
@@ -236,11 +237,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		FreeBoardDto freeBoardDto=(FreeBoardDto)map.get("freeBoardDto");
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
-		logger.info("freeBoardUpdateOk freeBoardDto: "+freeBoardDto+", pageNumber: "+pageNumber);		
-		
 		int check=freeBoardDao.freeBoardUpdate(freeBoardDto);
-		logger.info("freeBoardUpdateOk check: "+check);
-	
+
 		//updateOk.jsp에는 check와 pageNumber를 넘겨줘야 한다.
 		mav.addObject("check",check);
 		mav.addObject("pageNumber",pageNumber);

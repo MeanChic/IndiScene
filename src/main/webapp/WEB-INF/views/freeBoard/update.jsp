@@ -9,7 +9,9 @@
 	<title>게시판 수정</title>
 </head>
 <body>
-	<form id="updateForm" method="post">
+ ${board_num}
+${pageNumber}
+	<form id="updateForm" method="post" action="javascript:updateFunOk('${root}','${freeBoard.board_num}','${pageNumber }')">
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		
@@ -26,10 +28,9 @@
 				<span class="content2"><input type="text" size="50" name="artist_id" disabled="disabled"  value="${freeBoard.artist_id}"/></span>
 		</div>
 	
-	
 			<label class="title">내용</label>
 			<span class="content">
-				<textarea id="contentFreeBoard" rows="14" cols="58" name="content">${freeBoard.content}</textarea><br/><br/>
+				<textarea id="content" rows="14" cols="58" name="content">${freeBoard.content}</textarea><br/><br/>
 			
 	 		<script>
 	 		var folderName='${pageContext.request.servletPath }';
@@ -39,19 +40,18 @@
 			//id.value=folderName[0]; //멀티파일폴더 만들때
 			$("#folderName").val(folderName[0]);
 			//alert(folderName[0])
-			 CKEDITOR.replace( 'contentFreeBoard',
+			 CKEDITOR.replace( 'content',
 					 {///IndiScene_basic/src/main/webapp/resources/ckfinder
 					 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
-					 
 					 }); 
- 			
 			</script>
 			
 			</span>
 
 		
 			<div class="line" style="width:598px; border-width:2px; text-align:center;">
-				<input type="button" value="글수정" onclick="updateFunOk('${root}','${freeBoard.board_num}','${pageNumber }')"/>
+				<!-- <input type="button" value="글수정" onclick="updateFunOk('${root}','${freeBoard.board_num}','${pageNumber }')"/>  -->
+				<input type="submit" value="글수정"/>
 				<input type="button" value="취소" onclick="freeBoardRead('${root}','${freeBoard.board_num}','${pageNumber}'	)"/>
 				
 				
