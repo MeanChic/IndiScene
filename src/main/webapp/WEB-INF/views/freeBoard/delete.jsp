@@ -10,6 +10,7 @@
 	<title>게시판 삭제</title>
 </head>
 <body>
+	<div id="freeBoardDelete">
 <%-- 	<form method="post" action="${root }/freeBoard/delete.do">--%>
 	<form  id="deleteForm" method="post">	
 		<input type="hidden" name="board_num" value="${board_num}"/>
@@ -33,5 +34,6 @@
 			</tr>
 		</table>
 	</form>
+	</div>
 </body>
 </html>

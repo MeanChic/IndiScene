@@ -11,7 +11,7 @@
 	<title>게시판 목록보기</title>
 </head>
 <body>	
-
+	<div id="freeBoardList">
 		<c:if test="${count==0 }">
 					<td align="center">게시판에 저장된 글이 없습니다.</td>
 		</c:if>
@@ -72,9 +72,10 @@
 				<c:if test="${endPage<pageCount }">
 					<%-- <a href="${root }/freeBoard/list.do?pageNumber=${startPage+pageBlock}">[다음]</a> --%>
 					<a href="javascript:freeBoardList('${root }','${startPage+pageBlock}')">[다음]</a>				
+					</c:if>
 				</c:if>
-			</c:if>
-		</center>
-	</c:if>
+			</center>
+		</c:if>
+	</div>
 </body>
 </html>
