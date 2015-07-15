@@ -27,6 +27,20 @@
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
 	<script type="text/javascript" src="${root}/js/muse.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="${root}/js/performBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/placeBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
+<script type="text/javascript" src="${root}/js/freeBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/notice.js"></script>
+	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
+	
+
+	
+	<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
+	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
+
+	<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
+	<script src="${root }/js/reply.js" type="text/javascript" ></script>
 	<script type="text/javascript">
 		function backpageStart(){
 			alert("OKKKKKKKKK");
@@ -46,7 +60,7 @@
 			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
 			<li class="indisMusic"><a href="#indisMusic">Indi's Music</a></li>
 			<li class="performanceInfo"><a href="#performanceInfo">Performance Info</a></li>
-			<li class="marketPlace"><a href="#marketPlace">Market Place</a></li>
+			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root}')">Market Place</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
@@ -55,8 +69,8 @@
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="notice"><a href="#notice">Notice</a></li>
-			<li class="freeboard"><a href="#freeboard">Free Board</a></li>
+			<li class="notice"><a href="javascript:list('${root }','1')">Notice</a></li>
+			<li class="freeboard"><a href="javascript:freeBoardList('${root }','1')">Free Board</a></li>
 		</ul>
 	</nav>
 	<!-- Offsite canvas navigation end -->

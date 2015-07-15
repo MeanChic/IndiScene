@@ -11,6 +11,8 @@
 <script type="text/javascript" src="${root}/js/performBoard.js"></script>
 <script type="text/javascript" src="${root}/js/placeBoard.js"></script>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 
