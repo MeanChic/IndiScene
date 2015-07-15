@@ -16,10 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.indiScene.placeBoard.dto.PlaceBoardDto;
 import com.indiScene.placeBoard.service.PlaceBoardService;
 
-
-
-
-
 /**
 @name  : MarketBoardController
 @date  : 2015. 6. 25.
@@ -41,14 +37,13 @@ public class PlaceBoardController  {
 	 */
 	@RequestMapping(value="/placeBoard/enterBoard.do", method=RequestMethod.GET)
 	public ModelAndView enterBoard(HttpServletRequest request, HttpServletResponse response){
-	logger.info("MarketBoardWrite------------------------------");
+	//logger.info("PlaceBoardWrite------------------------------");
 	
 	ModelAndView mav=new ModelAndView();
 	mav.addObject("request",request);
 	marketBoardService.enterBoard(mav);
 	
 	return mav;
-	
 	}
 	
 	/**
@@ -59,7 +54,7 @@ public class PlaceBoardController  {
 	 */
 	@RequestMapping(value="/placeBoard/write.do", method=RequestMethod.GET)
 	public ModelAndView write(HttpServletRequest request){
-		logger.info("MarketBoardWrite------------------------------");
+		//logger.info("PlaceBoardWrite------------------------------");
 		
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("placeBoard/write");
@@ -75,7 +70,7 @@ public class PlaceBoardController  {
 	 */
 	@RequestMapping(value="/placeBoard/write.do", method=RequestMethod.POST)
 	public ModelAndView write(MultipartHttpServletRequest request, HttpServletResponse response, PlaceBoardDto marketBoardDto){
-		logger.info("MarketBoardWriteOk");
+		logger.info("PlaceBoardWriteOk");
 		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("request",request);
@@ -86,24 +81,25 @@ public class PlaceBoardController  {
 		return mav;
 	}
 
-	/**
-	@name  : fileUpload
-	@date  : 2015. 6. 25.
-	@auther: 나혁진
-	@description :이미지 업로드를 위해 service를 호출한다
-	 */
-	@RequestMapping(value="/placeBoard/imageUpload.do", method = RequestMethod.POST)
-	public ModelAndView imageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile upload) {
-        logger.info("FileUpload-----------------------------------------"); 
-             
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("request",request);
-		mav.addObject("upFile",upload);
-	
-		marketBoardService.imageUpload(mav);
-		
-		return mav;
-	}
+//	/**  commonIO로 독립시킴
+//	@name  : imageUpload
+//	@date  : 2015. 6. 25.
+//	@auther: 나혁진
+//	@description :이미지 업로드를 위해 service를 호출한다
+//	 */
+//	@RequestMapping(value="/marketBoard/imageUpload.do", method = RequestMethod.POST)
+//	public ModelAndView imageUpload(HttpServletRequest request, HttpServletResponse response, MultipartFile upload) {
+//        logger.info("imageUpload-----------------------------------------"); 
+//             
+//		ModelAndView mav=new ModelAndView();
+//		mav.addObject("request",request);
+//		mav.addObject("upFile",upload);
+//	
+//		marketBoardService.imageUpload(mav);
+//		
+//		return mav;
+//	}
+
 	
 		/**
 	@name  : read
@@ -113,7 +109,7 @@ public class PlaceBoardController  {
 	 */
 	@RequestMapping(value="/placeBoard/read.do", method=RequestMethod.GET)
 	public ModelAndView read(HttpServletRequest request){
-		logger.info("MarketBoardRead-----------------------------------------");
+		//logger.info("PlaceBoardRead-----------------------------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
 		marketBoardService.read(mav);
@@ -123,7 +119,7 @@ public class PlaceBoardController  {
 	
 	@RequestMapping(value="/placeBoard/delete.do", method=RequestMethod.GET)
 	public ModelAndView delete(HttpServletRequest request){
-		logger.info("marketBoardDelete---------------------------------------");
+		//logger.info("PlaceBoardDelete---------------------------------------");
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request", request);
@@ -135,7 +131,7 @@ public class PlaceBoardController  {
 	
 	@RequestMapping(value="/placeBoard/delete.do", method=RequestMethod.POST)
 	public ModelAndView delete(HttpServletRequest request,HttpServletResponse response){
-		logger.info("marketBoardDeleteOk---------------------------------------");
+		logger.info("PlaceBoardDeleteOk---------------------------------------");
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request", request);
@@ -147,7 +143,7 @@ public class PlaceBoardController  {
 	
 	@RequestMapping(value="/placeBoard/update.do", method=RequestMethod.GET)
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response){
-		logger.info("marketBoardUpdate------------------------------------------------");
+		//logger.info("PlaceBoardUpdate------------------------------------------------");
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request", request);
@@ -160,7 +156,7 @@ public class PlaceBoardController  {
 	
 	@RequestMapping(value="/placeBoard/update.do", method=RequestMethod.POST)
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response, PlaceBoardDto marketBoardDto){
-		logger.info("marketBoardUpdateOk------------------------------------------------");
+		//logger.info("PlaceBoardUpdateOk------------------------------------------------");
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request", request);
@@ -171,19 +167,20 @@ public class PlaceBoardController  {
 		return mav;
 	}
 	
-	@RequestMapping(value="/placeBoard/download.do", method=RequestMethod.GET)
-	public ModelAndView download(HttpServletRequest request, HttpServletResponse response)throws Throwable{
-		logger.info("download------------------------------------");
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("request", request);
-		mav.addObject("response", response);
-		
-		marketBoardService.download(mav); 
-		
-		return null;
-	}
-	
+	//CommonIOController 로 독립함
+//	@RequestMapping(value="/marketBoard/download.do", method=RequestMethod.GET)
+//	public ModelAndView download(HttpServletRequest request, HttpServletResponse response)throws Throwable{
+//		logger.info("download------------------------------------");
+//		
+//		ModelAndView mav = new ModelAndView();
+//		mav.addObject("request", request);
+//		mav.addObject("response", response);
+//		
+//		marketBoardService.download(mav); 
+//		
+//		return null;
+//	}
+
 	
 	
 }

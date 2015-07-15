@@ -8,6 +8,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="${root}/js/performBoard.js"></script>
+<script type="text/javascript" src="${root}/js/placeBoard.js"></script>
+<script type="text/javascript" src="${root}/js/jquery.js"></script>
+<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
+<script src="${root }/resources/ckEditor/ckeditor.js"></script>
+
+<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
+<script src="${root }/js/reply.js" type="text/javascript" ></script>
 </head>
 <body>
 	<a href="${root }/performBoard/write.do">시작해보자</a>
@@ -28,5 +36,9 @@
 	<span>
 	
 	</span>
+	<a href="javascript:enterPerformBoard('${root}')">거래게시판 들어가기 (ajax적용 O)</a>
+	<br/>
+	<a href="javascript:enterPlaceBoard('${root}')">플레이스 보드 들어가기 (ajax적용 O)</a>
+	<div id="centerContents"><h1>center</h1></div>
 </body>
 </html>

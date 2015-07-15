@@ -24,8 +24,7 @@ import com.indiScene.muse.dao.MuseDaoImpl;
 import com.indiScene.muse.dto.MuseDto;
 import com.indiScene.museGuest.dao.MuseGuestDaoImpl;
 import com.indiScene.museGuest.dto.MuseGuestDto;
-import com.indiScene.performBoard.dao.PerformBoardDaoImpl;
-import com.indiScene.performBoard.dto.PerformBoardDto;
+
 
 /**
  * @name:MuseServiceImpl
