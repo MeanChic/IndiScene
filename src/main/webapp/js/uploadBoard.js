@@ -23,7 +23,7 @@ function uploadWriteOk(root){
 //	dataSet.append("content", str);
 	$("#content").val(str);
 	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
-	alert($("#content").val());
+//	alert($("#content").val());
 	
 	$.ajax({
 		url:root+"/uploadBoard/write.do",
@@ -111,7 +111,7 @@ function uploadUpdateOk(root){
 //	dataSet.append("content", str);
 	$("#content").val(str);
 	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
-	alert($("#content").val());
+//	alert($("#content").val());
 //	alert(CKEDITOR.instances.content);
 	$.ajax({
 		url:root+"/uploadBoard/update.do",
@@ -158,7 +158,7 @@ function prepareCollabo(){
 	audio1.src=$("#originalMusicPath").val();
 	
 	$("#prevListen").click(function(){
-		audio2.src=$("#uploadPath").val();
+		audio2.src=$("#mergeFile").val();
 	});
 	
 	audio1.onloadeddata=function(){
@@ -173,14 +173,14 @@ function prepareCollabo(){
 	}
 	
 	$("#playCollabo").click(function(){
-		audio1.volume=0.5;
+//		audio1.volume=0.5;
 		audio2.volume=0.5;
 
-		audio1.load();
+//		audio1.load();
 		audio2.load();
 		
 		if(audio1Can && audio2Can){
-			audio1.play();
+//			audio1.play();
 			audio2.play();
 		}else{
 			alert("음원이 아직 준비가 되지 않았습니다. 잠시후 다시 버튼을 눌러주세요");
@@ -227,7 +227,24 @@ function prepareCollabo(){
 		$("#syncSave").val(sync);
 	});
 	$("#syncAdopt").click(function(){
-		
+		var data = new FormData(document.getElementById("uploadWriteForm"));
+		alert("콜라보를 진행합니다. 다음 메시지까지 기다려주세요.")
+	    $.ajax({
+	        url: $("#root").val()+'/uploadBoard/collaboAdopt.do',
+	        type: "post",
+	        dataType: "text",
+	        data: data,
+	        // cache: false,
+	        processData: false,
+	        contentType: false,
+	        success: function(data, textStatus, jqXHR) {
+//		            alert(data);
+	        	$("#mergeFile").val($("#root").val()+data);
+	        	alert("콜라보가 완료되었습니다.");
+	        }, error: function(jqXHR, textStatus, errorThrown) {
+	        	
+	        },
+	    });
 	});
 	
 	var audioPlaying=false;

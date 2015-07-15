@@ -4,7 +4,7 @@
 var root=null;
 function enterPerformBoard(requestRoot,pageNumber){
 	root=requestRoot;
-	alert("OK");
+	//alert("OK");
 	sendData="?pageNumber="+ ((pageNumber==null || pageNumber=="") ? 1 : pageNumber);
 	$.ajax({
 		url:root +"/performBoard/enterBoard.do"+sendData,
@@ -172,7 +172,7 @@ function performBoardUpdateOk(){
 			//alert(data);
 			var realData = data.split("<body>");
 			realData = realData[1].split("</body>")[0];
-			alert(realData);
+			//alert(realData);
 			$("#centerContents").html(realData);
 		},
 		error:function(xhr,status,error){

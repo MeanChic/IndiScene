@@ -11,10 +11,13 @@
 <script src="${root }/resources/ckfinder/ckfinder.js"></script>
 <script src="${root }/js/jquery.js" type="text/javascript" ></script>
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
-	<script type="text/javascript" src="${root }/css/marketBoard/script.js"></script>
-	<!--  <link rel="stylesheet" type="text/css" href="${root }/css/marketBoard/style.css"/>-->
+<script type="text/javascript" src="${root }/css/marketBoard/script.js"></script>
+	
 </head>
 <body>
+	<script type="text/javascript">
+
+</script>
 	<form id="marketBoardWriteForm" class="form_style"   enctype="multipart/form-data">	
 		 <input type="hidden" id="folderName" name="folderName" />
 			
@@ -49,14 +52,37 @@
 						 {///IndiScene_basic/src/main/webapp/resources/ckfinder
 						 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
 						 });
-	  	</script>
+				
+				 $(function(){
+						$( "#datepicker" ).datepicker({
+					    showOn: "button",
+					    buttonImage: "images/calendar.gif",
+					    buttonImageOnly: true,
+					    buttonText: "Select date",
+					    changeMonth: true,
+					    changeYear: true
+					});
+				});
+	  		</script>
 			</span>
 		</div>	
 		
 		<div class="line">
-			<label class="subject">파일</label>
-				<span class="content"><input class="multi" type="file" name="file[]" multiple></span>
-				                    
+				<span class="content">
+					<input type="text" name="d_day1" id="datepicker">
+		
+					<select name="hh">
+						<c:forEach var="i" begin="00" end="24"> 
+							<option>${i}</option>
+						</c:forEach>
+					</select>
+					시 
+					
+					<br/><br/>
+					
+					주소<input type="text" name="zipcode"/> <button>우편번호</button><br/></br>
+					<input type="text" name="address"/><br/><br/>
+				</span>		                    
 		</div>	
 		
 		<div class="line" style= text-align:center;>
