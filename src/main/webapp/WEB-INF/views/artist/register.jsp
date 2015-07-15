@@ -34,7 +34,7 @@
 			<label class="form-inlineblock label-color">Id</label>
 		    <div class="form-inlineblock">
 				<input id="artist_id" class="form-inlineblock form-controller" type="text" name="artist_id"/>
-				<input class="form-inlineblock form-controller" type="button" value="Duplicate Check" onclick="return idCheck(artistForm, '${root}')"/>
+				<input class="form-inlineblockButton form-controller" type="button" value="Duplicate Check" onclick="return idCheck(artistForm, '${root}')"/>
 			</div>
 		</div>
 		<div class="form-controlArtist">
@@ -54,7 +54,7 @@
 			<label class="form-inlineblock label-color">Nickname</label>
 		    <div class="form-inlineblock">
 				<input class="form-inlineblock form-controller" type="text" name="artist_nickname"/>
-				<input class="form-inlineblock form-controller" type="button" value="Duplicate Check" onclick="nicknameCheck(artistForm, '${root}')"/>
+				<input class="form-inlineblockButton form-controller" type="button" value="Duplicate Check" onclick="nicknameCheck(artistForm, '${root}')"/>
 			</div>
 		</div>
 		<div class="form-controlArtist">
@@ -67,7 +67,7 @@
 			<label class="form-inlineblock label-color">Zipcode</label>
 			<div class="form-inlineblock">
 				<input class="form-inlineblock form-controller" type="text" name="artist_zipcode"/>
-				<input class="form-inlineblock form-controller" type="button" value="Zipcode" onclick="zipcodeCheck(artistForm,'${root}')"/>
+				<input class="form-inlineblockButton form-controller" type="button" value="Zipcode" onclick="zipcodeCheck(artistForm,'${root}')"/>
 			</div>
 		</div>
 		<div class="form-controlArtist">

@@ -31,13 +31,13 @@
 		<div class="form-controlArtist">
 			<label class="form-inlineblock label-color">ID</label>
 		    <div class="form-inlineblock">
-				<input class="form-inlineblock form-controller" type="text" name="artist_id"/>
+				<input class="form-inlineblock form-controller220" type="text" name="artist_id"/>
 			</div>
 		</div>
 		<div class="form-controlArtist">
 			<label class="form-inlineblock label-color">Password</label>
 		    <div class="form-inlineblock">
-				<input class="form-inlineblock form-controller" type="password" name="artist_password"/>
+				<input class="form-inlineblock form-controller220" type="password" name="artist_password"/>
 			</div>
 		</div>
 		<div class="form-controlArtist">
