@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body id="barketBoardWriteOk">
-<div>
+<body>
+<div id="barketBoardWriteOk">
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 	<c:if test="${check>0 }">
 		<script type="text/javascript">

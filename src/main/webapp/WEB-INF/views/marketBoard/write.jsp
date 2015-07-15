@@ -16,7 +16,7 @@
 </head>
 <body>
 <div id="barketBoardWrite">
-	<form id="marketBoardWriteForm" class="form_style"  action="${root }/marketBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
+	<form id="marketBoardWriteForm" class="form_style"   method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		 <input type="hidden" id="folderName" name="folderName" />
 			
 		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">

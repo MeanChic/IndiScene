@@ -170,6 +170,12 @@ $('.main-nav .close').on('click', function(e) {
 	$('.main-nav').toggleClass('nav-expanded');
 });
 
+$('.main-nav .close').on('click', function(e) {
+	
+	e.preventDefault();
+	$('.main-nav').toggleClass('nav-expanded');
+});
+
 $('#loginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
