@@ -13,7 +13,6 @@
 	<!-- Load styles -->
 	<link href="${root}/css/bootstrap.css" rel="stylesheet">
 	<link href="${root}/css/style.css" rel="stylesheet">
-	<link href="${root}/css/icons.css" rel="stylesheet">
 	<link href="${root}/css/colorbox.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 	

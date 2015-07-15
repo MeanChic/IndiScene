@@ -7,14 +7,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<title>Momentio - single page html template by GraphBerry.com</title>
+	<title>Indi Scene - Music & Collaboration</title>
 	<!-- Load google font -->
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
 	<!-- Load styles -->
 	<link href="${root}/css/bootstrap.css" rel="stylesheet">
 	<link href="${root}/css/style.css" rel="stylesheet">
-	<link href="${root}/css/icons.css" rel="stylesheet">
 	<link href="${root}/css/colorbox.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 	
@@ -25,14 +24,13 @@
 	<script src="${root}/js/jquery.colorbox.js"></script>
 	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>
 	<!-- Offsite canvas navigation start -->
 	<nav class="main-nav">
 		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
-		<img class="logo" src=" " alt="logo">
+		<img class="logo" src="${root}/css/images/logo-img.png" alt="logo">
 		<h2>Indi Scene</h2>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
@@ -58,7 +56,7 @@
 	<!-- Button login, update navigation start -->
 	<nav class="sub-nav">
 		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
-		<img class="logo" src=" " alt="logo">
+		<img class="logo" src="${root}/css/images/logo-img.png" alt="logo">
 		<h2>Indi Scene</h2>
 		<hr>
 		<div id="sub-navDiv">
@@ -87,9 +85,8 @@
 	
 	<!-- Main slider start -->
 	<div id="centerContents" class="container">
-		<div class="jumbotron" id="home">
-			<img class="logo" src="" alt="logo">
-			<h1><big>Indi Scene</big></h1>
+		<div class="jumbotron" id="homeTag">
+			<img class="logo" src="${root}/css/images/logo-full.png" alt="logo">
 			<hr>
 			<p>We created the <span>Indi Scene</span> and now they control the world.</p>
 		</div>
@@ -100,7 +97,7 @@
 	<div class="footer">
 		<div class="brand"><p>Indi Scene</p></div>
 		<div class="container">
-			<img class="logo" src="" alt="logo">
+			<img class="logo" src="${root}/css/images/logo-img.png" alt="logo">
 			<a href="#" class="toTop">Back to top</a>
 			<p class="copiright">&copy; Copyright 2015 <a target="_blank" href="http://grapberry.com>ref=momentio">. All Rights Reserved.</p>
 		</div>
