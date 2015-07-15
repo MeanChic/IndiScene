@@ -38,7 +38,7 @@ form div input{ width:200px; display:inline-block; }
 
 .button-control{ margin-top:20px; }
 /* ---size 320px--- */
-.form-controller {
+.form-controller320 {
   width: 320px;
   height: 34px;
   padding: 6px 12px;
@@ -54,19 +54,19 @@ form div input{ width:200px; display:inline-block; }
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
           transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-.form-controller:focus {
+.form-controller320:focus {
   border-color: #66afe9;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
-.form-controller[disabled],
-.form-controller[readonly],
-fieldset[disabled] .form-controller {
+.form-controller320[disabled],
+.form-controller320[readonly],
+fieldset[disabled] .form-controller320 {
   cursor: not-allowed;
   background-color: #eeeeee;
 }
-textarea.form-controller {
+textarea.form-controller320 {
   height: auto;
 }
 /* ---size 220px--- */

@@ -39,7 +39,7 @@ Main navigation
 	left:-300px;
 	display:block;
 	width:200px;
-	z-index:9998;
+	z-index:9900;
 	height:100%;
 	background:#11161E;
 }
@@ -126,7 +126,7 @@ Sub navigation
 	right:-300px;
 	display:block;
 	width:200px;
-	z-index:9999;
+	z-index:9900;
 	height:380px;
 	background:#11161E;
 }
@@ -202,9 +202,6 @@ Sub navigation
 	opacity:1.0;
 	margin:0.1em -0.4em -0.1em 0;
 }
-/* 
-
-*/
 .main-content {
 	position:relative;
 	z-index:2;
@@ -221,7 +218,7 @@ Sub navigation
 	background: rgba(32, 40, 53, 0.3);
 	height:85px;
 	border:none;
-	z-index:100000;
+	z-index:10000;
 }
 .nav-expanded{
 	left:0px;
@@ -229,6 +226,20 @@ Sub navigation
 .sub-expanded{
 	right:0px;
 }
+
+/* previous & next button */
+.prenext{
+	background: rgba(0,0,0,0);
+	position:fixed;
+	right:0;
+	bottom:85px;
+	margin-bottom:15px;
+	z-index:9800;
+	width: 240px;
+	height: 40px;
+}
+
+
 /* MenuBar &  subMenubar*/
 .nav-expanded, .main-nav, .sub-expanded, .sub-nav{
 	transition: all 1.2s;
