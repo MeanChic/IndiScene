@@ -20,7 +20,7 @@
 		<script type="text/javascript">
 			alert("Thanks you. See you soon");
 			//location.href="${root}/artist/main.do";
-			$(location).attr("href","${root}/Template.jsp");
+			$(location).attr("href","${root}/Test01.jsp");
 		</script>
 	</c:if>
 	

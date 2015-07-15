@@ -134,4 +134,18 @@ public class UploadBoardController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/uploadBoard/collaboAdopt.do", method=RequestMethod.POST)
+	public ModelAndView collaboAdopt(MultipartHttpServletRequest request, HttpServletResponse response, UploadBoardDto board){
+		logger.info("uploadBoard Collabo Start-----------------");
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request",request);
+		mav.addObject("response", response);
+		mav.addObject("uploadBoard", board);
+		
+		service.collaboAdopt(mav);
+		
+		return null;
+	}
 }

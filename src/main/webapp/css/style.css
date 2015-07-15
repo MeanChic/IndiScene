@@ -228,6 +228,7 @@ Sub navigation
 .sub-expanded{
 	right:0px;
 }
+/* MenuBar &  subMenubar*/
 .nav-expanded, .main-nav, .sub-expanded, .sub-nav{
 	transition: all 1.2s;
 	-webkit-transition: all 1.2s;

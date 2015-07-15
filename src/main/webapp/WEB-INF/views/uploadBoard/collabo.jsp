@@ -12,11 +12,11 @@
 <body>
 	<%-- <script type="text/javascript" src="${root}/js/recorderjs/recorderInit.js"></script>
 	<script type="text/javascript" src="${root}/js/recorderjs/recorder.js"></script> --%>
-		"board_num" , ${board.board_num}
-		"group_num" , ${board.group_num}
-		"seq_num" , ${board.seq_num}
-		"seq_level" , ${board.seq_level}
-	
+		"board_num" , ${board.board_num}<br/>
+		"group_num" , ${board.group_num}<br/>
+		"seq_num" , ${board.seq_num}	<br/>
+		"seq_level" , ${board.seq_level}<br/>
+		"artist_id",${artist_id}		<br/>
 	<form action="${root}/uploadBoard/collabo.do"  method="post" enctype="multipart/form-data" id="uploadWriteForm">	
 		<input type="hidden" value="${artist_id}" name="artist_id"/>
 		<input type="hidden" value="${board.board_num}" name="board_num"/>
@@ -25,15 +25,16 @@
 		<input type="hidden" value="${board.seq_level}" name="seq_level"/>
 		<input type="hidden" value="${board.image_path}" name="image_path"/>
 		
-		<span>제목</span><input id="subject" value="${board.subject}" name="subject" type="text" disabled="disabled"/>
-		<c:if test="${seq_level == 0}">
+		<span>제목</span><input class="collaboSubject" value="${board.subject}" type="text" disabled="disabled"/>
+		<input type="hidden" value="" class="collaboSuvject" name="subject"/>
+		<c:if test="${board.seq_level==0}">
 			<script>
-				$("#subject").val($("#subject").val()+" feat."+$("input[name='artist_id']").val());
+				$(".collaboSubject").val($(".collaboSubject").val()+" feat."+$("input[name='artist_id']").val());
 			</script>
 		</c:if>
-		<c:if test="${seq_level != 0}">
+		<c:if test="${board.seq_level!=0}">
 			<script>
-				$("#subject").val($("#subject").val()+", "+$("input[name='artist_id']").val());
+				$(".collaboSubject").val($(".collaboSubject").val()+", "+$("input[name='artist_id']").val());
 			</script>
 		</c:if>
 		 <br/><br/>
@@ -79,14 +80,16 @@
 		<input type="hidden" name="originalFile" id="originalMusicPath" value="${root}${board.file_path}"/> 
 		<input type="hidden" name="mergeFile" id="mergeFile" value=""/>
 	</form>
+	
 	<div id="syncControl" style="display:none;">
 		<input type="button" id="playCollabo" value="듣기"/><br/>
 		원곡<input type="button" id="originalVolumeUp" value="↑"/><input type="button" id="originalVolumeDown" value="↓"/><br/>
 		추가곡<input type="button" id="extraVolumeUp" value="↑"/><input type="button" id="extraVolumeDown" value="↓"/><br/>
 		<!-- 싱크 <input type="text" value="0.0" max="15" min="-15" id="syncController"/>
 			<input type="hidden" value="0.0" max="15" min="-15" id="syncSave"/> -->
-			<input type="button" value="적용" id="syncAdopt"/>
 	</div>
+	
+	<input type="button" value="콜라보적용" id="syncAdopt"/>
 	<input type="hidden" id="root" value="${root}"/>
 	<input type="button" onclick="test()" value="테스트"/>
 	<script type="text/javascript">

@@ -167,19 +167,19 @@ $('#loginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
 });
-$('.sub-nav .close').on('click', function(e) {
-	e.preventDefault();
-	$('.sub-nav').toggleClass('sub-expanded');
-});
 
 $('#updateloginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
 });
+
 $('.sub-nav .close').on('click', function(e) {
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
 });
+
+
+
 /*
  * Link navigation and webpage sections.
  *
