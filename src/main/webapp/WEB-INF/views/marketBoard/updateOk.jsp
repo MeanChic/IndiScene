@@ -8,12 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div id="barketBoardEnterBoard">
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 	<c:if test="${check > 0}">
 		
 		<script type="text/javascript">
 			alert("수정완료.");
-			alert('${board_num}','${pageNumber}');
+			//alert('${board_num}','${pageNumber}');
 			marketBoardRead('${board_num}','${pageNumber}');
 		</script>
 	</c:if>
@@ -23,5 +24,6 @@
 			location.href="javascript:marketBoardRead('${board_num}','${pageNumber}')";
 		</script>
 	</c:if>
+</div>
 </body>
 </html>

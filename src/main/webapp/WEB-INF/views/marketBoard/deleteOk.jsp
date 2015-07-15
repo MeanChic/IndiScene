@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div id="marketBoardDeleteOk">
 ${board_num }
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	<c:if test="${check==1}">
@@ -29,6 +30,6 @@ ${board_num }
 			location.href="javascript:marketBoardRead('${board_num}','${pageNumber}')";
 		</script>
 	</c:if>
-
+</div>
 </body>
 </html>

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div id="marketBoardDelete">
 ${board_num} ${pageNumber} ${artist_id }
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 	<form method="post" id="marketBoardDeleteForm()" action="javascript:marketBoardDeleteOk()">
@@ -35,6 +36,6 @@ ${board_num} ${pageNumber} ${artist_id }
 			</tr>
 		</table>
 	</form>
-
+</div>
 </body>
 </html>

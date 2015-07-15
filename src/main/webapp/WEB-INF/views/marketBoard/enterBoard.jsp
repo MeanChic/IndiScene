@@ -15,7 +15,7 @@
 
 </head>
 <body>
-
+<div id="barketBoardEnterBoard">
 		<input type="button" value="글쓰기 " onclick="javascript:marketBoardWrite()"/>
 	
 		<c:forEach  items="${list }" varStatus="s">								<!-- mav에 넘어오는 리스트 갯수만큼 돌린다 이름확인  -->
@@ -64,6 +64,6 @@
 				<a href="javascript:enterMarketBoard('${root}','${startPage+pageBlock }')">[다음]</a>
 			</c:if>
 		</c:if>
-
+</div>
 </body>
 </html>

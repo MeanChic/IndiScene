@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body id="barketBoardWriteOk">
+<div>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
@@ -23,6 +24,6 @@
 			marketBoardWrite();
 		</script>
 	</c:if>
-
+</div>
 </body>
 </html>
