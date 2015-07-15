@@ -99,10 +99,18 @@
 		<div class="container">
 			<a href=""><img class="logo" src="${root}/css/images/logo-img.png" alt="logo"></a>
 			<a href="#" class="toTop">Back to top</a>
-			<p class="copiright">&copy; Copyright 2015 <a target="_blank" href="http://grapberry.com>ref=momentio">. All Rights Reserved.</p>
+			<p class="copiright">&copy; Copyright 2015 <a href=""></a>. All Rights Reserved.</p>
 		</div>
 	</div>
 	<!-- Footer section end -->
+	<div class="prenext">
+		<nav>
+		  <ul class="pager">
+		    <li><a href="#">Previous</a></li>
+		    <li><a href="#">Next</a></li>
+		  </ul>
+		</nav>
+	</div>
 	<!-- Music Player start -->
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="navbar-inner">
