@@ -15,8 +15,9 @@
 	<link href="${root}/css/bootstrap.css" rel="stylesheet">
 	<link href="${root}/css/style.css" rel="stylesheet">
 	<link href="${root}/css/colorbox.css" rel="stylesheet">
+	<link href="${root}/css/marketBoard1.css" rel="stylesheet">
+	
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
-	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
 	
 	<!-- Load javascrips libraries-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -26,13 +27,12 @@
 	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
 	
-	<!-- Load javaScript for Hyuckjin-->
+		<!-- Load javaScript for Hyuckjin-->
 	<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
 	<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
 	<script src="${root }/js/reply.js" type="text/javascript" ></script> 
 	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
-	
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>
@@ -47,12 +47,12 @@
 			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
 			<li class="indisMusic"><a href="#indisMusic">Indi's Music</a></li>
 			<li class="performanceInfo"><a href="#performanceInfo">Performance Info</a></li>
-			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root }')">Market Place</a></li>
+			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root}')">Market Place</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
 			<li class="myMusic"><a href="#myMusic">My Music</a></li>
-			<li class="indisMuse"><a href="#indisMuse">Indi's Muse</a></li>
+			<li class="indisMuse"><a href="indisMuse">Indi's Muse</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
@@ -84,13 +84,6 @@
 					<a id="registerButton" class="nav-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Join</a>
 				</c:when>
 				<c:otherwise>
-				<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						Login Success!
-					</div>
-				</div>
-			</div>
 					<a href="#" id="updateloginButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;PIM</a>
 					<a id="logoutButton" class="nav-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a>
 				</c:otherwise>
@@ -175,6 +168,13 @@ $(".portfolio-search").colorbox({
  * Show or hide offsite navigation.
  *
  */
+ $('.marketPlace a').on('click', function(e) {
+	 	enterMarketBoard('${root}');
+		e.preventDefault();
+		$('.main-nav').toggleClass('nav-expanded');
+	});
+
+ 
  
 $('#nav-expander').on('click', function(e) {
 	e.preventDefault();
@@ -189,6 +189,7 @@ $('#loginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
 });
+
 $('#updateloginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
@@ -199,12 +200,6 @@ $('.sub-nav .close').on('click', function(e) {
 	$('.sub-nav').toggleClass('sub-expanded');
 });
 
-/* 메뉴 버튼 들어가기 */
-$('.marketPlace a').on('click', function(e) {
-	//e.preventDefault();
-	//enterMarketBoard('${root }')
-	$('.main-nav').toggleClass('nav-expanded');
-});
 
 
 /*
