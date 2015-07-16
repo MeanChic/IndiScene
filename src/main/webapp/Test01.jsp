@@ -31,7 +31,14 @@
 	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
 	<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
 	<script src="${root }/js/reply.js" type="text/javascript" ></script> 
+	
+	<!-- Load javaScript for AJAX -->
 	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/notice.js"></script>
+	<script type="text/javascript" src="${root}/js/freeBoard.js"></script>
+	
+	
+	
 	
 </head>
 <body>
@@ -56,8 +63,8 @@
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="notice"><a href="#notice">Notice</a></li>
-			<li class="freeboard"><a href="#freeboard">Free Board</a></li>
+			<li class="notice"><a href="javascript:list('${root }','1')">Notice</a></li>
+			<li class="freeboard"><a href="javascript:freeBoardList('${root }','1')">Free Board</a></li>
 		</ul>
 	</nav>
 	<!-- Offsite canvas navigation end -->
@@ -199,12 +206,27 @@ $('.sub-nav .close').on('click', function(e) {
 	$('.sub-nav').toggleClass('sub-expanded');
 });
 
-/* 메뉴 버튼 들어가기 */
+/*각 게시판 들어갈때마나 메뉴바 사라지게 하기 */
 $('.marketPlace a').on('click', function(e) {
 	//e.preventDefault();
 	//enterMarketBoard('${root }')
 	$('.main-nav').toggleClass('nav-expanded');
 });
+
+$('.freeboard a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
+});
+
+$('.notice a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
+});
+
+
+
 
 
 /*
