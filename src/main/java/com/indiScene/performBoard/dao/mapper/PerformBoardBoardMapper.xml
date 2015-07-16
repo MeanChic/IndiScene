@@ -20,8 +20,8 @@
 	
 	<insert id="boardInsert" parameterType="com.indiScene.performBoard.dto.PerformBoardDto">
 		<![CDATA[
-		insert into performboard(SUBJECT,CONTENT,REGISTER_DATE,BOARD_NUM,ARTIST_ID,COUNT,file_name,file_path) 
-		values(#{subject},#{content},#{register_date},'p' || performboard_seq.nextval,#{artist_id},0,#{file_name},#{file_path})
+		insert into performboard(d_day, address, zipcode, SUBJECT,CONTENT,REGISTER_DATE,BOARD_NUM,ARTIST_ID,COUNT,file_name,file_path) 
+		values(#{d_day},#{address},#{zipcode},#{subject},#{content},#{register_date},'p' || performboard_seq.nextval,#{artist_id},0,#{file_name},#{file_path})
 		]]>
 	</insert>
 	

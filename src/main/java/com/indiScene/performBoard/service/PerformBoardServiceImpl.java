@@ -4,6 +4,8 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -135,8 +137,15 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		PerformBoardDto marketBoardDto=(PerformBoardDto)map.get("marketBoardDto");
 		MultipartHttpServletRequest request=(MultipartHttpServletRequest)map.get("request"); 
 		Date date=new Date();
-		marketBoardDto.setRegister_date(date);
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		marketBoardDto.setRegister_date(date);
+		try {
+			marketBoardDto.setD_day((Date)sdf.parse(request.getParameter("d_day1")));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		commonIOService.multiFileUpload(request,marketBoardDto); //뒤에 Dto는 CommonDto로 받는다
 		
 		//멀티파일 처리 시작  CommonIOService로 독립시킴

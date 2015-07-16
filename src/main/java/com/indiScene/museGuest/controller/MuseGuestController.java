@@ -1,5 +1,6 @@
 package com.indiScene.museGuest.controller;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.museGuest.dto.MuseGuestDto;
 import com.indiScene.museGuest.service.MuseGuestServiceImpl;
+import com.indiScene.performBoard.dao.PerformBoardDaoImpl;
+import com.indiScene.performBoard.dto.PerformBoardDto;
+import com.indiScene.placeBoard.dao.PlaceBoardDaoImpl;
+import com.indiScene.placeBoard.dto.PlaceBoardDto;
 
 /**
  * @name:MuseGuestController
@@ -75,6 +80,8 @@ public class MuseGuestController {
 		service.update(mav);
 		return null;
 	}
+	
+	
 	
 	/**
 	 * @name:delete

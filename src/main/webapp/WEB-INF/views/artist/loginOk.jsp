@@ -33,21 +33,14 @@
 		<!-- session에 setAttribute하는 것 -> c:set의 scope속성을 사용해서 session에 데이터를 담는다.-->
 			<c:set var="artist_id" value="${artist_id }" scope="session"/>
 			<c:set var="artist_level" value="${artist_level }" scope="session"/>
-			<div class="alert alert-warning alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<strong>Login Success!</strong>
-			</div>
 			<script type="text/javascript">
+				alert("Login Success!");
 				location.href="${root}/Test01.jsp";
 			</script>
 		</c:when>
 		<c:otherwise>
-			<div class="alert alert-warning alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<strong>Warning!</strong> Better check yourself, you're not looking too good.
-			</div>
-			<div class="alert alert-warning" role="alert">You were entered the wrong information.</div>
 			<script type="text/javascript">
+				alert("You were entered the wrong information.");
 				location.href="${root}/Test01.jsp";
 			</script>
 		</c:otherwise>

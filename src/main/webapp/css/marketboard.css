@@ -1,2 +1,24 @@
 @CHARSET "UTF-8";
-#barketBoardEnterBoard{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EAEAEA; border-radius:20px; }
+#marketBoardEnterBoard{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EAEAEA; border-radius:20px; }
+.marketBoardX-location01{ text-align:center; }
+.marketBoardX-location02{ text-align:right; }
+.marketBoardX-location03{ text-align:left; }
+
+.marketBoardAttribute01{ display:inline-block; }
+
+.marketBoardSize01{ width:33%; }
+.marketBoardSize02{ width:50%; }
+.marketBoardSize03{ width:100%; }
+
+.marketBoardheight91{ height:30px; }
+.marketBoardheight01{ height:350px; }
+.marketBoardheight02{ height:450px; }
+.marketBoardheight03{ height:550px; }
+
+.marketBoardInterval005{ margin-top:5px; margin-bottom:5px; }
+.marketBoardInterval01{ margin-top:10px; margin-bottom:10px; }
+.marketBoardInterval02{ margin-top:20px; margin-bottom:20px; }
+.marketBoardInterval03{ margin-top:30px; margin-bottom:30px; }
+.marketBoardInterval04{ margin-top:40px; margin-bottom:40px; }
+
+.marketBoardImageSize{ min-width:269px; min-height:205px; max-height:205px; }

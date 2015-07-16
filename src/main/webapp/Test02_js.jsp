@@ -43,9 +43,28 @@
 	<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
 	<script src="${root }/js/reply.js" type="text/javascript" ></script>
 	<script type="text/javascript">
-		function backpageStart(){
-			alert("OKKKKKKKKK");
-		}
+	function performPlace(root){
+		//root=requestRoot;
+		//alert("OK");
+		
+		//sendData="?pageNumber="+ ((pageNumber==null || pageNumber=="") ? 1 : pageNumber);
+		$.ajax({
+			url:root +"/perform/enter.do",
+			type:"get",
+			dataType:"html",
+			success:function(data){
+				//alert(data);
+				var realData = data.split("<body>");
+				realData = realData[1].split("</body>")[0];
+				//alert(realData);
+				$("#centerContents").html(realData);
+				$('.main-nav').toggleClass('nav-expanded');
+			},
+			error:function(xhr,status,error){
+				alert(xhr+"\n"+status+"\n"+error);
+			}
+		});
+	}
 	</script>
 </head>
 <body>
@@ -60,7 +79,7 @@
 			<li class="brandNewMusic"><a href="#brandNewMusic">Brand New Music</a></li>
 			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
 			<li class="indisMusic"><a href="javascript:uploadList('${root}','1')">Indi's Music</a></li>
-			<li class="performanceInfo"><a href="#performanceInfo">Performance Info</a></li>
+			<li class="performanceInfo"><a href="javascript:performPlace('${root}')">Performance Info</a></li>
 			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root}')">Market Place</a></li>
 		</ul>
 		<hr>
