@@ -138,7 +138,9 @@ public class FreeBoardController {
 		
 		return mav;
 	}
-
+	
+	
+	
 	/**
 	 * @name : freeBoardUpdateOk
 	 * @date : 2015. 6. 26.
@@ -151,7 +153,9 @@ public class FreeBoardController {
 		logger.info("freeBoardUpdateOk--------------");
 		
 		ModelAndView mav=new ModelAndView();
-		
+		System.out.println(freeBoardDto.getBoard_num());
+//		System.out.println(freeBoardDto.getArtist_id());
+//		System.out.println(freeBoardDto.getSubject());
 		mav.addObject("request",request);		//pageNumber
 		mav.addObject("freeBoardDto",freeBoardDto);	//boardNumber, subject, content
 		freeBoardService.freeBoardUpdateOk(mav);

@@ -26,9 +26,9 @@
 	function writeOk(root,pageNumber){
 		var dataSet = new FormData(document.getElementById("NoticeWriteForm"));
 		alert("pageNumber:"+pageNumber)
- 		alert(CKEDITOR.instances.content.getData());
-//		dataSet.append("content",CKEDITOR.instances.content.getData());
-		$("#content").val(CKEDITOR.instances.content.getData());
+ 		//alert(CKEDITOR.instances.content.getData());
+		dataSet.append("content",CKEDITOR.instances.content.getData());
+		//$("#content").val(CKEDITOR.instances.content.getData());
 		
 		$.ajax({
 			url:root+"/notice/write.do",
@@ -110,8 +110,10 @@
 				}
 			}); 
 		}
+		
 		function deleteFunOk(root, board_num, pageNumber){
 			var dataSet = new FormData(document.getElementById("deleteForm"));
+			alert(root +","+board_num +","+ pageNumber);
 			$.ajax({
 				url:root+"/notice/delete.do",
 				type:"post",
@@ -126,12 +128,13 @@
 					//alert(realData);
 					$("#centerContents").html(realData);
 					///$.getScript(root+"/js/notice.js");
-
+								
 				},
 				error:function(xhr,status,error){
 					alert(xhr+"\n"+status+"\n"+error);
 				}
 			}); 
+			
 		}
 			
 		function updateFun(root, board_num, pageNumber){

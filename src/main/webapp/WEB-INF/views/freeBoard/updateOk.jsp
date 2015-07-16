@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="${root}/css/freeBoard.css"/>
 </head>
 <body>
+	<div id="freeBoardUpdateOk">
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	
 	<c:if test="${check>0 }">
@@ -31,6 +32,6 @@
 			freeBoardlist('${root }','${pageNumber}');
 		</script>
 	</c:if>
-
+	</div>
 </body>
 </html>

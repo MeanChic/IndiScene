@@ -7,16 +7,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<title>Momentio - single page html template by GraphBerry.com</title>
+	<title>Indi Scene - Music & Collaboration</title>
 	<!-- Load google font -->
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
 	<!-- Load styles -->
 	<link href="${root}/css/bootstrap.css" rel="stylesheet">
 	<link href="${root}/css/style.css" rel="stylesheet">
-	<link href="${root}/css/icons.css" rel="stylesheet">
 	<link href="${root}/css/colorbox.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
+	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
 	
 	<!-- Load javascrips libraries-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -25,14 +25,21 @@
 	<script src="${root}/js/jquery.colorbox.js"></script>
 	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	
+	<!-- Load javaScript for Hyuckjin-->
+	<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
+	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
+	<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
+	<script src="${root }/js/reply.js" type="text/javascript" ></script> 
+	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
+	
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>
 	<!-- Offsite canvas navigation start -->
 	<nav class="main-nav">
 		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
-		<img class="logo" src=" " alt="logo">
+		<img class="logo" src="${root}/css/images/logo-img.png" alt="logo">
 		<h2>Indi Scene</h2>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
@@ -40,12 +47,12 @@
 			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
 			<li class="indisMusic"><a href="#indisMusic">Indi's Music</a></li>
 			<li class="performanceInfo"><a href="#performanceInfo">Performance Info</a></li>
-			<li class="marketPlace"><a href="#marketPlace">Market Place</a></li>
+			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root }')">Market Place</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
 			<li class="myMusic"><a href="#myMusic">My Music</a></li>
-			<li class="indisMuse"><a href="indisMuse">Indi's Muse</a></li>
+			<li class="indisMuse"><a href="#indisMuse">Indi's Muse</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
@@ -58,7 +65,7 @@
 	<!-- Button login, update navigation start -->
 	<nav class="sub-nav">
 		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
-		<img class="logo" src=" " alt="logo">
+		<img class="logo" src="${root}/css/images/logo-img.png" alt="logo">
 		<h2>Indi Scene</h2>
 		<hr>
 		<div id="sub-navDiv">
@@ -87,11 +94,10 @@
 	
 	<!-- Main slider start -->
 	<div id="centerContents" class="container">
-		<div class="jumbotron" id="home">
-			<img class="logo" src="" alt="logo">
-			<h1><big>Indi Scene</big></h1>
+		<div class="jumbotron" id="homeTag">
+			<img class="logo" src="${root}/css/images/logo-full.png" alt="logo">
 			<hr>
-			<p>We created the <span>Indi Scene</span> and now they control the world.</p>
+			<p>Your Music Career Start Here. Music & Collaboration <span>Indi Scene</span> is for You.</p>
 		</div>
 	</div>
 	<!-- Main slider end -->
@@ -100,12 +106,20 @@
 	<div class="footer">
 		<div class="brand"><p>Indi Scene</p></div>
 		<div class="container">
-			<img class="logo" src="" alt="logo">
+			<a href=""><img class="logo" src="${root}/css/images/logo-img.png" alt="logo"></a>
 			<a href="#" class="toTop">Back to top</a>
-			<p class="copiright">&copy; Copyright 2015 <a target="_blank" href="http://grapberry.com>ref=momentio">. All Rights Reserved.</p>
+			<p class="copiright">&copy; Copyright 2015 <a href=""></a>. All Rights Reserved.</p>
 		</div>
 	</div>
 	<!-- Footer section end -->
+	<div class="prenext">
+		<nav>
+		  <ul class="pager">
+		    <li><a href="#">Previous</a></li>
+		    <li><a href="#">Next</a></li>
+		  </ul>
+		</nav>
+	</div>
 	<!-- Music Player start -->
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="navbar-inner">
@@ -154,6 +168,7 @@ $(".portfolio-search").colorbox({
  * Show or hide offsite navigation.
  *
  */
+ 
 $('#nav-expander').on('click', function(e) {
 	e.preventDefault();
 	$('.main-nav').toggleClass('nav-expanded');
@@ -167,7 +182,6 @@ $('#loginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
 });
-
 $('#updateloginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
@@ -178,6 +192,12 @@ $('.sub-nav .close').on('click', function(e) {
 	$('.sub-nav').toggleClass('sub-expanded');
 });
 
+/* 메뉴 버튼 들어가기 */
+$('.marketPlace a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
+});
 
 
 /*

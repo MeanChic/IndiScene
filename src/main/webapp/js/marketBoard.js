@@ -16,6 +16,7 @@ function enterMarketBoard(requestRoot,pageNumber){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
+			//
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -95,7 +96,7 @@ function marketBoardWrite(){
 
 function marketBoardWriteOk(){
 	var dataSet = new FormData(document.getElementById("marketBoardWriteForm"));
-	//alert(CKEDITOR.instances.content.getData());
+	alert(CKEDITOR.instances.content.getData());
 	dataSet.append("content",CKEDITOR.instances.content.getData());
 	$.ajax({
 		url:root + "/marketBoard/write.do",
@@ -105,10 +106,10 @@ function marketBoardWriteOk(){
 		contentType:false,
 		processData:false,
 		success:function(data){
-			//alert(data);
+			alert(data);
 			var realData=data.split("<body>");
 			realData=realData[1].split("</body>")[0];
-			//alert(realData);
+			alert(realData);
 			$("#centerContents").html(realData)
 		},
 		error:function(xhr,status,error){
@@ -158,7 +159,10 @@ function marketBoardUpdate(board_num,pageNumber){
 
 
 function marketBoardUpdateOk(){
+	alert("sldfjsldkfj");
 	var dataSet = new FormData(document.getElementById("marketBoardUpdateForm"));
+	//var writer1=dataSet.writer.value;
+	//alert($("textarea").val());
 	//alert(CKEDITOR.instances.content.getData());
 	//alert(dataSet);
 	$.ajax({

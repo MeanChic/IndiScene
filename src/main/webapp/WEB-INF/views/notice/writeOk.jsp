@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<div id="noticeWriteOk">
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
@@ -27,6 +27,6 @@
 /* 		location.href="${root}/notice/write.do?page_num=${page_num}";
  */		</script>
 	</c:if>
-
+	</div>
 </body>
 </html>

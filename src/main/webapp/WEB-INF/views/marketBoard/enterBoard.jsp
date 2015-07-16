@@ -4,14 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.*" %>
 <%@ page import="org.springframework.web.servlet.ModelAndView" %>
-
-
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>enter MarketBoard</title>
 
 </head>
 <body>
@@ -37,7 +34,7 @@
 		<c:if test="${count>0 }">
 		
 				<%-- 한 페이지에서 이동가능한 페이지 개수 [1][2][3]...[10] --%> 
-			<c:set var="pageBlock" value="${3 }"/>	
+			<c:set var="pageBlock" value="${3}"/>	
 				
 				<%-- 총페이지 번호 --%>
 			<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0?0:1) }"/>	
