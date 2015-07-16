@@ -29,12 +29,12 @@
 		<input type="hidden" value="" class="collaboSuvject" name="subject"/>
 		<c:if test="${board.seq_level==0}">
 			<script>
-				$(".collaboSubject").val($(".collaboSubject").val()+" feat."+$("input[name='artist_id']").val());
+				$(".collaboSubject").val("[Collabo]"+$(".collaboSubject").val()+" feat."+$("input[name='artist_id']").val());
 			</script>
 		</c:if>
 		<c:if test="${board.seq_level!=0}">
 			<script>
-				$(".collaboSubject").val($(".collaboSubject").val()+", "+$("input[name='artist_id']").val());
+				$(".collaboSubject").val("[Collabo]"+$(".collaboSubject").val()+", "+$("input[name='artist_id']").val());
 			</script>
 		</c:if>
 		 <br/><br/>
@@ -72,7 +72,7 @@
 		
 		<div>
 			<input type="button" id="prevListen" value="미리듣기"/>
-			<input type=button value="글쓰기" onclick="javascript:uploadWriteOk('${root}')"/>
+			<input type=button value="글쓰기" onclick="javascript:uploadCollaboOk('${root}','${board.board_num}','${pageNumber}')"/>
 			<input type="reset" value="다시작성"/>
 			<input type="button" value="목록보기" onclick="uploadList('${root}','1')"/>
 		</div>

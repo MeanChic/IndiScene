@@ -26,8 +26,27 @@
 		
 		<span>제목</span><input id="subject" name="subject" type="text"/> <br/><br/>
 		<span>일시</span><br/>
-		<span>커버사진</span><input type="file" id="coverImage" name="coverImage" accept="image/*"/><span>음악파일</span><input type="file" id="musicFile" name="musicFile" accept="audio/*"/><span>녹음파일</span><a href="javascript:record('${artist_id}','${root}')" id="recordButton"><img style="width:3%; height: 3%;" src="${root}/resources/uploadBoard/Mic.jpg"/></a>
-		<span id="recordBox" style="display:none;position:relative; float:none;"><img src="${root}/resources/uploadBoard/rec.png" onclick="toggleRecording(this)"/></span><br/><br/>
+		<span>커버사진</span><input type="file" id="coverImage" name="coverImage" accept="image/*"/>
+		
+		<input type="button" value="파일업로드" id="fileBtn"/><input type="button" value="녹음" id="recordBtn"/>
+		<span id="musicInputArea" style="display:none;"><span>음악파일</span><input type="file" id="musicFile" name="musicFile" accept="audio/*"/></span>
+		<span id="recordInputArea" style="display:none;"><span>녹음파일</span><a href="javascript:record('${artist_id}','${root}')" id="recordButton"><img style="width:3%; height: 3%;" src="${root}/resources/uploadBoard/Mic.jpg"/></a>
+		<span id="recordBox" style="display:none;position:relative; float:none;"><img src="${root}/resources/uploadBoard/recB.png" id="recordToggleImg" onclick="toggleRecording(this)"/></span></span>
+		
+		<script type="text/javascript">
+			$("#fileBtn").click(function(){
+				$("#recordBtn").css("display","none");
+				$(this).css("display","none");
+				$("#musicInputArea").css("display","block");
+			});
+			
+			$("#recordBtn").click(function(){
+				$("#fileBtn").css("display","none");
+				$(this).css("display","none");
+				$("#recordInputArea").css("display","block");
+			});
+		</script>
+		
 		<div><span>장르</span><input type="radio" name="genre" value="1"/>락<input type="radio" name="genre" value="0"/> 발라드 <input type="radio" name="genre" value="2"/> 힙합</div>	
 		<span>내용</span><textarea rows="20" cols="100" name="content" id="content"></textarea><br/><br/>
 		<script type="text/javascript">
