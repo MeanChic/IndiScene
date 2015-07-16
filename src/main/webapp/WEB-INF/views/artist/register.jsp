@@ -7,7 +7,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
 </head>
 <body>
