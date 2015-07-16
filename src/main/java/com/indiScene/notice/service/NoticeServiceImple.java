@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.notice.dao.NoticeDao;
 import com.indiScene.notice.dto.NoticeDto;
+import com.indiScene.reply.dao.ReplyDao;
+import com.indiScene.reply.dto.ReplyDto;
 
 
 /**
@@ -26,7 +28,10 @@ public class NoticeServiceImple implements NoticeService {
 	@Autowired
 	private NoticeDao noticeDao;
 	private Logger logger=Logger.getLogger(this.getClass().getName());	
-
+	
+	@Autowired
+	private ReplyDao replyDao;
+	
 	@Override
 	public void test(ModelAndView mav) {
 		mav.addObject("message","member 시작입니다.");	
@@ -176,10 +181,13 @@ public class NoticeServiceImple implements NoticeService {
 		//넘겨받은 해당 boardNumber의 조회수를 1증가시킨 뒤 (BoardDaoImpl에서 처리)
 		//해당 boardNumber의 데이터들을 noticeDto로 반환받는다.
 		NoticeDto noticeDto=noticeDao.noticeRead(board_num);
+		List<ReplyDto> replyList=replyDao.replyList(board_num);
+		
 		logger.info("noticeRead noticeDto: "+noticeDto);
 		
 		mav.addObject("notice",noticeDto);
 		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("replyList",replyList);
 		//read.jsp에서는 board와 pageNumber만 필요 
 		mav.setViewName("notice/read");
 	}

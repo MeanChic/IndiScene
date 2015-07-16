@@ -206,7 +206,7 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 		
 		//한줄댓글을 불러온다
 		List<ReplyDto> replyList=replyDao.replyList(boardNumber);
-		
+	
 		int countCheck=0;
 		if(marketBoardDto !=null){
 			countCheck=marketBoardDao.count(boardNumber);
