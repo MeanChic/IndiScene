@@ -23,13 +23,13 @@
 			<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterMarketBoard('${root}','${pageNumber}')">List</a>
 		</div>
 		<div class="form-controlMarket">
-			<label class="subject label-color">Writer</label>
+			<label class="label-color">Writer</label>
 			<div class="form-inlineblock">
 				<input class="form-controller320" type="text" name="artist_id" value="${board.artist_id }" disabled="disabled" />
 			</div>
 		</div>
 		<div class="form-controlMarket">
-			<label class="subject label-color">Subject</label>
+			<label class="label-color">Subject</label>
 			<div class="form-inlineblock">
 				<input class="form-controller320" type="text" size="50" name="subject"  value="${board.subject }"/>
 			</div>

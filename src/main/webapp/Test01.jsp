@@ -17,6 +17,7 @@
 	<link href="${root}/css/colorbox.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
+	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard1.css"/>
 	
 	<!-- Load javascrips libraries-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -36,10 +37,6 @@
 	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
 	<script type="text/javascript" src="${root}/js/notice.js"></script>
 	<script type="text/javascript" src="${root}/js/freeBoard.js"></script>
-	
-	
-	
-	
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>
