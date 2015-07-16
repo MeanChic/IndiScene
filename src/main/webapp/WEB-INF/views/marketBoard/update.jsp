@@ -7,66 +7,64 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>거래 게시판 업데이트</title>
+<title>Market board update</title>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <script src="${root }/js/jquery.js" type="text/javascript" ></script>
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 </head>
 <body>
-<div id="barketBoardUpdate">
-
+<div id="marketBoardUpdate">
+	<h3>Market Board Update</h3>
 	<form id="marketBoardUpdateForm" action="javascript:marketBoardUpdateOk()" method="post" >
 		<input type="hidden" name="board_num" value="${board.board_num }"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber }"/>
-		
-		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-				<a href="javascript:enterMarketBoard('${root}','${pageNumber}')">글목록</a>
+		<div class="marketBoardX-location02">
+			<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterMarketBoard('${root}','${pageNumber}')">List</a>
 		</div>
-			
-		<div class="line">
-			<label class="title">작성자</label>
-			<span class="content">
-				<input type="text" name="artist_id" value="${board.artist_id }" disabled="disabled" />
-			</span>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Writer</label>
+			<div class="form-inlineblock">
+				<input class="form-controller320" type="text" name="artist_id" value="${board.artist_id }" disabled="disabled" />
+			</div>
 		</div>
-		
-		<div class="line">
-			<label class="title">제목</label>
-				<span class="content"><input type="text" size="50" name="subject"  value="${board.subject }"/></span>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Subject</label>
+			<div class="form-inlineblock">
+				<input class="form-controller320" type="text" size="50" name="subject"  value="${board.subject }"/>
+			</div>
 		</div>
-		
-		<div class="line" >
-			<label class="title" >내용</label>
-			<span class="content" >
-				<textarea  name="content" >${board.content }</textarea>		
-			<script >
-				
-				var folderName='${pageContext.request.servletPath }';
-				folderName=folderName.split("views/");
-				folderName=folderName[1].split("/");
-				//var id=document.getElementById(folderName);
-				//id.value=folderName[0]; //멀티파일폴더 만들때
-				$("#folderName").val(folderName[0]);
-				//alert(folderName[0])
-				 CKEDITOR.replace( 'content',
+		<div class="form-controlMarket" >
+			<label class="label-color marketBoardY-location01" >Contents</label>
+			<div class="form-inlineblock marketBoardSize80">
+				<textarea name="content">${board.content }</textarea>		
+				<script >
+					var folderName='${pageContext.request.servletPath }';
+					folderName=folderName.split("views/");
+					folderName=folderName[1].split("/");
+					//var id=document.getElementById(folderName);
+					//id.value=folderName[0]; //멀티파일폴더 만들때
+					$("#folderName").val(folderName[0]);
+					//alert(folderName[0])
+					 CKEDITOR.replace( 'content',
 						 {///IndiScene_basic/src/main/webapp/resources/ckfinder
 						 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
 						 });
-	  	</script>
-			</span>
+	  			</script>
+			</div>
 		</div>	
-		
-		<div class="line">
-			<label class="subject">파일</label>
-				<span class="content">${board.file_name }<input class="multi" type="file" name="file[]" multiple></span>
+		<div class="form-controlMarket">
+			<label class="label-color marketBoardY-location01">File</label>
+			<div class="form-inlineblock">
+				<input class="form-controller320" type="file" name="file[]" multiple>
+				<p>${board.file_name}</p>
+			</div>
 		</div>	
-		
-		
-		<div class="line" style="width:598px; border-width:2px; text-align:center;">
-			<input type="submit" value="글수정"/>
-			<input type="reset" value="취소"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/marketBoard/enterBoard.do?pageNumber=${pageNumber}'">
+		<div class="form-controlMarket" style= text-align:center;>
+			<div class="marketBoardInterval04">
+				<input class="btn btn-default" type="submit" value="Modify"/>
+				<input class="btn btn-default" type="reset" value="Reset"/>
+			</div>
 		</div>
 	</form>
 </div>
