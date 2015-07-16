@@ -15,6 +15,7 @@ public class PerformBoardDto implements CommonDto {
 	private String zipcode;
 	private String address;
 	private String subject;
+	
 
 	private String content;
 	private Date register_date;
@@ -28,6 +29,16 @@ public class PerformBoardDto implements CommonDto {
 	private int seq_level;			//시퀀스레벨 	
 	private int seq_num;			//시퀀스 번호 	
 	private int group_num;			//그룹번호		
+	private Date d_day;
+	
+	
+	public Date getD_day() {
+		return d_day;
+	}
+
+	public void setD_day(Date d_day) {
+		this.d_day = d_day;
+	}
 
 	public int getSeq_level() {
 		return seq_level;
@@ -133,6 +144,9 @@ public class PerformBoardDto implements CommonDto {
 		this.artist_id = artist_id;
 	}
 
+	
+
 
 	
 }
+

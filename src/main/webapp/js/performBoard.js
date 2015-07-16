@@ -2,6 +2,7 @@
  * 
  */
 var root=null;
+
 function enterPerformBoard(requestRoot,pageNumber){
 	root=requestRoot;
 	//alert("OK");
@@ -129,6 +130,7 @@ function performBoardRead(board_num,pageNumber){
 			var realData=data.split("<body>");
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
+			
 			$("#centerContents").html(realData)
 		},
 		error:function(xhr,status,error){

@@ -7,11 +7,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <title>Insert title here</title>
 <script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
 <script src="${root }/js/replyWrite.js" type="text/javascript" ></script>
 <script src="${root }/js/replyDelete.js" type="text/javascript" ></script>
 <script src="${root }/js/replyUpdate.js" type="text/javascript" ></script>
+<style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+</style>
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true">
+    </script>
 <script type="text/javascript">
 	function delFun(root, board_num, pageNumber,artist_id){
 		var dd =confirm("정말 삭제하시겠습니까?");
@@ -24,12 +33,53 @@
 		//alert(a+b+c);
 	}
 	
+	
 </script>
+	
 </head>
 
 <body>
-	<c:set var="root" value="${pageContext.request.contextPath }" />
-	
+<script>
+
+	$(function(){
+		$( "#datepicker" ).datepicker({
+    		defaultDate: $("#date").val()
+    	});
+		
+		function initialize() {
+			geocoder = new google.maps.Geocoder();
+			var mapOptions = {
+		    	center: new google.maps.LatLng(36.5240220, 126.9265940),
+				zoom: 15,    
+		    };
+		  
+		  	var address = document.getElementById('address').value;
+		  	geocoder.geocode( { 'address': address}, function(results, status) {
+		    
+				if (status == google.maps.GeocoderStatus.OK) {
+					map.setCenter(results[0].geometry.location);
+			    	var marker = new google.maps.Marker({
+			        	map: map,
+			       	 	position: results[0].geometry.location
+			     	});
+			    } else {
+			    	alert('Geocode was not successful for the following reason: ' + status);
+			    }
+			});
+		  
+			 	 var map = new google.maps.Map(document.getElementById("map_canvas"),
+			    	 		mapOptions);
+		}
+      
+		
+		//google.maps.event.addDomListener(window, 'load', initialize);
+		initialize();
+	});
+</script>
+
+
+	<input type="hidden" id="address" value="${marketBoard.zipcode} ${marketBoard.address}"/>
+	<input type="hidden" id="date" value="${marketBoard.d_day}" name="d_day"/>
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
 	<table border="1" width="510" cellpadding="2" cellspacing="0"align="center">
 		<tr>
@@ -56,23 +106,20 @@
 			<td valign="top" height="200" colspan="3">${marketBoard.content }</td>
 		</tr>
 		
-		<c:if test="${marketBoard.file_name !=null }">
+		
 			<tr>
 				<td align="center" height="20" width="125">파일명</td>
 				<td colspan="3">
 				
 				
 				<!-- 다중파일 read 처리 -->
-				<c:forTokens var="file_name" items="${marketBoard.file_name}" delims="<>" varStatus="s" >
-					<c:forTokens var="file_path" items="${marketBoard.file_path}" delims="<>" begin="${s.index}" end="${s.index }"> <!--파일 네임과 동일한 s번째순번의 path를 사용한다-->
-						<a href="${root}/CommonIO/download.do?board_num=${marketBoard.board_num}&file_name=${file_name}&file_path=${file_path}">${file_name}, ${s.index}
-						</a><br/>
-					</c:forTokens>
-				</c:forTokens>
-				 
+				
+    	
+   		 		 <div style="width:300px; float:left;" id="datepicker"></div>
+				 <div id="map_canvas" style="width:300px; height:300px; float:left;"></div>
 				</td>
 			</tr>
-		</c:if>
+		
 
 		<tr>
 			<td height="30" colspan="4" align="center"><input type="button"
@@ -86,6 +133,8 @@
 			</td>
 		</tr>
 	</table>
+	
+	
 	<!-- ---------------한줄댓글 ----------------------------------------------->
 
 	${marketBoard.board_num }
@@ -118,6 +167,6 @@
 			</span>
 		</div>
 	</c:forEach>
-		
+
 </body>
 </html>
