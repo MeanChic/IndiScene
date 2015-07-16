@@ -12,6 +12,14 @@
 <script src="${root }/js/replyWrite.js" type="text/javascript" ></script>
 <script src="${root }/js/replyDelete.js" type="text/javascript" ></script>
 <script src="${root }/js/replyUpdate.js" type="text/javascript" ></script>
+<!-- Load google font -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+<link href="${root}/css/marketBoard1.css" rel="stylesheet">
+	
+<!-- Load styles -->
+<link href="${root}/css/bootstrap.css" rel="stylesheet">
+
 <script type="text/javascript">
 	function delFun(root, board_num, pageNumber,artist_id){
 		var dd =confirm("정말 삭제하시겠습니까?");
@@ -28,7 +36,7 @@
 </head>
 
 <body>
-<div id="barketBoardread">
+<div id="marketBoardread"><!-- barketBoard에서 MarketBoard로 바꿈  -->
 	<c:set var="root" value="${pageContext.request.contextPath }" />
 	
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
@@ -88,21 +96,66 @@
 		</tr>
 	</table>
 	<!-- ---------------한줄댓글 ----------------------------------------------->
-
+	
+	
 	${marketBoard.board_num }
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
-	<div>한줄 댓글이 가능합니다.</div>
 	<br/>
-	
+
 	<div>
 		<input id="writeId" type="text" name="artist_id"  size="7" />
 		<input id="writeReply" type="text" name="reply_content" size="45"/>
 		<input type="button" value="한줄답글작성" onclick="writeToServer('${root}','${marketBoard.board_num }')"/> 
 	</div>
-
-	 
 	<div></div>
+		<!--8888888888888888888888888888888888888888  -->
 	
+		<div class="replyDiv" id="${reply.reply_num }">
+			<p class="DiscussInfo">
+				<span class="cssAritist">${reply.artist_id }</span>
+				<span class="cssDate">${reply.reply_date }</span>
+				</p>
+			<p class="Content">
+				<span class="cssReply">${reply.reply_content }</span>
+			</p>
+			<p class="DiscussEdit">
+				<a href="javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')" class="btn btn-success btn-xs">수정</a>
+				<span class="jbDelimiter">/</span>
+				<a href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')" class="btn btn-danger btn-xs">삭제</a>  
+			</p>                  
+		</div>
+	
+	<!-- 777777777777777777777777 -->
+	<!-- 새로운 데이터 -->
+	<div id="newReply"></div>
+	
+	<!--  기존데이타 -->
+	
+	<c:forEach var="reply" items="${replyList }">
+		<div class="replyDiv" id="${reply.reply_num }">   <!-- div를 통해 한번에 삭제하기위함,, 자식들도 삭제되므로! -->
+			<%-- <span class="cssBunho">${reply.reply_num }</span> --%>
+			<p class="DiscussInfo">
+				<span class="cssAritist">${reply.artist_id }</span>
+				<span class="cssDate"><fmt:formatDate
+					value="${reply.reply_date }" type="date" pattern="yyyy/MM/dd HH:mm" /></span>		
+		
+			</p>
+			<p>
+				<span class="cssReply">${reply.reply_content }</span>
+				<span class="cssUpDel" class="btn btn-success btn-xs">
+					<a href="javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">Update</a>
+					<span class="Delimiter"></span>
+					<a href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">/ Edit</a>
+				</span>
+			</p>
+
+			
+		</div>
+	</c:forEach>
+
+	
+	
+	<!--888888888888888888888888888888888888888  -->
 	<!-- 새로운 데이터 -->
 	<div id="newReply"></div>
 	
@@ -114,11 +167,13 @@
 			<span class="cssReply">${reply.reply_content }</span>
 			<span class="cssDate">${reply.reply_date }</span>
 			<span class="cssUpDel">
-				<a href="javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">수정</a>
-				<a href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">삭제</a>
+				<a href="javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">Update</a>
+				<a href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">Edit</a>
 			</span>
 		</div>
 	</c:forEach>
+	</div>
+	<!-- 한줄 댓글 끝부분 -->
 </div>		
 </body>
 </html>
