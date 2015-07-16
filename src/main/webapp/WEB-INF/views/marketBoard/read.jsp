@@ -98,34 +98,20 @@
 	<!-- ---------------한줄댓글 ----------------------------------------------->
 	
 	
-	${marketBoard.board_num }
+	<%-- ${marketBoard.board_num } --%>
+	
+	<br/><br/>
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	<br/>
-
+	<h3 style="color:gray;">댓글달기 </h3>
+	<hr>
 	<div>
-		<input id="writeId" type="text" name="artist_id"  size="7" />
-		<input id="writeReply" type="text" name="reply_content" size="45"/>
+		<input id="writeId" type="text" name="artist_id"  size="12" />&nbsp;
+		<input id="writeReply" type="text" name="reply_content" size="90"/>&nbsp;
 		<input type="button" value="한줄답글작성" onclick="writeToServer('${root}','${marketBoard.board_num }')"/> 
 	</div>
 	<div></div>
-		<!--8888888888888888888888888888888888888888  -->
-	
-		<div class="replyDiv" id="${reply.reply_num }">
-			<p class="DiscussInfo">
-				<span class="cssAritist">${reply.artist_id }</span>
-				<span class="cssDate">${reply.reply_date }</span>
-				</p>
-			<p class="Content">
-				<span class="cssReply">${reply.reply_content }</span>
-			</p>
-			<p class="DiscussEdit">
-				<a href="javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')" class="btn btn-success btn-xs">수정</a>
-				<span class="jbDelimiter">/</span>
-				<a href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')" class="btn btn-danger btn-xs">삭제</a>  
-			</p>                  
-		</div>
-	
-	<!-- 777777777777777777777777 -->
+
 	<!-- 새로운 데이터 -->
 	<div id="newReply"></div>
 	
@@ -134,33 +120,33 @@
 	<c:forEach var="reply" items="${replyList }">
 		<div class="replyDiv" id="${reply.reply_num }">   <!-- div를 통해 한번에 삭제하기위함,, 자식들도 삭제되므로! -->
 			<%-- <span class="cssBunho">${reply.reply_num }</span> --%>
-			<p class="DiscussInfo">
-				<span class="cssAritist">${reply.artist_id }</span>
+			<p class="DiscussInfo"><!--  아이디/날짜   -->
+				<span class="cssAritist">${reply.artist_id }</span>&nbsp;&nbsp;&nbsp;&nbsp;
 				<span class="cssDate"><fmt:formatDate
 					value="${reply.reply_date }" type="date" pattern="yyyy/MM/dd HH:mm" /></span>		
-		
 			</p>
-			<p>
+			<p >
 				<span class="cssReply">${reply.reply_content }</span>
-				<span class="cssUpDel" class="btn btn-success btn-xs">
-					<a href="javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">Update</a>
-					<span class="Delimiter"></span>
-					<a href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">/ Edit</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="cssUpDel">
+					<a href="javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')" style="color:#36b823;">Edit</a>
+					<span class="Delimiter">/</span>
+					<a href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')" style="color:#D43F3A;">Delete</a>
 				</span>
 			</p>
+			<hr>
 
 			
 		</div>
 	</c:forEach>
 
 	
-	
-	<!--888888888888888888888888888888888888888  -->
+
+<%-- 
 	<!-- 새로운 데이터 -->
 	<div id="newReply"></div>
-	
 	<!--  기존데이타 -->
-	<c:forEach var="reply" items="${replyList }">
+ 	<c:forEach var="reply" items="${replyList }">
 		<div class="replyDiv" id="${reply.reply_num }">   <!-- div를 통해 한번에 삭제하기위함,, 자식들도 삭제되므로! -->
 			<span class="cssBunho">${reply.reply_num }</span>
 			<span class="cssAritist">${reply.artist_id }</span>
@@ -172,8 +158,8 @@
 			</span>
 		</div>
 	</c:forEach>
-	</div>
-	<!-- 한줄 댓글 끝부분 -->
+	</div> --%>
+<!-- 한줄 댓글 끝부분 -->
 </div>		
 </body>
 </html>
