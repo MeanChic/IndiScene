@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+${root}, ${pageNumber}
 	<div id="noticeWriteOk">
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	<c:if test="${check>0 }">

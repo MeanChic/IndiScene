@@ -25,7 +25,7 @@
 
 	function writeOk(root,pageNumber){
 		var dataSet = new FormData(document.getElementById("NoticeWriteForm"));
-		alert("pageNumber:"+pageNumber)
+		//alert("pageNumber:"+pageNumber)
  		//alert(CKEDITOR.instances.content.getData());
 		dataSet.append("content",CKEDITOR.instances.content.getData());
 		//$("#content").val(CKEDITOR.instances.content.getData());

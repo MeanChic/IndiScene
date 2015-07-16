@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.freeboard.dao.FreeBoardDao;
 import com.indiScene.freeboard.dto.FreeBoardDto;
+import com.indiScene.reply.dao.ReplyDao;
+import com.indiScene.reply.dto.ReplyDto;
 
 @Component
 public class FreeBoardServiceImpl implements FreeBoardService {
@@ -21,6 +23,9 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
 	@Autowired
 	private FreeBoardDao freeBoardDao;
+	
+	@Autowired
+	private ReplyDao replyDao;
 	
 	@Override
 	public void freeBoardWrite(ModelAndView mav) {
@@ -166,10 +171,13 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
 
 		FreeBoardDto freeBoardDto= freeBoardDao.freeBoardRead(board_num);
+		List<ReplyDto> replyList=replyDao.replyList(board_num);
+		
 		logger.info("freeBoardRead freeBoardDto: "+freeBoardDto);
 		logger.info("ssfsdfsdfsdf:"+freeBoardDto.getContent());
-		mav.addObject("freeBoard",freeBoardDto);
 		
+		mav.addObject("freeBoard",freeBoardDto);
+		mav.addObject("replyList",replyList);
 		mav.addObject("pageNumber",pageNumber);
 		mav.setViewName("freeBoard/read");
 		

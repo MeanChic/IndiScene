@@ -28,7 +28,7 @@
 
 	function writeOk(root,pageNumber){
 		var dataSet = new FormData(document.getElementById("FreeBoardWriteForm"));
- 		alert(CKEDITOR.instances.content.getData());
+ 		//alert(CKEDITOR.instances.content.getData());
  		//$("#contentFreeBoard").val(CKEDITOR.instances.content.getData());
 		dataSet.append("content",CKEDITOR.instances.content.getData());  //content에서  contentFreeBoard로 바꿈
 		

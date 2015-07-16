@@ -55,8 +55,8 @@ function writeReplyProcess(responseText){
 	spanReply.innerHTML=reply_content;
 	
 	var spanDate=document.createElement("span");
-	spanReply.className="cssDate";
-	spanReply.innerHTML=reply_date;
+	spanDate.className="cssDate";
+	spanDate.innerHTML=reply_date;
 	
 	var spanUpDel=document.createElement("span");
 	spanUpDel.className="cssUpDel";
@@ -82,6 +82,8 @@ function writeReplyProcess(responseText){
 	newReply.insertBefore(div, newReply.firstChild);
 	
 }
+
+
 
 
 /**
@@ -112,7 +114,7 @@ function upSelectProcess(responseText){
 	var reply_num=result[0].trim();
 	var reply_content=result[1].trim();
 	var reply_numDiv=document.getElementById(reply_num);//새로만들어진것 말고 원래있었던것
-	alert(reply_num + "," + reply_content + "," + reply_numDiv);
+	//alert(reply_num + "," + reply_content + "," + reply_numDiv);
 	
 	
 	var div=document.createElement("div");
@@ -143,7 +145,7 @@ function upSelectProcess(responseText){
 }
 
 function updateToServer(reply_num, reply_content){//수정한 내용을 update하기 위해 보낸다
-	alert(reply_num + "," + reply_content+ "," + board_num);
+	//alert(reply_num + "," + reply_content+ "," + board_num);
 	var url=root+"/replyUpdate.do";
 	var params="reply_num="+reply_num+"&reply_content="+reply_content+"&board_num="+board_num;
 	
@@ -164,7 +166,7 @@ function updateProcess(responseText){
 	
 	var reply_numDiv=document.getElementById(reply_num);
 	//var updateDiv=document.getElementById("upBunho"+reply_num);
-	alert("돌아온것"+reply_num + "," + reply_content + "," + reply_numDiv);
+	//alert("돌아온것"+reply_num + "," + reply_content + "," + reply_numDiv);
 	
 	if(reply_numDiv!=null){
 		var span=reply_numDiv.getElementsByTagName("span");
@@ -187,7 +189,7 @@ function updateProcess(responseText){
 
 function deleteToServer(board,reply_num,root){
 	var board_num=board;
-	alert(reply_num + "," + root+","+board_num);
+	//alert(reply_num + "," + root+","+board_num);
 	var url=root+"/replyDelete.do";
 	
 	var params="reply_num="+reply_num+"&board_num="+board_num;
@@ -206,9 +208,9 @@ function deleteProcess(responseText){
 	var result=responseText.split(",");
 	var reply_num=result[0].trim();
 	var board_num=result[1]; 
-	alert(reply_num + ";;dataprocess;;"+board_num);
+	//alert(reply_num + ";;dataprocess;;"+board_num);
 	var divReply_num=document.getElementById(reply_num);
-	alert(divReply_num);
+	//alert(divReply_num);
 	if(divReply_num!=null){
 		//기존데이터
 		$(divReply_num).remove(); //일반 자바 스크립트가 안되서 제이쿼리로 삭제함

@@ -18,14 +18,16 @@
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("수정이 완료되었습니다.");
-			location.href="${root}/notice/list.do?pageNumber=${pageNumber}";
+			list('${root}','${pageNumber}');
+			//location.href="${root}/notice/list.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
 			alert("수정이 실패되었습니다.");
-			location.href="${root}/notice/list.do?pageNumber=${pageNumber}";
+			list('${root}','${pageNumber}');
+			//location.href="${root}/notice/list.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>
 	</div>
