@@ -12,6 +12,7 @@
 </head>
 <body>	
 	<div id="freeBoardList">
+		<a href="javascript:write('${root }')">자유게시판 글쓰기</a>
 		<c:if test="${count==0 }">
 					<td align="center">게시판에 저장된 글이 없습니다.</td>
 		</c:if>

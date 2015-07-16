@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+
+p {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+.btn-xs, .btn-group-xs>.btn {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  /* -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; */
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+.cssDate ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+div {
+  display: block;
+}
+
+.cssAritist { /* 아이디 폰트  */
+  font-size: 1.2em;
+  font-family:'Nanum Gothic';
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+p.DiscussInfo {
+  color: #777777;
+}
+span.Delimiter {
+  margin: 0px 5px;
+}
