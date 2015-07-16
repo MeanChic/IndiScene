@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 #marketBoardEnterBoard{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EAEAEA; border-radius:20px; }
+#boardlistSize{ padding-right:10px; padding-left:10px; }
 .marketBoardX-location01{ text-align:center; }
 .marketBoardX-location02{ text-align:right; }
 .marketBoardX-location03{ text-align:left; }

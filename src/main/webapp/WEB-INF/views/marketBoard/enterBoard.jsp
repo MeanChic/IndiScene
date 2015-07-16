@@ -22,7 +22,7 @@
 			<c:set var="market" value="${requestScope.list[s.index]}" /> 			<!-- 넘어오는 리스트 갯수만큼 돌린다 리스트 S번째 List 객체화 한다. -->
 			<c:set var="image" value="${requestScope.mainImageList[s.index]}" /> 	<!-- list 갯수와 동일하게 mav에 넣어져서 오는 s번째 mainImage 객체화한다  -->
 		<!-- List start -->
-		<div class="col-sm-6 col-md-4 marketBoardheight01">
+		<div id="boardlistSize" class="col-sm-6 col-md-4 marketBoardheight01">
 			<div class="thumbnail">
 				<div class="disp">
 					<a href="javascript:marketBoardRead('${market.board_num}','${pageNumber}')">
