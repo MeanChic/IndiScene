@@ -9,9 +9,9 @@
 </head>
 <body>
 <div id="marketBoardDelete">
-${board_num} ${pageNumber} ${artist_id }
+
 <c:set var="root" value="${pageContext.request.contextPath }"/>
-	<form method="post" id="marketBoardDeleteForm()" action="javascript:marketBoardDeleteOk()">
+	<form method="post" id="marketBoardDeleteForm" action="javascript:marketBoardDeleteOk()">
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<input type="hidden" name="artist_id" value="${artist_id }"/>
