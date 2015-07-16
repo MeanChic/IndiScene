@@ -73,8 +73,6 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 		int endRow=currentPage*boardSize;
 		logger.info("startRow:" + startRow + ",endRow" + endRow);
 		
-		
-		
 		List<MarketBoardDto> marketList=null;
 		List<String> mainImageList=null;
 //		HashMap<String,MarketBoardDto> hMap=null;
@@ -86,7 +84,6 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 			
 			mainImageList=commonIOService.mainImageFind(marketList); //첫번째 이미지를 뽑아오는 메소드
 			//hMap=new HashMap<String,MarketBoardDto>();
-			
 		}
 		
 		mav.addObject("list", marketList);
