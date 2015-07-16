@@ -8,7 +8,7 @@
 .marketBoardY-location01{ vertical-align:top; }
 
 .marketBoardAttribute01{ display:inline-block; }
-.marketBoardAttribute02{ display:; }
+.marketBoardAttribute02{ display:block; }
 .marketBoardAttribute03{ display:table-column; }
 
 .marketBoardSize18{ width:18%; }
@@ -24,7 +24,13 @@
 .marketBoardheight02{ height:450px; }
 .marketBoardheight03{ height:550px; }
 
-.marketBoardTextareaSize200{ width:100%; min-height:200px; padding:10px; }
+.marketBoardTextareaSize200{
+	border:solid 1px #cccccc;
+	border-radius: 4px;
+	width:100%; 
+	min-height:200px; 
+	padding:10px;
+}
 
 .marketBoardInterval005{ margin-top:5px; margin-bottom:5px; }
 .marketBoardInterval01{ margin-top:10px; margin-bottom:10px; }

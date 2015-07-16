@@ -17,7 +17,6 @@
 	<link href="${root}/css/colorbox.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
-	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard1.css"/>
 	
 	<!-- Load javascrips libraries-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

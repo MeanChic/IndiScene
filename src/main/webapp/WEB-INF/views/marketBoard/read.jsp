@@ -59,7 +59,15 @@
 	<div class="form-controlMarket" >
 		<label class="marketBoardSize18 label-color marketBoardY-location01" >Contents</label>
 		<div class="marketBoardSize75a marketBoardAttribute01">
-			<textarea class="marketBoardTextareaSize200" name="content">${marketBoard.content}</textarea>		
+			<script type="text/javascript">
+				$(function(){
+					$("#marketReadContents img").attr("style","");
+					$("#marketReadContents img").addClass("marketBoardSize03");
+				})				
+			</script>
+			<div id="marketReadContents" class="marketBoardTextareaSize200 marketBoardAttribute02">
+				${marketBoard.content}
+			</div>		
 		</div>
 		
 		<c:if test="${marketBoard.file_name !=null }">
