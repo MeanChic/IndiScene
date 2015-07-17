@@ -83,9 +83,6 @@ function writeReplyProcess(responseText){
 	
 }
 
-
-
-
 /**
  * replyUpdate Start
  */

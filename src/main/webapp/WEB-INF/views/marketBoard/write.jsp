@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>거래 게시판 글쓰기 </title>
+<title>Market board write</title>
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <script src="${root }/resources/ckfinder/ckfinder.js"></script>
 <script src="${root }/js/jquery.js" type="text/javascript" ></script>
@@ -20,7 +20,7 @@
 	<form id="marketBoardWriteForm" method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<input type="hidden" id="folderName" name="folderName" />
 		<div class="marketBoardX-location02">
-			<a class="marketBoardAttribute01 btn btn-default" href="${root}/marketBoard/enterBoard.do">글목록</a>
+			<a class="marketBoardAttribute01 btn btn-default" href="${root}/marketBoard/enterBoard.do">List</a>
 		</div>
 		<div class="form-controlMarket">
 			<label class="subject label-color">Writer</label>
@@ -35,7 +35,7 @@
 			</div>
 		</div>	
 		<div class="form-controlMarket" >
-			<label class="title label-color marketBoardY-location01">Contents</label>
+			<label class="label-color marketBoardY-location01">Contents</label>
 			<div class="form-inlineblock marketBoardSize80">
 				<textarea name="content"></textarea>		
 				<script >
@@ -54,7 +54,7 @@
 			</div>
 		</div>	
 		<div class="form-controlMarket">
-			<label class="subject label-color">파일</label>
+			<label class="label-color marketBoardY-location01">File</label>
 			<div class="form-inlineblock">
 				<input class="form-controller320" type="file" name="file[]" multiple>
 			</div>

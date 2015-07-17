@@ -1,17 +1,21 @@
 @CHARSET "UTF-8";
-#marketBoardEnterBoard, #marketBoardWrite{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
+#marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate, #marketBoardread{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
 #boardlistSize{ padding-right:10px; padding-left:10px; }
 .marketBoardX-location01{ text-align:center; }
 .marketBoardX-location02{ text-align:right; }
 .marketBoardX-location03{ text-align:left; }
 
 .marketBoardY-location01{ vertical-align:top; }
-.marketBoardY-location02{ position:fixed; bottom:0; }
 
 .marketBoardAttribute01{ display:inline-block; }
+.marketBoardAttribute02{ display:block; }
+.marketBoardAttribute03{ display:table-column; }
 
+.marketBoardSize18{ width:18%; }
+.marketBoardSize30{ width:30%; }
 .marketBoardSize01{ width:33%; }
 .marketBoardSize02{ width:50%; }
+.marketBoardSize75a{ width:75.3%; }
 .marketBoardSize80{ width:80%; }
 .marketBoardSize03{ width:100%; }
 
@@ -19,6 +23,14 @@
 .marketBoardheight01{ height:350px; }
 .marketBoardheight02{ height:450px; }
 .marketBoardheight03{ height:550px; }
+
+.marketBoardTextareaSize200{
+	border:solid 1px #cccccc;
+	border-radius: 4px;
+	width:100%; 
+	min-height:200px; 
+	padding:10px;
+}
 
 .marketBoardInterval005{ margin-top:5px; margin-bottom:5px; }
 .marketBoardInterval01{ margin-top:10px; margin-bottom:10px; }
@@ -32,3 +44,4 @@
 .form-controlMarket .form-inlineblock { display:inline-block; }
 .form-controlMarket .form-inlineblockButton { display:inline-block; background-color:#324053; color:#ffffff; }
 .form-controlMarket .label-color{ color:#151515; }
+
