@@ -63,7 +63,7 @@ $(function(){
 			<h4>Best Muse</h4>
 			<c:forEach var="best" items="${bestMuse}">
 				<div class="${best.MUSE_NAME} form-controlBoard">
-					<img class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" src="${best.MUSE_FILEPATH }" style="width:40px; height:40px"/>
+					<img class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" src="${root }${best.MUSE_FILEPATH }" style="width:40px; height:40px"/>
 					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${best.ARTIST_ID}</label>
 					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${best.MUSE_NAME}</label>
 					<label class="boardlabelBlock marketBoardSize02 label-color marketBoardAttribute01">${best.MUSE_COMMENT}</label>
@@ -85,7 +85,7 @@ $(function(){
 			<h4>My Muse</h4>
 			<c:forEach var="my" items="${myMuse}">
 				<div class="${my.MUSE_NAME} form-controlBoard">
-					<img class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" src="${my.MUSE_FILEPATH }" style="width:40px; height:40px"/>
+					<img class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" src="${root }${my.MUSE_FILEPATH }" style="width:40px; height:40px"/>
 					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${my.MUSE_NAME}</label>
 					<label class="boardlabelBlock marketBoardSize60 label-color marketBoardAttribute01">${my.MUSE_COMMENT}</label>
 					<c:if test="${my.MUSE_YN == 'n'}">
@@ -103,7 +103,7 @@ $(function(){
 		<h4>All Muse</h4>
 		<c:forEach var="all" items="${allMuse}">
 			<div class="${all.muse_name} marketBoardAttribute02">
-				<img class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" src="${all.muse_filepath }" style="width:40px; height:40px"/>
+				<img class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" src="${root }${all.muse_filepath }" style="width:40px; height:40px"/>
 				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${all.muse_name}</label>
 				<label class="boardlabelBlock marketBoardSize02 label-color marketBoardAttribute01">${all.muse_comment}</label>
 				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01"><fmt:formatDate value="${all.muse_date}" type="date"/></label> 

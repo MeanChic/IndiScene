@@ -98,7 +98,7 @@ function signup(artist_id, muse_name){
 
 function indimuse(artist_id){
 	//backpageStart();
-	alert(this.toString());
+	//alert(this.toString());
 	if(artist_id != null){
 			var sendData = "artist_id=" + artist_id;
 			$.ajax({
@@ -185,8 +185,8 @@ function guestboardmuse(muse_name){
 	})
 }
 
-function deleteMuse(muse_name){
-	var sendData = "muse_name=" + muse_name;
+function deleteMuse(muse_name, artist_id){
+	var sendData = "muse_name=" + muse_name + "&artist_id=" + artist_id;
 	$.ajax({
 		url:rooti+"/museGuest/deleteMuse.do",
 		data:sendData,
@@ -209,6 +209,34 @@ function perform(){
 		dataType:"html",
 		success:function(data){
 			$("#centerContents").html(data);
+		}
+	})
+}
+
+function createMuse(){
+	var dataSet = new FormData(document.getElementById("marketBoardWriteForm"));
+	/*alert($("#file").val());
+	if($("#file").val() == ""){
+		$("#file").val(" ");
+	}*/
+	
+	$.ajax({
+		url:root + "/museCreate/logup.do",
+		type:"post",
+		dataType:"html",
+		data:dataSet,
+		contentType:false,
+		processData:false,
+		success:function(data){
+			//alert(data);
+			var realData=data.split("<body>");
+			realData=realData[1].split("</body>")[0];
+			//alert(realData);
+			$("#centerContents").html(realData)
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error); 
+			//alert("OK");
 		}
 	})
 }

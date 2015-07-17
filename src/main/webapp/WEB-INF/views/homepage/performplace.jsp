@@ -21,7 +21,7 @@
 
 			<div class="form_style" style="height:130px;">
 				<div class="disp" style="border-width:1px;">
-					<a href="javascript:performBoardRead('${market.board_num}','${pageNumber}')"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/></a>
+					<a href="javascript:performBoardRead('${market.board_num}','1')"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/></a>
 					<fmt:formatDate value="${market.register_date }" type="date"/> &nbsp;&nbsp;
 				</div>
 				<div class="disp-content">
@@ -39,7 +39,7 @@
 
 			<div class="form_style" style="height:130px;">
 				<div class="disp" style="border-width:1px;">
-					<a href="javascript:performBoardRead('${market.board_num}','${pageNumber}')"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/></a>
+					<a href="javascript:performBoardRead('${market.board_num}','1')"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/></a>
 					<fmt:formatDate value="${market.register_date }" type="date"/> &nbsp;&nbsp;
 				</div>
 				<div class="disp-content">

@@ -55,7 +55,7 @@ public class MuseController {
 		mav.addObject("museDto", museDto);
 		service.logup(mav);
 		
-		return mav;
+		return null;
 	}
 	
 	/**

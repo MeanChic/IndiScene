@@ -24,7 +24,7 @@
 	    changeMonth: true,
 	    changeYear: true
 	    });
-		alert($("input[name='fulladd']").val());
+		//alert($("input[name='fulladd']").val());
 		$("input[name = 'zipcode1']").val($("input[name='fulladd']").val().split("*")[0]);
 		$("input[name = 'address']").val($("input[name='fulladd']").val().split("*")[1]); 
 	});

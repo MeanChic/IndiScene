@@ -60,8 +60,8 @@
 		lat = address.split("(")[1].split(",")[0];
 		lng = address.split("(")[1].split(",")[1].split(")")[0];
 		
-		alert(lat);
-		alert(lng);
+		//alert(lat);
+		//alert(lng);
 		/* geocoder.addr2coord(address, function(status, result) { */
 
 	    // 정상적으로 검색이 완료됐으면 

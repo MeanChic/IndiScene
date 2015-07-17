@@ -24,7 +24,7 @@
 		<c:if test="${master.ARTIST_ID == artist_id}">
 			<div id="${master.ARTIST_ID}" >
 				${master.ARTIST_ID} , ${master.MUSE_YN}, ${master.MUSE_NAME}
-				<input type="button" value="뮤즈 삭제하기" onclick="deleteMuse('${muse_name}')">
+				<input type="button" value="뮤즈 삭제하기" onclick="deleteMuse('${muse_name}','${artist_id})">
 			</div>
 			==============================================================
 		</c:if>

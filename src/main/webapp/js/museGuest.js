@@ -9,7 +9,7 @@ $(function(){
 });
 	
 function guestSend(){
-	alert("OK");
+	//alert("OK");
 	//form=$("form");
 	var artist_id = $("form input[name = 'artist_id']").val();
 	var muse_name = $("form input[name = 'muse_name']").val();

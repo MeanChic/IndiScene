@@ -14,7 +14,14 @@
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 </head>
 <body>
-
+<script type="text/javascript">
+	$(function(){
+		
+		//alert($("input[name='fulladd']").val());
+		$("input[name = 'zipcode1']").val($("input[name='fulladd']").val().split("*")[0]);
+		$("input[name = 'address']").val($("input[name='fulladd']").val().split("*")[1]); 
+	});
+	</script>
 	<form id="marketBoardUpdateForm" action="javascript:placeBoardUpdateOk()" method="post"> <!-- onsubmit="return checkForm(this)" -->
 		<input type="hidden" name="board_num" value="${board.board_num }"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber }"/>
@@ -47,7 +54,7 @@
 				//var id=document.getElementById(folderName);
 				//id.value=folderName[0]; //멀티파일폴더 만들때
 				$("#folderName").val(folderName[0]);
-				alert(folderName[0])
+				//alert(folderName[0])
 				 CKEDITOR.replace( 'content',
 						 {///IndiScene_basic/src/main/webapp/resources/ckfinder
 						 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
@@ -57,8 +64,12 @@
 		</div>	
 		
 		<div class="line">
-			<label class="subject">파일</label>
-				<span class="content">${board.file_name }<input class="multi" type="file" name="file[]" multiple></span>
+			<input type="hidden" name="fulladd" value="${board.address}"/>
+				
+			<input type="hidden" name="zipcode" value="${board.zipcode }">
+			주소<input type="text" name="zipcode1" value="" /> <input type="button"  value="우편번호" onclick="javascript:performZipcodeCheck('${root}')"><br/></br>
+			<input type="text" name="address" value=""/><br/><br/>
+			<input type="button"  value="지도로 검색" onclick="javascript:performMap()"/>	
 		</div>	
 		
 		
