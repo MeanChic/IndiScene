@@ -11,6 +11,9 @@
 <link type="text/css" href="${root}/css/jquery-ui.css" rel="stylesheet"/>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
+
+</head>
+<body>
 <script type="text/javascript">
 	$(function(){
 		var root = $("#root").val();
@@ -68,8 +71,6 @@
 	});	
 	
 </script>
-</head>
-<body>
 <input type="hidden" id="root" value="${root}"/>
 <input type="hidden" id="artist_id" value="${artist_id}"/>
 

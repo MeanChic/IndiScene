@@ -56,15 +56,15 @@ insert into artist(ARTIST_ID,ARTIST_PASSWORD,ARTIST_NAME,ARTIST_NICKNAME,ARTIST_
  
 
  
- insert into MUSE_SIGNUP values('A','n','a');
+ insert into MUSE_SIGNUP values('A','n','comeonmuse');
  
- insert into MUSE_SIGNUP values('B','n','a');
+ insert into MUSE_SIGNUP values('B','n','comeonmuse');
  
- insert into MUSE_SIGNUP values('C','n','a');
+ insert into MUSE_SIGNUP values('C','n','comeonmuse');
  
- insert into MUSE_SIGNUP values('D','n','a');
+ insert into MUSE_SIGNUP values('D','n','comeonmuse');
  
- insert into MUSE_SIGNUP values('E','n','bb');
+ insert into MUSE_SIGNUP values('E','n','comeonmuse');
  
  select artist_id,artist_password from artist;
  

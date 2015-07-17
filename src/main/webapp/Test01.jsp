@@ -36,6 +36,11 @@
 	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
 	<script type="text/javascript" src="${root}/js/notice.js"></script>
 	<script type="text/javascript" src="${root}/js/freeBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/performBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/muse.js"></script>
+	<script type="text/javascript" src="${root}/js/museGuest.js"></script>
+	<script type="text/javascript" src="${root}/js/placeBoard.js"></script>
+	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=35bf5934991976c7b6f95f227c76624f&libraries=services"></script>
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>
@@ -49,13 +54,13 @@
 			<li class="brandNewMusic"><a href="#brandNewMusic">Brand New Music</a></li>
 			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
 			<li class="indisMusic"><a href="#indisMusic">Indi's Music</a></li>
-			<li class="performanceInfo"><a href="#performanceInfo">Performance Info</a></li>
+			<li class="performanceInfo"><a href="javascript:performPlace('${root}')">Performance Info</a></li>
 			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root }')">Market Place</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
 			<li class="myMusic"><a href="#myMusic">My Music</a></li>
-			<li class="indisMuse"><a href="#indisMuse">Indi's Muse</a></li>
+			<li class="indisMuse"><a href="javascript:indimuse('${artist_id}')">Indi's Muse</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">

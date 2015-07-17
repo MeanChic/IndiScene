@@ -25,11 +25,13 @@
 	<script src="${root}/js/jquery.colorbox.js"></script>
 	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
-	<script type="text/javascript" src="${root}/js/muse.js"></script>
+	
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="${root}/js/performBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/muse.js"></script>
 	<script type="text/javascript" src="${root}/js/placeBoard.js"></script>
 	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/museGuest.js"></script>
 <script type="text/javascript" src="${root}/js/freeBoard.js"></script>
 	<script type="text/javascript" src="${root}/js/notice.js"></script>
 	<script src="${root }/resources/ckEditor/ckeditor.js"></script>

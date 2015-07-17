@@ -258,7 +258,7 @@ public class MuseServiceImpl implements MuseService {
 		List<HashMap<String, Object>> joinMember = museDao.joinMember(muse_name);
 		List<HashMap<String, Object>> nonMember = museDao.nonMember(muse_name);
 		
-		//logger.info("--" + joinMember.size() + " , " + nonMember.size());
+		logger.info("--" + joinMember.size() + " , " + nonMember.size());
 		
 		mav.addObject("joinMember", joinMember);
 		mav.addObject("nonMember", nonMember);

@@ -15,6 +15,29 @@ function performZipcodeCheck(root){
 	window.open(url,"","width=500, height=500");
 }
 
+function performPlace(root){
+	//root=requestRoot;
+	//alert("OK");
+	
+	//sendData="?pageNumber="+ ((pageNumber==null || pageNumber=="") ? 1 : pageNumber);
+	$.ajax({
+		url:root +"/perform/enter.do",
+		type:"get",
+		dataType:"html",
+		success:function(data){
+			//alert(data);
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+			//alert(realData);
+			$("#centerContents").html(realData);
+			$('.main-nav').toggleClass('nav-expanded');
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	});
+}
+
 function performSendAddress(zipcode, sido, gugun, dong, ri, bldg, bunji){
 	var address=sido+" "+gugun+" "+dong+" "+ri+" "+bldg+" "+bunji;
 	//alert(zipcode+"\n"+address);

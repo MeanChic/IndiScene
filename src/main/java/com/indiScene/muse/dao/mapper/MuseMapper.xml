@@ -29,19 +29,19 @@
  						(select muse_name, 
  							count(muse_name) co 
  							from muse_signup GROUP BY muse_name) a order by a.co desc) e
- where m.muse_name = e.muse_name) where rnum < 5) x, (select * from muse_signup where artist_id=#{artist_id}) y where x.muse_name=y.muse_name(+) order by rnum asc
+ where m.muse_name = e.muse_name) where rnum < 6) x, (select * from muse_signup where artist_id=#{artist_id}) y where x.muse_name=y.muse_name(+) order by rnum asc
 		]]>
 	</select>
 	
 	<select id="myMuse" parameterType="String" resultType="java.util.HashMap">
 		<![CDATA[
-			select * from (select rownum rnum, a.*, b.muse_yn from muse a, (select * from muse_signup where artist_id=#{artist_id}) b where a.muse_name = b.muse_name) where rnum < 4
+			select * from (select rownum rnum, a.*, b.muse_yn from muse a, (select * from muse_signup where artist_id=#{artist_id}) b where a.muse_name = b.muse_name) where rnum < 6
 		]]>
 	</select>
 	
 	<select id="allMuse" parameterType="String"  resultType="com.indiScene.muse.dto.MuseDto">
 		<![CDATA[
-			select b.* from (select rownum rnum, a.* from muse a where a.muse_name not in (select muse_name from muse_signup where artist_id = #{artist_id}) order by a.muse_date asc) b where b.rnum < 4
+			select b.* from (select rownum rnum, a.* from muse a where a.muse_name not in (select muse_name from muse_signup where artist_id = #{artist_id}) order by a.muse_date asc) b where b.rnum < 6
 		]]>
 	</select>
 	
