@@ -3,6 +3,12 @@
  */
 var root=null;
 
+function performMap(){
+	//alert(form+", "+root);
+	var url=root+"/performBoard/map.do";
+	window.open(url,"","width=500, height=500");
+}
+
 function performZipcodeCheck(root){
 	//alert(form+", "+root);
 	var url=root+"/performBoard/zipcode.do";
@@ -21,7 +27,7 @@ function performSendAddress(zipcode, sido, gugun, dong, ri, bldg, bunji){
 	$(opener.document).find("input[name='zipcode']").attr("value",zipcode);
 	$(opener.document).find("input[name='zipcode']").text(zipcode);*/
 	$(opener.document).find("input[name='zipcode1']").val(address);
-	$(opener.document).find("input[name='zipcode1']").attr("disabled","disabled");
+	
 	$(opener.document).find("input[name='zipcode']").val(address);
 	self.close();
 }
@@ -118,9 +124,14 @@ function performBoardWrite(){
 
 
 function performBoardWriteOk(){
+	//alert("OK");
+	$("input[name = 'address']").val($("input[name = 'zipcode1']").val() + "*" + $("input[name = 'address']").val());
+	
+	//alert($("input[name = 'address']").val());
 	var dataSet = new FormData(document.getElementById("marketBoardWriteForm"));
 	//alert(CKEDITOR.instances.content.getData());
 	dataSet.append("content",CKEDITOR.instances.content.getData());
+	
 	$.ajax({
 		url:root + "/performBoard/write.do",
 		type:"post",
@@ -137,7 +148,7 @@ function performBoardWriteOk(){
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error); 
-		
+			//alert("OK");
 		}
 	})
 }
@@ -183,6 +194,7 @@ function performBoardUpdate(board_num,pageNumber){
 
 
 function performBoardUpdateOk(){
+	$("input[name = 'address']").val($("input[name = 'zipcode1']").val() + "*" + $("input[name = 'address']").val());
 	var dataSet = new FormData(document.getElementById("marketBoardUpdateForm"));
 	//alert(CKEDITOR.instances.content.getData());
 	//alert(dataSet);

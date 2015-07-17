@@ -18,11 +18,7 @@
 </head>
 <body>
 <script type="text/javascript">
-function performMap(){
-	//alert(form+", "+root);
-	var url=root+"/performBoard/map.do";
-	window.open(url,"","width=500, height=500");
-}
+
 </script>
 	<form id="marketBoardWriteForm" class="form_style"   enctype="multipart/form-data">	
 		 <input type="hidden" id="folderName" name="folderName" />
@@ -100,7 +96,7 @@ function performMap(){
 					<input type="hidden" name="zipcode" value="">
 					
 					주소<input type="text" name="zipcode1"/> <input type="button"  value="우편번호" onclick="javascript:performZipcodeCheck('${root}')"><br/></br>
-					<input type="text" name="address"/><input type="hidden" name="address1"/><br/><br/>
+					<input type="text" name="address" value=""/><br/><br/>
 					<input type="button"  value="지도로 검색" onclick="javascript:performMap()"/>
 				</span>		                    
 		</div>	

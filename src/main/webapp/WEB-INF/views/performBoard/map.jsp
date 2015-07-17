@@ -154,7 +154,7 @@ function displayPlaces(places) {
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, title, places) {
+        (function(marker, title) {
             daum.maps.event.addListener(marker, 'mouseover', function() {
                 displayInfowindow(marker, title);
             });
@@ -164,16 +164,25 @@ function displayPlaces(places) {
             });
 			//alert(i);
             itemEl.onclick =  function () {
+            	/* showAttribute(this);
+            	showAttribute(marker);
+            	alert(marker.getPosition());
+            	alert(this.innerText);
+            	alert(this.innerText.split("\n")[2]); */
+                var location = this.innerText.split("\n")[1] + " " + this.innerText.split("\n")[0];
+                
             	
-                displayInfowindow(marker, title);
-               // alert(i);
+            	displayInfowindow(marker, title);
+             //   alert(this.length);
                /*  $(opener.document).find("input[name='artist_zipcode']").val(zipcode);
             	$(opener.document).find("input[name='artist_zipcode']").attr("value",zipcode);
             	$(opener.document).find("input[name='artist_zipcode']").text(zipcode); */
-            	$(opener.document).find("input[name='zipcode']").val(places.newAddress);
-            	$(opener.document).find("input[name='zipcode1']").val(places.newAddress);
-            	/* $(opener.document).find("input[name='address']").attr("type","hidden");
+            	$(opener.document).find("input[name='zipcode']").val(marker.getPosition());
+            	$(opener.document).find("input[name='zipcode1']").val(location);
             	$(opener.document).find("input[name='address']").val("");
+            	
+            	/* $(opener.document).find("input[name='address']").attr("type","hidden");
+            	
             	$(opener.document).find("input[name='address1']").attr("disabled","disabled");
             	$(opener.document).find("input[name='address1']").attr("type","text"); */
             	self.close();
@@ -294,6 +303,24 @@ function removeAllChildNods(el) {
         el.removeChild (el.lastChild);
     }
 }
+ 
+ function showAttribute(obj){
+	 try{
+		 var objData= '';
+		 
+		 for(var attr in obj){
+			 if(typeof(obj[attr])== 'string' || typeof(obj[attr])=='number'){
+				 objData = objData+'Attr Name : ' +attr + ', Value : ' +obj[attr] + ', Type : ' + typeof(obj[attr])+'\n';
+			 }else{
+				 objData=objData+ 'Attr Name : ' + attr+ ', Type : ' + typeof(obj[attr])+'\n';
+			 }
+		 }
+		 
+		 alert(objData);
+	 }catch(e){
+		 alert(e.message);
+	 }
+ }
 </script>
 </body>
 </html>

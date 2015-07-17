@@ -23,9 +23,15 @@
 	    buttonText: "Select date",
 	    changeMonth: true,
 	    changeYear: true
+	    });
+		alert($("input[name='fulladd']").val());
+		$("input[name = 'zipcode1']").val($("input[name='fulladd']").val().split("*")[0]);
+		$("input[name = 'address']").val($("input[name='fulladd']").val().split("*")[1]); 
 	});
-});
 	</script>
+	<script type="text/javascript">
+					
+				</script>	
 	<form id="marketBoardUpdateForm" action="javascript:performBoardUpdateOk()" method="post">
 		<input type="hidden" name="board_num" value="${board.board_num }"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber }"/>
@@ -77,9 +83,12 @@
 						</c:forEach>
 					</select>
 					시 
-			<input type="hidden" name="zipcode" value="${board.zipcode }">
-					주소<input type="text" name="zipcode1" value="${board.zipcode }" disabled="disabled"/> <input type="button"  value="우편번호" onclick="javascript:performZipcodeCheck('${root}')"><br/></br>
-					<input type="text" name="address" value="${board.address }"/><br/><br/>
+				<input type="hidden" name="fulladd" value="${board.address}"/>
+				
+				<input type="hidden" name="zipcode" value="${board.zipcode }">
+					주소<input type="text" name="zipcode1" value="" /> <input type="button"  value="우편번호" onclick="javascript:performZipcodeCheck('${root}')"><br/></br>
+					<input type="text" name="address" value=""/><br/><br/>
+					<input type="button"  value="지도로 검색" onclick="javascript:performMap()"/>
 		</div>	
 		
 		
