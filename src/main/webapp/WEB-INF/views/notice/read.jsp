@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
-<title>게시판 읽기</title>
-<!-- <script type="text/javascript">
+<!-- 
+<script type="text/javascript">
 	function replyFun(root, board_num, group_num, seq_num, seq_level, pageNumber){
 		var url=root + "/notice/write.do?board_num="+board_num;
 		url+="&group_num="+group_num +"&seq_num="+seq_num+"&seq_level="+seq_level+"&pageNumber="+pageNumber;
@@ -35,31 +35,31 @@
 	<c:set var="root" value="${pageContext.request.contextPath }" />
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"/>
 	<div class="marketBoardX-location02 marketBoardInterval03">
-		<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterMarketBoard('${root}','${pageNumber}')">List</a>
+		<a class="marketBoardAttribute01 btn btn-default" href="javascript:noticeList('${root}','${pageNumber}')">List</a>
 	</div>	
 	<div class="form-controlMarket">
-		<label class="marketBoardSize18 label-color marketBoardAttribute01">Board Number</label>
-		<div class="marketBoardSize30 marketBoardAttribute01">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Board Number</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
 			<input class="form-controller220" type="text" value="${notice.board_num}" disabled="disabled" />
 		</div>
-		<label class="marketBoardSize18 label-color marketBoardAttribute01">Views</label>
-		<div class="marketBoardSize30 marketBoardAttribute01">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Views</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
 			<input class="form-controller220" type="text" value="${notice.count}" disabled="disabled" />
 		</div>
 	</div>
 	<div class="form-controlMarket">
-		<label class="marketBoardSize18 label-color marketBoardAttribute01">Subject</label>
-		<div class="marketBoardSize30 marketBoardAttribute01">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Subject</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
 			<input class="marketBoardSize25 form-controller220" type="text" value="${notice.subject}" disabled="disabled" />
 		</div>
-		<label class="marketBoardSize18 label-color marketBoardAttribute01">Date</label>
-		<div class="marketBoardSize30 marketBoardAttribute01">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Date</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
 			<input class="form-controller220" type="text" value="<fmt:formatDate value="${notice.register_date}" type='date'/>" disabled="disabled"/>
 		</div>
 	</div>			
 	<div class="form-controlMarket" >
-		<label class="marketBoardSize18 label-color marketBoardY-location01">Contents</label>
-		<div class="marketBoardSize75a marketBoardAttribute01">
+		<label class="marketBoardSize16 label-color marketBoardY-location01">Contents</label>
+		<div class="marketBoardSize77 marketBoardAttribute01">
 			<script type="text/javascript">
 				$(function(){
 					$("#noticeRead img").attr("style","");
