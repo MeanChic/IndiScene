@@ -11,73 +11,71 @@
 	<title>게시판 목록보기</title>
 </head>
 <body>
-	
-		<a href="javascript:write('${root }')">공지사항쓰기</a>
+<div id="boardBasic">
+	<h3>Notice</h3>
+	<div class="marketBoardX-location02">
+		<a class="marketBoardAttribute01 btn btn-default" href="javascript:write('${root }')">Notice Write</a>
+	</div>
 		<br/>
 		
 		<c:if test="${count==0 }">
 					<td align="center">게시판에 저장된 글이 없습니다.</td>
 		</c:if>
 		<c:if test="${count>0 }">
-			<table border="1" width="530" cellpadding="2" cellspacing="0" align="center">
-				<tr> 
-					<td align="center" width="30">번호</td>
-					<td align="center" width="250">제목</td>
-					<td align="center" width="100">작성일</td>
-					<td align="center" width="50">조회수</td>
-				</tr>
+			<div class="form-controlMarket">
+				<label class="marketBoardSize18 label-color marketBoardAttribute01">Board Number</label>
+				<label class="marketBoardSize30 label-color marketBoardAttribute01">Subject</label>
+				<label class="marketBoardSize18 label-color marketBoardAttribute01">Date</label>
+				<label class="marketBoardSize18 label-color marketBoardAttribute01">Views</label>
+			</div>
 		<!-- Notice List -->
 		<c:forEach var="notice" items="${noticeList }">
-			<tr>
-				<td>${notice.board_num }</td>
-				<td>
+			<div class="form-controlMarket">
+				<label class="marketBoardSize18 label-color marketBoardAttribute01">${notice.board_num }</label>
+				<label class="marketBoardSize30 label-color marketBoardAttribute01">
 					<c:if test="${notice.seq_level>0 }">
 						<c:forEach begin="0" end="${freeBoard.seq_level }" step="1">
 						</c:forEach>
+						<a href="javascript:read('${root }','${notice.board_num }','${currentPage }')">${notice.subject }</a> 
 					</c:if>
-<%-- 				<a href="${root }/freeBoard/read.do?board_num=${freeBoard.board_num}&pageNumber=${currentPage }">${freeBoard.subject }</a> --%>
-	
-					<a href="javascript:read('${root }','${notice.board_num }','${currentPage }')">${notice.subject }</a> 
- 				</td> 
-				<td>
-					<fmt:formatDate value="${notice.register_date }" type="date"/>
-				</td>
-				<td>${notice.count }</td>
-
-			</tr>
+				</label>
+				<label class="marketBoardSize18 label-color marketBoardAttribute01"><fmt:formatDate value="${notice.register_date }" type="date"/></label>
+				<label class="marketBoardSize18 label-color marketBoardAttribute01">${notice.count }</label>
+			</div>
 		</c:forEach>
-		</table>
-		<br/>
-		
 		<!-- 페이지 번호 -->
-		<center>
-			<c:if test="${count>0 }">
-				<c:set var="pageBlock" value="${5}"/>
-				<c:set var="pageCount" value="${count/noticeSize+(count%noticeSize==0 ? 0:1 )}"/>
-				
-				<fmt:parseNumber var="rs" value="${(currentPage-1)/pageBlock }" integerOnly="true"/>
-				<c:set var="startPage" value="${rs*pageBlock+1 }"/>
-				<c:set var="endPage" value="${startPage+pageBlock-1 }"/>
-				
-				<c:if test="${endPage> pageCount }">
-					<c:set var="endPage" value="${pageCount }"/>
+		<nav class="marketBoardX-location01">
+			<ul class="pagination marketBoardAttribute01">
+				<c:if test="${count>0 }">
+					<%-- 한 페이지에서 이동가능한 페이지 개수 [1][2][3]...[10] --%> 
+					<c:set var="pageBlock" value="${5}"/>	
+					<%-- 총페이지 번호 --%>
+					<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0?0:1) }"/>	
+						
+					<%-- 시작 페이지 번호 --%>
+					<fmt:parseNumber var="rs" value="${((pageNumber-1)/pageBlock) }" integerOnly="true"/>	<%--((pageNumber-1)/pageBlock)의 결과값을 int로 형변환하기위해 parseNumber를 사용  --%>
+					<c:set var="startPage" value="${rs*pageBlock+1 }"/>	
+						
+					<%-- 끝 페이지 번호 --%>
+					<c:set var="endPage" value="${startPage+pageBlock-1 }"/>	
+					<c:if test="${endPage > pageCount }">
+						<c:set var="endPage" value="${pageCount }"/>
+					</c:if>
+					<%----------------------------------------------------------%>
+					<c:if test="${startPage>pageBlock }">
+						<li><a aria-label="Previous" href="javascript:list('${root}','${startPage-pageBlock }')"><span aria-hidden="true">&laquo;</span></a></li>
+					</c:if>
+					<c:forEach var="i" begin="${startPage }" end="${endPage }">
+						<li><a href="javascript:list('${root}','${i}')">${i}</a></li>
+					</c:forEach>
+					
+					<c:if test="${endPage<pageCount }">
+						<li><a aria-label="Next" href="javascript:list('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
+					</c:if>
 				</c:if>
-				
-				<c:if test="${startPage>pageBlock }">
-					<%-- <a href="${root }/notice/list.do?pageNumber=${startPage-pageBlock}">[이전]</a> --%> 
-					<a href="javascript:list('${root }','${startPage-pageBlock}')">[이전]</a>	
-				</c:if>
-				
-				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<a href="javascript:list('${root }','${i}')">[${i}]</a>
-				</c:forEach>
-				
-				<c:if test="${endPage<pageCount }">
-					<%-- <a href="${root }/notice/list.do?pageNumber=${startPage+pageBlock}">[다음]</a> --%>
-					<a href="javascript:list('${root }','${startPage+pageBlock}')">[다음]</a>				
-				</c:if>
-			</c:if>
-		</center>
+			</ul>
+		</nav>
 	</c:if>
+</div>
 </body>
 </html>

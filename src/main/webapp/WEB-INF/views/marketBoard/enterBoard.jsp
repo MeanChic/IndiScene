@@ -47,23 +47,21 @@
 	<nav class="marketBoardX-location01">
 		<ul class="pagination marketBoardAttribute01">
 			<c:if test="${count>0 }">
-			
-					<%-- 한 페이지에서 이동가능한 페이지 개수 [1][2][3]...[10] --%> 
+				<%-- 한 페이지에서 이동가능한 페이지 개수 [1][2][3]...[10] --%> 
 				<c:set var="pageBlock" value="${5}"/>	
-					
-					<%-- 총페이지 번호 --%>
+				<%-- 총페이지 번호 --%>
 				<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0?0:1) }"/>	
 					
-					<%-- 시작 페이지 번호 --%>
+				<%-- 시작 페이지 번호 --%>
 				<fmt:parseNumber var="rs" value="${((pageNumber-1)/pageBlock) }" integerOnly="true"/>	<%--((pageNumber-1)/pageBlock)의 결과값을 int로 형변환하기위해 parseNumber를 사용  --%>
 				<c:set var="startPage" value="${rs*pageBlock+1 }"/>	
 					
-					<%-- 끝 페이지 번호 --%>
+				<%-- 끝 페이지 번호 --%>
 				<c:set var="endPage" value="${startPage+pageBlock-1 }"/>	
 				<c:if test="${endPage > pageCount }">
 					<c:set var="endPage" value="${pageCount }"/>
 				</c:if>
-				<%------------------------------------------------------------------ --%>
+				<%----------------------------------------------------------%>
 				<c:if test="${startPage>pageBlock }">
 					<li><a aria-label="Previous" href="javascript:enterMarketBoard('${root}','${startPage-pageBlock }')"><span aria-hidden="true">&laquo;</span></a></li>
 				</c:if>
