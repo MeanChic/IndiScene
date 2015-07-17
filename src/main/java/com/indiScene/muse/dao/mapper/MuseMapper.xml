@@ -72,4 +72,14 @@
 	<update id="inviteMember" parameterType="java.util.HashMap">
 		<![CDATA[update muse_signup set muse_yn='y' where artist_id=#{artist_id} and muse_name=#{muse_name}]]>
 	</update>	
+	
+
+		
+	<delete id="deleteMuseMember" parameterType="String">
+		delete from muse_signup where muse_name = #{muse_name}
+	</delete>
+	
+	<delete id="deleteMuse" parameterType="String">
+		delete from muse where muse_name = #{muse_name}
+	</delete>
 </mapper>

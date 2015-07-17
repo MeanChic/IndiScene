@@ -1,6 +1,7 @@
 package com.indiScene.muse.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -339,6 +340,32 @@ public class MuseServiceImpl implements MuseService {
 		mav.addObject("list", list);
 		
 		mav.setViewName("museCreate/goin");
+	}
+	
+	public void deleteMuse(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
+		String muse_name = request.getParameter("muse_name");
+		PrintWriter out = null;
+		response.setCharacterEncoding("utf-8");
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int check = museDao.deleteMuse(muse_name);
+		if(check > 0){
+			int checkG = guestDao.deleteMuse(muse_name);
+			if(checkG > 0){
+				out.print("<script> "
+						+ "alert('뮤즈가 삭제되었습니다.');"
+						+ "indimuse('A')"
+						+ " </script> ");
+			}
+		}
 	}
 }
 

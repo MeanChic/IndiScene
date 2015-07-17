@@ -14,6 +14,8 @@ import com.indiScene.muse.dto.MuseDto;
  */
 public interface MuseDao {
 	
+	public int deleteMuse(String muse_name);
+	
 	public MuseDto nameCheck(String muse_name);
 	
 	public int logup(MuseDto museDto);

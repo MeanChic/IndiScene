@@ -223,4 +223,15 @@ public class MuseController {
 		
 		return null;
 	}
+	
+	
+	@RequestMapping(value="/museGuest/deleteMuse.do", method=RequestMethod.GET)
+	public ModelAndView deleteMuse(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		
+		service.deleteMuse(mav);
+		
+		return null;
+	}
 }

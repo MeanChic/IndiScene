@@ -185,6 +185,19 @@ function guestboardmuse(muse_name){
 	})
 }
 
+function deleteMuse(muse_name){
+	var sendData = "muse_name=" + muse_name;
+	$.ajax({
+		url:rooti+"/museGuest/deleteMuse.do",
+		data:sendData,
+		type:"GET",
+		dataType:"html",
+		success:function(data){
+			$("#centerContents").html(data);
+		}
+	})
+}
+
 function perform(){
 	//alert("OK");
 	$("#centerContents").append("<div id='perform' class='hasPaddingContents'></div>")

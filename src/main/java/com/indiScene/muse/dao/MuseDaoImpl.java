@@ -179,4 +179,11 @@ public class MuseDaoImpl implements MuseDao {
 		
 		return sqlSession.delete("dao.MuseMapper.cancle", hMap);
 	}
+	
+	public int deleteMuse(String muse_name){
+		sqlSession.delete("dao.MuseMapper.deleteMuseMember",muse_name);
+		
+		
+		return sqlSession.delete("dao.MuseMapper.deleteMuse", muse_name);
+	}
 }
