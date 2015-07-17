@@ -20,4 +20,5 @@ public interface UploadBoardService {
 	public void like(ModelAndView mav);
 	public void collabo(ModelAndView mav);
 	public void collaboAdopt(ModelAndView mav);
+	public void collaboOk(ModelAndView mav);
 }
