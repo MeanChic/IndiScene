@@ -35,15 +35,37 @@ public class PerformBoardController  {
 	@auther: 나혁진
 	@description :거래게시판 리스트를 불러오기위해 service를 호출
 	 */
+	@RequestMapping(value="/performBoard/map.do", method=RequestMethod.GET)
+	public String map(HttpServletRequest request, HttpServletResponse response){
+		logger.info("-----Controller Zipcode page----------------------");
+		return "performBoard/map";
+	}
+	
+	@RequestMapping(value="/performBoard/zipcode.do", method=RequestMethod.GET)
+	public String Zipcode(HttpServletRequest request, HttpServletResponse response){
+		logger.info("-----Controller Zipcode page----------------------");
+		return "performBoard/zipcode";
+	}
+	
+	@RequestMapping(value="/performBoard/zipcode.do", method=RequestMethod.POST)
+	public ModelAndView Zipcode(HttpServletRequest request, HttpServletResponse response, String dong){
+		logger.info("-----Controller find Zipcode----------------------");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request",request);
+		marketBoardService.findZipcode(mav);
+		
+		return mav;
+	}
+	
 	@RequestMapping(value="/performBoard/enterBoard.do", method=RequestMethod.GET)
 	public ModelAndView enterBoard(HttpServletRequest request, HttpServletResponse response){
-	logger.info("MarketBoardWrite------------------------------");
+		logger.info("MarketBoardWrite------------------------------");
 	
-	ModelAndView mav=new ModelAndView();
-	mav.addObject("request",request);
-	marketBoardService.enterBoard(mav);
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request",request);
+		marketBoardService.enterBoard(mav);
 	
-	return mav;
+		return mav;
 	}
 	
 	/**
@@ -70,7 +92,7 @@ public class PerformBoardController  {
 	 */
 	@RequestMapping(value="/performBoard/write.do", method=RequestMethod.POST)
 	public ModelAndView write(MultipartHttpServletRequest request, HttpServletResponse response, PerformBoardDto marketBoardDto){
-		logger.info("performBoarddWriteOk");
+		//logger.info("performBoarddWriteOk             -->" + request.getParameter("hour"));
 		ModelAndView mav=new ModelAndView();
 		
 		mav.addObject("request",request);

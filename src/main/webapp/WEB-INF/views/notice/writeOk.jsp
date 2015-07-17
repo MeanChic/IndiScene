@@ -6,7 +6,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
 </head>
 <body>
 ${root}, ${pageNumber}
@@ -15,16 +14,16 @@ ${root}, ${pageNumber}
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("글쓰기를 성공하였습니다.");
-			list('${root}','${pageNumber}');
+			noticeList('${root}','${pageNumber}');
 			/* 	location.href="${root}/notice/list.do?page_num=${page_num}"; */
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
-		var root = $("#root").val();
-		alert("글쓰기를 실패하였습니다.");
-		list(root);
+			var root = $("#root").val();
+			alert("글쓰기를 실패하였습니다.");
+			noticeList(root);
 /* 		location.href="${root}/notice/write.do?page_num=${page_num}";
  */		</script>
 	</c:if>

@@ -7,17 +7,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<title>Momentio - single page html template by GraphBerry.com</title>
+	<title>Indi Scene - Music & Collaboration</title>
 	<!-- Load google font -->
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
 	<!-- Load styles -->
 	<link href="${root}/css/bootstrap.css" rel="stylesheet">
 	<link href="${root}/css/style.css" rel="stylesheet">
-	<link href="${root}/css/icons.css" rel="stylesheet">
 	<link href="${root}/css/colorbox.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
-	
+	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
+
 	<!-- Load javascrips libraries-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="${root}/js/jquery.bxslider.js"></script>
@@ -25,21 +25,31 @@
 	<script src="${root}/js/jquery.colorbox.js"></script>
 	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	
 	<!-- Load javaScript for Hyuckjin-->
 	<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
 	<script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
 	<script src="${root }/js/reply.js" type="text/javascript" ></script> 
+	
+	<!-- Load javaScript for AJAX -->
 	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/notice.js"></script>
+	<script type="text/javascript" src="${root}/js/freeBoard.js"></script>
 </head>
 <body>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		window.onpopstate=function(e){
+		$("#centerContents").html(e.state.indiData);
+		}
+	});
+	</script>
 	<input type="hidden" id="root" value="${root}"/>
 	<!-- Offsite canvas navigation start -->
 	<nav class="main-nav">
 		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
-		<img class="logo" src=" " alt="logo">
+		<img class="logo" src="${root}/css/images/logo-img.png" alt="logo">
 		<h2>Indi Scene</h2>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
@@ -47,17 +57,17 @@
 			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
 			<li class="indisMusic"><a href="#indisMusic">Indi's Music</a></li>
 			<li class="performanceInfo"><a href="#performanceInfo">Performance Info</a></li>
-			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root}')">Market Place</a></li>
+			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root }')">Market Place</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
 			<li class="myMusic"><a href="#myMusic">My Music</a></li>
-			<li class="indisMuse"><a href="indisMuse">Indi's Muse</a></li>
+			<li class="indisMuse"><a href="#indisMuse">Indi's Muse</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="notice"><a href="#notice">Notice</a></li>
-			<li class="freeboard"><a href="#freeboard">Free Board</a></li>
+			<li class="notice"><a href="javascript:noticeList('${root }','1')">Notice</a></li>
+			<li class="freeboard"><a href="javascript:freeBoardList('${root }','1')">Free Board</a></li>
 		</ul>
 	</nav>
 	<!-- Offsite canvas navigation end -->
@@ -65,7 +75,7 @@
 	<!-- Button login, update navigation start -->
 	<nav class="sub-nav">
 		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
-		<img class="logo" src=" " alt="logo">
+		<img class="logo" src="${root}/css/images/logo-img.png" alt="logo">
 		<h2>Indi Scene</h2>
 		<hr>
 		<div id="sub-navDiv">
@@ -84,6 +94,13 @@
 					<a id="registerButton" class="nav-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Join</a>
 				</c:when>
 				<c:otherwise>
+				<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						Login Success!
+					</div>
+				</div>
+			</div>
 					<a href="#" id="updateloginButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;PIM</a>
 					<a id="logoutButton" class="nav-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a>
 				</c:otherwise>
@@ -94,11 +111,10 @@
 	
 	<!-- Main slider start -->
 	<div id="centerContents" class="container">
-		<div class="jumbotron" id="home">
-			<img class="logo" src="" alt="logo">
-			<h1><big>Indi Scene</big></h1>
+		<div class="jumbotron" id="homeTag">
+			<img class="logo" src="${root}/css/images/logo-full.png" alt="logo">
 			<hr>
-			<p>We created the <span>Indi Scene</span> and now they control the world.</p>
+			<p>Your Music Career Start Here. Music & Collaboration <span>Indi Scene</span> is for You.</p>
 		</div>
 	</div>
 	<!-- Main slider end -->
@@ -107,12 +123,20 @@
 	<div class="footer">
 		<div class="brand"><p>Indi Scene</p></div>
 		<div class="container">
-			<img class="logo" src="" alt="logo">
+			<a href=""><img class="logo" src="${root}/css/images/logo-img.png" alt="logo"></a>
 			<a href="#" class="toTop">Back to top</a>
-			<p class="copiright">&copy; Copyright 2015 <a target="_blank" href="http://grapberry.com>ref=momentio">. All Rights Reserved.</p>
+			<p class="copiright">&copy; Copyright 2015 <a href=""></a>. All Rights Reserved.</p>
 		</div>
 	</div>
 	<!-- Footer section end -->
+	<div class="prenext">
+		<nav>
+		  <ul class="pager">
+		    <li><a href="#">Previous</a></li>
+		    <li><a href="#">Next</a></li>
+		  </ul>
+		</nav>
+	</div>
 	<!-- Music Player start -->
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="navbar-inner">
@@ -161,6 +185,7 @@ $(".portfolio-search").colorbox({
  * Show or hide offsite navigation.
  *
  */
+ 
 $('#nav-expander').on('click', function(e) {
 	e.preventDefault();
 	$('.main-nav').toggleClass('nav-expanded');
@@ -170,29 +195,43 @@ $('.main-nav .close').on('click', function(e) {
 	$('.main-nav').toggleClass('nav-expanded');
 });
 
-$('.main-nav .close').on('click', function(e) {
-	
-	e.preventDefault();
-	$('.main-nav').toggleClass('nav-expanded');
-});
-
 $('#loginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
 });
+$('#updateloginButton').on('click', function(e){
+	e.preventDefault();
+	$('.sub-nav').toggleClass('sub-expanded');
+});
+
 $('.sub-nav .close').on('click', function(e) {
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
 });
 
-$('#updateloginButton').on('click', function(e){
-	e.preventDefault();
-	$('.sub-nav').toggleClass('sub-expanded');
+/*각 게시판 들어갈때마나 메뉴바 사라지게 하기 */
+$('.marketPlace a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
 });
-$('.sub-nav .close').on('click', function(e) {
-	e.preventDefault();
-	$('.sub-nav').toggleClass('sub-expanded');
+
+$('.freeboard a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
 });
+
+$('.notice a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
+});
+
+
+
+
+
 /*
  * Link navigation and webpage sections.
  *

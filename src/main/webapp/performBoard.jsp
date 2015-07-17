@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <title>Insert title here</title>
+
 <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
@@ -19,6 +20,7 @@
     </script>
 <script type="text/javascript" src="${root}/js/performBoard.js"></script>
 <script type="text/javascript" src="${root}/js/placeBoard.js"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=35bf5934991976c7b6f95f227c76624f&libraries=services"></script>
 
     
     
@@ -91,5 +93,7 @@
 	<br/>
 	<a href="javascript:enterPlaceBoard('${root}')">플레이스 보드 들어가기 (ajax적용 O)</a>
 	<div id="centerContents"><h1>center</h1></div>
+	
+
 </body>
 </html>

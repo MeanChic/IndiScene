@@ -27,7 +27,7 @@ public interface PerformBoardService {
 	
 	public void updateOk(ModelAndView mav);
 
-	
+	public void findZipcode(ModelAndView mav);
 	//public List<String> mainImageFind(List<MarketBoardDto> marketList); 
 	//CommonIOServce로 독립함
 	

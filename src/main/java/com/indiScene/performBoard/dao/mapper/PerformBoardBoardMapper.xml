@@ -44,7 +44,7 @@
 	<update id="update" parameterType="com.indiScene.performBoard.dto.PerformBoardDto">
 		update performboard set
 			subject=#{subject}
-		,content=#{content}
+		,content=#{content},d_day=#{d_day},zipcode=#{zipcode},address=#{address}
 		where board_num=#{board_num}
 	</update>
 	

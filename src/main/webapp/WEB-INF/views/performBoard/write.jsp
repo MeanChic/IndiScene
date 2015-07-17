@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>거래 게시판 글쓰기 </title>
+
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <script src="${root }/resources/ckfinder/ckfinder.js"></script>
 <script src="${root }/js/jquery.js" type="text/javascript" ></script>
@@ -15,7 +17,7 @@
 	
 </head>
 <body>
-	<script type="text/javascript">
+<script type="text/javascript">
 
 </script>
 	<form id="marketBoardWriteForm" class="form_style"   enctype="multipart/form-data">	
@@ -71,17 +73,31 @@
 				<span class="content">
 					<input type="text" name="d_day1" id="datepicker">
 		
-					<select name="hh">
-						<c:forEach var="i" begin="00" end="24"> 
-							<option>${i}</option>
+					<select name="hour">
+						<c:forEach var="i" begin="00" end="24">
+							<c:forEach var="j" begin="0" end="1"> 
+								<c:if test="${j==0}">
+									<option style="align:right;">${i} : 00</option>
+								</c:if>
+								<c:if test="${j==1}">
+									<option style="align:right;">${i} : 30</option>
+								</c:if>
+								
+							</c:forEach>
 						</c:forEach>
 					</select>
 					시 
 					
 					<br/><br/>
 					
-					주소<input type="text" name="zipcode"/> <button>우편번호</button><br/></br>
-					<input type="text" name="address"/><br/><br/>
+
+
+				
+					<input type="hidden" name="zipcode" value="">
+					
+					주소<input type="text" name="zipcode1"/> <input type="button"  value="우편번호" onclick="javascript:performZipcodeCheck('${root}')"><br/></br>
+					<input type="text" name="address" value=""/><br/><br/>
+					<input type="button"  value="지도로 검색" onclick="javascript:performMap()"/>
 				</span>		                    
 		</div>	
 		
@@ -92,5 +108,9 @@
 			<input type="button" value="목록보기" onclick="location.href='${root}/performBoard/enterBoard.do'"/>
 		</div>
 	</form>
+	
+
+
+ 	
 </body>
 </html>

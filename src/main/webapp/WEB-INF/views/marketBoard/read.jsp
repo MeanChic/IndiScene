@@ -38,6 +38,7 @@
 <body>
 <div id="marketBoardread"><!-- barketBoard에서 MarketBoard로 바꿈  -->
 	<c:set var="root" value="${pageContext.request.contextPath }" />
+
 	
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
 	<table border="1" width="510" cellpadding="2" cellspacing="0"align="center">
@@ -64,6 +65,44 @@
 			<td align="center" height="200" width="125">글내용</td>
 			<td valign="top" height="200" colspan="3">${marketBoard.content }</td>
 		</tr>
+
+	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"/>
+	<div class="marketBoardX-location02">
+		<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterMarketBoard('${root}','${pageNumber}')">List</a>
+	</div>	
+	<div class="form-controlMarket">
+		<label class="marketBoardSize18 label-color marketBoardAttribute01">Board Number</label>
+		<div class="marketBoardSize30 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="${marketBoard.board_num}" disabled="disabled" />
+		</div>
+		<label class="marketBoardSize18 label-color marketBoardAttribute01">Views</label>
+		<div class="marketBoardSize30 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="${marketBoard.count}" disabled="disabled" />
+		</div>
+	</div>
+	<div class="form-controlMarket">
+		<label class="marketBoardSize18 label-color marketBoardAttribute01">Writer</label>
+		<div class="marketBoardSize30 marketBoardAttribute01">
+			<input class="marketBoardSize25 form-controller220" type="text" value="${marketBoard.artist_id}" disabled="disabled" />
+		</div>
+		<label class="marketBoardSize18 label-color marketBoardAttribute01">Date</label>
+		<div class="marketBoardSize30 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="<fmt:formatDate value="${marketBoard.register_date}" type='date'/>" disabled="disabled"/>
+		</div>
+	</div>
+	<div class="form-controlMarket" >
+		<label class="marketBoardSize18 label-color marketBoardY-location01" >Contents</label>
+		<div class="marketBoardSize75a marketBoardAttribute01">
+			<script type="text/javascript">
+				$(function(){
+					$("#marketReadContents img").attr("style","");
+					$("#marketReadContents img").addClass("marketBoardSize03");
+				})				
+			</script>
+			<div id="marketReadContents" class="marketBoardTextareaSize200 marketBoardAttribute02">
+				${marketBoard.content}
+			</div>		
+		</div>
 		
 		<c:if test="${marketBoard.file_name !=null }">
 			<tr>

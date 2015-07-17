@@ -20,8 +20,8 @@
 	
 	<insert id="boardInsert" parameterType="com.indiScene.placeBoard.dto.PlaceBoardDto">
 		<![CDATA[
-		insert into placeboard(SUBJECT,CONTENT,REGISTER_DATE,BOARD_NUM,ARTIST_ID,COUNT,file_name,file_path) 
-		values(#{subject},#{content},#{register_date},'pl' || marketboard_seq.nextval,#{artist_id},0,#{file_name},#{file_path})
+		insert into placeboard(address,zipcode,SUBJECT,CONTENT,REGISTER_DATE,BOARD_NUM,ARTIST_ID,COUNT,file_name,file_path) 
+		values(#{address},#{zipcode},#{subject},#{content},#{register_date},'pl' || marketboard_seq.nextval,#{artist_id},0,#{file_name},#{file_path})
 		]]>
 	</insert>
 	
@@ -44,7 +44,7 @@
 	<update id="update" parameterType="com.indiScene.placeBoard.dto.PlaceBoardDto">
 		update placeboard set
 			subject=#{subject}
-		,content=#{content}
+		,content=#{content},zipcode=#{zipcode},address=#{address}
 		where board_num=#{board_num}
 	</update>
 	
