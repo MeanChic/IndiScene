@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Market board update</title>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <script src="${root }/js/jquery.js" type="text/javascript" ></script>

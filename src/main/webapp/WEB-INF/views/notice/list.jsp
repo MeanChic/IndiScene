@@ -6,37 +6,38 @@
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>게시판 목록보기</title>
+<meta charset="UTF-8">
 </head>
 <body>
 <div id="boardBasic">
 	<h3>Notice</h3>
-	<div class="marketBoardX-location02">
+	<div class="marketBoardX-location02 marketBoardInterval03">
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:noticeWrite('${root }')">Notice Write</a>
 	</div>
-		<br/>
-		
-		<c:if test="${count==0 }">
-					<td align="center">게시판에 저장된 글이 없습니다.</td>
-		</c:if>
-		<c:if test="${count>0 }">
-		<div>
-			<div class="form-controlMarket">
-				<label class="marketBoardSize18 label-color marketBoardAttribute01">Board Number</label>
-				<label class="marketBoardSize42 label-color marketBoardAttribute01">Subject</label>
-				<label class="marketBoardSize18 label-color marketBoardAttribute01">Date</label>
-				<label class="marketBoardSize18 label-color marketBoardAttribute01">Views</label>
+	
+	<c:if test="${count==0 }">
+		<div class="form-controlMarket">
+			<label class="label-color">게시판에 저장된 글이 없습니다.</label>
+		</div>
+	</c:if>
+	
+	<c:if test="${count>0 }">
+		<div class="marketBoardAttribute02 marketBoardInterval03">
+			<div class="form-controlBoard">
+				<label class="boardlabelBlock marketBoardSize16 label-colorO marketBoardAttribute01">Board Number</label>
+				<label class="boardlabelBlock marketBoardSize58 label-colorO marketBoardAttribute01">Subject</label>
+				<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Date</label>
+				<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Views</label>
 			</div>
 		<!-- Notice List -->
 			<c:forEach var="notice" items="${noticeList }">
-				<div class="form-controlMarket">
-					<label class="marketBoardSize18 label-color marketBoardAttribute01">${notice.board_num }</label>
-					<label class="marketBoardSize42 label-color marketBoardAttribute01">
+				<div class="form-controlBoard">
+					<label class="boardlabelBlock marketBoardSize16 label-color marketBoardAttribute01">${notice.board_num }</label>
+					<label class="boardlabelBlock marketBoardSize58 label-color marketBoardAttribute01 marketBoardY-location02">
 						<a class="label-color" href="javascript:noticeRead('${root }','${notice.board_num }','${currentPage }')">${notice.subject }</a> 
 					</label>
-					<label class="marketBoardSize18 label-color marketBoardAttribute01"><fmt:formatDate value="${notice.register_date }" type="date"/></label>
-					<label class="marketBoardSize18 label-color marketBoardAttribute01">${notice.count }</label>
+					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01"><fmt:formatDate value="${notice.register_date }" type="date"/></label>
+					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${notice.count }</label>
 				</div>
 			</c:forEach>
 		</div>

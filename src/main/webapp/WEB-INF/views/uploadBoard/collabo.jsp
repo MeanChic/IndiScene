@@ -26,7 +26,7 @@
 		<input type="hidden" value="${board.image_path}" name="image_path"/>
 		
 		<span>제목</span><input class="collaboSubject" value="${board.subject}" type="text" disabled="disabled"/>
-		<input type="hidden" value="" class="collaboSuvject" name="subject"/>
+		<input type="hidden" value="${board.subject}" class="collaboSubject" name="subject"/>
 		<c:if test="${board.seq_level==0}">
 			<script>
 				$(".collaboSubject").val($(".collaboSubject").val()+" feat."+$("input[name='artist_id']").val());

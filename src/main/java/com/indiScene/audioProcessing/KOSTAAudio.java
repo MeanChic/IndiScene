@@ -55,30 +55,35 @@ public class KOSTAAudio {
 			while (count !=-1){
 				count=ais2.read(buffer2,0,numBytes2);
 			}
-			outArray = new byte[Math.max(numBytes1, numBytes2)];
-			System.out.println(buffer1.length +"\n" + buffer2.length+"\n"+outArray.length);
 			
 			long sync = (long)(syncSecond*ais1.getFormat().getSampleRate()*ais1.getFormat().getChannels()*ais1.getFormat().getSampleSizeInBits()/8);
+			outArray = new byte[(int) Math.max(sync>=0?buffer1.length+sync:buffer1.length, sync<0?buffer2.length-sync:buffer2.length)];
+			System.out.println(buffer1.length +"\n" + buffer2.length+"\n"+outArray.length);
 			
-			for(int i = 0 ; i < Math.max(buffer1.length, buffer2.length); i++){
-				if(i < buffer1.length && i < buffer2.length){
+			for(int i = 0 ; i < Math.max(sync>=0?buffer1.length-sync:buffer1.length, sync<0?buffer2.length:buffer2.length+sync); i++){
+				if(i < (sync>=0?buffer1.length+sync:buffer1.length) && i < (sync<0?buffer2.length-sync:buffer2.length)){
 					if(i <45){
 						outArray[i] = buffer2[i];
 					}else{
 						if(sync>=0){
 							if(i>=sync)
-								outArray[i] = (byte) ((int)(buffer1[i]*0.5 + buffer2[i]*0.5));
+								outArray[i] = (byte) ((int)(buffer1[i]*0.5 + buffer2[(int) (i-sync)]*0.5));
 							else
 								outArray[i] = buffer1[i];
 						}else{
 							if(i>=(sync*(-1)))
-								outArray[i] = (byte) ((int)(buffer1[i]*0.5 + buffer2[i]*0.5));
+								outArray[i] = (byte) ((int)(buffer1[(int) (i+sync)]*0.5 + buffer2[i]*0.5));
 							else
 								outArray[i] = buffer2[i];
 						}
 					}
 				}else{
-					outArray[i] = buffer1.length>buffer2.length?buffer1[i]:buffer2[i];
+					if(sync>=0){
+						outArray[i] = buffer1.length+sync > buffer2.length ? buffer1[(int)(i-sync)]:buffer2[i];
+					}else{
+						outArray[i] = buffer1.length> buffer2.length-sync ? buffer1[i]:buffer2[(int)(i+sync)];
+					}
+//					outArray[i] = (sync>=0?buffer1.length+sync:buffer1.length)> (sync<0?buffer2.length-sync:buffer2.length)?buffer1[(int) (i-sync)]:buffer2[(int) (i+sync)];
 				}
 			}
 		} catch (UnsupportedAudioFileException e) {
@@ -114,7 +119,7 @@ public class KOSTAAudio {
 	 */
 	private String makeFile(byte[] byteBuffer, AudioInputStream ais, String userId) throws IOException{
 		String timeName = userId+"_"+System.currentTimeMillis();
-		String outputFilePath = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/MergeMusic/"+timeName;
+		String outputFilePath = "C:/KMS_MavenSpring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/MergeMusic/"+timeName;
 		
 		ByteArrayInputStream bais = new ByteArrayInputStream(byteBuffer);
 		AudioSystem.write(new AudioInputStream(bais,ais.getFormat(),ais.getFrameLength()), AudioFileFormat.Type.WAVE, new File(outputFilePath));
@@ -135,7 +140,7 @@ public class KOSTAAudio {
 		float[] floatBuffer = convertToFloat(byteBuffer);
 
 		String timeName = userId+"_"+System.currentTimeMillis()+"_Collabo.wav";
-		String outputFilePath = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/MergeMusic/"+timeName;
+		String outputFilePath = "C:/Users/KOSTA/git/IndiScene/src/main/webapp/resources/MergeMusic/"+timeName;
 		
 		
 		ByteArrayInputStream bais = new ByteArrayInputStream(byteBuffer);

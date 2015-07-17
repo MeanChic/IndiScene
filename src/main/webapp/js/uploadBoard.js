@@ -278,6 +278,29 @@ function uploadCollabo(root, boardNum,pageNumber){
 	});
 }
 
+function uploadCollaboOk(root, boardNum,pageNumber){
+	var str =CKEDITOR.instances.content.getData();
+	$("#content").val(str);
+	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
+	
+	$.ajax({
+        url: $("#root").val()+'/uploadBoard/collabo.do',
+        type: "post",
+        dataType: "html",
+        data: dataSet,
+        // cache: false,
+        processData: false,
+        contentType: false,
+        success: function(data, textStatus, jqXHR) {
+	       	var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
+        }, error: function(jqXHR, textStatus, errorThrown) {
+        	
+        },
+    });
+}
+
 function test(){
 //	alert($("#coverImage").val()=="");
 	alert($("#uploadPath").val()=="");
