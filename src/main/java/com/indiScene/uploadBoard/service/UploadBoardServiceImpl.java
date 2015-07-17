@@ -528,7 +528,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		
 		KOSTAAudio kostaAudio = new KOSTAAudio();
 		
-		String mergeFile = kostaAudio.mergeAudio(originalFile.getAbsolutePath(), uploadMusicFile.getAbsolutePath(), uploadBoardDto.getArtist_id(), -1);
+		String mergeFile = kostaAudio.mergeAudio(originalFile.getAbsolutePath(), uploadMusicFile.getAbsolutePath(), uploadBoardDto.getArtist_id(), 12.5);
 		
 		try {
 			PrintWriter pw = response.getWriter();

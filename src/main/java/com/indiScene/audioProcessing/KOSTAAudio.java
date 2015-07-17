@@ -60,7 +60,7 @@ public class KOSTAAudio {
 			outArray = new byte[(int) Math.max(sync>=0?buffer1.length+sync:buffer1.length, sync<0?buffer2.length-sync:buffer2.length)];
 			System.out.println(buffer1.length +"\n" + buffer2.length+"\n"+outArray.length);
 			
-			for(int i = 0 ; i < Math.max(sync>=0?buffer1.length+sync:buffer1.length, sync<0?buffer2.length-sync:buffer2.length); i++){
+			for(int i = 0 ; i < Math.max(sync>=0?buffer1.length-sync:buffer1.length, sync<0?buffer2.length:buffer2.length+sync); i++){
 				if(i < (sync>=0?buffer1.length+sync:buffer1.length) && i < (sync<0?buffer2.length-sync:buffer2.length)){
 					if(i <45){
 						outArray[i] = buffer2[i];
