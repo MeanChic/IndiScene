@@ -94,4 +94,8 @@ public class MuseGuestDaoImpl implements MuseGuestDao {
 		
 		return sqlSession.insert("dao.MuseGuestMapper.write", guestDto);
 	}
+	
+	public int deleteMuse(String muse_name){
+		return sqlSession.delete("dao.MuseGuestMapper.deleteMuse", muse_name);
+	}
 }

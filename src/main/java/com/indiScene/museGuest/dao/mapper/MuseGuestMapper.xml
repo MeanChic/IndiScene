@@ -22,4 +22,8 @@
 	<delete id="delete" parameterType="String">
 		delete from guest where guest_num=#{guest_num}
 	</delete>
+	
+	<delete id="deleteMuse" parameterType="String">
+		delete from guest where muse_name = #{muse_name}
+	</delete>
 </mapper>

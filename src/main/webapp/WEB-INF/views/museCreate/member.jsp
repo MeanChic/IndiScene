@@ -20,15 +20,18 @@
 	<input type="hidden" id="root" value="${root}"/>
 	
 	<c:if test="${check != 0 }">
-	<div id="join">
-	<c:forEach var="join" items="${joinMember }">
-		<c:if test="${join.ARTIST_ID == artist_id}">
-			<div id="${join.ARTIST_ID}" >
-				${join.ARTIST_ID} , ${join.MUSE_YN}, ${join.MUSE_NAME}
-				<input type="button" value="뮤즈 삭제하기" onclick="outMember('${muse_name}','${join.ARTIST_ID}')">
+	<c:forEach var="master" items="${joinMember }">
+		<c:if test="${master.ARTIST_ID == artist_id}">
+			<div id="${master.ARTIST_ID}" >
+				${master.ARTIST_ID} , ${master.MUSE_YN}, ${master.MUSE_NAME}
+				<input type="button" value="뮤즈 삭제하기" onclick="deleteMuse('${muse_name}')">
 			</div>
 			==============================================================
 		</c:if>
+	</c:forEach>
+	
+	<div id="join">
+	<c:forEach var="join" items="${joinMember }">
 		<c:if test="${join.ARTIST_ID != artist_id}">
 		<div id="${join.ARTIST_ID}" >
 			${join.ARTIST_ID} , ${join.MUSE_YN}, ${join.MUSE_NAME}

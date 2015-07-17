@@ -18,7 +18,7 @@ where a.sid=b.sid and b.id1=c.object_id and b.type='TM' and c.object_name='muse_
 
 select * from performboard;
 
-create sequence placeboard_seq;
+create sequence notice_seq;
 start with 1
 increment by 1;
 select * from muse where artist_id='indis';

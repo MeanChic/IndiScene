@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public interface MuseService {
 	
+	public void deleteMuse(ModelAndView mav);
 	public void nameCheck(ModelAndView mav);
 		
 	public void logup(ModelAndView mav);
