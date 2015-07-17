@@ -12,13 +12,13 @@
 <link rel="stylesheet" type="text/css" href="${root}/css/notice.css"/>
 </head>
 <body>
-	<div id="noticeUpdateOk">
+<div id="noticeUpdateOk">
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	
 	<c:if test="${check>0 }">
 		<script type="text/javascript">
 			alert("수정이 완료되었습니다.");
-			list('${root}','${pageNumber}');
+			noticeList('${root}','${pageNumber}');
 			//location.href="${root}/notice/list.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>
@@ -26,10 +26,10 @@
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
 			alert("수정이 실패되었습니다.");
-			list('${root}','${pageNumber}');
+			noticeList('${root}','${pageNumber}');
 			//location.href="${root}/notice/list.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>
-	</div>
+</div>
 </body>
 </html>

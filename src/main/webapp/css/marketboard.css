@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-#boardBasic, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate, #marketBoardread{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
+#noticeRead, #marketBoardread, #boardBasic, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
 #boardlistSize{ padding-right:10px; padding-left:10px; }
 .marketBoardX-location01{ text-align:center; }
 .marketBoardX-location02{ text-align:right; }
@@ -14,6 +14,8 @@
 .marketBoardSize18{ width:18%; }
 .marketBoardSize30{ width:30%; }
 .marketBoardSize01{ width:33%; }
+.marketBoardSize40{ width:40%; }
+.marketBoardSize42{ width:42%; }
 .marketBoardSize02{ width:50%; }
 .marketBoardSize75a{ width:75.3%; }
 .marketBoardSize80{ width:80%; }

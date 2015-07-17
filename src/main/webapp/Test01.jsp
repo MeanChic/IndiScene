@@ -17,7 +17,7 @@
 	<link href="${root}/css/colorbox.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
-	
+
 	<!-- Load javascrips libraries-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="${root}/js/jquery.bxslider.js"></script>
@@ -59,7 +59,7 @@
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="notice"><a href="javascript:list('${root }','1')">Notice</a></li>
+			<li class="notice"><a href="javascript:noticeList('${root }','1')">Notice</a></li>
 			<li class="freeboard"><a href="javascript:freeBoardList('${root }','1')">Free Board</a></li>
 		</ul>
 	</nav>
