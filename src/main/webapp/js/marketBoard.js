@@ -16,7 +16,8 @@ function enterMarketBoard(requestRoot,pageNumber){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
-			//
+			history.replaceState({indiData:realData},"제목","/");//현재페이지에 히스토리 저장
+			history.pushState({indiData:realData},"제목","/");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -40,6 +41,8 @@ function marketBoardDelete(board_num,pageNumber,artist_id){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
+			history.replaceState({indiData:realData},"제목","/");//현재페이지에 히스토리 저장
+			history.pushState({indiData:realData},"제목","/");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -85,6 +88,8 @@ function marketBoardWrite(){
 			//alert(realData);
 			$("#centerContents").html(realData)
 			$.getScript(root+"/js/jquery.MultiFile.js");
+			history.replaceState({indiData:realData},"제목","/");//현재페이지에 히스토리 저장
+			history.pushState({indiData:realData},"제목","/");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -131,6 +136,8 @@ function marketBoardRead(board_num,pageNumber){
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData)
+			history.replaceState({indiData:realData},"제목","/");//현재페이지에 히스토리 저장
+			history.pushState({indiData:realData},"제목","/");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -150,6 +157,8 @@ function marketBoardUpdate(board_num,pageNumber){
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData)
+			history.replaceState({indiData:realData},"제목","/");//현재페이지에 히스토리 저장
+			history.pushState({indiData:realData},"제목","/");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
