@@ -6,17 +6,19 @@
 .marketBoardX-location03{ text-align:left; }
 
 .marketBoardY-location01{ vertical-align:top; }
+.marketBoardY-location02{ vertical-align:bottom; }
 
 .marketBoardAttribute01{ display:inline-block; }
 .marketBoardAttribute02{ display:block; }
 .marketBoardAttribute03{ display:table-column; }
 
-.marketBoardSize18{ width:18%; }
+.marketBoardSize12{ width:12%; }
+.marketBoardSize16{ width:16%; }
 .marketBoardSize30{ width:30%; }
 .marketBoardSize01{ width:33%; }
 .marketBoardSize40{ width:40%; }
-.marketBoardSize42{ width:42%; }
 .marketBoardSize02{ width:50%; }
+.marketBoardSize58{ width:58%; }
 .marketBoardSize75a{ width:75.3%; }
 .marketBoardSize80{ width:80%; }
 .marketBoardSize03{ width:100%; }
@@ -32,6 +34,15 @@
 	width:100%; 
 	min-height:200px; 
 	padding:10px;
+}
+.form-controlBoard{ display:block; margin-top:10px; margin-bottom:10px; }
+.form-controlBoard .label-color{ color:#151515; }
+.form-controlBoard .label-colorO{ color:#FB6816; }
+
+.boardlabelBlock{
+	border-bottom:solid 1px #cccccc;
+	border-radius: 4px;
+	min-height:30px;
 }
 
 .marketBoardInterval005{ margin-top:5px; margin-bottom:5px; }
