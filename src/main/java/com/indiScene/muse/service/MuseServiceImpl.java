@@ -98,7 +98,7 @@ public class MuseServiceImpl implements MuseService {
 				String dir="C:/Users/kosta/git/IndiScene/src/main/webapp/resources/museResources";
 				//String dir="C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources";
 				
-				//logger.info("ch dir : " + dir);
+				
 				
 				File file = new File(dir, timeName);
 				upFile.transferTo(file);	
@@ -109,7 +109,7 @@ public class MuseServiceImpl implements MuseService {
 				logger.info("ch File Input Ouput Error");
 			}
 		}
-		
+		logger.info("ch dir : " + museDto.getMuse_filepath());
 		int check = museDao.logup(museDto);
 		if(check > 0){
 			int musenew = guestDao.createMuse(museDto.getMuse_name());

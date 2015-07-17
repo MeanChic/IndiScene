@@ -39,33 +39,6 @@
 <div id="marketBoardread"><!-- barketBoard에서 MarketBoard로 바꿈  -->
 	<c:set var="root" value="${pageContext.request.contextPath }" />
 
-	
-	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
-	<table border="1" width="510" cellpadding="2" cellspacing="0"align="center">
-		<tr>
-			<td align="center" height="20" width="125">글번호</td>
-			<td align="center" height="20" width="125">${marketBoard.board_num }</td>
-			
-
-			<td align="center" height="20" width="125">조회수</td>
-			<td align="center" height="20" width="125">${marketBoard.count }</td>
-		</tr>
-
-		<tr>
-			<td align="center" height="20" width="125">작성자</td>
-			<td align="center" height="20" width="125">${marketBoard.artist_id}</td>
-
-			<td align="center" height="20" width="125">작성일</td>
-			<td align="center" height="20" width="125">
-			<fmt:formatDate
-					value="${marketBoard.register_date}" type="date" /></td>
-		</tr>
-
-		<tr>
-			<td align="center" height="200" width="125">글내용</td>
-			<td valign="top" height="200" colspan="3">${marketBoard.content }</td>
-		</tr>
-
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"/>
 	<div class="marketBoardX-location02">
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterMarketBoard('${root}','${pageNumber}')">List</a>

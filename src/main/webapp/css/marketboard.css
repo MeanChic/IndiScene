@@ -17,6 +17,7 @@
 .marketBoardSize30{ width:30%; }
 .marketBoardSize01{ width:33%; }
 .marketBoardSize40{ width:40%; }
+.marketBoardSize48{ width:48%; }
 .marketBoardSize02{ width:50%; }
 .marketBoardSize58{ width:58%; }
 .marketBoardSize77{ width:77%; }
@@ -38,6 +39,8 @@
 .form-controlBoard{ display:block; margin-top:10px; margin-bottom:10px; }
 .form-controlBoard .label-color{ color:#151515; }
 .form-controlBoard .label-colorO{ color:#FB6816; }
+
+.form-controlBoardLarge{ display:block; margin-top:10px; margin-bottom:10px; }
 
 .boardlabelBlock{
 	border-bottom:solid 1px #cccccc;
