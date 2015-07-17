@@ -3,6 +3,29 @@
  */
 var root=null;
 
+function performZipcodeCheck(root){
+	//alert(form+", "+root);
+	var url=root+"/performBoard/zipcode.do";
+	window.open(url,"","width=500, height=500");
+}
+
+function performSendAddress(zipcode, sido, gugun, dong, ri, bldg, bunji){
+	var address=sido+" "+gugun+" "+dong+" "+ri+" "+bldg+" "+bunji;
+	//alert(zipcode+"\n"+address);
+	//opener.registerForm.artist_zipcode.value=zipcode;
+	//opener.registerForm.artist_address.value=address;
+	//self.close();
+	
+	//alert($(opener.document).find("input[name='zipcode']").length);
+	/*$(opener.document).find("input[name='zipcode']").val(zipcode);
+	$(opener.document).find("input[name='zipcode']").attr("value",zipcode);
+	$(opener.document).find("input[name='zipcode']").text(zipcode);*/
+	$(opener.document).find("input[name='zipcode1']").val(address);
+	$(opener.document).find("input[name='zipcode1']").attr("disabled","disabled");
+	$(opener.document).find("input[name='zipcode']").val(address);
+	self.close();
+}
+
 function enterPerformBoard(requestRoot,pageNumber){
 	root=requestRoot;
 	//alert("OK");

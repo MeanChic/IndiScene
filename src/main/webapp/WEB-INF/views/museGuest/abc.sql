@@ -261,5 +261,34 @@ select rownum, a.* from(select reply_num from reply where board_num='m122' order
 select to_char(to_number(nvl(max(reply_num),0))+1,'9999') from reply where board_num='m122'
 
 
+select board_num from p 
+
+CREATE TABLE zipcode (
+  id smallint(5) unsigned NOT NULL default '0',
+  zipcode varchar(7) NOT NULL default '',
+  sido varchar(4) NOT NULL default '',
+  gugun varchar(13) NOT NULL default '',
+  dong varchar(24) NOT NULL default '',
+  ri varchar(36) NOT NULL default '',
+  bunji varchar(17) NOT NULL default ''
+); 
 
 
+
+
+create table zipcode (
+	seq number(5),
+ 	zipcode varchar2(7),				
+ 	sido varchar2(14),				
+  	gugun varchar2(27),				
+ 	dong varchar2(40),				
+  	ri varchar2(70),					
+  	bunji varchar2(27),								
+	primary key(seq)					
+);
+C:\Users\kosta\Desktop\집
+
+drop table zipcode;
+
+
+select * from zipcode;

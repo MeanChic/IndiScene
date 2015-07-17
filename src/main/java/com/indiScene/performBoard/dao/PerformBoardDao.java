@@ -2,6 +2,9 @@ package com.indiScene.performBoard.dao;
 
 import java.util.List;
 
+import org.springframework.web.servlet.ModelAndView;
+
+import com.indiScene.artist.dto.ZipcodeDto;
 import com.indiScene.performBoard.dto.PerformBoardDto;
 
 public interface PerformBoardDao {
@@ -23,5 +26,8 @@ public interface PerformBoardDao {
 	public PerformBoardDto update(String board_num);
 	
 	public int updateOk(PerformBoardDto marketBoardDto);
+	
+	
+	public List<ZipcodeDto> ZipcodeList(String dong);
 	
 }

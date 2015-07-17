@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
@@ -14,7 +14,18 @@
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 </head>
 <body>
-
+	<script type="text/javascript">
+	$(function(){
+		$( "#datepicker" ).datepicker({
+	    showOn: "button",
+	    buttonImage: "images/calendar.gif",
+	    buttonImageOnly: true,
+	    buttonText: "Select date",
+	    changeMonth: true,
+	    changeYear: true
+	});
+});
+	</script>
 	<form id="marketBoardUpdateForm" action="javascript:performBoardUpdateOk()" method="post">
 		<input type="hidden" name="board_num" value="${board.board_num }"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber }"/>
@@ -57,7 +68,18 @@
 		</div>	
 		
 		<div class="line">
-			
+			<span class="content">
+					<input type="text" name="d_day1" value="<fmt:formatDate value="${board.d_day}" pattern="MM/dd/yyyy"/>" id="datepicker">
+		
+					<select name="hh">
+						<c:forEach var="i" begin="00" end="24"> 
+							<option>${i}</option>
+						</c:forEach>
+					</select>
+					시 
+			<input type="hidden" name="zipcode" value="${board.zipcode }">
+					주소<input type="text" name="zipcode1" value="${board.zipcode }" disabled="disabled"/> <input type="button"  value="우편번호" onclick="javascript:performZipcodeCheck('${root}')"><br/></br>
+					<input type="text" name="address" value="${board.address }"/><br/><br/>
 		</div>	
 		
 		

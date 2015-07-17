@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.indiScene.artist.dto.ZipcodeDto;
 import com.indiScene.performBoard.dto.PerformBoardDto;
 
 /**
@@ -20,7 +21,12 @@ public class PerformBoardDaoImpl implements PerformBoardDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	                          
+	
+	@Override
+	public List<ZipcodeDto> ZipcodeList(String dong) {
+		return sqlSession.selectList("dao.ArtistMapper.zipcode",dong);
+	}
+	
 	@Override
 	public int getCount() {
 		System.out.println("daoImpl");
