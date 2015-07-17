@@ -27,17 +27,19 @@
 </head>
 <body>
 <div id="artistLoginForm">
+</br>
 	<form id="artistLoginForm" action="${root }/artist/login.do" method="post">
 		<div class="form-controlArtist">
-			<label class="form-inlineblock label-color">ID</label>
+			<label class="form-inlineblock label-color" style="font-size:1.5em;">ID</label>
 		    <div class="form-inlineblock">
-				<input class="form-inlineblock form-controller220" type="text" name="artist_id"/>
+				<input class="form-inlineblock form-controller220" type="text" name="artist_id" style="font-size:1.1em;"/>
 			</div>
 		</div>
+		<br/>
 		<div class="form-controlArtist">
-			<label class="form-inlineblock label-color">Password</label>
+			<label class="form-inlineblock label-color" style="font-size:1.5em;">Password</label>
 		    <div class="form-inlineblock">
-				<input class="form-inlineblock form-controller220" type="password" name="artist_password"/>
+				<input class="form-inlineblock form-controller220" type="password" name="artist_password" style="font-size:1.1em;"/>
 			</div>
 		</div>
 		<div class="form-controlArtist">

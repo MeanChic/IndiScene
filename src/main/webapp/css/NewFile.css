@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+/* Delete */
+#marketBoardDelete{ 
+	text-align:left; 
+	width:930px; 
+	min-height:450px; 
+	padding:30px; 
+	margin:auto; 
+	border:solid 1px #BDBDBD; 
+	background:white; 
+	border-radius:20px; 
+	}

@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
-
-#marketBoardread{ 
+/* Read */
+#marketBoardread, #marketBoardDelete{ 
 	text-align:left; 
 	width:930px; 
 	min-height:450px; 
@@ -9,6 +9,7 @@
 	border:solid 1px #BDBDBD; 
 	background:white; 
 	border-radius:20px; 
+	
 	}
 
 p {
@@ -18,7 +19,7 @@ p {
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
 }
-.btn-xs, .btn-group-xs>.btn {
+/* .btn-xs, .btn-group-xs>.btn {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
@@ -47,7 +48,7 @@ p {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
-}
+} */
 li {
   display: list-item;
   text-align: -webkit-match-parent;
@@ -79,7 +80,30 @@ span.Delimiter {
 	color: #36b823;
 }
 
-
 .replyEdit {
 	color:#D43F3A;
+}
+
+/*****    Delete    *****/
+
+.marketBoardDeleteInner{
+	
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	vertical-align: 
+}
+.marketBoardDeleteSubmit{
+	
+	background-color: white;
+	
+}
+
+.DeletefontStyle{
+	 font-size:1.5em; font-family:Helvetica;
+}
+.Delimiter{
+	
+	  font-weight: bold;
+	  
 }
