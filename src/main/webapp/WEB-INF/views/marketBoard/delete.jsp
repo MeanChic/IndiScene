@@ -35,9 +35,9 @@
 			<br/>
 			<div align="center" class="DeleteListPaddingLeft">
 				<div >
-					<a href="javascript:marketBoardDeleteOk()" style="font-size:1.0em; font-family:Helvetica;" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" >Delete</a>
+					<a href="javascript:marketBoardDeleteOk('${root}','${board_num}','${ pageNumber}')"style="font-size:1.0em;font-family:Helvetica;"class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm">Delete</a>
 					&nbsp;&nbsp;
-					<a href="javascript:enterMarketBoard('${root}','${pageNumber}')" style=" font-size:1.0em; font-family:Helvetica;"  class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" >List</a>
+					<a href="javascript:enterMarketBoard('${root}','${pageNumber}')" style=" font-size:1.0em;font-family:Helvetica;"class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm">List</a>
 				</div>
 
 			</div>

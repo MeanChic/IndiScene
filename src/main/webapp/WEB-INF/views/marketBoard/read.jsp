@@ -114,9 +114,8 @@
 	
 	
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
-	<br/>	<br/>	<br/>
+	<br/><br/><br/>
 	<h3 style="color:#4C4C4C; font-size: 1.3em; font-weight: bold;" >commant </h3>
-	
 	<hr>
 	<div>
 		<input id="writeId"  type="text" name="artist_id" size="14" style="font-size:1.05em;font-family:Helvetica;" value="${marketBoard.artist_id}">

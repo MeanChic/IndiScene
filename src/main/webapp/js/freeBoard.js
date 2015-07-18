@@ -100,12 +100,13 @@
 		}
 		
 		function freeBoardDeleteFun(root, board_num, pageNumber){
+			alert(root);
 			$.ajax({
 				url:root+"/freeBoard/delete.do?board_num="+board_num+"&pageNumber="+pageNumber,
 				type:"get",
 				dataType:"html",
 				success:function(data){
-					//alert(data);
+					alert(data);
 					var realData = data.split("<body>");
 					var realData = realData[1].split("</body>")[0];
 					//alert(realData);
