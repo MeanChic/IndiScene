@@ -64,7 +64,7 @@ div {
 }
  /* artist_id 폰트  */
 .cssAritist {
-  font-size: 1.3em;/* 
+  font-size: 1.3em;
   font-family:'Nanum Gothic';
   font-weight: bold;
   margin-right: 5px;
@@ -86,13 +86,7 @@ span.Delimiter {
 
 /*****    Delete    *****/
 
-.marketBoardDeleteInner{
-	
-	display:table-cell;
-	vertical-align:middle;
-	text-align:center;
-	vertical-align: 
-}
+
 .marketBoardDeleteSubmit{
 	
 	background-color: white;
@@ -100,27 +94,28 @@ span.Delimiter {
 }
 
 .DeletefontStyle{
-	 font-size:1.5em; font-family:Helvetica;
+	 font-size:1.5em; 
+	 font-family:Helvetica;
 }
 .Delimiter{
 	
 	  font-weight: bold;
 	  
 }
-/* 
-.btnStyle, .btn-group-sm>.btn {
+
+.marketBoardUpDelBtn-sm {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
 }
-.btn-default {
+.marketBoardUpDelBtn-default {
   color: black;
-  border-color: #ccc;
+  border-color: black;
 }
-.btn {
+a.marketBoardListBtn {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 9px 33px;
   margin-bottom: 0;
   font-size: 14px;
   font-weight: 400;
@@ -134,7 +129,43 @@ span.Delimiter {
   -ms-user-select: none;
   user-select: none;
   background-image: none;
-  border: 1px solid transparent;
+  border: 1px solid #36b823;
   border-radius: 4px;
+}.marketBoardDelBtn  {
+
+  display: inline-block;
+  padding: 9px 24px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid red;
+  border-radius: 4px;
+
 }
- */
+
+.marketBoardDelFontStyle{
+	 font-size:1.3em; 
+	 font-family:Helvetica;
+}
+.DeletePassWord {
+  padding-left: 20%;
+}
+.DeleteListPaddingLeft{
+	  padding-left: 0.1%;
+}
+form.marketBoardDeleteForm {
+  padding-top: 10%;
+}
+input.FontColorIsBlack{
+	color:black;
+}

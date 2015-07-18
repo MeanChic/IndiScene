@@ -12,37 +12,36 @@
 <div id="marketBoardDelete">
 
 <c:set var="root" value="${pageContext.request.contextPath }"/>
-	<form method="post" id="marketBoardDeleteForm" action="javascript:marketBoardDeleteOk()">
+	<form method="post" class="marketBoardDeleteForm" >
+	
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<input type="hidden" name="artist_id" value="${artist_id }"/>
 <!-- 		<table border="1" width="300" cellpadding="2" cellspacing="0" align="center">
  -->
- 		<div class="marketBoardDeleteOuter" align="center" >
- 			<div class="marketBoardDeleteInner">
- 			<p>
-				<span>	사용자 확인을 위해 </br>
-				계정 비밀번호 입력해주세요.</span>
-				<br/>
-				<span id="DeletefontStyle">Password&nbsp;:
-				<input type="password" name="password" size="8" maxlength="12"/>
-				
-				</span>
-				
-			</p>
-			
-			<p>
-				<span>
-					<a href="javascript:marketBoardDeleteOk()" style="color:#D43F3A; font-size:1.5em; font-family:Helvetica;">Delete</a>
-					<span class="Delimiter" style="font-size:1.5em;">/</span>
-					<a href="javascript:enterMarketBoard('${root}','${pageNumber}')" style="color:#36b823; font-size:1.5em; font-family:Helvetica;">L i s t</a>
-					<!-- <input type="submit" value="글삭제" style="color:#D43F3A;" class="marketBoardDeleteSubmit"/> -->
-					<%--<input type="button" value="목록보기" onclick="javascript:enterMarketBoard('${root}','${pageNumber}')">--%>				
-					</span>
-
-			</p>
+ 		<div align="center">
+ 			<div class="marketBoardDeleteInner" style="color:black; font-size:1.3em"  >
+				<span>	사용자 확인을 위해 <br/>
+				계정 비밀번호 입력해주세요.</span><br/><br/>
 			</div>
 		</div>
+			
+			<div  class="DeletefontStyle DeletePassWord">
+				<div style="color:#333333"> ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;${artist_id }  </div>
+				<div  style="color:#4C4C4C font-size:1.3em;">Password&nbsp;:&nbsp;
+				<input type="password" name="password" size="20" maxlength="20"/>
+				</div>
+			</div>
+			<br/>
+			<div align="center" class="DeleteListPaddingLeft">
+				<div >
+					<a href="javascript:marketBoardDeleteOk()" style="font-size:1.0em; font-family:Helvetica;" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" >Delete</a>
+					&nbsp;&nbsp;
+					<a href="javascript:enterMarketBoard('${root}','${pageNumber}')" style=" font-size:1.0em; font-family:Helvetica;"  class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" >List</a>
+				</div>
+
+			</div>
+		
 	</form>
 </div>
 </body>

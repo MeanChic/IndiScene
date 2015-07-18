@@ -76,7 +76,7 @@
 				${marketBoard.content}
 			</div>		
 		</div>
-		
+		<br/><br/>
 		<c:if test="${marketBoard.file_name !=null }">
 			<tr>
 				<td align="center" height="20" width="125">파일명</td>
@@ -94,19 +94,19 @@
 				</td>
 			</tr>
 		</c:if>
-
+		<br/>
 		<tr>
-			<td height="30" colspan="4" align="center"><input type="button"
+			<td height="30" colspan="4" align="center"><input type="button" style="color:black;"
 				value="글수정"
 				onclick="javascript:marketBoardUpdate('${marketBoard.board_num}','${pageNumber}')" />
-				<input type="button" value="글삭제"
+			 	<input type="button" value="글삭제" style="color:black;"
 				onclick="javascript:marketBoardDelete('${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')"/>
 				<!-- onclick="delFun('${root}','${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')" />  -->
-				<input type="button" value="글목록"
+				<input type="button" value="글목록" style="color:black;"
 				onclick="javascript:enterMarketBoard('${root}','${pageNumber}')" />
 			</td>
 		</tr>
-	</table>
+	
 	<!-- ---------------한줄댓글 ----------------------------------------------->
 	
 	
@@ -114,13 +114,14 @@
 	
 	
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
-	<br/>
-	<h3>댓글달기 </h3>
+	<br/>	<br/>	<br/>
+	<h3 style="color:#4C4C4C; font-size: 1.3em; font-weight: bold;" >commant </h3>
+	
 	<hr>
 	<div>
-		<input id="writeId" type="text" name="artist_id"  size="12" />&nbsp;
-		<input id="writeReply" type="text" name="reply_content" size="90"/>&nbsp;
-		<input type="button" value="한줄답글작성" onclick="writeToServer('${root}','${marketBoard.board_num }')"/> 
+		<input id="writeId"  type="text" name="artist_id" size="14" style="font-size:1.05em;font-family:Helvetica;" value="${marketBoard.artist_id}">
+		<input id="writeReply" type="text" name="reply_content" size="80" />&nbsp;
+		<input type="button" value="submit" style="color:black;" onclick="writeToServer('${root}','${marketBoard.board_num }')"/> 
 	</div>
 	<div></div>
 
