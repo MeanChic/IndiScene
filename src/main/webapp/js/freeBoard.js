@@ -76,6 +76,35 @@
 			}
 		}); 
 	}	
+	
+	
+	function searchFreeBoard(root,pageNumber,searchWord,searchType){
+		if(searchWord==null){
+			var dataSet = new FormData(document.getElementById("searchForm"));
+			var searchWord=$("#searchForm #searchWord").val();
+			var searchType=$("#searchType").val();
+		}
+		
+		//alert(searchWord);
+		//alert(searchType);
+		sendData="?pageNumber="+pageNumber+"&searchType=" +searchType + "&searchWord="+searchWord ;
+		$.ajax({
+			url:root +"/freeBoard/list.do"+sendData,
+			type:"get",
+			dataType:"html",
+			success:function(data){
+				//alert(data);
+				var realData = data.split("<body>");
+				realData = realData[1].split("</body>")[0];
+				//alert(realData);
+				$("#centerContents").html(realData);
+				history.pushState({indiData:realData},"제목","/");//다음페이지에 히스토리 저장
+			},
+			error:function(xhr,status,error){
+				alert(xhr+"\n"+status+"\n"+error);
+			}
+		});
+	}
 		
 	/*----------------read.jsp-----------------------*/
 

@@ -79,7 +79,7 @@
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
 			<li class="brandNewMusic"><a href="#brandNewMusic">Brand New Music</a></li>
-			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
+			<li class="bestMusic"><a href="javascript:bestList('${root}','1')">Best Music</a></li>
 			<li class="indisMusic"><a href="javascript:uploadList('${root}','1')">Indi's Music</a></li>
 			<li class="performanceInfo"><a href="javascript:performPlace('${root}')">Performance Info</a></li>
 			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root}')">Market Place</a></li>
