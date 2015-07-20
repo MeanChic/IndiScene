@@ -305,3 +305,53 @@ function test(){
 //	alert($("#coverImage").val()=="");
 	alert($("#uploadPath").val()=="");
 }
+
+function uploadLike(root,boardNum,artist_id){
+	$.ajax({
+		url:root+"/uploadBoard/like.do?boardNum="+boardNum+"&artist_id="+artist_id,
+		type:"get",
+		dataType:"text",
+		success:function(data){
+			alert(data);
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	});
+}
+
+function bestList(root,pageNumber){
+	$.ajax({
+		url:root+"/bestBoard/list.do?pageNumber="+pageNumber,
+		type:"get",
+		dataType:"html",
+		success:function(data){
+			//alert(data);
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+		//	alert(realData);
+			$("#centerContents").html(realData);
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	}); 
+}
+
+function bestRead(root,boardNum,currentPage){
+	$.ajax({
+		url:root+"/bestBoard/read.do?boardNum="+boardNum+"&pageNumber="+currentPage,
+		type:"get",
+		dataType:"html",
+		success:function(data){
+			//alert(data);
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+		//	alert(realData);
+			$("#centerContents").html(realData);
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	}); 
+}

@@ -13,7 +13,7 @@
 	<form  id="deleteForm" method="post">	
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
-			<input type="hidden" name="artist_id" value="${artist_id }"/>
+		<input type="hidden" name="artist_id" value="${artist_id }"/>
 <!-- 		<table border="1" width="300" cellpadding="2" cellspacing="0" align="center">
  -->
  		<div align="center">

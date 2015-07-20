@@ -29,12 +29,12 @@
 		<input type="hidden" value="${board.subject}" class="collaboSubject" name="subject"/>
 		<c:if test="${board.seq_level==0}">
 			<script>
-				$(".collaboSubject").val($(".collaboSubject").val()+" feat."+$("input[name='artist_id']").val());
+				$(".collaboSubject").val("[Collabo]"+$(".collaboSubject").val()+" feat."+$("input[name='artist_id']").val());
 			</script>
 		</c:if>
 		<c:if test="${board.seq_level!=0}">
 			<script>
-				$(".collaboSubject").val($(".collaboSubject").val()+", "+$("input[name='artist_id']").val());
+				$(".collaboSubject").val("[Collabo]"+$(".collaboSubject").val()+", "+$("input[name='artist_id']").val());
 			</script>
 		</c:if>
 		 <br/><br/>
@@ -72,20 +72,21 @@
 		
 		<div>
 			<input type="button" id="prevListen" value="미리듣기"/>
-			<input type=button value="글쓰기" onclick="javascript:uploadWriteOk('${root}')"/>
+			<input type=button value="글쓰기" onclick="javascript:uploadCollaboOk('${root}','${board.board_num}','${pageNumber}')"/>
 			<input type="reset" value="다시작성"/>
 			<input type="button" value="목록보기" onclick="uploadList('${root}','1')"/>
 		</div>
 		<input type="hidden" name="recordFile" id="uploadPath" value=""/>
 		<input type="hidden" name="originalFile" id="originalMusicPath" value="${root}${board.file_path}"/> 
 		<input type="hidden" name="mergeFile" id="mergeFile" value=""/>
+		싱크 : <input type="number" value="0.0" min="-15.0" max="15.0" name="sync" style="width:100px;"/>
 	</form>
 	
 	<div id="syncControl" style="display:none;">
 		<input type="button" id="playCollabo" value="듣기"/><br/>
-		원곡<input type="button" id="originalVolumeUp" value="↑"/><input type="button" id="originalVolumeDown" value="↓"/><br/>
+	<!-- 	원곡<input type="button" id="originalVolumeUp" value="↑"/><input type="button" id="originalVolumeDown" value="↓"/><br/>
 		추가곡<input type="button" id="extraVolumeUp" value="↑"/><input type="button" id="extraVolumeDown" value="↓"/><br/>
-		<!-- 싱크 <input type="text" value="0.0" max="15" min="-15" id="syncController"/>
+		싱크 <input type="text" value="0.0" max="15" min="-15" id="syncController"/>
 			<input type="hidden" value="0.0" max="15" min="-15" id="syncSave"/> -->
 	</div>
 	

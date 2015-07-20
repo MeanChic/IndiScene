@@ -12,7 +12,7 @@
 <body>
 	<a style="margin:0 0 0 600px"href="javascript:uploadList('${root}','${pageNumber}')">리스트로 돌아가기</a>
 	<div style="border:solid 1px black; width:700px; margin:100px 0 100px 20px ">
-	<span>${pageNumber}</span><span>${board.register_date}</span>
+	<span>${pageNumber}</span><span>${boardDto.register_date}</span>
 	<div style="border:solid 1px black;"><img alt="" src="${root}${boardDto.image_path}" style="width:100px; height:100px;"></div>
 	<div style="border:solid 1px black">${boardDto.subject}</div>
 	<div style="border:solid 1px black;"><audio controls src="${root}${boardDto.file_path}"></audio></div>

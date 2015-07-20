@@ -10,43 +10,51 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-	<div id="freeBoardRead">
-	<table border="1" width="510" cellpadding="2"  cellspacing="0" align="center">
-		<tr>
-			<td align="center"  height="20" width="125">글번호</td>
-			<td align="center"  height="20" width="125" >${freeBoard.board_num }</td>
-			
-			<td align="center"  height="20" width="125">조회수</td>
-			<td align="center"  height="20" width="125" >${freeBoard.count }</td>
-		</tr>
-		
-		<tr>
-			<td align="center"  height="20" width="125">작성자</td>
-			<td align="center"  height="20" width="125" >${freeBoard.artist_id }</td>
-			<td align="center"  height="20" width="125">작성일</td>
-			<td align="center"  height="20" width="5"><fmt:formatDate value="${freeBoard.register_date }" type="date"/></td>
-		</tr>
-			<tr>
-			<td align="center"  height="20" width="125">제목</td>
-			<td align="center"  height="20" colspan="3">${freeBoard.subject }</td>
-	
-		</tr>
-		<tr>
-			<td align="center"  height="200" width="125">글내용</td>
-			<td valign="top" height="200" colspan="3">${freeBoard.content }</td>
-		</tr>
-		
-		<tr>
-		<!--  2015 0718 손유진 수정함 -->
-		 
-			<td height="30" colspan="4" align="center">
-				<input type="button" style="color:black;" value="글수정" onclick="freeboardUpdateFun'${root}','${freeBoard.board_num}','${pageNumber}')" />
-				<!-- boardNumber를 넘길경우 board_num이아닌 freeBoard.board_num을 명시해줘야 넘어간다. -->
-				<input type="button" style="color:black;" value="글삭제" onclick="freeBoardDeleteFun'${root}','${freeBoard.board_num}','${pageNumber}')"/>
-				<input type="button" style="color:black;" value="글목록" onclick="freeBoardList('${root}','${pageNumber}')"/>
-			</td>
-		</tr>
-	</table>
+<div id="freeBoardRead">
+	<h3>FreeBoard</h3>
+	<div class="marketBoardX-location02 marketBoardInterval03">
+		<a class="marketBoardAttribute01 btn btn-default" href="javascript:freeBoardList('${root}','${pageNumber}')">List</a>
+	</div>	
+	<div class="form-controlMarket">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Board Number</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="${freeBoard.board_num}" disabled="disabled" />
+		</div>
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Views</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="${freeBoard.count}" disabled="disabled" />
+		</div>
+	</div>
+	<div class="form-controlMarket">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Subject</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="marketBoardSize25 form-controller220" type="text" value="${freeBoard.subject}" disabled="disabled" />
+		</div>
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Date</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="<fmt:formatDate value="${freeBoard.register_date}" type='date'/>" disabled="disabled"/>
+		</div>
+	</div>			
+	<div class="form-controlMarket" >
+		<label class="marketBoardSize16 label-color marketBoardY-location01">Contents</label>
+		<div class="marketBoardSize77 marketBoardAttribute01">
+			<script type="text/javascript">
+				$(function(){
+					$("#noticeRead img").attr("style","");
+					$("#noticeRead img").addClass("marketBoardSize03");
+				})				
+			</script>
+			<div id="marketReadContents" class="marketBoardTextareaSize200 marketBoardAttribute02">
+				${freeBoard.content}
+			</div>		
+		</div>
+	</div>
+	<div class="form-controlMarket" style= text-align:center;>
+		<div class="marketBoardInterval04">
+				<input class="btn btn-default" type="button" value="Modify" onclick="freeBoardUpdateFun('${root}','${freeBoard.board_num }', '${pageNumber}')" />
+				<input class="btn btn-default" type="button" value="Delete" onclick="freeBoardDeleteFun('${root}','${freeBoard.board_num }', '${pageNumber}')"/>
+		</div>
+	</div>
 	
 	<!-- ---------------한줄댓글 ----------------------------------------------->
 
