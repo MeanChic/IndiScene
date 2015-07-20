@@ -24,7 +24,7 @@ function enterMarketBoard(requestRoot,pageNumber){
 	});
 }
 
-function searchBoard(requestRoot,pageNumber,searchWord,searchType){
+function searchMarketBoard(requestRoot,pageNumber,searchWord,searchType){
 	root=requestRoot;
 	if(searchWord==null){
 		var dataSet = new FormData(document.getElementById("searchForm"));

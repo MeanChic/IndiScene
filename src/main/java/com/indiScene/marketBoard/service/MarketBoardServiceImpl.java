@@ -68,7 +68,7 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 		logger.info("searchType:" +searchType);
 		
 		//전체 레코드수, 현재 번호의 시작번호, 끝번호 -->
-		int count=marketBoardDao.getCount(searchWord,searchType);	
+		int count=marketBoardDao.getCount(searchWord,searchType);//검색이 아니라면 둘다  null이 넘어감
 		
 		logger.info("count:"+ count);
 		

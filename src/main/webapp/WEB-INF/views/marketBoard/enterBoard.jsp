@@ -70,7 +70,7 @@
 							<li><a aria-label="Previous" href="javascript:enterMarketBoard('${root}','${startPage-pageBlock }')"><span aria-hidden="true">&laquo;</span></a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a aria-label="Previous" href="javascript:searchBoard('${root}','${startPage-pageBlock }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
+							<li><a aria-label="Previous" href="javascript:searchMarketBoard('${root}','${startPage-pageBlock }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:if>
@@ -82,7 +82,7 @@
 							<li><a href="javascript:enterMarketBoard('${root}','${i}')">${i}</a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="javascript:searchBoard('${root}','${i}','${requestScope.searchWord}','${requestScope.searchType}')">${i}</a></li>
+							<li><a href="javascript:searchMarketBoard('${root}','${i}','${requestScope.searchWord}','${requestScope.searchType}')">${i}</a></li>
 						</c:otherwise>
 					</c:choose>
 					
@@ -95,7 +95,7 @@
 							<li><a aria-label="Next" href="javascript:enterMarketBoard('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a aria-label="Previous" href="javascript:searchBoard('${root}','${startPage+pageBlock }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
+							<li><a aria-label="Previous" href="javascript:searchMarketBoard('${root}','${startPage+pageBlock }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
 						</c:otherwise>
 					</c:choose>
 					
@@ -106,7 +106,7 @@
 	
 	<!-- 검색 작업창 시작 --------------------------------------------------->
 	<div> 
-		<form id="searchForm" name="searchForm" method="get" action="javascript:searchBoard('${root}','1');">
+		<form id="searchForm" name="searchForm" method="get" action="javascript:searchMarketBoard('${root}','1');">
 	<!--   페이징작업을위한 GET방식 -->     
 	<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
               <table id="">
