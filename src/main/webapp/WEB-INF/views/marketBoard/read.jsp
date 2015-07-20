@@ -8,10 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="${root }/js/jquery.js"></script>
 <script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
 <script src="${root }/js/replyWrite.js" type="text/javascript" ></script>
 <script src="${root }/js/replyDelete.js" type="text/javascript" ></script>
 <script src="${root }/js/replyUpdate.js" type="text/javascript" ></script>
+<script src="${root }/js/reply.js"></script>
+
 <!-- Load google font -->
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
@@ -81,7 +84,7 @@
 	
 	<c:if test="${marketBoard.file_name !=null }">
 	<div class="form-controlMarket">
-		<label class="marketBoardSize16 label-color marketBoardAttribute01">File</label>
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">File&nbsp;:&nbsp;</label>
 		<div class="marketBoardSize01 marketBoardAttribute01">
 			<!-- 다중파일 read 처리 -->
 			<c:forTokens var="file_name" items="${marketBoard.file_name}" delims="<>" varStatus="s" >
@@ -120,7 +123,9 @@
 	<div></div>
 
 	<!-- 새로운 데이터 -->
-	<div id="newReply"></div>
+	<div id="newReply">
+		
+	</div>
 	
 	<!--  기존데이타 -->
 	
@@ -130,20 +135,19 @@
 			<p class="DiscussInfo"><!--  아이디/날짜   -->
 				<span class="cssAritist">${reply.artist_id }</span>&nbsp;&nbsp;&nbsp;&nbsp;
 				<span class="cssDate"><fmt:formatDate
-					value="${reply.reply_date }" type="date" pattern="yyyy/MM/dd HH:mm" /></span>		
+					value="${reply.reply_date }" type="date" pattern="yyyy/MM/dd HH:mm" />
+				</span>		
 			</p>
 			<p >
 				<span class="cssReply">${reply.reply_content }</span>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<span class="cssUpDel">
-					<a href="javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')" style="color:#36b823;">Edit</a>
+					<a class="cssUpDelEdit" href=" javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')" style="color:#36b823;">Edit</a>
 					<span class="Delimiter">/</span>
-					<a href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')" style="color:#D43F3A;">Delete</a>
+					<a class="cssUpDelDelete"href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')" style="color:#D43F3A;">Delete</a>
 				</span>
 			</p>
 			<hr>
-
-			
 		</div>
 	</c:forEach>
 
@@ -167,6 +171,9 @@
 	</c:forEach>
 	</div> --%>
 <!-- 한줄 댓글 끝부분 -->
+<script>
+
+</script>
 </div>		
 </body>
 </html>

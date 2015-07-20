@@ -10,6 +10,7 @@
 	background:white; 
 	border-radius:20px; 
 	
+	
 	}
 
 p {
@@ -70,7 +71,7 @@ div {
   margin-right: 5px;
 }
 
-p.DiscussInfo {
+.DiscussInfo {
   color: #777777;
 }
 span.Delimiter {
@@ -83,7 +84,15 @@ span.Delimiter {
 .replyEdit {
 	color:#D43F3A;
 }
-
+.cssUpDelEdit{
+	color:#36b823;
+}
+.cssUpDelDelete{
+	color:#D43F3A;
+}
+.cssReply{
+	padding-right: 2.0em;
+}
 /*****    Delete    *****/
 
 
