@@ -17,7 +17,8 @@
 	<link href="${root}/css/colorbox.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
-	
+	<link href="${root}/css/marketBoard1.css" rel="stylesheet">
+
 	<!-- Load javascrips libraries-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="${root}/js/jquery.bxslider.js"></script>
@@ -36,6 +37,11 @@
 	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
 	<script type="text/javascript" src="${root}/js/notice.js"></script>
 	<script type="text/javascript" src="${root}/js/freeBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/performBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/muse.js"></script>
+	<script type="text/javascript" src="${root}/js/museGuest.js"></script>
+	<script type="text/javascript" src="${root}/js/placeBoard.js"></script>
+	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=35bf5934991976c7b6f95f227c76624f&libraries=services"></script>
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>
@@ -49,17 +55,17 @@
 			<li class="brandNewMusic"><a href="#brandNewMusic">Brand New Music</a></li>
 			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
 			<li class="indisMusic"><a href="#indisMusic">Indi's Music</a></li>
-			<li class="performanceInfo"><a href="#performanceInfo">Performance Info</a></li>
+			<li class="performanceInfo"><a href="javascript:performPlace('${root}')">Performance Info</a></li>
 			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root }')">Market Place</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
 			<li class="myMusic"><a href="#myMusic">My Music</a></li>
-			<li class="indisMuse"><a href="#indisMuse">Indi's Muse</a></li>
+			<li class="indisMuse"><a href="javascript:indimuse('${artist_id}')">Indi's Muse</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="notice"><a href="javascript:list('${root }','1')">Notice</a></li>
+			<li class="notice"><a href="javascript:noticeList('${root }','1')">Notice</a></li>
 			<li class="freeboard"><a href="javascript:freeBoardList('${root }','1')">Free Board</a></li>
 		</ul>
 	</nav>

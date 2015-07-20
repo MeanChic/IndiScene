@@ -10,59 +10,58 @@
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 </head>
 <body>
-	<div id="noticeWrite">>
-		<form id="NoticeWriteForm" class="form_style" method="post" >	
-			<input type="hidden" name="board_num" value="${board_num}"/>
-			<input type="hidden" name="group_num" value="${group_num }"/>
-			<input type="hidden" name="seq_num" value="${seq_num }"/>
-			<input type="hidden" name="seq_level" value="${seq_level }"/>
-			<input type="hidden" name="pageNumber" value="${pageNumber}"/>
-		
-			<c:if test="${pageNumber ==null}">
-				<c:set var="pageNumber" value="${1}"/>
-			</c:if>
-			<br/><br/>		
-
-			<div class="line">
-				<label class="title">작성자</label>
-				<span class="content2">
-					<input type="text" size="50" name="artist_id" value="indi"/> 
-				</span>
+<div id="noticeWrite">
+	<h3>Notice Write</h3>
+	<form id="NoticeWriteForm" method="post" >
+		<input type="hidden" name="board_num" value="${board_num}"/>
+		<input type="hidden" name="group_num" value="${group_num }"/>
+		<input type="hidden" name="seq_num" value="${seq_num }"/>
+		<input type="hidden" name="seq_level" value="${seq_level }"/>
+		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
+		<c:if test="${pageNumber ==null}">
+			<c:set var="pageNumber" value="${1}"/>
+		</c:if>
+		<div class="marketBoardX-location02 marketBoardInterval03">
+			<a class="marketBoardAttribute01 btn btn-default" href="javascript:noticeList('${root}','${pageNumber}')">List</a>
+		</div>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Writer</label>
+			<div class="form-inlineblock">
+				<input class="form-controller320" type="text" size="50" name="artist_id" value="testId"/>
 			</div>
-			
-			<div class="line">
-				<label class="title">제목</label>
-				<span class="content2">
-					<input type="text" size="50" name="subject"/>
-				</span>
+		</div>	
+		<div class="form-controlMarket">
+			<label class="subject label-color">Subject</label>
+			<div class="form-inlineblock">
+				<input class="form-controller320" type="text" size="50" name="subject"/>
 			</div>
-			
-			
-			<br/>
-				<label class="title">내용</label>
-				<span class="content">
-					<textarea id="content" rows="14" cols="58" name="content"></textarea>
-				<br/><br/>
-				
+		</div>	
+		<div class="form-controlMarket" >
+			<label class="label-color marketBoardY-location01">Contents</label>
+			<div class="form-inlineblock marketBoardSize80">
+				<textarea name="content"></textarea>
 				<script>
-				        var folderName='${pageContext.request.servletPath }';
-						folderName=folderName.split("views/");
-						folderName=folderName[1].split("/");
-						//var id=document.getElementById(folderName);
-						//id.value=folderName[0]; //멀티파일폴더 만들때
-						$("#folderName").val(folderName[0]);
-						//alert(folderName[0])
-						 CKEDITOR.replace( 'content',
-								 {///IndiScene_basic/src/main/webapp/resources/ckfinder
-								 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
-								 });
+			        var folderName='${pageContext.request.servletPath }';
+					folderName=folderName.split("views/");
+					folderName=folderName[1].split("/");
+					//var id=document.getElementById(folderName);
+					//id.value=folderName[0]; //멀티파일폴더 만들때
+					$("#folderName").val(folderName[0]);
+					//alert(folderName[0])
+					 CKEDITOR.replace( 'content',
+							 {///IndiScene_basic/src/main/webapp/resources/ckfinder
+							 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
+							 });
 				</script>
-				</span>
-				<br/>
-				<input type="button" value="글쓰기" onclick="writeOk('${root}','${pageNumber}')"/>
-				<input type="reset" value="다시작성"/>
-				<input type="button" value="목록보기"  onclick="list('${root}','${pageNumber}')"/>
-		</form>
-	</div>	
+			</div>
+		</div>
+		<div class="form-controlMarket" style= text-align:center;>
+			<div class="marketBoardInterval04">
+				<input class="btn btn-default" type="button" value="Write" onclick="javascript:noticeWriteOk('${root}','${pageNumber}')">
+				<input class="btn btn-default" type="reset" value="Reset"/>
+			</div>
+		</div>
+	</form>
+</div>	
 </body>
 </html>

@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Market board update</title>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <script src="${root }/js/jquery.js" type="text/javascript" ></script>

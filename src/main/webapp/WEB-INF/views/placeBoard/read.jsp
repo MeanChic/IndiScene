@@ -28,7 +28,58 @@
 </head>
 
 <body>
+
+<script>
+
+	$(function(){
+		$( "#datepicker" ).datepicker({
+    		defaultDate: $("#date").val()
+    	});
+
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = {
+	        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };  
+
+		// 지도를 생성합니다    
+		var map = new daum.maps.Map(mapContainer, mapOption); 
+	
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new daum.maps.services.Geocoder();
+
+		// 주소로 좌표를 검색합니다
+		var address = document.getElementById('address').value;
+		
+		lat = address.split("(")[1].split(",")[0];
+		lng = address.split("(")[1].split(",")[1].split(")")[0];
+		
+		//alert(lat);
+		//alert(lng);
+		/* geocoder.addr2coord(address, function(status, result) { */
+
+	    // 정상적으로 검색이 완료됐으면 
+	     /* if (status === daum.maps.services.Status.OK) { */
+		$(function(){
+	        var coords = new daum.maps.LatLng(lat,lng);/* result.addr[0].lat, result.addr[0].lng); */
+
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new daum.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new daum.maps.InfoWindow({
+	            content: '<div style="padding:5px;">공연장 위치</div>'
+	        });
+	        infowindow.open(map, marker);
+	    /* } */ 
+	});   
+	});
+</script>
 	<c:set var="root" value="${pageContext.request.contextPath }" />
+	<input type="hidden" id="address" value="${marketBoard.zipcode}"/>
 	
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
 	<table border="1" width="510" cellpadding="2" cellspacing="0"align="center">
@@ -56,23 +107,18 @@
 			<td valign="top" height="200" colspan="3">${marketBoard.content }</td>
 		</tr>
 		
-		<c:if test="${marketBoard.file_name !=null }">
+		
 			<tr>
 				<td align="center" height="20" width="125">파일명</td>
 				<td colspan="3">
 				
-				
-				<!-- 다중파일 read 처리 -->
-				<c:forTokens var="file_name" items="${marketBoard.file_name}" delims="<>" varStatus="s" >
-					<c:forTokens var="file_path" items="${marketBoard.file_path}" delims="<>" begin="${s.index}" end="${s.index }"> <!--파일 네임과 동일한 s번째순번의 path를 사용한다-->
-						<a href="${root}/CommonIO/download.do?board_num=${marketBoard.board_num}&file_name=${file_name}&file_path=${file_path}">${file_name}, ${s.index}
-						</a><br/>
-					</c:forTokens>
-				</c:forTokens>
+				<div id="map" style="width:300px;height:300px;"></div>
+				${marketBoard.address}
+				</td>
 				 
 				</td>
 			</tr>
-		</c:if>
+		
 
 		<tr>
 			<td height="30" colspan="4" align="center"><input type="button"

@@ -1,7 +1,7 @@
 /*Notice javascript*/
 
 
-	function write(root){
+	function noticeWrite(root){
 		
 		$.ajax({
 			url:root+"/notice/write.do",
@@ -23,7 +23,7 @@
 		}); 
 	}
 
-	function writeOk(root,pageNumber){
+	function noticeWriteOk(root,pageNumber){
 		var dataSet = new FormData(document.getElementById("NoticeWriteForm"));
 		//alert("pageNumber:"+pageNumber)
  		//alert(CKEDITOR.instances.content.getData());
@@ -52,7 +52,7 @@
 		}); 
 	}
 	
-	function list(root,pageNumber){
+	function noticeList(root,pageNumber){
 	//if(pageNumber=="")pageNumber=1;
 		$.ajax({
 			url:root+"/notice/list.do?pageNumber="+pageNumber,
@@ -73,7 +73,7 @@
 		
 	/*----------------read.jsp-----------------------*/
 
-		function read(root,board_num,pageNumber){
+		function noticeRead(root,board_num,pageNumber){
 		//alert(root);
 		
 			$.ajax({
@@ -93,7 +93,7 @@
 			}); 
 		}
 		
-		function deleteFun(root, board_num, pageNumber){
+		function noticeDeleteFun(root, board_num, pageNumber){
 			$.ajax({
 				url:root+"/notice/delete.do?board_num="+board_num+"&pageNumber="+pageNumber,
 				type:"get",
@@ -111,7 +111,7 @@
 			}); 
 		}
 		
-		function deleteFunOk(root, board_num, pageNumber){
+		function noticeDeleteFunOk(root, board_num, pageNumber){
 			var dataSet = new FormData(document.getElementById("deleteForm"));
 			alert(root +","+board_num +","+ pageNumber);
 			$.ajax({
@@ -137,7 +137,7 @@
 			
 		}
 			
-		function updateFun(root, board_num, pageNumber){
+		function noticeUpdateFun(root, board_num, pageNumber){
 			alert(root);
 			
 			$.ajax({
@@ -157,7 +157,7 @@
 			}); 
 		} 
 		
-		function updateFunOk(root, board_num, pageNumber){
+		function noticeUpdateFunOk(root, board_num, pageNumber){
 			alert("root:"+root);
 	
 			$("#content").val(CKEDITOR.instances.content.getData());

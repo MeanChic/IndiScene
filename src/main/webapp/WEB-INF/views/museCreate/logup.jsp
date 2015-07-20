@@ -11,6 +11,9 @@
 <link type="text/css" href="${root}/css/jquery-ui.css" rel="stylesheet"/>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
+
+</head>
+<body>
 <script type="text/javascript">
 	$(function(){
 		var root = $("#root").val();
@@ -68,8 +71,6 @@
 	});	
 	
 </script>
-</head>
-<body>
 <input type="hidden" id="root" value="${root}"/>
 <input type="hidden" id="artist_id" value="${artist_id}"/>
 
@@ -82,14 +83,14 @@
 		</c:if>
 	</c:if>
 	
-<form action="${root}/museCreate/logup.do" enctype="multipart/form-data" method="post">
+<form enctype="multipart/form-data" method="post"><%-- action="${root}/museCreate/logup.do"  --%>
 	<input type="hidden" name="artist_id" value="${artist_id}"/>
 	Muse Name : <input type="text" name="muse_name"/><input type="button" name="check" value="중복확인"/><br/><br/>
 	Muse 설명 : <textarea rows="10" cols="20" name="muse_comment"></textarea><br/><br/>
 	Muse Emblem : <input type="file" name="file" id="file"/>
 	<output id="result"></output>
 
-	<input type="submit">
+	<input type="button" onclick="createMuse()">
 	<input type="reset"/>
 </form>
 </body>

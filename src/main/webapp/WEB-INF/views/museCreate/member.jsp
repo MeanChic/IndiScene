@@ -11,53 +11,7 @@
 <link type="text/css" href="${root}/css/jquery-ui.css" rel="stylesheet"/>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
-<script type="text/javascript">
-	
-	
-	function outMember(muse_name, artist_id){
-		var root = $("#root").val();
-		var sendData= "muse_name=" + muse_name + "&artist_id=" + artist_id;
-		var url = root + "/museCreate/outMember.do?" + sendData;
-		
-		//alert(url);
-		 $.ajax({
-			url:url,
-			type:"get",
-			dataType:"text",
-			success:function (data){
-				if(data == "0"){
-					alert("탈퇴되지 않았습니다.");
-				}else{
-					alert(artist_id+"회원이 탈되되었습니다.");
-					$("#"+artist_id).remove();
-				}
-			}
-		}); 
-	}
-	
-	function inviteMember(muse_name, artist_id){
-		var root = $("#root").val();
-		var sendData= "muse_name=" + muse_name + "&artist_id=" + artist_id;
-		var url = root + "/museCreate/inviteMember.do?" + sendData;
-		
-		//alert(url);
-		 $.ajax({
-			url:url,
-			type:"get",
-			dataType:"text",
-			success:function (data){
-				if(data == "0"){
-					alert("muse멤버로 수락할수 없습니다.");
-				}else{
-					alert("muse멤버로 수락되었습니다.");
-					$("#"+artist_id).find("input").eq(0).remove();
-					$("#"+artist_id).find("input").eq(0).val("강제탈퇴");
-					$("#join").append($("#"+artist_id));
-				}
-			}
-		});
-	}
-</script>
+
 </head>
 <body>
 	${muse_name}
@@ -66,14 +20,18 @@
 	<input type="hidden" id="root" value="${root}"/>
 	
 	<c:if test="${check != 0 }">
+	<c:forEach var="master" items="${joinMember }">
+		<c:if test="${master.ARTIST_ID == artist_id}">
+			<div id="${master.ARTIST_ID}" >
+				${master.ARTIST_ID} , ${master.MUSE_YN}, ${master.MUSE_NAME}
+				<input type="button" value="뮤즈 삭제하기" onclick="deleteMuse('${muse_name}','${artist_id})">
+			</div>
+			==============================================================
+		</c:if>
+	</c:forEach>
+	
 	<div id="join">
 	<c:forEach var="join" items="${joinMember }">
-		<c:if test="${join.ARTIST_ID = artist_id}">
-			<div id="${join.ARTIST_ID}" >
-				${join.ARTIST_ID} , ${join.MUSE_YN}, ${join.MUSE_NAME}
-				<input type="button" value="뮤즈 삭제하기" onclick="outMember('${muse_name}','${join.ARTIST_ID}')">
-			</div>
-		</c:if>
 		<c:if test="${join.ARTIST_ID != artist_id}">
 		<div id="${join.ARTIST_ID}" >
 			${join.ARTIST_ID} , ${join.MUSE_YN}, ${join.MUSE_NAME}

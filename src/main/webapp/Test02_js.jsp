@@ -25,11 +25,13 @@
 	<script src="${root}/js/jquery.colorbox.js"></script>
 	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
-	<script type="text/javascript" src="${root}/js/muse.js"></script>
+	
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="${root}/js/performBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/muse.js"></script>
 	<script type="text/javascript" src="${root}/js/placeBoard.js"></script>
 	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/museGuest.js"></script>
 <script type="text/javascript" src="${root}/js/freeBoard.js"></script>
 	<script type="text/javascript" src="${root}/js/notice.js"></script>
 	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
@@ -77,7 +79,7 @@
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
 			<li class="brandNewMusic"><a href="#brandNewMusic">Brand New Music</a></li>
-			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
+			<li class="bestMusic"><a href="javascript:bestList('${root}','1')">Best Music</a></li>
 			<li class="indisMusic"><a href="javascript:uploadList('${root}','1')">Indi's Music</a></li>
 			<li class="performanceInfo"><a href="javascript:performPlace('${root}')">Performance Info</a></li>
 			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root}')">Market Place</a></li>

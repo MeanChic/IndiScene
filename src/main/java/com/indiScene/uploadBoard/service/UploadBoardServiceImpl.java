@@ -29,6 +29,7 @@ import com.indiScene.uploadBoard.dto.UploadBoardDto;
 @Controller
 public class UploadBoardServiceImpl implements UploadBoardService {
 	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
+//	private String dir="C:/KMS_MavenSpring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/";
 	
 	@Autowired
 	private UploadBoardDao dao;
@@ -90,8 +91,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		uploadBoardDto.setRegister_date(new java.util.Date());
 		uploadBoardDto.setCount(0);
 		
-		String coverImage = uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(0).getOriginalFilename();
-		
+		String coverImage=null;
+		if(!request.getFile("coverImage").isEmpty()){
+			coverImage= uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(0).getOriginalFilename();
+		}else{
+			coverImage="d2.jpg";
+		}
 		String musicFile = null;
 		
 		if(fileList.size() == 2){		// 녹음파일일 경우.
@@ -469,31 +474,21 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 			System.out.println(fileStr +"\t"+ request.getFile(fileStr));
 		}
 		
-//		uploadBoardDto.setRegister_date(new java.util.Date());
-//		uploadBoardDto.setCount(0);
-		
 		String musicFile = null;
 		
-		if(mf!=null){		// 녹음파일일 경우.
+		if(mf!=null){		// 음악파일일 경우.
 			musicFile =uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+mf.getOriginalFilename();
 		}
-		
-//		String dirCover = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/cover");
-//		String dirMusic = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/music");
 		
 		File uploadMusicFile = null;
 		File recordFile=null;
 		
-		if(musicFile !=null){		// 녹음파일일 경우.
+		if(musicFile !=null){		// 음악파일일 경우.
 			uploadMusicFile = new File(dir+"/uploadBoard/music/",musicFile);
 		}else{
 			uploadMusicFile = new File(dir+"/uploadBoard/music/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
 			recordFile = new File(dir+"/TemporaryMusic/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
 		}
-//		uploadBoardDto.setFile_name(uploadMusicFile.getName());
-//		uploadBoardDto.setFile_path(uploadMusicFile.getAbsolutePath());
-//		uploadBoardDto.setImage_path(coverImageFile.getAbsolutePath());
-//		uploadBoardDto.setBoard_like(0);
 		
 		try {
 			if(mf!=null){
@@ -519,11 +514,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		File originalFile = new File(dir+"/uploadBoard/music/",request.getParameter("originalFile").substring(request.getParameter("originalFile").lastIndexOf("/")+1));
+		
+		File originalFile = new File(dir+request.getParameter("originalFile").substring(request.getParameter("originalFile").indexOf("/resources")+10));
 		
 		KOSTAAudio kostaAudio = new KOSTAAudio();
 		
-		String mergeFile = kostaAudio.mergeAudio(originalFile.getAbsolutePath(), uploadMusicFile.getAbsolutePath(), uploadBoardDto.getArtist_id(), 0);
+		String mergeFile = kostaAudio.mergeAudio(originalFile.getAbsolutePath(), uploadMusicFile.getAbsolutePath(), uploadBoardDto.getArtist_id(), Double.parseDouble(request.getParameter("sync")));
 		
 		try {
 			PrintWriter pw = response.getWriter();
@@ -538,6 +534,54 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 //		int check = dao.write(uploadBoardDto);
 //		mav.addObject("check", check);
 //		mav.addObject("board", uploadBoardDto);
+	}
+
+	@Override
+	public void collaboOk(ModelAndView mav) {
+		logger.info("UploadBoard CollaboOk Service");
+		Map<String, Object> map = mav.getModel();
+		MultipartHttpServletRequest request = (MultipartHttpServletRequest) map.get("request");
+		UploadBoardDto uploadBoardDto = (UploadBoardDto) map.get("uploadBoardDto");
 		
+		uploadBoardDto.setRegister_date(new java.util.Date());
+		uploadBoardDto.setCount(0);
+		
+		String coverImage=null;
+		if(!request.getFile("coverImage").isEmpty()){
+			coverImage= uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+request.getFile("coverImage").getOriginalFilename();
+		}else{
+			coverImage="d2.jpg";
+		}
+		
+		File coverImageFile = new File(dir+"/uploadBoard/cover/",coverImage);
+		File uploadMusicFile = new File(dir+request.getParameter("mergeFile").substring(request.getParameter("mergeFile").indexOf("/resources")));
+		
+		uploadBoardDto.setFile_name(uploadMusicFile.getName());
+		uploadBoardDto.setFile_path(request.getParameter("mergeFile").substring(request.getParameter("mergeFile").indexOf("/resources")));
+		uploadBoardDto.setImage_path(coverImageFile.getAbsolutePath());
+		uploadBoardDto.setBoard_like(0);
+		
+		try {
+			if(!request.getFile("coverImage").isEmpty()){
+				request.getFile("coverImage").transferTo(coverImageFile);
+			}
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		if(!request.getFile("coverImage").isEmpty()){
+			uploadBoardDto.setImage_path(uploadBoardDto.getImage_path().substring(uploadBoardDto.getImage_path().indexOf("\\resources")).replace('\\','/'));
+		}else{
+			uploadBoardDto.setImage_path(request.getParameter("image_path"));
+		}
+		
+		uploadBoardWriteNumber(uploadBoardDto);
+		int check = dao.write(uploadBoardDto);
+		mav.addObject("check", check);
+		mav.addObject("board", uploadBoardDto);
+		
+		mav.setViewName("uploadBoard/writeOk");
 	}
 }

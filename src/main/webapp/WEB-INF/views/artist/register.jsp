@@ -5,12 +5,13 @@
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<script type="text/javascript" src="${root}/js/artist.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<script type="text/javascript" src="${root}/js/artist.js"></script>
 </head>
 <body>
 <div id="RegisterForm">
+	<h3>Register</h3>
 	<form name="artistForm" class="controlArtistForm" onsubmit="return registerForm(this)">
 		<div class="form-controlArtist">
 			<label class="form-inlineblock label-color">Id</label>

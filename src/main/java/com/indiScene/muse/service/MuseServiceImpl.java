@@ -1,6 +1,7 @@
 package com.indiScene.muse.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -79,6 +80,7 @@ public class MuseServiceImpl implements MuseService {
 	public void logup(ModelAndView mav){
 		Map<String, Object> map = mav.getModelMap();
 		MultipartHttpServletRequest request = (MultipartHttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
 		//logger.info("--" +request.getParameter("check"));
 		MuseDto museDto = (MuseDto)map.get("museDto");
 		
@@ -98,7 +100,7 @@ public class MuseServiceImpl implements MuseService {
 				String dir="C:/Users/kosta/git/IndiScene/src/main/webapp/resources/museResources";
 				//String dir="C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources";
 				
-				//logger.info("ch dir : " + dir);
+				
 				
 				File file = new File(dir, timeName);
 				upFile.transferTo(file);	
@@ -108,16 +110,42 @@ public class MuseServiceImpl implements MuseService {
 			}catch(Exception e){
 				logger.info("ch File Input Ouput Error");
 			}
+		}else{
+			museDto.setMuse_filepath("C:/Users/kosta/git/IndiScene/src/main/webapp/resources/museResources/Koala.jpg");
 		}
+		//logger.info("ch dir : " + museDto.getMuse_filepath());
 		
+		PrintWriter out = null;
+		response.setCharacterEncoding("utf-8");
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int check = museDao.logup(museDto);
 		if(check > 0){
 			int musenew = guestDao.createMuse(museDto.getMuse_name());
 			//logger.info("-- new create muse write : " + musenew);
+			out.print("<script> "
+					+ "alert('뮤즈가 개설되었습니다.');"
+					+ "indimuse('"+museDto.getArtist_id()+"')"
+					+ " </script> ");
+		}else{
+			
+			//logger.info("-- new create muse write : " + musenew);
+			out.print("<script> "
+					+ "alert('뮤즈가 개설 될수 없습니다.');"
+					+ "indimuse('"+museDto.getArtist_id()+"')"
+					+ " </script> ");
 		}
+		
+		
+		
+		
 		//logger.info("-- muselogup check:" + check);
-		mav.addObject("check",check);
-		mav.setViewName("museCreate/logup");
+		/*mav.addObject("check",check);
+		mav.setViewName("museCreate/logup");*/
 	}
 	
 	/**
@@ -161,6 +189,31 @@ public class MuseServiceImpl implements MuseService {
 		List<HashMap<String, Object>> bestMuse = museDao.bestMuse(artist_id);
 		List<HashMap<String, Object>> myMuse = museDao.myMuse(artist_id);
 		List<MuseDto> allMuse = museDao.allMuse(artist_id);
+		
+		for(int i = 0; i < bestMuse.size(); i++){
+			String path = (String)bestMuse.get(i).get("MUSE_FILEPATH");
+			int su = "C:/Users/kosta/git/IndiScene/src/main/webapp".length();
+			
+			logger.info("--" + su + "   " + path + "    "  + path.substring(su));
+			bestMuse.get(i).replace("MUSE_FILEPATH", path.substring(su));
+		}
+		
+		for(int i = 0; i < myMuse.size(); i++){
+			String path = (String)myMuse.get(i).get("MUSE_FILEPATH");
+			int su = "C:/Users/kosta/git/IndiScene/src/main/webapp".length();
+			
+			logger.info("--" + su + "   " + path + "    "  + path.substring(su));
+			bestMuse.get(i).replace("MUSE_FILEPATH", path.substring(su));
+		}
+		
+		for(int i = 0; i < allMuse.size(); i++){
+			String path = (String)allMuse.get(i).getMuse_filepath();
+			int su = "C:/Users/kosta/git/IndiScene/src/main/webapp".length();
+			
+			logger.info("--" + su + "   " + path + "    "  + path.substring(su));
+			bestMuse.get(i).replace("MUSE_FILEPATH", path.substring(su));
+		}
+		
 		
 		mav.addObject("bestMuse", bestMuse);
 		mav.addObject("myMuse", myMuse);
@@ -258,7 +311,7 @@ public class MuseServiceImpl implements MuseService {
 		List<HashMap<String, Object>> joinMember = museDao.joinMember(muse_name);
 		List<HashMap<String, Object>> nonMember = museDao.nonMember(muse_name);
 		
-		//logger.info("--" + joinMember.size() + " , " + nonMember.size());
+		logger.info("--" + joinMember.size() + " , " + nonMember.size());
 		
 		mav.addObject("joinMember", joinMember);
 		mav.addObject("nonMember", nonMember);
@@ -339,6 +392,38 @@ public class MuseServiceImpl implements MuseService {
 		mav.addObject("list", list);
 		
 		mav.setViewName("museCreate/goin");
+	}
+	
+	public void deleteMuse(ModelAndView mav){
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		HttpServletResponse response = (HttpServletResponse)map.get("response");
+		String muse_name = request.getParameter("muse_name");
+		String artist_id = request.getParameter("artist_id");
+		PrintWriter out = null;
+		response.setCharacterEncoding("utf-8");
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int check = museDao.deleteMuse(muse_name);
+		if(check > 0){
+			int checkG = guestDao.deleteMuse(muse_name);
+			if(checkG > 0){
+				out.print("<script> "
+						+ "alert('뮤즈가 삭제되었습니다.');"
+						+ "indimuse('"+artist_id+"')"
+						+ " </script> ");
+			}
+		}else{
+			out.print("<script> "
+					+ "alert('뮤즈가 개설될수 없습니다.');"
+					+ "indimuse('"+artist_id+"')"
+					+ " </script> ");
+		}
 	}
 }
 

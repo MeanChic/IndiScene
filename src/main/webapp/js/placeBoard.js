@@ -2,6 +2,13 @@
  * 
  */
 var root=null;
+
+function placeMap(){
+	//alert(form+", "+root);
+	var url=root+"/performBoard/map.do";
+	window.open(url,"","width=500, height=500");
+}
+
 function enterPlaceBoard(requestRoot,pageNumber){
 	root=requestRoot;
 	//alert(pageNumber);
@@ -94,6 +101,7 @@ function placeBoardWrite(){
 
 
 function placeBoardWriteOk(){
+	$("input[name = 'address']").val($("input[name = 'zipcode1']").val() +"*"+ $("input[name = 'address']").val());
 	var dataSet = new FormData(document.getElementById("marketBoardWriteForm"));
 	//alert(CKEDITOR.instances.content.getData());
 	dataSet.append("content",CKEDITOR.instances.content.getData());
@@ -138,6 +146,7 @@ function placeBoardRead(board_num,pageNumber){
 }
 
 function placeBoardUpdate(board_num,pageNumber){
+	$("input[name = 'address']").val($("input[name = 'zipcode1']").val() + "*" + $("input[name = 'address']").val());
 	var sendData="?board_num="+board_num+"&pageNumber="+pageNumber;
 	$.ajax({
 		url:root + "/placeBoard/update.do"+sendData,

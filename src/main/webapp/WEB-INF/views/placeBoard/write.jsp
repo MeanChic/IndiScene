@@ -15,6 +15,10 @@
 	<!--  <link rel="stylesheet" type="text/css" href="${root }/css/marketBoard/style.css"/>-->
 </head>
 <body>
+
+<script type="text/javascript">
+
+</script>
 	<form id="marketBoardWriteForm" class="form_style"  action="${root }/placeBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		 <input type="hidden" id="folderName" name="folderName" />
 			
@@ -49,14 +53,20 @@
 						 {///IndiScene_basic/src/main/webapp/resources/ckfinder
 						 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
 						 });
+				
 	  	</script>
 			</span>
 		</div>	
 		
 		<div class="line">
-			<label class="subject">파일</label>
-				<span class="content"><input class="multi" type="file" name="file[]" multiple></span>
-				                    
+			<span class="content">
+					<br/><br/>
+					<input type="hidden" name="zipcode" value="">
+					
+					주소<input type="text" name="zipcode1"/> <input type="button"  value="우편번호" onclick="javascript:performZipcodeCheck('${root}')"><br/></br>
+					<input type="text" name="address" value=""/><br/><br/>
+					<input type="button"  value="지도로 검색" onclick="javascript:placeMap()"/>
+				</span>	          
 		</div>	
 		
 		<div class="line" style= text-align:center;>

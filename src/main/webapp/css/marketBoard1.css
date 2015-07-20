@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
-
-#marketBoardread{ 
+/* Read */
+#marketBoardread,#freeBoardDelete,#noticeDelete, #marketBoardDelete,#noticeRead{ 
 	text-align:left; 
 	width:930px; 
 	min-height:450px; 
@@ -9,6 +9,7 @@
 	border:solid 1px #BDBDBD; 
 	background:white; 
 	border-radius:20px; 
+	
 	}
 
 p {
@@ -18,7 +19,7 @@ p {
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
 }
-.btn-xs, .btn-group-xs>.btn {
+/* .btn-xs, .btn-group-xs>.btn {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
@@ -47,7 +48,7 @@ p {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
-}
+} */
 li {
   display: list-item;
   text-align: -webkit-match-parent;
@@ -63,7 +64,7 @@ div {
 }
  /* artist_id 폰트  */
 .cssAritist {
-  font-size: 1.3em;/* 
+  font-size: 1.3em;
   font-family:'Nanum Gothic';
   font-weight: bold;
   margin-right: 5px;
@@ -79,7 +80,92 @@ span.Delimiter {
 	color: #36b823;
 }
 
-
 .replyEdit {
 	color:#D43F3A;
+}
+
+/*****    Delete    *****/
+
+
+.marketBoardDeleteSubmit{
+	
+	background-color: white;
+	
+}
+
+.DeletefontStyle{
+	 font-size:1.5em; 
+	 font-family:Helvetica;
+}
+.Delimiter{
+	
+	  font-weight: bold;
+	  
+}
+
+.marketBoardUpDelBtn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.marketBoardUpDelBtn-default {
+  color: black;
+  border-color: black;
+}
+a.marketBoardListBtn {
+  display: inline-block;
+  padding: 9px 33px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid #36b823;
+  border-radius: 4px;
+}.marketBoardDelBtn  {
+
+  display: inline-block;
+  padding: 9px 24px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid red;
+  border-radius: 4px;
+
+}
+
+.marketBoardDelFontStyle{
+	 font-size:1.3em; 
+	 font-family:Helvetica;
+}
+.DeletePassWord {
+  padding-left: 20%;
+}
+.DeleteListPaddingLeft{
+	  padding-left: 0.1%;
+}
+form.marketBoardDeleteForm {
+  padding-top: 10%;
+}
+input.FontColorIsBlack{
+	color:black;
 }

@@ -55,7 +55,7 @@ public class MuseController {
 		mav.addObject("museDto", museDto);
 		service.logup(mav);
 		
-		return mav;
+		return null;
 	}
 	
 	/**
@@ -220,6 +220,17 @@ public class MuseController {
 		mav.addObject("response", response);
 		
 		service.inviteMember(mav);
+		
+		return null;
+	}
+	
+	
+	@RequestMapping(value="/museGuest/deleteMuse.do", method=RequestMethod.GET)
+	public ModelAndView deleteMuse(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		
+		service.deleteMuse(mav);
 		
 		return null;
 	}

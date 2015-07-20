@@ -14,6 +14,14 @@
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
 <script src="${root }/js/reply.js" type="text/javascript" ></script>
+<script>
+$(document).ready(function(){
+	window.onpopstate=function(e){
+	$("#centerContents").html(e.state.indiData);
+	}
+});
+
+</script>
 
 </head>
 <body>

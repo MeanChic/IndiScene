@@ -55,6 +55,7 @@
 			<li class="indisMuse"><a href="indisMuse">Indi's Muse</a></li>
 		</ul>
 		<hr>
+		
 		<ul class="nav nav-pills nav-stacked">
 			<li class="notice"><a href="#notice">Notice</a></li>
 			<li class="freeboard"><a href="#freeboard">Free Board</a></li>

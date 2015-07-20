@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.indiScene.artist.dto.ZipcodeDto;
 import com.indiScene.commonIO.dto.CommonDto;
 import com.indiScene.commonIO.service.CommonIOService;
 import com.indiScene.performBoard.dao.PerformBoardDao;
@@ -54,6 +55,28 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 	@auther: 나혁진
 	@description :전체 게시판 리스트를 호출하기 위해 해당페이지를 계산한뒤 dao를 호출한다
 	 */
+	
+	@Override
+	public void findZipcode(ModelAndView mav) {
+		logger.info("-----Servlet artist findZipcode-----");
+		//root+"/artist/zipcode.do";
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		
+		String dong=request.getParameter("dong");
+		logger.info("memberZipcode dong: "+dong);
+		
+		List<ZipcodeDto> list=null;
+		if(dong!=null){
+			list=marketBoardDao.ZipcodeList(dong);
+			logger.info("artistZipcode list size:"+list.size());
+		}
+		
+		mav.addObject("list",list);
+		
+		mav.setViewName("performBoard/zipcode");
+	}
+	
 	@Override
 	public void enterBoard(ModelAndView mav) {
 		// TODO Auto-generated method stub
@@ -138,10 +161,11 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		MultipartHttpServletRequest request=(MultipartHttpServletRequest)map.get("request"); 
 		Date date=new Date();
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		logger.info("--" + request.getParameter("d_day1")+" "+request.getParameter("hour"));
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh : mm");
 		marketBoardDto.setRegister_date(date);
 		try {
-			marketBoardDto.setD_day((Date)sdf.parse(request.getParameter("d_day1")));
+			marketBoardDto.setD_day((Date)sdf.parse(request.getParameter("d_day1")+" "+request.getParameter("hour")));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -399,7 +423,14 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		if(marketBoardDto.getFile_name()!=null){
 			
 		}
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		
+		try {
+			marketBoardDto.setD_day((Date)sdf.parse(request.getParameter("d_day1")));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int check=marketBoardDao.updateOk(marketBoardDto);
 //		System.out.println(updateCheck);
 		mav.addObject("check",check);
