@@ -298,15 +298,15 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 
 	@Override
 	public void deleteOk(ModelAndView mav) {
-		// TODO Auto-generated method stub
-		
+		logger.info("deleteOk ServiceImpl Test");
 		Map<String,Object> map= mav.getModelMap();
-		HttpServletRequest request=(HttpServletRequest) map.get("request");
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		
+		logger.info("request Test : "+request.getParameter("board_num")+", "+Integer.parseInt(request.getParameter("pageNumber"))+", "+request.getParameter("artist_id")+", "+request.getParameter("password"));
 		String board_num=request.getParameter("board_num");
 		int pageNumber=Integer.parseInt(request.getParameter("pageNumber"));
 		String artist_id=request.getParameter("artist_id");
-		String password=request.getParameter("password");		
+		String password=request.getParameter("password");
 		
 		String realPass=marketBoardDao.passCheck(artist_id);
 		logger.info("realPass:" +realPass);
