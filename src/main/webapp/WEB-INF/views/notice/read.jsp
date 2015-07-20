@@ -14,6 +14,7 @@
 	<h3>Notice</h3>
 	<c:set var="root" value="${pageContext.request.contextPath }" />
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"/>
+	
 	<div class="marketBoardX-location02 marketBoardInterval03">
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:noticeList('${root}','${pageNumber}')">List</a>
 	</div>	
