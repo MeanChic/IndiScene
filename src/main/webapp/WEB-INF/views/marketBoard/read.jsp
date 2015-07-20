@@ -37,35 +37,36 @@
 
 <body>
 <div id="marketBoardread"><!-- barketBoard에서 MarketBoard로 바꿈  -->
+	<h3>MarketBoard Read</h3>
 	<c:set var="root" value="${pageContext.request.contextPath }" />
-
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"/>
+	
 	<div class="marketBoardX-location02">
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterMarketBoard('${root}','${pageNumber}')">List</a>
 	</div>	
 	<div class="form-controlMarket">
-		<label class="marketBoardSize18 label-color marketBoardAttribute01">Board Number</label>
-		<div class="marketBoardSize30 marketBoardAttribute01">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Board Number</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
 			<input class="form-controller220" type="text" value="${marketBoard.board_num}" disabled="disabled" />
 		</div>
-		<label class="marketBoardSize18 label-color marketBoardAttribute01">Views</label>
-		<div class="marketBoardSize30 marketBoardAttribute01">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Views</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
 			<input class="form-controller220" type="text" value="${marketBoard.count}" disabled="disabled" />
 		</div>
 	</div>
 	<div class="form-controlMarket">
-		<label class="marketBoardSize18 label-color marketBoardAttribute01">Writer</label>
-		<div class="marketBoardSize30 marketBoardAttribute01">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Writer</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
 			<input class="marketBoardSize25 form-controller220" type="text" value="${marketBoard.artist_id}" disabled="disabled" />
 		</div>
-		<label class="marketBoardSize18 label-color marketBoardAttribute01">Date</label>
-		<div class="marketBoardSize30 marketBoardAttribute01">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Date</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
 			<input class="form-controller220" type="text" value="<fmt:formatDate value="${marketBoard.register_date}" type='date'/>" disabled="disabled"/>
 		</div>
 	</div>
 	<div class="form-controlMarket" >
-		<label class="marketBoardSize18 label-color marketBoardY-location01" >Contents</label>
-		<div class="marketBoardSize75a marketBoardAttribute01">
+		<label class="marketBoardSize16 label-color marketBoardY-location01" >Contents</label>
+		<div class="marketBoardSize77 marketBoardAttribute01">
 			<script type="text/javascript">
 				$(function(){
 					$("#marketReadContents img").attr("style","");
@@ -76,37 +77,31 @@
 				${marketBoard.content}
 			</div>		
 		</div>
-		
-		<c:if test="${marketBoard.file_name !=null }">
-			<tr>
-				<td align="center" height="20" width="125">파일명</td>
-				<td colspan="3">
-				
-				
-				<!-- 다중파일 read 처리 -->
-				<c:forTokens var="file_name" items="${marketBoard.file_name}" delims="<>" varStatus="s" >
-					<c:forTokens var="file_path" items="${marketBoard.file_path}" delims="<>" begin="${s.index}" end="${s.index }"> <!--파일 네임과 동일한 s번째순번의 path를 사용한다-->
-						<a href="${root}/CommonIO/download.do?board_num=${marketBoard.board_num}&file_name=${file_name}&file_path=${file_path}">${file_name}, ${s.index}
-						</a><br/>
-					</c:forTokens>
+	</div>
+	
+	<c:if test="${marketBoard.file_name !=null }">
+	<div class="form-controlMarket">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">File</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<!-- 다중파일 read 처리 -->
+			<c:forTokens var="file_name" items="${marketBoard.file_name}" delims="<>" varStatus="s" >
+				<c:forTokens var="file_path" items="${marketBoard.file_path}" delims="<>" begin="${s.index}" end="${s.index }"> <!--파일 네임과 동일한 s번째순번의 path를 사용한다-->
+					<a href="${root}/CommonIO/download.do?board_num=${marketBoard.board_num}&file_name=${file_name}&file_path=${file_path}">
+						${file_name}, ${s.index}
+					</a>
 				</c:forTokens>
-				 
-				</td>
-			</tr>
-		</c:if>
-
-		<tr>
-			<td height="30" colspan="4" align="center"><input type="button"
-				value="글수정"
-				onclick="javascript:marketBoardUpdate('${marketBoard.board_num}','${pageNumber}')" />
-				<input type="button" value="글삭제"
-				onclick="javascript:marketBoardDelete('${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')"/>
-				<!-- onclick="delFun('${root}','${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')" />  -->
-				<input type="button" value="글목록"
-				onclick="javascript:enterMarketBoard('${root}','${pageNumber}')" />
-			</td>
-		</tr>
-	</table>
+			</c:forTokens>
+		</div>
+	</div>	
+	</c:if>
+	
+	<div class="form-controlMarket" style= text-align:center;>
+		<div class="marketBoardInterval04">
+			<input class="btn btn-default" type="button" value="Modify" onclick="marketBoardUpdate('${marketBoard.board_num}','${pageNumber}')" />
+			<input class="btn btn-default" type="button" value="Delete" onclick="marketBoardDelete('${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')"/>
+		</div>
+	</div>	
+	
 	<!-- ---------------한줄댓글 ----------------------------------------------->
 	
 	
@@ -114,13 +109,13 @@
 	
 	
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
-	<br/>
-	<h3>댓글달기 </h3>
+	<br/><br/><br/>
+	<h3 style="color:#4C4C4C; font-size: 1.3em; font-weight: bold;" >commant </h3>
 	<hr>
 	<div>
-		<input id="writeId" type="text" name="artist_id"  size="12" />&nbsp;
-		<input id="writeReply" type="text" name="reply_content" size="90"/>&nbsp;
-		<input type="button" value="한줄답글작성" onclick="writeToServer('${root}','${marketBoard.board_num }')"/> 
+		<input id="writeId"  type="text" name="artist_id" size="14" style="font-size:1.05em;font-family:Helvetica;" value="${marketBoard.artist_id}">
+		<input id="writeReply" type="text" name="reply_content" size="80" />&nbsp;
+		<input type="button" value="submit" style="color:black;" onclick="writeToServer('${root}','${marketBoard.board_num }')"/> 
 	</div>
 	<div></div>
 

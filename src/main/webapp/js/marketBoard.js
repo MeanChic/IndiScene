@@ -49,10 +49,10 @@ function marketBoardDelete(board_num,pageNumber,artist_id){
 	
 }
 
-function marketBoardDeleteOk(){
+function marketBoardDeleteOk(root,board_num,pageNumber){
 	var dataSet = new FormData(document.getElementById("marketBoardDeleteForm"));
 	//alert(CKEDITOR.instances.content.getData());
-	//alert(dataSet);
+	alert(dataSet);
 	$.ajax({
 		url:root +"/marketBoard/delete.do",
 		type:"post",
