@@ -2,6 +2,7 @@
  * replyWrite Start
  */
 var root=null;  //root를 전역변수로 선언해서 사용! 
+
 function writeToServer(requestRoot,board_num){
 //	alert(requestRoot + "," + board_num);
 	root=requestRoot;

@@ -6,9 +6,9 @@ import com.indiScene.marketBoard.dto.MarketBoardDto;
 
 public interface MarketBoardDao {
 	
-	public int getCount();
+	public int getCount(String searchWord, String searchType);
 	
-	public List<MarketBoardDto> getMarketList(int startRow,int endRow);
+	public List<MarketBoardDto> getMarketList(int startRow,int endRow, String searchWord, String searchType);
 	
 	public int insert(MarketBoardDto marketBoardDto);
 	
@@ -23,5 +23,7 @@ public interface MarketBoardDao {
 	public MarketBoardDto update(String board_num);
 	
 	public int updateOk(MarketBoardDto marketBoardDto);
+
+	//public int searchGetCount(String searchType, String searchWord);
 	
 }
