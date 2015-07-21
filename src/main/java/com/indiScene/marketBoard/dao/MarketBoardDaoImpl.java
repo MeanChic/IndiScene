@@ -23,12 +23,9 @@ public class MarketBoardDaoImpl implements MarketBoardDao {
 	private SqlSessionTemplate sqlSession;
 	                          
 	@Override
-	public int getCount(String searchWord, String searchType) {
-		Map<String,Object> hMap=new HashMap<String,Object>();
-		hMap.put("searchWord", searchWord);
-		hMap.put("searchType", searchType);
+	public int getCount() {
 		System.out.println("daoImpl");
-		return sqlSession.selectOne("dao.marketBoardMapper.boardCount",hMap);
+		return sqlSession.selectOne("dao.marketBoardMapper.boardCount");
 	}
 
 	@Override

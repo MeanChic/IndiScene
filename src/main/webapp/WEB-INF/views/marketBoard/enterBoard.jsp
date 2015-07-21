@@ -12,6 +12,7 @@
 
 </head>
 <body>
+${requestScope.searchWord}
 <div id="marketBoardEnterBoard">
 	<h3>Market Place</h3>
 	<div class="marketBoardX-location02">
@@ -66,11 +67,11 @@
 				<!-- '<<이전' 표시 -->
 				<c:if test="${startPage>pageBlock }">
 					<c:choose>
-						<c:when test="${requestScope.searchWord == '' }">
+						<c:when test="${requestScope.searchWord == null }">
 							<li><a aria-label="Previous" href="javascript:enterMarketBoard('${root}','${startPage-pageBlock }')"><span aria-hidden="true">&laquo;</span></a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a aria-label="Previous" href="javascript:searchMarketBoard('${root}','${startPage-pageBlock }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
+							<li><a aria-label="Previous" href="javascript:searchMarketBoard('${root}','${startPage-pageBlock }','${pageContext.request.servletPath }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:if>
@@ -78,11 +79,11 @@
 				<!-- 중간 페이지 표시[1][2]---- -->
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
 					<c:choose>
-						<c:when test="${requestScople.searchWord == '' }">
+						<c:when test="${requestScope.searchWord == null }">
 							<li><a href="javascript:enterMarketBoard('${root}','${i}')">${i}</a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="javascript:searchMarketBoard('${root}','${i}','${requestScope.searchWord}','${requestScope.searchType}')">${i}</a></li>
+							<li><a href="javascript:searchMarketBoard('${root}','${i}','${pageContext.request.servletPath }','${requestScope.searchWord}','${requestScope.searchType}')">${i}</a></li>
 						</c:otherwise>
 					</c:choose>
 					
@@ -91,11 +92,11 @@
 				<!-- 다음>> 표시 -->
 				<c:if test="${endPage<pageCount }">
 					<c:choose>
-						<c:when test="${requestScople.searchWord == '' }">
+						<c:when test="${requestScope.searchWord ==null }">
 							<li><a aria-label="Next" href="javascript:enterMarketBoard('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a aria-label="Previous" href="javascript:searchMarketBoard('${root}','${startPage+pageBlock }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
+							<li><a aria-label="Previous" href="javascript:searchMarketBoard('${root}','${startPage+pageBlock }','${pageContext.request.servletPath }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
 						</c:otherwise>
 					</c:choose>
 					
@@ -106,7 +107,7 @@
 	
 	<!-- 검색 작업창 시작 --------------------------------------------------->
 	<div> 
-		<form id="searchForm" name="searchForm" method="get" action="javascript:searchMarketBoard('${root}','1');">
+		<form id="searchForm" name="searchForm" method="get" action="javascript:searchMarketBoard('${root}','1','${pageContext.request.servletPath }');">
 	<!--   페이징작업을위한 GET방식 -->     
 	<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
               <table id="">

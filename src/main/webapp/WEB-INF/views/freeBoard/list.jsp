@@ -98,8 +98,6 @@
 								<li><a aria-label="Previous" href="javascript:searchFreeBoard('${root}','${startPage+pageBlock }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
 							</c:otherwise>
 						</c:choose>
-						
-						
 					</c:if>
 				</c:if>
 			</ul>
@@ -108,7 +106,7 @@
 	
 	<!-- 검색 작업창 시작 --------------------------------------------------->
 	<div> 
-		<form id="searchForm" name="searchForm" method="get" action="javascript:searchFreeBoard('${root}','1');">
+		<form id="searchForm" name="searchForm" method="get" action="javascript:searchFreeBoard('${root}','1','${pageContext.request.servletPath }');">
 	<!--   페이징작업을위한 GET방식 -->     
 	<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
               <table id="">

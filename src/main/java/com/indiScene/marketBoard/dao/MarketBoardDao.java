@@ -6,7 +6,7 @@ import com.indiScene.marketBoard.dto.MarketBoardDto;
 
 public interface MarketBoardDao {
 	
-	public int getCount(String searchWord, String searchType);
+	public int getCount();
 	
 	public List<MarketBoardDto> getMarketList(int startRow,int endRow, String searchWord, String searchType);
 	

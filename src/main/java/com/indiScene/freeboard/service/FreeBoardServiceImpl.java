@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.indiScene.commonIO.dao.CommonIODao;
 import com.indiScene.freeboard.dao.FreeBoardDao;
 import com.indiScene.freeboard.dto.FreeBoardDto;
 import com.indiScene.reply.dao.ReplyDao;
@@ -26,6 +27,9 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	
 	@Autowired
 	private ReplyDao replyDao;
+	
+	@Autowired
+	private CommonIODao commonIODao;
 	
 	@Override
 	public void freeBoardWrite(ModelAndView mav) {
@@ -136,10 +140,12 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		
 		String searchWord=request.getParameter("searchWord");
 		String searchType=request.getParameter("searchType"); //검색용 파라미터
+		String folderName=request.getParameter("folderName");
 		
 		logger.info("pageNumber:" +pageNumber);
 		logger.info("searchWord:" +searchWord);
 		logger.info("searchType:" +searchType);
+		logger.info("folderName:" +folderName);
 		
 		
 		int boardSize=10;
@@ -148,15 +154,27 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		int endRow=currentPage*boardSize;
 		logger.info("boardList startRow: "+startRow+", endRow: "+endRow);
 		
-		int count=freeBoardDao.getFreeBoardCount(searchWord,searchType);
-		
-		logger.info("freeBoardList count: "+count);
+		int count=0;
+		if(folderName==null){
+			count=freeBoardDao.getFreeBoardCount();	
+			logger.info("freeBoardList count: "+count);
+		}else{
+			count=commonIODao.getCommonBoardCount(folderName, searchWord, searchType);
+			logger.info("freeBoardList count(search): "+count);
+		}
 		
 		List<FreeBoardDto> freeBoardList=null;
 		if(count>0){
-			freeBoardList=freeBoardDao.getFreeBoardList(startRow, endRow,searchWord,searchType);
+			if(folderName==null){
+				freeBoardList=freeBoardDao.getFreeBoardList(startRow,endRow);	
+				
+			}else{
+				freeBoardList=(List<FreeBoardDto>) commonIODao.getCommonBoardList(startRow, endRow, searchWord, searchType, folderName);
+				if(freeBoardList!=null)logger.info("freeBoardList size(search): "+freeBoardList.size());
+			}
+			
 		}
-		if(freeBoardList!=null)logger.info("freeBoardList size: "+freeBoardList.size());
+		
 		
 		mav.addObject("searchWord",searchWord);
 		mav.addObject("searchType",searchType); //search를 반환시켜야 page이동간도 사용가능

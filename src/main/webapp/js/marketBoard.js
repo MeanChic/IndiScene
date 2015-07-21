@@ -24,17 +24,19 @@ function enterMarketBoard(requestRoot,pageNumber){
 	});
 }
 
-function searchMarketBoard(requestRoot,pageNumber,searchWord,searchType){
+function searchMarketBoard(requestRoot,pageNumber,folderName,searchWord,searchType){
+	folderName=folderName.split("views/");
+	folderName=folderName[1].split("/");
+	//alert(folderName[0]);
 	root=requestRoot;
-	if(searchWord==null){
+	if(searchWord==null){ //[1][2]같이 페이지별 이동을 누를 때 말고 리스트 하단에 '검색' 버튼을 직접적으로 누를때 (매개변수가 없으므로 여기서 뽑아낸다)
 		var dataSet = new FormData(document.getElementById("searchForm"));
 		var searchWord=$("#searchForm #searchWord").val();
 		var searchType=$("#searchType").val();
 	}
-	
 	//alert(searchWord);
 	//alert(searchType);
-	sendData="?pageNumber="+ ((pageNumber==null || pageNumber=="") ? 1 : pageNumber)+"&searchType=" +searchType + "&searchWord="+searchWord ;
+	sendData="?pageNumber="+ ((pageNumber==null || pageNumber=="") ? 1 : pageNumber)+"&searchType=" +searchType + "&searchWord="+searchWord+ "&folderName="+folderName[0] ;
 	$.ajax({
 		url:root +"/marketBoard/enterBoard.do"+sendData,
 		type:"get",

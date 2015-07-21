@@ -1,7 +1,7 @@
 package com.indiScene.commonIO.dto;
 
 
-public interface CommonDto {
+public interface CommonDto   {
 
 	public String getContent();
 	public void setContent(String content);
@@ -11,4 +11,5 @@ public interface CommonDto {
 
 	public String getFile_name();
 	public void setFile_name(String file_name);
+
 }
