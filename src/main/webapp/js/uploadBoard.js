@@ -353,5 +353,6 @@ function bestRead(root,boardNum,currentPage){
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
 		}
-	}); 
+	}); 	
 }
+
