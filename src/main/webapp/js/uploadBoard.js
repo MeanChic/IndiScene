@@ -356,3 +356,38 @@ function bestRead(root,boardNum,currentPage){
 	}); 	
 }
 
+function brandNewList(root,pageNumber){
+	$.ajax({
+		url:root+"/brandNewBoard/list.do?pageNumber="+pageNumber,
+		type:"get",
+		dataType:"html",
+		success:function(data){
+			//alert(data);
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+		//	alert(realData);
+			$("#centerContents").html(realData);
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	}); 
+}
+
+function brandNewRead(root,boardNum,currentPage){
+	$.ajax({
+		url:root+"/brandNewBoard/read.do?boardNum="+boardNum+"&pageNumber="+currentPage,
+		type:"get",
+		dataType:"html",
+		success:function(data){
+			//alert(data);
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+		//	alert(realData);
+			$("#centerContents").html(realData);
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	}); 	
+}
