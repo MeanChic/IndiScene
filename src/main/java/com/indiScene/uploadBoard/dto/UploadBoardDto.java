@@ -1,6 +1,8 @@
 package com.indiScene.uploadBoard.dto;
 
-public class UploadBoardDto {
+import com.indiScene.commonIO.dto.CommonMusicDto;
+
+public class UploadBoardDto implements CommonMusicDto {
 	private String board_num;
 	private int board_like;
 	private String subject;

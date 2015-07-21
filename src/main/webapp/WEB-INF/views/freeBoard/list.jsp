@@ -68,20 +68,70 @@
 					</c:if>
 					<%----------------------------------------------------------%>
 					<c:if test="${startPage>pageBlock }">
-						<li><a aria-label="Previous" href="javascript:freeBoardList('${root}','${startPage-pageBlock }')"><span aria-hidden="true">&laquo;</span></a></li>
+						<c:choose>
+							<c:when test="${requestScope.searchWord == '' }">
+								<li><a aria-label="Previous" href="javascript:freeBoardList('${root}','${startPage-pageBlock }')"><span aria-hidden="true">&laquo;</span></a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a aria-label="Previous" href="javascript:searchFreeBoard('${root}','${startPage-pageBlock }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
+							</c:otherwise>
+						</c:choose>
 					</c:if>
 					
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">
-						<li><a href="javascript:freeBoardList('${root}','${i}')">${i}</a></li>
+						<c:choose>
+							<c:when test="${requestScople.searchWord == '' }">
+								<li><a href="javascript:freeBoardList('${root}','${i}')">${i}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="javascript:searchFreeBoard('${root}','${i}','${requestScope.searchWord}','${requestScope.searchType}')">${i}</a></li>
+							</c:otherwise>
+						</c:choose>
 					</c:forEach>
 					
 					<c:if test="${endPage<pageCount }">
-						<li><a aria-label="Next" href="javascript:freeBoardList('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
+						<c:choose>
+							<c:when test="${requestScope.searchWord == '' }">
+								<li><a aria-label="Next" href="javascript:freeBoardList('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a aria-label="Previous" href="javascript:searchFreeBoard('${root}','${startPage+pageBlock }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
+							</c:otherwise>
+						</c:choose>
+						
+						
 					</c:if>
 				</c:if>
 			</ul>
 		</nav>
 	</c:if>
+	
+	<!-- 검색 작업창 시작 --------------------------------------------------->
+	<div> 
+		<form id="searchForm" name="searchForm" method="get" action="javascript:searchFreeBoard('${root}','1');">
+	<!--   페이징작업을위한 GET방식 -->     
+	<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
+              <table id="">
+                    <tr>
+                         <td class="">
+                               <select id="searchType" name="searchType">
+									  <option value="total">전체</option>	                              			
+                                      <option value="artist_id">글쓴이</option>
+                                      <option value="subject">제목</option>
+                                      <option value="content">내용</option>
+                               </select>
+                         </td>
+                         <td class="">
+                               <input type="text" id="searchWord" name="searchWord">
+                         </td>
+                         <td class="">
+                               <input type="submit" value="검색"></input>
+                         </td>
+                    </tr>
+             </table>
+        </form>
+	
+	</div>
 </div>
 </body>
 </html>

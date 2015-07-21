@@ -2,6 +2,11 @@
  * replyWrite Start
  */
 var root=null;  //root를 전역변수로 선언해서 사용! 
+
+
+
+/*
+
 function writeToServer(requestRoot,board_num){
 //	alert(requestRoot + "," + board_num);
 	root=requestRoot;
@@ -37,7 +42,7 @@ function writeReplyProcess(responseText){
 	 *</div>
 	 * 
 	 * */
-	var newReply=document.getElementById("newReply");
+/*	var newReply=document.getElementById("newReply");
 	var div=document.createElement("div");
 	div.className="replyDiv";
 	div.id="newReply_num"+reply_num;   //새로고침 안했을때,, 비동기화 상태에서 삭제나 수정 가능하게하기위해서 id를 새로잡아줌,,
@@ -64,12 +69,12 @@ function writeReplyProcess(responseText){
 	var aUpdate=document.createElement("a");
 	//alert(root);
 	aUpdate.href="javascript:upSelectToServer('"+board_num +"','" +reply_num+ "',\'" +root + "\')";
-	aUpdate.innerHTML="수정 ";
+	aUpdate.innerHTML="update ";
 	
 	var aDelete=document.createElement("a");
 	aDelete.href="javascript:deleteToServer('"+board_num +"','" +reply_num+ "',\'" +root + "\')"; //	\' \' -> root에서 특수문자가 들어가기때문에 사용..
-	aDelete.innerHTML="삭제 &nbsp"
-	
+	aDelete.innerHTML="delete"
+	고ㅊ.	
 	spanUpDel.appendChild(aUpdate);
 	spanUpDel.appendChild(aDelete);
 	
@@ -82,7 +87,7 @@ function writeReplyProcess(responseText){
 	newReply.insertBefore(div, newReply.firstChild);
 	
 }
-
+*/
 /**
  * replyUpdate Start
  */
@@ -223,3 +228,4 @@ function deleteProcess(responseText){
 //	var body=document.getElementsByTagName("body");
 //	body[0].removeChild(document.getElementById(reply_num));
 }
+

@@ -29,7 +29,7 @@
 	</select>
 	
 	<update id="GroupNumberUpdate" parameterType="java.util.HashMap" >
-		<![CDATA[update performboard set seq_num=seq_num+1 
+		<![CDATA[update uploadBoard set seq_num=seq_num+1 
 		where group_num = #{group_num} and seq_num > #{seq_num}]]> 
 	</update>
 	

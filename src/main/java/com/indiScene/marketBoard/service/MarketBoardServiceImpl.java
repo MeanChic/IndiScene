@@ -57,18 +57,23 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 		// TODO Auto-generated method stub
 		Map<String, Object> map=mav.getModelMap();
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
-		
 
 		String pageNumber=request.getParameter("pageNumber");
-		if(pageNumber==null) pageNumber="1";
+		String searchWord=request.getParameter("searchWord");
+		String searchType=request.getParameter("searchType");
+		
 		int currentPage=Integer.parseInt(pageNumber);
 		logger.info("currentPage:" +currentPage);
+		logger.info("searchWord:" +searchWord);
+		logger.info("searchType:" +searchType);
 		
 		//전체 레코드수, 현재 번호의 시작번호, 끝번호 -->
-		int count=marketBoardDao.getCount();
+		int count=marketBoardDao.getCount(searchWord,searchType);//검색이 아니라면 둘다  null이 넘어감
+		
 		logger.info("count:"+ count);
-
-		int boardSize=9;
+		
+		
+		int boardSize=9; //한페이지에 표시되는 게시판의 수
 		int startRow=(currentPage-1) * boardSize +1;
 		int endRow=currentPage*boardSize;
 		logger.info("startRow:" + startRow + ",endRow" + endRow);
@@ -79,12 +84,15 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 //		List<HashMap<String,MarketBoardDto>> mapList=null;
 		
 		if(count >0) {
-			marketList=marketBoardDao.getMarketList(startRow,endRow);
+			marketList=marketBoardDao.getMarketList(startRow,endRow,searchWord,searchType);
 			logger.info("marketList" + marketList.size());
 			
 			mainImageList=commonIOService.mainImageFind(marketList); //첫번째 이미지를 뽑아오는 메소드
 			//hMap=new HashMap<String,MarketBoardDto>();
 		}
+		
+		mav.addObject("searchWord", searchWord);
+		mav.addObject("searchType", searchType);  //검색된 내용을 계속 사용하기 위해 반환시킨다(2,3페이지 넘어갈때)
 		
 		mav.addObject("list", marketList);
 		mav.addObject("count", count);

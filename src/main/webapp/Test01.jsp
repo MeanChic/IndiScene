@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
 	<link href="${root}/css/marketBoard1.css" rel="stylesheet">
-
+	
 	<!-- Load javascrips libraries-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="${root}/js/jquery.bxslider.js"></script>
@@ -26,6 +26,8 @@
 	<script src="${root}/js/jquery.colorbox.js"></script>
 	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
+	<script type="text/javascript" src="${root}/js/uploadBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/webPlayer.js"></script>
 	
 	<!-- Load javaScript for Hyuckjin-->
 	<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
@@ -54,7 +56,7 @@
 		<ul class="nav nav-pills nav-stacked">
 			<li class="brandNewMusic"><a href="#brandNewMusic">Brand New Music</a></li>
 			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
-			<li class="indisMusic"><a href="#indisMusic">Indi's Music</a></li>
+			<li class="indisMusic"><a href="javascript:uploadList('${root}',1)">Indi's Music</a></li>
 			<li class="performanceInfo"><a href="javascript:performPlace('${root}')">Performance Info</a></li>
 			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root }')">Market Place</a></li>
 		</ul>
@@ -145,6 +147,7 @@
 	<!-- Music Player end -->
 	
 <script type="text/javascript">
+
 /*
  * Initialize switcher on conact section from address view to contat form.
  * We use bxSlider for this.
@@ -278,7 +281,109 @@ $('#main-slider').bxSlider({
 		$slideElement.find('.mask p').removeClass("current animated  fadeInLeftBig");
 	}
 });
+/*---------------------------  Reple.js-------------------------------------- 적용 부분  */
 
+function writeToServer(requestRoot,board_num){
+//	alert(requestRoot + "," + board_num);
+	root=requestRoot;
+	
+	var reply_content=document.getElementById("writeReply").value;
+	var artist_id=document.getElementById("writeId").value;
+	var url=root+"/replyWrite.do";
+	var params="board_num="+board_num+"&reply_content="+reply_content+"&artist_id="+artist_id;
+	sendRequest("POST",url,writeFromServer,params);
+}
+
+function writeFromServer(){
+	if(xhr.readyState==4&&xhr.status==200){
+		//alert(xhr.responseText);
+		writeReplyProcess(xhr.responseText);
+	}
+}
+
+function writeReplyProcess(responseText){
+	var result=responseText.split(",");   //배열! JSON과다름!
+	var reply_num=result[0].trim();
+	var artist_id=result[1].trim();  
+	var reply_content=result[2].trim();
+	var reply_date=result[3].trim();
+	var board_num=result[4].trim();
+	
+//	alert(reply_num + "," + artist_id+","+reply_content+"," +reply_date +"," +board_num);
+	
+	document.getElementById("writeReply").value="";
+	/*<div id="newReply">
+	 * 	<div class="replyDiv" id="newReply_num77">
+	 * 	</div>
+	 *</div>
+	 * 
+	 * */
+	var newReply=document.getElementById("newReply");
+	
+	var div=document.createElement("div");
+	div.className="replyDiv";
+	
+	//div.id="newReply_num"+reply_num;   //새로고침 안했을때,, 비동기화 상태에서 삭제나 수정 가능하게하기위해서 id를 새로잡아줌,,
+	div.id=reply_num;
+	/*  //0720//  */	
+	var pReply=document.createElement("p");
+	pReply.className="DiscussInfo";
+	var p2 = document.createElement("p");
+	/*	//P태그//  */	
+	
+	var spanReply_num=document.createElement("span");
+	//spanReply_num.className="cssreply_num";
+	spanReply_num.innerHTML=reply_num + "&nbsp";
+	
+	var spanArtist=document.createElement("span");
+	spanArtist.className="cssAritist";
+	spanArtist.innerHTML=artist_id + "&nbsp";
+	
+	var spanReply=document.createElement("span");
+	spanReply.className="cssReply";
+	spanReply.innerHTML=reply_content;
+	
+	var spanDate=document.createElement("span");
+	spanDate.className="cssDate";
+	spanDate.innerHTML=reply_date;
+	
+
+	
+	
+	var spanUpDel=document.createElement("span");
+	spanUpDel.className="cssUpDel";
+	
+	var aUpdate=document.createElement("a");
+	//alert(root);
+	aUpdate.className="cssUpDelEdit";
+	aUpdate.href="javascript:upSelectToServer('"+board_num +"','" +reply_num+ "',\'" +root + "\')";
+	aUpdate.innerHTML="Edit";
+	
+	var spanDelimiter=document.createElement("span");
+	spanDelimiter.className="Delimiter";
+	spanDelimiter.innerHTML="/";
+	
+	var aDelete=document.createElement("a");
+	aDelete.className="cssUpDelDelete";
+	aDelete.href="javascript:deleteToServer('"+board_num +"','" +reply_num+ "',\'" +root + "\')"; //	\' \' -> root에서 특수문자가 들어가기때문에 사용..
+	aDelete.innerHTML="delete"
+	
+	
+	newReply.appendChild(div);
+	
+	div.appendChild(pReply);
+	pReply.appendChild(spanArtist);
+	pReply.appendChild(spanDate);///// Fomatdate 
+	div.appendChild(p2);
+
+	
+	p2.appendChild(spanReply);
+	p2.appendChild(spanUpDel);
+	spanUpDel.appendChild(aUpdate);
+	spanUpDel.appendChild(spanDelimiter);
+	spanUpDel.appendChild(aDelete);
+	
+}
 </script>
 </body>
 </html>

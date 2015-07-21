@@ -3,6 +3,7 @@ package com.indiScene.bestBoard.controller;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,5 +39,41 @@ public class BestBoardController {
 		service.read(mav);
 		
 		return mav;
+	}
+	
+	@RequestMapping(value="/webPlayer/musicListAppend.do", method=RequestMethod.GET)
+	public ModelAndView musicListAppend(HttpServletRequest request,HttpServletResponse response){
+		logger.info("musicList append Start======================");
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("request", request);
+		mav.addObject("response",response);
+		service.musicListAppend(mav);
+		
+		return null;
+	}
+	
+	@RequestMapping(value="/webPlayer/getMusicList.do", method=RequestMethod.GET)
+	public ModelAndView getMusicList(HttpServletRequest request, HttpServletResponse response){
+		logger.info("musicList get Start======================");
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("request", request);
+		mav.addObject("response",response);
+		service.getMusicList(mav);
+		
+		return null;
+	}
+	
+	@RequestMapping(value="/webPlayer/musicListDelete.do", method=RequestMethod.GET)
+	public ModelAndView musicListDelete(HttpServletRequest request, HttpServletResponse response){
+		logger.info("musicList delete Start======================");
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("request", request);
+		mav.addObject("response",response);
+		service.musicListDelete(mav);
+		
+		return null;
 	}
 }
