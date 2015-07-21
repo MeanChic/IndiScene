@@ -2,6 +2,7 @@ package com.indiScene.freeboard.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +37,21 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 	}
 
 	@Override
-	public int getFreeBoardCount() {
-		return sqlSession.selectOne("dao.FreeBoardMapper.freeBoardCount");
+	public int getFreeBoardCount(String searchWord, String searchType) {
+		Map<String,Object> hMap=new HashMap<String,Object>();
+		hMap.put("searchWord", searchWord);
+		hMap.put("searchType", searchType);
+		return sqlSession.selectOne("dao.FreeBoardMapper.freeBoardCount",hMap);
 	}
 
 	@Override
-	public List<FreeBoardDto> getFreeBoardList(int startRow, int endRow) {
+	public List<FreeBoardDto> getFreeBoardList(int startRow, int endRow, String searchWord, String searchType) {
 		
-		HashMap<String, Integer> hMap=new HashMap<String, Integer>();
+		HashMap<String, Object> hMap=new HashMap<String, Object>();
 		hMap.put("startRow", startRow);
 		hMap.put("endRow", endRow);
+		hMap.put("searchWord", searchWord);
+		hMap.put("searchType", searchType);
 		
 		return sqlSession.selectList("dao.FreeBoardMapper.freeBoardList",hMap);
 	}

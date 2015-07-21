@@ -134,23 +134,33 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		String pageNumber=request.getParameter("pageNumber");
 		if(pageNumber==null) pageNumber="1";
 		
+		String searchWord=request.getParameter("searchWord");
+		String searchType=request.getParameter("searchType"); //검색용 파라미터
+		
+		logger.info("pageNumber:" +pageNumber);
+		logger.info("searchWord:" +searchWord);
+		logger.info("searchType:" +searchType);
+		
+		
 		int boardSize=10;
 		int currentPage=Integer.parseInt(pageNumber);
 		int startRow=(currentPage-1)*boardSize+1;
 		int endRow=currentPage*boardSize;
 		logger.info("boardList startRow: "+startRow+", endRow: "+endRow);
 		
-		int count=freeBoardDao.getFreeBoardCount();
+		int count=freeBoardDao.getFreeBoardCount(searchWord,searchType);
 		
 		logger.info("freeBoardList count: "+count);
 		
 		List<FreeBoardDto> freeBoardList=null;
 		if(count>0){
-			freeBoardList=freeBoardDao.getFreeBoardList(startRow, endRow);
+			freeBoardList=freeBoardDao.getFreeBoardList(startRow, endRow,searchWord,searchType);
 		}
 		if(freeBoardList!=null)logger.info("freeBoardList size: "+freeBoardList.size());
 		
-	  
+		mav.addObject("searchWord",searchWord);
+		mav.addObject("searchType",searchType); //search를 반환시켜야 page이동간도 사용가능
+		
 		mav.addObject("freeBoardSize",boardSize);
 		mav.addObject("currentPage",currentPage);
 		mav.addObject("count",count);

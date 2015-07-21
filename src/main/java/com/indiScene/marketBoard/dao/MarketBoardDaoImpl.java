@@ -2,6 +2,7 @@ package com.indiScene.marketBoard.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,21 @@ public class MarketBoardDaoImpl implements MarketBoardDao {
 	private SqlSessionTemplate sqlSession;
 	                          
 	@Override
-	public int getCount() {
+	public int getCount(String searchWord, String searchType) {
+		Map<String,Object> hMap=new HashMap<String,Object>();
+		hMap.put("searchWord", searchWord);
+		hMap.put("searchType", searchType);
 		System.out.println("daoImpl");
-		return sqlSession.selectOne("dao.marketBoardMapper.boardCount");
+		return sqlSession.selectOne("dao.marketBoardMapper.boardCount",hMap);
 	}
 
 	@Override
-	public List<MarketBoardDto> getMarketList(int startRow, int endRow) {
-		HashMap<String, Integer> hMap=new HashMap<String,Integer>();
+	public List<MarketBoardDto> getMarketList(int startRow, int endRow, String searchWord, String searchType) {
+		HashMap<String, Object> hMap=new HashMap<String,Object>();
 		hMap.put("startRow",startRow);
 		hMap.put("endRow", endRow);
+		hMap.put("searchWord", searchWord);
+		hMap.put("searchType", searchType);
 		
 		return sqlSession.selectList("dao.marketBoardMapper.boardList", hMap); //SelectList Dto瑜� �옄�룞�쑝濡� 諛쏆븘�꽌 �젮二쇰뒗 �뿭�븷  
 	}
@@ -70,6 +76,14 @@ public class MarketBoardDaoImpl implements MarketBoardDao {
 	public int updateOk(MarketBoardDto marketBoardDto) {
 		return sqlSession.update("dao.marketBoardMapper.update", marketBoardDto);
 	}
+
+//	@Override
+//	public int searchGetCount(String searchType, String searchWord) {
+//		
+//		
+//		
+//		return 0;
+//	}
 	
 	
 }

@@ -14,11 +14,38 @@
 	</select>
 	
 	<select id="freeBoardList" resultType="com.indiScene.freeboard.dto.FreeBoardDto" parameterType="java.util.HashMap">
-		<![CDATA[ select * from (select rownum rnum, a.* from(select * from freeBoard order by group_num desc, register_date asc)a) where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+		<![CDATA[ select * from (select rownum rnum, a.* from(select * from freeBoard where 1=1 ]]>
+			<if test="searchType != null">  
+			<choose>
+				<when test="searchType.equals('total')">
+					AND (artist_id    LIKE '%' || #{searchWord} || '%') or
+						(subject    LIKE '%' || #{searchWord} || '%') or
+						(content    LIKE '%' || #{searchWord} || '%')
+				</when>
+				<otherwise>
+					AND (${searchType}    LIKE '%' || #{searchWord} || '%') 
+				</otherwise>
+			</choose>
+	     </if>  
+		
+		<![CDATA[ order by group_num desc, register_date asc)a) where rnum>=#{startRow} and rnum<=#{endRow} ]]>
 	</select>
 	
-	<select id="freeBoardCount" resultType="int">
-		<![CDATA[ select count(*) from freeboard ]]>
+	<select id="freeBoardCount" parameterType="java.util.HashMap" resultType="int">
+		<![CDATA[ select count(*) from freeboard where 1=1]]>
+		
+		<if test="searchType != null">  
+			<choose>
+				<when test="searchType.equals('total')">
+					AND (artist_id    LIKE '%' || #{searchWord} || '%') or
+						(subject    LIKE '%' || #{searchWord} || '%') or
+						(content    LIKE '%' || #{searchWord} || '%')
+				</when>
+				<otherwise>
+					AND (${searchType}    LIKE '%' || #{searchWord} || '%') 
+				</otherwise>
+			</choose>
+	     </if>  
 	</select>
 	
 	<delete id="delete" parameterType="String">
