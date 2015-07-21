@@ -11,10 +11,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<input type="button" value="담기" onclick="musicStorage('${root}','${artist_id}')"/>
 	<c:set value="${currentPage}" var="currentPage"/>
 	<c:forEach var="list" items="${boardList}">
 		<div>
-			<input type="checkbox" value="${list.board_num}"/>
+			<input type="checkbox" class="musicCheckBox" value="${list.board_num}"/>
 			<img src="${root}${list.image_path}" style="width:50px; height:50px;"/>
 			<a href="javascript:bestRead('${root}','${list.board_num}','${currentPage}')">${list.subject}</a>
 			<%-- <audio controls src="${root}${list.file_path}"></audio> --%>

@@ -25,4 +25,31 @@
 	<update id="readCount" parameterType="String">
 		<![CDATA[update bestboard set count=count+1 where board_num = #{board_num}]]>
 	</update>
+	
+	<insert id="musicAppend" parameterType="java.util.HashMap">
+		<![CDATA[insert into storage_list values(#{artist_id}, #{board_num})]]>
+	</insert>
+	
+	<select id="duplicateCheck" parameterType="java.util.HashMap" resultType="int">
+		<![CDATA[select count(*) from storage_list where artist_id=#{artist_id} and board_num=#{board_num}]]>
+	</select>
+	
+	<select id="getMusicList" parameterType="String" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+		<![CDATA[
+			select a.subject, a.artist_id, a.file_path, a.image_path, a.board_num 
+			from uploadboard a, storage_list b 
+			where a.board_num = b.board_num and b.artist_id=#{artist_id}
+		]]>
+	</select>
+	
+	<select id="getAppendMusic" parameterType="String" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+		<![CDATA[
+			select subject, artist_id, file_path, image_path, board_num
+			from uploadBoard where board_num = #{board_num}
+		]]>
+	</select>
+	
+	<delete id="musicListDelete" parameterType="java.util.HashMap">
+		<![CDATA[delete from storage_list where board_num=#{board_num} and artist_id=#{artist_id}]]>
+	</delete>
 </mapper>

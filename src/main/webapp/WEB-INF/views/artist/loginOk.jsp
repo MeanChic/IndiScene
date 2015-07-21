@@ -25,6 +25,7 @@
 	<script src="${root}/js/jquery.colorbox.js"></script>
 	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
+	<script type="text/javascript" src="${root}/js/webPlayer.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 </head>
 <body>
@@ -35,6 +36,7 @@
 			<c:set var="artist_level" value="${artist_level }" scope="session"/>
 			<script type="text/javascript">
 				alert("Login Success!");
+				getMusicList('${root}','${artist_id}');
 				location.href="${root}/Test01.jsp";
 			</script>
 		</c:when>
