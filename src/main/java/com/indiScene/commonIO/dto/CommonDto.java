@@ -13,7 +13,4 @@ public interface CommonDto {
 	public String getFile_name();
 	public void setFile_name(String file_name);
 	
-
-	
-	
 }

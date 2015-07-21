@@ -78,7 +78,10 @@
 	}	
 	
 	
-	function searchFreeBoard(root,pageNumber,searchWord,searchType){
+	function searchFreeBoard(root,pageNumber,folderName,searchWord,searchType){
+		folderName=folderName.split("views/");
+		folderName=folderName[1].split("/");
+		//alert(folderName[0]);
 		if(searchWord==null){
 			var dataSet = new FormData(document.getElementById("searchForm"));
 			var searchWord=$("#searchForm #searchWord").val();
@@ -87,7 +90,7 @@
 		
 		//alert(searchWord);
 		//alert(searchType);
-		sendData="?pageNumber="+pageNumber+"&searchType=" +searchType + "&searchWord="+searchWord ;
+		sendData="?pageNumber="+pageNumber+"&searchType=" +searchType + "&searchWord="+searchWord+"&folderName="+folderName[0];
 		$.ajax({
 			url:root +"/freeBoard/list.do"+sendData,
 			type:"get",

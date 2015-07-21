@@ -15,7 +15,7 @@ public interface FreeBoardDao {
 
 	public int freeBoardGroupNumberMax();
 
-	public List<FreeBoardDto> getFreeBoardList(int startRow, int endRow, String searchWord, String searchType);
+	public List<FreeBoardDto> getFreeBoardList(int startRow,int endRow);
 
 	public FreeBoardDto freeBoardRead(String board_num);
 	
@@ -25,7 +25,7 @@ public interface FreeBoardDao {
 
 	public int freeBoardUpdate(FreeBoardDto freeBoardDto);
 
-	public int getFreeBoardCount(String searchWord, String searchType);
+	public int getFreeBoardCount();
 
 
 }

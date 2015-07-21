@@ -8,40 +8,13 @@
 	
 	<select id="boardCount" parameterType="java.util.HashMap" resultType="int">
 		<![CDATA[
-			select count(*) from marketBoard where 1=1
+			select count(*) from marketBoard 
 		]]>
-		<if test="searchType != null">  
-			<choose>
-				<when test="searchType.equals('total')">
-					AND (artist_id    LIKE '%' || #{searchWord} || '%') or
-						(subject    LIKE '%' || #{searchWord} || '%') or
-						(content    LIKE '%' || #{searchWord} || '%')
-				</when>
-				<otherwise>
-					AND (${searchType}    LIKE '%' || #{searchWord} || '%') 
-				</otherwise>
-			</choose>
-	     </if>  
 		</select>
 	
 	<select id="boardList" parameterType="java.util.HashMap" resultType="com.indiScene.marketBoard.dto.MarketBoardDto">
 		<![CDATA[
-			select * from (select rownum rnum, a.* from(select * from marketboard where 1=1
-		]]>
-			<if test="searchType != null">  
-		   		<choose>
-					<when test="searchType.equals('total')">
-						AND (artist_id    LIKE '%' || #{searchWord} || '%') or
-							(subject    LIKE '%' || #{searchWord} || '%') or
-							(content    LIKE '%' || #{searchWord} || '%')
-					</when>
-					<otherwise>
-						AND (${searchType}    LIKE '%' || #{searchWord} || '%') 
-					</otherwise>
-				</choose>
-	   		</if>  
-		<![CDATA[
-			order by register_date desc)a) where rnum >=#{startRow} and rnum <= #{endRow}
+			select * from (select rownum rnum, a.* from(select * from marketboard order by register_date desc)a) where rnum >=#{startRow} and rnum <= #{endRow}
 		]]>
 	</select>
 	

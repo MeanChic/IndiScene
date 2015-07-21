@@ -1,25 +1,18 @@
 package com.indiScene.marketBoard.service;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.indiScene.commonIO.dto.CommonDto;
+import com.indiScene.commonIO.dao.CommonIODao;
 import com.indiScene.commonIO.service.CommonIOService;
 import com.indiScene.marketBoard.dao.MarketBoardDao;
 import com.indiScene.marketBoard.dto.MarketBoardDto;
@@ -44,6 +37,9 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 	private ReplyDao replyDao;
 	
 	@Autowired
+	private CommonIODao commonIODao;
+	
+	@Autowired
 	private CommonIOService commonIOService; //mainImgFind를 위해
 
 	/**
@@ -61,17 +57,24 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 		String pageNumber=request.getParameter("pageNumber");
 		String searchWord=request.getParameter("searchWord");
 		String searchType=request.getParameter("searchType");
+		String folderName=request.getParameter("folderName");
+		
 		
 		int currentPage=Integer.parseInt(pageNumber);
 		logger.info("currentPage:" +currentPage);
 		logger.info("searchWord:" +searchWord);
 		logger.info("searchType:" +searchType);
+		logger.info("folderName:" +folderName);
 		
 		//전체 레코드수, 현재 번호의 시작번호, 끝번호 -->
-		int count=marketBoardDao.getCount(searchWord,searchType);//검색이 아니라면 둘다  null이 넘어감
 		
+		int count=0;//공통 search로 빼기 위해서 작업들어감
+		if(searchWord==null){
+			count=marketBoardDao.getCount();//검색이 아니라면 둘다 null이 넘어감 근데 common search로 빼기 전이라 그냥 두개 보냄
+		}else{
+			count=commonIODao.getCommonBoardCount(folderName, searchWord, searchType);//검색일경우 
+		}
 		logger.info("count:"+ count);
-		
 		
 		int boardSize=9; //한페이지에 표시되는 게시판의 수
 		int startRow=(currentPage-1) * boardSize +1;
@@ -84,8 +87,17 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 //		List<HashMap<String,MarketBoardDto>> mapList=null;
 		
 		if(count >0) {
-			marketList=marketBoardDao.getMarketList(startRow,endRow,searchWord,searchType);
-			logger.info("marketList" + marketList.size());
+			
+			
+			if(searchWord==null){
+				marketList=marketBoardDao.getMarketList(startRow,endRow,searchWord,searchType);
+				logger.info("marketList" + marketList.size());
+			}else{
+				
+				marketList=(List<MarketBoardDto>) commonIODao.getCommonBoardList(startRow,endRow,searchWord,searchType,folderName);
+				logger.info("marketList(search)" + marketList.size());
+			}
+			
 			
 			mainImageList=commonIOService.mainImageFind(marketList); //첫번째 이미지를 뽑아오는 메소드
 			//hMap=new HashMap<String,MarketBoardDto>();

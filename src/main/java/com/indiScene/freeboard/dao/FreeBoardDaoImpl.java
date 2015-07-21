@@ -37,22 +37,17 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 	}
 
 	@Override
-	public int getFreeBoardCount(String searchWord, String searchType) {
+	public int getFreeBoardCount() {
 		Map<String,Object> hMap=new HashMap<String,Object>();
-		hMap.put("searchWord", searchWord);
-		hMap.put("searchType", searchType);
 		return sqlSession.selectOne("dao.FreeBoardMapper.freeBoardCount",hMap);
 	}
 
 	@Override
-	public List<FreeBoardDto> getFreeBoardList(int startRow, int endRow, String searchWord, String searchType) {
+	public List<FreeBoardDto> getFreeBoardList(int startRow,int endRow) {
 		
 		HashMap<String, Object> hMap=new HashMap<String, Object>();
 		hMap.put("startRow", startRow);
 		hMap.put("endRow", endRow);
-		hMap.put("searchWord", searchWord);
-		hMap.put("searchType", searchType);
-		
 		return sqlSession.selectList("dao.FreeBoardMapper.freeBoardList",hMap);
 	}
 
