@@ -42,10 +42,25 @@
 		]]>
 	</select>
 	
+	<select id="getMusicListMuse" parameterType="String" resultType="com.indiScene.museBoard.dto.MuseBoardDto">
+		<![CDATA[
+			select a.subject, a.artist_id, a.file_path, a.image_path, a.board_num 
+			from museboard a, storage_list b 
+			where a.board_num = b.board_num and b.artist_id=#{artist_id}
+		]]>
+	</select>
+	
 	<select id="getAppendMusic" parameterType="String" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
 		<![CDATA[
 			select subject, artist_id, file_path, image_path, board_num
 			from uploadBoard where board_num = #{board_num}
+		]]>
+	</select>
+	
+	<select id="getAppendMusicMuse" parameterType="String" resultType="com.indiScene.museBoard.dto.MuseBoardDto">
+		<![CDATA[
+			select subject, artist_id, file_path, image_path, board_num
+			from museBoard where board_num = #{board_num}
 		]]>
 	</select>
 	

@@ -59,40 +59,40 @@ $(function(){
 	</div>
 	<%-- ===============인기있는 MUSE============= --%>
 	<div class="form-controlMarket">
-		<div id="best" class="boardBlock marketBoardAttribute01 marketBoardSize495 marketBoardInterval01">
+		<div id="best" class="boardBlock marketBoardAttribute01 marketBoardSize495 marketBoardInterval01 musemainHeight marketBoardY-location01">
 			<h4>Best Muse</h4>
 			<c:forEach var="best" items="${bestMuse}">
 				<div class="${best.MUSE_NAME} form-controlBoard">
 					<img class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" src="${root }${best.MUSE_FILEPATH }" style="width:40px; height:40px"/>
 					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${best.ARTIST_ID}</label>
 					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${best.MUSE_NAME}</label>
-					<label class="boardlabelBlock marketBoardSize02 label-color marketBoardAttribute01">${best.MUSE_COMMENT}</label>
+					<button type="button" class="boardlabelBlock marketBoardSize30 marketBoardAttribute01" data-toggle="tooltip" data-placement="top" title="${best.MUSE_COMMENT}">Comment</button>
 						<%--${best.MUSE_DATE} --%>
 					<c:if test="${best.MUSE_YN == 'n'}">
-						<input class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" type="button" value="대기중/신청취소" onclick="cancle('${artist_id}','${best.MUSE_NAME}')"/>
+						<input class="boardlabelBlock marketBoardSize30 label-color marketBoardAttribute01" type="button" value="Cancel" onclick="cancle('${artist_id}','${best.MUSE_NAME}')"/>
 					</c:if>
 					<c:if test="${best.MUSE_YN == 'y'}">
-						<a class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" <%-- href="${root}/museCreate/goin.do?muse_name=${best.MUSE_NAME} --%>href="javascript:goinmuse('${best.MUSE_NAME}')"><input type="button" value="입장" /></a>
+						<a <%-- href="${root}/museCreate/goin.do?muse_name=${best.MUSE_NAME} --%>href="javascript:goinmuse('${best.MUSE_NAME}')"><input class="boardlabelBlock marketBoardSize30 label-color marketBoardAttribute01" type="button" value="Enter" /></a>
 					</c:if> 
 					<c:if test="${best.MUSE_YN == '0'}">
-						<input class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" type="button" value="가입신청" onclick="signup('${artist_id}','${best.MUSE_NAME}')"/>
+						<input class="boardlabelBlock marketBoardSize30 label-color marketBoardAttribute01" type="button" value="AppJoin" onclick="signup('${artist_id}','${best.MUSE_NAME}')"/>
 					</c:if>
 				</div>
 			</c:forEach>
 		</div>
 	<%--==============내가 가입되어 있는 MUSE============== --%>
-		<div id="my" class="boardBlock marketBoardAttribute01 marketBoardSize495 marketBoardInterval01">
+		<div id="my" class="boardBlock marketBoardAttribute01 marketBoardSize495 marketBoardInterval01 musemainHeight">
 			<h4>My Muse</h4>
 			<c:forEach var="my" items="${myMuse}">
 				<div class="${my.MUSE_NAME} form-controlBoard">
 					<img class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" src="${root }${my.MUSE_FILEPATH }" style="width:40px; height:40px"/>
 					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${my.MUSE_NAME}</label>
-					<label class="boardlabelBlock marketBoardSize60 label-color marketBoardAttribute01">${my.MUSE_COMMENT}</label>
+					<label class="boardlabelBlock marketBoardSize40 label-color marketBoardAttribute01">${my.MUSE_COMMENT}</label>
 					<c:if test="${my.MUSE_YN == 'n'}">
-						<input class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" type="button" value="대기중/신청취소" onclick="cancle('${artist_id}','${my.MUSE_NAME}')"/>
+						<input class="boardlabelBlock marketBoardSize30 label-color marketBoardAttribute01" type="button" value="Cancel" onclick="cancle('${artist_id}','${my.MUSE_NAME}')"/>
 					</c:if>
 					<c:if test="${my.MUSE_YN == 'y'}">
-						<a class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" href="javascript:goinmuse('${my.MUSE_NAME}')"<%-- href="${root}/museCreate/goin.do?muse_name=${my.MUSE_NAME}" --%>><input type="button" value="입장"/></a>
+						<a href="javascript:goinmuse('${my.MUSE_NAME}')"<%-- href="${root}/museCreate/goin.do?muse_name=${my.MUSE_NAME}" --%>><input class="boardlabelBlock marketBoardSize30 label-color marketBoardAttribute01" type="button" value="Enter"/></a>
 					</c:if>
 				</div>
 			</c:forEach>
@@ -107,7 +107,28 @@ $(function(){
 				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${all.muse_name}</label>
 				<label class="boardlabelBlock marketBoardSize02 label-color marketBoardAttribute01">${all.muse_comment}</label>
 				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01"><fmt:formatDate value="${all.muse_date}" type="date"/></label> 
-				<input class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" type="button" value="가입신청" onclick="signup('${artist_id}','${all.muse_name}')"/>
+				<input class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" type="button" value="AppJoin" onclick="signup('${artist_id}','${all.muse_name}')"/>
+			</div>
+		</c:forEach>
+	</div>
+	
+	<div class="panel-group marginLR20" id="accordion" role="tablist" aria-multiselectable="true">
+		<c:forEach var="all" items="${allMuse}">
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+						<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							${all.muse_name}
+						</a>
+						<input class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" type="button" value="AppJoin" onclick="signup('${artist_id}','${all.muse_name}')"/>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+					<div class="panel-body">
+						<img class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" src="${root}${all.muse_filepath}" style="width:100px; height:100px"/>
+							${all.muse_comment}
+					</div>
+				</div>
 			</div>
 		</c:forEach>
 	</div>

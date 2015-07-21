@@ -2,11 +2,33 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.UploadMapper">
-	<insert id="boardInsert" parameterType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+<mapper namespace="dao.MuseBoardMapper">
+	<insert id="boardInsert" parameterType="com.indiScene.museBoard.dto.MuseBoardDto">
 		<![CDATA[
-			insert into uploadBoard values(
-				'u'||uploadBoard_seq.nextval,
+			insert into museBoard values(
+				'm'||museBoard_seq.nextval,
+				#{board_like},
+				#{subject},
+				#{content},
+				#{register_date},
+				#{count},
+				#{file_path},
+				#{file_name},
+				#{seq_level},
+				#{seq_num},
+				#{group_num},
+				#{artist_id},
+				#{image_path},
+				#{genre_code},
+				#{muse_name}
+				)
+		]]>
+	</insert>
+	
+	<insert id="museToUpload" parameterType="com.indiScene.museBoard.dto.MuseBoardDto">
+		<![CDATA[
+			insert into uploadboard values(
+				'u'||uploadboard_seq.nextval,
 				#{board_like},
 				#{subject},
 				#{content},
@@ -25,44 +47,44 @@
 	</insert>
 	
 	<select id="GroupNumberMax" resultType="int">
-		<![CDATA[select nvl(max(group_num), 0) from uploadboard]]>
+		<![CDATA[select nvl(max(group_num), 0) from museBoard]]>
 	</select>
 	
 	<update id="GroupNumberUpdate" parameterType="java.util.HashMap" >
-		<![CDATA[update uploadBoard set seq_num=seq_num+1 
+		<![CDATA[update museBoard set seq_num=seq_num+1 
 		where group_num = #{group_num} and seq_num > #{seq_num}]]> 
 	</update>
 	
 	<select id="getBoardCount" resultType="int">
-		<![CDATA[select count(*) from uploadboard]]>
+		<![CDATA[select count(*) from museBoard]]>
 	</select>
 	
-	<select id="getBoardList" parameterType="java.util.HashMap" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+	<select id="getBoardList" parameterType="java.util.HashMap" resultType="com.indiScene.museBoard.dto.MuseBoardDto">
 		<![CDATA[
 			select * from(
 			select rownum rnum, a.* from(
-			select * from uploadboard order by group_num desc, seq_num asc) a)
+			select * from museBoard order by group_num desc, seq_num asc) a)
 			where rnum>=#{startRow} and rnum <= #{endRow}
 		]]>
 	</select>
 	
-	<select id="read" parameterType="String" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+	<select id="read" parameterType="String" resultType="com.indiScene.museBoard.dto.MuseBoardDto">
 		<![CDATA[
-			select * from uploadboard where board_num=#{board_num}
+			select * from museBoard where board_num=#{board_num}
 		]]>
 	</select>
 	
 	<update id="readCount" parameterType="String">
-		<![CDATA[update uploadboard set count=count+1 where board_num = #{board_num}]]>
+		<![CDATA[update museBoard set count=count+1 where board_num = #{board_num}]]>
 	</update>
 	
 	<delete id="delete">
-		<![CDATA[delete from uploadboard where board_num=#{board_num}]]>
+		<![CDATA[delete from museBoard where board_num=#{board_num}]]>
 	</delete>
 	
-	<update id="update" parameterType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+	<update id="update" parameterType="com.indiScene.museBoard.dto.MuseBoardDto">
 		<![CDATA[
-			update uploadboard set 
+			update museBoard set 
 			subject=#{subject},
 			content=#{content},
 			register_date=sysdate,
@@ -73,7 +95,7 @@
 			where board_num=#{board_num}
 		]]>
 	</update>
-	
+<!-- 	
 	<select id="likeCheck" parameterType="java.util.HashMap" resultType="int">
 		<![CDATA[select count(*) from board_like where artist_id=#{artist_id} and board_num=#{board_num}]]>
 	</select>
@@ -83,14 +105,14 @@
 	</insert>
 	
 	<update id="likeUpdate" parameterType="java.util.HashMap">
-		<![CDATA[update uploadboard set board_like=board_like+1 where board_num=#{board_num} and not artist_id=#{artist_id}]]>
+		<![CDATA[update museBoard set board_like=board_like+1 where board_num=#{board_num} and not artist_id=#{artist_id}]]>
 	</update>
 	
 	<select id="checkLike" parameterType="java.util.HashMap" resultType="int">
-		<![CDATA[select board_like from uploadboard where board_num=#{board_num}]]>	
+		<![CDATA[select board_like from museBoard where board_num=#{board_num}]]>	
 	</select>
 	
 	<insert id="copyBest" parameterType="String">
-		<![CDATA[insert into bestboard (select a.*, sysdate from (select * from uploadboard where board_num=#{board_num}) a)]]>
-	</insert>
+		<![CDATA[insert into bestboard (select a.*, sysdate from (select * from museBoard where board_num=#{board_num}) a)]]>
+	</insert> -->
 </mapper>

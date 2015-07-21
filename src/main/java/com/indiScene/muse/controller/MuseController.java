@@ -50,9 +50,11 @@ public class MuseController {
 	 * @description :	muse 개설을 위해 muse servie로 이동
 	 */
 	@RequestMapping(value="/museCreate/logup.do", method=RequestMethod.POST)
-	public ModelAndView logup(MultipartHttpServletRequest request, ModelAndView mav, MuseDto museDto){
+	public ModelAndView logup(MultipartHttpServletRequest request, HttpServletResponse response,ModelAndView mav, MuseDto museDto){
 		mav.addObject("request", request);
+		mav.addObject("response",response);
 		mav.addObject("museDto", museDto);
+		logger.info("Logup Controller");
 		service.logup(mav);
 		
 		return null;

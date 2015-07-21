@@ -9,10 +9,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <title>Insert title here</title>
+<script src="${root }/js/jquery.js"></script>
 <script src="${root }/resources/xhr/xhr.js" type="text/javascript" ></script>
 <script src="${root }/js/replyWrite.js" type="text/javascript" ></script>
 <script src="${root }/js/replyDelete.js" type="text/javascript" ></script>
 <script src="${root }/js/replyUpdate.js" type="text/javascript" ></script>
+<script src="${root }/js/reply.js"></script>
 <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true">
     </script>
@@ -86,32 +88,32 @@
 </script>
 
 
-	<input type="hidden" id="address" value="${marketBoard.zipcode}"/>
-	<input type="hidden" id="date" value="<fmt:formatDate value="${marketBoard.d_day}" pattern="MM/dd/yyyy"/>" name="d_day"/>
+	<input type="hidden" id="address" value="${performBoard.zipcode}"/>
+	<input type="hidden" id="date" value="<fmt:formatDate value="${performBoard.d_day}" pattern="MM/dd/yyyy"/>" name="d_day"/>
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
 	<table border="1" width="510" cellpadding="2" cellspacing="0"align="center">
 		<tr>
 			<td align="center" height="20" width="125">글번호</td>
-			<td align="center" height="20" width="125">${marketBoard.board_num }</td>
+			<td align="center" height="20" width="125">${performBoard.board_num }</td>
 			
 
 			<td align="center" height="20" width="125">조회수</td>
-			<td align="center" height="20" width="125">${marketBoard.count }</td>
+			<td align="center" height="20" width="125">${performBoard.count }</td>
 		</tr>
 
 		<tr>
 			<td align="center" height="20" width="125">작성자</td>
-			<td align="center" height="20" width="125">${marketBoard.artist_id}</td>
+			<td align="center" height="20" width="125">${performBoard.artist_id}</td>
 
 			<td align="center" height="20" width="125">작성일</td>
 			<td align="center" height="20" width="125">
 			<fmt:formatDate
-					value="${marketBoard.register_date}" type="date" /></td>
+					value="${performBoard.register_date}" type="date" /></td>
 		</tr>
 
 		<tr>
 			<td align="center" height="200" width="125">글내용</td>
-			<td valign="top" height="200" colspan="3">${marketBoard.content }</td>
+			<td valign="top" height="200" colspan="3">${performBoard.content }</td>
 		</tr>
 		
 		
@@ -124,10 +126,10 @@
 				
     	
    		 		 <div style="width:300px; float:left;" id="datepicker"></div>
-   		 		 <fmt:formatDate value="${marketBoard.d_day}" pattern="MM/dd/yyyy hh:mm"/>
+   		 		 <fmt:formatDate value="${performBoard.d_day}" pattern="MM/dd/yyyy hh:mm"/>
 				 <!-- <div id="map_canvas" style="width:300px; height:300px; float:left;"></div> -->
 				<div id="map" style="width:300px;height:300px;"></div>
-				${marketBoard.address}
+				${performBoard.address}
 				</td>
 			</tr>
 		
@@ -135,9 +137,9 @@
 		<tr>
 			<td height="30" colspan="4" align="center"><input type="button"
 				value="글수정"
-				onclick="javascript:performBoardUpdate('${marketBoard.board_num}','${pageNumber}')" />
+				onclick="javascript:performBoardUpdate('${performBoard.board_num}','${pageNumber}')" />
 				<input type="button" value="글삭제"
-				onclick="javascript:performBoardDelete('${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')"/>
+				onclick="javascript:performBoardDelete('${performBoard.board_num}','${pageNumber}','${performBoard.artist_id}')"/>
 				<!-- onclick="delFun('${root}','${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')" />  -->
 				<input type="button" value="글목록"
 				onclick="javascript:enterPerformBoard('${root}','${pageNumber}')" />
@@ -145,20 +147,19 @@
 		</tr>
 	</table>
 	
+			<!-- ---------------한줄댓글 ----------------------------------------------->
 	
-	<!-- ---------------한줄댓글 ----------------------------------------------->
-
-	${marketBoard.board_num }
+	
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
-	<div>한줄 댓글이 가능합니다.</div>
-	<br/>
-	
+	<br/><br/><br/>
+	<h3 style="color:#4C4C4C; font-size: 1.3em; font-weight: bold;" >commant </h3>
+	<hr>
 	<div>
-		<input id="writeId" type="text" name="artist_id"  size="7" />
-		<input id="writeReply" type="text" name="reply_content" size="45"/>
-		<input type="button" value="한줄답글작성" onclick="writeToServer('${root}','${marketBoard.board_num }')"/> 
+		<input id="writeId"  type="text" name="artist_id" size="14" style="font-size:1.05em;font-family:Helvetica;">
+		<input id="writeReply" type="text" name="reply_content" size="80" />&nbsp;
+		<input type="button" value="submit" style="color:black;" onclick="writeToServer('${root}','${board_num  }')"/> 
 	</div>
-
+	<div></div>
 	 
 	<div></div>
 	
@@ -168,14 +169,22 @@
 	<!--  기존데이타 -->
 	<c:forEach var="reply" items="${replyList }">
 		<div class="replyDiv" id="${reply.reply_num }">   <!-- div를 통해 한번에 삭제하기위함,, 자식들도 삭제되므로! -->
-			<span class="cssBunho">${reply.reply_num }</span>
-			<span class="cssAritist">${reply.artist_id }</span>
-			<span class="cssReply">${reply.reply_content }</span>
-			<span class="cssDate">${reply.reply_date }</span>
-			<span class="cssUpDel">
-				<a href="javascript:upSelectToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">수정</a>
-				<a href="javascript:deleteToServer('${marketBoard.board_num }','${reply.reply_num }','${root}')">삭제</a>
-			</span>
+			<%-- <span class="cssBunho">${reply.reply_num }</span> --%>
+			<p class="DiscussInfo"><!--  아이디/날짜   -->
+				<span class="cssAritist">${reply.artist_id }</span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="cssDate"><fmt:formatDate
+					value="${reply.reply_date }" type="date" pattern="yyyy/MM/dd HH:mm" /></span>		
+			</p>
+			<p >
+				<span class="cssReply">${reply.reply_content }</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="cssUpDel">
+					<a href="javascript:upSelectToServer('${performBoard.board_num }','${reply.reply_num }','${root}')" style="color:#36b823;">Edit</a>
+					<span class="Delimiter">/</span>
+					<a href="javascript:deleteToServer('${performBoard.board_num }','${reply.reply_num }','${root}')" style="color:#D43F3A;">Delete</a>
+				</span>
+			</p>
+			<hr>
 		</div>
 	</c:forEach>
 

@@ -214,12 +214,11 @@ function perform(){
 }
 
 function createMuse(){
-	var dataSet = new FormData(document.getElementById("marketBoardWriteForm"));
+	var dataSet = new FormData(document.getElementById("museMakeForm"));
 	/*alert($("#file").val());
 	if($("#file").val() == ""){
 		$("#file").val(" ");
 	}*/
-	
 	$.ajax({
 		url:root + "/museCreate/logup.do",
 		type:"post",
