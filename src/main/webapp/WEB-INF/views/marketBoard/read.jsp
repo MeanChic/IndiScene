@@ -13,7 +13,7 @@
 <script src="${root }/js/replyWrite.js" type="text/javascript" ></script>
 <script src="${root }/js/replyDelete.js" type="text/javascript" ></script>
 <script src="${root }/js/replyUpdate.js" type="text/javascript" ></script>
-<script src="${root }/js/reply.js"></script>
+<script src="${root }/js/jquery.js"></script>
 
 <!-- Load google font -->
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">

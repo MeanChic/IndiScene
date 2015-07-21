@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
 	<link href="${root}/css/marketBoard1.css" rel="stylesheet">
-
+	
 	<!-- Load javascrips libraries-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="${root}/js/jquery.bxslider.js"></script>
@@ -26,6 +26,8 @@
 	<script src="${root}/js/jquery.colorbox.js"></script>
 	<script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
+	<script type="text/javascript" src="${root}/js/uploadBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/webPlayer.js"></script>
 	
 	<!-- Load javaScript for Hyuckjin-->
 	<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
@@ -54,7 +56,7 @@
 		<ul class="nav nav-pills nav-stacked">
 			<li class="brandNewMusic"><a href="#brandNewMusic">Brand New Music</a></li>
 			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
-			<li class="indisMusic"><a href="#indisMusic">Indi's Music</a></li>
+			<li class="indisMusic"><a href="javascript:uploadList('${root}',1)">Indi's Music</a></li>
 			<li class="performanceInfo"><a href="javascript:performPlace('${root}')">Performance Info</a></li>
 			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root }')">Market Place</a></li>
 		</ul>
