@@ -83,15 +83,16 @@
 		</c:if>
 	</c:if>
 	
-<form enctype="multipart/form-data" method="post"><%-- action="${root}/museCreate/logup.do"  --%>
+	
+<form enctype="multipart/form-data" method="post" id="museMakeForm"><%-- action="${root}/museCreate/logup.do"  --%>
 	<input type="hidden" name="artist_id" value="${artist_id}"/>
 	Muse Name : <input type="text" name="muse_name"/><input type="button" name="check" value="중복확인"/><br/><br/>
 	Muse 설명 : <textarea rows="10" cols="20" name="muse_comment"></textarea><br/><br/>
 	Muse Emblem : <input type="file" name="file" id="file"/>
 	<output id="result"></output>
 
-	<input type="button" onclick="createMuse()">
-	<input type="reset"/>
+	<input type="button" onclick="createMuse()" value="Submit">
+	<input type="reset" value="Reset"/>
 </form>
 </body>
 </html>

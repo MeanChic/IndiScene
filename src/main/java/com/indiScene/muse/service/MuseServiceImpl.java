@@ -81,7 +81,7 @@ public class MuseServiceImpl implements MuseService {
 		Map<String, Object> map = mav.getModelMap();
 		MultipartHttpServletRequest request = (MultipartHttpServletRequest)map.get("request");
 		HttpServletResponse response = (HttpServletResponse)map.get("response");
-		//logger.info("--" +request.getParameter("check"));
+		logger.info("Request Prameter Check(museName) : " +request.getParameter("muse_name"));
 		MuseDto museDto = (MuseDto)map.get("museDto");
 		
 		museDto.setMuse_date(new Date());
@@ -91,16 +91,14 @@ public class MuseServiceImpl implements MuseService {
 		String timeName = System.currentTimeMillis() + "_" + fileName ;
 		long fileSize = upFile.getSize();
 		
-		//logger.info("-- fileName : " + fileName);
-		//logger.info("-- timeName : " + timeName);
-		//logger.info("-- fileSize : " + fileSize);
+		logger.info("-- fileName : " + fileName);
+		logger.info("-- timeName : " + timeName);
+		logger.info("-- fileSize : " + fileSize);
 		
 		if(fileSize != 0){
 			try{
 				String dir="C:/Users/kosta/git/IndiScene/src/main/webapp/resources/museResources";
 				//String dir="C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources";
-				
-				
 				
 				File file = new File(dir, timeName);
 				upFile.transferTo(file);	
@@ -122,7 +120,7 @@ public class MuseServiceImpl implements MuseService {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 		int check = museDao.logup(museDto);
 		if(check > 0){
 			int musenew = guestDao.createMuse(museDto.getMuse_name());
@@ -140,12 +138,10 @@ public class MuseServiceImpl implements MuseService {
 					+ " </script> ");
 		}
 		
-		
-		
-		
 		//logger.info("-- muselogup check:" + check);
 		/*mav.addObject("check",check);
 		mav.setViewName("museCreate/logup");*/
+		mav.setViewName("museCreate/musemain");
 	}
 	
 	/**

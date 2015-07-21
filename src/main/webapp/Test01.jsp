@@ -122,7 +122,7 @@
 	<div class="footer">
 		<div class="brand"><p>Indi Scene</p></div>
 		<div class="container">
-			<a href=""><img class="logo" src="${root}/css/images/logo-img.png" alt="logo"></a>
+			<a href="${root}/Test01.jsp"><img class="logo" src="${root}/css/images/logo-img.png" alt="logo"></a>
 			<a href="#" class="toTop">Back to top</a>
 			<p class="copiright">&copy; Copyright 2015 <a href=""></a>. All Rights Reserved.</p>
 		</div>

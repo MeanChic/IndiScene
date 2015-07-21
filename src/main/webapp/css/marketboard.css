@@ -1,12 +1,16 @@
 @CHARSET "UTF-8";
 #noticeRead, #marketBoardread, #freeBoardRead, #freeBoardUpdate, #boardBasic, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
 #boardlistSize{ padding-right:10px; padding-left:10px; }
+#best, #my, #all{ border-color:#BDBDBD; }
+#best h4, #my h4, #all h4{ color:#FB6816; z-index:100; position:relative; margin-left:30px; margin-bottom:30px; }
+
 .marketBoardX-location01{ text-align:center; }
 .marketBoardX-location02{ text-align:right; }
 .marketBoardX-location03{ text-align:left; }
 
 .marketBoardY-location01{ vertical-align:top; }
 .marketBoardY-location02{ vertical-align:bottom; }
+.marketBoardY-location03{ vertical-align:middle; }
 
 .marketBoardAttribute01{ display:inline-block; }
 .marketBoardAttribute02{ display:block; }
@@ -30,6 +34,8 @@
 .marketBoardheight01{ height:350px; }
 .marketBoardheight02{ height:450px; }
 .marketBoardheight03{ height:550px; }
+
+.musemainHeight{ max-height:440px; min-height:220px; }
 
 .marketBoardTextareaSize200{
 	border:solid 1px #cccccc;
@@ -63,6 +69,7 @@
 
 
 .marginLR5{ margin-left:5px; margin-right:5px; }
+.marginLR20{ margin-left:20px; margin-right:20px; }
 
 .marketBoardImageSize{ min-width:269px; min-height:205px; max-height:205px; }
 
