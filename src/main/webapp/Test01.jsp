@@ -345,9 +345,7 @@ function writeReplyProcess(responseText){
 	spanDate.className="cssDate";
 	spanDate.innerHTML=reply_date;
 	
-	var fmt=document.createElement("fmt:formatDate");
-	fmt.classType="date";
-	fmt.classPattern="yyyy/MM/dd/ HH:mm"
+
 	
 	
 	var spanUpDel=document.createElement("span");
@@ -373,14 +371,12 @@ function writeReplyProcess(responseText){
 	
 	div.appendChild(pReply);
 	pReply.appendChild(spanArtist);
-	pReply.appendChild(spanDate);
-	spanDate.appendChild(fmt);
+	pReply.appendChild(spanDate);///// Fomatdate 
 	div.appendChild(p2);
-	//div.appendChild(spanReply_num);
+
+	
 	p2.appendChild(spanReply);
 	p2.appendChild(spanUpDel);
-	//newReply.appendChild(div);
-	//newReply.insertBefore(div, newReply.firstChild);
 	spanUpDel.appendChild(aUpdate);
 	spanUpDel.appendChild(spanDelimiter);
 	spanUpDel.appendChild(aDelete);

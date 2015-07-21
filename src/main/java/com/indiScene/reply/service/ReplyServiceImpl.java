@@ -2,6 +2,7 @@ package com.indiScene.reply.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -64,8 +65,8 @@ public class ReplyServiceImpl implements ReplyService {
 		
 		if(check>0){
 			int reply_num=replyDao.getReplyNum(board_num);
-			
-			String str=reply_num+"," +artist_id + "," + reply_content+","+date+","+board_num;
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+			String str=reply_num+"," +artist_id + "," + reply_content+","+sdf.format(date)+","+board_num;
 			response.setContentType("application/html;charset=utf-8");
 			
 			PrintWriter out=response.getWriter();
