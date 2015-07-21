@@ -112,7 +112,7 @@
 	<!--   페이징작업을위한 GET방식 -->     
 	<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
               <table id="">
-                    <tr>
+                    <tr class="searchBox">
                          <td class="">
                                <select id="searchType" name="searchType">
 									  <option value="total">전체</option>	                              			
@@ -122,10 +122,10 @@
                                </select>
                          </td>
                          <td class="">
-                               <input type="text" id="searchWord" name="searchWord">
+                               <input type="text"  id="searchWord" name="searchWord">
                          </td>
-                         <td class="">
-                               <input type="submit" value="검색"></input>
+                         <td class="searchBtn">
+                               <input type="submit" id="searchBtn" value="submit"></input>
                          </td>
                     </tr>
              </table>

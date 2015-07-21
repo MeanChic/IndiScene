@@ -122,8 +122,8 @@
                          <td class="">
                                <input type="text" id="searchWord" name="searchWord">
                          </td>
-                         <td class="">
-                               <input type="submit" value="검색"></input>
+                         <td class="searchBtn">
+                               <input type="submit" id="searchBtn" value="search"></input>
                          </td>
                     </tr>
              </table>

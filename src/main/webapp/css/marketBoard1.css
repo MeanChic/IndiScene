@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 /* Read */
-#perfomBoardRead,#uploadBoardRead,#marketBoardread,#freeBoardDelete,#noticeDelete, #marketBoardDelete,#noticeRead{ 
+#freeBoardList,#perfomBoardRead,#uploadBoardRead,#marketBoardread,#freeBoardDelete,#noticeDelete, #marketBoardDelete,#noticeRead{ 
 	text-align:left; 
 	width:930px; 
 	min-height:450px; 
@@ -162,6 +162,10 @@ a.marketBoardListBtn {
 
 }
 
+#listBt, #deleteBt{
+	text-decoration:none;
+}
+
 .marketBoardDelFontStyle{
 	 font-size:1.3em; 
 	 font-family:Helvetica;
@@ -177,4 +181,41 @@ form.marketBoardDeleteForm {
 }
 input.FontColorIsBlack{
 	color:black;
+}
+/* 검색창  */
+
+select#searchType {/*검색타입  */
+  width: 7.0em;
+  height: 2.0em;
+   color: rgb(255, 171, 171);
+  border-color: rgb(255, 171, 171);
+  border: 2px solid;
+  
+}
+
+input#searchWord {/*검색창  */
+  height: 2.0em;
+  width: 25.0em;
+   color: rgb(255, 171, 171);
+  border-color: rgb(255, 171, 171);
+  border: 2px solid;
+  
+}
+
+form#searchForm {
+  padding-left: 11.0em;
+}
+#searchBtn{
+	
+	background-color: white;
+	color:rgb(255, 171, 171);
+	border-color: rgb(255, 171, 171);
+	border: 2px solid;
+	font-weight: bold;
+	width: 5.0em;
+	height: 2.0em;
+}
+
+input#searchBtn {
+	
 }
