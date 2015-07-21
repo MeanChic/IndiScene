@@ -122,8 +122,13 @@
                          <td class="">
                                <input type="text"  id="searchWord" name="searchWord">
                          </td>
+<<<<<<< HEAD
                          <td class="searchBtn">
                                <input type="submit" id="searchBtn" value="submit"></input>
+=======
+                         <td class="">
+                               <input type="submit" value="검색" id="searchBtn" value="search"></input>
+>>>>>>> branch 'master' of https://github.com/MeanChic/IndiScene.git
                          </td>
                     </tr>
              </table>
