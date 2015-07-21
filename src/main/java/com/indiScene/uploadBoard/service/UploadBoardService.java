@@ -17,6 +17,7 @@ public interface UploadBoardService {
 	public void update(ModelAndView mav);
 	public void updateOk(ModelAndView mav);
 	public void delete(ModelAndView mav);
+	public void deleteOk(ModelAndView mav);
 	public void like(ModelAndView mav);
 	public void collabo(ModelAndView mav);
 	public void collaboAdopt(ModelAndView mav);

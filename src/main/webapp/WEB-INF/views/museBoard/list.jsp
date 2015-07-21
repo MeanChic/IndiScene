@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div id="museBoardList">
 	<input type="button" value="담기" onclick="museMusicStorage('${root}','${artist_id}','${muse_name}')"/>
 	<a href="javascript:museWrite('${root}','0','1','${muse_name}')">글쓰기</a>
 	<c:set value="${currentPage}" var="currentPage"/>
@@ -55,5 +56,6 @@
 			</c:if>
 		</center>
 	</c:if>
+	</div>
 </body>
 </html>

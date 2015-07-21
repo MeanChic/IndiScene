@@ -152,6 +152,28 @@ function museDelete(root,boardNum,currentPage,museName){
 	}
 }
 
+function museDeleteOk(root){
+	var dataSet = new FormData(document.getElementById("deleteForm"));
+//	alert($("#content").val());
+//	alert(CKEDITOR.instances.content);
+	$.ajax({
+		url:root+"/uploadBoard/delete.do",
+		type:"post",
+		dataType:"html",
+		data:dataSet,
+		contentType:false,
+		processData:false,
+		success:function(data){
+			var realData = data.split("<body>");
+			var realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	});
+}
+
 function prepareCollabo(){
 	var audio1=document.createElement("audio");
 	var audio2=document.createElement("audio");

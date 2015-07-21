@@ -112,6 +112,17 @@ public class UploadBoardController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/uploadBoard/delete.do",method=RequestMethod.POST)
+	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response){
+		logger.info("uploadBoard DeleteOk Start~~~~~~~");
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("request", request);
+		service.deleteOk(mav);
+		
+		return mav;
+	}
+	
 	@RequestMapping(value="/uploadBoard/like.do",method=RequestMethod.GET)
 	public ModelAndView like(HttpServletRequest request, HttpServletResponse response){
 		logger.info("uploadBoard Like Start-----------------");

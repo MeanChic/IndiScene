@@ -56,8 +56,8 @@
 		<![CDATA[update uploadboard set count=count+1 where board_num = #{board_num}]]>
 	</update>
 	
-	<delete id="delete">
-		<![CDATA[delete from uploadboard where board_num=#{board_num}]]>
+	<delete id="delete" parameterType="java.util.HashMap">
+		<![CDATA[delete from uploadboard where board_num=#{board_num} and artist_id = (select artist_id from artist where artist_id=#{artist_id} and artist_password=#{password})]]>
 	</delete>
 	
 	<update id="update" parameterType="com.indiScene.uploadBoard.dto.UploadBoardDto">

@@ -103,11 +103,22 @@ public class MuseBoardController {
 	
 	@RequestMapping(value="/museBoard/delete.do",method=RequestMethod.GET)
 	public ModelAndView delete(HttpServletRequest request){
-		logger.info("MuseBoard Delete Start~~~~~~~");
+		logger.info("uploadBoard Delete Start~~~~~~~");
 		ModelAndView mav = new ModelAndView();
 
 		mav.addObject("request", request);
 		service.delete(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/museBoard/delete.do",method=RequestMethod.POST)
+	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response){
+		logger.info("uploadBoard DeleteOk Start~~~~~~~");
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("request", request);
+		service.deleteOk(mav);
 		
 		return mav;
 	}

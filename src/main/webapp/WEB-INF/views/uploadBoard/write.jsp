@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div id="uploadWrite">
 	<%-- <script type="text/javascript" src="${root}/js/recorderjs/recorderInit.js"></script>
 	<script type="text/javascript" src="${root}/js/recorderjs/recorder.js"></script> --%>
 		"board_num" , ${board_num}
@@ -79,5 +80,6 @@
 			window.open('webPlayer.jsp','target_name','scrollbars=yes,toolbar=yes,resizable=yes,width=100,height=100,left=0,top=0');
 		}); */
 	</script>
+	</div>
 </body>
 </html>

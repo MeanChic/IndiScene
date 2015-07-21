@@ -13,7 +13,7 @@ public interface MuseBoardDao {
 	public List<MuseBoardDto> getBoardList(HashMap<String,Integer> rowMap);
 	public MuseBoardDto read(String board_num);
 	public void readCount(String board_num);
-	public int delete(String board_num);
+	public int delete(HashMap<String, String> hMap);
 	public int update(MuseBoardDto upload);
 /*	public int likeCheck(HashMap<String,String> hMap);
 	public int like(HashMap<String,String> hMap);

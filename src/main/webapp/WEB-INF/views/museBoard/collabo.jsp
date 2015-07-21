@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div id="museBoardCollabo">
 	<%-- <script type="text/javascript" src="${root}/js/recorderjs/recorderInit.js"></script>
 	<script type="text/javascript" src="${root}/js/recorderjs/recorder.js"></script> --%>
 		"board_num" , ${board.board_num}<br/>
@@ -97,5 +98,6 @@
 	<script type="text/javascript">
 		prepareCollabo();
 	</script>
+	</div>
 </body>
 </html>
