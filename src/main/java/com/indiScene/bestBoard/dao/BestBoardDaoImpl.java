@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.indiScene.bestBoard.dto.BestBoardDto;
+import com.indiScene.commonIO.dto.CommonMusicDto;
+import com.indiScene.museBoard.dto.MuseBoardDto;
 import com.indiScene.uploadBoard.dto.UploadBoardDto;
 
 @Component
@@ -47,8 +49,13 @@ public class BestBoardDaoImpl implements BestBoardDao {
 	}
 
 	@Override
-	public List<UploadBoardDto> getMusicList(String artist_id) {
+	public List<CommonMusicDto> getMusicList(String artist_id) {
 		return sqlSession.selectList("dao.BestMapper.getMusicList",artist_id);
+	}
+	
+	@Override
+	public List<CommonMusicDto> getMusicListMuse(String artist_id) {
+		return sqlSession.selectList("dao.BestMapper.getMusicListMuse",artist_id);
 	}
 
 	@Override
@@ -59,5 +66,10 @@ public class BestBoardDaoImpl implements BestBoardDao {
 	@Override
 	public int musicListDelete(HashMap<String, String> hMap) {
 		return sqlSession.delete("dao.BestMapper.musicListDelete",hMap);
+	}
+
+	@Override
+	public MuseBoardDto getAppendMusicMuse(String board_num) {
+		return sqlSession.selectOne("dao.BestMapper.getAppendMusicMuse", board_num);
 	}
 }

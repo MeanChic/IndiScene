@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.bestBoard.dao.BestBoardDao;
 import com.indiScene.bestBoard.dto.BestBoardDto;
-import com.indiScene.uploadBoard.dto.UploadBoardDto;
+import com.indiScene.commonIO.dto.CommonMusicDto;
 
 @Component
 public class BestBoardServiceImpl implements BestBoardService {
@@ -94,20 +94,24 @@ public class BestBoardServiceImpl implements BestBoardService {
 		
 		int check = 0;
 		
-		List<UploadBoardDto> dtoList = new ArrayList<UploadBoardDto>();
+		List<CommonMusicDto> dtoList = new ArrayList<CommonMusicDto>();
 		for(int i =0; i<musicList.length; i++){
 			HashMap<String, String> hMap = new HashMap<String,String>();
 			hMap.put("artist_id",id);
 			hMap.put("board_num", musicList[i]);
 			check+= dao.musicAppend(hMap);
-			dtoList.add(dao.getAppendMusic(musicList[i]));
+			
+			if(musicList[i].charAt(0)=='u')
+				dtoList.add(dao.getAppendMusic(musicList[i]));
+			else if(musicList[i].charAt(0)=='m')
+				dtoList.add(dao.getAppendMusicMuse(musicList[i]));
 		}
 		
 		response.setContentType("text/html; charset=UTF-8");
 		try {
 			PrintWriter out = response.getWriter();
 			out.write(check+"곡이 추가되었습니다.<end>");
-			for(UploadBoardDto dto : dtoList){
+			for(CommonMusicDto dto : dtoList){
 				out.write(dto.getSubject()+ "<cut>" + dto.getArtist_id() + "<cut>" + dto.getFile_path()+"<cut>"+dto.getImage_path()+"<cut>"+dto.getBoard_num()+"<end>");
 			}
 		} catch (IOException e) {
@@ -124,11 +128,14 @@ public class BestBoardServiceImpl implements BestBoardService {
 		
 		String id =request.getParameter("artist_id");
 		
-		List<UploadBoardDto> dtoList = dao.getMusicList(id);
+		List<CommonMusicDto> dtoList = dao.getMusicList(id);
+		System.out.println(dtoList.size());
+		dtoList.addAll(dao.getMusicListMuse(id));
+		System.out.println(dtoList.size());
 		
 		try{
 			PrintWriter out=response.getWriter();
-			for(UploadBoardDto dto : dtoList){
+			for(CommonMusicDto dto : dtoList){
 //				out.write(dto.getSubject()+ "\t" + dto.getArtist_id() + "\t" + dto.getFile_path()+"\t"+dto.getImage_path()+"\n");
 				out.write(dto.getSubject()+ "<cut>" + dto.getArtist_id() + "<cut>" + dto.getFile_path()+"<cut>"+dto.getImage_path()+"<cut>"+dto.getBoard_num()+"<end>");
 //				System.out.println(dto.getSubject()+ "\t" + dto.getArtist_id() + "\t" + dto.getFile_path()+"\t"+dto.getImage_path()+"\t"+dto.getBoard_num());

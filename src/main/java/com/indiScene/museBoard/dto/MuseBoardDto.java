@@ -1,8 +1,8 @@
-package com.indiScene.uploadBoard.dto;
+package com.indiScene.museBoard.dto;
 
 import com.indiScene.commonIO.dto.CommonMusicDto;
 
-public class UploadBoardDto implements CommonMusicDto {
+public class MuseBoardDto implements CommonMusicDto{
 	private String board_num;
 	private int board_like;
 	private String subject;
@@ -17,7 +17,14 @@ public class UploadBoardDto implements CommonMusicDto {
 	private String artist_id;
 	private int genre_code;
 	private String image_path;
+	private String muse_name;
 	
+	public String getMuse_name() {
+		return muse_name;
+	}
+	public void setMuse_name(String muse_name) {
+		this.muse_name = muse_name;
+	}
 	public String getBoard_num() {
 		return board_num;
 	}
