@@ -123,7 +123,7 @@
                                <input type="text" id="searchWord" name="searchWord">
                          </td>
                          <td class="">
-                               <input type="submit" value="검색"></input>
+                               <input type="submit" value="검색" id="searchBtn" value="search"></input>
                          </td>
                     </tr>
              </table>
