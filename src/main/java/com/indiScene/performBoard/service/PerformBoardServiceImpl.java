@@ -255,7 +255,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		//한줄댓글을 mav에 집어 넣는다.
 		mav.addObject("replyList",replyList);
 		
-		mav.addObject("marketBoard",marketBoardDto);
+		mav.addObject("performBoard",marketBoardDto);
 		mav.addObject("pageNumber",currentPage);
 		
 		mav.setViewName("performBoard/read");

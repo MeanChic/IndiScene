@@ -94,7 +94,7 @@
 		<h2>Music player List</h2>
 		<hr>
 		<div id="audioListDiv" style="display:none"><a class="musicClick"><span class="musicSubject"></span> - <span class="artistName"></span><input type="hidden" value="" class="sourcePath"/><input type="hidden" value="" class="musicBoardNum"/></a><input type="button" value="x" class="listDelete"/></div>
-			<div id="audioList">
+		<div id="audioList">
 			<!-- music-navTag -->
 		</div>
 	</nav>
