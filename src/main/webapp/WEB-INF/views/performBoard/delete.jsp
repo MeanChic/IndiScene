@@ -33,7 +33,7 @@ ${board_num} ${pageNumber} ${artist_id }
 					<input type="button" value="목록보기" onclick="javascript:enterPerformBoard('${root}','${pageNumber}')">
 				</td>
 			</tr>
-		</table>
+		</table>``
 	</form>
 
 </body>
