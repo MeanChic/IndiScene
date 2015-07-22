@@ -147,12 +147,12 @@
 	
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	<br/><br/><br/>
-	<h3 style="color:#4C4C4C; font-size: 1.3em; font-weight: bold;" >commant </h3>
+	<h3 style="color:#4C4C4C; font-size: 1.3em; font-weight: bold;" >comment </h3>
 	<hr>
 	<div>
 		<input id="writeId"  type="text" name="artist_id" size="14" style="font-size:1.05em;font-family:Helvetica;">
 		<input id="writeReply" type="text" name="reply_content" size="80" />&nbsp;
-		<input type="button" value="submit" style="color:black;" onclick="writeToServer('${root}','${board_num  }')"/> 
+		<input type="button" value="submit" style="color:black;" onclick="writeToServer('${root}','${performBoard.board_num}')"/> 
 	</div>
 	<div></div>
 	 
