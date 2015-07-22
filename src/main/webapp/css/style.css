@@ -206,12 +206,12 @@ Sub navigation
 .music-nav {
 	margin-top:380px;
 	position:fixed;
-	top:0;
+	bottom:0;
 	right:-300px;
 	display:block;
 	width:200px;
 	z-index:10010;
-	height:380px;
+	min-height:320px;
 	background:#11161E;
 }
 .music-nav h2 {
@@ -337,11 +337,11 @@ Sub navigation
 	-o-transition: left 0.5s;
 }
 .music-expanded, .music-expanded .musicbar-brand{
-	transition: up 0.5s;
-	-webkit-transition: up 0.5s;
-	-moz-transition: up 0.5s;
-	-ms-transition: up 0.5s;
-	-o-transition: up 0.5s;
+	transition: left 0.5s;
+	-webkit-transition: left 0.5s;
+	-moz-transition: left 0.5s;
+	-ms-transition: left 0.5s;
+	-o-transition: left 0.5s;
 }
 .nav-expander {
 	margin-top:20px;
