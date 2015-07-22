@@ -26,8 +26,24 @@
 		}); 
 	}
 
+	function freeBoardWriteOk(root,pageNumber){
+		
+		var dataSet = new FormData(document.getElementById("FreeBoardWriteForm"));
+		dataSet.append("content",CKEDITOR.instances.content.getData());  //content에서  contentFreeBoard로 바꿈
+		
 
-
+		/* subject */
+		if($("input[name='subject']").val()==""){
+			alert("제목을 써주세요.");
+			$("input[name='subject']").focus();
+			return false;
+		}
+		/* contents */
+		if($("input[name='content']").val()==""){
+			alert("내용을 채워주세요");
+			$("input[name='content']").focus();
+			return false;
+		}
 		
 		$.ajax({
 			url:root+"/freeBoard/write.do",

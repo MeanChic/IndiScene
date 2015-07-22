@@ -13,7 +13,7 @@ public interface UploadBoardDao {
 	public List<UploadBoardDto> getBoardList(HashMap<String,Integer> rowMap);
 	public UploadBoardDto read(String board_num);
 	public void readCount(String board_num);
-	public int delete(String board_num);
+	public int delete(HashMap<String,String> hMap);
 	public int update(UploadBoardDto upload);
 	public int likeCheck(HashMap<String,String> hMap);
 	public int like(HashMap<String,String> hMap);

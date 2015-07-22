@@ -367,7 +367,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 	}
 
 	@Override
-	public void delete(ModelAndView mav) {
+	public void delete(ModelAndView mav){
 		logger.info("UploadBoard Delete Service");
 		
 		Map<String, Object> map = mav.getModel();
@@ -375,6 +375,28 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 
 		String board_num = request.getParameter("boardNum");
 		String pageNumber = request.getParameter("pageNumber");
+		
+		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("board_num",board_num);
+
+		mav.setViewName("uploadBoard/delete");
+	}
+	
+	@Override
+	public void deleteOk(ModelAndView mav) {
+		logger.info("UploadBoard DeleteOk Service");
+		
+		Map<String, Object> map = mav.getModel();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+
+		String board_num = request.getParameter("board_num");
+		String pageNumber = request.getParameter("pageNumber");
+		String password = request.getParameter("password");
+		
+		HashMap<String,String> hMap = new HashMap<String,String>();
+		hMap.put("board_num", board_num);
+		hMap.put("password", password);
+		hMap.put("artist_id", request.getParameter("artist_id"));
 		
 		UploadBoardDto originalDto = dao.read(board_num);
 		
@@ -384,12 +406,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		oldImg.delete();
 		oldMusic.delete();
 		
-		int check = dao.delete(board_num);
+		int check = dao.delete(hMap);
 		
 		mav.addObject("pageNumber",pageNumber);
 		mav.addObject("check",check);
 
-		mav.setViewName("uploadBoard/delete");
+		mav.setViewName("uploadBoard/deleteOk");
 	}
 	
 	@Override

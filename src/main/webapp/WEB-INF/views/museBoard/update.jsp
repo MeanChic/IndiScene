@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div id="museBoardUpdate">
 	<form method="post" enctype="multipart/form-data" id="museWriteForm">	
 		<input type="hidden" value="${board.artist_id}" name="artist_id"/>
 		<input type="hidden" value="${board.board_num}" name="board_num"/>
@@ -52,5 +53,6 @@
 			window.open('webPlayer.jsp','target_name','scrollbars=yes,toolbar=yes,resizable=yes,width=100,height=100,left=0,top=0');
 		}); */
 	</script>
+	</div>
 </body>
 </html>

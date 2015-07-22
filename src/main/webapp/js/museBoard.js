@@ -135,21 +135,41 @@ function museUpdateOk(root){
 }
 
 function museDelete(root,boardNum,currentPage,museName){
-	if(confirm("삭제하겠습니까?")){
-		$.ajax({
-			url:root+"/museBoard/delete.do?boardNum="+boardNum+"&pageNumber="+currentPage+"&muse_name="+muse_name,
-			type:"get",
-			dataType:"html",
-			success:function(data){
-				var realData = data.split("<body>");
-				realData = realData[1].split("</body>")[0];
-				$("#centerContents").html(realData);
-			},
-			error:function(xhr,status,error){
-				alert(xhr+"\n"+status+"\n"+error);
-			}
-		});
-	}
+	$.ajax({
+		url:root+"/museBoard/delete.do?boardNum="+boardNum+"&pageNumber="+currentPage+"&muse_name="+muse_name,
+		type:"get",
+		dataType:"html",
+		success:function(data){
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	});
+}
+
+function museDeleteOk(root){
+	var dataSet = new FormData(document.getElementById("deleteForm"));
+//	alert($("#content").val());
+//	alert(CKEDITOR.instances.content);
+	$.ajax({
+		url:root+"/uploadBoard/delete.do",
+		type:"post",
+		dataType:"html",
+		data:dataSet,
+		contentType:false,
+		processData:false,
+		success:function(data){
+			var realData = data.split("<body>");
+			var realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	});
 }
 
 function prepareCollabo(){

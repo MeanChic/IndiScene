@@ -50,8 +50,9 @@ public class UploadBoardDaoImpl implements UploadBoardDao {
 	}
 
 	@Override
-	public int delete(String board_num) {
-		return sqlSession.delete("dao.UploadMapper.delete",board_num);
+	public int delete(HashMap<String,String> hMap) {
+		System.out.println(hMap.get("board_num")+"\t" + hMap.get("artist_id")+"\t"+hMap.get("password"));
+		return sqlSession.delete("dao.UploadMapper.delete",hMap);
 	}
 
 	@Override

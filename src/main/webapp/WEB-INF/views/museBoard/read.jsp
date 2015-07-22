@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div id="museBoardRead">
 	<a style="margin:0 0 0 600px"href="javascript:museList('${root}','${pageNumber}','${muse_name}')">리스트로 돌아가기</a>
 	<div style="border:solid 1px black; width:700px; margin:100px 0 100px 20px ">
 	<span>${pageNumber}</span><span>${boardDto.register_date}</span>
@@ -30,7 +31,7 @@
 	</c:if>
 	<input type="button" value="콜라보" onclick="museCollabo('${root}','${board_num}','${pageNumber}','${muse_name}')"/>
 	</div>
-	
+	</div>
 	</div>
 </body>
 </html>

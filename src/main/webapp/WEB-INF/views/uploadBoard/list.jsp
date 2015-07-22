@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div id="uploadList">
 	<input type="button" value="담기" onclick="musicStorage('${root}','${artist_id}')"/>
 	<a href="javascript:uploadWrite('${root}','0','1')">글쓰기</a>
 	<c:set value="${currentPage}" var="currentPage"/>
@@ -56,5 +57,6 @@
 			</c:if>
 		</center>
 	</c:if>
+	</div>
 </body>
 </html>

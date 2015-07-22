@@ -377,7 +377,7 @@ public class MuseBoardServiceImpl implements MuseBoardService {
 	}
 
 	@Override
-	public void delete(ModelAndView mav) {
+	public void delete(ModelAndView mav){
 		logger.info("MuseBoard Delete Service");
 		
 		Map<String, Object> map = mav.getModel();
@@ -385,6 +385,30 @@ public class MuseBoardServiceImpl implements MuseBoardService {
 
 		String board_num = request.getParameter("boardNum");
 		String pageNumber = request.getParameter("pageNumber");
+		String muse_name=request.getParameter("muse_name");
+		
+		mav.addObject("muse_name",muse_name);
+		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("board_num",board_num);
+
+		mav.setViewName("museBoard/delete");
+	}
+	
+	@Override
+	public void deleteOk(ModelAndView mav) {
+		logger.info("MuseBoard DeleteOk Service");
+		
+		Map<String, Object> map = mav.getModel();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+
+		String board_num = request.getParameter("board_num");
+		String pageNumber = request.getParameter("pageNumber");
+		String password = request.getParameter("password");
+		
+		HashMap<String,String> hMap = new HashMap<String,String>();
+		hMap.put("board_num", board_num);
+		hMap.put("password", password);
+		hMap.put("artist_id", request.getParameter("artist_id"));
 		
 		MuseBoardDto originalDto = dao.read(board_num);
 		
@@ -394,16 +418,16 @@ public class MuseBoardServiceImpl implements MuseBoardService {
 		oldImg.delete();
 		oldMusic.delete();
 		
-		int check = dao.delete(board_num);
-		
+		int check = dao.delete(hMap);
 		String muse_name=request.getParameter("muse_name");
 		
 		mav.addObject("muse_name",muse_name);
 		mav.addObject("pageNumber",pageNumber);
 		mav.addObject("check",check);
 
-		mav.setViewName("museBoard/delete");
+		mav.setViewName("museBoard/deleteOk");
 	}
+	
 /*	
 	@Override
 	public void like(ModelAndView mav) {
