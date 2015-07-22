@@ -17,6 +17,8 @@
 .marketBoardAttribute02{ display:block; }
 .marketBoardAttribute03{ display:table-column; }
 
+.instants01{ padding-right:10px; padding-left:10px; }
+
 .marketBoardSize12{ width:12%; }
 .marketBoardSize16{ width:16%; }
 .marketBoardSize30{ width:30%; }

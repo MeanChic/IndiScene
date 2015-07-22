@@ -93,7 +93,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 		int count=marketBoardDao.getCount();
 		logger.info("count:"+ count);
 
-		int boardSize=3;
+		int boardSize=9;
 		int startRow=(currentPage-1) * boardSize +1;
 		int endRow=currentPage*boardSize;
 		logger.info("startRow:" + startRow + ",endRow" + endRow);

@@ -65,8 +65,8 @@ public class HomeController {
 		List<String> performImageList = null;
 		List<String> placeImageList = null;
 		
-		List<PerformBoardDto> performList = performdao.getMarketList(0, 5);
-		List<PlaceBoardDto> placeList = placedao.getMarketList(0, 5);
+		List<PerformBoardDto> performList = performdao.getMarketList(0, 6);
+		List<PlaceBoardDto> placeList = placedao.getMarketList(0, 6);
 		performImageList=commonIOService.mainImageFind(performList); 
 		placeImageList=commonIOService.mainImageFind(placeList); 
 		
