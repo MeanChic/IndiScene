@@ -265,8 +265,9 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		String pageNumber = request.getParameter("pageNumber");
 		String searchWord=request.getParameter("searchWord");
 		String searchType=request.getParameter("searchType");
-		System.out.println(searchWord);
-		System.out.println(searchType);
+		searchType=null;
+		System.out.println("searchWord"+searchWord);
+		System.out.println("searchType"+searchType);
 		if(pageNumber == null) pageNumber ="1";
 		
 		int currentPage = Integer.parseInt(pageNumber);
@@ -299,13 +300,11 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 			list= dao.getBoardList(rowMap);	
 			logger.info("list"+list.size());
 		}else{
-			if(searchType==null || searchType.equals("artist_id")){ //아티스트 더보기를 클릭했을때
-				listArtistSearch=(List<UploadBoardDto>) commonIODao.getCommonBoardList(startRow, endRow, searchWord, searchType, "uploadBoard");
-				logger.info("listArtistSearch"+listArtistSearch.size());
-			}else if(searchType==null || searchType.equals("subject")){ //곡명 더보기를 클릭했을때
-				listSubjectSearch=(List<UploadBoardDto>) commonIODao.getCommonBoardList(startRow, endRow, searchWord, searchType, "uploadBoard");
-				logger.info("listSubjectSearch"+listSubjectSearch.size());
-			}
+				listArtistSearch=(List<UploadBoardDto>) commonIODao.getCommonBoardList(startRow, endRow, searchWord, "artist_id", "uploadBoard");
+				//logger.info("listArtistSearch"+listArtistSearch.size());
+			
+				listSubjectSearch=(List<UploadBoardDto>) commonIODao.getCommonBoardList(startRow, endRow, searchWord, "subject", "uploadBoard");
+				//logger.info("listSubjectSearch"+listSubjectSearch.size());
 		}
 //		
 //		

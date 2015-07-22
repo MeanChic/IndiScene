@@ -68,8 +68,7 @@ function searchMain(root,pageNumber,searchWord,searchType){
 
 	//alert(folderName[0]);
 	if(searchWord==null){
-		var dataSet = new FormData(document.getElementById("searchForm"));
-		var searchWord=$("#searchWord").val();
+		var searchWord=$("#MainSearchWord").val();
 	}
 	
 	//alert(searchWord);

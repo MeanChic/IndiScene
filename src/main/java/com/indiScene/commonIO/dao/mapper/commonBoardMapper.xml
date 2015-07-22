@@ -63,6 +63,27 @@
 			order by register_date desc)a) where rnum >=#{startRow} and rnum <= #{endRow}
 		]]>
 	</select>
+	
+	<select id="uploadBoardSearchList" parameterType="java.util.HashMap" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+		<![CDATA[
+			select * from (select rownum rnum, a.* from(select * from ${folderName} where 1=1
+		]]>
+			<if test="searchType != null">  
+		   		<choose>
+					<when test="searchType.equals('total')">
+						AND (artist_id    LIKE '%' || #{searchWord} || '%') or
+							(subject    LIKE '%' || #{searchWord} || '%') or
+							(content    LIKE '%' || #{searchWord} || '%')
+					</when>
+					<otherwise>
+						AND (${searchType}    LIKE '%' || #{searchWord} || '%') 
+					</otherwise>
+				</choose>
+	   		</if>  
+		<![CDATA[
+			order by register_date desc)a) where rnum >=#{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
 
 	<select id="getUploadMusic" parameterType="java.util.HashMap" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
 		<![CDATA[

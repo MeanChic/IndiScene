@@ -40,6 +40,8 @@ public class CommonIODaoImpl implements CommonIODao {
 			return sqlSession.selectList("dao.commonIOMapper.marketBoardSearchList",hMap);
 		}else if(folderName.equals("freeBoard")){
 			return sqlSession.selectList("dao.commonIOMapper.freeBoardSearchList",hMap);
+		}else if(folderName.equals("uploadBoard")){
+			return sqlSession.selectList("dao.commonIOMapper.uploadBoardSearchList",hMap);
 		}else{
 			return null;
 		}
