@@ -64,15 +64,16 @@ function searchFreeBoard(root,pageNumber,folderName,searchWord,searchType){
 	});
 }
 
-function searchMain(root,pageNumber,searchWord,searchType){
-
+function searchMain(root,pageNumber,searchWord,type){
+	var searchType=type;
 	//alert(folderName[0]);
 	if(searchWord==null){
 		var searchWord=$("#MainSearchWord").val();
+		searchType="total";
 	}
 	
 	//alert(searchWord);
-	//alert(searchType);
+	alert(searchType);
 	sendData="?pageNumber="+pageNumber+"&searchType=" +searchType + "&searchWord="+searchWord+"&folderName=uploadBoard";
 	$.ajax({
 		url:root +"/uploadBoard/list.do"+sendData,

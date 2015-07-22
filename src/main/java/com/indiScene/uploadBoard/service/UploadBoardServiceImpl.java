@@ -129,6 +129,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 				uploadFolder.mkdirs();
 			}
 			//
+			
 			uploadMusicFile = new File(dir+"/uploadBoard/music/",musicFile);
 		}else{
 			uploadMusicFile = new File(dir+"/uploadBoard/music/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
@@ -253,7 +254,6 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 //		System.out.println("artist id = " +request.getParameter("artist_id"));
 	}
 
-	@SuppressWarnings("unused")
 	@Override
 	public void list(ModelAndView mav) {
 		logger.info("upload List Service Start");
@@ -265,9 +265,11 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		String pageNumber = request.getParameter("pageNumber");
 		String searchWord=request.getParameter("searchWord");
 		String searchType=request.getParameter("searchType");
-		searchType=null;
-		System.out.println("searchWord"+searchWord);
-		System.out.println("searchType"+searchType);
+		
+		
+		System.out.println("searchType!!!:"+searchType);
+		System.out.println("searchWord!!!:"+searchWord);
+		
 		if(pageNumber == null) pageNumber ="1";
 		
 		int currentPage = Integer.parseInt(pageNumber);
@@ -280,11 +282,18 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		
 		if(searchWord==null){
 			count = dao.getBoardCount();	
-			
 		}else{
-			countSubjectSearch=commonIODao.getCommonBoardCount("uploadBoard", searchWord, "subject");
-			countArtistSearch=commonIODao.getCommonBoardCount("uploadBoard", searchWord, "artist_id");
+			if( searchType.equals("total")  || searchType.equals("subject")){
+				countSubjectSearch=commonIODao.getCommonBoardCount("uploadBoard", searchWord, "subject");
+				System.out.println("subjectCheck");
+			}
+			
+			if(searchType.equals("total")  || searchType.equals("artist_id")){
+				countArtistSearch=commonIODao.getCommonBoardCount("uploadBoard", searchWord, "artist_id");
+				System.out.println("artistCheck");
+			}
 		}
+		
 		logger.info("count"+count);
 		logger.info("countSubjectSearch"+countSubjectSearch);
 		logger.info("countArtistSearch"+countArtistSearch);
@@ -296,42 +305,42 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		List<UploadBoardDto> list= null;
 		List<UploadBoardDto> listArtistSearch=null; //검색될경우 쓰기위함
 		List<UploadBoardDto> listSubjectSearch=null; 
+		
 		if(searchWord==null){
 			list= dao.getBoardList(rowMap);	
 			logger.info("list"+list.size());
 		}else{
-				listArtistSearch=(List<UploadBoardDto>) commonIODao.getCommonBoardList(startRow, endRow, searchWord, "artist_id", "uploadBoard");
-				//logger.info("listArtistSearch"+listArtistSearch.size());
-			
-				listSubjectSearch=(List<UploadBoardDto>) commonIODao.getCommonBoardList(startRow, endRow, searchWord, "subject", "uploadBoard");
-				//logger.info("listSubjectSearch"+listSubjectSearch.size());
+			listArtistSearch=(List<UploadBoardDto>) commonIODao.getCommonBoardList(startRow, endRow, searchWord, "artist_id", "uploadBoard");
+			listSubjectSearch=(List<UploadBoardDto>) commonIODao.getCommonBoardList(startRow, endRow, searchWord, "subject", "uploadBoard");
 		}
-//		
-//		
-//		
-		
-		
 		
 	/*	for(UploadBoardDto dto:list){
 //			System.out.println(dto.getFile_path());
 			dto.setFile_path(dto.getFile_path().substring(dto.getFile_path().indexOf("\\resources")).replace('\\', '/'));
 			dto.setImage_path(dto.getImage_path().substring(dto.getImage_path().indexOf("\\resources")).replace('\\','/'));
 		}*/
+		if(list!=null){ //검색 아닐때
+			mav.addObject("count",count);
+			mav.addObject("boardList",list);
+			mav.setViewName("uploadBoard/list");
+		}
 		
-		mav.addObject("boardList",list);
-		mav.addObject("searchArtistList",listArtistSearch);
-		mav.addObject("searchSubjectList",listSubjectSearch);
-		mav.addObject("count",count);
+		if(listArtistSearch!=null){ //검색일때
+			mav.addObject("countArtistSearch",countArtistSearch);
+			mav.addObject("searchArtistList",listArtistSearch);
+			mav.setViewName("uploadBoard/searchList"); //메인검색해씅ㄹ때
+		}
+
+		if(listSubjectSearch!=null){//검색일때
+			mav.addObject("countSubjectSearch",countSubjectSearch);
+			mav.addObject("searchSubjectList",listSubjectSearch);
+			mav.setViewName("uploadBoard/searchList"); //메인검색해씅ㄹ때
+		}
+		
+		
 		mav.addObject("boardSize",boardSize);
 		mav.addObject("currentPage",currentPage);
 		
-		if(list!=null){
-			mav.setViewName("uploadBoard/list");	
-			System.out.println("setList");
-		}else{
-			mav.setViewName("uploadBoard/searchList"); //메인검색해씅ㄹ때
-			System.out.println("setsearchList");
-		}
 	}
 
 	@Override
