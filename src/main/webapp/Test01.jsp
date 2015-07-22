@@ -93,9 +93,18 @@
 		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
 		<h2>Music player List</h2>
 		<hr>
-		<div id="audioListDiv" style="display:none"><a class="musicClick"><span class="musicSubject"></span> - <span class="artistName"></span><input type="hidden" value="" class="sourcePath"/><input type="hidden" value="" class="musicBoardNum"/></a><input type="button" value="x" class="listDelete"/></div>
-			<div id="audioList">
-			<!-- music-navTag -->
+		<div id="audioListDiv" style="display:none">
+			<a class="musicClick">
+				<span class="musicSubject"></span>
+				-<span class="artistName"></span>
+				<input type="hidden" value="" class="sourcePath"/>
+				<input type="hidden" value="" class="musicBoardNum"/>
+			</a>
+			<input type="button" value="x" class="listDelete"/>
+			<a href=""><span class="listDelete glyphicon glyphicon-remove"></span></a>
+		</div>
+		<div id="audioList">
+				<!-- music-nav -->
 		</div>
 	</nav>
 	<script type="text/javascript">
@@ -176,7 +185,13 @@
 	<!-- Music Player end -->
 	
 <script type="text/javascript">
-
+$(document).ready(function(){
+	history.pushState({indiData:($("#centerContents").html())},"제목","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+	window.onpopstate=function(e){
+	$("#centerContents").html(e.state.indiData);
+	}
+	
+});
 /*
  * Initialize switcher on conact section from address view to contat form.
  * We use bxSlider for this.

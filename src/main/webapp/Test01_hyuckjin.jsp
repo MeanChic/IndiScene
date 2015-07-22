@@ -42,7 +42,6 @@
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
-		//alert($("#centerContents").html());
 		//history.pushState({indiData:($("#centerContents").html())},"제목","/");//다음페이지에 히스토리 저장
 		window.onpopstate=function(e){
 		$("#centerContents").html(e.state.indiData);
