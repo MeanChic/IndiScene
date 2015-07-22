@@ -85,6 +85,17 @@
 	</nav>
 	<!-- Button login, update navigation end -->
 	
+	<!-- Music player list start -->	
+	<nav class="music-nav">
+		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
+		<h2>Music player List</h2>
+		<hr>
+		<div id="audioList">
+			<!-- music-navTag -->
+		</div>
+	</nav>
+	<!-- Music player list end -->
+	
 	<!-- Header Part start -->
 	<div class="navbar navbar-head">
 		<div class="navbar-inner">
@@ -96,12 +107,12 @@
 				</c:when>
 				<c:otherwise>
 				<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						Login Success!
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							Login Success!
+						</div>
 					</div>
 				</div>
-			</div>
 					<a href="#" id="updateloginButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;PIM</a>
 					<a id="logoutButton" class="nav-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a>
 				</c:otherwise>
@@ -130,18 +141,11 @@
 		</div>
 	</div>
 	<!-- Footer section end -->
-	<div class="prenext">
-		<nav>
-		  <ul class="pager">
-		    <li><a href="#">Previous</a></li>
-		    <li><a href="#">Next</a></li>
-		  </ul>
-		</nav>
-	</div>
+
 	<!-- Music Player start -->
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="navbar-inner">
-			<a href="">Music Player</a>
+			<a href="#" id="music-expander" class="music-expander pull-right btn"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List</a>
 		</div>
 	</div>
 	<!-- Music Player end -->
@@ -209,6 +213,15 @@ $('#updateloginButton').on('click', function(e){
 $('.sub-nav .close').on('click', function(e) {
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
+});
+
+$('#music-expander').on('click', function(e) {
+	e.preventDefault();
+	$('.music-nav').toggleClass('music-expanded');
+});
+$('.music-nav .close').on('click', function(e) {
+	e.preventDefault();
+	$('.music-nav').toggleClass('music-expanded');
 });
 
 /*각 게시판 들어갈때마나 메뉴바 사라지게 하기 */
