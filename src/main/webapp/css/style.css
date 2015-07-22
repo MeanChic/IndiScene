@@ -313,6 +313,9 @@ Sub navigation
 .sub-expanded{
 	right:0px;
 }
+.music-expanded{
+	right:0px;
+}
 
 /* MenuBar &  subMenubar*/
 .nav-expanded, .main-nav, .sub-expanded, .sub-nav, .music-nav, .music-expanded{

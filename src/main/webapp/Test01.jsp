@@ -91,7 +91,7 @@
 		<h2>Music player List</h2>
 		<hr>
 		<div id="audioListDiv" style="display:none"><a href="#" class="musicClick"><span class="musicSubject"></span> - <span class="artistName"></span><input type="hidden" value="" class="sourcePath"/><input type="hidden" value="" class="musicBoardNum"/></a><input type="button" value="x" class="listDelete"/></div>
-		<div id="audioList">
+			<div id="audioList">
 			<!-- music-navTag -->
 		</div>
 	</nav>
@@ -190,9 +190,8 @@ $(".portfolio-search").colorbox({
 
 /*
  * Show or hide offsite navigation.
- *
  */
- 
+ /* main-Nav */
 $('#nav-expander').on('click', function(e) {
 	e.preventDefault();
 	$('.main-nav').toggleClass('nav-expanded');
@@ -201,7 +200,7 @@ $('.main-nav .close').on('click', function(e) {
 	e.preventDefault();
 	$('.main-nav').toggleClass('nav-expanded');
 });
-
+/* Login&PIM window */
 $('#loginButton').on('click', function(e){
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
@@ -215,7 +214,7 @@ $('.sub-nav .close').on('click', function(e) {
 	e.preventDefault();
 	$('.sub-nav').toggleClass('sub-expanded');
 });
-
+/* music list */
 $('#music-expander').on('click', function(e) {
 	e.preventDefault();
 	$('.music-nav').toggleClass('music-expanded');
@@ -225,14 +224,22 @@ $('.music-nav .close').on('click', function(e) {
 	$('.music-nav').toggleClass('music-expanded');
 });
 
-/*각 게시판 들어갈때마나 메뉴바 사라지게 하기 */
+/*
+ *	각 게시판 들어갈때마나 메뉴바 사라지게 하기 
+ */
+$('.indisMusic a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
+});
+
 $('.marketPlace a').on('click', function(e) {
 	//e.preventDefault();
 	//enterMarketBoard('${root }')
 	$('.main-nav').toggleClass('nav-expanded');
 });
 
-$('.freeboard a').on('click', function(e) {
+$('.indisMuse a').on('click', function(e) {
 	//e.preventDefault();
 	//enterMarketBoard('${root }')
 	$('.main-nav').toggleClass('nav-expanded');
@@ -244,9 +251,11 @@ $('.notice a').on('click', function(e) {
 	$('.main-nav').toggleClass('nav-expanded');
 });
 
-
-
-
+$('.freeboard a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
+});
 
 /*
  * Link navigation and webpage sections.
