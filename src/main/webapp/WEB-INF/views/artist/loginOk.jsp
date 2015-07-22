@@ -36,7 +36,6 @@
 			<c:set var="artist_level" value="${artist_level }" scope="session"/>
 			<script type="text/javascript">
 				alert("Login Success!");
-				getMusicList('${root}','${artist_id}');
 				location.href="${root}/Test01.jsp";
 			</script>
 		</c:when>

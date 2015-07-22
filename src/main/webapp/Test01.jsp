@@ -95,6 +95,9 @@
 			<!-- music-navTag -->
 		</div>
 	</nav>
+	<script type="text/javascript">
+		getMusicList('${root}','${artist_id}');
+	</script>
 	<!-- Music player list end -->
 	
 	<!-- Header Part start -->
