@@ -89,7 +89,7 @@ function idCheck(artistForm, root){
 		return false;
 	}
 	var url=root+"/artist/idCheck.do?artist_id="+artistForm.artist_id.value;
-	window.open(url,"","width=330, height=140");
+	window.open(url,"","width=400, height=135");
 }	
 
 function nicknameCheck(artistForm, root){
@@ -99,7 +99,7 @@ function nicknameCheck(artistForm, root){
 		return false;
 	}
 	var url=root+"/artist/nicknameCheck.do?artist_nickname="+artistForm.artist_nickname.value;
-	window.open(url,"","width=330, height=140");
+	window.open(url,"","width=400, height=135");
 }
 
 function deleteCheck(deleteForm, root){	

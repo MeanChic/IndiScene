@@ -26,29 +26,28 @@
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 </head>
-<body class="duplicateWindow">
+<body class="minSize">
 	<div class="duplicateWindow">
 		<c:if test="${check==1 }">	
-			<div align="center" class="form-controlArtist">
+			<div class="form-controlArtist">
 				<label class="form-inlineblock label-color">ID is already in use.</label>
-				<div>
-					<form class="form-inlineblock" action="${root }/artist/idCheck.do" method="GET">
-						<input class="form-inlineblock form-controllerler" type="text" name="artist_id"/>
-						<input class="form-inlineblock form-controllerler" type="submit" value="Duplicate Check"/>
+				<div class="form-inlineblock">
+					<form action="${root }/artist/idCheck.do" method="GET">
+						<input class="form-inlineblock form-controller220" type="text" name="artist_id"/>
+						<input class="form-inlineblockButton form-controller220" type="submit" value="Duplicate Check"/>
 					</form>
 				</div>
 			</div>
 		</c:if>
 		
 		<c:if test="${check==0 }">
-			<div align="center" class="form-controlArtist">
+			<div class="form-controlArtist">
 				<label class="form-inlineblock label-color">Can use ID.</label>
 			</div>
 		</c:if>
-		<br/>
 		
-		<div align="center">
-		<input type="button" value="close"/>
+		<div class="form-controlArtist" align="center">
+		<input class="btn btn-default" type="button" value="close"/>
 			<script type="text/javascript">
 				$(document).ready(function(){
 					$("input[type='button']").click(function(){
