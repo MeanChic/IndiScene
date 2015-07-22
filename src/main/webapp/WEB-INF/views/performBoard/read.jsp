@@ -15,9 +15,7 @@
 <script src="${root }/js/replyDelete.js" type="text/javascript" ></script>
 <script src="${root }/js/replyUpdate.js" type="text/javascript" ></script>
 <script src="${root }/js/reply.js"></script>
-<script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true">
-    </script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 <script type="text/javascript">
 	function delFun(root, board_num, pageNumber,artist_id){
 		var dd =confirm("정말 삭제하시겠습니까?");
@@ -29,16 +27,6 @@
 	function DeleteToServer(a,b,c){
 		//alert(a+b+c);
 	}
-	
-	
-</script>
-	
-</head>
-
-<body>
-
-<script>
-
 	$(function(){
 		$( "#datepicker" ).datepicker({
     		defaultDate: $("#date").val()
@@ -65,7 +53,6 @@
 		//alert(lat);
 		//alert(lng);
 		/* geocoder.addr2coord(address, function(status, result) { */
-
 	    // 정상적으로 검색이 완료됐으면 
 	     /* if (status === daum.maps.services.Status.OK) { */
 		$(function(){
@@ -83,71 +70,79 @@
 	        });
 	        infowindow.open(map, marker);
 	    /* } */ 
-	});   
+		});   
 	});
 </script>
-
-
+</head>
+<body>
+<div id="performRead">
+	<h3>PerformanceBoard Read</h3>
 	<input type="hidden" id="address" value="${performBoard.zipcode}"/>
 	<input type="hidden" id="date" value="<fmt:formatDate value="${performBoard.d_day}" pattern="MM/dd/yyyy"/>" name="d_day"/>
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
-	<table border="1" width="510" cellpadding="2" cellspacing="0"align="center">
-		<tr>
-			<td align="center" height="20" width="125">글번호</td>
-			<td align="center" height="20" width="125">${performBoard.board_num }</td>
-			
-
-			<td align="center" height="20" width="125">조회수</td>
-			<td align="center" height="20" width="125">${performBoard.count }</td>
-		</tr>
-
-		<tr>
-			<td align="center" height="20" width="125">작성자</td>
-			<td align="center" height="20" width="125">${performBoard.artist_id}</td>
-
-			<td align="center" height="20" width="125">작성일</td>
-			<td align="center" height="20" width="125">
-			<fmt:formatDate
-					value="${performBoard.register_date}" type="date" /></td>
-		</tr>
-
-		<tr>
-			<td align="center" height="200" width="125">글내용</td>
-			<td valign="top" height="200" colspan="3">${performBoard.content }</td>
-		</tr>
-		
-		
-			<tr>
-				<td align="center" height="20" width="125">파일명</td>
-				<td colspan="3">
-				
-				
-				<!-- 다중파일 read 처리 -->
-				
-    	
-   		 		 <div style="width:300px; float:left;" id="datepicker"></div>
-   		 		 <fmt:formatDate value="${performBoard.d_day}" pattern="MM/dd/yyyy hh:mm"/>
-				 <!-- <div id="map_canvas" style="width:300px; height:300px; float:left;"></div> -->
+	
+	<div class="marketBoardX-location02">
+		<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterPerformBoard('${root}','${pageNumber}')">List</a>
+	</div>	
+	<div class="form-controlMarket">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Board Number</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="${performBoard.board_num}" disabled="disabled" />
+		</div>
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Views</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="${performBoard.count}" disabled="disabled" />
+		</div>
+	</div>
+	<div class="form-controlMarket">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Writer</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="marketBoardSize25 form-controller220" type="text" value="${performBoard.artist_id}" disabled="disabled" />
+		</div>
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Date</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="<fmt:formatDate value="${performBoard.register_date}" type='date'/>" disabled="disabled"/>
+		</div>
+	</div>
+	<div class="form-controlMarket" >
+		<label class="marketBoardSize16 label-color marketBoardY-location01" >Contents</label>
+		<div class="marketBoardSize77 marketBoardAttribute01">
+			<script type="text/javascript">
+				$(function(){
+					$("#marketReadContents img").attr("style","");
+					$("#marketReadContents img").addClass("marketBoardSize03");
+				})				
+			</script>
+			<div id="marketReadContents" class="marketBoardTextareaSize200 marketBoardAttribute02">
+				${performBoard.content}
+			</div>		
+		</div>
+	</div>
+	<div class="form-controlMarket">
+		<label class="marketBoardSize16 label-color marketBoardY-location01">Date&Place</label>
+		<div class="marketBoardSize77 marketBoardAttribute01">
+			<script type="text/javascript">
+				$(function(){
+					$("#marketReadContents img").attr("style","");
+					$("#marketReadContents img").addClass("marketBoardSize03");
+				})				
+			</script>
+			<div id="marketReadContents" class="marketBoardTextareaSize200 marketBoardAttribute02">
+				<div style="width:300px; float:left;" id="datepicker"></div>
+   		 		<fmt:formatDate value="${performBoard.d_day}" pattern="MM/dd/yyyy hh:mm"/>
+				<!-- <div id="map_canvas" style="width:300px; height:300px; float:left;"></div> -->
 				<div id="map" style="width:300px;height:300px;"></div>
 				${performBoard.address}
-				</td>
-			</tr>
-		
-
-		<tr>
-			<td height="30" colspan="4" align="center"><input type="button"
-				value="글수정"
-				onclick="javascript:performBoardUpdate('${performBoard.board_num}','${pageNumber}')" />
-				<input type="button" value="글삭제"
-				onclick="javascript:performBoardDelete('${performBoard.board_num}','${pageNumber}','${performBoard.artist_id}')"/>
-				<!-- onclick="delFun('${root}','${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')" />  -->
-				<input type="button" value="글목록"
-				onclick="javascript:enterPerformBoard('${root}','${pageNumber}')" />
-			</td>
-		</tr>
-	</table>
-	
-			<!-- ---------------한줄댓글 ----------------------------------------------->
+			</div>		
+		</div>
+	</div>
+	<div class="form-controlMarket" style= text-align:center;>
+		<div class="marketBoardInterval04">
+			<input class="btn btn-default" type="button" value="Modify" onclick="javascript:performBoardUpdate('${performBoard.board_num}','${pageNumber}')" />
+			<input class="btn btn-default" type="button" value="Delete" onclick="javascript:performBoardDelete('${performBoard.board_num}','${pageNumber}','${performBoard.artist_id}')"/>
+		</div>
+	</div>	
+	<!-----------------한줄댓글 ----------------------------------------------->
 	
 	
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
@@ -187,6 +182,6 @@
 			<hr>
 		</div>
 	</c:forEach>
-
+</div>
 </body>
 </html>

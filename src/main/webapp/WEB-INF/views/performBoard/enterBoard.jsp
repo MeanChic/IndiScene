@@ -14,7 +14,7 @@
 <div id="PerformEnterBoard">
 	<h3>Performance Board</h3>
 	<div class="marketBoardX-location02">
-		<input class="marketBoardAttribute01 btn btn-default" type="button" value="글쓰기 " onclick="javascript:performBoardWrite()"/>
+		<input class="marketBoardAttribute01 btn btn-default" type="button" value="Write " onclick="javascript:performBoardWrite()"/>
 	</div>
 	<div class="row marketBoardInterval02">
 		<c:forEach  items="${list }" varStatus="s">								<!-- mav에 넘어오는 리스트 갯수만큼 돌린다 이름확인  -->
@@ -58,21 +58,15 @@
 				</c:if>
 			<%------------------------------------------------------------------ --%>
 				<c:if test="${startPage>pageBlock }">
-					<c:choose>
-						<li><a aria-label="Previous" href="javascript:enterPerformBoard('${root}','${startPage-pageBlock }')"><span aria-hidden="true">&laquo;</span></a></li>
-					</c:choose>
+					<li><a aria-label="Previous" href="javascript:enterPerformBoard('${root}','${startPage-pageBlock }')"><span aria-hidden="true">&laquo;</span></a></li>
 				</c:if>
 				
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<c:choose>
-						<li><a href="javascript:enterPerformBoard('${root}','${i}')">${i}</a></li>
-					</c:choose>
+					<li><a href="javascript:enterPerformBoard('${root}','${i}')">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${endPage<pageCount }">
-					<c:choose>
-						<li><a aria-label="Next" href="javascript:enterPerformBoard('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
-					</c:choose>
+					<li><a aria-label="Next" href="javascript:enterPerformBoard('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
 				</c:if>
 			</c:if>
 		</ul>
