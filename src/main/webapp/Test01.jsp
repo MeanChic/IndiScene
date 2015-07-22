@@ -154,17 +154,24 @@
 
 	<!-- Music Player start -->
 	<div class="navbar navbar-default navbar-fixed-bottom">
-		<div class="navbar-inner">
-			<a href="" id="music-expander" class="music-expander pull-right btn"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List</a>
-			<div class="webPlayerController" style="">
-				<input type="image" id="prev" src="${root}/resources/backward.png" alt="prev" style="width:4%;height:4%;min-height:4%;min-width:4%;"/>
-				<input type="image" id="play" src="${root}/resources/play.png" alt="Play/Pause" style="width:4%;height:4%;min-height:4%;min-width:4%;"/>
-				<input type="image" id="next" src="${root}/resources/forward.png" alt="next" style="width:4%;height:4%;min-height:4%;min-width:4%;"/>
-				<input id="musicBar" type="range" max="" min="0" step="1" value="0" style="width: 60%; margin-top: -3%; margin-left: 13%;"/>
-				<input type="image" id="volumeBtn" alt="볼륨" src="${root}/resources/speaker.png" style="width:2%;height:2%;float:right;margin-top:-1.6%;margin-right:25%;min-height:2%;min-width:2%;"/>
-				<input id="volumeBar" type="range" max="100" min="0" step="1" value="50" style="display:none;width:5%;float:right; margin-right:-7%; margin-top:-1.3%;position:relative;"/>
-			</div>
+		<a href="" id="music-expander" class="music-expander pull-right btn"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List</a>
+		<a class="music-player pull-right btn"><span class="glyphicon glyphicon-volume-up"></span>&nbsp;&nbsp;Volume</a>
+		<div>
+			<a id="prev" class="music-player pull-left btn"><span class="glyphicon glyphicon-backward"></span></a>
+			<a id="play" class="music-player pull-left btn"><span class="glyphicon glyphicon-play"></span></a>
+			<a id="next" class="music-player pull-left btn"><span class="glyphicon glyphicon-forward"></span></a>
 		</div>
+		<div class="progress Instant01">
+			<div id="musicBar" class="progress-bar music-player Instant02" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;"></div>
+		</div>
+			<!-- 
+			<input type="image" id="prev" src="${root}/resources/backward.png" alt="prev" style="width:4%;height:4%;min-height:4%;min-width:4%;"/>
+			<input type="image" id="play" src="${root}/resources/play.png" alt="Play/Pause" style="width:4%;height:4%;min-height:4%;min-width:4%;"/>
+			<input type="image" id="next" src="${root}/resources/forward.png" alt="next" style="width:4%;height:4%;min-height:4%;min-width:4%;"/>
+			<input id="musicBar" type="range" max="" min="0" step="1" value="0" style="width: 60%; margin-top: -3%; margin-left: 13%;"/>
+			<input type="image" id="volumeBtn" alt="볼륨" src="${root}/resources/speaker.png" style="width:2%;height:2%;float:right;margin-top:-1.6%;margin-right:25%;min-height:2%;min-width:2%;"/>
+			<input id="volumeBar" type="range" max="100" min="0" step="1" value="50" style="display:none;width:5%;float:right; margin-right:-7%; margin-top:-1.3%;position:relative;"/>
+			 -->
 	</div>
 	<!-- Music Player end -->
 	

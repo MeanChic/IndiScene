@@ -101,4 +101,29 @@ fieldset[disabled] .form-controller220 {
 textarea.form-controller220 {
   height: auto;
 }
+/* PlayerButtonCSS */
+.music-player {
+	color:#fff;
+	padding-left:10px;
+	padding-right:10px;
+	margin-right:10px;
+	margin-left:10px;
+	float:left;
+	font-size:20px;
+	text-transform:uppercase;
+	display:block;
+	transition: letter-spacing 0.2s;
+	-webkit-transition: letter-spacing 0.2s;
+	-moz-transition:letter-spacing 0.2s;
+	-ms-transition: letter-spacing 0.2s;
+	-o-transition: letter-spacing 0.2s;
+	vertical-align: middle;
+}
+.music-player:hover {
+	text-decoration:none;
+	color:#FB6816;
+}
 
+.Instant01{ margin-left:0px; margin-right:0px; margin-top:14px; margin-bottom:14px; }
+.Instant02{ padding-left:0px; padding-right:0px; padding-top:10px; padding-bottom:10px; margin:0px; }
+.Instant03{ font-size:16px; }
