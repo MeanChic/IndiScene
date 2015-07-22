@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
-#performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
-#noticeRead, #marketBoardread{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#fff; border-radius:20px; }
+#PerformEnterBoard, #performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
+#noticeRead, #marketBoardread, #performRead{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#fff; border-radius:20px; }
 #boardlistSize{ padding-right:10px; padding-left:10px; }
 #best, #my, #all{ border-color:#BDBDBD; }
 #best h4, #my h4, #all h4{ color:#FB6816; z-index:100; position:relative; margin-left:30px; margin-bottom:30px; }
@@ -16,6 +16,8 @@
 .marketBoardAttribute01{ display:inline-block; }
 .marketBoardAttribute02{ display:block; }
 .marketBoardAttribute03{ display:table-column; }
+
+.instants01{ padding-right:10px; padding-left:10px; }
 
 .marketBoardSize12{ width:12%; }
 .marketBoardSize16{ width:16%; }
@@ -71,6 +73,7 @@
 
 
 .marginLR5{ margin-left:5px; margin-right:5px; }
+.marginLR10{ margin-left:10px; margin-right:10px; }
 .marginLR20{ margin-left:20px; margin-right:20px; }
 
 .marketBoardImageSize{ min-width:269px; min-height:205px; max-height:205px; }

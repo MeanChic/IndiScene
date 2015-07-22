@@ -103,7 +103,7 @@
 			<input class="btn btn-default" type="button" value="Modify" onclick="marketBoardUpdate('${marketBoard.board_num}','${pageNumber}')" />
 			<input class="btn btn-default" type="button" value="Delete" onclick="marketBoardDelete('${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')"/>
 		</div>
-	</div>	
+	</div>
 	
 	<!-- ---------------한줄댓글 ----------------------------------------------->
 	
