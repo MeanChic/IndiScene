@@ -8,17 +8,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-
+	
+	<script type="text/javascript">
+	/*  list Btn*/
+	function ListBtnOver() {
+		$("#listBt").css("background", "#36b823");
+		$("#listBt").css("color", "white");
+	}function ListBtnOut() {
+		$("#listBt").css("background", "white");
+		$("#listBt").css("color","black");
+	}
+	/*	Delete Btn  */
+	function DeleteBtnOver() {
+		$("#deleteBt").css("background", "red");
+		$("#deleteBt").css("color", "white");
+	}function DeletBtnOut() {
+		$("#deleteBt").css("background", "white");
+		$("#deleteBt").css("color","black");
+	}
+	</script>
 	<div id=noticeDelete>
-	<form id="deleteForm" method="post">
+	<form class="marketBoardDeleteForm" method="post">
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<input type="hidden" name="artist_id" value="${artist_id }"/>
 	
 		<div align="center">
- 			<div class="marketBoardDeleteInner" style="color:black; font-size:1.3em"  >
+ 			<div class="marketBoardDeleteInner" id="DeleteInner" style="color:black; font-size:1.3em"  >
 				<span>	사용자 확인을 위해 <br/>
-				계정 비밀번호 입력해주세요.</span><br/><br/>
+				계정 비밀번호를 입력해주세요.</span><br/><br/>
 			</div>
 		</div>
 		
@@ -32,34 +50,20 @@
 			<br/>
 			<div align="center" class="DeleteListPaddingLeft">
 				<div >
-					<a href="javascript:noticeDeleteFunOk('${root}','${board_num}','${ pageNumber}')" style="font-size:1.0em; font-family:Helvetica;" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" >Delete</a>
-					&nbsp;&nbsp;
-					<a href="javascript:noticeList('${root}','${pageNumber}')" style=" font-size:1.0em; font-family:Helvetica;"  class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" >List</a>
+					<a 
+						href="javascript:noticeDeleteFunOk('${root}','${board_num}','${ pageNumber}')" 
+						id="deleteBt" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" 
+						onmouseover="DeleteBtnOver()" onmouseout="DeletBtnOut()" >Delete</a>
+						
+					<a href="javascript:noticeList('${root}','${pageNumber}')" 
+					id="listBt" class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" 
+					onmouseover="ListBtnOver()" onmouseout="ListBtnOut()">List</a>
 				</div>
 
 			</div>
 		
 		</form>
 	</div> 
-	
-<%-- 		<table border="1" width="300" cellpadding="2" cellspacing="0" align="center">
-			<tr>
-				<td align="center" bgcolor="D1DBDB">
-					정말 삭제하시겠습니까? 
-				</td>
-			</tr>
-			
-			<tr>
-			</tr>
-			
-			<tr>
-				<td align="center">
-					<input type="button" value="Delete" onclick="noticeDeleteFunOk('${root}','${board_num}','${ pageNumber}')"/>
-					<input type="button" value="Cancel" onclick="noticeRead('${root}','${board_num}','${pageNumber }')"/>
-				</td>
-			</tr>
-		</table>
-	</form>
-	</div> --%>
+
 </body>
 </html>

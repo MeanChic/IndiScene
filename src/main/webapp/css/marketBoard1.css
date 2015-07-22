@@ -93,23 +93,21 @@ span.Delimiter {
 .cssReply{
 	padding-right: 2.0em;
 }
+
 /*****    Delete    *****/
 
 
 .marketBoardDeleteSubmit{
-	
 	background-color: white;
-	
 }
 
 .DeletefontStyle{
 	 font-size:1.5em; 
 	 font-family:Helvetica;
 }
+
 .Delimiter{
-	
-	  font-weight: bold;
-	  
+	  font-weight: bold;  
 }
 
 .marketBoardUpDelBtn-sm {
@@ -176,12 +174,25 @@ a.marketBoardListBtn {
 .DeleteListPaddingLeft{
 	  padding-left: 0.1%;
 }
-form.marketBoardDeleteForm {
+.marketBoardDeleteForm {
   padding-top: 10%;
 }
 input.FontColorIsBlack{
-	color:black;
+	color:black;	
 }
+
+#DeleteInner {
+  font-family: -webkit-body;
+  color: rgb(127, 127, 127);
+  font-size: 1.5em;
+}
+
+#deleteBt,#listBt{
+	font-size: 1.0em;
+	font-family: Helvetica;
+	
+}
+
 /* 검색창  */
 
 select#searchType {/*검색타입  */
@@ -202,20 +213,7 @@ input#searchWord {/*검색창  */
   
 }
 
-#searchBtn{
-	
-	background-color: white;
-	color:rgb(121, 121, 121);
-	border-color: rgb(121, 121, 121);
-	border: 2px solid;
-	font-weight: bold;
-	width: 5.0em;
-	height: 2.0em;
-}
 
-input#searchBtn {
-	
-}
  form#searchForm {
   padding-top: 5.0em;
   padding-bottom: 2.0em;
@@ -234,9 +232,8 @@ input#searchBtn {
   margin-top: 4.5%;
   margin-left: 100%;
 } */
-
 table#MainSearchBox {
-  margin-left: 25.0em;
+  margin-left: 27em;
   margin-top: 1.3em;
 }
 
@@ -244,8 +241,22 @@ input#MainSearchWord {
   width: 30.0em;
   height: 2.6em;
 }
-input#searchBtn {
-  width: 6.0em;
-  height: 2.0em;
-  margin-left: 0.4em;
+input#MainSearchBtn {
+  background-color: white;
+  color: rgb(121, 121, 121);
+  border-color: rgb(121, 121, 121);
+  border: 1px solid;
+  height: 2.6em;
+  width: 4.0em;
+  margin-left: 10%;
+}
+#searchBtn{
+	
+	background-color: white;
+	color:rgb(121, 121, 121);
+	border-color: rgb(121, 121, 121);
+	border: 2px solid;
+	font-weight: bold;
+	width: 5.0em;
+	height: 2.0em;
 }

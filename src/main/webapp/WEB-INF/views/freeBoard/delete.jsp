@@ -18,8 +18,6 @@
 	}function ListBtnOut() {
 		$("#listBt").css("background", "white");
 		$("#listBt").css("color","black");
-	}function DeleteBtnClick(){
-		$("#listBt").css("background","#F361A6");
 	}
 	/*	Delete Btn  */
 	function DeleteBtnOver() {
@@ -32,16 +30,15 @@
 	</script>
 	<div id="freeBoardDelete">
 		<%-- 	<form method="post" action="${root }/freeBoard/delete.do">--%>
-		<form id="deleteForm" method="post">
+		<form class="marketBoardDeleteForm" method="post">
 			<input type="hidden" name="board_num" value="${board_num}" /> <input
 				type="hidden" name="pageNumber" value="${pageNumber}" /> <input
 				type="hidden" name="artist_id" value="${artist_id }" />
 			<!-- 		<table border="1" width="300" cellpadding="2" cellspacing="0" align="center">
  -->
 			<div align="center">
-				<div class="marketBoardDeleteInner"
-					style="color: black; font-size: 1.3em">
-					<span> 사용자 확인을 위해 <br /> 계정 비밀번호 입력해주세요.
+				<div class="marketBoardDeleteInner" id="DeleteInner">
+					<span> 사용자 확인을 위해 <br/> 계정 비밀번호 입력해주세요.
 					</span><br />
 					<br />
 				</div>
@@ -51,9 +48,8 @@
 				<div style="color: #333333">
 					ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;${artist_id }
 				</div>
-				<div style="color: #4C4C4C font-size:1.3em;">
-					Password&nbsp;:&nbsp; <input type="password" name="password"
-						size="20" maxlength="20" />
+				<div style="color: #4C4C4C font-size:1.3em;">Password&nbsp;:&nbsp; 
+					<input type="password" name="password"size="20" maxlength="20" />
 				</div>
 			</div>
 			<br />
@@ -61,14 +57,12 @@
 				<div>
 					<a
 						href="javascript:freeBoardDeleteFunOk('${root}','${board_num}','${ pageNumber}')"
-						id="deleteBt" style="font-size: 1.0em; font-family: Helvetica;"
-						class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm"
-						onmouseover="DeleteBtnOver()" onmouseout="DeletBtnOut()" onclick="DeleteBtnClick()">Delete</a>
+						id="deleteBt" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm"
+						onmouseover="DeleteBtnOver()" onmouseout="DeletBtnOut()" >Delete</a>
 						
 						
 						<a href="javascript:freeBoardList('${root}','${pageNumber}')"
-						id="listBt" style="font-size: 1.0em; font-family: Helvetica;" 
-						class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm"
+						id="listBt" class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm"
 						onmouseover="ListBtnOver()" onmouseout="ListBtnOut()">List</a>
 				</div>
 
