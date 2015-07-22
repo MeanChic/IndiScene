@@ -132,6 +132,34 @@ $(function(){
 			</div>
 		</c:forEach>
 	</div>
+
+	<!-- 검색 작업창 시작 --------------------------------------------------->
+	<div id="MuseMainDiv"> 
+		<form id="searchForm" name="searchForm" method="get" action="javascript:searchMuseMain('${root}','1','${pageContext.request.servletPath }');">
+	<!--   페이징작업을위한 GET방식 -->     
+	<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
+              <table id="">
+                    <tr class="searchBox">
+                         <td class="">
+                               <select id="searchType" name="searchType">
+									  <option value="total">전체</option>	                              			
+                                      <option value="artist_id">개설자</option>
+                                      <option value="subject">MuseName</option>
+                                      <option value="content">Muse 설명</option>
+                               </select>
+                         </td>
+                         <td class="">
+                               <input type="text"  id="searchWord" name="searchWord">
+                         </td>
+                         <td class="searchBtn">
+                               <input type="submit" id="searchBtn" value="submit"></input>
+                         </td>
+                    </tr>
+             </table>
+        </form>
+	
+	</div>
 </div>
 </body>
 </html>
+	

@@ -37,7 +37,7 @@
 	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
 	<script src="${root}/js/uploadBoard.js" type="text/javascript"></script>
 	<script src="${root}/js/webPlayer.js" type="text/javascript"></script>
-
+	<script src="${root}/js/myMusic.js" type="text/javascript"></script>
 	
 	<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 	<script src="${root }/resources/ckEditor/ckeditor.js"></script>
@@ -86,7 +86,7 @@
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="myMusic"><a href="#myMusic">My Music</a></li>
+			<li class="myMusic"><a href="javascript:myUploadMusic('${root}','${artist_id}','1')">My Music</a></li>
 			<li class="indisMuse"><a href="javascript:indimuse('${artist_id}')">Indi's Muse</a></li>
 		</ul>
 		<hr>
