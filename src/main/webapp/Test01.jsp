@@ -47,7 +47,6 @@
 	<script type="text/javascript" src="${root}/js/placeBoard.js"></script>
 	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=35bf5934991976c7b6f95f227c76624f&libraries=services"></script>
 	<script type="text/javascript" src="${root}/js/search.js"></script>
-	<script src="${root}/js/myMusic.js" type="text/javascript"></script>
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>
@@ -58,15 +57,15 @@
 		<h2>Indi Scene</h2>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="brandNewMusic"><a href="javascript:brandNewList('${root}','1')">Brand New Music</a></li>
-			<li class="bestMusic"><a href="javascript:bestList('${root}','1')">Best Music</a></li>
+			<li class="brandNewMusic"><a href="#brandNewMusic">Brand New Music</a></li>
+			<li class="bestMusic"><a href="#bestMusic">Best Music</a></li>
 			<li class="indisMusic"><a href="javascript:uploadList('${root}',1)">Indi's Music</a></li>
 			<li class="performanceInfo"><a href="javascript:performPlace('${root}')">Performance Info</a></li>
 			<li class="marketPlace"><a href="javascript:enterMarketBoard('${root }')">Market Place</a></li>
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="myMusic"><a href="javascript:myUploadMusic('${root}','${artist_id}','1')">My Music</a></li>
+			<li class="myMusic"><a href="#myMusic">My Music</a></li>
 			<li class="indisMuse"><a href="javascript:indimuse('${artist_id}')">Indi's Muse</a></li>
 		</ul>
 		<hr>
@@ -109,15 +108,15 @@
 		<div class="navbar-inner">
 			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Menu</a>
 			<!-- 메인검색창 -->
-			<form id="MainsearchForm" name="searchForm" method="get" action="javascript:searchMain('${root}','1','${pageContext.request.servletPath }');">
+			<form style="float:left;" id="MainSearchForm" name="searchForm" method="get" action="javascript:searchMain('${root}','1','${pageContext.request.servletPath }');">
 					<!--   페이징작업을위한 GET방식 -->     
 				<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
-	              <table id="">
-	                    <tr class="searchBox">
+	              <table id="MainSearchBox">
+	                    <tr class="MainSearchBox">
 	                         <td class="">
-	                               <input type="text"  id="searchWord" name="searchWord">
+	                               <input type="text"  id="MainSearchWord" name="searchWord">
 	                         </td>
-	                         <td class="searchBtn">
+	                         <td class="MainSearchBtn">
 	                               <input type="submit" value="검색" id="searchBtn" value="search"></input>
 	                         </td>
 	                    </tr>
