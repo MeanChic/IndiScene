@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 /* Read */
-#freeBoardList,#perfomBoardRead,#uploadBoardRead,#marketBoardread,#freeBoardDelete,#noticeDelete, #marketBoardDelete,#noticeRead{ 
+#boardBasic, #freeBoardRead,#freeBoardList,#perfomBoardRead,#uploadBoardRead,#marketBoardread,#freeBoardDelete,#noticeDelete, #marketBoardDelete,#noticeRead{ 
 	text-align:left; 
 	width:930px; 
 	min-height:450px; 

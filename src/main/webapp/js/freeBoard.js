@@ -26,17 +26,9 @@
 		}); 
 	}
 
-	function freeBoardWriteOk(root,pageNumber){
-		var dataSet = new FormData(document.getElementById("FreeBoardWriteForm"));
- 		//alert(CKEDITOR.instances.content.getData());
- 		//$("#contentFreeBoard").val(CKEDITOR.instances.content.getData());
-		dataSet.append("content",CKEDITOR.instances.content.getData());  //content에서  contentFreeBoard로 바꿈
+
+
 		
-	/* 수정전		
-		dataSet.append("pageNumber",pageNumber);
-		dataSet.append("content",$("#textInput").val());
-		*/
-		//alert("여기는 writeOk입니다.");
 		$.ajax({
 			url:root+"/freeBoard/write.do",
 			type:"post",
@@ -47,6 +39,7 @@
 			success:function(data){
 				//alert(data);
 				//alert(data);
+				
 				var realData = data.split("<body>");
 				var realData = realData[1].split("</body>")[0];
 				//alert(realData);
@@ -132,20 +125,20 @@
 		}
 		
 		function freeBoardDeleteFun(root, board_num, pageNumber){
-			alert(root);
+			//alert(root);
 			$.ajax({
 				url:root+"/freeBoard/delete.do?board_num="+board_num+"&pageNumber="+pageNumber,
 				type:"get",
 				dataType:"html",
 				success:function(data){
-					alert(data);
+					//alert(data);
 					var realData = data.split("<body>");
 					var realData = realData[1].split("</body>")[0];
 					//alert(realData);
 					$("#centerContents").html(realData);
 				},
 				error:function(xhr,status,error){
-					alert(xhr+"\n"+status+"\n"+error);
+					//alert(xhr+"\n"+status+"\n"+error);
 				}
 			}); 
 		}
