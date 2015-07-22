@@ -78,9 +78,39 @@ public class HomeController {
 		return mav;
 	}
 	
-	
+	@RequestMapping(value="/myMusic/uploadMusic.do",method=RequestMethod.GET)
 	public ModelAndView myUploadMusic (HttpServletRequest request){
+		logger.info("MyMusic Upload Music------------------------------");
 		
-		return null;
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request",request);
+		
+		commonIOService.myUploadMusic(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/myMusic/likeMusic.do",method=RequestMethod.GET)
+	public ModelAndView myLikeMusic(HttpServletRequest request){
+		logger.info("MyMusic Upload Music------------------------------");
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request",request);
+		
+		commonIOService.myLikeMusic(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/myMusic/collaboMusic.do",method=RequestMethod.GET)
+	public ModelAndView myCollaboMusic (HttpServletRequest request){
+		logger.info("MyMusic Upload Music------------------------------");
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request",request);
+		
+		commonIOService.myCollaboMusic(mav);
+		
+		return mav;
 	}
 }

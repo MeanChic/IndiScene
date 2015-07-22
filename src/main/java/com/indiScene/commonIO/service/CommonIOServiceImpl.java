@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -16,18 +18,23 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.indiScene.commonIO.dao.CommonIODao;
 import com.indiScene.commonIO.dto.CommonDto;
-import com.indiScene.marketBoard.dto.MarketBoardDto;
+import com.indiScene.commonIO.dto.CommonMusicDto;
 
 @Component
 public class CommonIOServiceImpl implements CommonIOService {
 	final Logger logger=Logger.getLogger(this.getClass().getName());
 
+	@Autowired
+	private CommonIODao commonIODao;
+	
 	@Override
 	public void imageUpload(ModelAndView mav) {
 		Map<String,Object> map=mav.getModelMap();
@@ -151,7 +158,6 @@ public class CommonIOServiceImpl implements CommonIOService {
 		//멀티파일 처리 끝
 	}
 
-
 	@Override
 	public void multiFileDelete(CommonDto dto) {
 			// TODO Auto-generated method stub
@@ -174,7 +180,6 @@ public class CommonIOServiceImpl implements CommonIOService {
 			}
 		}
 	}
-
 
 	@Override
 	public void download(ModelAndView mav) throws IOException {
@@ -227,6 +232,118 @@ public class CommonIOServiceImpl implements CommonIOService {
 		}
 		mav.setViewName("");
 	}
+
+	@Override
+	public void myUploadMusic(ModelAndView mav) {
+		logger.info("myUpload Music Service");
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		int boardSize =10;
+		String pageNumber = request.getParameter("pageNumber");
+		if(pageNumber == null) pageNumber ="1";
+		
+		int currentPage = Integer.parseInt(pageNumber);
+		int startRow = (currentPage - 1) * boardSize +1;
+		int endRow = currentPage*boardSize;
+		
+		String artist_id = request.getParameter("artist_id");
+		int count=commonIODao.getUploadCount(artist_id);
+		
+		HashMap<String,Object> rowMap = new HashMap<String,Object>();
+		rowMap.put("startRow", startRow);
+		rowMap.put("endRow", endRow);
+		rowMap.put("artist_id", artist_id);
+		
+		List<CommonMusicDto> myUploadMusic = commonIODao.getUploadMusic(rowMap);
+		myUploadMusic.addAll(commonIODao.getMuseMusic(rowMap));
+		
+		myUploadMusic.sort(new RecentDateComparator());
+		
+		mav.addObject("boardList",myUploadMusic);
+		mav.addObject("count",count);
+		mav.addObject("boardSize",boardSize);
+		mav.addObject("currentPage",currentPage);
+		
+		mav.setViewName("myMusic/upload");
+	}
 	
+	@Override
+	public void myLikeMusic(ModelAndView mav) {
+		logger.info("myLike Music Service");
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		String artist_id = request.getParameter("artist_id");
+		int boardSize =10;
+		String pageNumber = request.getParameter("pageNumber");
+		if(pageNumber == null) pageNumber ="1";
+		
+		int count=commonIODao.getLikeCount(artist_id);
+		int currentPage = Integer.parseInt(pageNumber);
+		int startRow = (currentPage - 1) * boardSize +1;
+		int endRow = currentPage*boardSize;
+		
+		HashMap<String,Object> rowMap = new HashMap<String,Object>();
+		rowMap.put("startRow", startRow);
+		rowMap.put("endRow", endRow);
+		rowMap.put("artist_id", artist_id);
+		
+		List<CommonMusicDto> myLikeMusic = commonIODao.getLikeMusic(rowMap);
+		myLikeMusic.sort(new RecentDateComparator());
+		
+		mav.addObject("boardList",myLikeMusic);
+		mav.addObject("count",count);
+		mav.addObject("boardSize",boardSize);
+		mav.addObject("currentPage",currentPage);
+		
+		mav.setViewName("myMusic/like");
+	}
+
+	@Override
+	public void myCollaboMusic(ModelAndView mav) {
+		logger.info("myCollabo Music Service");
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		int boardSize =10;
+		String pageNumber = request.getParameter("pageNumber");
+		if(pageNumber == null) pageNumber ="1";
+		
+		int currentPage = Integer.parseInt(pageNumber);
+		int startRow = (currentPage - 1) * boardSize +1;
+		int endRow = currentPage*boardSize;
+		String artist_id = request.getParameter("artist_id");
+		int count=commonIODao.getCollaboCount(artist_id);
+		
+		HashMap<String,Object> rowMap = new HashMap<String,Object>();
+		rowMap.put("startRow", startRow);
+		rowMap.put("endRow", endRow);
+		rowMap.put("artist_id", artist_id);
+		
+		List<CommonMusicDto> myCollaboMusic = commonIODao.getUploadCollabo(rowMap);
+		myCollaboMusic.addAll(commonIODao.getMuseCollabo(rowMap));
+		
+		myCollaboMusic.sort(new RecentDateComparator());
+		
+		mav.addObject("boardList",myCollaboMusic);
+		mav.addObject("count",count);
+		mav.addObject("boardSize",boardSize);
+		mav.addObject("currentPage",currentPage);
+		
+		mav.setViewName("myMusic/collabo");
+	}
 	
+	class RecentDateComparator implements Comparator<Object>{
+		@Override
+		public int compare(Object o1, Object o2) {
+			java.util.Date d1 = ((CommonMusicDto)o1).getRegister_date();
+			java.util.Date d2 = ((CommonMusicDto)o2).getRegister_date();
+			
+			int compare = d1.compareTo(d2);
+			
+			return compare>0 ? -1 : (compare==0?0:1);
+		}
+	}
+
 }

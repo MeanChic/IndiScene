@@ -4,8 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="dao.commonIOMapper">
-
-	
 	<select id="commonBoardCount" parameterType="java.util.HashMap" resultType="int">
 		<![CDATA[
 			select count(*) from ${folderName} where 1=1
@@ -24,8 +22,6 @@
 	     </if>  
 		</select>
 
-	
- 	
 	<select id="marketBoardSearchList" parameterType="java.util.HashMap" resultType="com.indiScene.marketBoard.dto.MarketBoardDto">
 		<![CDATA[
 			select * from (select rownum rnum, a.* from(select * from ${folderName} where 1=1
@@ -68,4 +64,64 @@
 		]]>
 	</select>
 
+	<select id="getUploadMusic" parameterType="java.util.HashMap" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+		<![CDATA[
+			select * from(
+            select rownum rnum, a.* from(
+            select * from uploadBoard where artist_id=#{artist_id}) a)
+            where rnum>=#{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="getMuseMusic" parameterType="java.util.HashMap" resultType="com.indiScene.museBoard.dto.MuseBoardDto">
+		<![CDATA[
+			select * from(
+            select rownum rnum, a.* from(
+            select * from museBoard where artist_id=#{artist_id}) a)
+            where rnum>=#{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="getLikeMusic" parameterType="java.util.HashMap" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+		<![CDATA[
+			select * from(
+            select rownum rnum, a.* from(
+			select * from uploadBoard where board_num in (select board_num from board_like where artist_id=#{artist_id})) a)
+            where rnum>=#{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="getUploadCollabo" parameterType="java.util.HashMap" resultType="com.indiScene.uploadBoard.dto.UploadBoardDto">
+		<![CDATA[
+			select * from(
+            select rownum rnum, c.* from(
+			select b.* from uploadBoard a, uploadBoard b where a.artist_id=#{artist_id} and a.seq_level<b.seq_level and a.group_num=b.group_num) c)
+            where rnum>=#{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="getMuseCollabo" parameterType="java.util.HashMap" resultType="com.indiScene.museBoard.dto.MuseBoardDto">
+		<![CDATA[
+			select * from(
+	        select rownum rnum, c.* from(
+	        select b.* from museBoard a, museBoard b where a.artist_id=#{artist_id} and a.seq_level<b.seq_level and a.group_num=b.group_num) c)
+	        where rnum>=#{startRow} and rnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="uploadCollaboCount" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from uploadBoard a, uploadBoard b where a.artist_id=#{artist_id} and a.seq_level<b.seq_level and a.group_num=b.group_num]]>
+	</select>
+	<select id="museCollaboCount" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from museBoard a, museBoard b where a.artist_id=#{artist_id} and a.seq_level<b.seq_level and a.group_num=b.group_num]]>
+	</select>
+	<select id="likeMusicCount" parameterType="String" resultType="int">
+		select count(*) from uploadBoard where board_num in (select board_num from board_like where artist_id=#{artist_id})
+	</select>
+	<select id="uploadMusicCount" parameterType="String" resultType="int">
+		select count(*) from uploadBoard where artist_id=#{artist_id}
+	</select>
+	<select id="museMusicCount" parameterType="String" resultType="int">
+		select count(*) from museBoard where artist_id=#{artist_id}
+	</select>
 </mapper>
