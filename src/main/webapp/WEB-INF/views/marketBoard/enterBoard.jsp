@@ -96,10 +96,9 @@ ${requestScope.searchWord}
 							<li><a aria-label="Next" href="javascript:enterMarketBoard('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a aria-label="Previous" href="javascript:searchMarketBoard('${root}','${startPage+pageBlock }','${pageContext.request.servletPath }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
+							<li><a aria-label="Next" href="javascript:searchMarketBoard('${root}','${startPage+pageBlock }','${pageContext.request.servletPath }','${requestScope.searchWord}','${requestScope.searchType}')"><span aria-hidden="true">&laquo;</span></a></li>
 						</c:otherwise>
 					</c:choose>
-					
 				</c:if>
 			</c:if>
 		</ul>

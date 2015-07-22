@@ -45,7 +45,7 @@
 						</div>
 					</div>
 				</c:forEach>
-				<a class="btn btn-default" href="javascript:enterPerformBoard('${root}')">More PerformanceBoard</a>
+				<a class="marketBoardInterval02 marginLR10 pull-right btn btn-default" href="javascript:enterPerformBoard('${root}')">More PerformanceBoard</a>
 			</div>
 			
 		<!-- placeBoard -->
@@ -71,7 +71,7 @@
 						</div>
 					</div>
 				</c:forEach>
-				<a href="javascript:enterPlaceBoard('${root}')">더보기</a>
+				<a class="marketBoardInterval02 marginLR10 pull-right btn btn-default" href="javascript:enterPlaceBoard('${root}')">더보기</a>
 			</div>
 		</div>
 	</div>
