@@ -61,14 +61,14 @@
 	</div>
 </div>
 <script type="text/javascript">
-	$('#performPlaceTab a:first').click(function (e) {
-		  e.preventDefault()
-		  $('#performBoardList').tab('show')
-	})
-	$('#performPlaceTab a:last').click(function (e) {
-		  e.preventDefault()
-		  $('#placeBoardList').tab('show')
-	})
+$('#performPlaceTab a:first').click(function (e) {
+	  e.preventDefault()
+	  $('#performBoardList').tab('show')
+})
+$('#performPlaceTab a:last').click(function (e) {
+	  e.preventDefault()
+	  $('#placeBoardList').tab('show')
+})
 </script>
 </body>
 </html>
