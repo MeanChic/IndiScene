@@ -10,7 +10,7 @@
 <script type="text/javascript" src="${root}/js/artist.js"></script>
 </head>
 <body>
-	<div id="deleteForm">
+	<div id="SecessionForm">
 	<h3>Secession</h3>
 		<form class="controlArtistForm" action="${root }/artist/delete.do" method="post" onsubmit="return deleteCheck(this)">
 			<div class="form-controlArtist">
