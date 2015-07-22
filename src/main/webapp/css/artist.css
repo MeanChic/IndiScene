@@ -16,7 +16,7 @@ form div input{ width:200px; display:inline-block; }
   	padding-left: 15px;
 }
 #artistLoginForm{ margin-top:10px; }
-#RegisterForm, #deleteForm{ text-align:left; width:930px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
+#RegisterForm, #SecessionForm{ text-align:left; width:930px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
 #centerContents{ margin-bottom:30px; margin-top:30px; }
 #registerButton, #loginButton, #updateloginButton, #logoutButton{ margin-top:20px; margin-right:20px; float:right; }
 #artist_address{ width:643px; }
