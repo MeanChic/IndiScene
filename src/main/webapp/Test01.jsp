@@ -96,12 +96,12 @@
 		<div id="audioListDiv" style="display:none">
 			<a class="musicClick">
 				<span class="musicSubject"></span>
-				-<span class="artistName"></span>
+				<span class="artistName"></span>
 				<input type="hidden" value="" class="sourcePath"/>
 				<input type="hidden" value="" class="musicBoardNum"/>
 			</a>
-			<input type="button" value="x" class="listDelete"/>
-			<a href=""><span class="listDelete glyphicon glyphicon-remove"></span></a>
+			<a href="" class="listDelete"><span class="glyphicon glyphicon-remove"></span></a>
+			<hr>
 		</div>
 		<div id="audioList">
 				<!-- music-nav -->
