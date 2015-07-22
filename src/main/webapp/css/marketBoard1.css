@@ -187,8 +187,8 @@ input.FontColorIsBlack{
 select#searchType {/*검색타입  */
   width: 7.0em;
   height: 2.0em;
-   color: rgb(255, 171, 171);
-  border-color: rgb(255, 171, 171);
+   color: rgb(121, 121, 121);
+  border-color:	rgb(121, 121, 121);
   border: 2px solid;
   
 }
@@ -196,20 +196,17 @@ select#searchType {/*검색타입  */
 input#searchWord {/*검색창  */
   height: 2.0em;
   width: 25.0em;
-   color: rgb(255, 171, 171);
-  border-color: rgb(255, 171, 171);
+   color: rgb(121, 121, 121);
+  border-color: rgb(121, 121, 121);
   border: 2px solid;
   
 }
 
-form#searchForm {
-  padding-left: 11.0em;
-}
 #searchBtn{
 	
 	background-color: white;
-	color:rgb(255, 171, 171);
-	border-color: rgb(255, 171, 171);
+	color:rgb(121, 121, 121);
+	border-color: rgb(121, 121, 121);
 	border: 2px solid;
 	font-weight: bold;
 	width: 5.0em;
@@ -219,3 +216,8 @@ form#searchForm {
 input#searchBtn {
 	
 }
+ form#searchForm {
+  padding-top: 5.0em;
+  padding-bottom: 2.0em;
+  padding-left: 11.0em;
+} 

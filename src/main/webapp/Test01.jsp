@@ -108,7 +108,7 @@
 		<div class="navbar-inner">
 			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Menu</a>
 			<!-- 메인검색창 -->
-			<form id="searchForm" name="searchForm" method="get" action="javascript:searchMain('${root}','1','${pageContext.request.servletPath }');">
+			<form id="MainsearchForm" name="searchForm" method="get" action="javascript:searchMain('${root}','1','${pageContext.request.servletPath }');">
 					<!--   페이징작업을위한 GET방식 -->     
 				<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
 	              <table id="">
