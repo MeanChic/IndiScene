@@ -364,7 +364,7 @@ Sub navigation
 .nav-expander:hover {
 	text-decoration:none;
 	color:#202841;
-	letter-spacing:5px;
+	/* letter-spacing:5px; */
 }
 .sub-expander {
 	margin-top:20px;
@@ -384,8 +384,8 @@ Sub navigation
 .sub-expander:hover {
 	text-decoration:none;
 	color:#202841;
-	letter-spacing:5px;
-}
+/* 	letter-spacing:5px;
+ */}
 .music-expander {
 	color:#fff;
 	margin-right:10px;
