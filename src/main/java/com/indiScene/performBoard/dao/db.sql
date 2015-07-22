@@ -1,11 +1,11 @@
 
-select * from marketboard;
+select * from PERFORMBOARD;
 
-create sequence marketboard_seq  
+create sequence PERFORMBOARD_seq
 start with 1
 increment by 1;
- --1 ������ ����(�ʼ�)
 
+-- No
 insert into artist(ARTIST_ID,ATIST_PASSWORD,ARTIST_NAME,ARTIST_NICKNAME,ARTIST_PHONE,ARTIST_ZIPCODE, 			   
  ARTIST_ADDRESS, 			   
  ARTIST_BIRTH)			   

@@ -1,7 +1,7 @@
 
-select * from marketboard;
+select * from PLACEBOARD;
 
-create sequence marketboard_seq  
+create sequence PLACEBOARD_seq  
 start with 1
 increment by 1;
  --1 ������ ����(�ʼ�)

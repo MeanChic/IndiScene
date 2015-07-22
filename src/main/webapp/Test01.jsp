@@ -28,6 +28,8 @@
 	<script type="text/javascript" src="${root}/js/artist.js"></script>
 	<script type="text/javascript" src="${root}/js/uploadBoard.js"></script>
 	<script type="text/javascript" src="${root}/js/webPlayer.js"></script>
+	<script type="text/javascript" src="${root}/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${root}/js/bootstrap.min.js"></script>
 	
 	<!-- Load javaScript for Hyuckjin-->
 	<script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>

@@ -29,7 +29,7 @@
 		
 			<div class="line">
 			<label class="subject">작성자</label>
-				<span class="content"><input type="text" size="50" name="artist_id" value="testId"/></span>
+				<span class="content"><input type="text" size="50" name="artist_id" value="${artist_id}"/></span>
 		</div>	
 		
 		<div class="line">
