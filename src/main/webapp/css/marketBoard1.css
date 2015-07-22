@@ -220,4 +220,22 @@ input#searchBtn {
   padding-top: 5.0em;
   padding-bottom: 2.0em;
   padding-left: 11.0em;
-} 
+  
+
+}   
+  
+  /* Main Serch & btn */
+  
+ table#MainSearchBox {
+  margin-top: 1.3em;
+  margin-left: 36.0em;
+}
+input#MainSearchWord {
+  width: 30.0em;
+  height: 2.6em;
+}
+input#searchBtn {
+  width: 6.0em;
+  height: 2.6em;
+  margin-left: 0.4em;
+}
