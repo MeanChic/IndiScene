@@ -23,16 +23,21 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.audioProcessing.KOSTAAudio;
+import com.indiScene.commonIO.dao.CommonIODao;
 import com.indiScene.uploadBoard.dao.UploadBoardDao;
 import com.indiScene.uploadBoard.dto.UploadBoardDto;
 
 @Controller
 public class UploadBoardServiceImpl implements UploadBoardService {
-	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
-//	private String dir="C:/KMS_MavenSpring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/";
+	//private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
+	//private String dir="C:/KMS_MavenSpring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/";
+	private String dir="C:/mavenspring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/"; //나혁진용
 	
 	@Autowired
 	private UploadBoardDao dao;
+	
+	@Autowired
+	private CommonIODao commonIODao;
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	@Override
@@ -106,14 +111,34 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 //		String dirCover = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/cover");
 //		String dirMusic = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/music");
 		
+		//
+		File coverFolder=new File(dir+"/uploadBoard/cover/");//이미지 저장경로가 없을경우 생성(나혁진)
+		if(!coverFolder.exists()){
+			coverFolder.mkdirs();
+		}
+		//
+		
 		File coverImageFile = new File(dir+"/uploadBoard/cover/",coverImage);
 		File uploadMusicFile = null;
 		File recordFile=null;
 		
 		if(musicFile !=null){		// 녹음파일일 경우.
+			//
+			File uploadFolder=new File(dir+"/uploadBoard/music/");//음악 저장경로가 없을경우 생성(나혁진)
+			if(!uploadFolder.exists()){
+				uploadFolder.mkdirs();
+			}
+			//
 			uploadMusicFile = new File(dir+"/uploadBoard/music/",musicFile);
 		}else{
 			uploadMusicFile = new File(dir+"/uploadBoard/music/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
+			
+			//
+			File tempFolder=new File(dir+"/TemporaryMusic/");//임시 저장경로가 없을경우 생성(나혁진)
+			if(!tempFolder.exists()){
+				tempFolder.mkdirs();
+			}
+			//
 			recordFile = new File(dir+"/TemporaryMusic/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
 		}
 		uploadBoardDto.setFile_name(uploadMusicFile.getName());
@@ -237,14 +262,26 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		
 		int boardSize =10;
 		String pageNumber = request.getParameter("pageNumber");
+		String searchWord=request.getParameter("searchWord");
+		String searchType=request.getParameter("searchType");
+		
 		if(pageNumber == null) pageNumber ="1";
 		
 		int currentPage = Integer.parseInt(pageNumber);
 		int startRow = (currentPage - 1) * boardSize +1;
 		int endRow = currentPage*boardSize;
+		//검색을 위해서 추가함(나혁진)
+		int count = 0;
+		int countArtistSearch= 0;
+		int countSubjectSearch=0;
 		
-		int count = dao.getBoardCount();
-		
+		if(searchWord==null){
+			count = dao.getBoardCount();	
+		}else{
+			countSubjectSearch=commonIODao.getCommonBoardCount("uploadBoard", searchWord, "subject");
+			countArtistSearch=commonIODao.getCommonBoardCount("uploadBoard", searchWord, "artist_id");
+		}
+		//
 		HashMap<String,Integer> rowMap = new HashMap<String,Integer>();
 		rowMap.put("startRow", startRow);
 		rowMap.put("endRow", endRow);

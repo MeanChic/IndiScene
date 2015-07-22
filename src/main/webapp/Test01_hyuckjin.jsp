@@ -36,10 +36,10 @@
 	<script type="text/javascript" src="${root}/js/marketBoard.js"></script>
 	<script type="text/javascript" src="${root}/js/notice.js"></script>
 	<script type="text/javascript" src="${root}/js/freeBoard.js"></script>
+	<script type="text/javascript" src="${root}/js/search.js"></script>
 </head>
 <body>
 	<script type="text/javascript">
-	
 	
 	$(document).ready(function(){
 		//alert($("#centerContents").html());
@@ -93,6 +93,22 @@
 	<div class="navbar navbar-head">
 		<div class="navbar-inner">
 			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Menu</a>
+			
+	 		<form id="searchForm" name="searchForm" method="get" action="javascript:searchFreeBoard('${root}','1','${pageContext.request.servletPath }');">
+					<!--   페이징작업을위한 GET방식 -->     
+				<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
+	              <table id="">
+	                    <tr class="searchBox">
+	                         <td class="">
+	                               <input type="text"  id="searchWord" name="searchWord">
+	                         </td>
+	                         <td class="searchBtn">
+	                               <input type="submit" value="검색" id="searchBtn" value="search"></input>
+	                         </td>
+	                    </tr>
+	             </table>
+	        </form>
+        
 			<c:choose>
 				<c:when test="${artist_id ==null}">
 					<a href="#" id="loginButton" class="sub-expander pull-right btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a>
