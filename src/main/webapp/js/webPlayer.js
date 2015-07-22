@@ -121,7 +121,7 @@
 	function timeChange(){
 		//alert("now playing"); 
 		$("#musicBar").val(audio.currentTime);
-		document.getElementById("demo").innerHTML = audio.currentTime + "<br/>" + $("#musicBar").attr("max");
+//		document.getElementById("demo").innerHTML = audio.currentTime + "<br/>" + $("#musicBar").attr("max");
 	//	document.getElementById("buffer").innerHTML="버퍼링된 구역 : " + audio.buffered.end(0)+"<br/>탐색가능구역 : " +audio.seekable.end(0)+"<br/>"+audio.seekable.length;
 	}
 	
@@ -154,7 +154,7 @@
 				}
 				
 				$(".musicClick").click(function(){
-					alert($(this).children(".sourcePath").val());
+//					alert($(this).children(".sourcePath").val());
 					$(audio).attr("src",$(this).children(".sourcePath").val());
 				});
 				$(".listDelete").click(function(){
@@ -200,7 +200,7 @@
 					$(audioListDiv).appendTo($("#audioList"));
 				}
 				$(".musicClick").click(function(){
-					alert($(this).children(".sourcePath").val());
+//					alert($(this).children(".sourcePath").val());
 					$(audio).attr("src",$(this).children(".sourcePath").val());
 				});
 				$(".listDelete").click(function(){

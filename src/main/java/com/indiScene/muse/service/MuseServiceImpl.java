@@ -3,8 +3,6 @@ package com.indiScene.muse.service;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +19,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.muse.dao.MuseDao;
-import com.indiScene.muse.dao.MuseDaoImpl;
 import com.indiScene.muse.dto.MuseDto;
 import com.indiScene.museGuest.dao.MuseGuestDaoImpl;
 import com.indiScene.museGuest.dto.MuseGuestDto;
@@ -35,7 +32,7 @@ import com.indiScene.museGuest.dto.MuseGuestDto;
  */
 @Component
 public class MuseServiceImpl implements MuseService {
-	private String rootpath = "C:/Users/kosta/git/IndiScene/src/main/webapp/";
+	private String rootpath = "C:/SPB_Data/git/IndiScene/src/main/webapp/";
 	@Autowired
 	private MuseDao museDao;
 	
@@ -97,8 +94,8 @@ public class MuseServiceImpl implements MuseService {
 		
 		if(fileSize != 0){
 			try{
-				String dir="C:/Users/kosta/git/IndiScene/src/main/webapp/resources/museResources";
-				//String dir="C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources";
+//				String dir="C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources";
+				String dir="C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources";
 				
 				File file = new File(dir, timeName);
 				upFile.transferTo(file);	
@@ -109,7 +106,7 @@ public class MuseServiceImpl implements MuseService {
 				logger.info("ch File Input Ouput Error");
 			}
 		}else{
-			museDto.setMuse_filepath("C:/Users/kosta/git/IndiScene/src/main/webapp/resources/museResources/Koala.jpg");
+			museDto.setMuse_filepath("C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources/Koala.jpg");
 		}
 		//logger.info("ch dir : " + museDto.getMuse_filepath());
 		
@@ -188,7 +185,7 @@ public class MuseServiceImpl implements MuseService {
 		
 		for(int i = 0; i < bestMuse.size(); i++){
 			String path = (String)bestMuse.get(i).get("MUSE_FILEPATH");
-			int su = "C:/Users/kosta/git/IndiScene/src/main/webapp".length();
+			int su = "C:/SPB_Data/git/IndiScene/src/main/webapp".length();
 			
 			logger.info("--" + su + "   " + path + "    "  + path.substring(su));
 			bestMuse.get(i).replace("MUSE_FILEPATH", path.substring(su));
@@ -196,7 +193,7 @@ public class MuseServiceImpl implements MuseService {
 		
 		for(int i = 0; i < myMuse.size(); i++){
 			String path = (String)myMuse.get(i).get("MUSE_FILEPATH");
-			int su = "C:/Users/kosta/git/IndiScene/src/main/webapp".length();
+			int su = "C:/SPB_Data/git/IndiScene/src/main/webapp".length();
 			
 			logger.info("--" + su + "   " + path + "    "  + path.substring(su));
 			bestMuse.get(i).replace("MUSE_FILEPATH", path.substring(su));
@@ -204,7 +201,7 @@ public class MuseServiceImpl implements MuseService {
 		
 		for(int i = 0; i < allMuse.size(); i++){
 			String path = (String)allMuse.get(i).getMuse_filepath();
-			int su = "C:/Users/kosta/git/IndiScene/src/main/webapp".length();
+			int su = "C:/SPB_Data/git/IndiScene/src/main/webapp".length();
 			
 			logger.info("--" + su + "   " + path + "    "  + path.substring(su));
 			bestMuse.get(i).replace("MUSE_FILEPATH", path.substring(su));

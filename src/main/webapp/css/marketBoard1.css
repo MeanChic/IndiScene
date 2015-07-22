@@ -226,10 +226,20 @@ input#searchBtn {
   
   /* Main Serch & btn */
   
- table#MainSearchBox {
+ /* table#MainSearchBox {
   margin-top: 1.3em;
   margin-left: 36.0em;
+} */
+/* table#MainSearchBox {
+  margin-top: 4.5%;
+  margin-left: 100%;
+} */
+
+table#MainSearchBox {
+  margin-left: 25.0em;
+  margin-top: 1.3em;
 }
+
 input#MainSearchWord {
   width: 30.0em;
   height: 2.6em;
