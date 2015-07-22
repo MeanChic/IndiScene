@@ -162,7 +162,7 @@
 			<a id="next" class="music-player pull-left btn"><span class="glyphicon glyphicon-forward"></span></a>
 		</div>
 		<div class="progress Instant01">
-			<div id="musicBar" class="progress-bar music-player Instant02" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;"></div>
+			<div id="musicBar" class="progress-bar music-player Instant02" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
 		</div>
 			<!-- 
 			<input type="image" id="prev" src="${root}/resources/backward.png" alt="prev" style="width:4%;height:4%;min-height:4%;min-width:4%;"/>

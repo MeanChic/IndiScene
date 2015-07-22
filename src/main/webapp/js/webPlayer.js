@@ -15,8 +15,8 @@
 		$(audio).bind("ended",function(){
 			index++;
 			
-			if(index==$(".audioList").length){
-				index=0;
+			if(index==$(".audioList").length+1){
+				index=1;
 			}
 			
 			currentTime=0;
@@ -60,12 +60,16 @@
 			if(audio.paused == true){
 				$(audio).bind("timeUpdate",timeChange);
 				$(audio).attr("src",$(".sourcePath:eq("+index+")").val());
-				$("#play").attr("src","/indiscene/resources/stop.png");
+//				$("#play").attr("src","/indiscene/resources/stop.png");
+//				$("#play > span").toggleClass("glyphicon glyphicon-pause");
+				$("#play > span").attr("class","glyphicon glyphicon-pause");
 			}else{
 				$(audio).unbind("timeUpdate",timeChange);
 				currentTime=audio.currentTime;
  				audio.pause(); 
- 				$("#play").attr("src","/indiscene/resources/play.png");
+// 				$("#play").attr("src","/indiscene/resources/play.png");
+// 				$("#play > span").toggleClass("glyphicon glyphicon-play");
+ 				$("#play > span").attr("class","glyphicon glyphicon-play");
 			}
 		});
 		
@@ -108,7 +112,7 @@
 		/* 볼륨 조절 바. */
 		$("#volumeBar").bind("change",function(){
 			audio.volume=$(this).val()*0.01;
-			$("#volumeText").text($(this).val());
+//			$("#volumeText").text($(this).val());
 		});
 		
 		$("#prevMoment").click(function(){
@@ -122,7 +126,8 @@
 	
 	function timeChange(){
 		//alert("now playing"); 
-		$("#musicBar").val(audio.currentTime);
+//		$("#musicBar").val(audio.currentTime);
+		$("#musicBar").css("width",(audio.currentTime/audio.duration)*100+"%");
 //		document.getElementById("demo").innerHTML = audio.currentTime + "<br/>" + $("#musicBar").attr("max");
 	//	document.getElementById("buffer").innerHTML="버퍼링된 구역 : " + audio.buffered.end(0)+"<br/>탐색가능구역 : " +audio.seekable.end(0)+"<br/>"+audio.seekable.length;
 	}
