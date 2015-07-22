@@ -15,7 +15,7 @@
 
 </head>
 <body>
-
+	<div id="enterBoard">
 		<input type="button" value="글쓰기 " onclick="javascript:performBoardWrite()"/>
 	
 		<c:forEach  items="${list }" varStatus="s">								<!-- mav에 넘어오는 리스트 갯수만큼 돌린다 이름확인  -->
@@ -66,6 +66,6 @@
 				<a href="javascript:enterPerformBoard('${root}','${startPage+pageBlock }')">[다음]</a>
 			</c:if>
 		</c:if>
-
+	</div>
 </body>
 </html>
