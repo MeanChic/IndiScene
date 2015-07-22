@@ -29,9 +29,9 @@ import com.indiScene.uploadBoard.dto.UploadBoardDto;
 
 @Controller
 public class UploadBoardServiceImpl implements UploadBoardService {
-	//private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
+	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
 	//private String dir="C:/KMS_MavenSpring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/";
-	private String dir="C:/mavenspring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/"; //나혁진용
+	//private String dir="C:/mavenspring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/"; //나혁진용
 	
 	@Autowired
 	private UploadBoardDao dao;
