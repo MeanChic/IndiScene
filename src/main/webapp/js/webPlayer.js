@@ -60,10 +60,12 @@
 			if(audio.paused == true){
 				$(audio).bind("timeUpdate",timeChange);
 				$(audio).attr("src",$(".sourcePath:eq("+index+")").val());
+				$("#play").attr("src","/indiscene/resources/stop.png");
 			}else{
 				$(audio).unbind("timeUpdate",timeChange);
 				currentTime=audio.currentTime;
  				audio.pause(); 
+ 				$("#play").attr("src","/indiscene/resources/play.png");
 			}
 		});
 		
