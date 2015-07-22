@@ -107,39 +107,26 @@
 	<div class="navbar navbar-head">
 		<div class="navbar-inner">
 			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Menu</a>
-			<!-- 메인검색창 -->
-			<form style="float:left;" id="MainSearchForm" name="searchForm" method="get" action="javascript:searchMain('${root}','1');">
-					<!--   페이징작업을위한 GET방식 -->     
-				<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
-	              <table id="MainSearchBox">
-	                    <tr class="MainSearchBox">
-	                         <td class="">
-	                               <input type="text"  id="MainSearchWord" name="searchWord">
-	                         </td>
-	                         <td class="MainSearchBtn">
-	                               <input type="submit" value="검색" id="MainSearchBtn" value="search"></input>
-	                         </td>
-	                    </tr>
-	             </table>
-	        </form>
-			<!-- 메인검색창 -->
 			<c:choose>
 				<c:when test="${artist_id ==null}">
 					<a href="#" id="loginButton" class="sub-expander pull-right btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a>
-					<a id="registerButton" class="nav-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Join</a>
+					<a id="registerButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Join</a>
 				</c:when>
 				<c:otherwise>
-				<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-							Login Success!
-						</div>
-					</div>
-				</div>
 					<a href="#" id="updateloginButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;PIM</a>
-					<a id="logoutButton" class="nav-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a>
+					<a id="logoutButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a>
 				</c:otherwise>
 			</c:choose>
+			<!-- 메인검색창 -->
+			<div id="MainSearchBox" class="pull-right marketBoardAttribute01 marketBoardX-location03 instants03">
+				<form class="instants02" name="searchForm" method="get" action="javascript:searchMain('${root}','1');">
+			<!--   페이징작업을위한 GET방식 -->     
+				<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
+	                <input class="form-controller220 instants02" type="text"  id="MainSearchWord" name="searchWord">
+	                <input class=" btn btn-info btn-lg instants02 instants04" type="submit" value="Search"/>
+	   			</form>
+	        </div>
+			
 		</div>
 	</div>
 	<!-- Header Part end -->

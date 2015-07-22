@@ -300,6 +300,7 @@ Sub navigation
 	border-bottom:solid 1px #BDBDBD;
 	background:#EAEAEA;
 	height:85px;
+	min-width:1140px;
 }
 .navbar-default {
 	background: rgba(32, 40, 53, 0.3);
