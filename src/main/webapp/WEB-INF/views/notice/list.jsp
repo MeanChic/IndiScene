@@ -12,9 +12,14 @@
 <div id="boardBasic">
 	<h3>Notice</h3>
 	<div class="marketBoardX-location02 marketBoardInterval03">
-		<c:if test="${artist_id == 'manager' }">
-			<a class="marketBoardAttribute01 btn btn-default" href="javascript:noticeWrite('${root }')">Notice Write</a>
-		</c:if>
+		<c:choose>
+			<c:when test="${artist_id=='manager'}">
+				<a class="marketBoardAttribute01 btn btn-default" href="javascript:noticeWrite('${root }')">Notice Write</a>
+			</c:when>
+			<c:otherwise>
+				<div class="marketBoardAttribute01"></div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	
 	<c:if test="${count==0 }">
