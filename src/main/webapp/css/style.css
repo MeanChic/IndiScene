@@ -105,6 +105,11 @@ Main navigation
 	background:transparent;
 	background-color: #FB6816;
 }
+.main-nav .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #DB4806;
+}
+
 .main-nav .nav-pills > li > a:hover > i {
 	float: right;
 	float: right;
