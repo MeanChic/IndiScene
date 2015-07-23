@@ -5,7 +5,7 @@
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -35,7 +35,7 @@
 			<input type="hidden" name="artist_id" value="${artist_id }"/>
 		
 			<div align="center">
-	 			<div class="marketBoardDeleteInner" id="DeleteInner" style="color:black; font-size:1.3em"  >
+	 			<div class="marketBoardDeleteInner" id="DeleteInner" >
 					<span>	사용자 확인을 위해 <br/>계정 비밀번호 입력해주세요.</span><br/><br/>
 					<br/>
 				</div>
