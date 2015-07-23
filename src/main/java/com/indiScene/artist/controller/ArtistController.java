@@ -128,10 +128,11 @@ public class ArtistController {
 	 * @description : 회원 수정 정보를 받아 Service 클래스 updateOk 메소드에 Dto를 보낸다.
 	 */
 	@RequestMapping(value="/artist/update.do", method=RequestMethod.POST)
-	public ModelAndView update(HttpServletRequest request, HttpServletResponse response, ArtistDto artistDto){
+	public ModelAndView update(MultipartHttpServletRequest request, HttpServletResponse response, ArtistDto artistDto){
 		logger.info("-----Controller artistUpdateOk----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("artistDto",artistDto);
+		mav.addObject("request",request);
 		artistService.updateOk(mav);
 		
 		return mav;
