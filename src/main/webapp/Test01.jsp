@@ -19,6 +19,8 @@
 	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
 	<link href="${root}/css/marketBoard1.css" rel="stylesheet">
 	
+	
+	
 	<!-- Load javascrips libraries-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="${root}/js/jquery.bxslider.js"></script>
@@ -342,10 +344,6 @@ $('input[name="searchSubmit"]').on('click', function(e) {
 	//enterMarketBoard('${root }')
 	$('.main-nav').removeClass('nav-expanded');
 });
-
-
-
-
 
 /*
  * Link navigation and webpage sections.
