@@ -30,7 +30,7 @@
 		</c:if>
 		<c:if test="${board.seq_level!=0}">
 			<script>
-				$(".collaboSubject").val("[Collabo]"+$(".collaboSubject").val()+", "+$("input[name='artist_id']").val());
+				$(".collaboSubject").val($(".collaboSubject").val()+", "+$("input[name='artist_id']").val());
 			</script>
 		</c:if>
 		<div class="marketBoardX-location02">
@@ -39,7 +39,7 @@
 		<div class="form-controlMarket">
 			<label class="subject label-color">Subject</label>
 			<div class="form-inlineblock">
-				<input id="subject" class="form-controller320" type="text" size="50" name="subject" value="${board.subject}"/>
+				<input id="subject" class="form-controller320 collaboSubject" type="text" size="50" name="제목" value="${board.subject}" disabled="disabled"/>
 			</div>
 		</div>	
 		<div class="form-controlMarket">
@@ -135,7 +135,7 @@
 		<input type="hidden" value="0.0" max="15" min="-15" id="syncSave"/>-->
 	</div>
 	<script type="text/javascript">
-		prepareCollabo();
+		prepareUploadCollabo();
 	</script>
 </div>
 </body>

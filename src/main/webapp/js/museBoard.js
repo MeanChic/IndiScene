@@ -183,7 +183,7 @@ function museDeleteOk(root){
 	});
 }
 
-function prepareCollabo(){
+function prepareMuseCollabo(){
 	var audio1=document.createElement("audio");
 	var audio2=document.createElement("audio");
 	var audio1Can = false;

@@ -578,7 +578,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		
 		String musicFile = null;
 		
-		if(mf!=null){		// 음악파일일 경우.
+		if(!mf.isEmpty()){		// 음악파일일 경우.
 			musicFile =uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+mf.getOriginalFilename();
 		}
 		
@@ -590,10 +590,11 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		}else{
 			uploadMusicFile = new File(dir+"/uploadBoard/music/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
 			recordFile = new File(dir+"/TemporaryMusic/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
+			System.out.println("recordFileName : " +request.getParameter("recordFile"));
 		}
 		
 		try {
-			if(mf!=null){
+			if(!mf.isEmpty()){
 				mf.transferTo(uploadMusicFile);
 			}else{
 				if(!recordFile.renameTo(uploadMusicFile)){
@@ -620,7 +621,10 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		File originalFile = new File(dir+request.getParameter("originalFile").substring(request.getParameter("originalFile").indexOf("/resources")+10));
 		
 		KOSTAAudio kostaAudio = new KOSTAAudio();
-		
+		System.out.println(originalFile.getAbsolutePath());
+		System.out.println(uploadMusicFile.getAbsolutePath());
+		System.out.println( uploadBoardDto.getArtist_id());
+		System.out.println(Double.parseDouble(request.getParameter("sync")));
 		String mergeFile = kostaAudio.mergeAudio(originalFile.getAbsolutePath(), uploadMusicFile.getAbsolutePath(), uploadBoardDto.getArtist_id(), Double.parseDouble(request.getParameter("sync")));
 		
 		try {
@@ -629,7 +633,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		uploadBoardDto.setFile_path(uploadMusicFile.getAbsolutePath().substring(uploadMusicFile.getAbsolutePath().indexOf("\\resources")).replace('\\', '/'));
 		
 //		uploadBoardWriteNumber(uploadBoardDto);

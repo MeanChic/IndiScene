@@ -96,7 +96,7 @@
 	<input type="hidden" id="root" value="${root}"/>
 	<input type="button" onclick="test()" value="테스트"/>
 	<script type="text/javascript">
-		prepareCollabo();
+		prepareMuseCollabo();
 	</script>
 	</div>
 </body>
