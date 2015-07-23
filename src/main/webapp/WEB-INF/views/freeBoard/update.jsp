@@ -25,13 +25,14 @@
 		<div class="form-controlMarket">
 			<label class="label-color">Writer</label>
 			<div class="form-inlineblock">
-				<input class="form-controller320" type="text" size="50" name="subject" value="${freeBoard.artist_id}"/>
+				<input class="form-controller320" type="hidden" size="50" name="아티스트" value="${freeBoard.artist_id}"/>
+				<input class="form-controller320" type="text" size="50" name="아티스트" value="${freeBoard.artist_id}" disabled="disabled"/>
 			</div>
 		</div>			
 		<div class="form-controlMarket" >
 			<label class="label-color marketBoardY-location01" >Contents</label>
 			<div class="form-inlineblock marketBoardSize80">
-				<textarea name="content">${freeBoard.content }</textarea>		
+				<textarea id="content" name="content">${freeBoard.content }</textarea>		
 		 		<script>
 		 		var folderName='${pageContext.request.servletPath }';
 				folderName=folderName.split("views/");

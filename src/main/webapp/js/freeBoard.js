@@ -2,7 +2,6 @@
 
 
 	function freeBoardWrite(root){
-		
 		$.ajax({
 			url:root+"/freeBoard/write.do",
 			/*data:sendData,*/
@@ -28,10 +27,10 @@
 	}
 
 	function freeBoardWriteOk(root,pageNumber){
-		
+		var str =CKEDITOR.instances.content.getData();
+		$("#content").val(str);
 		var dataSet = new FormData(document.getElementById("FreeBoardWriteForm"));
-		dataSet.append("content",CKEDITOR.instances.content.getData());  //content에서  contentFreeBoard로 바꿈
-		
+//		dataSet.append("content",CKEDITOR.instances.content.getData());  //content에서  contentFreeBoard로 바꿈
 
 		/* subject */
 		if($("input[name='subject']").val()==""){
@@ -131,7 +130,7 @@
 			}); 
 		}
 		function freeBoardDeleteFunOk(root, board_num, pageNumber){
-			var dataSet = new FormData(document.getElementById("deleteForm"));
+		var dataSet = new FormData(document.getElementById("deleteForm"));
 		$.ajax({
 				url:root+"/freeBoard/delete.do",
 				type:"post",
@@ -177,10 +176,11 @@
 		
 		function freeBoardUpdateFunOk(root, board_num, pageNumber){
 			alert("이건 업데이트 OK" +root +"," + board_num+"," + pageNumber);
-			
+			var str =CKEDITOR.instances.content.getData();
+			$("#content").val(str);
 			var dataSet = new FormData(document.getElementById("updateForm"));
 			
-			alert($("textarea").val());
+//			alert($("textarea").val());
 			//$("#contentFreeBoard").val(CKEDITOR.instances.contentFreeBoard.getData());
 			//dataSet.append("contentFreeBoard",CKEDITOR.instances.contentFreeBoard.getData());
 			
@@ -197,7 +197,6 @@
 					var realData = realData[1].split("</body>")[0];
 					//alert(realData);
 					$("#centerContents").html(realData);
-
 				},
 				error:function(xhr,status,error){
 					alert(xhr+"\n"+status+"\n"+error);
