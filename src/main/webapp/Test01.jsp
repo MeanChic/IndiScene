@@ -24,12 +24,6 @@
 	<!-- Load javascrips libraries
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
 	<script src="${root}/js/jquery.jquery.js"></script>
-=======
-	
-	
-	<!-- Load javascrips libraries-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
->>>>>>> branch 'master' of https://github.com/MeanChic/IndiScene.git
 	<script src="${root}/js/jquery.bxslider.js"></script>
 	<script src="${root}/js/jquery.easypiechart.js"></script>
 	<script src="${root}/js/jquery.colorbox.js"></script>
