@@ -206,7 +206,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		String boardNumber=(request.getParameter("board_num"));
 		String currentPage=(request.getParameter("pageNumber"));
 		PlaceBoardDto marketBoardDto=marketBoardDao.read(boardNumber);
-		
+//		System.out.println(boardNumber);
 		//한줄댓글을 불러온다
 		List<ReplyDto> replyList=replyDao.replyList(boardNumber);
 		

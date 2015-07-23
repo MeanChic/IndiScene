@@ -19,8 +19,11 @@
 	<c:set value="${currentPage}" var="currentPage"/>
 	<div class="marketBoardAttribute02 marketBoardInterval03">
 		<div class="form-controlBoard">
-			<label class="boardlabelBlock marketBoardSize16 label-colorO marketBoardAttribute01">Board Number</label>
+			<label class="boardlabelBlock marketBoardSize4 label-colorO marketBoardAttribute01">
+				<input type="checkbox" class="" autocomplete="off"/>
+			</label>
 			<label class="boardlabelBlock marketBoardSize46 label-colorO marketBoardAttribute01">Subject</label>
+			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Writer</label>
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Date</label>
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Views</label>
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Like</label>
@@ -28,13 +31,14 @@
 		<!-- Indi'sMusic List -->
 		<c:forEach var="list" items="${boardList}">
 			<div class="form-controlBoard">
-				<label class="boardlabelBlock marketBoardSize16 label-color marketBoardAttribute01">
-					<input type="checkbox" class="musicCheckBox" value="${list.board_num}"/>
+				<label class="boardlabelBlock marketBoardSize4 label-color marketBoardAttribute01">
+					<input type="checkbox" class="musicCheckBox" autocomplete="off"/>
 				</label>
 				<label class="boardlabelBlock marketBoardSize46 label-color marketBoardAttribute01 marketBoardY-location02">
 					<img src="${root}${list.image_path}" style="width:50px; height:50px;"/>
 					<a class="label-color" href="javascript:uploadRead('${root}','${list.board_num}','${currentPage}')">${list.subject}</a>
 				</label>
+				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01 marketBoardY-location02">${list.artist_id}</label>
 				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01"><fmt:formatDate value="${list.register_date }" pattern="yyyy.MM.dd"/></label>
 				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${list.count}</label>
 				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${list.board_like}</label>
