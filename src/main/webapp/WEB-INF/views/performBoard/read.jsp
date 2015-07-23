@@ -131,7 +131,7 @@
 				<div style="width:300px; float:left;" id="datepicker"></div>
    		 		<fmt:formatDate value="${performBoard.d_day}" pattern="MM/dd/yyyy hh:mm"/>
 				<!-- <div id="map_canvas" style="width:300px; height:300px; float:left;"></div> -->
-				<div id="map" style="width:300px;height:300px;"></div>
+				<div id="map" style="width:300px;height:300px;">${performBoard.address}</div>
 				${performBoard.address}
 			</div>		
 		</div>
