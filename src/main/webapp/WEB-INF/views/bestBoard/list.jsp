@@ -10,6 +10,11 @@
 <meta charset="UTF-8">
 </head>
 <body>
+<c:forEach  items="${boardList}" varStatus="s">
+		<c:set var="market" value="${requestScope.boardList[s.index]}" /> 
+		${market.board_num}
+</c:forEach>
+	
 <div id="bestBoard">
 	<h2>Best Music</h2>
 	<div class="marketBoardX-location02 marketBoardInterval04">
@@ -17,10 +22,7 @@
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:uploadWrite('${root}','0','1')">Write</a>
 	</div>
 	<c:set value="${currentPage}" var="currentPage"/>
-	<c:forEach  items="${boardList}" varStatus="s">
-		<c:set var="market" value="${requestScope.boardList[s.index]}" /> 
-		${[s.index]}
-	</c:forEach>
+	
 	<div class="marketBoardAttribute02 marketBoardInterval03">
 		<div id="bestRank1">
 			<img class="bestRank1" src="" alt="">
