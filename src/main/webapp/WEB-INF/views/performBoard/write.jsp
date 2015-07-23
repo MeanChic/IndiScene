@@ -15,10 +15,10 @@
 </head>
 <body>
 <div id="performanceBoardWrite">
-	<form id="marketBoardWriteForm" class="form_style"   enctype="multipart/form-data">	
+	<form id="marketBoardWriteForm" class="form_style" enctype="multipart/form-data">	
 		<input type="hidden" id="folderName" name="folderName" />
 		<div class="marketBoardX-location02">
-			<a class="marketBoardAttribute01 btn btn-default" href="${root}/performBoard/enterBoard.do">List</a>
+			<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterPerformBoard('${root}','${pageNumber}')">List</a>
 		</div>			
 		<div class="form-controlMarket">
 			<label class="subject label-color">Writer</label>
@@ -62,31 +62,39 @@
 		  		</script>
 		  	</div>
 		</div>	
-		
-		<div class="line">
-				<span class="content">
-					<input type="text" name="d_day1" id="datepicker">
-		
-					<select name="hour">
-						<c:forEach var="i" begin="00" end="24">
-							<c:forEach var="j" begin="0" end="1"> 
-								<c:if test="${j==0}">
-									<option style="align:right;">${i} : 00</option>
-								</c:if>
-								<c:if test="${j==1}">
-									<option style="align:right;">${i} : 30</option>
-								</c:if>
-							</c:forEach>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Date</label>
+			<div class="form-inlineblock">
+				<input class="form-controller220" type="text" name="d_day1" id="datepicker">
+				<select class="form-controller220" name="hour">
+					<c:forEach var="i" begin="00" end="24">
+						<c:forEach var="j" begin="0" end="1"> 
+							<c:if test="${j==0}">
+								<option style="align:right;">${i} : 00</option>
+							</c:if>
+							<c:if test="${j==1}">
+								<option style="align:right;">${i} : 30</option>
+							</c:if>
 						</c:forEach>
-					</select>
-					시 
-					<br/><br/>
-					<input type="hidden" name="zipcode" value="">
-					주소<input type="text" name="zipcode1"/> <input type="button"  value="우편번호" onclick="javascript:performZipcodeCheck('${root}')"><br/></br>
-					<input type="text" name="address" value=""/><br/><br/>
-					<input type="button"  value="지도로 검색" onclick="javascript:performMap()"/>
-				</span>		                    
-		</div>	
+					</c:forEach>
+				</select>
+			</div>
+		</div>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Address</label>
+			<div class="form-inlineblock">
+				<input type="hidden" name="zipcode" value="">
+				<input class="form-inlineblock form-controller220" type="text" name="zipcode1"/>
+				<input class="form-inlineblockButton form-controller220" type="button" value="Zipcode" onclick="javascript:performZipcodeCheck('${root}')">
+			</div>
+		</div>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Subject</label>
+			<div class="form-inlineblock">
+				<input class="form-inlineblock form-controller220" type="text" name="address" value=""/>
+				<input class="form-inlineblockButton form-controller220" type="button"  value="Search Map" onclick="javascript:performMap()"/>
+			</div>
+		</div>
 		<div class="form-controlMarket" style= text-align:center;>
 			<!-- <input type="submit" value="글쓰기" onclick="location.href='${root}/marketBoard/enterBoard.do'"/>  -->
 			<div class="marketBoardInterval04">
