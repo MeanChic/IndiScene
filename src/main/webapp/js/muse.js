@@ -108,7 +108,7 @@ function indimuse(artist_id){
 				dataType:"text",
 				success:function(data){
 					$("#centerContents").html(data);
-					$('.main-nav').toggleClass('nav-expanded');
+					history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 				}
 			})
 	}else{
@@ -127,6 +127,7 @@ function goinmuse(muse_name){
 				dataType:"html",
 				success:function(data){
 					$("#centerContents").html(data);
+					history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 				}
 			})
 	}else{
@@ -142,6 +143,7 @@ function logupmuse(){
 		dataType:"html",
 		success:function(data){
 			$("#centerContents").html(data);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
 	})
 }
@@ -155,6 +157,7 @@ function membermuse(muse_name,check){
 		dataType:"html",
 		success:function(data){
 			$("#centerContents").html(data);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
 	})
 }
@@ -168,6 +171,7 @@ function guestmuse(muse_name){
 		dataType:"html",
 		success:function(data){
 			$("#centerContents").html(data);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
 	})
 }
@@ -181,6 +185,7 @@ function guestboardmuse(muse_name){
 		dataType:"html",
 		success:function(data){
 			$("#centerContents").html(data);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
 	})
 }
@@ -194,6 +199,7 @@ function deleteMuse(muse_name, artist_id){
 		dataType:"html",
 		success:function(data){
 			$("#centerContents").html(data);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
 	})
 }
@@ -209,6 +215,7 @@ function perform(){
 		dataType:"html",
 		success:function(data){
 			$("#centerContents").html(data);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
 	})
 }
@@ -232,6 +239,7 @@ function createMuse(){
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData)
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error); 

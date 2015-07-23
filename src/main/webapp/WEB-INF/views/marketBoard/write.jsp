@@ -25,7 +25,7 @@
 		<div class="form-controlMarket">
 			<label class="subject label-color">Writer</label>
 			<div class="form-inlineblock">
-				<input class="form-controller320" type="text" size="50" name="artist_id" value="testId"/>
+				<input class="form-controller320" type="text" size="50" name="artist_id" value="${artist_id }"/>
 			</div>
 		</div>	
 		<div class="form-controlMarket">

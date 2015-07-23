@@ -23,6 +23,7 @@ function enterPlaceBoard(requestRoot,pageNumber){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -46,6 +47,7 @@ function placeBoardDelete(board_num,pageNumber,artist_id){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -90,6 +92,7 @@ function placeBoardWrite(){
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData)
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 			$.getScript(root+"/js/jquery.MultiFile.js");
 		},
 		error:function(xhr,status,error){
@@ -137,7 +140,8 @@ function placeBoardRead(board_num,pageNumber){
 			var realData=data.split("<body>");
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
-			$("#centerContents").html(realData)
+			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -157,7 +161,8 @@ function placeBoardUpdate(board_num,pageNumber){
 			var realData=data.split("<body>");
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
-			$("#centerContents").html(realData)
+			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);

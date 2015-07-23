@@ -68,6 +68,7 @@ function guestNext(muse_name, pagenum){
 		dataType:"text",
 		success:function(data){
 			$("#centerContents").html(data);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 			//$("body").html(data);
 		},
 		error:function(xhr, status, error){
