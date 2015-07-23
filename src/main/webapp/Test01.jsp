@@ -267,7 +267,7 @@ $("#volumeBtn").click(function(){
 $('#nav-expander').on('click', function(e) {
 	e.preventDefault();
 	if($("#artist_id").val()==""){
-		
+		alert("로그인하고 이용해주시기 바랍니다.");
 	}else{
 		$('.main-nav').toggleClass('nav-expanded');
 	}
