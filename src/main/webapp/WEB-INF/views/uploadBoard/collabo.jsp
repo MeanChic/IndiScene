@@ -93,7 +93,7 @@
 	
 	<input type="button" value="콜라보적용" id="syncAdopt"/>
 	<input type="hidden" id="root" value="${root}"/>
-	<input type="button" onclick="test()" value="테스트"/>
+	<input type="button" onclick="validValueCheck('uploadWriteForm')" value="테스트"/>
 	<script type="text/javascript">
 		prepareCollabo();
 	</script>
