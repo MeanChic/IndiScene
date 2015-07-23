@@ -28,7 +28,9 @@ function museWriteOk(root){
 	$("#content").val(str);
 	var dataSet = new FormData(document.getElementById("museWriteForm"));
 //	alert($("#content").val());
-	
+	if(validValueCheck("museWriteForm")==-1){
+		return ;
+	}
 	$.ajax({
 		url:root+"/museBoard/write.do",
 		type:"post",
@@ -120,6 +122,10 @@ function museUpdateOk(root){
 	var dataSet = new FormData(document.getElementById("museWriteForm"));
 //	alert($("#content").val());
 //	alert(CKEDITOR.instances.content);
+	if(validValueCheck("museWriteForm")==-1){
+		return ;
+	}
+	
 	$.ajax({
 		url:root+"/museBoard/update.do",
 		type:"post",
@@ -310,7 +316,9 @@ function museCollaboOk(root, boardNum,pageNumber){
 	var str =CKEDITOR.instances.content.getData();
 	$("#content").val(str);
 	var dataSet = new FormData(document.getElementById("museWriteForm"));
-	
+	if(validValueCheck("museWriteForm")==-1){
+		return ;
+	}
 	$.ajax({
         url: $("#root").val()+'/museBoard/collabo.do',
         type: "post",

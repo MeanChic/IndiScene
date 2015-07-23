@@ -25,6 +25,9 @@ function uploadWriteOk(root){
 	$("#content").val(str);
 	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
 //	alert($("#content").val());
+	if(validValueCheck("uploadWriteForm")==-1){
+		return ;
+	}
 	
 	$.ajax({
 		url:root+"/uploadBoard/write.do",
@@ -117,6 +120,9 @@ function uploadUpdateOk(root){
 	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
 //	alert($("#content").val());
 //	alert(CKEDITOR.instances.content);
+	if(validValueCheck("uploadWriteForm")==-1){
+		return ;
+	}
 	$.ajax({
 		url:root+"/uploadBoard/update.do",
 		type:"post",
@@ -308,7 +314,9 @@ function uploadCollaboOk(root, boardNum,pageNumber){
 	var str =CKEDITOR.instances.content.getData();
 	$("#content").val(str);
 	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
-	
+	if(validValueCheck("uploadWriteForm")==-1){
+		return ;
+	}
 	$.ajax({
         url: $("#root").val()+'/uploadBoard/collabo.do',
         type: "post",
@@ -420,4 +428,59 @@ function brandNewRead(root,boardNum,currentPage){
 			alert(xhr+"\n"+status+"\n"+error);
 		}
 	}); 	
+}
+
+function validValueCheck(formId){
+//	alert($("#"+formId).children("input[name='coverImage']").val());
+	var valueCheckSubject = $("#"+formId).find("input[name='subject']").val();
+	var valueCheckImage = $("#"+formId).find("input[name='coverImage']").val();
+	var valueCheckMusic = $("#"+formId).find("input[name='musicFile']").val();
+	var valueCheckRecord = $("#"+formId).find("input[id='uploadPath']").val();
+	var valueCheckGenre = null;
+	for(var i = 0;i< $("#"+formId).find("input[name='genre']").length; i++){
+		if($("#"+formId).find("input[name='genre']").eq(i).prop("checked")){
+			valueCheckGenre = $("#"+formId).find("input[name='genre']").eq(i).val();
+			$("input[name='genre_code']").val(valueCheckGenre);
+		}
+	}
+	var valueCheckContent= $("#"+formId).find("textarea[name='content']").val();
+	var valueCheckMerge=$("#"+formId).find("input[id='mergeFile']").val();
+	alert(valueCheckMerge);
+	
+	if(valueCheckSubject == ""){
+		alert("제목을 입력해주세요");
+		return -1;
+	}else if (valueCheckMusic =="" && valueCheckRecord ==""){
+		alert("음악을 올려주세요");
+		return -1;
+	}else if(valueCheckGenre ==null){
+		alert("장르를 입력해주세요");
+		return -1;
+	}else if(valueCheckContent ==""){
+		alert("내용을 입력해주세요");
+		return -1;
+	}else if(valueCheckMerge != undefined && valueCheckMerge ==""){
+		alert("콜라보레이션을 해주십시오");
+		return -1;
+	}
+	
+	return 1;
+}
+
+function showAttribute(obj){
+	 try{
+		 var objData= '';
+		 
+		 for(var attr in obj){
+			 if(typeof(obj[attr])== 'string' || typeof(obj[attr])=='number'){
+				 objData = objData+'Attr Name : ' +attr + ', Value : ' +obj[attr] + ', Type : ' + typeof(obj[attr])+'\n';
+			 }else{
+				 objData=objData+ 'Attr Name : ' + attr+ ', Type : ' + typeof(obj[attr])+'\n';
+			 }
+		 }
+		 
+		 alert(objData);
+	 }catch(e){
+		 alert(e.message);
+	 }
 }

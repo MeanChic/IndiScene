@@ -50,6 +50,7 @@
 		</script>
 		
 		<div><span>장르</span><input type="radio" name="genre" value="1"/>락<input type="radio" name="genre" value="0"/> 발라드 <input type="radio" name="genre" value="2"/> 힙합</div>	
+		<input type="hidden" name="genre_code" value=""/>
 		<span>내용</span><textarea rows="20" cols="100" name="content" id="content"></textarea><br/><br/>
 		<script type="text/javascript">
 		CKEDITOR.replace( 'content',
