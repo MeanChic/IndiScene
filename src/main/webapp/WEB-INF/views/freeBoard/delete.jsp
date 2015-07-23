@@ -28,6 +28,7 @@
 		$("#deleteBt").css("color","black");
 	}
 	</script>
+	
 	<div id="freeBoardDelete">
 		<form class="marketBoardDeleteForm" method="post">
 			<input type="hidden" name="board_num" value="${board_num}" /> 
@@ -36,9 +37,8 @@
 		
 			<div align="center">
 				<div class="marketBoardDeleteInner" id="DeleteInner">
-					<span> 사용자 확인을 위해 <br/> 계정 비밀번호 입력해주세요.
-					</span><br />
-					<br />
+					<span> 사용자 확인을 위해 <br/> 계정 비밀번호 입력해주세요.</span><br/>
+					<br/>
 				</div>
 			</div>
 
