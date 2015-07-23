@@ -189,16 +189,20 @@ input.FontColorIsBlack{
   font-size: 1.5em;
 }
 
-#deleteBt,#listBt{
-	font-size: 1.0em;
-	font-family: Helvetica;
-	
+#deleteBt, #listBt {
+    font-size: 1.0em;
+    font-family: Helvetica;
+    width: 9.0em;
+    height: 3.0em;
+    margin-left: 0.2em;
 }
 
 span#idMarginLeft {
   margin-left: 12.5%;
 }
-
+div#PwHight {
+    margin-top: 0.5em;
+}
 
 /* 검색창  */
 

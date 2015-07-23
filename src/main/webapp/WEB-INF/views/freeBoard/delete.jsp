@@ -46,7 +46,7 @@
 				<div style="color: #333333">
 					ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;${artist_id }
 				</div>
-				<div style="color: #4C4C4C font-size:1.3em;">Password&nbsp;:&nbsp; 
+				<div id="PwHight"style="color: #4C4C4C font-size:1.3em;">Password&nbsp;:&nbsp; 
 					<input type="password" name="password" size="20" maxlength="20" />
 				</div>
 			</div>
