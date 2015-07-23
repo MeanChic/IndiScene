@@ -10,12 +10,12 @@
 
 </head>
 <body>
-<script src="${root }/resources/ckEditor/ckeditor.js"></script>
+<%-- <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <script src="${root }/resources/ckfinder/ckfinder.js"></script>
 <script src="${root }/js/jquery.js" type="text/javascript" ></script>
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 <script src="${root }/js/jquery-ui.js" type="text/javascript" ></script>
-<script type="text/javascript" src="${root }/css/marketBoard/script.js"></script>
+<script type="text/javascript" src="${root }/css/marketBoard/script.js"></script> --%>
 <div id="performanceBoardWrite">
 	<form id="marketBoardWriteForm" class="form_style" enctype="multipart/form-data">	
 		<input type="hidden" id="folderName" name="folderName" />
@@ -51,7 +51,7 @@
 							 {///IndiScene_basic/src/main/webapp/resources/ckfinder
 							 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
 							 });
-					 $(function(){
+					function datePickerSettingPerform(){
 							$( "#datepicker" ).datepicker({
 						    showOn: "button",
 						   // buttonImage: "/images/calendar.gif",
@@ -60,7 +60,9 @@
 						    changeMonth: true,
 						    changeYear: true
 						});
-					});
+					}
+					datePickerSettingPerform();
+					$("#ui-datepicker-div").appendTo("#centerContents");
 		  		</script>
 		  	</div>
 		</div>	
@@ -101,7 +103,7 @@
 		<div class="form-controlMarket" style= text-align:center;>
 			<!-- <input type="submit" value="글쓰기" onclick="location.href='${root}/marketBoard/enterBoard.do'"/>  -->
 			<div class="marketBoardInterval04">
-				<input class="btn btn-default" type="button" value="Write" onclick="javascript:performBoardWriteOk()">
+				<input class="btn btn-default" type="button" value="Write" onclick="javascript:performBoardWriteOk()"/>
 				<input class="btn btn-default" type="reset" value="Reset"/>
 			</div>
 		</div>
