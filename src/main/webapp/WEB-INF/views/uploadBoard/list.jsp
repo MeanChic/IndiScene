@@ -23,14 +23,16 @@
 				<input type="checkbox" id="checkAll" class="" autocomplete="off"/>
 				<script type="text/javascript">
 					$("#checkAll").click(function(){
-						if(!$("#checkAll").prop("checked")){
+						//alert($("#checkAll").prop("checked"));
+						if($("#checkAll").prop("checked")){
 							$(".musicCheckBox").each(function(){
 								$(this).prop("checked","true");
 							});
 						}else{
 							if($(".musicCheckBox:checked").length == $(".musicCheckBox").length){
+								//alert("same");								
 								$(".musicCheckBox").each(function(){
-									$(this).prop("checked","false");
+									$(this).prop("checked","");
 								});
 							}
 						}
