@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-#templateBase, #museBoardList, #museBoardCollabo, #museBoardRead, #museBoardUpdate, #museBoardWrite, #placeBoardUpdate, #placeEnterBoard, #placeBoardWrite, #placeBoardRead, #performanceBoardUpdate, #performanceBoardWrite, #uploadCollabo, #uploadUpdate, #uploadWrite, #uploadSearchList, #PerformEnterBoard, #performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
+#bestBoard, #templateBase, #museBoardList, #museBoardCollabo, #museBoardRead, #museBoardUpdate, #museBoardWrite, #placeBoardUpdate, #placeEnterBoard, #placeBoardWrite, #placeBoardRead, #performanceBoardUpdate, #performanceBoardWrite, #uploadCollabo, #uploadUpdate, #uploadWrite, #uploadSearchList, #PerformEnterBoard, #performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
 #noticeRead, #marketBoardread, #performRead{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#fff; border-radius:20px; }
 #boardlistSize{ padding-right:10px; padding-left:10px; }
 #best, #my, #all{ border-color:#BDBDBD; }
@@ -176,5 +176,37 @@ fieldset[disabled] .musicCheckBox {
   background-color: #eeeeee;
 }
 textarea.musicCheckBox {
+  height: auto;
+}
+/* ----- CHeckAll ----- */
+#checkAll {
+  width: 20px;
+  height: 24px;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+          transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+#checkAll:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+#checkAll[disabled],
+#checkAll[readonly],
+fieldset[disabled] #checkAll {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+}
+textarea #checkAll {
   height: auto;
 }
