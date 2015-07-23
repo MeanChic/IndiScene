@@ -7,12 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 <div id="boardBasic">
-	<h3>Indi's Music</h3>
-	<div class="marketBoardX-location02 marketBoardInterval03">
+	<h2>Brand New Music</h2>
+	<div class="marketBoardX-location02 marketBoardInterval04">
 		<input class="marketBoardAttribute01 btn btn-default pull-left" type="button" value="Put In" onclick="musicStorage('${root}','${artist_id}')"/>
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:uploadWrite('${root}','0','1')">Write</a>
 	</div>
@@ -43,7 +42,7 @@
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Views</label>
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Like</label>
 		</div>
-		<!-- Indi'sMusic List -->
+		<!-- Brand New Music List -->
 		<c:forEach var="list" items="${boardList}">
 			<div class="form-controlBoard">
 				<label class="boardlabelBlock marketBoardSize4 label-color marketBoardAttribute01">

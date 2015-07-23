@@ -12,12 +12,13 @@
 <body>
 <div id="bestBoard">
 	<h2>Best Music</h2>
-	<div class="marketBoardX-location02 marketBoardInterval03">
+	<div class="marketBoardX-location02 marketBoardInterval04">
 		<input class="marketBoardAttribute01 btn btn-default pull-left" type="button" value="Put In" onclick="musicStorage('${root}','${artist_id}')"/>
+		<a class="marketBoardAttribute01 btn btn-default" href="javascript:uploadWrite('${root}','0','1')">Write</a>
 	</div>
 	<c:set value="${currentPage}" var="currentPage"/>
-		<div class="marketBoardAttribute02 marketBoardInterval03">
-				<div class="form-controlBoard">
+	<div class="marketBoardAttribute02 marketBoardInterval03">
+		<div class="form-controlBoard">
 			<label class="boardlabelBlock marketBoardSize4 label-colorO marketBoardAttribute01">
 				<input type="checkbox" id="checkAll" class="" autocomplete="off"/>
 				<script type="text/javascript">
@@ -38,7 +39,7 @@
 			</label>
 			<label class="boardlabelBlock marketBoardSize46 label-colorO marketBoardAttribute01">Subject</label>
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Writer</label>
-			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Best Date</label>
+			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">BestDate</label>
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Views</label>
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Like</label>
 		</div>
