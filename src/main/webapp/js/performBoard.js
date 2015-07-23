@@ -30,7 +30,7 @@ function performPlace(root){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 			$.getScript(root+"/js/jquery-ui.js");
 			$('.main-nav').toggleClass('nav-expanded');
 		},
@@ -72,7 +72,7 @@ function enterPerformBoard(requestRoot,pageNumber){
 			//alert(realData);
 			$("#centerContents").html(realData);
 			$.getScript(root+"/js/jquery-ui.js");
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -96,7 +96,7 @@ function performBoardDelete(board_num,pageNumber,artist_id){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -141,7 +141,7 @@ function performBoardWrite(){
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData)
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 			$.getScript(root+"/js/jquery.MultiFile.js");
 			$.getScript(root+"/js/jquery.js");
 			$.getScript(root+"/js/jquery-ui.js");
@@ -199,7 +199,7 @@ function performBoardRead(board_num,pageNumber){
 			
 			$("#centerContents").html(realData);
 			$.getScript(root+"/js/jquery-ui.js");
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -219,7 +219,7 @@ function performBoardUpdate(board_num,pageNumber){
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 			$.getScript(root+"/js/jquery-ui.js");
 		},
 		error:function(xhr,status,error){

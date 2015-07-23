@@ -110,7 +110,7 @@ function indimuse(artist_id){
 					var realData = data.split("<body>");
 					realData = realData[1].split("</body>")[0];
 					$("#centerContents").html(realData);
-					history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+					history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 				}
 			});
 	}else{
@@ -131,7 +131,7 @@ function goinmuse(muse_name){
 					var realData = data.split("<body>");
 					realData = realData[1].split("</body>")[0];
 					$("#centerContents").html(realData);
-					history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+					history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 				}
 			});
 	}else{
@@ -148,7 +148,7 @@ function logupmuse(){
 			var realData = data.split("<body>");
 			realData = realData[1].split("</body>")[0];
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		}
 	});
 }
@@ -164,7 +164,7 @@ function membermuse(muse_name,check){
 			var realData = data.split("<body>");
 			realData = realData[1].split("</body>")[0];
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		}
 	})
 }
@@ -180,7 +180,7 @@ function guestmuse(muse_name){
 			var realData = data.split("<body>");
 			realData = realData[1].split("</body>")[0];
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		}
 	})
 }
@@ -196,7 +196,7 @@ function guestboardmuse(muse_name){
 			var realData = data.split("<body>");
 			realData = realData[1].split("</body>")[0];
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		}
 	})
 }
@@ -212,7 +212,7 @@ function deleteMuse(muse_name, artist_id){
 			var realData = data.split("<body>");
 			realData = realData[1].split("</body>")[0];
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		}
 	})
 }
@@ -230,7 +230,7 @@ function perform(){
 			var realData = data.split("<body>");
 			realData = realData[1].split("</body>")[0];
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		}
 	})
 }
@@ -254,7 +254,7 @@ function createMuse(){
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData)
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error); 

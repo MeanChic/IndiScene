@@ -94,15 +94,15 @@
 		</div>
 		<div class="form-controlMarket" style= text-align:center;>
 			<div class="marketBoardInterval04">
-				<input class="btn btn-default" type="button" value="Modify" onclick="javascript:marketBoardUpdateOk('${root}')">
+				<input class="btn btn-default" type="button" value="Modify" onclick="javascript:uploadUpdateOk('${root}')">
 				<input class="btn btn-default" type="reset" value="Reset"/>
 			</div>
 		</div>
-	</form>
 		
 		<input type="hidden" id="root" value="${root}"/>
 		<input type="hidden" id="uploadPath" value=""/>
 		<input type="hidden" id="originalMusicPath" value="${board.file_path}"/> 
+	</form>
 		<script type="text/javascript">
 			$("#recordBox").css($("#recordButton").css("height"));
 			 $("#prevListen").bind("click",function(){

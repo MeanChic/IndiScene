@@ -12,7 +12,7 @@ function museWrite(root,boardNum,pageNumber,museName){
 			realData = realData[1].split("</body>")[0];
 		//	alert(realData);
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 			$.getScript(root+"/js/recorderjs/recorderInit.js");
 			$.getScript(root+"/js/recorderjs/recorder.js");
 		},
@@ -71,7 +71,7 @@ function museList(root,pageNumber,museName){
 			realData = realData[1].split("</body>")[0];
 		//	alert(realData);
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -90,7 +90,7 @@ function museRead(root,boardNum,currentPage,museName){
 			realData = realData[1].split("</body>")[0];
 		//	alert(realData);
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -107,7 +107,7 @@ function museUpdate(root, boardNum, currentPage,museName){
 			var realData = data.split("<body>");
 			realData = realData[1].split("</body>")[0];
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -153,7 +153,7 @@ function museDelete(root,boardNum,currentPage,museName){
 			var realData = data.split("<body>");
 			realData = realData[1].split("</body>")[0];
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"","/indiscene/KOSTA");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);

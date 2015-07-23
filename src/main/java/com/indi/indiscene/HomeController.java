@@ -56,6 +56,11 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value="/KOSTA")
+	public String mainPage(){
+		return "Main";
+	}
+	
 	@RequestMapping(value="/perform/enter.do", method=RequestMethod.GET)
 	public ModelAndView enterBoard(HttpServletRequest request, HttpServletResponse response){
 		logger.info("MarketBoardWrite------------------------------");
