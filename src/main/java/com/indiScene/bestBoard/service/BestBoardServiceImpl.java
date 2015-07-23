@@ -99,12 +99,17 @@ public class BestBoardServiceImpl implements BestBoardService {
 			HashMap<String, String> hMap = new HashMap<String,String>();
 			hMap.put("artist_id",id);
 			hMap.put("board_num", musicList[i]);
-			check+= dao.musicAppend(hMap);
+			int value=0;
+			value=dao.musicAppend(hMap);
+			System.out.println(value);
+			check+= value;
 			
-			if(musicList[i].charAt(0)=='u')
-				dtoList.add(dao.getAppendMusic(musicList[i]));
-			else if(musicList[i].charAt(0)=='m')
-				dtoList.add(dao.getAppendMusicMuse(musicList[i]));
+			if(value>0){
+				if(musicList[i].charAt(0)=='u')
+					dtoList.add(dao.getAppendMusic(musicList[i]));
+				else if(musicList[i].charAt(0)=='m')
+					dtoList.add(dao.getAppendMusicMuse(musicList[i]));
+			}
 		}
 		
 		response.setContentType("text/html; charset=UTF-8");

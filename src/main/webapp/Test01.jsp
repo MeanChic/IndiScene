@@ -101,7 +101,7 @@
 		<div id="audioListDiv" class="audioList" style="display:none">
 			<a class="musicClick" style="cursor:pointer;">
 				<span class="musicSubject" style="font-weight: bord;"></span><br/>
-				<span class="artistName" style="color:gray"></span>
+				<span class="artistName" style="color:gray" ></span>
 				<input type="hidden" value="" class="sourcePath"/>
 				<input type="hidden" value="" class="musicBoardNum"/>
 			</a>
@@ -204,6 +204,10 @@
 	
 <script type="text/javascript">
 
+
+/* playList */
+
+/* playList */
 /******** tootip ********/
 /* Menu Bar */
 $(document).ready(function(){
@@ -295,8 +299,7 @@ $('.sub-nav .close').on('click', function(e) {
 /* music list */
 $('#music-expander').on('click', function(e) {
 	e.preventDefault();
-	$('.music-nav').toggleC
-lass('music-expanded');
+	$('.music-nav').toggleClass('music-expanded');
 });
 $('.music-nav .close').on('click', function(e) {
 	e.preventDefault();

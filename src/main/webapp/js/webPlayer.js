@@ -152,10 +152,12 @@
 			success:function(data){
 				var gettedMusicList = data.split("<end>");
 				alert(gettedMusicList[0]);
+				alert(data);
+				alert(gettedMusicList.length);
 				
 				for(var i =1; i<gettedMusicList.length-1; i++){
 					var gettedMusicInfo = gettedMusicList[i].split("<cut>");
-//					alert(gettedMusicList[i]);
+					alert(gettedMusicList[i]);
 					var audioListDiv = $("#audioListDiv").clone();
 					$(audioListDiv).attr("class","audioList");
 					$(audioListDiv).find(".musicSubject").text(gettedMusicInfo[0]);
@@ -173,7 +175,7 @@
 				$(".listDelete").click(function(){
 //					alert(root+"\n"+artist_id+"\n"+$(this).prev().children(".musicBoardNum").val());
 					var musicBoardNum = $(this).prev().children(".musicBoardNum").val();
-					alert(musicBoardNum);
+//					alert(musicBoardNum);
 					$(this).parents("div.audioList").remove();
 					$.ajax({
 						url:root+"/webPlayer/musicListDelete.do?artist_id="+artist_id+"&boardNum="+musicBoardNum,
@@ -225,7 +227,7 @@
 				$(".listDelete").click(function(){
 //					alert(root+"\n"+artist_id+"\n"+$(this).prev().children(".musicBoardNum").val());
 					var musicBoardNum = $(this).prev().children(".musicBoardNum").val();
-					alert(musicBoardNum);
+//					alert(musicBoardNum);
 					$(this).parents("div.audioList").remove();
 					$.ajax({
 						url:root+"/webPlayer/musicListDelete.do?artist_id="+artist_id+"&boardNum="+musicBoardNum,
