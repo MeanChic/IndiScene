@@ -48,15 +48,6 @@ function uploadWriteOk(root){
 }
 
 function record(){
-/*	if($("#recordButton > img").attr("src")==root+"/resources/uploadBoard/Mic.jpg"){
-		$("#recordButton > img").attr("src",root+"/resources/uploadBoard/Mic2.jpg");
-		recorderSetting();
-		$("#recordBox").css("display","inline");
-	}else{
-		$("#recordButton > img").attr("src",root+"/resources/uploadBoard/Mic.jpg");
-		$("#recordBox").css("display","none");
-	}*/
-	
 	var recordImgVar = document.getElementById("recordToggleImg");
 	
 	toggleRecording(recordImgVar);

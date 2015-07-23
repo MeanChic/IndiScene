@@ -20,7 +20,16 @@
 	<div class="marketBoardAttribute02 marketBoardInterval03">
 		<div class="form-controlBoard">
 			<label class="boardlabelBlock marketBoardSize4 label-colorO marketBoardAttribute01">
-				<input type="checkbox" class="" autocomplete="off"/>
+				<input type="checkbox" id="checkAll" class="" autocomplete="off"/>
+				<script type="text/javascript">
+					$("#checkAll").click(function(){
+						if(!$("#checkAll").prop("checked")){
+							
+						}else{
+							
+						}
+					});
+				</script>
 			</label>
 			<label class="boardlabelBlock marketBoardSize46 label-colorO marketBoardAttribute01">Subject</label>
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Writer</label>
