@@ -61,7 +61,7 @@
 				<a class="btn btn-info form-inlineblockButton form-controller320" href="javascript:record('${artist_id}','${root}')" id="recordButton">
 					<span class="glyphicon glyphicon-record">&nbsp;&nbsp;Record</span>
 				</a>
-				<input class="form-inlineblockButton form-controller320" type="button" id="prevListen" value="Beforehand listening"/>
+				<input class="form-inlineblockButton form-controller320" type="button" id="prevCollaboListen" style="display:none;" value="Beforehand listening"/>
 				<div class="marketBoardAttribute01" id="recordBox" style="display:none;">
 					<img src="${root}/resources/uploadBoard/recB.png" id="recordToggleImg"/>
 				</div>

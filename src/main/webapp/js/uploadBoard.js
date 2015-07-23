@@ -192,8 +192,8 @@ function prepareUploadCollabo(){
 	
 	audio1.src=$("#originalMusicPath").val();
 	
-	$("#prevListen").click(function(){
-		audio2.src=$("#mergeFile").val();
+	$("#prevCollaboListen").click(function(){
+		$("#prevAudio").src=$("#mergeFile").val();
 	});
 	
 	audio1.onloadeddata=function(){
@@ -277,6 +277,14 @@ function prepareUploadCollabo(){
 //		            alert(data);
 	        	$("#mergeFile").val($("#root").val()+data);
 	        	alert("콜라보가 완료되었습니다.");
+	        	$("#prevCollaboListen").css("display","inline-block");
+		        $("#prevCollaboListen").val(10);
+		        $("#prevCollaboListen").attr("disabled","disabled");
+		        collaboTimer();
+		         
+		        $("#prevCollaboListen").click(function(){
+		        	$("#Recordbars").css("display","block");
+		        });
 	        }, error: function(jqXHR, textStatus, errorThrown) {
 	        	
 	        },
@@ -294,6 +302,17 @@ function prepareUploadCollabo(){
 			audioPlaying=true;
 		}
 	});
+}
+	
+function collaboTimer(){
+	setTimeout(function(){
+		$("#prevCollaboListen").val($("#prevCollaboListen").val()-1);
+		if($("#prevCollaboListen").val()>0) collaboTimer();
+		if($("#prevCollaboListen").val()==0){
+			$("#prevCollaboListen").val("Beforehand Listening");
+			$("#prevCollaboListen").removeAttr("disabled");
+		}
+	},1000);
 }
 
 function uploadCollabo(root, boardNum,pageNumber){
@@ -338,11 +357,6 @@ function uploadCollaboOk(root, boardNum,pageNumber){
         	
         },
     });
-}
-
-function test(){
-//	alert($("#coverImage").val()=="");
-//	alert($("#uploadPath").val()=="");
 }
 
 function uploadLike(root,boardNum,artist_id){
