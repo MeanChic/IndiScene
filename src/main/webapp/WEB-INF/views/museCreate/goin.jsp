@@ -59,7 +59,7 @@ ${muse_name}
 	<c:forEach var="board" items="${boardList}">
 		<div id = "${board.board_num}">
 			<span> ${board.artist_id}</span> <span>${board.register_date}</span> <br/>
-			<span >${board.muse_name}</span> , <span class="con">${board.subject}</span>
+			<span >${board.muse_name}</span> , <a href="javascript:museRead('${root}','${board.board_num}','1','${muse_name}')"><span class="con">${board.subject}</span></a>
 		</div>
 	</c:forEach>
 	<a href="javascript:museList('${root}','1','${muse_name}')">더보기</a>
