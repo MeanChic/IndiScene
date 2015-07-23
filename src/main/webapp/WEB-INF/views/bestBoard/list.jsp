@@ -17,6 +17,25 @@
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:uploadWrite('${root}','0','1')">Write</a>
 	</div>
 	<c:set value="${currentPage}" var="currentPage"/>
+	<c:forEach  items="${boardList}" varStatus="s">
+		<c:set var="market" value="${requestScope.boardList[s.index]}" /> 
+		${[s.index]}
+	</c:forEach>
+	<div class="marketBoardAttribute02 marketBoardInterval03">
+		<div id="bestRank1">
+			<img class="bestRank1" src="" alt="">
+			<div class="bestInfoblock">1st</div>
+		</div>
+		<div id="bestRank2">
+			<img class="bestRank2" src="" alt="">
+			<div class="bestInfoblock">2nd</div>
+		</div>
+		<div id="bestRank3">
+			<img class="bestRank3" src="" alt="">
+			<div class="bestInfoblock">3rd</div>
+		</div>
+	</div>
+	
 	<div class="marketBoardAttribute02 marketBoardInterval03">
 		<div class="form-controlBoard">
 			<label class="boardlabelBlock marketBoardSize4 label-colorO marketBoardAttribute01">

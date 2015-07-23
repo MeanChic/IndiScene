@@ -64,6 +64,14 @@
 	padding:10px;
 }
 
+#bestRank1{ border:solid 1px #FF0000; width:325px; height:425px; display:inline-block; margin:20px; vertical-align:bottom; padding-bottom:100px; }
+#bestRank2{ border:solid 1px #FF5E00; width:200px; height:300px; display:inline-block; margin:20px; vertical-align:bottom; padding-bottom:100px; }
+#bestRank3{ border:solid 1px #FFBB00; width:175px; height:275px; display:inline-block; margin:20px; vertical-align:bottom; padding-bottom:100px; }
+.bestRank1{ border:solid 1px black; position:relative; bottom:0px; width:325px; height:325px; display:block; margin:0px; }
+.bestRank2{ border:solid 1px black; position:relative; bottom:0px; width:200px; height:200px; display:block; margin:0px; }
+.bestRank3{ border:solid 1px black; position:relative; bottom:0px; width:175px; height:175px; display:block; margin:0px; }
+.bestInfoblock{ border:solid 1px blue; height:95px; vertical-align:bottom; }
+
 .cke_contents{ min-height:350px; }
 .form-controlBoard{ display:block; margin-top:10px; margin-bottom:10px; }
 .form-controlBoard .label-color{ color:#151515; }
