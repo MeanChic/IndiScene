@@ -21,7 +21,7 @@
 					<input type="submit" value="검색" id="searchStyle"/>
 				</form>
 			</div>
-			<hr id="zipcodeHr">
+			<hr>
 			<c:if test="${list==null }">
 				<div id="noSearch" align="center" >
 					검색결과가 없습니다.
@@ -30,7 +30,7 @@
 			
 			<c:if test="${list!=null }">
 				<div align="center">
-					<table>				
+					<table id="zipcodeContents">				
 						<c:forEach var="zipcode" items="${list }">
 							<tr>
 								<td>

@@ -28,13 +28,12 @@ form div input{ width:200px; display:inline-block; }
 }
 /* Id check 창 */
 .duplicateWindow {
-    width: 250px;
-    height: 100px;
     margin-left: 40px;
+    margin-right: 40px;
     border: solid 1px #FF890A;
     background: #FFFFFF;
-    border-radius: 15px;/* 모서리 곡선도 */
-        margin-top: 0.7em;
+    border-radius: 15px;
+    margin-top: 0.7em;
 }
 .zipcodeForm {
     border: solid 0.5em #A69999;
@@ -44,13 +43,15 @@ form div input{ width:200px; display:inline-block; }
     margin-top: 1.0em;
     margin-bottom: 2.0em;
     border-radius: 30px;
-    height: 380px;
+
 }
 #noSearch{
 	margin-top: 9.0em;
+	height: 
 }
 .zipcodeContent {
     margin-top: 2em;
+    
 }
 .duplicateWindow .form-controlArtist{ display:block; margin-top:10px; margin-bottom:10px; }
 .duplicateWindow .form-controlArtist .form-inlineblockButton { display:inline-block; background-color:#324053; color:#ffffff; }
