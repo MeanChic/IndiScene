@@ -18,6 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 	<link rel="stylesheet" type="text/css" href="${root}/css/marketboard.css"/>
 	<link href="${root}/css/marketBoard1.css" rel="stylesheet">
+	<link href="${root}/css/jquery-ui.css" rel="stylesheet">
 	
 	
 	
@@ -119,7 +120,11 @@
 	<!-- Header Part start -->
 	<div class="navbar navbar-head">
 		<div class="navbar-inner">
+			<img class="logo logoDouplicate" src="${root}/css/images/logo-full.png" alt="logo">
+			
 			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><span class="glyphicon glyphicon-list" onclick=></span>&nbsp;&nbsp;Menu</a>
+	
+			
 			<c:choose>
 				<c:when test="${artist_id ==null}">
 					<a href="#" id="loginButton" class="sub-expander pull-right btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a>

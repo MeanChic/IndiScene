@@ -199,15 +199,19 @@ $(function(){
 	})
 	
 	$("input[name='registerOk']").click(function(){
-		var sendData="artist_id="+$("input[name='artist_id']").val()+"&artist_password="+$("input[name='artist_password']").val()+"&artist_name="+$("input[name='artist_name']").val()+"&artist_nickname="+$("input[name='artist_nickname']").val()+"&artist_phone="+$("input[name='artist_phone']").val()+"&artist_zipcode="+$("input[name='artist_zipcode']").val()+"&artist_address="+$("input[name='artist_address']").val()+"&artist_birth="+$("input[name='artist_birth']").val()+"&artist_picture="+$("input[name='artist_picture']").val();
+		var dataSet = new FormData(document.getElementById("artistForm"));
 		$.ajax({
-			data:sendData,
 			url:root+"/artist/register.do",
 			type:"POST",
-			dataType:"json",
+			dataType:"html",
+			data:dataSet,
+			contentType:false,
+			processData:false,
 			success:function(data){
-				/* 회원가입 완료 */
-			}
+				var realData = data.split("<body>");
+				var realData = realData[1].split("</body>")[0];
+				$("#centerContents").html(realData);
+			},
 		})
 	})
 	

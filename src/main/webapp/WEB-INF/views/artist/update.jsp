@@ -12,7 +12,7 @@
 <body>
 <div id="RegisterForm">
 	<h3>My Information Update</h3>
-	<form name="artistForm" class="controlArtistForm" onsubmit="return registerForm(this)">
+	<form name="artistForm" class="controlArtistForm" onsubmit="return registerForm(this)" enctype="multipart/form-data">
 		<div class="form-controlArtist">
 			<label class="form-inlineblock label-color">Id</label>
 		    <div class="form-inlineblock">
