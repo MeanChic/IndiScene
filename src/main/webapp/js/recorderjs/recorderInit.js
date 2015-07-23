@@ -23,6 +23,7 @@ function toggleRecording( e ) {
         audioRecorder.getBuffers( gotBuffers );
 //        $("#recordToggleImg").attr("src",$("#root").val()+"/resources/uploadBoard/recB.png");
         $("#recordButton").css("background","#324053");
+        
     } else {
         // start recording
         if (!audioRecorder)
@@ -32,7 +33,22 @@ function toggleRecording( e ) {
         audioRecorder.record();
 //        $("#recordToggleImg").attr("src",$("#root").val()+"/resources/uploadBoard/rec.png");
         $("#recordButton").css("background","red");
+        $("#prevListen").css("display","none");
+        $("#Recordbars").css("display","none");
     }
+}
+
+function recordTimer(){
+	setTimeout(function(){
+//		$("#prevListen").val(countdown);
+		$("#prevListen").val($("#prevListen").val()-1);
+//		if(countdown>0)Timer(countdown);
+		if($("#prevListen").val()>0) recordTimer();
+		if($("#prevListen").val()==0){
+			$("#prevListen").val("Beforehand Listening");
+			$("#prevListen").removeAttr("disabled");
+		}
+	},1000);
 }
 
 function gotBuffers( buffers ) {
