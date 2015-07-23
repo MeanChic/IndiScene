@@ -180,6 +180,10 @@
 	</div>
 	<!-- Footer section end -->
 	<div id="slider-vertical" class="sliderDispN"></div>
+	<p>
+	 <label for="amount">Volume:</label>
+	 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+	</p>
 	<!-- Music Player start -->
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<a href="" id="music-expander" class="music-expander pull-right btn"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List</a>
