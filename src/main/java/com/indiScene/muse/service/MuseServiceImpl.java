@@ -20,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.muse.dao.MuseDao;
 import com.indiScene.muse.dto.MuseDto;
+import com.indiScene.museBoard.dao.MuseBoardDao;
+import com.indiScene.museBoard.dto.MuseBoardDto;
 import com.indiScene.museGuest.dao.MuseGuestDaoImpl;
 import com.indiScene.museGuest.dto.MuseGuestDto;
 
@@ -38,6 +40,9 @@ public class MuseServiceImpl implements MuseService {
 	
 	@Autowired
 	private MuseGuestDaoImpl guestDao;
+	
+	@Autowired
+	private MuseBoardDao boardDao;
 	private final Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	/**
@@ -377,12 +382,16 @@ public class MuseServiceImpl implements MuseService {
 		hmap.put("startpage", 0);
 		hmap.put("endpage", 4);
 		hmap.put("muse_name", muse_name);
+		hmap.put("startRow", 0);
+		hmap.put("endRow", 4);
 		
 		List<MuseGuestDto> list = guestDao.getList(hmap);
+		List<MuseBoardDto> boardlist = boardDao.getBoardList(hmap);
 		//logger.info("-- list : " + list.size());
 		
 		mav.addObject("muse_name", muse_name);
 		mav.addObject("list", list);
+		mav.addObject("boardList",boardlist);
 		
 		mav.setViewName("museCreate/goin");
 	}

@@ -55,7 +55,6 @@ public class MuseDaoImpl implements MuseDao {
 	 * @description :	회원이 기존에 muse를 개설했는지 확인하는 method
 	 */
 	public MuseDto museCheck(String artist_id){
-		
 		return sqlSession.selectOne("dao.MuseMapper.museCheck",artist_id);
 	}
 	

@@ -35,7 +35,7 @@ public class MuseBoardDaoImpl implements MuseBoardDao {
 	}
 
 	@Override
-	public List<MuseBoardDto> getBoardList(HashMap<String,Integer> rowMap) {
+	public List<MuseBoardDto> getBoardList(HashMap<String,Object> rowMap) {
 		return sqlSession.selectList("dao.MuseBoardMapper.getBoardList", rowMap);
 	}
 

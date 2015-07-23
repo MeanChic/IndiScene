@@ -65,7 +65,7 @@
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="myMusic"><a href="#myMusic">My Music</a></li>
+			<li class="myMusic"><a href="myUploadMusic('${root}','${artist_id}','1')">My Music</a></li>
 			<li class="indisMuse"><a href="javascript:indimuse('${artist_id}')">Indi's Muse</a></li>
 		</ul>
 		<hr>

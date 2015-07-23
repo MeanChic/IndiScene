@@ -63,7 +63,7 @@
 		<![CDATA[
 			select * from(
 			select rownum rnum, a.* from(
-			select * from museBoard order by group_num desc, seq_num asc) a)
+			select * from museBoard where muse_name=#{muse_name} order by group_num desc, seq_num asc) a)
 			where rnum>=#{startRow} and rnum <= #{endRow}
 		]]>
 	</select>

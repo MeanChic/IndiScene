@@ -108,7 +108,7 @@ function indimuse(artist_id){
 				dataType:"text",
 				success:function(data){
 					$("#centerContents").html(data);
-					history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+//					history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 				}
 			})
 	}else{
@@ -126,8 +126,9 @@ function goinmuse(muse_name){
 				type:"GET",
 				dataType:"html",
 				success:function(data){
+					alert(data);
 					$("#centerContents").html(data);
-					history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+//					history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 				}
 			})
 	}else{

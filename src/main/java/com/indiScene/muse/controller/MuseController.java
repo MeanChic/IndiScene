@@ -57,7 +57,7 @@ public class MuseController {
 		logger.info("Logup Controller");
 		service.logup(mav);
 		
-		return null;
+		return mav;
 	}
 	
 	/**
