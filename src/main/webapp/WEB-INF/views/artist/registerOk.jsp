@@ -17,13 +17,13 @@
 		<c:when test="${check !=null}">
 			<script type="text/javascript">
 				alert("Success create an account.");
-				location.href="${root}/Template.jsp";
+				location.href="${root}/Test01.jsp";
 			</script>
 		</c:when>
 		<c:otherwise>
 			<script type="text/javascript">
 				alert("Fail sign up.");
-				location.href="${root}/Template.jsp";
+				location.href="${root}/Test01.jsp";
 			</script>
 		</c:otherwise>
 	</c:choose>

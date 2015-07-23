@@ -136,7 +136,10 @@
 						</div>
 					</div>
 				</div>
-					<a href="#" id="updateloginButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;PIM</a>
+					<script type="text/javascript">
+						moveToMain('${root}','${artist_id}');
+					</script>
+					<a href="#" id="updateloginButton" class="sub-expander btn btn-info btn-lg"><img src="" style="width:1.54em;height:2.0em;" id="profilePicture"/><span></span></a>
 					<a id="logoutButton" class="nav-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a>
 				</c:otherwise>
 			</c:choose>

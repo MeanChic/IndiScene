@@ -2,12 +2,14 @@ package com.indiScene.artist.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -193,6 +195,7 @@ public class ArtistServiceImpl implements ArtistService {
 		HttpServletRequest request=(HttpServletRequest)map.get("request");
 		String artist_id=request.getParameter("artist_id");
 		String artist_password=request.getParameter("artist_password");
+		System.out.println(artist_id + "\t" + artist_password);
 		
 		HashMap<String,String> hMap=new HashMap<String,String>();
 		hMap.put("artist_id", artist_id);
@@ -234,5 +237,26 @@ public class ArtistServiceImpl implements ArtistService {
 		mav.addObject("list",list);
 		
 		mav.setViewName("artist/zipcode");
+	}
+
+	@Override
+	public void moveToMain(ModelAndView mav) {
+		logger.info("-----Servlet artist findZipcode-----");
+		//root+"/artist/zipcode.do";
+		Map<String, Object> map=mav.getModelMap();
+		HttpServletRequest request=(HttpServletRequest)map.get("request");
+		HttpServletResponse response=(HttpServletResponse)map.get("response");
+		
+		String artist_id = request.getParameter("artist_id");
+//		System.out.println(artist_id);
+		ArtistDto artistDto = artistDao.select(artist_id);
+		
+		response.setContentType("text/html; charset=UTF-8");
+		try {
+			PrintWriter pw = response.getWriter();
+			pw.write(artistDto.getArtist_picture()+"<cut>"+artistDto.getArtist_nickname());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

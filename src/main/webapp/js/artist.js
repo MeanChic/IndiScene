@@ -212,7 +212,7 @@ $(function(){
 				var realData = realData[1].split("</body>")[0];
 				$("#centerContents").html(realData);
 			},
-		})
+		});
 	})
 	
 	$("#loginButton").click(function(){
@@ -272,16 +272,20 @@ $(function(){
 	})
 	
 	$("input[name='updateOk']").click(function(){
-		var sendData="artist_id="+$("input[name='artist_id']").val()+"&artist_password="+$("input[name='artist_password']").val()+"&artist_name="+$("input[name='artist_name']").val()+"&artist_nickname="+$("input[name='artist_nickname']").val()+"&artist_phone="+$("input[name='artist_phone']").val()+"&artist_zipcode="+$("input[name='artist_zipcode']").val()+"&artist_address="+$("input[name='artist_address']").val()+"&artist_birth="+$("input[name='artist_birth']").val()+"&artist_picture="+$("input[name='artist_picture']").val()+"&artist_level="+$("input[name='artist_level']").val();
+		var dataSet = new FormData(document.getElementById("artistForm"));
 		$.ajax({
-			data:sendData,
 			url:root+"/artist/update.do",
 			type:"POST",
-			dataType:"json",
+			dataType:"html",
+			data:dataSet,
+			contentType:false,
+			processData:false,
 			success:function(data){
-				/* 개인정보 수정 완료 */
-			}
-		})
+				var realData = data.split("<body>");
+				var realData = realData[1].split("</body>")[0];
+				$("#centerContents").html(realData);
+			},
+		});
 	})
 	
 	$("#artistDelete").click(function(){
@@ -290,12 +294,12 @@ $(function(){
 			type:"GET",
 			dataType:"html",
 			success:function(data){
-//				var realData = data.split("<body>");
-//				var realData = realData[1].split("</body>")[0];
+				var realData = data.split("<body>");
+				var realData = realData[1].split("</body>")[0];
 //				$("#artistRegister").append(data);
-				$("#centerContents").html(data);
+				$("#centerContents").html(realData);
 			}
-		})
+		});
 	})
 	
 	$("#indisMusic").click(function(){
@@ -315,7 +319,7 @@ $(function(){
 		})
 	})
 	
-	$("input[name='updateOk']").click(function(){
+	/*$("input[name='updateOk']").click(function(){
 		var sendData="artist_id="+$("input[name='artist_id']").val()+"&artist_password="+$("input[name='artist_password']").val()+"&artist_name="+$("input[name='artist_name']").val()+"&artist_nickname="+$("input[name='artist_nickname']").val()+"&artist_phone="+$("input[name='artist_phone']").val()+"&artist_zipcode="+$("input[name='artist_zipcode']").val()+"&artist_address="+$("input[name='artist_address']").val()+"&artist_birth="+$("input[name='artist_birth']").val()+"&artist_picture="+$("input[name='artist_picture']").val()+"&artist_level="+$("input[name='artist_level']").val();
 		$.ajax({
 			data:sendData,
@@ -323,14 +327,42 @@ $(function(){
 			type:"POST",
 			dataType:"json",
 			success:function(data){
-				/* 개인정보 수정 완료 */
+				 개인정보 수정 완료 
 			}
 		})
-	})
+	})*/
 	
 	$("button[name='delete']").click(function(){
 		location.href=root+"/artist/delete.do";
 	})
 })
 
+function moveToMain(root,artist_id){
+	$.ajax({
+		url:root+"/mainPage.do?artist_id="+artist_id,
+		type:"GET",
+		dataType:"text",
+		success:function(data){
+			var splittedData = data.split("<cut>");
+			$("#profilePicture").attr("src",root+splittedData[0]);
+			$("#profilePicture").next().text(splittedData[1]);
+		}
+	});
+}
 
+function artistLogIn(root){
+	var dataSet = new FormData(document.getElementById("artistLoginForm2"));
+	$.ajax({
+		url:root+"/artist/login.do",
+		type:"POST",
+		dataType:"html",
+		data:dataSet,
+		contentType:false,
+		processData:false,
+		success:function(data){
+			var realData = data.split("<body>");
+			var realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
+		},
+	});
+}
