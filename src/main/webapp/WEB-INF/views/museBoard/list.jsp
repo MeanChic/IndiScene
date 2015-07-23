@@ -22,7 +22,7 @@
 			<label class="boardlabelBlock marketBoardSize4 label-colorO marketBoardAttribute01">
 				<input type="checkbox" class="" autocomplete="off"/>
 			</label>
-			<label class="boardlabelBlock marketBoardSize46 label-colorO marketBoardAttribute01">Subject</label>
+			<label class="boardlabelBlock marketBoardSize46 label-colorO marketBoardAttribute01 marketBoardY-location02">Subject</label>
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Writer</label>
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Date</label>
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Views</label>

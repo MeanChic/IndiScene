@@ -20,7 +20,7 @@
 	<div class="marketBoardAttribute02 marketBoardInterval03">
 		<div class="form-controlBoard">
 			<label class="boardlabelBlock marketBoardSize4 label-colorO marketBoardAttribute01">
-				<input type="checkbox" id="checkAll" class="" autocomplete="off"/>
+				<input type="checkbox" id="checkAll" class="musicCheckBox" autocomplete="off"/>
 				<script type="text/javascript">
 					$("#checkAll").click(function(){
 						if(!$("#checkAll").prop("checked")){
