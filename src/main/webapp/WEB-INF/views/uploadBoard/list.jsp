@@ -24,9 +24,15 @@
 				<script type="text/javascript">
 					$("#checkAll").click(function(){
 						if(!$("#checkAll").prop("checked")){
-							
+							$(".musicCheckBox").each(function(){
+								$(this).prop("checked","true");
+							});
 						}else{
-							
+							if($(".musicCheckBox:checked").length == $(".musicCheckBox").length){
+								$(".musicCheckBox").each(function(){
+									$(this).prop("checked","false");
+								});
+							}
 						}
 					});
 				</script>
