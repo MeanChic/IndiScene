@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="SecessionForm" style="background-color:white;">
-	<h2 >회원탈퇴</h2>
+	<h2 id="h2">회원탈퇴</h2>
 		<form class="controlArtistForm" action="${root }/artist/delete.do" method="post" onsubmit="return deleteCheck(this)">
 			<br/><br/>
 		<!-- 	<div id="secsseionForm">
@@ -24,33 +24,33 @@
 		 -->
 		 <!-- 회원탈퇴 창 -->
 		 <div id="secsseionForm">
-		 	회원탈퇴 신청에 앞서 아래의 사항을 반드시 확인하시기 바랍니다.
-		 </div>
-		 <div class="line hLine608"></div>
-		 <div class="ruleBox basic"> 
-		 	<div class="rule">1. 회원탈퇴 시 회원님의 소중한 개인정보 및 이용정보가 영구 삭제되어 복구가 불가능합니다.</div> 
-			<div class="rule">2.IndiScene아이디로 사용하셨던 서비스의 이용이 불가능하게 됩니다.</div> 
-		 </div>	
-		 <!--  -->
-			<div class="form-controlArtist">	
-				<label class="form-inlineblock label-color">ID</label>
-			    <div class="form-inlineblock">
-					<input class="form-inlineblock form-controller320" name="artist_idView"  value="${artist_id}" disabled="disabled"/>
-					<input type="hidden" name="artist_id"  value="${artist_id}"/>
+		 	<div class="ruleBoax basic">회원탈퇴 신청에 앞서 아래의 사항을 반드시 확인하시기 바랍니다.</div>
+			<div class="line hLine608"><hr></div>
+			<div class="ruleBox basic"> 
+			 	<div class="rule">1. 회원탈퇴 시 회원님의 소중한 개인정보 및 이용정보가 영구 삭제되어 복구가 불가능합니다.</div> 
+				<div class="rule">2.IndiScene아이디로 사용하셨던 서비스의 이용이 불가능하게 됩니다.</div> 
+			</div>	
+			 <!--  -->
+				<div class="form-controlArtist">	
+					<label class="form-inlineblock label-color">ID</label>
+				    <div class="form-inlineblock">
+						<input class="form-inlineblock form-controller320" name="artist_idView"  value="${artist_id}" disabled="disabled"/>
+						<input type="hidden" name="artist_id"  value="${artist_id}"/>
+					</div>
 				</div>
-			</div>
-			<div class="form-controlArtist">
-				<label class="form-inlineblock label-color">Password</label>
-			    <div class="form-inlineblock">
-					<input class="form-inlineblock form-controller320" type="password" name="artist_password"/>
+				<div class="form-controlArtist">
+					<label class="form-inlineblock label-color">Password</label>
+				    <div class="form-inlineblock">
+						<input class="form-inlineblock form-controller320" type="password" name="artist_password"/>
+					</div>
 				</div>
-			</div>
-			<div class="form-controlArtist" style="">
-	    		<div class="marginCenter marketBoardX-location01">
-					<input type="submit" class="btn btn-default marketBoardAttribute01" value="Byebye"/>
-					<input type="button" class="btn btn-default marketBoardAttribute01" value="Cancel"/>
+				<div class="form-controlArtist" style="">
+		    		<div class="marginCenter marketBoardX-location01">
+						<input type="submit" class="btn btn-default marketBoardAttribute01" value="Byebye"/>
+						<input type="button" class="btn btn-default marketBoardAttribute01" value="Cancel"/>
+					</div>
 				</div>
-			</div>
+		</div>	
 		</form>
 	</div>
 </body>

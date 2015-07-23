@@ -217,9 +217,7 @@ input#searchWord {/*검색창  */
    color: rgb(121, 121, 121);
   border-color: rgb(121, 121, 121);
   border: 2px solid;
-  
 }
-
 
  form#searchForm {
   padding-top: 5.0em;
@@ -267,13 +265,15 @@ input#MainSearchBtn {
 	width: 5.0em;
 	height: 2.0em;
 }
- h2 {
+/* Artist Delete.jsp */
+ h2 ,#h2{
   font-family: -webkit-body;
   color: #FB6816;
   font-weight: bold;
 }
 #FreeLabel{
-	
 	color: black;
-	
+}
+.ruleBox.basic {
+  color: rgb(105, 101, 101);
 }
