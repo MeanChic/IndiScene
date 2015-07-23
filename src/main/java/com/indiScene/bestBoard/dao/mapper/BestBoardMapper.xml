@@ -67,4 +67,8 @@
 	<delete id="musicListDelete" parameterType="java.util.HashMap">
 		<![CDATA[delete from storage_list where board_num=#{board_num} and artist_id=#{artist_id}]]>
 	</delete>
+	
+	<delete id="deleteOnList" parameterType="java.util.HashMap">
+		<![CDATA[delete from storage_list where board_num=#{board_num}]]>
+	</delete>
 </mapper>

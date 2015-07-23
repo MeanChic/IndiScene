@@ -51,7 +51,9 @@ public class MuseBoardDaoImpl implements MuseBoardDao {
 
 	@Override
 	public int delete(HashMap<String, String> hMap) {
-		return sqlSession.delete("dao.MuseBoardMapper.delete",hMap);
+		int check = sqlSession.delete("dao.MuseBoardMapper.delete",hMap);
+		sqlSession.delete("dao.BestMapper.deleteOnList",hMap);
+		return check;
 	}
 
 	@Override
