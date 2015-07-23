@@ -46,7 +46,6 @@
 
 		// 주소로 좌표를 검색합니다
 		var address = document.getElementById('address').value;
-		
 		lat = address.split("(")[1].split(",")[0];
 		lng = address.split("(")[1].split(",")[1].split(")")[0];
 		
