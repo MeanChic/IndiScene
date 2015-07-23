@@ -11,6 +11,7 @@ function uploadWrite(root,boardNum,pageNumber){
 			$("#centerContents").html(realData);
 			$.getScript(root+"/js/recorderjs/recorderInit.js");
 			$.getScript(root+"/js/recorderjs/recorder.js");
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -65,6 +66,7 @@ function uploadList(root,pageNumber){
 			realData = realData[1].split("</body>")[0];
 		//	alert(realData);
 			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -83,6 +85,7 @@ function uploadRead(root,boardNum,currentPage){
 			realData = realData[1].split("</body>")[0];
 		//	alert(realData);
 			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -99,6 +102,7 @@ function uploadUpdate(root, boardNum, currentPage){
 			var realData = data.split("<body>");
 			realData = realData[1].split("</body>")[0];
 			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -140,6 +144,7 @@ function uploadDelete(root,boardNum,currentPage){
 			var realData = data.split("<body>");
 			realData = realData[1].split("</body>")[0];
 			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -291,6 +296,7 @@ function uploadCollabo(root, boardNum,pageNumber){
 			$("#centerContents").html(realData);
 			$.getScript(root+"/js/recorderjs/recorderInit.js");
 			$.getScript(root+"/js/recorderjs/recorder.js");
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -351,6 +357,7 @@ function bestList(root,pageNumber){
 			realData = realData[1].split("</body>")[0];
 		//	alert(realData);
 			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -369,6 +376,7 @@ function bestRead(root,boardNum,currentPage){
 			realData = realData[1].split("</body>")[0];
 		//	alert(realData);
 			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -387,6 +395,7 @@ function brandNewList(root,pageNumber){
 			realData = realData[1].split("</body>")[0];
 		//	alert(realData);
 			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -405,6 +414,7 @@ function brandNewRead(root,boardNum,currentPage){
 			realData = realData[1].split("</body>")[0];
 		//	alert(realData);
 			$("#centerContents").html(realData);
+			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
