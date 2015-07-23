@@ -341,7 +341,7 @@ function uploadCollaboOk(root, boardNum,pageNumber){
 
 function test(){
 //	alert($("#coverImage").val()=="");
-	alert($("#uploadPath").val()=="");
+//	alert($("#uploadPath").val()=="");
 }
 
 function uploadLike(root,boardNum,artist_id){
@@ -488,3 +488,7 @@ function showAttribute(obj){
 		 alert(e.message);
 	 }
 }
+
+$("#prevListen").bind("click",function(){
+	$("#prevAudio").attr("src",$("#uploadPath").val());
+}); 

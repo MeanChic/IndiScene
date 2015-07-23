@@ -103,15 +103,6 @@
 	
 	<input type="hidden" id="root" value="${root}"/>
 	<input type="hidden" id="originalMusicPath" value=""/> 
-	<script type="text/javascript">
-		$("#recordBox").css($("#recordButton").css("height"));
-		$("#prevListen").bind("click",function(){
-			$("#prevAudio").attr("src",$("#uploadPath").val());
-		}); 
-		/* $("#prevListen").click(function(){
-			window.open('webPlayer.jsp','target_name','scrollbars=yes,toolbar=yes,resizable=yes,width=100,height=100,left=0,top=0');
-		}); */
-	</script>
 </div>
 </body>
 </html>
