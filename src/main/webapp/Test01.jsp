@@ -295,7 +295,7 @@ $('.sub-nav .close').on('click', function(e) {
 /* music list */
 $('#music-expander').on('click', function(e) {
 	e.preventDefault();
-	$('.music-nav').toggleC
+$('.music-nav').toggleC
 lass('music-expanded');
 });
 $('.music-nav .close').on('click', function(e) {
