@@ -10,10 +10,6 @@
 <meta charset="UTF-8">
 </head>
 <body>
-<c:forEach  items="${boardList}" varStatus="s">
-		<c:set var="market" value="${requestScope.boardList[s.index]}" /> 
-		${market.board_num}
-</c:forEach>
 	
 <div id="bestBoard">
 	<h2>Best Music</h2>
@@ -23,19 +19,33 @@
 	</div>
 	<c:set value="${currentPage}" var="currentPage"/>
 	
+
 	<div class="marketBoardAttribute02 marketBoardInterval03">
+	<c:forEach  items="${boardList}" varStatus="s">
+		<c:set var="market" value="${requestScope.boardList[s.index]}" /> 
+		
+		${s.index} ,${root}${requestScope.boardList[s.index].image_path },${requestScope.boardList[s.index].subject } 
+		<c:if test="${s.index == 0}">
 		<div id="bestRank1">
-			<img class="bestRank1" src="" alt="">
+			<img class="bestRank1" src="${root}${requestScope.boardList[s.index].image_path }" alt="">
 			<div class="bestInfoblock">1st</div>
 		</div>
+		</c:if>
+		<c:if test="${s.index == 1}">
 		<div id="bestRank2">
-			<img class="bestRank2" src="" alt="">
+			<img class="bestRank2" src="${root}${requestScope.boardList[s.index].image_path }" alt="">
 			<div class="bestInfoblock">2nd</div>
 		</div>
+		</c:if>
+		<c:if test="${s.index == 2}">
 		<div id="bestRank3">
-			<img class="bestRank3" src="" alt="">
+			<img class="bestRank3" src="${root}${requestScope.boardList[s.index].image_path }" alt="">
 			<div class="bestInfoblock">3rd</div>
 		</div>
+		</c:if>
+	</c:forEach>
+	
+		
 	</div>
 	
 	<div class="marketBoardAttribute02 marketBoardInterval03">
