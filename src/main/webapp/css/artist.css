@@ -52,8 +52,15 @@ form div input{ width:200px; display:inline-block; }
 .zipcodeContent {
     margin-top: 2em;
     font-family: Malgun Gothic;
-    
+   
 }
+ a.no-uline { 
+ 	text-decoration:none; 
+ 	margin-bottom: 0.1em;
+ 	margin-top: 0.1em;
+ 	
+ }
+ 
 .duplicateWindow .form-controlArtist{ display:block; margin-top:10px; margin-bottom:10px; }
 .duplicateWindow .form-controlArtist .form-inlineblockButton { display:inline-block; background-color:#324053; color:#ffffff; }
 .duplicateWindow .form-controlArtist .label-color{ color:#151515; font-size:large; }
