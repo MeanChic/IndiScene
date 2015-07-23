@@ -481,7 +481,8 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		File oldImg = new File(dir+"/uploadBoard/cover/",originalDto.getImage_path().substring(originalDto.getImage_path().lastIndexOf("/")+1));
 		File oldMusic = new File(dir+"/uploadBoard/cover/",originalDto.getFile_path().substring(originalDto.getFile_path().lastIndexOf("/")+1));
 		
-		oldImg.delete();
+		if(!originalDto.getImage_path().substring(originalDto.getImage_path().lastIndexOf("/")+1).equals("d2.jpg"))
+			oldImg.delete();
 		oldMusic.delete();
 		
 		int check = dao.delete(hMap);
