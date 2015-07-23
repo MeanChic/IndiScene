@@ -24,7 +24,7 @@
 		 <input type="hidden" id="folderName" name="folderName" />
 			
 		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-				<a href="${root}/performBoard/enterBoard.do">글목록</a>
+				<a href="javascript:enterPerformBoard('${root}','${pageNumber}')">글목록</a>
 		</div>
 		
 			<div class="line">
@@ -58,8 +58,7 @@
 				 $(function(){
 						$( "#datepicker" ).datepicker({
 					    showOn: "button",
-					    buttonImage: "/images/calendar.gif",
-					    buttonImageOnly: true,
+					    buttonImageOnly: false,
 					    buttonText: "Select date",
 					    changeMonth: true,
 					    changeYear: true

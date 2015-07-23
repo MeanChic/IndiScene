@@ -109,13 +109,11 @@
 		
 		
 			<tr>
-				<td align="center" height="20" width="125">파일명</td>
+				<td align="center" height="20" width="125">장소정보</td>
 				<td colspan="3">
 				
 				<div id="map" style="width:300px;height:300px;"></div>
 				${marketBoard.address}
-				</td>
-				 
 				</td>
 			</tr>
 		
