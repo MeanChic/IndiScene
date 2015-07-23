@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.artist.dto.ArtistDto;
@@ -50,10 +51,11 @@ public class ArtistController {
 	 * @description : 회원가입 정보를 받아 Service 클래스에 registerOk 메소드로 Dto를 보낸다.
 	 */
 	@RequestMapping(value="/artist/register.do", method=RequestMethod.POST)
-	public ModelAndView register(HttpServletRequest request, HttpServletResponse response, ArtistDto artistDto){
+	public ModelAndView register(MultipartHttpServletRequest request, HttpServletResponse response, ArtistDto artistDto){
 		logger.info("-----Controller artistRegisterOk----------------------");
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("artistDto",artistDto);
+		mav.addObject("request",request);
 		artistService.registerOk(mav);
 		
 		return mav;

@@ -21,7 +21,7 @@ function toggleRecording( e ) {
         audioRecorder.stop();
         e.classList.remove("recording");
         audioRecorder.getBuffers( gotBuffers );
-        $("#recordToggleImg").attr("src",$("#root").val()+"/resources/uploadBoard/recB.png");
+//        $("#recordToggleImg").attr("src",$("#root").val()+"/resources/uploadBoard/recB.png");
     } else {
         // start recording
         if (!audioRecorder)
@@ -29,7 +29,7 @@ function toggleRecording( e ) {
         e.classList.add("recording");
         audioRecorder.clear();
         audioRecorder.record();
-        $("#recordToggleImg").attr("src",$("#root").val()+"/resources/uploadBoard/rec.png");
+//        $("#recordToggleImg").attr("src",$("#root").val()+"/resources/uploadBoard/rec.png");
     }
 }
 

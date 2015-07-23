@@ -42,7 +42,7 @@
 				<input class="form-controller320" type="file" id="musicFile" name="musicFile" accept="audio/*"/>
 			</div>
 			<div class="form-inlineblock" id="recordInputArea" style="display:none;">
-				<a class="btn btn-info form-inlineblockButton form-controller320" href="javascript:record('${artist_id}','${root}')" id="recordButton">
+				<a class="btn btn-info form-inlineblockButton form-controller320" href="javascript:toggleRecording(this)" id="recordButton">
 					<span class="glyphicon glyphicon-record">&nbsp;&nbsp;Record</span>
 				</a>
 				<div class="marketBoardAttribute01" id="recordBox" style="display:none;">
@@ -59,6 +59,7 @@
 			$("#recordBtn").click(function(){
 				$("#MusicFileUploadButton").css("display","none");
 				$("#recordInputArea").css("display","inline-block");
+				recorderSetting();
 			});
 		</script>
 		<!------- Genre CheckBox ------->

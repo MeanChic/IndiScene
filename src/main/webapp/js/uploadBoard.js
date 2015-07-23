@@ -48,14 +48,12 @@ function uploadWriteOk(root){
 }
 
 function record(artist_id,root){
-	if($("#recordButton > img").attr("src")==root+"/resources/uploadBoard/Mic.jpg"){
-		$("#recordButton > img").attr("src",root+"/resources/uploadBoard/Mic2.jpg");
+//	if($("#recordButton > span").attr("class")=="glyphicon glyphicon-record"){
 		recorderSetting();
-		$("#recordBox").css("display","inline");
-	}else{
-		$("#recordButton > img").attr("src",root+"/resources/uploadBoard/Mic.jpg");
-		$("#recordBox").css("display","none");
-	}
+//		$("#recordBox").css("display","inline");
+//	}else{
+//		$("#recordBox").css("display","none");
+//	}
 }
 
 function uploadList(root,pageNumber){
