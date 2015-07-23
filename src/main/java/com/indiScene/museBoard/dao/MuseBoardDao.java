@@ -10,7 +10,7 @@ public interface MuseBoardDao {
 	public int boardGroupNumberMax();
 	public void boardGroupNumberUpdate(HashMap<String,Integer> hMap);
 	public int getBoardCount();
-	public List<MuseBoardDto> getBoardList(HashMap<String,Integer> rowMap);
+	public List<MuseBoardDto> getBoardList(HashMap<String,Object> rowMap);
 	public MuseBoardDto read(String board_num);
 	public void readCount(String board_num);
 	public int delete(HashMap<String, String> hMap);

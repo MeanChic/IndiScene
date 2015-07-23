@@ -107,10 +107,12 @@ function indimuse(artist_id){
 				type:"GET",
 				dataType:"text",
 				success:function(data){
-					$("#centerContents").html(data);
+					var realData = data.split("<body>");
+					realData = realData[1].split("</body>")[0];
+					$("#centerContents").html(realData);
 					history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 				}
-			})
+			});
 	}else{
 		//alert("없지롱");
 	}	
@@ -126,26 +128,29 @@ function goinmuse(muse_name){
 				type:"GET",
 				dataType:"html",
 				success:function(data){
-					$("#centerContents").html(data);
+					var realData = data.split("<body>");
+					realData = realData[1].split("</body>")[0];
+					$("#centerContents").html(realData);
 					history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 				}
-			})
+			});
 	}else{
 		//alert("없지롱");
 	}	
 }
 
 function logupmuse(){
-	
 	$.ajax({
 		url:rooti+"/museCreate/logup.do",
 		type:"GET",
 		dataType:"html",
 		success:function(data){
-			$("#centerContents").html(data);
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
-	})
+	});
 }
 
 function membermuse(muse_name,check){
@@ -156,7 +161,9 @@ function membermuse(muse_name,check){
 		type:"GET",
 		dataType:"html",
 		success:function(data){
-			$("#centerContents").html(data);
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
 	})
@@ -170,7 +177,9 @@ function guestmuse(muse_name){
 		type:"GET",
 		dataType:"html",
 		success:function(data){
-			$("#centerContents").html(data);
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
 	})
@@ -184,7 +193,9 @@ function guestboardmuse(muse_name){
 		type:"GET",
 		dataType:"html",
 		success:function(data){
-			$("#centerContents").html(data);
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
 	})
@@ -198,7 +209,9 @@ function deleteMuse(muse_name, artist_id){
 		type:"GET",
 		dataType:"html",
 		success:function(data){
-			$("#centerContents").html(data);
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
 	})
@@ -214,7 +227,9 @@ function perform(){
 		type:"GET",
 		dataType:"html",
 		success:function(data){
-			$("#centerContents").html(data);
+			var realData = data.split("<body>");
+			realData = realData[1].split("</body>")[0];
+			$("#centerContents").html(realData);
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		}
 	})

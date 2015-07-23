@@ -54,9 +54,15 @@ ${muse_name}
 		</div>
 	</c:forEach>
 	<a href="javascript:guestboardmuse('${muse_name}')<%-- ${root}/museGuest/guest.do?muse_name=${muse_name} --%>">더보기</a>
-	
 	<br/><br/>
 	게시판=======================================
-	
+	<c:forEach var="board" items="${boardList}">
+		<div id = "${board.board_num}">
+			<span> ${board.artist_id}</span> <span>${board.register_date}</span> <br/>
+			<span >${board.muse_name}</span> , <span class="con">${board.subject}</span>
+		</div>
+	</c:forEach>
+	<a href="javascript:museList('${root}','1','${muse_name}')">더보기</a>
+	<br/><br/>
 </body>
 </html>

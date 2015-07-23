@@ -248,9 +248,10 @@ public class MuseBoardServiceImpl implements MuseBoardService {
 		
 		int count = dao.getBoardCount();
 		
-		HashMap<String,Integer> rowMap = new HashMap<String,Integer>();
+		HashMap<String,Object> rowMap = new HashMap<String,Object>();
 		rowMap.put("startRow", startRow);
 		rowMap.put("endRow", endRow);
+		rowMap.put("muse_name", request.getParameter("muse_name"));
 		
 		List<MuseBoardDto> list= dao.getBoardList(rowMap);
 		

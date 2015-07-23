@@ -47,6 +47,8 @@
 	<script type="text/javascript" src="${root}/js/placeBoard.js"></script>
 	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=35bf5934991976c7b6f95f227c76624f&libraries=services"></script>
 	<script type="text/javascript" src="${root}/js/search.js"></script>
+	<script type="text/javascript" src="${root}/js/myMusic.js"></script>
+	<script type="text/javascript" src="${root}/js/museBoard.js"></script>
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>
@@ -65,7 +67,7 @@
 		</ul>
 		<hr>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="myMusic"><a href="#myMusic">My Music</a></li>
+			<li class="myMusic"><a href="javascript:myUploadMusic('${root}','${artist_id}','1')">My Music</a></li>
 			<li class="indisMuse"><a href="javascript:indimuse('${artist_id}')">Indi's Muse</a></li>
 		</ul>
 		<hr>
@@ -185,6 +187,23 @@
 	<!-- Music Player end -->
 	
 <script type="text/javascript">
+
+/******** tootip ********/
+/* Menu Bar */
+$(document).ready(function(){
+    $('.brandNewMusic').tooltip({title: "최신곡", placement: "bottom"}); 
+    $('.bestMusic').tooltip({title: "Top100", placement: "bottom"}); 
+    $('.indisMusic').tooltip({title: "음악", placement: "bottom"}); 
+    $('.performanceInfo').tooltip({title: "공연/대관 정보", placement: "right"}); 
+    $('.marketPlace').tooltip({title: "중고거래", placement: "right"}); 
+    $('.myMusic').tooltip({title: "회원님의 indiScene활동을 살펴보세요", placement: "right"}); 
+    $('.indisMuse').tooltip({title: "동호회활동", placement: "right"}); 
+    $('.notice').tooltip({title: "공지사항", placement: "right"}); 
+    $('.freeboard').tooltip({title: "자유게시판", placement: "right"}); 
+   
+});
+
+/******** tootip End ********/
 $(document).ready(function(){
 	history.pushState({indiData:($("#centerContents").html())},"제목","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 	window.onpopstate=function(e){
