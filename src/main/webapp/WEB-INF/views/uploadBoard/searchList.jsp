@@ -29,6 +29,7 @@
 				</div>
 			<c:set var="countTotalSearch" value="${countArtistSearch+countSubjectSearch}"/>
 			<h4>통합 검색결과 (${countTotalSearch})건</h4>
+			<br/><br/>
 			<div id="artistSearch">
 				<h4>아티스트 검색결과 (${countArtistSearch})건</h4>
 				<div class="marketBoardAttribute02 marketBoardInterval03">
@@ -68,7 +69,11 @@
 				<c:if test="${countArtistSearch>0 }">
 					<c:choose>
 						<c:when test="${searchType==null}">
-							<a href="">더보기</a>
+							<!-- 
+							<ul id="artistResultTab" class="nav nav-tabs" role="tablist">
+							<li><a href="#artistSearchResult" id="artistMore">더보기</a></li>
+							</ul>
+							 -->
 						</c:when>
 						<c:otherwise>
 					<!-- page Number -->
@@ -143,7 +148,11 @@
 				<c:if test="${countSubjectSearch>0 }">
 					<c:choose>
 						<c:when test="${searchType==null}">
-							<a href="">더보기</a>
+							<!-- 
+							<ul id="subjectResultTab" class="nav nav-tabs" role="tablist">
+							<li><a href="#subjectSearchResult" id="subjectMore">더보기</a></li>
+							</ul>
+							 -->
 						</c:when>
 						<c:otherwise>
 					<!-- page Number -->
@@ -181,8 +190,11 @@
 			</div>
 		</div>
 		<!-- --------------------------------- Total Search Result End ----------------------------------- -->
+		
+		
 		<!-- --------------------------------- Artist Search Result Start ----------------------------------- -->
 			<div role="tabpanel" class="tab-pane fade" id="artistSearchResult" aria-labelledby="artistSearch-tab">
+				<!--artistStart-->
 				<div class="marketBoardX-location02 marketBoardInterval03 marketBoardAttribute01 marginLR15">
 					<input type="button" class="marketBoardAttribute01 btn btn-default pull-left" value="Put In" onclick="musicStorage('${root}','${artist_id}')"/>
 				</div>
@@ -223,51 +235,48 @@
 					</c:if>
 				
 					<c:if test="${countArtistSearch>0 }">
-						<c:choose>
-							<c:when test="${searchType==null}">
-								<a href="">더보기</a>
-							</c:when>
-							<c:otherwise>
 						<!-- page Number -->
-								<nav class="marketBoardX-location01">
-									<ul class="pagination marketBoardAttribute01">
-										<c:if test="${countArtistSearch>0 }">
-											<c:set var="pageBlock" value="${5}"/>
-											<c:set var="pageCount" value="${countArtistSearch/boardSize+(countArtistSearch%boardSize==0 ? 0:1 )}"/>
-											
-											<fmt:parseNumber var="rs" value="${(currentPage-1)/pageBlock }" integerOnly="true"/>
-											<c:set var="startPage" value="${rs*pageBlock+1 }"/>
-											<c:set var="endPage" value="${startPage+pageBlock-1 }"/>
-											
-											<c:if test="${endPage> pageCount }">
-												<c:set var="endPage" value="${pageCount }"/>
-											</c:if>
-											<%----------------------------------------------------------%>
-											<c:if test="${startPage>pageBlock }">
-												<li><a aria-label="Previous" href="javascript:uploadList('${root }','${startPage-pageBlock}')"><span aria-hidden="true">&laquo;</span></a></li>
-											</c:if>
-											
-											<c:forEach var="i" begin="${startPage }" end="${endPage }">
-												<li><a href="javascript:uploadList('${root}','${i}')">${i}</a></li>
-											</c:forEach>
-											
-											<c:if test="${endPage<pageCount }">
-												<li><a aria-label="Next" href="javascript:uploadList('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
-											</c:if>
-										</c:if>
-									</ul>
-								</nav>
-							</c:otherwise>
-						</c:choose>
+						<nav class="marketBoardX-location01">
+							<ul class="pagination marketBoardAttribute01">
+								<c:if test="${countArtistSearch>0 }">
+									<c:set var="pageBlock" value="${5}"/>
+									<c:set var="pageCount" value="${countArtistSearch/boardSize+(countArtistSearch%boardSize==0 ? 0:1 )}"/>
+									
+									<fmt:parseNumber var="rs" value="${(currentPage-1)/pageBlock }" integerOnly="true"/>
+									<c:set var="startPage" value="${rs*pageBlock+1 }"/>
+									<c:set var="endPage" value="${startPage+pageBlock-1 }"/>
+									
+									<c:if test="${endPage> pageCount }">
+										<c:set var="endPage" value="${pageCount }"/>
+									</c:if>
+									<%----------------------------------------------------------%>
+									<c:if test="${startPage>pageBlock }">
+										<li><a aria-label="Previous" href="javascript:artistSearchPageMove('${root }','${startPage-pageBlock}','${searchWord }')"><span aria-hidden="true">&laquo;</span></a></li>
+									</c:if>
+									
+									<c:forEach var="i" begin="${startPage }" end="${endPage }">
+										<li><a href="javascript:artistSearchPageMove('${root}','${i}'),'${searchWord }')">${i}</a></li>
+									</c:forEach>
+									
+									<c:if test="${endPage<pageCount }">
+										<li><a aria-label="Next" href="javascript:artistSearchPageMove('${root}','${startPage+pageBlock }','${searchWord }')"><span aria-hidden="true">&raquo;</span></a></li>
+									</c:if>
+								</c:if>
+							</ul>
+						</nav>
 					</c:if>
 				</div>
+				<!--artistEnd-->
 			</div>
 		<!-- --------------------------------- Artist Search Result End ----------------------------------- -->
+		
 		<!-- --------------------------------- Subeject Search Result Start ----------------------------------- -->
 		<div role="tabpanel" class="tab-pane fade in" id="subjectSearchResult" aria-labelledby="subjectSearch-tab">
+			<!--subjectStart-->
 			<div class="marketBoardX-location02 marketBoardInterval03 marketBoardAttribute01 marginLR15">
 				<input type="button" class="marketBoardAttribute01 btn btn-default pull-left" value="Put In" onclick="musicStorage('${root}','${artist_id}')"/>
 			</div>
+			
 			<div id="subjectSearch">
 				<h4>제목 검색결과(${countSubjectSearch })건</h4>
 				<div class="marketBoardAttribute02 marketBoardInterval03">
@@ -305,61 +314,72 @@
 				</c:if>
 				
 				<c:if test="${countSubjectSearch>0 }">
-					<c:choose>
-						<c:when test="${searchType==null}">
-							<a href="">더보기</a>
-						</c:when>
-						<c:otherwise>
 					<!-- page Number -->
-							<nav class="marketBoardX-location01">
-								<ul class="pagination marketBoardAttribute01">
-									<c:if test="${countSubjectSearch>0 }">
-										<c:set var="pageBlock" value="${5}"/>
-										<c:set var="pageCount" value="${countSubjectSearch/boardSize+(countSubjectSearch%boardSize==0 ? 0:1 )}"/>
-										
-										<fmt:parseNumber var="rs" value="${(currentPage-1)/pageBlock }" integerOnly="true"/>
-										<c:set var="startPage" value="${rs*pageBlock+1 }"/>
-										<c:set var="endPage" value="${startPage+pageBlock-1 }"/>
-										
-										<c:if test="${endPage> pageCount }">
-											<c:set var="endPage" value="${pageCount }"/>
-										</c:if>
-										<%----------------------------------------------------------%>
-										<c:if test="${startPage>pageBlock }">
-											<li><a aria-label="Previous" href="javascript:uploadList('${root }','${startPage-pageBlock}')"><span aria-hidden="true">&laquo;</span></a></li>
-										</c:if>
-										
-										<c:forEach var="i" begin="${startPage }" end="${endPage }">
-											<li><a href="javascript:uploadList('${root}','${i}')">${i}</a></li>
-										</c:forEach>
-										
-										<c:if test="${endPage<pageCount }">
-											<li><a aria-label="Next" href="javascript:uploadList('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
-										</c:if>
-									</c:if>
-								</ul>
-							</nav>
-						</c:otherwise>
-					</c:choose>
+					<nav class="marketBoardX-location01">
+						<ul class="pagination marketBoardAttribute01">
+							<c:if test="${countSubjectSearch>0 }">
+								<c:set var="pageBlock" value="${5}"/>
+								<c:set var="pageCount" value="${countSubjectSearch/boardSize+(countSubjectSearch%boardSize==0 ? 0:1 )}"/>
+								
+								<fmt:parseNumber var="rs" value="${(currentPage-1)/pageBlock }" integerOnly="true"/>
+								<c:set var="startPage" value="${rs*pageBlock+1 }"/>
+								<c:set var="endPage" value="${startPage+pageBlock-1 }"/>
+								
+								<c:if test="${endPage> pageCount }">
+									<c:set var="endPage" value="${pageCount }"/>
+								</c:if>
+								<%----------------------------------------------------------%>
+								<c:if test="${startPage>pageBlock }">
+									<li><a aria-label="Previous" href="javascript:subjectSearchPageMove('${root }','${startPage-pageBlock}','${searchWord }')"><span aria-hidden="true">&laquo;</span></a></li>
+								</c:if>
+								
+								<c:forEach var="i" begin="${startPage }" end="${endPage }">
+									<li><a href="javascript:subjectSearchPageMove('${root}','${i}','${searchWord }')">${i}</a></li>
+								</c:forEach>
+								
+								<c:if test="${endPage<pageCount }">
+									<li><a aria-label="Next" href="javascript:subjectSearchPageMove('${root}','${startPage+pageBlock }','${searchWord }')"><span aria-hidden="true">&raquo;</span></a></li>
+								</c:if>
+							</c:if>
+						</ul>
+					</nav>
 				</c:if>
 			</div>
+			<!--subjectEnd-->
 		</div>
 		<!-- --------------------------------- Subeject Search Result End ----------------------------------- -->
 		</div>
 	</div>
 <script type="text/javascript">
 $('#SearchResultTab a:first').click(function (e) {
-	  e.preventDefault()
-	  $("#totalSearchResult").tab('show')
+	  e.preventDefault();
+	  $("#totalSearchResult").tab('show');
+	  
+	  
 })
 $('#SearchResultTab a:eq(1)').click(function (e) {
-	  e.preventDefault()
-	  $("#artistSearchResult").tab('show')
+	  e.preventDefault();
+	  $("#artistSearchResult").tab('show');
 })
+
 $('#SearchResultTab a:last').click(function (e) {
-	  e.preventDefault()
-	  $("#subjectSearchResult").tab('show')
+	  e.preventDefault();
+	  $("#subjectSearchResult").tab('show');
 })
+
+/* 
+$('#artistResultTab a:first').click(function (e) {
+   	e.preventDefault();
+	  alert("ok");
+	  $("#artistSearchResult").tab('show');
+})
+
+$('#subjectResultTab a:first').click(function (e) {
+	  e.preventDefault();
+	  alert("ok2222");
+	  $("#subjectSearchResult").tab('show');
+})
+*/
 </script>
 </div>
 </body>
