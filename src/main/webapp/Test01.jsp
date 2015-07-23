@@ -20,7 +20,7 @@
 	<link href="${root}/css/marketBoard1.css" rel="stylesheet">
 	<link href="${root}/css/jquery-ui.css" rel="stylesheet">
 	
-<<<<<<< HEAD
+
 	<!-- Load javascrips libraries
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
 	<script src="${root}/js/jquery.jquery.js"></script>
@@ -122,14 +122,14 @@
 		<div class="navbar-inner">
 			<img class="logo logoDouplicate" src="${root}/css/images/logo-full.png" alt="logo">
 			
+
+			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><span class="glyphicon glyphicon-list" ></span>&nbsp;&nbsp;Menu</a>
 		
-	
-			
 			<c:choose>
 				<c:when test="${artist_id ==null}">
 					<a href="#" id="loginButton" class="sub-expander pull-right btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a>
 					<a id="registerButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Join</a>
-					<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><span class="glyphicon glyphicon-list" onclick="javascript:alert('로그인 후 이용 가능합니다.');" ></span>&nbsp;&nbsp;Menu</a>
+
 				</c:when>
 				<c:otherwise>
 					<a href="#" id="updateloginButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;PIM</a>
@@ -139,7 +139,6 @@
 		
 			
 			
-				
 		<!-- 	<script type="text/javascript">
 						function LoginId(artist_id){
 							alert("로그인후 사용해주세요");
