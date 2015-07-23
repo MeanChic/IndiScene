@@ -289,7 +289,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 				System.out.println("subjectCheck");
 			}
 			
-			if(searchType.equals("total")  || searchType.equals("artist_id")){
+			if(searchType.equals("total")  || searchType.equals("artist")){
 				countArtistSearch=commonIODao.getCommonBoardCount("uploadBoard", searchWord, "artist_id");
 				System.out.println("artistCheck");
 			}
