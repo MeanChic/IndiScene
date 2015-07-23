@@ -286,7 +286,7 @@ $('.indisMuse a').on('click', function(e) {
 	//e.preventDefault();
 	//enterMarketBoard('${root }')
 	$('.main-nav').toggleClass('nav-expanded');
-//});
+});
 
 $('.notice a').on('click', function(e) {
 	//e.preventDefault();
