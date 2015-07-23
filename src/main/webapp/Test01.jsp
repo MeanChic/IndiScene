@@ -55,6 +55,7 @@
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>
+	<input type="hidden" id="artist_id" value="${artist_id}"/>
 	<!-- Offsite canvas navigation start -->
 	<nav class="main-nav">
 		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
@@ -146,7 +147,7 @@
 					</script> -->	
 			<!-- 메인검색창 -->
 			<div id="MainSearchBox" class="pull-right marketBoardAttribute01 marketBoardX-location03 instants03">
-				<form class="instants02" name="searchForm" method="get" action="javascript:searchMain('${root}','1');">
+				<form class="instants02" name="searchForm" method="get" action="javascript:searchMain('${aritst_id }','${root}','1');">
 			<!--   페이징작업을위한 GET방식 -->     
 				<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
 	                <input class="form-controller220 instants02" type="text"  id="MainSearchWord" name="searchWord">
@@ -276,7 +277,11 @@ $("#volumeBtn").click(function(){
  /* main-Nav */
 $('#nav-expander').on('click', function(e) {
 	e.preventDefault();
-	$('.main-nav').toggleClass('nav-expanded');
+	if($("#aritst_id").val()==undefined){
+		alert("로그인 이후 사용해주세요");
+	}else{
+		$('.main-nav').toggleClass('nav-expanded');
+	}
 });
 $('.main-nav .close').on('click', function(e) {
 	e.preventDefault();
