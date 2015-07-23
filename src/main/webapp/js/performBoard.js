@@ -156,7 +156,7 @@ function performBoardWrite(){
 
 function performBoardWriteOk(){
 	//alert("OK");
-	$("input[name = 'address']").val($("input[name = 'zipcode1']").val() + " " + $("input[name = 'address']").val());
+	$("input[name = 'address']").val($("input[name = 'zipcode1']").val() + "" + $("input[name = 'address']").val());
 	
 	//alert($("input[name = 'address']").val());
 	var dataSet = new FormData(document.getElementById("marketBoardWriteForm"));
@@ -230,7 +230,7 @@ function performBoardUpdate(board_num,pageNumber){
 
 
 function performBoardUpdateOk(){
-	$("input[name = 'address']").val($("input[name = 'zipcode1']").val() + "*" + $("input[name = 'address']").val());
+	$("input[name = 'address']").val($("input[name = 'zipcode1']").val() + "" + $("input[name = 'address']").val());
 	var dataSet = new FormData(document.getElementById("marketBoardUpdateForm"));
 	//alert(CKEDITOR.instances.content.getData());
 	//alert(dataSet);

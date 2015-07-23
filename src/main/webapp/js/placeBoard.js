@@ -105,7 +105,7 @@ function placeBoardWrite(){
 
 
 function placeBoardWriteOk(){
-	$("input[name = 'address']").val($("input[name = 'zipcode1']").val() +" "+ $("input[name = 'address']").val());
+	$("input[name = 'address']").val($("input[name = 'zipcode1']").val() +"*"+ $("input[name = 'address']").val());
 	var dataSet = new FormData(document.getElementById("marketBoardWriteForm"));
 	//alert(CKEDITOR.instances.content.getData());
 	dataSet.append("content",CKEDITOR.instances.content.getData());
