@@ -29,7 +29,8 @@
 		
 			<div class="line">
 			<label class="subject">작성자</label>
-				<span class="content"><input type="text" size="50" name="artist_id" value="${artist_id}"/></span>
+				<span class="content"><input type="text" size="50" name="artist_idDis" value="${artist_id}" disabled="disabled"/></span>
+				<input type="hidden" value=${artist_id} name="artist_id"/>
 		</div>	
 		
 		<div class="line">
