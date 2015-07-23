@@ -185,6 +185,23 @@
 	<!-- Music Player end -->
 	
 <script type="text/javascript">
+
+/******** tootip ********/
+/* Menu Bar */
+$(document).ready(function(){
+    $('.brandNewMusic').tooltip({title: "최신곡", placement: "right"}); 
+    $('.bestMusic').tooltip({title: "Top100", placement: "right"}); 
+    $('.indisMusic').tooltip({title: "음악", placement: "right"}); 
+    $('.performanceInfo').tooltip({title: "공연/대관 정보", placement: "right"}); 
+    $('.marketPlace').tooltip({title: "중고거래", placement: "right"}); 
+    $('.myMusic').tooltip({title: "회원님의 indiScene활동을 살펴보세요", placement: "right"}); 
+    $('.indisMuse').tooltip({title: "동호회활동", placement: "right"}); 
+    $('.notice').tooltip({title: "공지사항", placement: "right"}); 
+    $('.freeboard').tooltip({title: "자유게시판", placement: "right"}); 
+   
+});
+
+/******** tootip End ********/
 $(document).ready(function(){
 	history.pushState({indiData:($("#centerContents").html())},"제목","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 	window.onpopstate=function(e){
