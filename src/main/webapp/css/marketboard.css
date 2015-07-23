@@ -74,7 +74,6 @@
 .marketBoardInterval03{ margin-top:30px; margin-bottom:30px; }
 .marketBoardInterval04{ margin-top:40px; margin-bottom:40px; }
 
-
 .marginLR5{ margin-left:5px; margin-right:5px; }
 .marginLR10{ margin-left:10px; margin-right:10px; }
 .marginLR20{ margin-left:20px; margin-right:20px; }
@@ -86,3 +85,15 @@
 .form-controlMarket .form-inlineblockButton { display:inline-block; background-color:#324053; color:#ffffff; }
 .form-controlMarket .label-color{ color:#151515; }
 
+#audioListDiv hr{ border-bottom:1px solid #595C62; width:80%; margin-bottom:0; }
+.musicSubject, .artistName{ 
+	padding-left:10%;
+	padding-right:10%;
+	color:#CFD0D2;
+	font-size:17px;
+}
+.musicSubject:hover, .artistName:hover{
+	color:#fff;
+	background:transparent;
+	font-weight:bold;
+}
