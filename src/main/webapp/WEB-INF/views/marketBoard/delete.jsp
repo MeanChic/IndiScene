@@ -30,8 +30,7 @@
 	<div id="marketBoardDelete">
 	
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
-		<form method="post" class="marketBoardDeleteForm" >
-		
+		<form method="post" class="marketBoardDeleteForm" id="marketBoardDeleteForm" >
 			<input type="hidden" name="board_num" value="${board_num}"/>
 			<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 			<input type="hidden" name="artist_id" value="${artist_id }"/>
@@ -53,7 +52,7 @@
 				<div align="center" class="DeleteListPaddingLeft">
 					<div>
 						<a 
-						href="javascript:marketBoardDeleteOk('${root}','${board_num}','${ pageNumber}')"
+						href="javascript:marketBoardDeleteOk('${root}','${board_num}','${pageNumber}')"
 						id="deleteBt" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm"
 						onmouseover="DeleteBtnOver()" onmouseout="DeletBtnOut()" >Delete</a>
 						

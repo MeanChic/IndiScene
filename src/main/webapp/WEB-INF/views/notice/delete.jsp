@@ -28,7 +28,7 @@
 	}
 	</script>
 	<div id=noticeDelete>
-	<form class="marketBoardDeleteForm" method="post">
+	<form class="marketBoardDeleteForm" id="deleteForm" method="post">
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 		<input type="hidden" name="artist_id" value="${artist_id }"/>

@@ -27,7 +27,7 @@ function enterMarketBoard(requestRoot,pageNumber){
 function marketBoardDelete(board_num,pageNumber,artist_id){
 	//alert(pageNumber);
 	sendData="?pageNumber="+pageNumber +"&board_num="+board_num+"&artist_id="+artist_id;
-	//alert(pageNumber+","+board_num+","+artist_id);
+	alert(pageNumber+","+board_num+","+artist_id);
 	$.ajax({
 		url:root +"/marketBoard/delete.do"+sendData,
 		type:"get",

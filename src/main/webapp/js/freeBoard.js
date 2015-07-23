@@ -130,7 +130,7 @@
 			}); 
 		}
 		function freeBoardDeleteFunOk(root, board_num, pageNumber){
-		var dataSet = new FormData(document.getElementById("deleteForm"));
+		var dataSet = new FormData(document.getElementById("marketBoardDeleteForm"));
 		$.ajax({
 				url:root+"/freeBoard/delete.do",
 				type:"post",

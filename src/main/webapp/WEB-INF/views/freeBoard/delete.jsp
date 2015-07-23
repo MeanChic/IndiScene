@@ -28,9 +28,8 @@
 		$("#deleteBt").css("color","black");
 	}
 	</script>
-	
 	<div id="freeBoardDelete">
-		<form class="marketBoardDeleteForm" method="post">
+		<form class="marketBoardDeleteForm" method="post" id="marketBoardDeleteForm">
 			<input type="hidden" name="board_num" value="${board_num}" /> 
 			<input type="hidden" name="pageNumber" value="${pageNumber}" /> 
 			<input type="hidden" name="artist_id" value="${artist_id }" />
@@ -53,7 +52,7 @@
 			<br />
 			<div align="center" class="DeleteListPaddingLeft">
 				<div>
-					<a href="javascript:freeBoardDeleteFunOk('${root}','${board_num}','${ pageNumber}')"
+					<a href="javascript:freeBoardDeleteFunOk('${root}','${board_num}','${pageNumber}')"
 						id="deleteBt" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm"
 						onmouseover="DeleteBtnOver()" onmouseout="DeletBtnOut()" >Delete</a>
 						

@@ -28,7 +28,7 @@
 	}
 	</script>
 	<div id="performBoardDelete">
-		<form method="post" class="marketBoardDeleteForm" >
+		<form method="post" class="marketBoardDeleteForm" id="marketBoardDeleteForm" >
 			<input type="hidden" name="board_num" value="${board_num}"/>
 			<input type="hidden" name="pageNumber" value="${pageNumber}"/>
 			<input type="hidden" name="artist_id" value="${artist_id }"/>
