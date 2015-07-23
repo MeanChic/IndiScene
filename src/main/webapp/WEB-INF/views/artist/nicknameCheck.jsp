@@ -41,7 +41,7 @@
 		</c:if>
 		
 		<c:if test="${check==0 }">
-			<div class="form-controlArtist">
+			<div class="form-controlArtist" align="center">
 				<label class="form-inlineblock label-color">Can use Nickname.</label>
 			</div>
 		</c:if>

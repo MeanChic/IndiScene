@@ -14,6 +14,7 @@ form div input{ width:200px; display:inline-block; }
   	min-height: 1px;
   	padding-right: 15px;
   	padding-left: 15px;
+  	
 }
 #artistLoginForm{ margin-top:10px; }
 #RegisterForm, #SecessionForm{ text-align:left; width:930px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
@@ -21,9 +22,26 @@ form div input{ width:200px; display:inline-block; }
 #registerButton, #loginButton, #updateloginButton, #logoutButton{ margin-top:20px; margin-right:20px; float:right; }
 #artist_address{ width:643px; }
 
-.minSize{ min-width:530px; min-height:140px; }
-
-.duplicateWindow{ width:530px; padding:20px; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
+.minSize {
+    min-width: 200px;
+    min-height: 120px;
+}
+/* Id check 창 */
+.duplicateWindow {
+    width: 250px;
+    height: 100px;
+    margin-left: 40px;
+    border: solid 1px #FF890A;
+    background: #FFFFFF;
+    border-radius: 15px;/* 모서리 곡선도 */
+        margin-top: 0.7em;
+}
+.zipcodeForm{
+	
+	border: solid 2px #FF890A;
+    background: #FFFFFF;
+	
+}
 .duplicateWindow .form-controlArtist{ display:block; margin-top:10px; margin-bottom:10px; }
 .duplicateWindow .form-controlArtist .form-inlineblockButton { display:inline-block; background-color:#324053; color:#ffffff; }
 .duplicateWindow .form-controlArtist .label-color{ color:#151515; font-size:large; }

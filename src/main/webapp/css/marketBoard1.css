@@ -176,7 +176,7 @@ a.marketBoardListBtn {
 .DeleteListPaddingLeft{
 	  padding-left: 0.1%;
 }
-.marketBoardDeleteForm {
+.marketBoardDeleteForm,#deleteForm{
   padding-top: 10%;
 }
 input.FontColorIsBlack{

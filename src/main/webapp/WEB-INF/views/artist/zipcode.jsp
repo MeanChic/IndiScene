@@ -13,32 +13,36 @@
 <link rel="stylesheet" type="text/css" href="${root}/css/artist.css"/>
 </head>
 <body>
-	<div align="center">
-		<form action="${root }/artist/zipcode.do" method="post">
-			<input type="text" name="dong" />
-			<input type="submit" value="검색"/>
-		</form>
+	<div class="zipcodeForm">
+		<div class="zipcodeContent">	
+			<div align="center">
+				<form action="${root }/artist/zipcode.do" method="post">
+					<input type="text" name="dong" />
+					<input type="submit" value="검색"/>
+				</form>
+			</div>
+			
+			<c:if test="${list==null }">
+				<div align="center">
+					검색결과가 없습니다.
+				</div>
+			</c:if>
+			
+			<c:if test="${list!=null }">
+				<div align="center">
+					<table>				
+						<c:forEach var="zipcode" items="${list }">
+							<tr>
+								<td>
+									<a href="javascript:sendAddress('${zipcode.zipcode}', '${zipcode.sido }', '${zipcode.gugun }', '${zipcode.dong}', '${zipcode.ri}', '${zipcode.bldg}', '${zipcode.bunji}')">
+										${zipcode.zipcode} ${zipcode.sido } ${zipcode.gugun } ${zipcode.dong} ${zipcode.ri} ${zipcode.bldg} ${zipcode.bunji}
+									</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</c:if>
+		</div>
 	</div>
-	
-	<c:if test="${list==null }">
-		<div align="center">
-			검색결과가 없습니다.
-		</div>
-	</c:if>
-	
-	<c:if test="${list!=null }">
-		<div align="center">
-			<table>				
-				<c:forEach var="zipcode" items="${list }">
-					<tr>
-						<td>
-							<a href="javascript:sendAddress('${zipcode.zipcode}', '${zipcode.sido }', '${zipcode.gugun }', '${zipcode.dong}', '${zipcode.ri}', '${zipcode.bldg}', '${zipcode.bunji}')">
-								${zipcode.zipcode} ${zipcode.sido } ${zipcode.gugun } ${zipcode.dong} ${zipcode.ri} ${zipcode.bldg} ${zipcode.bunji}
-							</a>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-	</c:if>	
 </body>
