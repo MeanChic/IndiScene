@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id=museBoardDelete>
+<div id=museBoardDelete>
 	<form id="deleteForm" method="post">
 		<input type="hidden" name="board_num" value="${board_num}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
@@ -25,24 +25,21 @@
 			</div>
 		</div>
 		
-		
-			<div  class="DeletefontStyle DeletePassWord">
-				<div style="color:#333333"> ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;${artist_id }  </div>
-				<div  style="color:#4C4C4C font-size:1.3em;">Password&nbsp;:&nbsp;
-				<input type="password" name="password" size="20" maxlength="20"/>
-				</div>
+		<div  class="DeletefontStyle DeletePassWord">
+			<div style="color:#333333"> ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;${artist_id }  </div>
+			<div  style="color:#4C4C4C font-size:1.3em;">Password&nbsp;:&nbsp;
+			<input type="password" name="password" size="20" maxlength="20"/>
 			</div>
-			<br/>
-			<div align="center" class="DeleteListPaddingLeft">
-				<div >
-					<a href="javascript:museDeleteOk('${root}')" style="font-size:1.0em; font-family:Helvetica;" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" >Delete</a>
-					&nbsp;&nbsp;
-					<a href="javascript:museList('${root}','${pageNumber}','${muse_name}')" style=" font-size:1.0em; font-family:Helvetica;"  class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" >List</a>
-				</div>
-
+		</div>
+		<br/>
+		<div align="center" class="DeleteListPaddingLeft">
+			<div >
+				<a href="javascript:museDeleteOk('${root}')" style="font-size:1.0em; font-family:Helvetica;" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" >Delete</a>
+				&nbsp;&nbsp;
+				<a href="javascript:museList('${root}','${pageNumber}','${muse_name}')" style=" font-size:1.0em; font-family:Helvetica;"  class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" >List</a>
 			</div>
-		
-		</form>
-	</div> 
+		</div>
+	</form>
+</div> 
 </body>
 </html>

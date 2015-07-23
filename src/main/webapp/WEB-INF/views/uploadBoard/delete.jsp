@@ -41,28 +41,27 @@
 				</div>
 			</div>
 			
-			
-				<div  class="DeletefontStyle DeletePassWord">
-					<div style="color:#333333"> 
-						ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;${artist_id }  </div>
-					<div  style="color:#4C4C4C font-size:1.3em;">Password&nbsp;:&nbsp;
-					<input type="password" name="password" size="20" maxlength="20"/>
-					</div>
+			<div  class="DeletefontStyle DeletePassWord">
+				<div style="color:#333333"> 
+					ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;${artist_id }  </div>
+				<div  style="color:#4C4C4C font-size:1.3em;">Password&nbsp;:&nbsp;
+				<input type="password" name="password" size="20" maxlength="20"/>
 				</div>
-				<br/>
-				<div align="center" class="DeleteListPaddingLeft">
-					<div>
-						<a 
-							href="javascript:uploadDeleteOk('${root}','${board_num}','${ pageNumber}')"
-							id="deleteBt" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm"
-							onmouseover="DeleteBtnOver()" onmouseout="DeletBtnOut()" >Delete</a>
-						<a 
-							href="javascript:uploadList('${root}','${pageNumber}')"
-							id="listBt" class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm"
-							onmouseover="ListBtnOver()" onmouseout="ListBtnOut()">List</a>
-					</div>
+			</div>
+			<br/>
+			<div align="center" class="DeleteListPaddingLeft">
+				<div>
+					<a 
+						href="javascript:uploadDeleteOk('${root}','${board_num}','${ pageNumber}')"
+						id="deleteBt" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm"
+						onmouseover="DeleteBtnOver()" onmouseout="DeletBtnOut()" >Delete</a>
+					<a 
+						href="javascript:uploadList('${root}','${pageNumber}')"
+						id="listBt" class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm"
+						onmouseover="ListBtnOver()" onmouseout="ListBtnOut()">List</a>
 				</div>
-			</form>
-		</div>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

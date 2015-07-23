@@ -46,6 +46,7 @@
 			</div>
 		</c:forEach>
 	</div>
+	
 	<c:if test="${count==0 }">
 		<td align="center">게시판에 저장된 글이 없습니다.</td>
 	</c:if>

@@ -161,7 +161,6 @@ function marketBoardUpdate(board_num,pageNumber){
 
 
 function marketBoardUpdateOk(){
-	alert("sldfjsldkfj");
 	var dataSet = new FormData(document.getElementById("marketBoardUpdateForm"));
 	//var writer1=dataSet.writer.value;
 	//alert($("textarea").val());

@@ -10,28 +10,59 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="museBoardRead">
-	<a style="margin:0 0 0 600px"href="javascript:museList('${root}','${pageNumber}','${muse_name}')">리스트로 돌아가기</a>
-	<div style="border:solid 1px black; width:700px; margin:100px 0 100px 20px ">
-	<span>${pageNumber}</span><span>${boardDto.register_date}</span>
-	<div style="border:solid 1px black;"><img alt="" src="${root}${boardDto.image_path}" style="width:100px; height:100px;"></div>
-	<div style="border:solid 1px black">${boardDto.subject}</div>
-	<div style="border:solid 1px black;"><audio controls src="${root}${boardDto.file_path}"></audio></div>
-	<div style="border:solid 1px black">${boardDto.artist_id}</div>
-	<div style="border:solid 1px black; height:100px;">${boardDto.content}</div>
-<br/>
-	${boardDto.count}<br/>
-	<%-- <a href="javascript:uploadLike('${root}','${board_num}','${artist_id}')"><img src="${root}/resources/uploadBoard/social-media-like-button.jpg" style="width:50px;height:50px;"/></a>; --%>
-	
-	<div style="margin:0 0 0 400px">
+<div id="museBoardRead">
+<div class="marketBoardX-location02">
+		<a class="marketBoardAttribute01 btn btn-default" href="javascript:oneMusicStorage('${root}','${artist_id}','${boardDto.board_num}')">Put In</a>
+		<a class="marketBoardAttribute01 btn btn-default" href="javascript:museList('${root}','${pageNumber}','${muse_name}')">List</a>
+	</div>
+	<div class="form-controlMarket instants09">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Like</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="${boardDto.board_like}" disabled="disabled" />
+		</div>
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Views</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="${boardDto.count}" disabled="disabled" />
+		</div>
+	</div>
+	<div class="form-controlMarket">
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Writer</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="marketBoardSize25 form-controller220" type="text" value="${boardDto.artist_id}" disabled="disabled" />
+		</div>
+		<label class="marketBoardSize16 label-color marketBoardAttribute01">Date</label>
+		<div class="marketBoardSize01 marketBoardAttribute01">
+			<input class="form-controller220" type="text" value="<fmt:formatDate value="${boardDto.register_date}" type='date'/>" disabled="disabled"/>
+		</div>
+	</div>
+	<div class="form-controlMarket" >
+		<div class="marketBoardSize16 marketBoardAttribute01 marketBoardY-location01">
+			<label class="marketBoardAttribute02 label-color">Contents</label>
+		</div>
+		<div class="marketBoardSize77 marketBoardAttribute01 marketBoardY-location01">
+			<div id="marketReadContents" class="marketBoardTextareaSize200 marketBoardAttribute02">
+				<div class="">
+					<img class="instants05" alt="" src="${root}${boardDto.image_path}">
+					<audio class="instants05 instants06" controls src="${root}${boardDto.file_path}"></audio>
+				</div>
+				${boardDto.content}
+			</div>		
+		</div>
+	</div>
+	<div class="form-controlMarket" style= text-align:center;>
+		<div class="marketBoardInterval04">
+			<a class="btn btn-info btn-lg" href="javascript:museCollabo('${root}','${board_num}','${pageNumber}','${muse_name}')"><span class="glyphicon glyphicon-duplicate"></span>&nbsp;&nbsp;Collaboration</a>
+		</div>
+	</div>
 	<c:if test="${boardDto.artist_id == artist_id }">
-	<input type="button" value="수정" onclick="museUpdate('${root}','${board_num}','${pageNumber}','${muse_name}')"/>
-	<input type="button" value="삭제" onclick="museDelete('${root}','${board_num}','${pageNumber}','${muse_name}')"/>
-	<input type="button" value="Indi's Music 업로드" onclick="museToUpload('${root}','${board_num}','${artist_id}','${muse_name}')"/>
+		<div class="form-controlMarket" style= text-align:center;>
+			<div class="marketBoardInterval04">
+				<input class="btn btn-default" type="button" value="Upload to Indi'sMusic" onclick="museToUpload('${root}','${board_num}','${artist_id}','${muse_name}')"/>
+				<input class="btn btn-default" type="button" value="Modify" onclick="museUpdate('${root}','${board_num}','${pageNumber}','${muse_name}')">
+				<input class="btn btn-default" type="button" value="Delete" onclick="museDelete('${root}','${board_num}','${pageNumber}','${muse_name}')">
+			</div>
+		</div>
 	</c:if>
-	<input type="button" value="콜라보" onclick="museCollabo('${root}','${board_num}','${pageNumber}','${muse_name}')"/>
-	</div>
-	</div>
-	</div>
+</div>
 </body>
 </html>

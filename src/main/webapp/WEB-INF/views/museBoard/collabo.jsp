@@ -10,14 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="museBoardCollabo">
+<div id="museBoardCollabo">
+	<h3>Muse Collaboration</h3>
 	<%-- <script type="text/javascript" src="${root}/js/recorderjs/recorderInit.js"></script>
 	<script type="text/javascript" src="${root}/js/recorderjs/recorder.js"></script> --%>
-		"board_num" , ${board.board_num}<br/>
-		"group_num" , ${board.group_num}<br/>
-		"seq_num" , ${board.seq_num}	<br/>
-		"seq_level" , ${board.seq_level}<br/>
-		"artist_id",${artist_id}		<br/>
 	<form method="post" enctype="multipart/form-data" id="uploadWriteForm">	
 		<input type="hidden" value="${artist_id}" name="artist_id"/>
 		<input type="hidden" value="${board.board_num}" name="board_num"/>
@@ -26,9 +22,6 @@
 		<input type="hidden" value="${board.seq_level}" name="seq_level"/>
 		<input type="hidden" value="${board.image_path}" name="image_path"/>
 		<input type="hidden" value="${board.muse_name}" name="muse_name"/>
-		
-		<span>제목</span><input class="collaboSubject" value="${board.subject}" type="text" disabled="disabled"/>
-		<input type="hidden" value="${board.subject}" class="collaboSubject" name="subject"/>
 		<c:if test="${board.seq_level==0}">
 			<script>
 				$(".collaboSubject").val("[Collabo]"+$(".collaboSubject").val()+" feat."+$("input[name='artist_id']").val());
@@ -39,65 +32,104 @@
 				$(".collaboSubject").val("[Collabo]"+$(".collaboSubject").val()+", "+$("input[name='artist_id']").val());
 			</script>
 		</c:if>
-		 <br/><br/>
-		
-		<span>커버사진</span><input type="file" id="coverImage" name="coverImage" accept="image/*"/>
-		<input type="button" value="파일업로드" id="fileBtn"/><input type="button" value="녹음" id="recordBtn"/>
-		<span id="musicInputArea" style="display:none;"><span>음악파일</span><input type="file" id="musicFile" name="musicFile" accept="audio/*"/></span>
-		<span id="recordInputArea" style="display:none;"><span>녹음파일</span><a href="javascript:record('${artist_id}','${root}')" id="recordButton"><img style="width:3%; height: 3%;" src="${root}/resources/uploadBoard/Mic.jpg"/></a>
-		<span id="recordBox" style="display:none;position:relative; float:none;"><img src="${root}/resources/uploadBoard/recB.png" id="recordToggleImg" onclick="toggleRecording(this)"/></span></span>
-		
+		<div class="marketBoardX-location02">
+			<a class="marketBoardAttribute01 btn btn-default" href="javascript:museList('${root}','1','${muse_name}')">List</a>
+		</div>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Subject</label>
+			<div class="form-inlineblock">
+				<input id="subject" class="form-controller320 collaboSubject" type="text" size="50" name="subject" value="${board.subject}" disabled="disabled"/>
+			</div>
+		</div>	
+		<input type="hidden" value="${board.subject}" class="collaboSubject" name="subject"/>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Music File</label>
+			<div class="form-inlineblock" id="MusicFileUploadButton">
+				<input class="form-inlineblockButton form-controller320" type="button" value="File Upload" id="fileBtn"/>
+				<input class="form-inlineblockButton form-controller320" type="button" value="Record" id="recordBtn"/>
+			</div>
+			<div class="form-inlineblock" id="musicInputArea" style="display:none;">
+				<input class="form-controller320" type="file" id="musicFile" name="musicFile" accept="audio/*"/>
+			</div>
+			<div class="form-inlineblock" id="recordInputArea" style="display:none;">
+				<a class="btn btn-info form-inlineblockButton form-controller320" href="javascript:record('${artist_id}','${root}')" id="recordButton">
+					<span class="glyphicon glyphicon-record">&nbsp;&nbsp;Record</span>
+				</a>
+				<input class="form-inlineblockButton form-controller320" type="button" id="prevListen" value="Beforehand listening"/>
+				<div class="marketBoardAttribute01" id="recordBox" style="display:none;">
+					<img src="${root}/resources/uploadBoard/recB.png" id="recordToggleImg"/>
+				</div>
+			</div>
+		</div>		
 		<script type="text/javascript">
 			$("#fileBtn").click(function(){
-				$("#recordBtn").css("display","none");
-				$(this).css("display","none");
-				$("#musicInputArea").css("display","block");
+				$("#MusicFileUploadButton").css("display","none");
+				$("#musicInputArea").css("display","inline-block");
 			});
 			
 			$("#recordBtn").click(function(){
-				$("#fileBtn").css("display","none");
-				$(this).css("display","none");
-				$("#recordInputArea").css("display","block");
+				$("#MusicFileUploadButton").css("display","none");
+				$("#recordInputArea").css("display","inline-block");
+				recorderSetting();
 			});
 		</script>
-		
-		<br/><br/>
-		<div><span>장르</span><input type="radio" name="genre" value="1"/>락<input type="radio" name="genre" value="0"/> 발라드 <input type="radio" name="genre" value="2"/> 힙합</div>	
-		<span>내용</span><textarea rows="20" cols="100" name="content" id="content"></textarea><br/><br/>
-		<script type="text/javascript">
-			CKEDITOR.replace( 'content',
+		<!------- Audioar ------->
+		<div id="Recordbars" class="form-controlMarket">
+			<label class="subject label-color marketBoardY-location01">Audio</label>
+			<div class="form-inlineblock">
+				<audio class="instants07" id="prevAudio" controls src=""></audio>
+			</div>
+		</div>
+		<!------- Sync ------->
+		<div class="form-controlMarket">
+			<label class="subject label-color">Sync Control</label>
+			<div class="form-inlineblock">
+				<input type="number" class="form-inlineblock form-controller320" value="0.0" min="-15.0" max="15.0" name="sync"/>
+				<input type="button" class="form-inlineblockButton form-controller320" value="Apply" id="syncAdopt"/>
+			</div>
+		</div>
+		<!------- Genre CheckBox ------->
+		<div class="form-controlMarket">
+			<label class="subject label-color">Genre</label>
+			<div class="form-inlineblock">
+				<input class="form-controller60" type="radio" name="genre" value="1"/><label class="label-color">Rock</label>
+				<input class="form-controller60" type="radio" name="genre" value="0"/><label class="label-color">Ballad</label>
+				<input class="form-controller60" type="radio" name="genre" value="2"/><label class="label-color">Hiphop</label>
+				<input type="hidden" name="genre_code" value=""/>
+			</div>
+		</div>
+		<div class="form-controlMarket" >
+			<label class="label-color marketBoardY-location01">Contents</label>
+			<div class="form-inlineblock marketBoardSize80">
+				<textarea id="content" name="content">${board.content}</textarea>		
+				<script type="text/javascript">
+				CKEDITOR.replace( 'content',
 					 {///IndiScene_basic/src/main/webapp/resources/ckfinder
 					 	filebrowserUploadUrl: '${root}/marketBoard/imageUpload.do' // 파일 업로드를 처리 할 경로 설정.
 					 });
-		</script>
-		<br/><br/>
-		
-		<div>
-			<input type="button" id="prevListen" value="미리듣기"/>
-			<input type=button value="글쓰기" onclick="javascript:museCollaboOk('${root}','${board.board_num}','${pageNumber}','${muse_name}')"/>
-			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="museList('${root}','1','${muse_name}')"/>
+				</script>
+			</div>
+		</div>
+		<div class="form-controlMarket" style= text-align:center;>
+			<div class="marketBoardInterval04">
+				<input class="btn btn-default" type="button" value="Collaboration" onclick="javascript:uploadCollaboOk('${root}','${board.board_num}','${pageNumber}')">
+				<input class="btn btn-default" type="reset" value="Reset"/>
+			</div>
 		</div>
 		<input type="hidden" name="recordFile" id="uploadPath" value=""/>
 		<input type="hidden" name="originalFile" id="originalMusicPath" value="${root}${board.file_path}"/> 
 		<input type="hidden" name="mergeFile" id="mergeFile" value=""/>
-		싱크 : <input type="number" value="0.0" min="-15.0" max="15.0" name="sync" style="width:100px;"/>
 	</form>
-	
 	<div id="syncControl" style="display:none;">
 		<input type="button" id="playCollabo" value="듣기"/><br/>
-	<!-- 	원곡<input type="button" id="originalVolumeUp" value="↑"/><input type="button" id="originalVolumeDown" value="↓"/><br/>
-		추가곡<input type="button" id="extraVolumeUp" value="↑"/><input type="button" id="extraVolumeDown" value="↓"/><br/>
-		싱크 <input type="text" value="0.0" max="15" min="-15" id="syncController"/>
-			<input type="hidden" value="0.0" max="15" min="-15" id="syncSave"/> -->
+	<!--<input type="button" id="originalVolumeUp" value="↑"/><input type="button" id="originalVolumeDown" value="↓"/>원곡<br/>
+		<input type="button" id="extraVolumeUp" value="↑"/><input type="button" id="extraVolumeDown" value="↓"/>추가곡<br/>
+		<input type="text" value="0.0" max="15" min="-15" id="syncController"/>싱크 <br/>
+		<input type="hidden" value="0.0" max="15" min="-15" id="syncSave"/>-->
 	</div>
-	
-	<input type="button" value="콜라보적용" id="syncAdopt"/>
-	<input type="hidden" id="root" value="${root}"/>
-	<input type="button" onclick="test()" value="테스트"/>
 	<script type="text/javascript">
 		prepareMuseCollabo();
 	</script>
-	</div>
+</div>
 </body>
 </html>

@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 <div id="uploadUpdate">
@@ -95,7 +94,7 @@
 		</div>
 		<div class="form-controlMarket" style= text-align:center;>
 			<div class="marketBoardInterval04">
-				<input class="btn btn-default" type="button" value="Write" onclick="javascript:uploadWriteOk('${root}')">
+				<input class="btn btn-default" type="button" value="Modify" onclick="javascript:marketBoardUpdateOk('${root}')">
 				<input class="btn btn-default" type="reset" value="Reset"/>
 			</div>
 		</div>
