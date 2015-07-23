@@ -24,6 +24,8 @@
 .instants05{ border-radius:4px; width:210px; height:210px; margin:0px; display:inline-block; }
 .instants06{ margin-left:10px; vertical-align:bottom; width:390px; }
 .instants07{ margin:auto; width:820px; }
+.instants08{ min-height:460px; }
+.instants08{ color:red; }
 
 .marketBoardSize4{ width:4%; }
 .marketBoardSize12{ width:12%; }
