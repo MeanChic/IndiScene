@@ -12,6 +12,7 @@
 <script src="${root }/js/jquery.js" type="text/javascript" ></script>
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
 	<script type="text/javascript" src="${root }/css/marketBoard/script.js"></script>
+
 	<!--  <link rel="stylesheet" type="text/css" href="${root }/css/marketBoard/style.css"/>-->
 </head>
 <body>
@@ -20,7 +21,7 @@
 	<form id="marketBoardWriteForm" method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<input type="hidden" id="folderName" name="folderName" />
 		<div class="marketBoardX-location02">    
-			<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterPerformBoard('${root}','${pageNumber}')">List</a>
+			<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterMarketBoard('${root}','${pageNumber}')">List</a>
 		</div>
 		<div class="form-controlMarket">
 			<label class="subject label-color">Writer</label>

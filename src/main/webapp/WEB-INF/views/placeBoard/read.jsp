@@ -70,59 +70,10 @@
 	});
 </script>
 <div id="placeBoardRead">
+	<h3>PlaceBoard Read</h3>
 	<c:set var="root" value="${pageContext.request.contextPath }" />
 	<input type="hidden" id="address" value="${marketBoard.zipcode}"/>
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
-<<<<<<< HEAD
-	<table border="1" width="510" cellpadding="2" cellspacing="0"align="center">
-		<tr>
-			<td align="center" height="20" width="125">글번호</td>
-			<td align="center" height="20" width="125">${marketBoard.board_num }</td>
-			
-
-			<td align="center" height="20" width="125">조회수</td>
-			<td align="center" height="20" width="125">${marketBoard.count }</td>
-		</tr>
-
-		<tr>
-			<td align="center" height="20" width="125">작성자</td>
-			<td align="center" height="20" width="125">${marketBoard.artist_id}</td>
-
-			<td align="center" height="20" width="125">작성일</td>
-			<td align="center" height="20" width="125">
-			<fmt:formatDate
-					value="${marketBoard.register_date}" type="date" /></td>
-		</tr>
-
-		<tr>
-			<td align="center" height="200" width="125">글내용</td>
-			<td valign="top" height="200" colspan="3">${marketBoard.content }</td>
-		</tr>
-		
-		
-			<tr>
-				<td align="center" height="20" width="125">장소정보</td>
-				<td colspan="3">
-				
-				<div id="map" style="width:300px;height:300px;"></div>
-				${marketBoard.address}
-				</td>
-			</tr>
-		
-
-		<tr>
-			<td height="30" colspan="4" align="center"><input type="button"
-				value="글수정"
-				onclick="javascript:placeBoardUpdate('${marketBoard.board_num}','${pageNumber}')" />
-				<input type="button" value="글삭제"
-				onclick="javascript:placeBoardDelete('${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')"/>
-				<!-- onclick="delFun('${root}','${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')" />  -->
-				<input type="button" value="글목록"
-				onclick="javascript:enterPlaceBoard('${root}','${pageNumber}')" />
-			</td>
-		</tr>
-	</table>
-=======
 	<div class="marketBoardX-location02">
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterPlaceBoard('${root}','${pageNumber}')">List</a>
 	</div>	
@@ -166,12 +117,19 @@
 			</div>		
 		</div>
 	</div>
+	<div class="form-controlMarket">
+		<label class="marketBoardSize16 label-color">Address</label>
+		<div class="marketBoardSize77 form-inlineblock">
+			<input class="form-controller320 marketBoardSize03" type="text" size="50" value="${marketBoard.address}" disabled="disabled"/>
+		</div>
+	</div>
 	<script type="text/javascript">
 		$(function(){
 			alert($("#marketReadContents img").attr("src"));
 			$("#marketReadContents img").attr("style","width:100%;");
 		})				
 	</script>
+
 	<div class="form-controlMarket" style= text-align:center;>
 		<div class="marketBoardInterval04">
 			<c:if test="${performBoard.artist_id == artist_id }">
@@ -181,10 +139,6 @@
 			</c:if>
 		</div>
 	</div>
-		<div id="map" style="width:300px;height:300px;"></div>
-		${marketBoard.address}
-				 
-
 	<!-- ---------------한줄댓글 ----------------------------------------------->
 
 	${marketBoard.board_num }
