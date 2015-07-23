@@ -71,6 +71,9 @@
 .bestRank2{ border:solid 1px black; position:relative; bottom:0px; width:200px; height:200px; display:block; margin:0px; }
 .bestRank3{ border:solid 1px black; position:relative; bottom:0px; width:175px; height:175px; display:block; margin:0px; }
 .bestInfoblock{ border:solid 1px blue; height:95px; vertical-align:bottom; }
+#slider-vertical{ height:150px; }
+.sliderDispN{ display:none; }
+.sliderDispY{ display:block; }
 
 .cke_contents{ min-height:350px; }
 .form-controlBoard{ display:block; margin-top:10px; margin-bottom:10px; }

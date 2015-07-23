@@ -179,11 +179,11 @@
 		</div>
 	</div>
 	<!-- Footer section end -->
-
+	<div id="slider-vertical" class="sliderDispN"></div>
 	<!-- Music Player start -->
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<a href="" id="music-expander" class="music-expander pull-right btn"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List</a>
-		<a class="music-player pull-right btn"><span class="glyphicon glyphicon-volume-up"></span>&nbsp;&nbsp;Volume</a>
+		<a id="volumeButton" class="music-player pull-right btn"><span class="glyphicon glyphicon-volume-up"></span>&nbsp;&nbsp;Volume</a>
 		<div>
 			<a id="prev" class="music-player pull-left btn"><span class="glyphicon glyphicon-backward"></span></a>
 			<a id="play" class="music-player pull-left btn"><span class="glyphicon glyphicon-play"></span></a>
@@ -204,8 +204,31 @@
 	<!-- Music Player end -->
 	
 <script type="text/javascript">
+/* Volume bar */
+$(function() {
+	$( "#slider-vertical" ).slider({
+		orientation: "vertical",
+		range: "min",
+		min: 0,
+		max: 100,
+		value: 60,
+		slide: function( event, ui ) {
+		  $( "#amount" ).val( ui.value );
+		}
+	});
+	$( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
+});
 
-
+$("#volumeButton").click(function(){
+	if($("#slider-vertical").attr("class","sliderDispN")){
+		e.preventDefault();
+		$("#slider-vertical").attr("class","sliderDispY");
+	}else{
+		e.preventDefault();
+		$("#slider-vertical").attr("class","sliderDispN");
+	}
+	
+});
 /* playList */
 
 /* playList */
