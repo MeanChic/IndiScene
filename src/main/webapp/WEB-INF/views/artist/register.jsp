@@ -68,7 +68,7 @@
 		<div class="form-controlArtist">
 			<label class="form-inlineblock label-color">Profile Image</label>
 			<div class="form-inlineblock">
-				<input class="form-inlineblock form-controller320" type="file" name="artist_picture"/>
+				<input class="form-inlineblock form-controller320" type="file" name="artist_picture" accept="image/*"/>
 			</div>
 		</div>
 		<div class="form-controlArtist" style="margin-top:35px;">
