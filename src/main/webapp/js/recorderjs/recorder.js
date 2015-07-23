@@ -124,7 +124,7 @@ DEALINGS IN THE SOFTWARE.
         success: function(data, textStatus, jqXHR) {
 //            alert(data);
         	$("#uploadPath").val($("#root").val()+"/resources/TemporaryMusic/"+data);
-        	$("#musicFile").attr("disabled","true");
+//        	$("#musicFile").attr("disabled","true");
         }, error: function(jqXHR, textStatus, errorThrown) {},
     });
   }

@@ -42,11 +42,12 @@
 				<input class="form-controller320" type="file" id="musicFile" name="musicFile" accept="audio/*"/>
 			</div>
 			<div class="form-inlineblock" id="recordInputArea" style="display:none;">
-				<a class="btn btn-info form-inlineblockButton form-controller320" href="javascript:record('${artist_id}','${root}')" id="recordButton">
+				<a class="btn btn-info form-inlineblockButton form-controller320" href="javascript:record()" id="recordButton">
 					<span class="glyphicon glyphicon-record">&nbsp;&nbsp;Record</span>
 				</a>
+				<input class="form-inlineblockButton form-controller320" type="button" id="prevListen" value="Beforehand listening"/>
 				<div class="marketBoardAttribute01" id="recordBox" style="display:none;">
-					<img src="${root}/resources/uploadBoard/recB.png" id="recordToggleImg" onclick="toggleRecording(this)"/>
+					<img src="${root}/resources/uploadBoard/recB.png" id="recordToggleImg"/>
 				</div>
 			</div>
 		</div>		
@@ -59,8 +60,16 @@
 			$("#recordBtn").click(function(){
 				$("#MusicFileUploadButton").css("display","none");
 				$("#recordInputArea").css("display","inline-block");
+				recorderSetting();
 			});
 		</script>
+		<!------- Audioar ------->
+		<div class="form-controlMarket">
+			<label class="subject label-color">Audio</label>
+			<div class="form-inlineblock">
+				<audio class="instants07" id="prevAudio" controls src=""></audio>
+			</div>
+		</div>
 		<!------- Genre CheckBox ------->
 		<div class="form-controlMarket">
 			<label class="subject label-color">Genre</label>
@@ -83,13 +92,8 @@
 				</script>
 			</div>
 		</div>
-		<!------- Audioar ------->
-		<div class="form-controlMarket">
-			<audio class="instants07" id="prevAudio" controls src=""></audio>
-		</div>		
 		<div class="form-controlMarket" style= text-align:center;>
 			<div class="marketBoardInterval04">
-				<input class="btn btn-default" type="button" id="prevListen" value="Beforehand listening"/>
 				<input class="btn btn-default" type="button" value="Write" onclick="javascript:uploadWriteOk('${root}')">
 				<input class="btn btn-default" type="reset" value="Reset"/>
 			</div>
