@@ -281,3 +281,15 @@ input#MainSearchBtn {
 .ruleBox.basic {
   color: rgb(105, 101, 101);
 }
+/* 
+PlayList
+ */
+ div#audioListDiv {
+    margin-top: 0.2em;
+}
+span.musicSubject {
+	/* 플레이리스트 제목-가수 */
+    font-weight: bold;
+    color: #C3C3C3;
+    text-decoration: none;
+}
