@@ -53,8 +53,10 @@
 	</div>
 	<div class="form-controlMarket" style= text-align:center;>
 		<div class="marketBoardInterval04">
+			<c:if test="${artist_id == 'manager' }">
 				<input class="btn btn-default" type="button" value="Modify" onclick="noticeUpdateFun('${root}','${notice.board_num }', '${pageNumber}')" />
 				<input class="btn btn-default" type="button" value="Delete" onclick="noticeDeleteFun('${root}','${notice.board_num }', '${pageNumber}')"/>
+			</c:if>
 		</div>
 	</div>	
 	

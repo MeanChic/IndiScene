@@ -27,7 +27,8 @@
 		<div class="form-controlMarket">
 			<label class="subject label-color">Writer</label>
 			<div class="form-inlineblock">
-				<input class="form-controller320" type="text" size="50" name="artist_id" value="testId"/>
+				<input class="form-controller320" type="text" size="50" name="artist" value="${artist_id }" disabled="disabled"/>
+				<input type="hidden" value="${artist_id }" name="artist_id"/>
 			</div>
 		</div>	
 		<div class="form-controlMarket">
@@ -57,8 +58,10 @@
 		</div>
 		<div class="form-controlMarket" style= text-align:center;>
 			<div class="marketBoardInterval04">
-				<input class="btn btn-default" type="button" value="Write" onclick="javascript:noticeWriteOk('${root}','${pageNumber}')">
-				<input class="btn btn-default" type="reset" value="Reset"/>
+				<c:if test="${artist_id == 'manager'}">
+					<input class="btn btn-default" type="button" value="Write" onclick="javascript:noticeWriteOk('${root}','${pageNumber}')">
+					<input class="btn btn-default" type="reset" value="Reset"/>
+				</c:if>
 			</div>
 		</div>
 	</form>

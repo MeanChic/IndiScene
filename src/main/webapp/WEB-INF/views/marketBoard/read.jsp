@@ -100,8 +100,10 @@
 	
 	<div class="form-controlMarket" style= text-align:center;>
 		<div class="marketBoardInterval04">
-			<input class="btn btn-default" type="button" value="Modify" onclick="marketBoardUpdate('${marketBoard.board_num}','${pageNumber}')" />
-			<input class="btn btn-default" type="button" value="Delete" onclick="marketBoardDelete('${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')"/>
+			<c:if test="${marketBoard.artist_id == artist_id }">
+				<input class="btn btn-default" type="button" value="Modify" onclick="marketBoardUpdate('${marketBoard.board_num}','${pageNumber}')" />
+				<input class="btn btn-default" type="button" value="Delete" onclick="marketBoardDelete('${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')"/>
+			</c:if>
 		</div>
 	</div>
 	
@@ -116,7 +118,9 @@
 	<h3 style="color:#4C4C4C; font-size: 1.3em; font-weight: bold;" >commant </h3>
 	<hr>
 	<div>
-		<input id="writeId"  type="text" name="artist_id" size="14" style="font-size:1.05em;font-family:Helvetica;" value="${marketBoard.artist_id}">
+		<input id="writeId"  type="text" name="artist" value="${artist_id }"size="14" style="font-size:1.05em;font-family:Helvetica;" value="${marketBoard.artist_id}" disabled="disabled">
+		<input type="hidden" value="${artist_id }" name="artist_id"/>
+		
 		<input id="writeReply" type="text" name="reply_content" size="80" />&nbsp;
 		<input type="button" value="submit" style="color:black;" onclick="writeToServer('${root}','${marketBoard.board_num }')"/> 
 	</div>

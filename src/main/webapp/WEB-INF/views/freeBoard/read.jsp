@@ -51,8 +51,10 @@
 	</div>
 	<div class="form-controlMarket" style= text-align:center;>
 		<div class="marketBoardInterval04">
+			<c:if test="${artist_id == freeBoard.artist_id }">
 				<input class="btn btn-default" type="button" value="Modify" onclick="freeBoardUpdateFun('${root}','${freeBoard.board_num }', '${pageNumber}')" />
 				<input class="btn btn-default" type="button" value="Delete" onclick="freeBoardDeleteFun('${root}','${freeBoard.board_num }', '${pageNumber}')"/>
+			</c:if>
 		</div>
 	</div>
 	 	
@@ -65,7 +67,8 @@
 	<h3 style="color:#4C4C4C; font-size: 1.3em; font-weight: bold;" >commant </h3>
 	<hr>
 	<div>
-		<input id="writeId"  type="text" name="artist_id" size="14" style="font-size:1.05em;font-family:Helvetica;" value="${freeBoard.artist_id}">
+		<input type="hidden" value="${artist_id }" name="artist_id" />
+		<input id="writeId"  type="text" name="artist" size="14" style="font-size:1.05em;font-family:Helvetica;" value="${freeBoard.artist_id}" disabled="disabled"/>
 		<input id="writeReply" type="text" name="reply_content" size="80" />&nbsp;
 		<input type="button" value="submit" style="color:black;" onclick="writeToServer('${root}','${freeBoard.board_num }')"/> 
 	</div>

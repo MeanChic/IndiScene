@@ -22,6 +22,7 @@
 		<input type="hidden" name="seq_num" value="${seq_num }"/>
 		<input type="hidden" name="seq_level" value="${seq_level }"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
+		<input type="hidden" name="artist_id" value="${artist_id}"/>
 		<c:if test="${pageNumber ==null}">
 			<c:set var="pageNumber" value="${1}"/>
 		</c:if>
@@ -31,7 +32,7 @@
 		<div class="form-controlMarket">
 			<label class="subject label-color">Writer</label>
 			<div class="form-inlineblock">
-				<input class="form-controller320" type="text" size="50" name="artist_id" value="testId"/>
+				<input class="form-controller320" type="text" size="50" name="artist" value="${artist_id}"/>
 			</div>
 		</div>	
 		<div class="form-controlMarket">
