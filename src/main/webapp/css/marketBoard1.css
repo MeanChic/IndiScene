@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 /* Read */
-#boardBasic, #freeBoardRead,#freeBoardList,#perfomBoardRead,#uploadBoardRead,#marketBoardread,#freeBoardDelete,#noticeDelete, #marketBoardDelete,#noticeRead{ 
+#performBoardDelete,#boardBasic, #freeBoardRead,#freeBoardList,#perfomBoardRead,#uploadBoardRead,#marketBoardread,#freeBoardDelete,#noticeDelete, #marketBoardDelete,#noticeRead{ 
 	text-align:left; 
 	width:930px; 
 	min-height:450px; 
@@ -94,6 +94,7 @@ span.Delimiter {
 	padding-right: 2.0em;
 }
 
+
 /*****    Delete    *****/
 
 
@@ -104,6 +105,7 @@ span.Delimiter {
 .DeletefontStyle{
 	 font-size:1.5em; 
 	 font-family:Helvetica;
+	 color: #333333;
 }
 
 .Delimiter{
@@ -169,7 +171,7 @@ a.marketBoardListBtn {
 	 font-family:Helvetica;
 }
 .DeletePassWord {
-  padding-left: 20%;
+  padding-left: 25%;
 }
 .DeleteListPaddingLeft{
 	  padding-left: 0.1%;
@@ -183,7 +185,7 @@ input.FontColorIsBlack{
 
 #DeleteInner {
   font-family: -webkit-body;
-  color: rgb(127, 127, 127);
+  color: #FB6816;
   font-size: 1.5em;
 }
 
@@ -192,6 +194,11 @@ input.FontColorIsBlack{
 	font-family: Helvetica;
 	
 }
+
+span#idMarginLeft {
+  margin-left: 12.5%;
+}
+
 
 /* 검색창  */
 
@@ -259,4 +266,14 @@ input#MainSearchBtn {
 	font-weight: bold;
 	width: 5.0em;
 	height: 2.0em;
+}
+ h2 {
+  font-family: -webkit-body;
+  color: #FB6816;
+  font-weight: bold;
+}
+#FreeLabel{
+	
+	color: black;
+	
 }

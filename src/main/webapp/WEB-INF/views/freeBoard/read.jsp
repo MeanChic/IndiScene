@@ -55,7 +55,7 @@
 				<input class="btn btn-default" type="button" value="Delete" onclick="freeBoardDeleteFun('${root}','${freeBoard.board_num }', '${pageNumber}')"/>
 		</div>
 	</div>
-	
+	 	
 	<!-- ---------------한줄댓글 ----------------------------------------------->
 
 <%-- 	${freeBoard.board_num }--%>	
