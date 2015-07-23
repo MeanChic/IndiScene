@@ -449,7 +449,7 @@ function validValueCheck(formId){
 	}
 	var valueCheckContent= $("#"+formId).find("textarea[name='content']").val();
 	var valueCheckMerge=$("#"+formId).find("input[id='mergeFile']").val();
-	alert(valueCheckMerge);
+//	alert(valueCheckMerge);
 	
 	if(valueCheckSubject == ""){
 		alert("제목을 입력해주세요");
