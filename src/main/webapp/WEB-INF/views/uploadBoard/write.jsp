@@ -83,7 +83,7 @@
 		<div class="form-controlMarket" >
 			<label class="label-color marketBoardY-location01">Contents</label>
 			<div class="form-inlineblock marketBoardSize80">
-				<textarea name="content"></textarea>		
+				<textarea id="content" name="content"></textarea>		
 				<script type="text/javascript">
 				CKEDITOR.replace( 'content',
 					 {///IndiScene_basic/src/main/webapp/resources/ckfinder

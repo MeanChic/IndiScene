@@ -49,7 +49,7 @@ public class ArtistServiceImpl implements ArtistService {
 		ArtistDto artistDto=(ArtistDto)map.get("artistDto");
 		MultipartHttpServletRequest request = (MultipartHttpServletRequest) map.get("request");
 		
-		MultipartFile mf = request.getFile("artist_picture");
+		MultipartFile mf = request.getFile("profileImage");
 		if(!mf.isEmpty()){
 			String timeName= artistDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+mf.getOriginalFilename();
 			File imageFile = new File(dir+"artistResources/",timeName);
