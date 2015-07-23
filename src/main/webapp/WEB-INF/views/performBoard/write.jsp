@@ -53,6 +53,7 @@
 							 });
 					function datePickerSettingPerform(){
 							$( "#datepicker" ).datepicker({
+	
 						    showOn: "button",
 						   // buttonImage: "/images/calendar.gif",
 						    buttonImageOnly: false,
