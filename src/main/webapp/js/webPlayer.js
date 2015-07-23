@@ -94,13 +94,13 @@
 		});
 		
 		/* 음악 진행 바의 value 변경시 음원 재생시간 변경 */
-		$("#musicBar").bind("change",function(){
+	/*	$("#musicBar").bind("change",function(){
 			audio.pause();
 			$(audio).unbind("timeUpdate",timeChange);
 			audio.currentTime=$(this).val();
 			audio.play();
 			$(audio).bind("timeUpdate",timeChange);
-		});
+		});*/
 		
 		/* 음악 진행 바에 음악 길이 셋팅. */
 		function setTime(duration){
@@ -115,13 +115,13 @@
 //			$("#volumeText").text($(this).val());
 		});
 		
-		$("#prevMoment").click(function(){
+/*		$("#prevMoment").click(function(){
 			audio.currentTime= audio.currentTime-10;
 		});
 		
 		$("#nextMoment").click(function(){
 			audio.currentTime= audio.currentTime+10;
-		});
+		});*/
 	});
 	
 	function timeChange(){
@@ -138,6 +138,11 @@
 		$(".musicCheckBox:checked").each(function (){
 			musicL=musicL+$(this).val()+",";
 		});
+		
+		if(musicL==""){
+			alert("곡을 선택해 주세요");
+			return;
+		}
 		
 		$.ajax({
 			url:root+"/webPlayer/musicListAppend.do?artist_id="+artist_id+"&musicList="+musicL,
