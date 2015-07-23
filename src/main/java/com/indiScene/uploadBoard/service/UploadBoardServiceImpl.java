@@ -261,7 +261,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		Map<String,Object> hMap = mav.getModel();
 		HttpServletRequest request=(HttpServletRequest)hMap.get("request");
 		
-		int boardSize =10;
+		int boardSize =5;
 		String pageNumber = request.getParameter("pageNumber");
 		String searchWord=request.getParameter("searchWord");
 		String searchType=request.getParameter("searchType");
@@ -271,6 +271,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		System.out.println("searchWord!!!:"+searchWord);
 		
 		if(pageNumber == null) pageNumber ="1";
+		System.out.println("pageNumber!!!:"+pageNumber);
 		
 		int currentPage = Integer.parseInt(pageNumber);
 		int startRow = (currentPage - 1) * boardSize +1;
@@ -337,7 +338,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 			mav.setViewName("uploadBoard/searchList"); //메인검색해씅ㄹ때
 		}
 		
-		
+		mav.addObject("searchWord",searchWord);
 		mav.addObject("boardSize",boardSize);
 		mav.addObject("currentPage",currentPage);
 		

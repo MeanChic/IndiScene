@@ -24,7 +24,7 @@ function searchMarketBoard(requestRoot,pageNumber,folderName,searchWord,searchTy
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"제목","/");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"제목","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -56,7 +56,7 @@ function searchFreeBoard(root,pageNumber,folderName,searchWord,searchType){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"제목","/");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"제목","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -85,7 +85,64 @@ function searchMain(root,pageNumber,searchWord,type){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
-			history.pushState({indiData:realData},"제목","/");//다음페이지에 히스토리 저장
+			history.pushState({indiData:realData},"제목","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	});
+}
+
+
+function artistSearchPageMove(root,pageNumber,searchWord){
+	//alert(folderName[0]);
+	//if(searchWord==null){
+	//	var searchWord=$("#MainSearchWord").val();
+	searchType="artist";
+	//}
+	
+	//alert(searchWord);
+	alert(root+","+pageNumber+","+searchWord);
+	sendData="?pageNumber="+pageNumber+"&searchType="+searchType+ "&searchWord="+searchWord+"&folderName=uploadBoard";
+	$.ajax({
+		url:root +"/uploadBoard/list.do"+sendData,
+		type:"get",
+		dataType:"html",
+		success:function(data){
+			alert(data);
+			var realData = data.split("<!--artistStart-->");
+			realData = realData[1].split("<!--artistEnd-->")[0];
+			alert(realData);
+			$("#artistSearchResult").html(realData);
+			history.pushState({indiData:realData},"제목","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+		},
+		error:function(xhr,status,error){
+			alert(xhr+"\n"+status+"\n"+error);
+		}
+	});
+}
+
+function subjectSearchPageMove(root,pageNumber,searchWord){
+	//alert(folderName[0]);
+	//if(searchWord==null){
+	//	var searchWord=$("#MainSearchWord").val();
+	searchType="subject";
+	//}
+	
+	//alert(searchWord);
+	alert(root+","+pageNumber+","+searchWord);
+	sendData="?pageNumber="+pageNumber+"&searchType="+searchType + "&searchWord="+searchWord+"&folderName=uploadBoard";
+	$.ajax({
+		url:root +"/uploadBoard/list.do"+sendData,
+		type:"get",
+		dataType:"html",
+		success:function(data){
+			alert(data);
+			var realData = data.split("<!--subjectStart-->");
+			realData = realData[1].split("<!--subjectEnd-->")[0];
+			alert(realData);
+			$("#subjectSearchResult").html(realData);
+			history.pushState({indiData:realData},"제목","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
