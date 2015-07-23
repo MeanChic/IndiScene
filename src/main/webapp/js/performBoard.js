@@ -141,6 +141,8 @@ function performBoardWrite(){
 			$("#centerContents").html(realData)
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 			$.getScript(root+"/js/jquery.MultiFile.js");
+			$.getScript(root+"/js/jquery.js");
+			$.getScript(root+"/js/jquery-ui.js");
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
