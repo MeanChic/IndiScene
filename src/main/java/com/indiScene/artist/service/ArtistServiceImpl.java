@@ -1,5 +1,7 @@
 package com.indiScene.artist.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.artist.dao.ArtistDao;
@@ -24,6 +28,7 @@ import com.indiScene.artist.dto.ZipcodeDto;
 @Component
 public class ArtistServiceImpl implements ArtistService {
 	private final Logger logger=Logger.getLogger(this.getClass().getName());
+	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
 	
 	@Autowired
 	private ArtistDao artistDao;
@@ -42,7 +47,22 @@ public class ArtistServiceImpl implements ArtistService {
 		logger.info("-----Servlet artist registerOk-----");
 		Map<String,Object> map=mav.getModelMap();
 		ArtistDto artistDto=(ArtistDto)map.get("artistDto");
-
+		MultipartHttpServletRequest request = (MultipartHttpServletRequest) map.get("request");
+		
+		MultipartFile mf = request.getFile("artist_picture");
+		if(!mf.isEmpty()){
+			String timeName= artistDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+mf.getOriginalFilename();
+			File imageFile = new File(dir+"artistResources/",timeName);
+			try {
+				mf.transferTo(imageFile);
+				artistDto.setArtist_picture(imageFile.getAbsolutePath().substring(imageFile.getAbsolutePath().indexOf("\\resources")).replace('\\','/'));
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		artistDto.setArtist_level(1);
 		int check=artistDao.insert(artistDto);
 		logger.info("artistRegisterOk check: "+check);
@@ -105,12 +125,30 @@ public class ArtistServiceImpl implements ArtistService {
 		logger.info("-----Servlet artist updateOk-----");
 		Map<String,Object> map=mav.getModelMap();
 		ArtistDto artistDto=(ArtistDto)map.get("artistDto");
+		MultipartHttpServletRequest request = (MultipartHttpServletRequest) map.get("request");
 		
 		logger.info("artist_id : "+artistDto.getArtist_id());
 		logger.info("artist_password : "+artistDto.getArtist_password());
 		logger.info("artist_nickname : "+artistDto.getArtist_nickname());
 		logger.info("artist_birth : "+artistDto.getArtist_birth());
 		logger.info("artist_level : "+artistDto.getArtist_level());
+		
+		MultipartFile mf = request.getFile("artist_picture");
+		if(!mf.isEmpty()){
+			String timeName= artistDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+mf.getOriginalFilename();
+			File imageFile = new File(dir+"artistResources/",timeName);
+			try {
+				mf.transferTo(imageFile);
+				artistDto.setArtist_picture(imageFile.getAbsolutePath().substring(imageFile.getAbsolutePath().indexOf("\\resources")).replace('\\','/'));
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else{
+			ArtistDto artist=artistDao.select(artistDto.getArtist_id());
+			artistDto.setArtist_picture(artist.getArtist_picture());
+		}
 		
 		int check=artistDao.update(artistDto);
 		logger.info("artistUpdateOk check: "+check);
