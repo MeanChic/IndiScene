@@ -55,6 +55,7 @@
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>
+	<input type="hidden" id="artist_id" value="${artist_id}"/>
 	<!-- Offsite canvas navigation start -->
 	<nav class="main-nav">
 		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
@@ -265,7 +266,11 @@ $("#volumeBtn").click(function(){
  /* main-Nav */
 $('#nav-expander').on('click', function(e) {
 	e.preventDefault();
-	$('.main-nav').toggleClass('nav-expanded');
+	if($("#artist_id").val()==""){
+		
+	}else{
+		$('.main-nav').toggleClass('nav-expanded');
+	}
 });
 $('.main-nav .close').on('click', function(e) {
 	e.preventDefault();
