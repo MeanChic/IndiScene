@@ -107,23 +107,21 @@
 	<div class="form-controlMarket" >
 		<label class="marketBoardSize16 label-color marketBoardY-location01" >Contents</label>
 		<div class="marketBoardSize77 marketBoardAttribute01">
-			<script type="text/javascript">
-				$(function(){
-					$("#marketReadContents img").attr("style","");
-					$("#marketReadContents img").addClass("marketBoardSize03");
-				})				
-			</script>
 			<div id="marketReadContents" class="marketBoardTextareaSize200 marketBoardAttribute02">
 				${performBoard.content}
 			</div>		
 		</div>
 	</div>
+	<script type="text/javascript">
+				$(function(){
+					$("#marketReadContents img").addClass("marketBoardSize03");
+				})				
+			</script>
 	<div class="form-controlMarket">
 		<label class="marketBoardSize16 label-color marketBoardY-location01">Date&Place</label>
 		<div class="marketBoardSize77 marketBoardAttribute01">
 			<script type="text/javascript">
 				$(function(){
-					$("#marketReadContents img").attr("style","");
 					$("#marketReadContents img").addClass("marketBoardSize03");
 				})				
 			</script>

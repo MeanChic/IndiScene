@@ -125,6 +125,15 @@ DEALINGS IN THE SOFTWARE.
 //            alert(data);
         	$("#uploadPath").val($("#root").val()+"/resources/TemporaryMusic/"+data);
 //        	$("#musicFile").attr("disabled","true");
+            $("#prevListen").css("display","inline-block");
+            //      var countdown=6;
+                  $("#prevListen").val(10);
+                  $("#prevListen").attr("disabled","disabled");
+                  recordTimer();
+                  
+                  $("#prevListen").click(function(){
+                  	$("#Recordbars").css("display","block");
+                  });
         }, error: function(jqXHR, textStatus, errorThrown) {},
     });
   }

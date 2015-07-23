@@ -4,10 +4,11 @@
 		@author : Kim Min Sic
 		@description : Music Player in Web using javavscript 
 */
+	var index =0;
 	var audio = document.createElement("audio");
 	$(function(){
 		/* 오디오 태그 생성을 통한  웹플레이어 준비*/
-		var index = 1 ;
+		index = 1 ;
 		audio.volume = 0.5;
 		$(audio).attr("preload","auto");
 		
@@ -15,7 +16,7 @@
 		$(audio).bind("ended",function(){
 			index++;
 			
-			if(index==$(".audioList").length+1){
+			if(index==$(".audioList").length){
 				index=1;
 			}
 			
@@ -87,7 +88,7 @@
 		$("#next").click(function(){
 			index++;
 			currentTime=0;
-			if(index == $(".audioList").length+1){
+			if(index == $(".audioList").length){
 				index=1;
 			}
 			$(audio).attr("src",$(".sourcePath:eq("+index+")").val());
@@ -192,6 +193,58 @@
 			}
 		}); 
 	}
+	
+	function oneMusicStorage(root,artist_id,board_num){
+		var musicL = board_num;
+		
+		$.ajax({
+			url:root+"/webPlayer/musicListAppend.do?artist_id="+artist_id+"&musicList="+musicL,
+			type:"get",
+			dataType:"text",
+			success:function(data){
+				var gettedMusicList = data.split("<end>");
+				alert(gettedMusicList[0]);
+				
+				for(var i =1; i<gettedMusicList.length-1; i++){
+					var gettedMusicInfo = gettedMusicList[i].split("<cut>");
+//					alert(gettedMusicList[i]);
+					var audioListDiv = $("#audioListDiv").clone();
+					$(audioListDiv).attr("class","audioList");
+					$(audioListDiv).find(".musicSubject").text(gettedMusicInfo[0]);
+					$(audioListDiv).find(".artistName").text(gettedMusicInfo[1]);
+					$(audioListDiv).find(".sourcePath").val(root+gettedMusicInfo[2]);
+					$(audioListDiv).find(".musicBoardNum").val(gettedMusicInfo[4]);
+					$(audioListDiv).css("display","block");
+					$(audioListDiv).appendTo($("#audioList"));
+				}
+				
+				$(".musicClick").click(function(){
+//					alert($(this).children(".sourcePath").val());
+					$(audio).attr("src",$(this).children(".sourcePath").val());
+				});
+				$(".listDelete").click(function(){
+//					alert(root+"\n"+artist_id+"\n"+$(this).prev().children(".musicBoardNum").val());
+					var musicBoardNum = $(this).prev().children(".musicBoardNum").val();
+					alert(musicBoardNum);
+					$(this).parents("div.audioList").remove();
+					$.ajax({
+						url:root+"/webPlayer/musicListDelete.do?artist_id="+artist_id+"&boardNum="+musicBoardNum,
+						type:"get",
+						dataType:"text",
+						success:function(data){
+							alert(data);
+						},
+						error:function(xhr,status,error){
+							alert(xhr+"\n"+status+"\n"+error);
+						}
+					}); 
+				});;
+			},
+			error:function(xhr,status,error){
+				alert(xhr+"\n"+status+"\n"+error);
+			}
+		}); 
+	}
 
 	function getMusicList(root,artist_id){
 		$.ajax({
@@ -216,6 +269,14 @@
 				$(".musicClick").click(function(){
 //					alert($(this).children(".sourcePath").val());
 					$(audio).attr("src",$(this).children(".sourcePath").val());
+					$("#play > span").attr("class","glyphicon glyphicon-pause");
+					for(var i = 0; i< $(".musicClick").length;i++){
+//						alert(index+"\t"+i);
+						if($(".musicClick").eq(i).find(".sourcePath").val() == $(this).find(".sourcePath").val()){
+							index=i;
+							break;
+						}
+					}
 				});
 				$(".listDelete").click(function(){
 //					alert(root+"\n"+artist_id+"\n"+$(this).prev().children(".musicBoardNum").val());

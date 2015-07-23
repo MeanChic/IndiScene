@@ -31,6 +31,7 @@ function performPlace(root){
 			//alert(realData);
 			$("#centerContents").html(realData);
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			$.getScript(root+"/js/jquery-ui.js");
 			$('.main-nav').toggleClass('nav-expanded');
 		},
 		error:function(xhr,status,error){
@@ -70,6 +71,7 @@ function enterPerformBoard(requestRoot,pageNumber){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
+			$.getScript(root+"/js/jquery-ui.js");
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
@@ -174,6 +176,7 @@ function performBoardWriteOk(){
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData)
+			$.getScript(root+"/js/jquery-ui.js");
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error); 
@@ -195,6 +198,7 @@ function performBoardRead(board_num,pageNumber){
 			//alert(realData);
 			
 			$("#centerContents").html(realData);
+			$.getScript(root+"/js/jquery-ui.js");
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
@@ -216,6 +220,7 @@ function performBoardUpdate(board_num,pageNumber){
 			//alert(realData);
 			$("#centerContents").html(realData);
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
+			$.getScript(root+"/js/jquery-ui.js");
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);
@@ -242,6 +247,7 @@ function performBoardUpdateOk(){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
+			$.getScript(root+"/js/jquery-ui.js");
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error);

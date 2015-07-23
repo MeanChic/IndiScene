@@ -19,8 +19,8 @@
 	<h3>Market Board Write</h3>
 	<form id="marketBoardWriteForm" method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<input type="hidden" id="folderName" name="folderName" />
-		<div class="marketBoardX-location02">
-			<a class="marketBoardAttribute01 btn btn-default" href="${root}/marketBoard/enterBoard.do">List</a>
+		<div class="marketBoardX-location02">    
+			<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterPerformBoard('${root}','${pageNumber}')">List</a>
 		</div>
 		<div class="form-controlMarket">
 			<label class="subject label-color">Writer</label>

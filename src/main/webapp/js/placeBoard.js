@@ -23,6 +23,7 @@ function enterPlaceBoard(requestRoot,pageNumber){
 			realData = realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData);
+			$.getScript(root+"/js/jquery-ui.js");
 			history.pushState({indiData:realData},"","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
 		error:function(xhr,status,error){
@@ -121,6 +122,7 @@ function placeBoardWriteOk(){
 			realData=realData[1].split("</body>")[0];
 			//alert(realData);
 			$("#centerContents").html(realData)
+			$.getScript(root+"/js/jquery-ui.js");//동적으로 읽어와야 한다
 		},
 		error:function(xhr,status,error){
 			alert(xhr+"\n"+status+"\n"+error); 
