@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="museBoard Write">
+<div id="museBoardWrite">
 	<h3>Muse Write</h3>
 	<form method="post" enctype="multipart/form-data" id="museWriteForm">	
 		<input type="hidden" value="${artist_id}" name="artist_id"/>

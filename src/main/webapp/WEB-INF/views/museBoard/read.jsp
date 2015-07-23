@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="museBoardRead">
-<div class="marketBoardX-location02">
+	<div class="marketBoardX-location02">
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:oneMusicStorage('${root}','${artist_id}','${boardDto.board_num}')">Put In</a>
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:museList('${root}','${pageNumber}','${muse_name}')">List</a>
 	</div>

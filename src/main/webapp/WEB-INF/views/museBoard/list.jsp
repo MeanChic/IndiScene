@@ -12,8 +12,10 @@
 <body>
 <div id="museBoardList">
 	<h3>MuseBoard</h3>
-	<input type="button" value="담기" onclick="museMusicStorage('${root}','${artist_id}','${muse_name}')"/>
-	<a href="javascript:museWrite('${root}','0','1','${muse_name}')">글쓰기</a>
+	<div class="marketBoardX-location02 marketBoardInterval03">
+		<input class="marketBoardAttribute01 btn btn-default pull-left" type="button" value="Put In" onclick="musicStorage('${root}','${artist_id}')"/>
+		<a class="marketBoardAttribute01 btn btn-default" href="javascript:museWrite('${root}','0','1')">Write</a>
+	</div>
 	<c:set value="${currentPage}" var="currentPage"/>
 	<div class="marketBoardAttribute02 marketBoardInterval03">
 		<div class="form-controlBoard">
