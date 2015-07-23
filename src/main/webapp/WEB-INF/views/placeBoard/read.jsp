@@ -69,7 +69,7 @@
 	});   
 	});
 </script>
-<div id="placeBoardRead"></div>
+<div id="placeBoardRead">
 	<c:set var="root" value="${pageContext.request.contextPath }" />
 	<input type="hidden" id="address" value="${marketBoard.zipcode}"/>
 	<input type="hidden" id="pageNumberForAjax" value="${pageNumber }"></input>
@@ -99,12 +99,6 @@
 	<div class="form-controlMarket" >
 		<label class="marketBoardSize16 label-color marketBoardY-location01" >Contents</label>
 		<div class="marketBoardSize77 marketBoardAttribute01">
-			<script type="text/javascript">
-				$(function(){
-					$("#marketReadContents img").attr("style","");
-					$("#marketReadContents img").addClass("marketBoardSize03");
-				})				
-			</script>
 			<div id="marketReadContents" class="marketBoardTextareaSize200 marketBoardAttribute02">
 				${marketBoard.content }
 			</div>		
@@ -113,12 +107,6 @@
 	<div class="form-controlMarket">
 		<label class="marketBoardSize16 label-color marketBoardY-location01">Date&Place</label>
 		<div class="marketBoardSize77 marketBoardAttribute01">
-			<script type="text/javascript">
-				$(function(){
-					$("#marketReadContents img").attr("style","");
-					$("#marketReadContents img").addClass("marketBoardSize03");
-				})				
-			</script>
 			<div id="marketReadContents" class="marketBoardTextareaSize200 marketBoardAttribute02">
 				<div style="width:300px; float:left;" id="datepicker"></div>
    		 		<fmt:formatDate value="${performBoard.d_day}" pattern="MM/dd/yyyy hh:mm"/>
@@ -128,6 +116,12 @@
 			</div>		
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(function(){
+			alert($("#marketReadContents img").attr("src"));
+			$("#marketReadContents img").attr("style","width:100%;");
+		})				
+	</script>
 	<div class="form-controlMarket" style= text-align:center;>
 		<div class="marketBoardInterval04">
 			<c:if test="${performBoard.artist_id == artist_id }">
@@ -172,6 +166,6 @@
 			</span>
 		</div>
 	</c:forEach>
-		
+</div>
 </body>
 </html>

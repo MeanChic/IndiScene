@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-#placeBoardRead, #performanceBoardUpdate, #performanceBoardWrite, #uploadCollabo, #uploadUpdate, #uploadWrite, #uploadSearchList, #PerformEnterBoard, #performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
+#placeBoardWrite, #placeBoardRead, #performanceBoardUpdate, #performanceBoardWrite, #uploadCollabo, #uploadUpdate, #uploadWrite, #uploadSearchList, #PerformEnterBoard, #performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
 #noticeRead, #marketBoardread, #performRead{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#fff; border-radius:20px; }
 #boardlistSize{ padding-right:10px; padding-left:10px; }
 #best, #my, #all{ border-color:#BDBDBD; }
