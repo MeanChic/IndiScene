@@ -42,12 +42,12 @@
 				<input class="form-controller320" type="file" id="musicFile" name="musicFile" accept="audio/*"/>
 			</div>
 			<div class="form-inlineblock" id="recordInputArea" style="display:none;">
-				<a class="btn btn-info form-inlineblockButton form-controller320" href="javascript:toggleRecording(this)" id="recordButton">
+				<a class="btn btn-info form-inlineblockButton form-controller320" href="javascript:record()" id="recordButton">
 					<span class="glyphicon glyphicon-record">&nbsp;&nbsp;Record</span>
 				</a>
 				<input class="form-inlineblockButton form-controller320" type="button" id="prevListen" value="Beforehand listening"/>
 				<div class="marketBoardAttribute01" id="recordBox" style="display:none;">
-					<img src="${root}/resources/uploadBoard/recB.png" id="recordToggleImg" onclick="toggleRecording(this)"/>
+					<img src="${root}/resources/uploadBoard/recB.png" id="recordToggleImg"/>
 				</div>
 			</div>
 		</div>		
