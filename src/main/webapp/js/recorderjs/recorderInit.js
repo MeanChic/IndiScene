@@ -22,6 +22,7 @@ function toggleRecording( e ) {
         e.classList.remove("recording");
         audioRecorder.getBuffers( gotBuffers );
 //        $("#recordToggleImg").attr("src",$("#root").val()+"/resources/uploadBoard/recB.png");
+        $("#recordButton").css("background","#324053");
     } else {
         // start recording
         if (!audioRecorder)
@@ -30,6 +31,7 @@ function toggleRecording( e ) {
         audioRecorder.clear();
         audioRecorder.record();
 //        $("#recordToggleImg").attr("src",$("#root").val()+"/resources/uploadBoard/rec.png");
+        $("#recordButton").css("background","red");
     }
 }
 

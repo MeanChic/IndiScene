@@ -64,8 +64,8 @@
 			});
 		</script>
 		<!------- Audioar ------->
-		<div class="form-controlMarket">
-			<label class="subject label-color">Audio</label>
+		<div id="Recordbars" class="form-controlMarket">
+			<label class="subject label-color marketBoardY-location01">Audio</label>
 			<div class="form-inlineblock">
 				<audio class="instants07" id="prevAudio" controls src=""></audio>
 			</div>

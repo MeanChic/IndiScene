@@ -4,6 +4,7 @@
 #boardlistSize{ padding-right:10px; padding-left:10px; }
 #best, #my, #all{ border-color:#BDBDBD; }
 #best h4, #my h4, #all h4{ color:#FB6816; z-index:100; position:relative; margin-left:30px; margin-bottom:30px; }
+#Recordbars, #prevListen{ display:none; }
 
 .marketBoardX-location01{ text-align:center; }
 .marketBoardX-location02{ text-align:right; }
