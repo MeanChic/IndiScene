@@ -26,7 +26,7 @@
 		<div class="form-controlMarket" >
 			<label class="label-color marketBoardY-location01" >Contents</label>
 			<div class="form-inlineblock marketBoardSize80">
-				<textarea name="content">${notice.content }</textarea>		
+				<textarea id= "content" name="content">${notice.content }</textarea>		
 		 		<script>
 				var folderName='${pageContext.request.servletPath }';
 				folderName=folderName.split("views/");

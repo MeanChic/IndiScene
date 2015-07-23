@@ -2,7 +2,6 @@
 
 
 	function noticeWrite(root){
-		
 		$.ajax({
 			url:root+"/notice/write.do",
 			/*data:sendData,*/
@@ -25,10 +24,12 @@
 	}
 
 	function noticeWriteOk(root,pageNumber){
+		var str =CKEDITOR.instances.content.getData();
+		$("#content").val(str);
 		var dataSet = new FormData(document.getElementById("NoticeWriteForm"));
 		//alert("pageNumber:"+pageNumber)
  		//alert(CKEDITOR.instances.content.getData());
-		dataSet.append("content",CKEDITOR.instances.content.getData());
+//		dataSet.append("content",CKEDITOR.instances.content.getData());
 		//$("#content").val(CKEDITOR.instances.content.getData());
 		
 		$.ajax({
@@ -165,9 +166,9 @@
 		function noticeUpdateFunOk(root, board_num, pageNumber){
 			alert("root:"+root);
 	
-			$("#content").val(CKEDITOR.instances.content.getData());
+			var str =CKEDITOR.instances.content.getData();
+			$("#content").val(str);
 			var dataSet = new FormData(document.getElementById("updateForm"));
-			alert(dataSet);
 			
 			$.ajax({
 				url:root+"/notice/update.do",
