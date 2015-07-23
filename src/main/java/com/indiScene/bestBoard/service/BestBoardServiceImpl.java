@@ -52,7 +52,6 @@ public class BestBoardServiceImpl implements BestBoardService {
 		rowMap.put("endRow", endRow);
 		
 		List<BestBoardDto> list= dao.getBestList(rowMap);
-		
 		mav.addObject("boardList",list);
 		mav.addObject("count",count);
 		mav.addObject("boardSize",boardSize);
