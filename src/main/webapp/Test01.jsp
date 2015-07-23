@@ -189,9 +189,9 @@
 /******** tootip ********/
 /* Menu Bar */
 $(document).ready(function(){
-    $('.brandNewMusic').tooltip({title: "최신곡", placement: "right"}); 
-    $('.bestMusic').tooltip({title: "Top100", placement: "right"}); 
-    $('.indisMusic').tooltip({title: "음악", placement: "right"}); 
+    $('.brandNewMusic').tooltip({title: "최신곡", placement: "bottom"}); 
+    $('.bestMusic').tooltip({title: "Top100", placement: "bottom"}); 
+    $('.indisMusic').tooltip({title: "음악", placement: "bottom"}); 
     $('.performanceInfo').tooltip({title: "공연/대관 정보", placement: "right"}); 
     $('.marketPlace').tooltip({title: "중고거래", placement: "right"}); 
     $('.myMusic').tooltip({title: "회원님의 indiScene활동을 살펴보세요", placement: "right"}); 
