@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-#uploadWrite, #uploadSearchList, #PerformEnterBoard, #performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
+#uploadCollabo, #uploadUpdate, #uploadWrite, #uploadSearchList, #PerformEnterBoard, #performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
 #noticeRead, #marketBoardread, #performRead{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#fff; border-radius:20px; }
 #boardlistSize{ padding-right:10px; padding-left:10px; }
 #best, #my, #all{ border-color:#BDBDBD; }
@@ -56,9 +56,11 @@
 	border:solid 1px #cccccc;
 	border-radius: 4px;
 	width:100%; 
-	min-height:200px; 
+	min-height:260px; 
 	padding:10px;
 }
+
+.cke_contents{ min-height:250px; }
 .form-controlBoard{ display:block; margin-top:10px; margin-bottom:10px; }
 .form-controlBoard .label-color{ color:#151515; }
 .form-controlBoard .label-colorO{ color:#FB6816; }
@@ -81,6 +83,8 @@
 .marketBoardInterval02{ margin-top:20px; margin-bottom:20px; }
 .marketBoardInterval03{ margin-top:30px; margin-bottom:30px; }
 .marketBoardInterval04{ margin-top:40px; margin-bottom:40px; }
+
+.marginbot20{ margin-bottom:20px; }
 
 .marginLR5{ margin-left:5px; margin-right:5px; }
 .marginLR10{ margin-left:10px; margin-right:10px; }

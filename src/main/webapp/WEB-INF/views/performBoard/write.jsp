@@ -43,7 +43,6 @@
 			<span class="content" >
 				<textarea  name="content" ></textarea>		
 			<script >
-				
 				var folderName='${pageContext.request.servletPath }';
 				folderName=folderName.split("views/");
 				folderName=folderName[1].split("/");
@@ -59,7 +58,7 @@
 				 $(function(){
 						$( "#datepicker" ).datepicker({
 					    showOn: "button",
-					    buttonImage: "images/calendar.gif",
+					    buttonImage: "/images/calendar.gif",
 					    buttonImageOnly: true,
 					    buttonText: "Select date",
 					    changeMonth: true,
@@ -83,7 +82,6 @@
 								<c:if test="${j==1}">
 									<option style="align:right;">${i} : 30</option>
 								</c:if>
-								
 							</c:forEach>
 						</c:forEach>
 					</select>

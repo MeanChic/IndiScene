@@ -103,7 +103,6 @@
 	
 	<input type="hidden" id="root" value="${root}"/>
 	<input type="hidden" id="originalMusicPath" value=""/> 
-	<input type="button" onclick="validValueCheck('uploadWriteForm')" value="테스트"/>
 	<script type="text/javascript">
 		$("#recordBox").css($("#recordButton").css("height"));
 		$("#prevListen").bind("click",function(){
