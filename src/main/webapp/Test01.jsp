@@ -123,7 +123,7 @@
 			<img class="logo logoDouplicate" src="${root}/css/images/logo-full.png" alt="logo">
 			
 
-			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><span class="glyphicon glyphicon-list" ></span>&nbsp;&nbsp;Menu</a>
+			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg" onclick=""><span class="glyphicon glyphicon-list" ></span>&nbsp;&nbsp;Menu</a>
 		
 			<c:choose>
 				<c:when test="${artist_id ==null}">
