@@ -52,7 +52,7 @@ $(function(){
 <div id="boardBasic">
 	<input type="hidden" name="artist_id" value="${artist_id}"/>
 	<input type="hidden" id="root" value="${root}"/>
-	<input type="hidden" name="muse_name"/>
+	<input type="hidden" name="muse_name" value="${muse_name}"/>
 	<h3>Indi's Muse</h3>
 	<div class="marketBoardX-location02 marketBoardInterval03">
 		<input class="marketBoardAttribute01 btn btn-default" type="button" name="create"/>

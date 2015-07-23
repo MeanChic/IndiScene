@@ -48,6 +48,7 @@
 	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=35bf5934991976c7b6f95f227c76624f&libraries=services"></script>
 	<script type="text/javascript" src="${root}/js/search.js"></script>
 	<script type="text/javascript" src="${root}/js/myMusic.js"></script>
+	<script type="text/javascript" src="${root}/js/museBoard.js"></script>
 </head>
 <body>
 	<input type="hidden" id="root" value="${root}"/>

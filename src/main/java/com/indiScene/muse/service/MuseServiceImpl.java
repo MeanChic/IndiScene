@@ -201,7 +201,7 @@ public class MuseServiceImpl implements MuseService {
 			int su = "C:/SPB_Data/git/IndiScene/src/main/webapp".length();
 			
 			logger.info("--" + su + "   " + path + "    "  + path.substring(su));
-			bestMuse.get(i).replace("MUSE_FILEPATH", path.substring(su));
+			myMuse.get(i).replace("MUSE_FILEPATH", path.substring(su));
 		}
 		
 		for(int i = 0; i < allMuse.size(); i++){
@@ -209,7 +209,7 @@ public class MuseServiceImpl implements MuseService {
 			int su = "C:/SPB_Data/git/IndiScene/src/main/webapp".length();
 			
 			logger.info("--" + su + "   " + path + "    "  + path.substring(su));
-			bestMuse.get(i).replace("MUSE_FILEPATH", path.substring(su));
+			allMuse.get(i).setMuse_filepath(path.substring(su));
 		}
 		
 		
