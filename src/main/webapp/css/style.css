@@ -100,10 +100,10 @@ Main navigation
 	transition: all 0.2s;
 	margin: 0.1em 0.5em -0.1em 0;
 }
-.main-nav .nav-pills > li > a:hover {
+.main-nav .nav-pills > li > a:hover{
 	color:#fff;
 	background:transparent;
-	font-weight:bold;
+	background-color: #FB6816;
 }
 .main-nav .nav-pills > li > a:hover > i {
 	float: right;
@@ -188,7 +188,7 @@ Sub navigation
 .sub-nav .nav-pills > li > a:hover {
 	color:#fff;
 	background:transparent;
-	font-weight:bold;
+	background-color: #FB6816;
 }
 .sub-nav .nav-pills > li > a:hover > i {
 	float: right;
