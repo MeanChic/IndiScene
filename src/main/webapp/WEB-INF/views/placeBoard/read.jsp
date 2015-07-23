@@ -109,11 +109,8 @@
 		<label class="marketBoardSize16 label-color marketBoardY-location01">Date&Place</label>
 		<div class="marketBoardSize77 marketBoardAttribute01">
 			<div id="marketReadContents" class="marketBoardTextareaSize200 marketBoardAttribute02">
-				<div style="width:300px; float:left;" id="datepicker"></div>
-   		 		<fmt:formatDate value="${performBoard.d_day}" pattern="MM/dd/yyyy hh:mm"/>
-				<!-- <div id="map_canvas" style="width:300px; height:300px; float:left;"></div> -->
-				<div id="map" style="width:300px;height:300px;">${performBoard.address}</div>
-				${performBoard.address}
+				<div id="map" style="width:300px;height:300px;">${marketBoard.address}</div>
+				${marketBoard.address}
 			</div>		
 		</div>
 	</div>
@@ -132,7 +129,7 @@
 
 	<div class="form-controlMarket" style= text-align:center;>
 		<div class="marketBoardInterval04">
-			<c:if test="${performBoard.artist_id == artist_id }">
+			<c:if test="${marketBoard.artist_id == artist_id }">
 				<input class="btn btn-default" type="button" value="Modify" onclick="javascript:placeBoardUpdate('${marketBoard.board_num}','${pageNumber}')" />
 				<input class="btn btn-default" type="button" value="Delete" onclick="javascript:placeBoardDelete('${marketBoard.board_num}','${pageNumber}','${marketBoard.artist_id}')"/>
 				<c:set var="artist" value="${artist_id }"></c:set>
