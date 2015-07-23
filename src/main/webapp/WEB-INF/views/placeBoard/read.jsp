@@ -12,25 +12,10 @@
 <script src="${root }/js/replyWrite.js" type="text/javascript" ></script>
 <script src="${root }/js/replyDelete.js" type="text/javascript" ></script>
 <script src="${root }/js/replyUpdate.js" type="text/javascript" ></script>
-<script type="text/javascript">
-	function delFun(root, board_num, pageNumber,artist_id){
-		var dd =confirm("정말 삭제하시겠습니까?");
-			var url=root+"/placeBoard/delete.do?board_num="+boardNumber+"&pageNumber="+pageNumber+"&artist_id="+artist_id;
-		if(dd == true){
-			location.href=url;
-		}
-	}
-	function DeleteToServer(a,b,c){
-		//alert(a+b+c);
-	}
-</script>
 </head>
 <body>
 <script>
 	$(function(){
-		$( "#datepicker" ).datepicker({
-    		defaultDate: $("#date").val()
-    	});
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {
 	        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -109,7 +94,7 @@
 		<label class="marketBoardSize16 label-color marketBoardY-location01">Date&Place</label>
 		<div class="marketBoardSize77 marketBoardAttribute01">
 			<div id="marketReadContents" class="marketBoardTextareaSize200 marketBoardAttribute02">
-				<div id="map" style="width:300px;height:300px;">${marketBoard.address}</div>
+				<div id="map" style="width:300px;height:300px;"></div>
 				${marketBoard.address}
 			</div>		
 		</div>
@@ -122,7 +107,7 @@
 	</div>
 	<script type="text/javascript">
 		$(function(){
-			alert($("#marketReadContents img").attr("src"));
+			//alert($("#marketReadContents img").attr("src"));
 			$("#marketReadContents img").attr("style","width:100%;");
 		})				
 	</script>

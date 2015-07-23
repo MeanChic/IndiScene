@@ -24,7 +24,7 @@
 			<div class="col-sm-6 col-md-4 marketBoardheight01 marketBoardInterval01 instants01">
 				<div class="thumbnail">
 					<div class="disp">
-						<a href="javascript:performBoardRead('${market.board_num}','1')">
+						<a href="javascript:placeBoardRead('${market.board_num}','1')">
 							<img class="marketBoardSize03 marketBoardImageSize" src="${image}" />
 						</a>
 						<div class="caption">
