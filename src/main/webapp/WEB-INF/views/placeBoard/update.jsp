@@ -22,64 +22,74 @@
 		$("input[name = 'address']").val($("input[name='fulladd']").val().split("*")[1]); 
 	});
 </script>
-<div id="">
+<div id="placeBoardUpdate">
 	<form id="marketBoardUpdateForm" action="javascript:placeBoardUpdateOk()" method="post"> <!-- onsubmit="return checkForm(this)" -->
 		<input type="hidden" name="board_num" value="${board.board_num }"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber }"/>
-		
-		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-				<a href="javascript:enterMarketBoard('${root}','${pageNumber}')">글목록</a>
+		<input type="hidden" name="fulladd" value="${board.address}"/>
+		<input type="hidden" name="zipcode" value="${board.zipcode }">
+		<div class="marketBoardX-location02">
+			<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterPlaceBoard('${root}','${pageNumber}')">List</a>
 		</div>
-			
-		<div class="line">
-			<label class="title">작성자</label>
-			<span class="content">
-				<input type="text" name="writer" value="${board.artist_id }" disabled="disabled" />
-			</span>
-		</div>
-		
-		<div class="line">
-			<label class="title">제목</label>
-				<span class="content"><input type="text" size="50" name="subject"  value="${board.subject }"/></span>
-		</div>
-		
-		<div class="line" >
-			<label class="title" >내용</label>
-			<span class="content" >
-				<textarea  name="content" >${board.content }</textarea>		
-			<script >
-				
-				var folderName='${pageContext.request.servletPath }';
-				folderName=folderName.split("views/");
-				folderName=folderName[1].split("/");
-				//var id=document.getElementById(folderName);
-				//id.value=folderName[0]; //멀티파일폴더 만들때
-				$("#folderName").val(folderName[0]);
-				//alert(folderName[0])
-				 CKEDITOR.replace( 'content',
-						 {///IndiScene_basic/src/main/webapp/resources/ckfinder
-						 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
-						 });
-	  	</script>
-			</span>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Writer</label>
+			<div class="form-inlineblock">
+				<input class="form-controller320" type="text" size="50"  name="writer" value="${board.artist_id}" disabled="disabled"/>
+				<input type="hidden" name="artist_id" value="${artist_id }">
+			</div>
 		</div>	
-		
-		<div class="line">
-			<input type="hidden" name="fulladd" value="${board.address}"/>
-				
-			<input type="hidden" name="zipcode" value="${board.zipcode }">
-			주소<input type="text" name="zipcode1" value="" /> <input type="button"  value="우편번호" onclick="javascript:performZipcodeCheck('${root}')"><br/></br>
-			<input type="text" name="address" value=""/><br/><br/>
-			<input type="button"  value="지도로 검색" onclick="javascript:performMap()"/>	
+		<div class="form-controlMarket">
+			<label class="subject label-color">Subject</label>
+			<div class="form-inlineblock">
+				<input class="form-controller320" type="text" size="50" name="subject" value="${board.subject }"/>
+			</div>
 		</div>	
-		
-		
-		<div class="line" style="width:598px; border-width:2px; text-align:center;">
-			<input type="submit" value="글수정"/>
-			<input type="reset" value="취소"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/placeBoard/enterBoard.do?pageNumber=${pageNumber}'">
+		<div class="form-controlMarket" >
+			<label class="label-color marketBoardY-location01">Contents</label>
+			<div class="form-inlineblock marketBoardSize80">
+				<textarea name="content">${board.content }</textarea>
+				<script >
+					var folderName='${pageContext.request.servletPath }';
+					folderName=folderName.split("views/");
+					folderName=folderName[1].split("/");
+					//var id=document.getElementById(folderName);
+					//id.value=folderName[0]; //멀티파일폴더 만들때
+					$("#folderName").val(folderName[0]);
+					//alert(folderName[0])
+					 CKEDITOR.replace( 'content',
+							 {///IndiScene_basic/src/main/webapp/resources/ckfinder
+							 	filebrowserUploadUrl: "${root}/commonIO/imageUpload.do?folderName="+folderName[0] // 이미지 업로드를 처리 할 경로 설정.
+							 });
+			  	</script>
+			</div>
 		</div>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Setup Address</label>
+			<div class="form-inlineblock">
+				<input class="form-inlineblock form-controller220 instants11" type="text" name="zipcode2" value="${board.address}" disabled="disabled"/>
+			</div>
+		</div>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Address1</label>
+			<div class="form-inlineblock">
+				<input class="form-inlineblock form-controller220 instants11" type="text" name="zipcode"/>
+				<input class="form-inlineblockButton form-controller220" type="button" value="Search Map" onclick="javascript:performMap()"/>
+			</div>
+		</div>
+		<div class="form-controlMarket">
+			<label class="subject label-color">Address2</label>
+			<div class="form-inlineblock">
+				<input class="form-inlineblock form-controller220 instants11" type="text" name="address" value=""/>
+			</div>
+		</div>
+		<div class="form-controlMarket" style= text-align:center;>
+			<!-- <input type="submit" value="글쓰기" onclick="location.href='${root}/marketBoard/enterBoard.do'"/>  -->
+			<div class="marketBoardInterval04">
+				<input class="btn btn-default" type="submit" value="Modify"/>
+				<input class="btn btn-default" type="reset" value="Reset"/>
+			</div>
+		</div>		
 	</form>
-
+</div>
 </body>
 </html>
