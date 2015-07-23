@@ -117,7 +117,7 @@
 	<!-- Header Part start -->
 	<div class="navbar navbar-head">
 		<div class="navbar-inner">
-			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Menu</a>
+			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg"><span class="glyphicon glyphicon-list" onclick=></span>&nbsp;&nbsp;Menu</a>
 			<c:choose>
 				<c:when test="${artist_id ==null}">
 					<a href="#" id="loginButton" class="sub-expander pull-right btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a>
@@ -194,12 +194,12 @@ $(document).ready(function(){
     $('.brandNewMusic').tooltip({title: "최신곡", placement: "bottom"}); 
     $('.bestMusic').tooltip({title: "Top100", placement: "bottom"}); 
     $('.indisMusic').tooltip({title: "음악", placement: "bottom"}); 
-    $('.performanceInfo').tooltip({title: "공연/대관 정보", placement: "right"}); 
-    $('.marketPlace').tooltip({title: "중고거래", placement: "right"}); 
-    $('.myMusic').tooltip({title: "회원님의 indiScene활동을 살펴보세요", placement: "right"}); 
-    $('.indisMuse').tooltip({title: "동호회활동", placement: "right"}); 
-    $('.notice').tooltip({title: "공지사항", placement: "right"}); 
-    $('.freeboard').tooltip({title: "자유게시판", placement: "right"}); 
+    $('.performanceInfo').tooltip({title: "공연/대관 정보", placement: "bottom"}); 
+    $('.marketPlace').tooltip({title: "중고거래", placement: "bottom"}); 
+    $('.myMusic').tooltip({title: "회원님의 indiScene활동을 살펴보세요", placement: "bottom"}); 
+    $('.indisMuse').tooltip({title: "동호회활동", placement: "bottom"}); 
+    $('.notice').tooltip({title: "공지사항", placement: "bottom"}); 
+    $('.freeboard').tooltip({title: "자유게시판", placement: "bottom"}); 
    
 });
 
