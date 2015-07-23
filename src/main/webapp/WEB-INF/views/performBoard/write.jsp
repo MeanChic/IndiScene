@@ -7,13 +7,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+</head>
+<body>
 <script src="${root }/resources/ckEditor/ckeditor.js"></script>
 <script src="${root }/resources/ckfinder/ckfinder.js"></script>
 <script src="${root }/js/jquery.js" type="text/javascript" ></script>
 <script src="${root }/js/jquery.MultiFile.js" type="text/javascript" ></script>
+<script src="${root }/js/jquery-ui.js" type="text/javascript" ></script>
 <script type="text/javascript" src="${root }/css/marketBoard/script.js"></script>
-</head>
-<body>
 <div id="performanceBoardWrite">
 	<form id="marketBoardWriteForm" class="form_style" enctype="multipart/form-data">	
 		<input type="hidden" id="folderName" name="folderName" />
@@ -52,8 +54,8 @@
 					 $(function(){
 							$( "#datepicker" ).datepicker({
 						    showOn: "button",
-						    buttonImage: "/images/calendar.gif",
-						    buttonImageOnly: true,
+						   // buttonImage: "/images/calendar.gif",
+						    buttonImageOnly: false,
 						    buttonText: "Select date",
 						    changeMonth: true,
 						    changeYear: true
@@ -81,18 +83,19 @@
 			</div>
 		</div>
 		<div class="form-controlMarket">
-			<label class="subject label-color">Address</label>
+			<label class="subject label-color">Address 1</label>
 			<div class="form-inlineblock">
 				<input type="hidden" name="zipcode" value="">
-				<input class="form-inlineblock form-controller220" type="text" name="zipcode1"/>
-				<input class="form-inlineblockButton form-controller220" type="button" value="Zipcode" onclick="javascript:performZipcodeCheck('${root}')">
+				<input class="form-inlineblock form-controller320" type="text" name="zipcode1" />
+				<input class="form-inlineblockButton form-controller220" type="button"  value="Search Map" onclick="javascript:performMap()"/>
+				<!-- <input class="form-inlineblockButton form-controller220" type="button" value="Zipcode" onclick="javascript:performZipcodeCheck('${root}')"> -->
 			</div>
 		</div>
 		<div class="form-controlMarket">
-			<label class="subject label-color">Subject</label>
+			<label class="subject label-color">Address 2</label>
 			<div class="form-inlineblock">
-				<input class="form-inlineblock form-controller220" type="text" name="address" value=""/>
-				<input class="form-inlineblockButton form-controller220" type="button"  value="Search Map" onclick="javascript:performMap()"/>
+				<input class="form-inlineblock form-controller220" type="text" name="address" value="" size="80"/>
+				
 			</div>
 		</div>
 		<div class="form-controlMarket" style= text-align:center;>
