@@ -309,6 +309,18 @@ $('.music-nav .close').on('click', function(e) {
 /*
  *	각 게시판 들어갈때마나 메뉴바 사라지게 하기 
  */
+$('brandNewMusic a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
+});
+
+$('bestMusic a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
+});
+	
 $('.indisMusic a').on('click', function(e) {
 	//e.preventDefault();
 	//enterMarketBoard('${root }')
