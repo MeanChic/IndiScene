@@ -37,12 +37,14 @@
 			<script type="text/javascript">
 				alert("Login Success!");
 				location.href="${root}/Test01.jsp";
+				//moveToMain('${root}','${artist_id}');
 			</script>
 		</c:when>
 		<c:otherwise>
 			<script type="text/javascript">
 				alert("You were entered the wrong information.");
 				location.href="${root}/Test01.jsp";
+//				moveToMain('${root}','${artist_id}');
 			</script>
 		</c:otherwise>
 	</c:choose>

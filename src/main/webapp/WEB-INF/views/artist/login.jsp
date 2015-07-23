@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="artistLoginForm">
-	<form id="artistLoginForm" action="${root }/artist/login.do" method="post">
+	<form id="artistLoginForm2" action="${root }/artist/login.do" method="post">
 		<div class="form-controlArtist">
 			<label class="form-inlineblock label-color" style="font-size:1.5em;">ID</label>
 		    <div class="form-inlineblock">
@@ -26,7 +26,7 @@
 		</div>
 		<div class="form-controlArtist">
     		<div class="form-inlineblock button-control">
-				<input type="submit" class="btn btn-default size-control1" style="width:49%;" value="submit"/>
+				<input type="button" onclick="artistLogIn('${root}')" class="btn btn-default size-control1" style="width:49%;" value="submit"/>
 				<input type="reset" class="btn btn-default size-control1" style="width:49%;" value="cancel"/>
 			</div>
 		</div>

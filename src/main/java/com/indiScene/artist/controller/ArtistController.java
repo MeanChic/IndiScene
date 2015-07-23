@@ -237,4 +237,15 @@ public class ArtistController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/mainPage.do", method=RequestMethod.GET)
+	public ModelAndView moveToMain(HttpServletRequest request, HttpServletResponse response, String dong){
+		logger.info("-----MoveToMainPage----------------------");
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request",request);
+		mav.addObject("response",response);
+		artistService.moveToMain(mav);
+		
+		return null;
+	}
 }

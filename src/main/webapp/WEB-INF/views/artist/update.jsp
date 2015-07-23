@@ -12,7 +12,7 @@
 <body>
 <div id="RegisterForm">
 	<h3>My Information Update</h3>
-	<form name="artistForm" class="controlArtistForm" onsubmit="return registerForm(this)" enctype="multipart/form-data">
+	<form name="artistForm" class="controlArtistForm" onsubmit="return registerForm(this)" enctype="multipart/form-data" id="artistForm">
 		<div class="form-controlArtist">
 			<label class="form-inlineblock label-color">Id</label>
 		    <div class="form-inlineblock">
@@ -68,13 +68,13 @@
 		<div class="form-controlArtist">
 			<label class="form-inlineblock label-color">Profile Image</label>
 			<div class="form-inlineblock">
-				<input class="form-inlineblock form-controller320" type="file" name="artist_picture" value="${artist.artist_picture}"/>
+				<input class="form-inlineblock form-controller320" type="file" name="profileImage" value="${artist.artist_picture}"/>
 			</div>
 		</div>
 		<div class="form-controlArtist" style="margin-top:35px;">
 			<input type="hidden" name="artist_level" value="${artist.artist_level}"/>
     		<div class="marginCenter marketBoardX-location01">
-				<input type="submit" class="btn btn-default marketBoardAttribute01" value="submit" name="updateOk"/>
+				<input type="button" class="btn btn-default marketBoardAttribute01" value="submit" name="updateOk"/>
 				<input type="button" class="btn btn-default marketBoardAttribute01" value="cancel"/>
 			</div>
 		</div>

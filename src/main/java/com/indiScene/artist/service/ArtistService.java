@@ -16,4 +16,5 @@ public interface ArtistService {
 	public void loginOk(ModelAndView mav);
 	public void logout(ModelAndView mav);
 	public void findZipcode(ModelAndView mav);
+	public void moveToMain(ModelAndView mav);
 }
