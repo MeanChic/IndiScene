@@ -184,7 +184,7 @@ function uploadDeleteOk(root){
 	});
 }
 
-function prepareCollabo(){
+function prepareUploadCollabo(){
 	var audio1=document.createElement("audio");
 	var audio2=document.createElement("audio");
 	var audio1Can = false;
@@ -262,6 +262,7 @@ function prepareCollabo(){
 		$("#syncSave").val(sync);
 	});
 	$("#syncAdopt").click(function(){
+		$("input[name='genre_code']").val(0);
 		var data = new FormData(document.getElementById("uploadWriteForm"));
 		alert("콜라보를 진행합니다. 다음 메시지까지 기다려주세요.")
 	    $.ajax({
@@ -283,7 +284,7 @@ function prepareCollabo(){
 	});
 	
 	var audioPlaying=false;
-	$("#recordToggleImg").click(function(){
+	$("#recordButton").click(function(){
 		if(audioPlaying){
 			audio1.pause();
 			audio1.currentTime=0;
