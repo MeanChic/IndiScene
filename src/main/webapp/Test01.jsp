@@ -20,10 +20,10 @@
 	<link href="${root}/css/marketBoard1.css" rel="stylesheet">
 	<link href="${root}/css/jquery-ui.css" rel="stylesheet">
 	
-<<<<<<< HEAD
+
 	<!-- Load javascrips libraries
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
-	<script src="${root}/js/jquery.jquery.js"></script>
+	<script src="${root}/js/jquery.js"></script>
 	<script src="${root}/js/jquery.bxslider.js"></script>
 	<script src="${root}/js/jquery.easypiechart.js"></script>
 	<script src="${root}/js/jquery.colorbox.js"></script>

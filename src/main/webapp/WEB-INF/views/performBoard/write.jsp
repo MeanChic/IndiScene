@@ -86,14 +86,8 @@
 						</c:forEach>
 					</select>
 					시 
-					
 					<br/><br/>
-					
-
-
-				
 					<input type="hidden" name="zipcode" value="">
-					
 					주소<input type="text" name="zipcode1"/> <input type="button"  value="우편번호" onclick="javascript:performZipcodeCheck('${root}')"><br/></br>
 					<input type="text" name="address" value=""/><br/><br/>
 					<input type="button"  value="지도로 검색" onclick="javascript:performMap()"/>
