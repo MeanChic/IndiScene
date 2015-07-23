@@ -255,7 +255,7 @@
 									</c:if>
 									
 									<c:forEach var="i" begin="${startPage }" end="${endPage }">
-										<li><a href="javascript:artistSearchPageMove('${root}','${i}'),'${searchWord }')">${i}</a></li>
+										<li><a href="javascript:artistSearchPageMove('${root}','${i}','${searchWord }')">${i}</a></li>
 									</c:forEach>
 									
 									<c:if test="${endPage<pageCount }">

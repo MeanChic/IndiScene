@@ -73,7 +73,7 @@ function searchMain(root,pageNumber,searchWord,type){
 	}
 	
 	//alert(searchWord);
-	alert(searchType);
+	//alert(searchType);
 	sendData="?pageNumber="+pageNumber+"&searchType=" +searchType + "&searchWord="+searchWord+"&folderName=uploadBoard";
 	$.ajax({
 		url:root +"/uploadBoard/list.do"+sendData,
@@ -102,7 +102,7 @@ function artistSearchPageMove(root,pageNumber,searchWord){
 	//}
 	
 	//alert(searchWord);
-	alert(root+","+pageNumber+","+searchWord);
+	//alert(root+","+pageNumber+","+searchWord);
 	sendData="?pageNumber="+pageNumber+"&searchType="+searchType+ "&searchWord="+searchWord+"&folderName=uploadBoard";
 	$.ajax({
 		url:root +"/uploadBoard/list.do"+sendData,
@@ -130,17 +130,17 @@ function subjectSearchPageMove(root,pageNumber,searchWord){
 	//}
 	
 	//alert(searchWord);
-	alert(root+","+pageNumber+","+searchWord);
+	//alert(root+","+pageNumber+","+searchWord);
 	sendData="?pageNumber="+pageNumber+"&searchType="+searchType + "&searchWord="+searchWord+"&folderName=uploadBoard";
 	$.ajax({
 		url:root +"/uploadBoard/list.do"+sendData,
 		type:"get",
 		dataType:"html",
 		success:function(data){
-			alert(data);
+			//alert(data);
 			var realData = data.split("<!--subjectStart-->");
 			realData = realData[1].split("<!--subjectEnd-->")[0];
-			alert(realData);
+			//alert(realData);
 			$("#subjectSearchResult").html(realData);
 			history.pushState({indiData:realData},"제목","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 		},
