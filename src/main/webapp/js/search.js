@@ -64,9 +64,14 @@ function searchFreeBoard(root,pageNumber,folderName,searchWord,searchType){
 	});
 }
 
-function searchMain(root,pageNumber,searchWord,type){
+function searchMain(root,pageNumber,searchWord,type,artist_id){
 	var searchType=type;
 	//alert(folderName[0]);
+	if(artist_id ==undefined){
+		alert("로그인 후 이용바랍니다.");
+		return;
+	}
+	
 	if(searchWord==null){
 		var searchWord=$("#MainSearchWord").val();
 		searchType="total";
