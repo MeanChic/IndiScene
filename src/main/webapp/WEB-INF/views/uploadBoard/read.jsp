@@ -13,8 +13,6 @@
 <div id="uploadBoardRead">
 	<h3>Indi's Music : ${boardDto.subject}</h3>
 	<div class="marketBoardX-location02">
-		<span class="glyphicon glyphicon-record">&nbsp;&nbsp;Record</span>
-	<span class="glyphicon glyphicon-record instants08">&nbsp;&nbsp;Record</span>
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:uploadList('${root}','${pageNumber}')">List</a>
 	</div>
 	<div class="form-controlMarket">
