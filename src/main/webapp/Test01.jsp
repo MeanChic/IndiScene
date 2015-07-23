@@ -121,10 +121,7 @@
 	<div class="navbar navbar-head">
 		<div class="navbar-inner">
 			<img class="logo logoDouplicate" src="${root}/css/images/logo-full.png" alt="logo">
-			
-
 			<a href="#" id="nav-expander" class="nav-expander pull-left btn btn-info btn-lg" ><span class="glyphicon glyphicon-list" ></span>&nbsp;&nbsp;Menu</a>
-		
 			<c:choose>
 				<c:when test="${artist_id ==null}">
 					<a href="#" id="loginButton" class="sub-expander pull-right btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Login</a>
@@ -136,14 +133,11 @@
 					<a id="logoutButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a>
 				</c:otherwise>
 			</c:choose>
-		
-			
-			
-		<!-- 	<script type="text/javascript">
-						function LoginId(artist_id){
-							alert("로그인후 사용해주세요");
-							}
-					</script> -->	
+		<!--<script type="text/javascript">
+				function LoginId(artist_id){
+					alert("로그인후 사용해주세요");
+				}
+			</script> -->	
 			<!-- 메인검색창 -->
 			<div id="MainSearchBox" class="pull-right marketBoardAttribute01 marketBoardX-location03 instants03">
 				<form class="instants02" name="searchForm" method="get" action="javascript:searchMain('${root}','1');">
@@ -153,7 +147,6 @@
 	                <input class=" btn btn-info btn-lg instants02 instants04" name="searchSubmit" type="submit" value="Search"/>
 	   			</form>
 	        </div>
-			
 		</div>
 	</div>
 	<!-- Header Part end -->

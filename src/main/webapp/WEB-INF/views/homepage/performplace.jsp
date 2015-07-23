@@ -52,7 +52,7 @@
 			</div>
 			
 		<!-- placeBoard -->
-			<div role="tabpanel" class="tab-pane fade" id="placeBoardList" aria-labelledby="place-tab">
+			<div role="tabpanel" class="row tab-pane fade" id="placeBoardList" aria-labelledby="place-tab">
 				<div class="marketBoardX-location02">
 					<input class="marketBoardAttribute01 btn btn-default" type="button" value="Write " onclick="javascript:placeBoardWrite()"/>
 				</div>
@@ -77,7 +77,7 @@
 						</div>
 					</div>
 				</c:forEach>
-				<a class="marketBoardInterval02 marginLR10 pull-right btn btn-default" href="javascript:enterPlaceBoard('${root}')">더보기</a>
+				<a class="marketBoardInterval02 marginLR10 pull-right btn btn-default" href="javascript:enterPlaceBoard('${root}')">More PerformanceBoard</a>
 			</div>
 		</div>
 	</div>

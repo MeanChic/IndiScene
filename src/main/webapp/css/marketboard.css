@@ -18,7 +18,7 @@
 .marketBoardAttribute02{ display:block; }
 .marketBoardAttribute03{ display:table-column; }
 
-.logoDouplicate{ position:fixed; top:85px; left:10px; z-index:9000; width:300px; height:64px; }
+.logoDouplicate{ position:relative; top:5px; left:10px; z-index:9000; width:300px; height:64px; }
 .instants01{ padding-right:10px; padding-left:10px; }
 .instants02{ display:inline; padding-top:10px; padding-bottom:10px; }
 .instants03{ margin-top:20px; margin-right:30px; }
