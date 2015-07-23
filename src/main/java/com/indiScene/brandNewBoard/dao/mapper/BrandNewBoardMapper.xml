@@ -7,7 +7,7 @@
 		<![CDATA[
 			select * from(
 			select rownum rnum, a.* from(
-			select * from uploadboard where board_like>=5 order by board_like desc, group_num desc, seq_num asc, register_date desc) a)
+			select * from uploadboard where board_like>=5 order by register_date desc, group_num desc, seq_num asc ) a)
 			where rnum>=#{startRow} and rnum <= #{endRow}
 		]]>
 	</select>
