@@ -23,11 +23,11 @@ function uploadWriteOk(root){
 	var str =CKEDITOR.instances.content.getData();
 //	dataSet.append("content", str);
 	$("#content").val(str);
-	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
-//	alert($("#content").val());
 	if(validValueCheck("uploadWriteForm")==-1){
 		return ;
 	}
+	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
+//	alert($("#content").val());
 	
 	$.ajax({
 		url:root+"/uploadBoard/write.do",
@@ -112,12 +112,12 @@ function uploadUpdateOk(root){
 	var str =CKEDITOR.instances.content.getData();
 //	dataSet.append("content", str);
 	$("#content").val(str);
-	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
-//	alert($("#content").val());
-//	alert(CKEDITOR.instances.content);
 	if(validValueCheck("uploadWriteForm")==-1){
 		return ;
 	}
+	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
+//	alert($("#content").val());
+//	alert(CKEDITOR.instances.content);
 	$.ajax({
 		url:root+"/uploadBoard/update.do",
 		type:"post",
@@ -328,10 +328,10 @@ function uploadCollabo(root, boardNum,pageNumber){
 function uploadCollaboOk(root, boardNum,pageNumber){
 	var str =CKEDITOR.instances.content.getData();
 	$("#content").val(str);
-	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
 	if(validValueCheck("uploadWriteForm")==-1){
 		return ;
 	}
+	var dataSet = new FormData(document.getElementById("uploadWriteForm"));
 	$.ajax({
         url: $("#root").val()+'/uploadBoard/collabo.do',
         type: "post",
@@ -447,12 +447,17 @@ function validValueCheck(formId){
 	var valueCheckMusic = $("#"+formId).find("input[name='musicFile']").val();
 	var valueCheckRecord = $("#"+formId).find("input[id='uploadPath']").val();
 	var valueCheckGenre = null;
-	for(var i = 0;i< $("#"+formId).find("input[name='genre']").length; i++){
-		if($("#"+formId).find("input[name='genre']").eq(i).prop("checked")){
-			valueCheckGenre = $("#"+formId).find("input[name='genre']").eq(i).val();
-			$("input[name='genre_code']").val(valueCheckGenre);
-		}
-	}
+	//for(var i = 0;i< $("#"+formId).find("input[name='genre']").length; i++){
+//		if($("#"+formId).find("input[name='genre']").eq(i).prop("checked")){
+//			valueCheckGenre = $("#"+formId).find("input[name='genre']").eq(i).val();
+//			$("input[name='genre_code']").val(valueCheckGenre);
+//		}
+		
+		valueCheckGenre = $("#"+formId).find("input[name='genre']:checked").val();
+		$("input[name='genre_code']").val(valueCheckGenre);
+//		alert(valueCheckGenre);
+//		alert($("input[name='genre_code']").val());
+	//}
 	var valueCheckContent= $("#"+formId).find("textarea[name='content']").val();
 	var valueCheckMerge=$("#"+formId).find("input[id='mergeFile']").val();
 //	alert(valueCheckMerge);
@@ -497,4 +502,8 @@ function showAttribute(obj){
 
 $("#prevListen").bind("click",function(){
 	$("#prevAudio").attr("src",$("#uploadPath").val());
-}); 
+});
+
+/*$("input[name:'genre']").click(function(){
+	$("input[name='genre_code']").val($(this).val());
+});*/

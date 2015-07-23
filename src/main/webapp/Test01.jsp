@@ -516,11 +516,3 @@ function writeReplyProcess(responseText){
 </script>
 </body>
 </html>
-te);
-	spanUpDel.appendChild(spanDelimiter);
-	spanUpDel.appendChild(aDelete);
-	
-}
-</script>
-</body>
-</html>

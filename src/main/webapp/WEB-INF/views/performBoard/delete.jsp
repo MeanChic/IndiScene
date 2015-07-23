@@ -52,7 +52,7 @@
 			<br/>
 			<div align="center" class="DeleteListPaddingLeft">
 				<div>
-					<a href="javascript:performBoardDeleteOk()('${root}','${board_num}','${ pageNumber}')"
+					<a href="javascript:performBoardDeleteOk('${root}','${board_num}','${ pageNumber}')"
 					id="deleteBt" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm"
 					onmouseover="DeleteBtnOver()" onmouseout="DeletBtnOut()" >Delete</a>
 						
