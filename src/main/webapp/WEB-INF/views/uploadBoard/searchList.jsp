@@ -28,7 +28,7 @@
 					<input type="button" class="marketBoardAttribute01 btn btn-default pull-left marginLR15" value="Put In" onclick="musicStorage('${root}','${artist_id}')"/>
 				</div>
 			<c:set var="countTotalSearch" value="${countArtistSearch+countSubjectSearch}"/>
-			<h4>통합 검색결과 (${countTotalSearch})건</h4>
+			<h4>"${searchWord }" 통합 검색결과 (${countTotalSearch})건</h4>
 			<br/><br/>
 			<div id="artistSearch">
 				<h4>아티스트 검색결과 (${countArtistSearch})건</h4>
@@ -63,7 +63,7 @@
 				</div>
 				
 				<c:if test="${countArtistSearch==0 }">
-					<div align="center">해당 아티스트 명으로 검색된 결과가 없습니다.</div>
+					<div align="center">"${searchWord }" 아티스트 명으로 검색된 결과가 없습니다.</div>
 				</c:if>
 			
 				<c:if test="${countArtistSearch>0 }">
@@ -110,7 +110,7 @@
 				</c:if>
 			</div>
 			<div id="subjectSearch">
-				<h4>제목 검색결과(${countSubjectSearch })건</h4>
+				<h4>"${searchWord }" 제목 검색결과(${countSubjectSearch })건</h4>
 				<div class="marketBoardAttribute02 marketBoardInterval03">
 					<div class="form-controlBoard">
 						<label class="boardlabelBlock marketBoardSize4 label-colorO marketBoardAttribute01">
@@ -142,7 +142,7 @@
 				</div>
 				
 				<c:if test="${countSubjectSearch==0 }">
-					<div align="center">해당 제목으로 검색된 결과가 없습니다</div>
+					<div align="center">"${searchWord }" 곡명으로 검색된 결과가 없습니다</div>
 				</c:if>
 				
 				<c:if test="${countSubjectSearch>0 }">
@@ -199,7 +199,7 @@
 					<input type="button" class="marketBoardAttribute01 btn btn-default pull-left" value="Put In" onclick="musicStorage('${root}','${artist_id}')"/>
 				</div>
 				<div id="artistSearch">
-					<h4>아티스트 검색결과 (${countArtistSearch})건</h4>
+					<h4>"${searchWord }" 아티스트 검색결과 (${countArtistSearch})건</h4>
 					<div class="marketBoardAttribute02 marketBoardInterval03">
 						<div class="form-controlBoard">
 							<label class="boardlabelBlock marketBoardSize4 label-colorO marketBoardAttribute01">
@@ -231,7 +231,7 @@
 					</div>
 					
 					<c:if test="${countArtistSearch==0 }">
-						<div align="center">해당 아티스트 명으로 검색된 결과가 없습니다.</div>
+						<div align="center">"${searchWord }" 으로 검색된 결과가 없습니다.</div>
 					</c:if>
 				
 					<c:if test="${countArtistSearch>0 }">
@@ -270,7 +270,7 @@
 			</div>
 		<!-- --------------------------------- Artist Search Result End ----------------------------------- -->
 		
-		<!-- --------------------------------- Subeject Search Result Start ----------------------------------- -->
+		<!-- --------------------------------- Subject Search Result Start ----------------------------------- -->
 		<div role="tabpanel" class="tab-pane fade in" id="subjectSearchResult" aria-labelledby="subjectSearch-tab">
 			<!--subjectStart-->
 			<div class="marketBoardX-location02 marketBoardInterval03 marketBoardAttribute01 marginLR15">
@@ -278,7 +278,7 @@
 			</div>
 			
 			<div id="subjectSearch">
-				<h4>제목 검색결과(${countSubjectSearch })건</h4>
+				<h4>"${searchWord }" 제목 검색결과(${countSubjectSearch })건</h4>
 				<div class="marketBoardAttribute02 marketBoardInterval03">
 					<div class="form-controlBoard">
 						<label class="boardlabelBlock marketBoardSize4 label-colorO marketBoardAttribute01">
@@ -310,7 +310,7 @@
 				</div>
 				
 				<c:if test="${countSubjectSearch==0 }">
-					<div align="center">해당 제목으로 검색된 결과가 없습니다</div>
+					<div align="center">"${searchWord }" 제목으로 검색된 결과가 없습니다</div>
 				</c:if>
 				
 				<c:if test="${countSubjectSearch>0 }">

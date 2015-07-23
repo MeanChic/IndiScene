@@ -134,7 +134,7 @@
 			<!--   페이징작업을위한 GET방식 -->     
 				<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
 	                <input class="form-controller220 instants02" type="text"  id="MainSearchWord" name="searchWord">
-	                <input class=" btn btn-info btn-lg instants02 instants04" type="submit" value="Search"/>
+	                <input class=" btn btn-info btn-lg instants02 instants04" name="searchSubmit" type="submit" value="Search"/>
 	   			</form>
 	        </div>
 			
@@ -301,6 +301,12 @@ $('.marketPlace a').on('click', function(e) {
 	$('.main-nav').toggleClass('nav-expanded');
 });
 
+$('.myMusic a').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').toggleClass('nav-expanded');
+});
+
 $('.indisMuse a').on('click', function(e) {
 	//e.preventDefault();
 	//enterMarketBoard('${root }')
@@ -318,6 +324,28 @@ $('.freeboard a').on('click', function(e) {
 	//enterMarketBoard('${root }')
 	$('.main-nav').toggleClass('nav-expanded');
 });
+
+$('input[name="searchWord"]').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').removeClass('nav-expanded');
+});
+
+$('input[name="searchWord"]').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').removeClass('nav-expanded');
+});
+
+$('input[name="searchSubmit"]').on('click', function(e) {
+	//e.preventDefault();
+	//enterMarketBoard('${root }')
+	$('.main-nav').removeClass('nav-expanded');
+});
+
+
+
+
 
 /*
  * Link navigation and webpage sections.

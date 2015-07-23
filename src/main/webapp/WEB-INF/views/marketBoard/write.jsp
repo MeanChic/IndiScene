@@ -57,7 +57,7 @@
 		<div class="form-controlMarket">
 			<label class="label-color marketBoardY-location01">File</label>
 			<div class="form-inlineblock">
-				<input class="form-controller320" type="file" name="file[]" multiple>
+				<input class="multi form-controller320" type="file" name="file[]" multiple>
 			</div>
 		</div>	
 		<div class="form-controlMarket" style= text-align:center;>
