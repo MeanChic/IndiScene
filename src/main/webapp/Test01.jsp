@@ -147,7 +147,7 @@
 					</script> -->	
 			<!-- 메인검색창 -->
 			<div id="MainSearchBox" class="pull-right marketBoardAttribute01 marketBoardX-location03 instants03">
-				<form class="instants02" name="searchForm" method="get" action="javascript:searchMain('${aritst_id }','${root}','1');">
+				<form class="instants02" name="searchForm" method="get" action="javascript:searchMain('${artist_id }','${root}','1');">
 			<!--   페이징작업을위한 GET방식 -->     
 				<input type="hidden" name="searchflag" value="true"/> <!-- 검색글 요청시 플래그값을 true로 넘김 -->
 	                <input class="form-controller220 instants02" type="text"  id="MainSearchWord" name="searchWord">
@@ -277,7 +277,7 @@ $("#volumeBtn").click(function(){
  /* main-Nav */
 $('#nav-expander').on('click', function(e) {
 	e.preventDefault();
-	if($("#aritst_id").val()==undefined){
+	if($("#artist_id").val()==""){
 		alert("로그인 이후 사용해주세요");
 	}else{
 		$('.main-nav').toggleClass('nav-expanded');
