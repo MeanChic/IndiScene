@@ -16,14 +16,14 @@
 	<div class="zipcodeForm">
 		<div class="zipcodeContent">	
 			<div align="center">
-				<form action="${root }/artist/zipcode.do" method="post">
+				<form action="${root }/artist/zipcode.do" method="post" style="margin-top:1.5px">
 					<input type="text" name="dong" />
-					<input type="submit" value="검색"/>
+					<input type="submit" value="검색" id="searchStyle"/>
 				</form>
 			</div>
-			
+			<hr id="zipcodeHr">
 			<c:if test="${list==null }">
-				<div align="center">
+				<div id="noSearch" align="center" >
 					검색결과가 없습니다.
 				</div>
 			</c:if>

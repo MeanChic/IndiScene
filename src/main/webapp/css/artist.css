@@ -36,11 +36,21 @@ form div input{ width:200px; display:inline-block; }
     border-radius: 15px;/* 모서리 곡선도 */
         margin-top: 0.7em;
 }
-.zipcodeForm{
-	
-	border: solid 2px #FF890A;
+.zipcodeForm {
+    border: solid 0.5em #A69999;
     background: #FFFFFF;
-	
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 1.0em;
+    margin-bottom: 2.0em;
+    border-radius: 30px;
+    height: 380px;
+}
+#noSearch{
+	margin-top: 9.0em;
+}
+.zipcodeContent {
+    margin-top: 2em;
 }
 .duplicateWindow .form-controlArtist{ display:block; margin-top:10px; margin-bottom:10px; }
 .duplicateWindow .form-controlArtist .form-inlineblockButton { display:inline-block; background-color:#324053; color:#ffffff; }
