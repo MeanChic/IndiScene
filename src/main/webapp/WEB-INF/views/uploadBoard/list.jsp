@@ -32,7 +32,7 @@
 		<c:forEach var="list" items="${boardList}">
 			<div class="form-controlBoard">
 				<label class="boardlabelBlock marketBoardSize4 label-color marketBoardAttribute01">
-					<input type="checkbox" class="musicCheckBox" autocomplete="off"/>
+					<input type="checkbox" class="musicCheckBox" autocomplete="off" value="${list.board_num}"/>
 				</label>
 				<label class="boardlabelBlock marketBoardSize46 label-color marketBoardAttribute01 marketBoardY-location02">
 					<img src="${root}${list.image_path}" style="width:50px; height:50px;"/>
