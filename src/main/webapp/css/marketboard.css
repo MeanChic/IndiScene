@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-#uploadCollabo, #uploadUpdate, #uploadWrite, #uploadSearchList, #PerformEnterBoard, #performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
+#performanceBoardWrite, #uploadCollabo, #uploadUpdate, #uploadWrite, #uploadSearchList, #PerformEnterBoard, #performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
 #noticeRead, #marketBoardread, #performRead{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#fff; border-radius:20px; }
 #boardlistSize{ padding-right:10px; padding-left:10px; }
 #best, #my, #all{ border-color:#BDBDBD; }
@@ -27,7 +27,8 @@
 .instants06{ margin-left:10px; vertical-align:bottom; width:390px; }
 .instants07{ margin:auto; width:642px; }
 .instants08{ min-height:460px; }
-.instants08{ color:red; }
+.instants09{ margin-top:30px; }
+.instants10{ margin-bottom:30px; }
 
 .marketBoardSize4{ width:4%; }
 .marketBoardSize12{ width:12%; }

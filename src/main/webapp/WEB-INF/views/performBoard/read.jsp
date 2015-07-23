@@ -138,7 +138,6 @@
 	</div>
 	<div class="form-controlMarket" style= text-align:center;>
 		<div class="marketBoardInterval04">
-		
 			<c:if test="${performBoard.artist_id == artist_id }">
 				<input class="btn btn-default" type="button" value="Modify" onclick="javascript:performBoardUpdate('${performBoard.board_num}','${pageNumber}')" />
 				<input class="btn btn-default" type="button" value="Delete" onclick="javascript:performBoardDelete('${performBoard.board_num}','${pageNumber}','${performBoard.artist_id}')"/>
