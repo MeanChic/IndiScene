@@ -14,14 +14,7 @@
 	<h2 id="h2">회원탈퇴</h2>
 		<form class="controlArtistForm" action="${root }/artist/delete.do" method="post" onsubmit="return deleteCheck(this)">
 			<br/><br/>
-		<!-- 	<div id="secsseionForm">
-			<label>** 회원 신청에 앞서 아래의 사항을 반드시 확인하시기 바랍니다 **</label>
-			<br/>
-			<label>1.회원탈퇴 시 회원님의 소중한 개인정보 및 이용정보가<br/> &nbsp;&nbsp;&nbsp;영구삭제되어 복구가 불가능합니다.</label>
-			<br/>
-			<label>2.IndiScene아이디로 사용하셨던 서비스의 이용이 <br/>&nbsp;&nbsp;&nbsp;불가능하게 됩니다.</label>
-			</div>
-		 -->
+
 		 <!-- 회원탈퇴 창 -->
 		 <div id="secsseionForm">
 		 	<div class="ruleBoax basic">회원탈퇴 신청에 앞서 아래의 사항을 반드시 확인하시기 바랍니다.</div>
@@ -46,7 +39,7 @@
 				</div>
 				<div class="form-controlArtist" style="">
 		    		<div class="marginCenter marketBoardX-location01">
-						<input type="submit" class="btn btn-default marketBoardAttribute01" value="Byebye"/>
+						<input type="submit" class="btn btn-default marketBoardAttribute01" value="Secession"/>
 						<input type="button" class="btn btn-default marketBoardAttribute01" value="Cancel"/>
 					</div>
 				</div>
