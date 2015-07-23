@@ -19,7 +19,7 @@
 	<form id="marketBoardWriteForm" class="form_style"  action="${root }/placeBoard/write.do"  method="post" onsubmit="return checkForm(this)" enctype="multipart/form-data">	
 		<input type="hidden" id="folderName" name="folderName" />
 		<div class="marketBoardX-location02">
-			<a class="marketBoardAttribute01 btn btn-default" href="${root}/placeBoard/enterBoard.do"">List</a>
+			<a class="marketBoardAttribute01 btn btn-default" href="javascript:enterPlaceBoard('${root}','${pageNumber}')">List</a>
 		</div>
 		<div class="form-controlMarket">
 			<label class="subject label-color">Writer</label>
@@ -54,18 +54,17 @@
 			</div>
 		</div>	
 		<div class="form-controlMarket">
-			<label class="subject label-color">Address</label>
+			<label class="subject label-color">Address1</label>
 			<div class="form-inlineblock">
 				<input type="hidden" name="zipcode" value="">
-				<input class="form-inlineblock form-controller220" type="text" name="zipcode1"/>
-				<input class="form-inlineblockButton form-controller220" type="button" value="Zipcode" onclick="javascript:performZipcodeCheck('${root}')">
+				<input class="form-inlineblock form-controller220 instants11" type="text" name="zipcode1"/>
+				<input class="form-inlineblockButton form-controller220" type="button"  value="Search Map" onclick="javascript:performMap()"/>
 			</div>
 		</div>
 		<div class="form-controlMarket">
-			<label class="subject label-color">Subject</label>
+			<label class="subject label-color">Address2</label>
 			<div class="form-inlineblock">
-				<input class="form-inlineblock form-controller220" type="text" name="address" value=""/>
-				<input class="form-inlineblockButton form-controller220" type="button"  value="Search Map" onclick="javascript:performMap()"/>
+				<input class="form-inlineblock form-controller220 instants11" type="text" name="address" value=""/>
 			</div>
 		</div>
 		<div class="form-controlMarket" style= text-align:center;>

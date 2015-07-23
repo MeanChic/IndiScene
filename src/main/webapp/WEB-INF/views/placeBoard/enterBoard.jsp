@@ -39,21 +39,6 @@
 			</div>
 		</c:forEach>
 	</div>
-	
-	<c:forEach  items="${list }" varStatus="s">								<!-- mav에 넘어오는 리스트 갯수만큼 돌린다 이름확인  -->
-	<c:set var="market" value="${requestScope.list[s.index]}" /> 			<!-- 넘어오는 리스트 갯수만큼 돌린다 리스트 S번째 List 객체화 한다. -->
-	<c:set var="image" value="${requestScope.mainImageList[s.index]}" /> 	<!-- list 갯수와 동일하게 mav에 넣어져서 오는 s번째 mainImage 객체화한다  -->
-
-		<div class="form_style" style="height:130px;">
-			<div class="disp" style="border-width:1px;">
-				<a href="javascript:placeBoardRead('${market.board_num}','${pageNumber}')"><img style="height:75px; width:100px" src="${image}" /><br>${market.subject }<br/></a>
-				<fmt:formatDate value="${market.register_date }" type="date"/> &nbsp;&nbsp;
-			</div>
-			<div class="disp-content">
-			</div>
-		</div>
-		<br/>
-	</c:forEach>
 	<!-- 페이지 번호 -->
 	<nav class="marketBoardX-location01">
 		<ul class="pagination marketBoardAttribute01">

@@ -86,7 +86,7 @@
 			<label class="subject label-color">Address 1</label>
 			<div class="form-inlineblock">
 				<input type="hidden" name="zipcode" value="">
-				<input class="form-inlineblock form-controller320" type="text" name="zipcode1" />
+				<input class="form-inlineblock form-controller320 instants11" type="text" name="zipcode1" />
 				<input class="form-inlineblockButton form-controller220" type="button"  value="Search Map" onclick="javascript:performMap()"/>
 				<!-- <input class="form-inlineblockButton form-controller220" type="button" value="Zipcode" onclick="javascript:performZipcodeCheck('${root}')"> -->
 			</div>
@@ -94,7 +94,7 @@
 		<div class="form-controlMarket">
 			<label class="subject label-color">Address 2</label>
 			<div class="form-inlineblock">
-				<input class="form-inlineblock form-controller220" type="text" name="address" value="" size="80"/>
+				<input class="form-inlineblock form-controller220 instants11" type="text" name="address" value="" size="80"/>
 				
 			</div>
 		</div>

@@ -21,7 +21,8 @@
 		$("input[name = 'zipcode1']").val($("input[name='fulladd']").val().split("*")[0]);
 		$("input[name = 'address']").val($("input[name='fulladd']").val().split("*")[1]); 
 	});
-	</script>
+</script>
+<div id="">
 	<form id="marketBoardUpdateForm" action="javascript:placeBoardUpdateOk()" method="post"> <!-- onsubmit="return checkForm(this)" -->
 		<input type="hidden" name="board_num" value="${board.board_num }"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber }"/>
