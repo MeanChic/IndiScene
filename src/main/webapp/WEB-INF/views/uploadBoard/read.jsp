@@ -13,9 +13,10 @@
 <div id="uploadBoardRead">
 	<h3>Indi's Music : ${boardDto.subject}</h3>
 	<div class="marketBoardX-location02">
+		<a class="marketBoardAttribute01 btn btn-default" href="javascript:oneMusicStorage('${root}','${artist_id}','${boardDto.board_num}')">Put In</a>
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:uploadList('${root}','${pageNumber}')">List</a>
 	</div>
-	<div class="form-controlMarket">
+	<div class="form-controlMarket instants09">
 		<label class="marketBoardSize16 label-color marketBoardAttribute01">Like</label>
 		<div class="marketBoardSize01 marketBoardAttribute01">
 			<input class="form-controller220" type="text" value="${boardDto.board_like}" disabled="disabled" />
