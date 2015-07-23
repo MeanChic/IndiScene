@@ -171,9 +171,11 @@
 				});
 				$(".listDelete").click(function(){
 //					alert(root+"\n"+artist_id+"\n"+$(this).prev().children(".musicBoardNum").val());
+					var musicBoardNum = $(this).prev().children(".musicBoardNum").val();
+					alert(musicBoardNum);
 					$(this).parents("div.audioList").remove();
 					$.ajax({
-						url:root+"/webPlayer/musicListDelete.do?artist_id="+artist_id+"&boardNum="+$(this).prev().children(".musicBoardNum").val(),
+						url:root+"/webPlayer/musicListDelete.do?artist_id="+artist_id+"&boardNum="+musicBoardNum,
 						type:"get",
 						dataType:"text",
 						success:function(data){
@@ -217,9 +219,11 @@
 				});
 				$(".listDelete").click(function(){
 //					alert(root+"\n"+artist_id+"\n"+$(this).prev().children(".musicBoardNum").val());
+					var musicBoardNum = $(this).prev().children(".musicBoardNum").val();
+//					alert(musicBoardNum);
 					$(this).parents("div.audioList").remove();
 					$.ajax({
-						url:root+"/webPlayer/musicListDelete.do?artist_id="+artist_id+"&boardNum="+$(this).prev().children(".musicBoardNum").val(),
+						url:root+"/webPlayer/musicListDelete.do?artist_id="+artist_id+"&boardNum="+musicBoardNum,
 						type:"get",
 						dataType:"text",
 						success:function(data){
@@ -229,7 +233,7 @@
 							alert(xhr+"\n"+status+"\n"+error);
 						}
 					}); 
-				});;
+				});
 			},
 			error:function(xhr,status,error){
 				alert(xhr+"\n"+status+"\n"+error);

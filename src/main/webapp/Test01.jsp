@@ -93,14 +93,14 @@
 		<a href="#" class="close"><span class="glyphicon glyphicon-remove"></span></a>
 		<h2>Music player List</h2>
 		<hr>
-		<div id="audioListDiv" style="display:none">
+		<div id="audioListDiv" class="audioList" style="display:none">
 			<a class="musicClick">
 				<span class="musicSubject"></span>
 				<span class="artistName"></span>
 				<input type="hidden" value="" class="sourcePath"/>
 				<input type="hidden" value="" class="musicBoardNum"/>
 			</a>
-			<a href="" class="listDelete"><span class="glyphicon glyphicon-remove"></span></a>
+			<a class="listDelete"><span class="glyphicon glyphicon-remove"></span></a>
 			<hr>
 		</div>
 		<div id="audioList">
