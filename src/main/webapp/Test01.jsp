@@ -180,7 +180,7 @@
 	</div>
 	<!-- Footer section end -->
 	
-	<div class="sliderDispN">
+	<div id="volumeSlider"class="sliderDispN">
 		<p><input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;"></p>
 		<div id="volumeBar"></div>
 	</div>
@@ -224,12 +224,10 @@ $(function() {
 });
 
 $("#volumeButton").click(function(){
-	if($("#slider-vertical").attr("class","sliderDispN")){
-		e.preventDefault();
-		$("#volumeBar").attr("class","sliderDispY");
+	if($("#volumeSlider").attr("class")=="sliderDispN"){
+		$("#volumeSlider").attr("class","sliderDispY");
 	}else{
-		e.preventDefault();
-		$("#volumeBar").attr("class","sliderDispN");
+		$("#volumeSlider").attr("class","sliderDispN");
 	}
 });
 /* playList */
