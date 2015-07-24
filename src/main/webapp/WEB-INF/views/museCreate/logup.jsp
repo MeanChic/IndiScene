@@ -84,6 +84,9 @@
 	<h3>Create Muse</h3>
 	<form enctype="multipart/form-data" method="post" id="museMakeForm"><%-- action="${root}/museCreate/logup.do"  --%>
 		<input type="hidden" name="artist_id" value="${artist_id}"/>
+		<div class="marketBoardX-location02">
+			<a class="marketBoardAttribute01 btn btn-default" href="javascript:indimuse('${artist_id}')">MuseList</a>
+		</div>		
 		<div class="form-controlMarket">
 			<label class="subject label-color">ID</label>
 		    <div class="form-inlineblock">
