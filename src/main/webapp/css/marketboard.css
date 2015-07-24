@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-#bestBoard, #templateBase, #museBoardList, #museBoardCollabo, #museBoardRead, #museBoardUpdate, #museBoardWrite, #placeBoardUpdate, #placeEnterBoard, #placeBoardWrite, #placeBoardRead, #performanceBoardUpdate, #performanceBoardWrite, #uploadCollabo, #uploadUpdate, #uploadWrite, #uploadSearchList, #PerformEnterBoard, #performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
+#MyMusicTab, #bestBoard, #templateBase, #museBoardList, #museBoardCollabo, #museBoardRead, #museBoardUpdate, #museBoardWrite, #placeBoardUpdate, #placeEnterBoard, #placeBoardWrite, #placeBoardRead, #performanceBoardUpdate, #performanceBoardWrite, #uploadCollabo, #uploadUpdate, #uploadWrite, #uploadSearchList, #PerformEnterBoard, #performanceInfo, #freeBoardUpdate, #freeBoardWrite, #freeBoardList, #noticeWrite, #noticeUpdate, #marketBoardEnterBoard, #marketBoardWrite, #marketBoardUpdate{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#EFEFEF; border-radius:20px; }
 #noticeRead, #marketBoardread, #performRead{ text-align:left; width:930px; min-height:450px; padding:30px; margin:auto; border:solid 1px #BDBDBD; background:#fff; border-radius:20px; }
 #boardlistSize{ padding-right:10px; padding-left:10px; }
 #best, #my, #all{ border-color:#BDBDBD; }
@@ -67,10 +67,13 @@
 #bestRank1{ width:325px; height:425px; display:inline-block; margin:20px; vertical-align:bottom; padding-bottom:100px; }
 #bestRank2{ width:200px; height:300px; display:inline-block; margin:20px; vertical-align:bottom; padding-bottom:100px; }
 #bestRank3{ width:175px; height:275px; display:inline-block; margin:20px; vertical-align:bottom; padding-bottom:100px; }
-.bestRank1{ position:relative; bottom:0px; width:325px; height:325px; display:block; margin:0px; }
-.bestRank2{ position:relative; bottom:0px; width:200px; height:200px; display:block; margin:0px; }
-.bestRank3{ position:relative; bottom:0px; width:175px; height:175px; display:block; margin:0px; }
+.bestRank1{ border:solid 1px #FF0000; position:relative; bottom:0px; width:325px; height:325px; display:block; margin:0px; }
+.bestRank2{ border:solid 1px #FF3200; position:relative; bottom:0px; width:200px; height:200px; display:block; margin:0px; }
+.bestRank3{ border:solid 1px #FF5E00; position:relative; bottom:0px; width:175px; height:175px; display:block; margin:0px; }
 .bestInfoblock{ height:95px; vertical-align:bottom; }
+.bestInfoblock .BestText{ color:#FF0000; }
+.bestInfoblock .SecondText{ color:#FF3200; }
+.bestInfoblock .ThirdText{ color:#FF5E00; }
 #slider-vertical{ height:150px; }
 .sliderDispN{ margin:0x; position:fixed; bottom:87px; right:154px; z-index:10100; display:none; }
 .sliderDispY{ margin:0x; position:fixed; bottom:87px; right:154px; z-index:10100; display:block; }
