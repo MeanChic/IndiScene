@@ -17,11 +17,9 @@
 	$(function(){
 		var root = $("#root").val();
 		$("input[name='check']").click(function(){
-			
 			var name=$("input[name='muse_name']").val();
 			var sendData= "muse_name=" + name;
 			var url = root + "/museCreate/nameCheck.do?" + sendData;
-			
 			//alert(url);
 			 $.ajax({
 				url:url,
@@ -75,7 +73,6 @@
 	<c:if test="${check != null}">
 		<c:if test="${check=='1'}">
 			<script type="text/javascript">
-				
 				location.href=$("#root").val()+"/museCreate/musemain.do?artist_id="+$("#artist_id").val();
 			</script>
 		</c:if>

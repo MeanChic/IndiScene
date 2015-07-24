@@ -69,29 +69,27 @@
 	<nav class="marketBoardX-location01">
 		<ul class="pagination marketBoardAttribute01">
 			<c:if test="${count>0 }">
-				<c:if test="${count>0 }">
-					<c:set var="pageBlock" value="${5}"/>
-					<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0 ? 0:1 )}"/>
-					
-					<fmt:parseNumber var="rs" value="${(currentPage-1)/pageBlock }" integerOnly="true"/>
-					<c:set var="startPage" value="${rs*pageBlock+1 }"/>
-					<c:set var="endPage" value="${startPage+pageBlock-1 }"/>
-					
-					<c:if test="${endPage> pageCount }">
-						<c:set var="endPage" value="${pageCount }"/>
-					</c:if>
-					<%----------------------------------------------------------%>
-					<c:if test="${startPage>pageBlock }">
-						<li><a aria-label="Previous" href="javascript:uploadList('${root }','${startPage-pageBlock}')"><span aria-hidden="true">&laquo;</span></a></li>
-					</c:if>
-					
-					<c:forEach var="i" begin="${startPage }" end="${endPage }">
-						<li><a href="javascript:uploadList('${root}','${i}')">${i}</a></li>
-					</c:forEach>
-					
-					<c:if test="${endPage<pageCount }">
-						<li><a aria-label="Next" href="javascript:uploadList('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
-					</c:if>
+				<c:set var="pageBlock" value="${5}"/>
+				<c:set var="pageCount" value="${count/boardSize+(count%boardSize==0 ? 0:1 )}"/>
+				
+				<fmt:parseNumber var="rs" value="${(currentPage-1)/pageBlock }" integerOnly="true"/>
+				<c:set var="startPage" value="${rs*pageBlock+1 }"/>
+				<c:set var="endPage" value="${startPage+pageBlock-1 }"/>
+				
+				<c:if test="${endPage> pageCount }">
+					<c:set var="endPage" value="${pageCount }"/>
+				</c:if>
+				<%----------------------------------------------------------%>
+				<c:if test="${startPage>pageBlock }">
+					<li><a aria-label="Previous" href="javascript:uploadList('${root }','${startPage-pageBlock}')"><span aria-hidden="true">&laquo;</span></a></li>
+				</c:if>
+				
+				<c:forEach var="i" begin="${startPage }" end="${endPage }">
+					<li><a href="javascript:uploadList('${root}','${i}')">${i}</a></li>
+				</c:forEach>
+				
+				<c:if test="${endPage<pageCount }">
+					<li><a aria-label="Next" href="javascript:uploadList('${root}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
 				</c:if>
 			</c:if>
 		</ul>

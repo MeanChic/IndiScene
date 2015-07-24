@@ -7,19 +7,15 @@
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <%-- <c:set var="artist_id"  value="indi"/> --%>
 <%-- <c:set var="artist_id"  value="indi"/> --%>
-
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link type="text/css" href="${root}/css/jquery-ui.css" rel="stylesheet"/>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
-<script type="text/javascript">
-	
-</script>
 </head>
 <body>
-	
+<div id="MuseGuestList">
 	<input name = "count" type="hidden" value="${count}"/>
 	<input name="boardnum" type="hidden" value="${boardnum}"/>
 	<input name="pageCount" type="hidden" value="${count/boardnum}"/>
@@ -66,21 +62,20 @@
 			</c:forEach>
 		</c:if>
 	</div>
-	
-	<%-- <c:if test="${count/boardnum > 1}">
-		<c:if test="${pagenum != '1'}">
-			<a style=""href="javascript:guestNext('${muse_name}','${pagenum-1}')">[이전]</a>
-		</c:if>
-	
-		<c:if test="${count > 0}">
-			<a id="minus" style="display:none" href="javascript:guestNext('${muse_name}','${pagenum-1}')">[이전]</a>
-			<a id="plus" href="javascript:guestNext('${muse_name}','${pagenum+1}')">[다음]</a>
-		</c:if>
-	</c:if> --%>
-	
-	<c:if test="${count>0 }">
-	
-				 
+		<%-- <c:if test="${count/boardnum > 1}">
+			<c:if test="${pagenum != '1'}">
+				<a style=""href="javascript:guestNext('${muse_name}','${pagenum-1}')">[이전]</a>
+			</c:if>
+		
+			<c:if test="${count > 0}">
+				<a id="minus" style="display:none" href="javascript:guestNext('${muse_name}','${pagenum-1}')">[이전]</a>
+				<a id="plus" href="javascript:guestNext('${muse_name}','${pagenum+1}')">[다음]</a>
+			</c:if>
+		</c:if> --%>
+	<!-- page Number -->
+	<nav class="marketBoardX-location01">
+		<ul class="pagination marketBoardAttribute01">
+			<c:if test="${count>0 }">
 				<c:set var="pageBlock" value="${5}"/>
 				<c:set var="pageCount" value="${count/boardnum+(count%boardnum==0 ? 0:1 )}"/>
 				
@@ -91,21 +86,21 @@
 				<c:if test="${endPage> pageCount }">
 					<c:set var="endPage" value="${pageCount }"/>
 				</c:if>
-				
+				<%----------------------------------------------------------%>
 				<c:if test="${startPage>pageBlock }">
-					<a href="javascript:guestNext('${muse_name}','${startPage-pageBlock}')">[이전]</a>
+					<li><a aria-label="Previous" href="javascript:guestNext('${muse_name}','${startPage-pageBlock}')"><span aria-hidden="true">&laquo;</span></a></li>
 				</c:if>
 				
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
-					<a href="javascript:guestNext('${muse_name}','${i}')">[${i}]</a>
+					<li><a href="javascript:uploadList('${root}','${i}')">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${endPage<pageCount }">
-					<a href="javascript:guestNext('${muse_name}','${startPage+pageBlock}')">[다음]</a>
+					<li><a aria-label="Next" href="javascript:guestNext('${muse_name}','${startPage+pageBlock }')"><span aria-hidden="true">&raquo;</span></a></li>
 				</c:if>
-				
-				<br/>
 			</c:if>
-	
+		</ul>
+	</nav>
+</div>
 </body>
 </html>

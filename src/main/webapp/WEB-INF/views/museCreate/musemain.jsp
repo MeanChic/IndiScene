@@ -112,27 +112,6 @@ $(function(){
 		</c:forEach>
 	</div>
 	
-	<div class="panel-group marginLR20" id="accordion" role="tablist" aria-multiselectable="true">
-		<c:forEach var="all" items="${allMuse}">
-			<div class="panel panel-default">
-				<div class="panel-heading" role="tab" id="headingOne">
-					<h4 class="panel-title">
-						<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							${all.muse_name}
-						</a>
-						<input class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" type="button" value="AppJoin" onclick="signup('${artist_id}','${all.muse_name}')"/>
-					</h4>
-				</div>
-				<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-					<div class="panel-body">
-						<img class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01" src="${root}${all.muse_filepath}" style="width:100px; height:100px"/>
-							${all.muse_comment}
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-	</div>
-
 	<!-- 검색 작업창 시작 --------------------------------------------------->
 	<div id="MuseMainDiv"> 
 		<form id="searchForm" name="searchForm" method="get" action="javascript:searchMuseMain('${root}','1','${pageContext.request.servletPath }');">
