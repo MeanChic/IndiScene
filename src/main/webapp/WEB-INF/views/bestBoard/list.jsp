@@ -23,8 +23,6 @@
 	<div class="marketBoardAttribute02 marketBoardInterval03">
 	<c:forEach  items="${boardList}" varStatus="s">
 		<c:set var="market" value="${requestScope.boardList[s.index]}" /> 
-		
-		${s.index} ,${root}${requestScope.boardList[s.index].image_path },${requestScope.boardList[s.index].subject } 
 		<c:if test="${s.index == 0}">
 		<div id="bestRank1">
 			<img class="bestRank1" src="${root}${requestScope.boardList[s.index].image_path }" alt="">
@@ -75,21 +73,24 @@
 			<label class="boardlabelBlock marketBoardSize12 label-colorO marketBoardAttribute01">Like</label>
 		</div>
 		<!-- Best Music List -->
-		<c:forEach var="list" items="${boardList}">
-			<div class="form-controlBoard">
-				<label class="boardlabelBlock marketBoardSize4 label-color marketBoardAttribute01">
-					<input type="checkbox" class="musicCheckBox" autocomplete="off" value="${list.board_num}"/>
-				</label>
-				<label class="boardlabelBlock marketBoardSize46 label-color marketBoardAttribute01 marketBoardY-location02">
-					<img src="${root}${list.image_path}" style="width:50px; height:50px;"/>
-					<a class="label-color" href="javascript:uploadRead('${root}','${list.board_num}','${currentPage}')">${list.subject}</a>
-				</label>
-				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01 marketBoardY-location02">${list.artist_id}</label>
-				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01"><fmt:formatDate value="${list.best_date}" pattern="yyyy-MM-dd hh:mm"/></label>
-				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${list.count}</label>
-				<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${list.board_like}</label>
-				<%-- <audio controls src="${root}${list.file_path}"></audio> --%>
-			</div>
+		<c:forEach var="list" items="${boardList}" varStatus="r">
+		 	<c:set var="list" value="${requestScope.boardList[r.index] }"/> 
+			<c:if test="${r.index > 2}">	 
+				<div class="form-controlBoard">
+					<label class="boardlabelBlock marketBoardSize4 label-color marketBoardAttribute01">
+					${r.index + 1}st<input type="checkbox" class="musicCheckBox" autocomplete="off" value="${list.board_num}"/>
+					</label>
+					<label class="boardlabelBlock marketBoardSize46 label-color marketBoardAttribute01 marketBoardY-location02">
+						<img src="${root}${list.image_path}" style="width:50px; height:50px;"/>
+						<a class="label-color" href="javascript:uploadRead('${root}','${list.board_num}','${currentPage}')">${list.subject}</a>
+					</label>
+					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01 marketBoardY-location02">${list.artist_id}</label>
+					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01"><fmt:formatDate value="${list.best_date}" pattern="yyyy-MM-dd hh:mm"/></label>
+					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${list.count}</label>
+					<label class="boardlabelBlock marketBoardSize12 label-color marketBoardAttribute01">${list.board_like}</label>
+					<%-- <audio controls src="${root}${list.file_path}"></audio> --%>
+				</div>
+			</c:if> 
 		</c:forEach>
 	</div>
 	<c:if test="${count==0 }">
