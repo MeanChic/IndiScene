@@ -268,13 +268,25 @@ function prepareUploadCollabo(){
 //		            alert(data);
 	        	$("#mergeFile").val($("#root").val()+data);
 	        	alert("콜라보가 완료되었습니다.");
-	        	$("#prevCollaboListen").css("display","inline-block");
+	        	/*$("#prevCollaboListen").css("display","inline-block");
 		        $("#prevCollaboListen").val(10);
 		        $("#prevCollaboListen").attr("disabled","disabled");
+		        
 		        collaboTimer();
 		         
 		        $("#prevCollaboListen").click(function(){
 		        	$("#Recordbars").css("display","block");
+		         	$("#prevAudio").attr("src",$("#mergeFile").val());
+		        });*/
+		        $("#prevListen").css("display","inline-block");
+		        $("#prevListen").val(10);
+		        $("#prevListen").attr("disabled","disabled");
+		        
+		        collaboTimer();
+		         
+		        $("#prevListen").click(function(){
+		        	$("#Recordbars").css("display","block");
+		         	$("#prevAudio").attr("src",$("#mergeFile").val());
 		        });
 	        }, error: function(jqXHR, textStatus, errorThrown) {
 	        	
@@ -297,11 +309,11 @@ function prepareUploadCollabo(){
 	
 function collaboTimer(){
 	setTimeout(function(){
-		$("#prevCollaboListen").val($("#prevCollaboListen").val()-1);
-		if($("#prevCollaboListen").val()>0) collaboTimer();
-		if($("#prevCollaboListen").val()==0){
-			$("#prevCollaboListen").val("Beforehand Listening");
-			$("#prevCollaboListen").removeAttr("disabled");
+		$("#prevListen").val($("#prevListen").val()-1);
+		if($("#prevListen").val()>0) collaboTimer();
+		if($("#prevListen").val()==0){
+			$("#prevListen").val("Beforehand Listening");
+			$("#prevListen").removeAttr("disabled");
 		}
 	},1000);
 }
@@ -500,9 +512,9 @@ function showAttribute(obj){
 	 }
 }
 
-$("#prevListen").bind("click",function(){
+/*$("#prevListen").bind("click",function(){
 	$("#prevAudio").attr("src",$("#uploadPath").val());
-});
+});*/
 
 /*$("input[name:'genre']").click(function(){
 	$("input[name='genre_code']").val($(this).val());
