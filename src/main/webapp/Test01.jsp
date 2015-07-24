@@ -179,11 +179,11 @@
 		</div>
 	</div>
 	<!-- Footer section end -->
-	<div id="slider-vertical" class="sliderDispN"></div>
-	<p>
-	 <label for="amount">Volume:</label>
-	 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-	</p>
+	
+	<div class="sliderDispN">
+		<p><input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;"></p>
+		<div id="volumeBar"></div>
+	</div>
 	<!-- Music Player start -->
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<a href="" id="music-expander" class="music-expander pull-right btn"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List</a>
@@ -210,7 +210,7 @@
 <script type="text/javascript">
 /* Volume bar */
 $(function() {
-	$( "#slider-vertical" ).slider({
+	$( "#volumeBar" ).slider({
 		orientation: "vertical",
 		range: "min",
 		min: 0,
@@ -226,12 +226,11 @@ $(function() {
 $("#volumeButton").click(function(){
 	if($("#slider-vertical").attr("class","sliderDispN")){
 		e.preventDefault();
-		$("#slider-vertical").attr("class","sliderDispY");
+		$("#volumeBar").attr("class","sliderDispY");
 	}else{
 		e.preventDefault();
-		$("#slider-vertical").attr("class","sliderDispN");
+		$("#volumeBar").attr("class","sliderDispN");
 	}
-	
 });
 /* playList */
 
