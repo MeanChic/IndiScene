@@ -25,20 +25,26 @@
 		<c:set var="market" value="${requestScope.boardList[s.index]}" /> 
 		<c:if test="${s.index == 0}">
 		<div id="bestRank1">
-			<img class="bestRank1" src="${root}${requestScope.boardList[s.index].image_path }" alt="">
-			<div class="bestInfoblock">1st</div>
+			<a href="javascript:uploadRead('${root}','${list.board_num}','${currentPage}')">
+				<img class="bestRank1" src="${root}${requestScope.boardList[s.index].image_path }" alt="">
+			</a>
+			<div class="bestInfoblock"><h3 class="BestText">Best</h3></div>
 		</div>
 		</c:if>
 		<c:if test="${s.index == 1}">
 		<div id="bestRank2">
-			<img class="bestRank2" src="${root}${requestScope.boardList[s.index].image_path }" alt="">
-			<div class="bestInfoblock">2nd</div>
+			<a href="javascript:uploadRead('${root}','${list.board_num}','${currentPage}')">
+				<img class="bestRank2" src="${root}${requestScope.boardList[s.index].image_path }" alt="">
+			</a>
+			<div class="bestInfoblock"><h4 class="SecondText">2nd</h4></div>
 		</div>
 		</c:if>
 		<c:if test="${s.index == 2}">
 		<div id="bestRank3">
-			<img class="bestRank3" src="${root}${requestScope.boardList[s.index].image_path }" alt="">
-			<div class="bestInfoblock">3rd</div>
+			<a href="javascript:uploadRead('${root}','${list.board_num}','${currentPage}')">
+				<img class="bestRank3" src="${root}${requestScope.boardList[s.index].image_path }" alt="">
+			</a>	
+			<div class="bestInfoblock"><h4 class="ThirdText">3rd</h4></div>
 		</div>
 		</c:if>
 	</c:forEach>

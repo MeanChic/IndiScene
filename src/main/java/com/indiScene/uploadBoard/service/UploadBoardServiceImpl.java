@@ -24,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.audioProcessing.KOSTAAudio;
 import com.indiScene.commonIO.dao.CommonIODao;
+import com.indiScene.reply.dao.ReplyDao;
+import com.indiScene.reply.dto.ReplyDto;
 import com.indiScene.uploadBoard.dao.UploadBoardDao;
 import com.indiScene.uploadBoard.dto.UploadBoardDto;
 
@@ -32,6 +34,9 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
 	//private String dir="C:/KMS_MavenSpring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/";
 	//private String dir="C:/mavenspring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/"; //나혁진용
+	
+	@Autowired
+	private ReplyDao replyDao;
 	
 	@Autowired
 	private UploadBoardDao dao;
@@ -354,10 +359,15 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		
 		UploadBoardDto boardDto = dao.read(board_num);
 		dao.readCount(board_num);
-		
+		//한줄댓글을 불러온다
+		List<ReplyDto> replyList=replyDao.replyList(board_num);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		String date= sdf.format(boardDto.getRegister_date());
 		
+		
+		//한줄댓글을 mav에 집어 넣는다.
+		mav.addObject("replyList",replyList);
+				
 		mav.addObject("date",date);
 		mav.addObject("pageNumber",pageNumber);
 		mav.addObject("board_num",board_num);

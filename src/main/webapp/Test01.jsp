@@ -454,7 +454,7 @@ $('#main-slider').bxSlider({
 /*---------------------------  Reple.js-------------------------------------- 적용 부분  */
 
 function writeToServer(requestRoot,board_num){
-//	alert(requestRoot + "," + board_num);
+	//alert(requestRoot + "," + board_num);//
 	root=requestRoot;
 	
 	var reply_content=document.getElementById("writeReply").value;
