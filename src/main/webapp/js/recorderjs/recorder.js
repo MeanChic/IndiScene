@@ -130,6 +130,7 @@ DEALINGS IN THE SOFTWARE.
 	         
 	        $("#prevListen").click(function(){
 	       	$("#Recordbars").css("display","block");
+	       	$("#prevAudio").attr("src",$("#uploadPath").val());
 	          });
         }, error: function(jqXHR, textStatus, errorThrown) {},
     });

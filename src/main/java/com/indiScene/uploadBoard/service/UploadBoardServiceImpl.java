@@ -104,8 +104,8 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		}
 		String musicFile = null;
 		
-		if(fileList.size() == 2){		// 녹음파일일 경우.
-			musicFile =uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(1).getOriginalFilename();
+		if(!request.getFile("musicFile").isEmpty()){		// 녹음파일일 경우.
+			musicFile =uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+request.getFile("musicFile").getOriginalFilename();
 		}
 		
 //		String dirCover = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/cover");
@@ -148,9 +148,11 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		uploadBoardDto.setBoard_like(0);
 		
 		try {
-			fileList.get(0).transferTo(coverImageFile);
-			if(fileList.size()==2){
-				fileList.get(1).transferTo(uploadMusicFile);
+			if(!request.getFile("coverImage").isEmpty()){
+				request.getFile("coverImage").transferTo(coverImageFile);
+			}
+			if(!request.getFile("musicFile").isEmpty()){
+				request.getFile("musicFile").transferTo(uploadMusicFile);
 			}else{
 				if(!recordFile.renameTo(uploadMusicFile)){
 					byte[] buf= new byte[1024];

@@ -111,8 +111,9 @@
 		}
 		
 		/* 볼륨 조절 바. */
-		$("#amount").bind("change",function(){
-	//		alert($("#volumeBar").val());
+		$("#volumeBar").bind("change",function(){
+			alert($("#amount").val());
+			alert($("#volumeBar").val());
 			audio.volume=$(this).val()*0.01;
 //			$("#volumeText").text($(this).val());
 		});
