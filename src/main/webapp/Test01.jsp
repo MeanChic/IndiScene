@@ -206,7 +206,6 @@
 			 -->
 	</div>
 	<!-- Music Player end -->
-	
 <script type="text/javascript">
 /* Volume bar */
 $(function() {
@@ -218,6 +217,7 @@ $(function() {
 		value: 60,
 		slide: function( event, ui ) {
 		  $( "#amount" ).val( ui.value );
+		  //alert(ui.value);
 		}
 	});
 	$( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );

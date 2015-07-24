@@ -111,10 +111,15 @@
 		}
 		
 		/* 볼륨 조절 바. */
-		$("#volumeBar").bind("change",function(){
+		$("#amount").bind("change",function(){
+	//		alert($("#volumeBar").val());
 			audio.volume=$(this).val()*0.01;
 //			$("#volumeText").text($(this).val());
 		});
+		
+		/*function changeVolume(volume){
+			audio.volume=volume*0.01;
+		}*/
 		
 /*		$("#prevMoment").click(function(){
 			audio.currentTime= audio.currentTime-10;
