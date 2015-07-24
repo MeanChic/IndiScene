@@ -24,8 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.audioProcessing.KOSTAAudio;
 import com.indiScene.commonIO.dao.CommonIODao;
-import com.indiScene.reply.dao.ReplyDao;
-import com.indiScene.reply.dto.ReplyDto;
 import com.indiScene.uploadBoard.dao.UploadBoardDao;
 import com.indiScene.uploadBoard.dto.UploadBoardDto;
 
@@ -34,9 +32,6 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
 	//private String dir="C:/KMS_MavenSpring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/";
 	//private String dir="C:/mavenspring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/"; //나혁진용
-	
-	@Autowired
-	private ReplyDao replyDao;
 	
 	@Autowired
 	private UploadBoardDao dao;
@@ -109,8 +104,8 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		}
 		String musicFile = null;
 		
-		if(fileList.size() == 2){		// 녹음파일일 경우.
-			musicFile =uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+fileList.get(1).getOriginalFilename();
+		if(!request.getFile("musicFile").isEmpty()){		// 녹음파일일 경우.
+			musicFile =uploadBoardDto.getArtist_id()+"_"+System.currentTimeMillis()+"_"+request.getFile("musicFile").getOriginalFilename();
 		}
 		
 //		String dirCover = request.getSession().getServletContext().getRealPath("/resources/uploadBoard/cover");
@@ -153,9 +148,11 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		uploadBoardDto.setBoard_like(0);
 		
 		try {
-			fileList.get(0).transferTo(coverImageFile);
-			if(fileList.size()==2){
-				fileList.get(1).transferTo(uploadMusicFile);
+			if(!request.getFile("coverImage").isEmpty()){
+				request.getFile("coverImage").transferTo(coverImageFile);
+			}
+			if(!request.getFile("musicFile").isEmpty()){
+				request.getFile("musicFile").transferTo(uploadMusicFile);
 			}else{
 				if(!recordFile.renameTo(uploadMusicFile)){
 					byte[] buf= new byte[1024];
@@ -359,15 +356,10 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		
 		UploadBoardDto boardDto = dao.read(board_num);
 		dao.readCount(board_num);
-		//한줄댓글을 불러온다
-		List<ReplyDto> replyList=replyDao.replyList(board_num);
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		String date= sdf.format(boardDto.getRegister_date());
 		
-		
-		//한줄댓글을 mav에 집어 넣는다.
-		mav.addObject("replyList",replyList);
-				
 		mav.addObject("date",date);
 		mav.addObject("pageNumber",pageNumber);
 		mav.addObject("board_num",board_num);
