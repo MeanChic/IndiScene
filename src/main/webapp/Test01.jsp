@@ -137,9 +137,6 @@
 					<a id="logoutButton" class="sub-expander btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a>
 				</c:otherwise>
 			</c:choose>
-		
-			
-			
 		<!-- 	<script type="text/javascript">
 						function LoginId(artist_id){
 							alert("로그인후 사용해주세요");
@@ -170,7 +167,6 @@
 	<!-- Main slider end -->
 	<!-- VolumeSlider start -->
 	<div id="volumeSlider"class="sliderDispN">
-		<p><input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;"></p>
 		<div id="volumeBar"></div>
 	</div>
 	<!-- VolumeSlider end -->

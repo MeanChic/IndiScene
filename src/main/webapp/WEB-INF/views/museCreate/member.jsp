@@ -11,9 +11,9 @@
 <link type="text/css" href="${root}/css/jquery-ui.css" rel="stylesheet"/>
 <script type="text/javascript" src="${root}/js/jquery.js"></script>
 <script type="text/javascript" src="${root}/js/jquery-ui.js"></script>
-
 </head>
 <body>
+<div id="memberManagerDB">
 	${muse_name}
 	<input type="hidden" id="muse_name" name="muse_name" value="${muse_name}"/>
 	<input type="hidden" id="artist_id" value="${artist_id}" name="artist_id"/>
@@ -59,5 +59,6 @@
 		</c:if>
 	</c:forEach>
 	</c:if>
+</div>
 </body>
 </html>
