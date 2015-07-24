@@ -168,7 +168,12 @@
 		</div>
 	</div>
 	<!-- Main slider end -->
-	
+	<!-- VolumeSlider start -->
+	<div id="volumeSlider"class="sliderDispN">
+		<p><input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;"></p>
+		<div id="volumeBar"></div>
+	</div>
+	<!-- VolumeSlider end -->
 	<!-- Footer section start -->
 	<div class="footer">
 		<div class="brand"><p>Indi Scene</p></div>
@@ -180,10 +185,6 @@
 	</div>
 	<!-- Footer section end -->
 	
-	<div id="volumeSlider"class="sliderDispN">
-		<p><input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;"></p>
-		<div id="volumeBar"></div>
-	</div>
 	<!-- Music Player start -->
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<a href="" id="music-expander" class="music-expander pull-right btn"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List</a>
@@ -454,7 +455,7 @@ $('#main-slider').bxSlider({
 /*---------------------------  Reple.js-------------------------------------- 적용 부분  */
 
 function writeToServer(requestRoot,board_num){
-//	alert(requestRoot + "," + board_num);
+	//alert(requestRoot + "," + board_num);//
 	root=requestRoot;
 	
 	var reply_content=document.getElementById("writeReply").value;
