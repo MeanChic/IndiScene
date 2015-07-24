@@ -11,14 +11,14 @@
 <body>
 <div id="MyMusicTab">
 	<h3>My Upload Music</h3>
-	<div class="marketBoardX-location02 marketBoardInterval03">
-		<input class="marketBoardAttribute01 btn btn-default pull-right" type="button" value="MyUpload" onclick="myUploadMusic('${root}','${artist_id}','1')"/>
-		<input class="marketBoardAttribute01 btn btn-default pull-right" type="button" value="I Like" onclick="myLikeMusic('${root}','${artist_id}','1')"/>
-		<input class="marketBoardAttribute01 btn btn-default pull-right" type="button" value="MyCollabo" onclick="myCollaboMusic('${root}','${artist_id}','1')"/>
+	<div class="marketBoardAttribute01 marketBoardX-location02 marketBoardInterval02">
+		<input class="marketBoardAttribute01 btn btn-default pull-right marginR5" type="button" value="MyUpload" onclick="myUploadMusic('${root}','${artist_id}','1')"/>
+		<input class="marketBoardAttribute01 btn btn-default pull-right marginR5" type="button" value="I Like" onclick="myLikeMusic('${root}','${artist_id}','1')"/>
+		<input class="marketBoardAttribute01 btn btn-default pull-right marginR5" type="button" value="MyCollabo" onclick="myCollaboMusic('${root}','${artist_id}','1')"/>
 	</div>
-	<div class="marketBoardAttribute02 marketBoardInterval03">
+	<div class="marketBoardAttribute02 marketBoardInterval02">
 		<div class="form-controlBoard">
-			<label class="boardlabelBlock marketBoardSize4 label-colorO marketBoardAttribute01">
+			<label class="boardlabelBlock marketBoardSize4 label-colorO marketBoardAttribute01 marketBoardY-location02">
 				<input type="checkbox" id="checkAll" class="" autocomplete="off"/>
 				<script type="text/javascript">
 					$("#checkAll").click(function(){
@@ -45,7 +45,7 @@
 		<!-- List -->
 		<c:forEach var="list" items="${boardList}">
 			<div class="form-controlBoard">
-				<label class="boardlabelBlock marketBoardSize4 label-color marketBoardAttribute01">
+				<label class="boardlabelBlock marketBoardSize4 label-color marketBoardAttribute01 marketBoardY-location02">
 					<input type="checkbox" class="musicCheckBox" autocomplete="off" value="${list.board_num}"/>
 				</label>
 				<label class="boardlabelBlock marketBoardSize46 label-color marketBoardAttribute01 marketBoardY-location02">
