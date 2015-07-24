@@ -74,6 +74,7 @@ public class UploadBoardDaoImpl implements UploadBoardDao {
 
 	@Override
 	public int likeUpdate(HashMap<String, String> hMap) {
+		sqlSession.update("dao.UploadMapper.bestLikeUpdate",hMap);
 		return sqlSession.update("dao.UploadMapper.likeUpdate",hMap);
 	}
 

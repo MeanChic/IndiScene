@@ -86,6 +86,10 @@
 		<![CDATA[update uploadboard set board_like=board_like+1 where board_num=#{board_num} and not artist_id=#{artist_id}]]>
 	</update>
 	
+	<update id="bestLikeUpdate" parameterType="java.util.HashMap">
+		<![CDATA[update bestboard set board_like=board_like+1 where board_num=#{board_num} and not artist_id=#{artist_id}]]>
+	</update>
+	
 	<select id="checkLike" parameterType="java.util.HashMap" resultType="int">
 		<![CDATA[select board_like from uploadboard where board_num=#{board_num}]]>	
 	</select>

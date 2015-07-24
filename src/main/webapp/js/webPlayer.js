@@ -158,12 +158,9 @@
 			success:function(data){
 				var gettedMusicList = data.split("<end>");
 				alert(gettedMusicList[0]);
-				alert(data);
-				alert(gettedMusicList.length);
 				
 				for(var i =1; i<gettedMusicList.length-1; i++){
 					var gettedMusicInfo = gettedMusicList[i].split("<cut>");
-					alert(gettedMusicList[i]);
 					var audioListDiv = $("#audioListDiv").clone();
 					$(audioListDiv).attr("class","audioList");
 					$(audioListDiv).find(".musicSubject").text(gettedMusicInfo[0]);

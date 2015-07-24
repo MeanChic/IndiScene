@@ -22,7 +22,7 @@
 
 	<div class="marketBoardAttribute02 marketBoardInterval03">
 	<c:forEach  items="${boardList}" varStatus="s">
-		<c:set var="market" value="${requestScope.boardList[s.index]}" /> 
+		<c:set var="list" value="${requestScope.boardList[s.index]}" /> 
 		<c:if test="${s.index == 0}">
 		<div id="bestRank1">
 			<a href="javascript:uploadRead('${root}','${list.board_num}','${currentPage}')">
