@@ -68,7 +68,7 @@
 	<hr>
 	<div>
 		<input type="hidden" value="${artist_id }" name="artist_id" />
-		<input id="writeId"  type="text" name="artist" size="14" style="font-size:1.05em;font-family:Helvetica;" value="${freeBoard.artist_id}" disabled="disabled"/>
+		<input id="writeId"  type="text" name="artist" size="14" style="font-size:1.05em;font-family:Helvetica;" value="${artist_id}" disabled="disabled"/>
 		<input id="writeReply" type="text" name="reply_content" size="80" />&nbsp;
 		<input type="button" value="submit" style="color:black;" onclick="writeToServer('${root}','${freeBoard.board_num }')"/> 
 	</div>

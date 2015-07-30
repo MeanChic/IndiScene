@@ -129,7 +129,8 @@
 	<br/>
 	
 	<div>
-		<input id="writeId" type="text" name="artist_id"  size="7" />
+		<input type="hidden" value="${artist_id }" name="artist_id" />
+		<input id="writeId"  type="text" name="artist" size="14" style="font-size:1.05em;font-family:Helvetica;" value="${artist_id}" disabled="disabled"/>
 		<input id="writeReply" type="text" name="reply_content" size="45"/>
 		<input type="button" value="한줄답글작성" onclick="writeToServer('${root}','${marketBoard.board_num }')"/> 
 	</div>

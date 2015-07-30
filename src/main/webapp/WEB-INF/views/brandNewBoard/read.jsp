@@ -13,7 +13,7 @@
 	<h3>Indi's Music : ${boardDto.subject}</h3>
 	<div class="marketBoardX-location02">
 		<a class="marketBoardAttribute01 btn btn-default" href="javascript:oneMusicStorage('${root}','${artist_id}','${boardDto.board_num}')">Put In</a>
-		<a class="marketBoardAttribute01 btn btn-default" href="javascript:uploadList('${root}','${pageNumber}')">List</a>
+		<a class="marketBoardAttribute01 btn btn-default" href="javascript:brandNewList('${root}','${pageNumber}')">List</a>
 	</div>
 	<div class="form-controlMarket instants09">
 		<label class="marketBoardSize16 label-color marketBoardAttribute01">Like</label>
@@ -72,7 +72,8 @@
 	<h3 style="color:#4C4C4C; font-size: 1.3em; font-weight: bold;" >comment </h3>
 	<hr>
 	<div>
-		<input id="writeId"  type="text" name="artist_id" size="14" style="font-size:1.05em;font-family:Helvetica;">
+		<input type="hidden" value="${artist_id }" name="artist_id" />
+		<input id="writeId"  type="text" name="artist" size="14" style="font-size:1.05em;font-family:Helvetica;" value="${artist_id}" disabled="disabled"/>
 		<input id="writeReply" type="text" name="reply_content" size="80" />&nbsp;
 		<input type="button" value="submit" style="color:black;" onclick="writeToServer('${root}','${board_num }')"/> 
 	</div>
