@@ -12,8 +12,8 @@
 <div id="boardBasic">
 	<h3>Notice</h3>
 	<div class="marketBoardX-location02 marketBoardInterval03">
-		<c:choose>
-			<c:when test="${artist_id=='manager'}">
+	   	<c:choose>
+			<c:when test="${artist_id!=null}">
 				<a class="marketBoardAttribute01 btn btn-default" href="javascript:noticeWrite('${root }')">Notice Write</a>
 			</c:when>
 			<c:otherwise>
