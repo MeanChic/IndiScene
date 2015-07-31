@@ -31,8 +31,8 @@ import com.indiScene.commonIO.dto.CommonMusicDto;
 /**
 @name  : CommonIOServiceImpl
 @date  : 2015. 7. 5.
-@auther: 나혁진
-@description :파일 업로드 등의 공통부분을 정의한 클래스
+@auther: 나혁진,김민식
+@description :파일 업로드와 음원 등의 공통부분을 정의한 클래스
  */
 @Component
 public class CommonIOServiceImpl implements CommonIOService {
@@ -45,7 +45,7 @@ public class CommonIOServiceImpl implements CommonIOService {
 	@name  : imageUpload
 	@date  : 2015. 7. 5.
 	@auther: 나혁진
-	@description :이미지 업로드를 정의한 메소드
+	@description :이미지 업로드를 음원 추천 등을 정의한 메소드
 	 */
 	@Override
 	public void imageUpload(ModelAndView mav) {
@@ -180,7 +180,7 @@ public class CommonIOServiceImpl implements CommonIOService {
 	@name  : multiFileDelete
 	@date  : 2015. 7. 5.
 	@auther: 나혁진
-	@description :게시글 삭제를 위한 메소드
+	@description :게시글 삭제시 파일도 삭제 되기위한 메소드
 	 */
 	@Override
 	public void multiFileDelete(CommonDto dto) {
@@ -204,7 +204,13 @@ public class CommonIOServiceImpl implements CommonIOService {
 			}
 		}
 	}
-
+	
+	/**
+	@name  : multiFileDelete
+	@date  : 2015. 7. 5.
+	@auther: 나혁진
+	@description :멀티파일 다운로드를 위한 메소드
+	 */
 	@Override
 	public void download(ModelAndView mav) throws IOException {
 		// TODO Auto-generated method stub
@@ -234,7 +240,6 @@ public class CommonIOServiceImpl implements CommonIOService {
 		
 		BufferedInputStream fis = null;
 		BufferedOutputStream fos = null;
-		
 
 		try {
 			fis = new BufferedInputStream(new FileInputStream(file_path));

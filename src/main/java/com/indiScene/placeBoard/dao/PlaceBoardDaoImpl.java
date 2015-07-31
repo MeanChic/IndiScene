@@ -13,7 +13,7 @@ import com.indiScene.placeBoard.dto.PlaceBoardDto;
 @name  : MarketBoardDaoImpl
 @date  : 2015. 6. 25.
 @auther: 나혁진
-@description : 거래게시판 비지니스 로직에 접근하기위한 dao
+@description : 대관게시판 비지니스 로직에 접근하기위한 dao
  */
 @Component
 public class PlaceBoardDaoImpl implements PlaceBoardDao {

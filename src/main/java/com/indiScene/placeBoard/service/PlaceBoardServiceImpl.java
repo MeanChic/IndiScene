@@ -1,37 +1,29 @@
 package com.indiScene.placeBoard.service;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.indiScene.commonIO.dto.CommonDto;
 import com.indiScene.commonIO.service.CommonIOService;
 import com.indiScene.placeBoard.dao.PlaceBoardDao;
 import com.indiScene.placeBoard.dto.PlaceBoardDto;
 import com.indiScene.reply.dao.ReplyDao;
 import com.indiScene.reply.dto.ReplyDto;
 
-
 /**
-@name  : MarketBoardServiceImpl
+@name  : PlaceBoardServiceImpl
 @date  : 2015. 6. 25.
-@auther: 나혁진
-@description :
+@auther: 김정승
+@description : 대관 게시판 서비스 클래스
  */
 @Component
 public class PlaceBoardServiceImpl implements PlaceBoardService {
@@ -49,7 +41,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	/**
 	@name  : enterBoard
 	@date  : 2015. 6. 25.
-	@auther: 나혁진
+	@auther: 김정승
 	@description :전체 게시판 리스트를 호출하기 위해 해당페이지를 계산한뒤 dao를 호출한다
 	 */
 	@Override
@@ -73,8 +65,6 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		int endRow=currentPage*boardSize;
 		logger.info("startRow:" + startRow + ",endRow" + endRow);
 		
-		
-		
 		List<PlaceBoardDto> marketList=null;
 		List<String> mainImageList=null;
 //		HashMap<String,MarketBoardDto> hMap=null;
@@ -96,7 +86,6 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		mav.addObject("mainImageList",mainImageList);
 		mav.setViewName("placeBoard/enterBoard");
 	}
-	
 	
 //	@Override   //CommonIOService로 독립함
 //	public List<String> mainImageFind(List<MarketBoardDto> marketList) {
@@ -121,11 +110,10 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 //		// TODO Auto-generated method stub
 //	}
 
-
 	/**
 	@name  : write
 	@date  : 2015. 6. 25.
-	@auther: 나혁진
+	@auther: 김정승
 	@description :dto에 담겨있는 입력정보를 db에 삼입하기위해 dao를 호출한다
 	 */
 	@Override
@@ -193,7 +181,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 	/**
 	@name  : read
 	@date  : 2015. 6. 25.
-	@auther: 나혁진
+	@auther: 김정승
 	@description : 클릭한 게시글을 읽기 위해 board_num을 담아 dao를 호출한다
 	 */
 	@Override
@@ -231,7 +219,7 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 //	/** commonIO로 뺐음
 //	@name  : imageUpload
 //	@date  : 2015. 6. 25.
-//	@auther: 나혁진
+//	@auther: 김정승
 //	@description :게시판에 이미지를 첨부하기 위해 저장위치에 파일을 저장시키고 위치를 반환한다
 //	 */
 //	@Override
@@ -279,7 +267,12 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 //		
 //	}
 
-
+	/**
+	@name  : delete
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description : 게시물 삭제를 위해 계정비번 요구 페이지 반환
+	 */
 	@Override
 	public void delete(ModelAndView mav) {
 		// TODO Auto-generated method stub
@@ -298,7 +291,12 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		
 	}
 
-
+	/**
+	@name  : deleteOk
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description :대관게시판 글을 삭제하기 위한 서비스 메소드
+	 */
 	@Override
 	public void deleteOk(ModelAndView mav) {
 		// TODO Auto-generated method stub
@@ -341,8 +339,6 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 //					if(file.exists() && file.isFile()) file.delete();
 //				}
 //			}
-			
-			
 			delCheck=marketBoardDao.delete(board_num);
 					
 		}else{
@@ -358,7 +354,12 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		
 	}
 
-
+	/**
+	@name  : update
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description :공연게시판 수정을위해 db내용을 불러오기 위한 service 메소드
+	 */
 	@Override
 	public void update(ModelAndView mav) {
 		// TODO Auto-generated method stub
@@ -377,6 +378,12 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		
 	}
 	
+	/**
+	@name  : deleteOk
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description :공연게시판 글을 수정하기 위한 서비스 메소드
+	 */
 	public void updateOk(ModelAndView mav) {
 		// TODO Auto-generated method stub
 		Map<String,Object> map=mav.getModelMap();
@@ -392,14 +399,11 @@ public class PlaceBoardServiceImpl implements PlaceBoardService {
 		}
 		
 		int check=marketBoardDao.updateOk(marketBoardDto);
-//		System.out.println(updateCheck);
 		mav.addObject("check",check);
 		mav.addObject("board_num",board_num);
 		mav.addObject("pageNumber",pageNumber);
 		mav.setViewName("placeBoard/updateOk");
-		
 	}
-
 
 //	@Override  //CommonIO로 독립시킴
 //	public void download(ModelAndView mav) throws Throwable{

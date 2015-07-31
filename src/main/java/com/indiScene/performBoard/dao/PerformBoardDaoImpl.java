@@ -13,7 +13,7 @@ import com.indiScene.performBoard.dto.PerformBoardDto;
 /**
 @name  : MarketBoardDaoImpl
 @date  : 2015. 6. 25.
-@auther: 오정승
+@auther: 김정승
 @description : 공연게시판 비지니스 로직에 접근하기위한 dao
  */
 @Component

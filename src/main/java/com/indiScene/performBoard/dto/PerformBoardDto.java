@@ -5,10 +5,10 @@ import java.util.Date;
 import com.indiScene.commonIO.dto.CommonDto;
 
 /**
-@name  : MarketBoardDto
+@name  : PerformBoardDto
 @date  : 2015. 6. 25.
-@auther: 나혁진
-@description :거래 게시판 db를 처리하기위한 dto
+@auther: 김정승
+@description :공연 게시판 db를 처리하기위한 dto
  */
 public class PerformBoardDto implements CommonDto {
 	private String board_num;
