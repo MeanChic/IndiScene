@@ -35,7 +35,6 @@ public class ReplyServiceImpl implements ReplyService {
 		//한줄댓글 리스트를 불러오는 행위는 각게시판에 귀속되기 때문에 replyService를 거치지 않는다 각 게시판의 Service에서해결
 	}
 
-
 	/**
 	@name  : write
 	@date  : 2015. 7. 8.
@@ -74,7 +73,12 @@ public class ReplyServiceImpl implements ReplyService {
 		}
 	}
 
-
+	/**
+	@name  : delete
+	@date  : 2015. 7. 8.
+	@auther: 나혁진
+	@description : 삭제를 위해 게시글 번호와 댓글 번호를 담아 dao로 보낸다
+	 */
 	@Override
 	public void delete(ModelAndView mav) throws IOException {
 		Map<String,Object> map=mav.getModelMap();
@@ -96,7 +100,12 @@ public class ReplyServiceImpl implements ReplyService {
 		
 	}
 
-
+	/**
+	@name  : upSelect
+	@date  : 2015. 7. 8.
+	@auther: 나혁진
+	@description : 댓글 내용을 불어오기 위해 dao를 호출한다.
+	 */
 	@Override
 	public void upSelect(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable {
@@ -114,6 +123,12 @@ public class ReplyServiceImpl implements ReplyService {
 		}
 	}
 	
+	/**
+	@name  : update
+	@date  : 2015. 7. 8.
+	@auther: 나혁진
+	@description : 수정할 내용을 dto에 담아 dao로 보낸다
+	 */
 	public void update(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable{
 		String board_num=request.getParameter("board_num");
@@ -134,7 +149,5 @@ public class ReplyServiceImpl implements ReplyService {
 			out.print(str);
 		}
 	}
-	
-	
 
 }

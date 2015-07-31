@@ -56,11 +56,9 @@ public class CommonIOServiceImpl implements CommonIOService {
 		logger.info("fileSize:" + fileSize); //일단 이미지에선 쓰지 않는다
 		logger.info("timeName:" + timeName); //실제 이미지 경로에 들어가고 콜백에 들어간다.
 		String rootDir=request.getSession().getServletContext().getRealPath("/");
-		//System.out.println("rootDir" + rootDir);
 		
 //		String[] simpleClassName=this.getClass().getSimpleName().split("Service");
 //		String folderName=simpleClassName[0];
-//		System.out.println(folderName);
 		
 		String attachDir="resources/"+folderName.trim()+"Resources/img/"; //콜백으로 넘길용도+실제 파일 들어갈 용도, jsp에서 뽑아낸 폴더 이름을 넣는다 
 		String CKEditorFuncNum=request.getParameter("CKEditorFuncNum");
@@ -96,7 +94,6 @@ public class CommonIOServiceImpl implements CommonIOService {
 		for(int i=0;i<realDto.size();i++){
 			
 			contentForImg=realDto.get(i).getContent();
-			//System.out.println(contentForImg);
 			//logger.info("내용추출" +contentForImg);
 			Pattern p=Pattern.compile("src=\".*.\" style"); //표준정규식 만듬
 			Matcher pM=p.matcher(contentForImg);//이미지 Path가 있는 content불러와 표준정규식과 비교
@@ -128,7 +125,6 @@ public class CommonIOServiceImpl implements CommonIOService {
 			String fileNameForDto="";
 			String filePathForDto="";
 			
-			System.out.println(upFileList.size()); //dto에 들어갈 path를 만들기 위해 for문 돌림
 			for(int i=0;i<upFileList.size();i++){
 				MultipartFile upFile=upFileList.get(i);
 				
@@ -223,7 +219,6 @@ public class CommonIOServiceImpl implements CommonIOService {
 			fos.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Download Error");
 		} finally {
 			if (fis != null)
 				fis.close();

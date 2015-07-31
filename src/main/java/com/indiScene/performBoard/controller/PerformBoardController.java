@@ -17,9 +17,9 @@ import com.indiScene.performBoard.dto.PerformBoardDto;
 import com.indiScene.performBoard.service.PerformBoardService;
 
 /**
-@name  : MarketBoardController
+@name  : PerformBoardController
 @date  : 2015. 6. 25.
-@auther: 나혁진
+@auther: 오정승
 @description :거래 게시판 컨트롤러
  */
 @Controller
@@ -32,7 +32,7 @@ public class PerformBoardController  {
 	/**
 	@name  : enterBoard
 	@date  : 2015. 6. 25.
-	@auther: 나혁진
+	@auther: 오정승
 	@description :거래게시판 리스트를 불러오기위해 service를 호출
 	 */
 	@RequestMapping(value="/performBoard/map.do", method=RequestMethod.GET)
@@ -59,7 +59,7 @@ public class PerformBoardController  {
 	
 	@RequestMapping(value="/performBoard/enterBoard.do", method=RequestMethod.GET)
 	public ModelAndView enterBoard(HttpServletRequest request, HttpServletResponse response){
-		logger.info("MarketBoardWrite------------------------------");
+		logger.info("PerformBoardWrite------------------------------");
 	
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
@@ -71,7 +71,7 @@ public class PerformBoardController  {
 	/**
 	@name  : write
 	@date  : 2015. 6. 25.
-	@auther: 나혁진
+	@auther: 오정승
 	@description :게시판 내용 입력을 받기위해 write.jsp 파일을 반환시킨다
 	 */
 	@RequestMapping(value="/performBoard/write.do", method=RequestMethod.GET)
@@ -87,7 +87,7 @@ public class PerformBoardController  {
 	/**
 	@name  : write
 	@date  : 2015. 6. 25.
-	@auther: 나혁진
+	@auther: 오정승
 	@description :입력내용을 dto에 담아 service 에 보낸다
 	 */
 	@RequestMapping(value="/performBoard/write.do", method=RequestMethod.POST)
@@ -106,7 +106,7 @@ public class PerformBoardController  {
 //	/**  commonIO로 독립시킴
 //	@name  : imageUpload
 //	@date  : 2015. 6. 25.
-//	@auther: 나혁진
+//	@auther: 오정승
 //	@description :이미지 업로드를 위해 service를 호출한다
 //	 */
 //	@RequestMapping(value="/marketBoard/imageUpload.do", method = RequestMethod.POST)
@@ -126,7 +126,7 @@ public class PerformBoardController  {
 		/**
 	@name  : read
 	@date  : 2015. 6. 25.
-	@auther: 나혁진
+	@auther: 오정승
 	@description :게시글을 읽기위해 글 번호를 mav에 담아 service를 호출한다.
 	 */
 	@RequestMapping(value="/performBoard/read.do", method=RequestMethod.GET)
