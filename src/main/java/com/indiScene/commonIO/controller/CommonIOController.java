@@ -24,13 +24,10 @@ import com.indiScene.commonIO.service.CommonIOService;
 @Controller
 public class CommonIOController  {
 	final Logger logger=Logger.getLogger(this.getClass().getName());
-	
-//	@Autowired
-//	private MarketBoardService marketBoardService;
 	 	
 	@Autowired
 	private CommonIOService commonIOService;
-
+	
 	/**
 	@name  : imageUpload
 	@date  : 2015. 6. 25.
