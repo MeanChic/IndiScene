@@ -14,6 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.indiScene.commonIO.service.CommonIOService;
 
+
+/**
+@name  : imageUpload
+@date  : 2015. 6. 25.
+@auther: 나혁진
+@description :이미지 업로드와 멀티파일 다운로드 를 정의 하는 클래스
+ */
 @Controller
 public class CommonIOController  {
 	final Logger logger=Logger.getLogger(this.getClass().getName());

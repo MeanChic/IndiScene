@@ -42,9 +42,14 @@ public class ReplyController {
 		mav.addObject("response",response);
 		replyService.write(mav);
 		
-		
 	}
 	
+	/**
+	@name  : write
+	@date  : 2015. 7. 8.
+	@auther: 나혁진
+	@description :한줄댓글 삭제를 누르면 댓글번호와 게시물 번호를 담아 replyService로 보낸다
+	 */
 	@RequestMapping(value="/replyDelete.do", method=RequestMethod.GET)
 	public void delete(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		logger.info("replyDelete--------------------------");
@@ -52,10 +57,14 @@ public class ReplyController {
 		mav.addObject("request",request);
 		mav.addObject("response",response);
 		replyService.delete(mav);
-		
-		
 	}
 	
+	/**
+	@name  : write
+	@date  : 2015. 7. 8.
+	@auther: 나혁진
+	@description :한줄댓글 수정을 누르면 원래 내용을 불러오기 위해 replyService를 호출한다.
+	 */
 	@RequestMapping(value="/replySelect.do", method=RequestMethod.GET)
 	public void upSelect(HttpServletRequest request, HttpServletResponse response) throws Throwable{
 		logger.info("replyUpSelect-------------------------------");
@@ -63,6 +72,13 @@ public class ReplyController {
 		replyService.upSelect(request,response);
 	}
 	
+	
+	/**
+	@name  : write
+	@date  : 2015. 7. 8.
+	@auther: 나혁진
+	@description :수정된 내용을 mav에 담아 replyService로 보낸다
+	 */
 	@RequestMapping(value="/replyUpdate.do", method=RequestMethod.GET)
 	public void update(HttpServletRequest request,HttpServletResponse response) throws Throwable{
 		logger.info("replyUpdate-----------------------------");

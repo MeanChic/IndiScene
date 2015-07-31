@@ -24,7 +24,7 @@ import com.indiScene.reply.dto.ReplyDto;
 @name  : MarketBoardServiceImpl
 @date  : 2015. 6. 25.
 @auther: 나혁진
-@description :
+@description :거래게시판 서비스 클래스를 정의한다.
  */
 @Component
 public class MarketBoardServiceImpl implements MarketBoardService {
@@ -121,7 +121,6 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 //		String contentForImg=null;
 //		for(int i=0;i<marketList.size();i++){
 //			contentForImg=marketList.get(i).getContent();
-//			//System.out.println(contentForImg);
 //			//logger.info("내용추출" +contentForImg);
 //			Pattern p=Pattern.compile("src=\".*.\" style"); //표준정규식 만듬
 //			Matcher pM=p.matcher(contentForImg);//이미지 Path가 있는 content불러와 표준정규식과 비교
@@ -171,7 +170,6 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 //			String fileNameForDto="";
 //			String filePathForDto="";
 //			
-//			System.out.println(upFileList.size()); //dto에 들어갈 path를 만들기 위해 for문 돌림
 //			for(int i=0;i<upFileList.size();i++){
 //				MultipartFile upFile=upFileList.get(i);
 //				
@@ -270,11 +268,9 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 //		logger.info("fileSize:" + fileSize); //일단 이미지에선 쓰지 않는다
 //		logger.info("timeName:" + timeName); //실제 이미지 경로에 들어가고 콜백에 들어간다.
 //		String rootDir=request.getSession().getServletContext().getRealPath("/");
-//		//System.out.println("rootDir" + rootDir);
 //		
 //		String[] simpleClassName=this.getClass().getSimpleName().split("Service");
 //		String folderName=simpleClassName[0];
-//		System.out.println(folderName);
 //		
 //		String attachDir="resources/marketResources/img/"; //콜백으로 넘길용도+실제 파일 들어갈 용도
 //		String CKEditorFuncNum=request.getParameter("CKEditorFuncNum");
@@ -296,7 +292,12 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 //		
 //	}
 
-
+	/**
+	@name  : delete
+	@date  : 2015. 6. 25.
+	@auther: 나혁진
+	@description : 클릭한 게시글을 지우기 위해 board_num을 담아 dao를 호출한다
+	 */
 	@Override
 	public void delete(ModelAndView mav) {
 		// TODO Auto-generated method stub
@@ -314,8 +315,13 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 		mav.setViewName("marketBoard/delete");
 		
 	}
-
-
+	
+	/**
+	@name  : delete
+	@date  : 2015. 6. 25.
+	@auther: 나혁진
+	@description : 클릭한 게시글을 지우기 위해 board_num을 담아 dao를 호출한다
+	 */
 	@Override
 	public void deleteOk(ModelAndView mav) {
 		logger.info("deleteOk ServiceImpl Test");
@@ -372,10 +378,14 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 		mav.addObject("check",delCheck);
 		
 		mav.setViewName("marketBoard/deleteOk");
-		
 	}
 
-
+	/**
+	@name  : update
+	@date  : 2015. 6. 25.
+	@auther: 나혁진
+	@description : 클릭한 게시글을 수정하기 위해 Dao를 불러온다.
+	 */
 	@Override
 	public void update(ModelAndView mav) {
 		// TODO Auto-generated method stub
@@ -391,9 +401,15 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 		mav.addObject("board",marketBoardDto);
 		mav.addObject("pageNumber",pageNumber);
 		mav.setViewName("marketBoard/update");
-		
 	}
 	
+	
+	/**
+	@name  : updateOk
+	@date  : 2015. 6. 25.
+	@auther: 나혁진
+	@description : 수정내용을 Dao를 호출해 수정한.
+	 */
 	public void updateOk(ModelAndView mav) {
 		// TODO Auto-generated method stub
 		Map<String,Object> map=mav.getModelMap();
@@ -409,7 +425,6 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 		}
 		
 		int check=marketBoardDao.updateOk(marketBoardDto);
-//		System.out.println(updateCheck);
 		mav.addObject("check",check);
 		mav.addObject("board_num",board_num);
 		mav.addObject("pageNumber",pageNumber);
@@ -459,7 +474,6 @@ public class MarketBoardServiceImpl implements MarketBoardService {
 //			fos.flush();
 //		} catch (Exception e) {
 //			e.printStackTrace();
-//			System.out.println("Download Error");
 //		} finally {
 //			if (fis != null)
 //				fis.close();

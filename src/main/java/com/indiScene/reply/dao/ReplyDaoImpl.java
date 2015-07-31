@@ -45,7 +45,6 @@ public class ReplyDaoImpl implements ReplyDao {
 		hMap.put("board_num", board_num);
 		hMap.put("reply_num", reply_num);
 		return sqlSession.delete("dao.replyMapper.replyDelete",hMap);
-		
 	}
 
 	@Override

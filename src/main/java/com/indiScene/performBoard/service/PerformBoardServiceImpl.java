@@ -33,7 +33,7 @@ import com.indiScene.reply.dto.ReplyDto;
 /**
 @name  : MarketBoardServiceImpl
 @date  : 2015. 6. 25.
-@auther: 나혁진
+@auther: 오정승
 @description :
  */
 @Component
@@ -52,7 +52,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 	/**
 	@name  : enterBoard
 	@date  : 2015. 6. 25.
-	@auther: 나혁진
+	@auther: 오정승
 	@description :전체 게시판 리스트를 호출하기 위해 해당페이지를 계산한뒤 dao를 호출한다
 	 */
 	
@@ -150,7 +150,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 	/**
 	@name  : write
 	@date  : 2015. 6. 25.
-	@auther: 나혁진
+	@auther: 오정승
 	@description :dto에 담겨있는 입력정보를 db에 삼입하기위해 dao를 호출한다
 	 */
 	@Override
@@ -226,7 +226,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 	/**
 	@name  : read
 	@date  : 2015. 6. 25.
-	@auther: 나혁진
+	@auther: 오정승
 	@description : 클릭한 게시글을 읽기 위해 board_num을 담아 dao를 호출한다
 	 */
 	@Override
@@ -264,7 +264,7 @@ public class PerformBoardServiceImpl implements PerformBoardService {
 //	/** commonIO로 뺐음
 //	@name  : imageUpload
 //	@date  : 2015. 6. 25.
-//	@auther: 나혁진
+//	@auther: 오정승
 //	@description :게시판에 이미지를 첨부하기 위해 저장위치에 파일을 저장시키고 위치를 반환한다
 //	 */
 //	@Override
