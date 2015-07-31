@@ -23,7 +23,4 @@ public interface NoticeService {
 
 	public void noticeUpdateOk(ModelAndView mav);
 
-	
-
-
 }

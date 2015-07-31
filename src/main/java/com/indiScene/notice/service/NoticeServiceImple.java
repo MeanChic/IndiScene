@@ -37,8 +37,13 @@ public class NoticeServiceImple implements NoticeService {
 		mav.addObject("message","member 시작입니다.");	
 		mav.setViewName("home");
 	}
-
-	//
+	
+	/**
+	 * @name : NoticeServiceImple
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 공지사항을 쓰기위한 메소드
+	 */
 	@Override
 	public void noticeWrite(ModelAndView mav) {
 		
@@ -73,6 +78,12 @@ public class NoticeServiceImple implements NoticeService {
 		mav.setViewName("notice/write");
 	}
 	
+	/**
+	 * @name : NoticeServiceImple
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 공지사항쓰기 완료(실패,성공 여부)확인을 위한 메소드
+	 */
 	@Override
 	public void noticeWriteOk(ModelAndView mav) {
 		
@@ -93,6 +104,11 @@ public class NoticeServiceImple implements NoticeService {
 		mav.setViewName("notice/writeOk");
 	}
 	
+	/**
+	 * @name : NoticeServiceImple
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 공지사항을 읽을때마다 조회수가 증가하게하는 메소드 */
 	public void noticeWriteNumber(NoticeDto noticeDto){
 		String board_num=noticeDto.getBoard_num();
 		int group_num=noticeDto.getGroup_num();
@@ -135,6 +151,12 @@ public class NoticeServiceImple implements NoticeService {
 		noticeDto.setSeq_level(seq_level);	
 	}
 
+	/**
+	 * @name : NoticeServiceImple
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 공지사항 목록 로직  메소드 
+	 */
 	@Override
 	public void noticeList(ModelAndView mav) {
 		Map<String , Object>map=mav.getModelMap();
@@ -167,6 +189,12 @@ public class NoticeServiceImple implements NoticeService {
 		mav.setViewName("notice/list");
 	}
 	
+	/**
+	 * @name : NoticeServiceImple
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 공지사항글을 읽는 메소드 
+	 */
 	@Override
 	public void noticeRead(ModelAndView mav) {
 		
@@ -192,6 +220,12 @@ public class NoticeServiceImple implements NoticeService {
 		mav.setViewName("notice/read");
 	}
 	
+	/**
+	 * @name : NoticeServiceImple
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description :공지사항을 삭제하는 메소드 
+	 */
 	@Override
 	public void noticeDelete(ModelAndView mav) {
 
@@ -207,7 +241,13 @@ public class NoticeServiceImple implements NoticeService {
 		
 		mav.setViewName("notice/delete");	
 	}
-
+	
+	/**
+	 * @name : NoticeServiceImple
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description :공지사항 삭제 확인(실패,성공여부)을 위한 메소드 
+	 */
 	@Override
 	public void noticeDeleteOk(ModelAndView mav) {
 		Map<String,Object> map=mav.getModelMap();
@@ -226,6 +266,12 @@ public class NoticeServiceImple implements NoticeService {
 		mav.setViewName("notice/deleteOk");
 	}
 
+	/**
+	 * @name : NoticeServiceImple
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description :공지사항글 수정 
+	 */
 	@Override
 	public void noticeUpdate(ModelAndView mav) {
 				// root + "/board/update.do?boardNumber="+boardNumber+"&pageNumber="+pageNumber
@@ -245,6 +291,12 @@ public class NoticeServiceImple implements NoticeService {
 		mav.setViewName("notice/update");
 	}
 
+	/**
+	 * @name : NoticeServiceImple
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description :공지사항 수정확인 메소드 
+	 */
 	@Override
 	public void noticeUpdateOk(ModelAndView mav) {
 		

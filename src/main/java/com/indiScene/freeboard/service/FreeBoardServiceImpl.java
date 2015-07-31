@@ -18,6 +18,12 @@ import com.indiScene.freeboard.dto.FreeBoardDto;
 import com.indiScene.reply.dao.ReplyDao;
 import com.indiScene.reply.dto.ReplyDto;
 
+/**
+ * @name : FreeBoardServiceImpl
+ * @date : 2015. 7. 31.
+ * @author : 손유진
+ * @description : 자유게시판 관련기능을 수행한다. 
+ */
 @Component
 public class FreeBoardServiceImpl implements FreeBoardService {
 	Logger logger=Logger.getLogger(this.getClass().getName());	
@@ -30,7 +36,15 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	
 	@Autowired
 	private CommonIODao commonIODao;
-	
+
+	/**
+	 * @name : FreeBoardServiceImpl
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 글쓰기하는데에 필요한 정보를 넘겨준다. 
+	 * -boardNumber,seqNumber,groupNumber,seq_level,pageNumber
+	 * 					
+	 */
 	@Override
 	public void freeBoardWrite(ModelAndView mav) {
 		
@@ -66,6 +80,12 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		mav.setViewName("freeBoard/write");
 	}
 	
+	/**
+	 * @name : FreeBoardServiceImpl
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 글이 등록되었는지 등록실패되었는지 알려준다.
+	 */
 	@Override
 	public void freeBoardWriteOk(ModelAndView mav) {
 		Map<String,Object>map=mav.getModel();
@@ -85,7 +105,12 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		mav.setViewName("freeBoard/writeOk");
 		
 	}
-	
+	/**
+	 * @name : FreeBoardServiceImpl
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 조회수 증가증가를 위한 메소드 
+	 */
 	private void freeBoardWriteNumber(FreeBoardDto freeBoardDto) {
 		String board_num=freeBoardDto.getBoard_num();
 		int group_num=freeBoardDto.getGroup_num();
@@ -126,9 +151,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		freeBoardDto.setGroup_num(group_num);
 		freeBoardDto.setSeq_num(seq_num);
 		freeBoardDto.setSeq_level(seq_level);	
-		
 	}
 	
+	/**
+	 * @name : FreeBoardServiceImpl
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 게시글을 순서대로 목록에 나타내기 위해   페이징기법을 사용한  메소드 
+	 */
 	@Override
 	public void freeBoardList(ModelAndView mav) {
 		
@@ -145,8 +175,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		logger.info("pageNumber:" +pageNumber);
 		logger.info("searchWord:" +searchWord);
 		logger.info("searchType:" +searchType);
-		logger.info("folderName:" +folderName);
-		
+		logger.info("folderName:" +folderName);	
 		
 		int boardSize=10;
 		int currentPage=Integer.parseInt(pageNumber);
@@ -171,12 +200,9 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 			}else{
 				freeBoardList=(List<FreeBoardDto>) commonIODao.getCommonBoardList(startRow, endRow, searchWord, searchType, folderName);
 				if(freeBoardList!=null)logger.info("freeBoardList size(search): "+freeBoardList.size());
-			}
-			
+			}		
 		}
-		
-		
-		mav.addObject("searchWord",searchWord);
+				mav.addObject("searchWord",searchWord);
 		mav.addObject("searchType",searchType); //search를 반환시켜야 page이동간도 사용가능
 		
 		mav.addObject("freeBoardSize",boardSize);
@@ -187,6 +213,12 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		mav.setViewName("freeBoard/list");
 	}
 	
+	/**
+	 * @name : FreeBoardServiceImpl
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 자유게시판 읽기 메소드 
+	 */
 	@Override
 	public void freeBoardRead(ModelAndView mav) {
 		
@@ -208,9 +240,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		mav.addObject("replyList",replyList);
 		mav.addObject("pageNumber",pageNumber);
 		mav.setViewName("freeBoard/read");
-		
 	}	
 
+	/**
+	 * @name : FreeBoardServiceImpl
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 자유게시판 본인게시물 삭제하는 메소드 
+	 */
 	@Override
 	public void freeBoardDelete(ModelAndView mav) {
 
@@ -225,8 +262,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		mav.addObject("pageNumber",pageNumber);
 		
 		mav.setViewName("freeBoard/delete");	
-		
 	}
+	
+	/**
+	 * @name : FreeBoardServiceImpl
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 게시물 삭제 확인 (실패,성공여부)을 위한 메소드  
+	 */
 	@Override
 	public void freeBoardDeleteOk(ModelAndView mav) {
 		Map<String,Object> map=mav.getModelMap();
@@ -245,6 +288,13 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		
 		mav.setViewName("freeBoard/deleteOk");
 	}
+	
+	/**
+	 * @name : FreeBoardServiceImpl
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 자유게시판 수정 
+	 */
 	@Override
 	public void freeBoardUpdate(ModelAndView mav) {
 		Map<String, Object> map=mav.getModelMap();
@@ -264,8 +314,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		mav.addObject("board_num",board_num);
 		
 		mav.setViewName("freeBoard/update");
-		
 	}
+	
+	/**
+	 * @name : FreeBoardServiceImpl
+	 * @date : 2015. 7. 31.
+	 * @author : 손유진
+	 * @description : 자유게시판 수정 확인(실패,성공)하는 메소드 
+	 */
 	@Override
 	public void freeBoardUpdateOk(ModelAndView mav) {
 

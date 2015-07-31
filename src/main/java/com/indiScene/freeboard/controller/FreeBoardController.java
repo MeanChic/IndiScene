@@ -54,7 +54,6 @@ public class FreeBoardController {
 		mav.addObject("request",request);
 		mav.addObject("freeBoardDto",freeBoardDto);
 		freeBoardService.freeBoardWriteOk(mav);
-	
 		return mav;	
 	}
 
@@ -120,7 +119,6 @@ public class FreeBoardController {
 		freeBoardService.freeBoardDeleteOk(mav);
 		return mav;
 	}
-	
 
 	/**
 	 * @name : freeBoardUpdate
@@ -138,8 +136,6 @@ public class FreeBoardController {
 		
 		return mav;
 	}
-	
-	
 	
 	/**
 	 * @name : freeBoardUpdateOk
@@ -162,5 +158,4 @@ public class FreeBoardController {
 		
 		return mav;
 	}
-	
 }

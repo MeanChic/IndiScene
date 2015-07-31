@@ -39,8 +39,7 @@
 				계정 비밀번호를 입력해주세요.</span><br/><br/>
 			</div>
 		</div>
-		
-		
+
 			<div  class="DeletefontStyle DeletePassWord">
 				<div style="color:#333333"> ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;${artist_id }  </div>
 				<div  style="color:#4C4C4C font-size:1.3em;">Password&nbsp;:&nbsp;
@@ -50,10 +49,9 @@
 			<br/>
 			<div align="center" class="DeleteListPaddingLeft">
 				<div >
-					<a 
-						href="javascript:noticeDeleteFunOk('${root}','${board_num}','${ pageNumber}')" 
+					<a href="javascript:noticeDeleteFunOk('${root}','${board_num}','${ pageNumber}')" 
 						id="deleteBt" class="marketBoardDelBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" 
-						onmouseover="DeleteBtnOver()" onmouseout="DeletBtnOut()" >Delete</a>
+						onmouseover="DeleteBtnOver()" onmouseout="DeletBtnOut()" >Delete</a>		
 						
 					<a href="javascript:noticeList('${root}','${pageNumber}')" 
 					id="listBt" class="marketBoardListBtn marketBoardUpDelBtn-default marketBoardUpDelBtn-sm" 

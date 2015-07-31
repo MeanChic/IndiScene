@@ -118,7 +118,7 @@
 		
 		function noticeDeleteFunOk(root, board_num, pageNumber){
 			var dataSet = new FormData(document.getElementById("deleteForm"));
-			alert(root +","+board_num +","+ pageNumber);
+//			alert(root +","+board_num +","+ pageNumber);
 			$.ajax({
 				url:root+"/notice/delete.do",
 				type:"post",
@@ -178,7 +178,7 @@
 				processData:false,
 				contentType:false,
 				success:function(data){
-					alert(data);
+//					alert(data);
 					var realData = data.split("<body>");
 					var realData = realData[1].split("</body>")[0];
 					//alert(realData);
