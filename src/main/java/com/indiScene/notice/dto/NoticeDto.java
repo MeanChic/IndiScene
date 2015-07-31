@@ -18,8 +18,6 @@ public class NoticeDto {
 	private int seq_num;			//시퀀스 번호 	
 	private int group_num;			//그룹번호		
 	private String board_num;		//게시판순번 	
-
-	
 	
 	public String getSubject() {
 		return subject;

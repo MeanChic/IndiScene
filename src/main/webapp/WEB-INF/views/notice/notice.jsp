@@ -26,7 +26,6 @@
       
       <div id="centerContents" >
         <h2>Content</h2>
-        	
       </div>
       
       <div id="sidebar">

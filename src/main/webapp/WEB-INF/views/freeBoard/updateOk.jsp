@@ -22,9 +22,7 @@
 					
 			freeBoardList('${root}','${pageNumber}');
 			</script>
-			
 	</c:if>
-	
 	<c:if test="${check==0 }">
 		<script type="text/javascript">
 			alert("수정이 실패되었습니다.");

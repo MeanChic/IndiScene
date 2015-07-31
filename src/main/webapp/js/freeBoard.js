@@ -54,8 +54,6 @@
 			processData:false,
 			success:function(data){
 				//alert(data);
-				//alert(data);
-				
 				var realData = data.split("<body>");
 				var realData = realData[1].split("</body>")[0];
 				//alert(realData);
@@ -154,7 +152,7 @@
 		}
 			
 		function freeBoardUpdateFun(root, board_num, pageNumber){
-			alert(root);
+			//alert(root);
 			
 			$.ajax({
 				url:root+"/freeBoard/update.do?board_num="+board_num+"&pageNumber="+pageNumber,
@@ -175,7 +173,7 @@
 		} 
 		
 		function freeBoardUpdateFunOk(root, board_num, pageNumber){
-			alert("이건 업데이트 OK" +root +"," + board_num+"," + pageNumber);
+			//alert("이건 업데이트 OK" +root +"," + board_num+"," + pageNumber);
 			var str =CKEDITOR.instances.content.getData();
 			$("#content").val(str);
 			var dataSet = new FormData(document.getElementById("updateForm"));
@@ -192,7 +190,7 @@
 				processData:false,
 				contentType:false,
 				success:function(data){
-					alert(data);
+					//alert(data);
 					var realData = data.split("<body>");
 					var realData = realData[1].split("</body>")[0];
 					//alert(realData);

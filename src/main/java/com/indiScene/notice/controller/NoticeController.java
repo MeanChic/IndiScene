@@ -14,16 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.indiScene.notice.dto.NoticeDto;
 import com.indiScene.notice.service.NoticeService;
 
-
-
-
 /**
  * @name : NoticeController
  * @date : 2015. 6. 25.
  * @author : 손유진
  * @description : 공지사항 게시판 컨트롤러 
  */
-
 @Controller
 public class NoticeController {
 	
@@ -32,17 +28,14 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
-	
 	@RequestMapping(value="/test.do", method=RequestMethod.GET)
 	public ModelAndView test(HttpServletRequest request, HttpServletResponse response){
 	
 		logger.info("test----------");	
 		ModelAndView mav=new ModelAndView();
 		noticeService.test(mav);
-	
 		return mav;
 	}
-	
 	
 	/**
 	 * @name : noticeWrite
@@ -56,8 +49,7 @@ public class NoticeController {
 		logger.info("write test--------");	
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
-		noticeService.noticeWrite(mav);
-		
+		noticeService.noticeWrite(mav);	
 		return mav;	
 	}
 	
@@ -75,8 +67,7 @@ public class NoticeController {
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request",request);
 		mav.addObject("noticeDto",noticeDto);
-		noticeService.noticeWriteOk(mav);
-		
+		noticeService.noticeWriteOk(mav);	
 		return mav;	
 	}
 	

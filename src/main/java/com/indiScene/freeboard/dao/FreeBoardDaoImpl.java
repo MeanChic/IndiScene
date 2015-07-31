@@ -26,11 +26,12 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 	public int freeBoardGroupNumberMax() {
 		return sqlSession.selectOne("dao.FreeBoardMapper.freeBoardGroupNumberMax");
 	}
+	
 	@Override
 	public int freeBoardGroupNumberUpdate(HashMap<String, Integer> hMap) {
 		 return sqlSession.update("dao.FreeBoardMapper.freeBoardGroupNumberUpdate",hMap);
-		
 	}
+	
 	@Override
 	public int insert(FreeBoardDto freeBoardDto) {
 		return sqlSession.insert("dao.FreeBoardMapper.freeBoardInsert",freeBoardDto);
@@ -64,18 +65,14 @@ public class FreeBoardDaoImpl implements FreeBoardDao {
 		return sqlSession.delete("dao.FreeBoardMapper.delete",board_num);
 	}
 	
-	
 	@Override
-	public FreeBoardDto freeBoardUpdateSelect(String board_num) {
-		
+	public FreeBoardDto freeBoardUpdateSelect(String board_num) {	
 		return sqlSession.selectOne("dao.FreeBoardMapper.updateSelect",board_num);
 	}
 
 	@Override
 	public int freeBoardUpdate(FreeBoardDto freeBoardDto) {
-		
 		return sqlSession.update("dao.FreeBoardMapper.update",freeBoardDto);
 	}
-	
 
 }

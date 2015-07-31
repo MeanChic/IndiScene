@@ -61,8 +61,7 @@
 	</div>	
 	
 	<!-- ---------------한줄댓글 ----------------------------------------------->
-	
-	
+
 	<c:set var="root" value="${pageContext.request.contextPath }"/>
 	<br/><br/><br/>
 	<h3 style="color:#4C4C4C; font-size: 1.3em; font-weight: bold;" >comment </h3>

@@ -9,7 +9,7 @@ import com.indiScene.freeboard.dto.FreeBoardDto;
 
 public interface FreeBoardDao {
 
-	 public int insert(FreeBoardDto freeBoardDto);
+	public int insert(FreeBoardDto freeBoardDto);
 
 	public int freeBoardGroupNumberUpdate(HashMap<String, Integer> hMap);
 
@@ -26,6 +26,5 @@ public interface FreeBoardDao {
 	public int freeBoardUpdate(FreeBoardDto freeBoardDto);
 
 	public int getFreeBoardCount();
-
 
 }

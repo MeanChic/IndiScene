@@ -21,7 +21,6 @@ public interface FreeBoardService {
 	public void freeBoardUpdateOk(ModelAndView mav);
 
 /*	
- * 
 	public void noticeDeleteOk(ModelAndView mav);
 
 	public void noticeUpdate(ModelAndView mav);
