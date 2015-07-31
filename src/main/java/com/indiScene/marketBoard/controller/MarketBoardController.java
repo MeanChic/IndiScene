@@ -100,8 +100,7 @@ public class MarketBoardController  {
 //		return mav;
 //	}
 
-	
-		/**
+	/**
 	@name  : read
 	@date  : 2015. 6. 25.
 	@auther: 나혁진
@@ -117,6 +116,12 @@ public class MarketBoardController  {
 		return mav;
 	}	
 	
+	/**
+	@name  : delete
+	@date  : 2015. 6. 25.
+	@auther: 나혁진
+	@description :게시글 삭제를 위해 계정비번창을 반환시킨다
+	 */
 	@RequestMapping(value="/marketBoard/delete.do", method=RequestMethod.GET)
 	public ModelAndView delete(HttpServletRequest request){
 		logger.info("marketBoardDelete---------------------------------------");
@@ -129,6 +134,12 @@ public class MarketBoardController  {
 		return mav;
 	}
 	
+	/**
+	@name  : delete
+	@date  : 2015. 6. 25.
+	@auther: 나혁진
+	@description :게시글을 삭제하기위해 deleteservice를 호출한다
+	 */
 	@RequestMapping(value="/marketBoard/delete.do", method=RequestMethod.POST)
 	public ModelAndView delete(HttpServletRequest request,HttpServletResponse response){
 		logger.info("marketBoardDeleteOk---------------------------------------");
@@ -141,6 +152,12 @@ public class MarketBoardController  {
 		return mav;
 	}
 	
+	/**
+	@name  : update
+	@date  : 2015. 6. 25.
+	@auther: 나혁진
+	@description :게시글 수정내용을 불러오기 위해  service를 호출한다.
+	 */
 	@RequestMapping(value="/marketBoard/update.do", method=RequestMethod.GET)
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response){
 		logger.info("marketBoardUpdate------------------------------------------------");
@@ -154,6 +171,12 @@ public class MarketBoardController  {
 		
 	}
 	
+	/**
+	@name  : update
+	@date  : 2015. 6. 25.
+	@auther: 나혁진
+	@description ::게시글을 수정하기 위해 내용을 담아 service를 호출한다.
+	 */
 	@RequestMapping(value="/marketBoard/update.do", method=RequestMethod.POST)
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response, MarketBoardDto marketBoardDto){
 		logger.info("marketBoardUpdateOk------------------------------------------------");

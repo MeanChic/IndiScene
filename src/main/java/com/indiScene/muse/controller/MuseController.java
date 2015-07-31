@@ -226,7 +226,12 @@ public class MuseController {
 		return null;
 	}
 	
-	
+	/**
+	 * deleteMuse
+	 * @date :2015. 7. 7.
+	 * @author: 김정승
+	 * @description :	개설된 muse를 삭제하는 메소드
+	 */
 	@RequestMapping(value="/museGuest/deleteMuse.do", method=RequestMethod.GET)
 	public ModelAndView deleteMuse(HttpServletRequest request, HttpServletResponse response, ModelAndView mav){
 		mav.addObject("request", request);
