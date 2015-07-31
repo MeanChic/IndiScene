@@ -2,6 +2,7 @@ package com.indiScene.museBoard.controller;
 
 import java.util.logging.Logger;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.indiScene.museBoard.dto.MuseBoardDto;
 import com.indiScene.museBoard.service.MuseBoardService;
 
+/**
+@name  : MarketBoardController
+@date  : 2015. 6. 25.
+@auther: 김정승
+@description :거래 게시판 컨트롤러
+ */
 @Controller
 public class MuseBoardController {
 	
@@ -22,6 +29,12 @@ public class MuseBoardController {
 	private MuseBoardService service;
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	
+	/**
+	@name  : write
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description :게시판 내용 입력을 받기위해 write.jsp 파일을 반환시킨다
+	 */
 	@RequestMapping(value="/museBoard/write.do", method=RequestMethod.GET)
 	public ModelAndView write(HttpServletRequest request, HttpServletResponse response){
 		logger.info("museBoard Write Start ------ ");
@@ -33,6 +46,12 @@ public class MuseBoardController {
 		return mav;
 	}
 	
+	/**
+	@name  : write
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description :입력내용을 dto에 담아 service 에 보낸다
+	 */
 	@RequestMapping(value="/museBoard/write.do",method=RequestMethod.POST)
 	public ModelAndView write(MultipartHttpServletRequest request, HttpServletResponse response, MuseBoardDto MuseBoardDto){
 		logger.info("museBoard WriteOk Start ---------");
@@ -55,6 +74,12 @@ public class MuseBoardController {
 		return null;
 	}*/
 	
+	/**
+	@name  : enterBoard
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description :거래게시판 리스트를 불러오기위해 service를 호출
+	 */
 	@RequestMapping(value="/museBoard/list.do", method=RequestMethod.GET)
 	public ModelAndView list(HttpServletRequest request){
 		logger.info("MuseBoard List Start----");
@@ -66,6 +91,12 @@ public class MuseBoardController {
 		return mav;
 	}
 	
+	/**
+	@name  : read
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description :게시글을 읽기위해 글 번호를 mav에 담아 service를 호출한다.
+	 */
 	@RequestMapping(value="/museBoard/read.do",method=RequestMethod.GET)
 	public ModelAndView read(HttpServletRequest request){
 		logger.info("MuseBoard Read Start~~~~~~~");
@@ -77,6 +108,12 @@ public class MuseBoardController {
 		return mav;
 	}
 	
+	/**
+	@name  : update
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description :게시글 수정내용을 불러오기 위해  service를 호출한다.
+	 */
 	@RequestMapping(value="/museBoard/update.do", method=RequestMethod.GET)
 	public ModelAndView update(HttpServletRequest request){
 		logger.info("MuseBoard Update Start~~~~~~~");
@@ -88,6 +125,12 @@ public class MuseBoardController {
 		return mav;
 	}
 	
+	/**
+	@name  : update
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description ::게시글을 수정하기 위해 내용을 담아 service를 호출한다.
+	 */
 	@RequestMapping(value="/museBoard/update.do", method=RequestMethod.POST)
 	public ModelAndView update(MultipartHttpServletRequest request, MuseBoardDto MuseBoard){
 		logger.info("museBoard UpdateOK Start ---------");
@@ -101,6 +144,12 @@ public class MuseBoardController {
 		return mav;
 	}
 	
+	/**
+	@name  : delete
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description :게시글 삭제를 위해 계정비번창을 반환시킨다
+	 */
 	@RequestMapping(value="/museBoard/delete.do",method=RequestMethod.GET)
 	public ModelAndView delete(HttpServletRequest request){
 		logger.info("uploadBoard Delete Start~~~~~~~");
@@ -112,6 +161,12 @@ public class MuseBoardController {
 		return mav;
 	}
 	
+	/**
+	@name  : delete
+	@date  : 2015. 6. 25.
+	@auther: 김정승
+	@description :게시글을 삭제하기위해 deleteservice를 호출한다
+	 */
 	@RequestMapping(value="/museBoard/delete.do",method=RequestMethod.POST)
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response){
 		logger.info("uploadBoard DeleteOk Start~~~~~~~");
