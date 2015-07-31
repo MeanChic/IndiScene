@@ -29,7 +29,7 @@ import com.indiScene.commonIO.dto.CommonDto;
 import com.indiScene.commonIO.dto.CommonMusicDto;
 
 /**
-@name  : imageUpload
+@name  : CommonIOServiceImpl
 @date  : 2015. 7. 5.
 @auther: 나혁진
 @description :파일 업로드 등의 공통부분을 정의한 클래스
@@ -41,6 +41,12 @@ public class CommonIOServiceImpl implements CommonIOService {
 	@Autowired
 	private CommonIODao commonIODao;
 	
+	/**
+	@name  : imageUpload
+	@date  : 2015. 7. 5.
+	@auther: 나혁진
+	@description :이미지 업로드를 정의한 메소드
+	 */
 	@Override
 	public void imageUpload(ModelAndView mav) {
 		Map<String,Object> map=mav.getModelMap();
@@ -198,12 +204,7 @@ public class CommonIOServiceImpl implements CommonIOService {
 			}
 		}
 	}
-	/**
-	@name  : imageUpload
-	@date  : 2015. 7. 5.
-	@auther: 나혁진
-	@description :이미지 업로드를 정의한 메소드
-	 */
+
 	@Override
 	public void download(ModelAndView mav) throws IOException {
 		// TODO Auto-generated method stub
@@ -255,6 +256,12 @@ public class CommonIOServiceImpl implements CommonIOService {
 		mav.setViewName("");
 	}
 
+	/**
+	 * @name : myUploadMusic
+	 * @date : 2015. 7. 18.
+	 * @author : Kim MinSic
+	 * @description : 내가 업로드한 게시물만 뽑아온다.
+	 */
 	@Override
 	public void myUploadMusic(ModelAndView mav) {
 		logger.info("myUpload Music Service");
@@ -290,6 +297,12 @@ public class CommonIOServiceImpl implements CommonIOService {
 		mav.setViewName("myMusic/upload");
 	}
 	
+	/**
+	 * @name : myLikeMusic
+	 * @date : 2015. 7. 18.
+	 * @author : Kim MinSic
+	 * @description : 내가 좋아요 누른 게시물을 따로 모아볼 수 있다.
+	 */
 	@Override
 	public void myLikeMusic(ModelAndView mav) {
 		logger.info("myLike Music Service");
@@ -322,6 +335,12 @@ public class CommonIOServiceImpl implements CommonIOService {
 		mav.setViewName("myMusic/like");
 	}
 
+	/**
+	 * @name : myCollaboMusic
+	 * @date : 2015. 7. 18.
+	 * @author : Kim MinSic
+	 * @description : 내 게시글에 콜라보레이션 된 게시글만 따로 모아본다.
+	 */
 	@Override
 	public void myCollaboMusic(ModelAndView mav) {
 		logger.info("myCollabo Music Service");
@@ -356,6 +375,12 @@ public class CommonIOServiceImpl implements CommonIOService {
 		mav.setViewName("myMusic/collabo");
 	}
 	
+	/**
+	 * @type : RecentDateComparator
+	 * @date : 2015. 7. 18.
+	 * @author : Kim MinSic
+	 * @description : 따로 뽑아진 DTO 들을 날짜 역순으로 정렬해준다.
+	 */
 	class RecentDateComparator implements Comparator<Object>{
 		@Override
 		public int compare(Object o1, Object o2) {

@@ -29,7 +29,7 @@
 		var dataSet = new FormData(document.getElementById("NoticeWriteForm"));
 		//alert("pageNumber:"+pageNumber)
  		//alert(CKEDITOR.instances.content.getData());
-		dataSet.append("content",CKEDITOR.instances.content.getData());
+//		dataSet.append("content",CKEDITOR.instances.content.getData());
 		//$("#content").val(CKEDITOR.instances.content.getData());
 		
 		$.ajax({
@@ -143,7 +143,7 @@
 		}
 			
 		function noticeUpdateFun(root, board_num, pageNumber){
-			alert(root);
+//			alert(root);
 			
 			$.ajax({
 				url:root+"/notice/update.do?board_num="+board_num+"&pageNumber="+pageNumber,
@@ -164,7 +164,7 @@
 		} 
 		
 		function noticeUpdateFunOk(root, board_num, pageNumber){
-			alert("root:"+root);
+//			alert("root:"+root);
 	
 			var str =CKEDITOR.instances.content.getData();
 			$("#content").val(str);
