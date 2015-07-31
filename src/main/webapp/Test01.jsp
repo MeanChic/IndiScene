@@ -250,6 +250,7 @@ $(document).ready(function(){
 	history.pushState({indiData:($("#centerContents").html())},"제목","/indiscene/Test01.jsp");//다음페이지에 히스토리 저장
 	window.onpopstate=function(e){
 	$("#centerContents").html(e.state.indiData);
+	
 	}
 	
 });

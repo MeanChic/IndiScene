@@ -238,6 +238,8 @@ public class MuseBoardServiceImpl implements MuseBoardService {
 		Map<String,Object> hMap = mav.getModel();
 		HttpServletRequest request=(HttpServletRequest)hMap.get("request");
 		
+		dir= request.getSession().getServletContext().getRealPath("/").replace('\\', '/')+"resources/";
+		
 		int boardSize =10;
 		String pageNumber = request.getParameter("pageNumber");
 		if(pageNumber == null) pageNumber ="1";

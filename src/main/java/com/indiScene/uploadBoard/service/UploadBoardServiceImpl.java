@@ -268,6 +268,8 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		Map<String,Object> hMap = mav.getModel();
 		HttpServletRequest request=(HttpServletRequest)hMap.get("request");
 		
+		dir= request.getSession().getServletContext().getRealPath("/").replace('\\', '/')+"resources/";
+		
 		int boardSize =10;
 		String pageNumber = request.getParameter("pageNumber");
 		String searchWord=request.getParameter("searchWord");

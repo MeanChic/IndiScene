@@ -97,10 +97,10 @@ public class MuseServiceImpl implements MuseService {
 		logger.info("-- timeName : " + timeName);
 		logger.info("-- fileSize : " + fileSize);
 		
+		String dir= request.getSession().getServletContext().getRealPath("/").replace('\\', '/')+"resources/museResources";
 		if(fileSize != 0){
 			try{
 //				String dir="C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources";
-				String dir="C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources";
 				
 				File file = new File(dir, timeName);
 				upFile.transferTo(file);	
@@ -111,7 +111,7 @@ public class MuseServiceImpl implements MuseService {
 				logger.info("ch File Input Ouput Error");
 			}
 		}else{
-			museDto.setMuse_filepath("C:/SPB_Data/git/IndiScene/src/main/webapp/resources/museResources/Koala.jpg");
+			museDto.setMuse_filepath(dir+"Koala.jpg");
 		}
 		//logger.info("ch dir : " + museDto.getMuse_filepath());
 		
@@ -190,7 +190,7 @@ public class MuseServiceImpl implements MuseService {
 		
 		for(int i = 0; i < bestMuse.size(); i++){
 			String path = (String)bestMuse.get(i).get("MUSE_FILEPATH");
-			int su = "C:/SPB_Data/git/IndiScene/src/main/webapp".length();
+			int su = request.getSession().getServletContext().getRealPath("/").length()-1;
 			
 			logger.info("--" + su + "   " + path + "    "  + path.substring(su));
 			bestMuse.get(i).replace("MUSE_FILEPATH", path.substring(su));
@@ -198,7 +198,7 @@ public class MuseServiceImpl implements MuseService {
 		
 		for(int i = 0; i < myMuse.size(); i++){
 			String path = (String)myMuse.get(i).get("MUSE_FILEPATH");
-			int su = "C:/SPB_Data/git/IndiScene/src/main/webapp".length();
+			int su = request.getSession().getServletContext().getRealPath("/").length()-1;
 			
 			logger.info("--" + su + "   " + path + "    "  + path.substring(su));
 			myMuse.get(i).replace("MUSE_FILEPATH", path.substring(su));
@@ -206,7 +206,7 @@ public class MuseServiceImpl implements MuseService {
 		
 		for(int i = 0; i < allMuse.size(); i++){
 			String path = (String)allMuse.get(i).getMuse_filepath();
-			int su = "C:/SPB_Data/git/IndiScene/src/main/webapp".length();
+			int su = request.getSession().getServletContext().getRealPath("/").length()-1;
 			
 			logger.info("--" + su + "   " + path + "    "  + path.substring(su));
 			allMuse.get(i).setMuse_filepath(path.substring(su));
