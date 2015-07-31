@@ -15,6 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.indiScene.brandNewBoard.dao.BrandNewBoardDao;
 import com.indiScene.brandNewBoard.dto.BrandNewBoardDto;
 
+/**
+ * @type : BrandNewBoardServiceImpl
+ * @date : 2015. 7. 22.
+ * @author : MS
+ * @description : Brand New 게시판의 기능을 구현한 클래스
+ */
 @Component
 public class BrandNewBoardServiceImpl implements BrandNewBoardService {
 //	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
@@ -25,6 +31,12 @@ public class BrandNewBoardServiceImpl implements BrandNewBoardService {
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	
+	/**
+	 * @name : brandNewList
+	 * @date : 2015. 7. 22.
+	 * @author : Kim MinSic
+	 * @description : 좋아요 5개 이상이고 신곡인 게시물 목록을 뽑아준다.
+	 */
 	@Override
 	public void brandNewList(ModelAndView mav) {
 		logger.info("brandNew List Service Start");
@@ -56,6 +68,12 @@ public class BrandNewBoardServiceImpl implements BrandNewBoardService {
 		mav.setViewName("brandNewBoard/list");
 	}
 	
+	/**
+	 * @name : read
+	 * @date : 2015. 7. 31.
+	 * @author : Kim MinSic
+	 * @description : 클릭된 게시물 정보를 가져온다.
+	 */
 	@Override
 	public void read(ModelAndView mav) {
 		Map<String, Object> map=mav.getModel();

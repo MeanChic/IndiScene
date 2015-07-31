@@ -1,5 +1,11 @@
 package com.indiScene.bestBoard.dto;
 
+/**
+ * @type : BestBoardDto
+ * @date : 2015. 7. 20.
+ * @author : Kim MinSic
+ * @description : Bestboard table 대응된 DTO
+ */
 public class BestBoardDto {
 	private String board_num;
 	private int board_like;

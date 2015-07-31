@@ -1,5 +1,11 @@
 package com.indiScene.brandNewBoard.dto;
 
+/**
+ * @type : BrandNewBoardDto
+ * @date : 2015. 7. 22.
+ * @author : Kim MinSic
+ * @description : upload board 테이블에 대응된 DTO
+ */
 public class BrandNewBoardDto {
 	private String board_num;
 	private int board_like;

@@ -2,6 +2,12 @@ package com.indiScene.uploadBoard.dto;
 
 import com.indiScene.commonIO.dto.CommonMusicDto;
 
+/**
+ * @type : UploadBoardDto
+ * @date : 2015. 7. 22.
+ * @author : Kim MinSic
+ * @description : uploadboard 테이블에 대응된 DTO
+ */
 public class UploadBoardDto implements CommonMusicDto {
 	private String board_num;
 	private int board_like;

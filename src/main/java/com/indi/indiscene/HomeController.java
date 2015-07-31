@@ -83,6 +83,12 @@ public class HomeController {
 		return mav;
 	}
 	
+	/**
+	 * @name : myUploadMusic
+	 * @date : 2015. 7. 18.
+	 * @author : Kim MinSic
+	 * @description : 내가 업로드한 게시물만 따로 요청함.
+	 */
 	@RequestMapping(value="/myMusic/uploadMusic.do",method=RequestMethod.GET)
 	public ModelAndView myUploadMusic (HttpServletRequest request){
 		logger.info("MyMusic Upload Music------------------------------");
@@ -95,6 +101,12 @@ public class HomeController {
 		return mav;
 	}
 	
+	/**
+	 * @name : myLikeMusic
+	 * @date : 2015. 7. 18.
+	 * @author : Kim MinSic
+	 * @description : 내가 좋아요한 게시물들을 요청
+	 */
 	@RequestMapping(value="/myMusic/likeMusic.do",method=RequestMethod.GET)
 	public ModelAndView myLikeMusic(HttpServletRequest request){
 		logger.info("MyMusic Upload Music------------------------------");
@@ -107,6 +119,12 @@ public class HomeController {
 		return mav;
 	}
 	
+	/**
+	 * @name : myCollaboMusic
+	 * @date : 2015. 7. 18.
+	 * @author : Kim MinSic
+	 * @description : 내 음악에 콜라보레이션 된 게시물만 요청
+	 */
 	@RequestMapping(value="/myMusic/collaboMusic.do",method=RequestMethod.GET)
 	public ModelAndView myCollaboMusic (HttpServletRequest request){
 		logger.info("MyMusic Upload Music------------------------------");

@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 
 import com.indiScene.brandNewBoard.dto.BrandNewBoardDto;
 
+/**
+ * @type : BrandNewBoardDao
+ * @date : 2015. 7. 22.
+ * @author : MS
+ * @description : uploadboard 테이블에서 brand new 게시판 조건에 맞는 데이터만 관리한다.
+ */
 @Component
 public class BrandNewBoardDaoImpl implements BrandNewBoardDao {
 	@Autowired
