@@ -10,6 +10,12 @@ import org.springframework.stereotype.Component;
 
 import com.indiScene.commonIO.dto.CommonMusicDto;
 
+/**
+@name  : CommonIODaoImpl
+@date  : 2015. 7. 5.
+@auther: 나혁진,김민식
+@description :공통부분과 음원부분 처리를 위한 Dao
+ */
 @Component
 public class CommonIODaoImpl implements CommonIODao {
 	@Autowired

@@ -1,6 +1,11 @@
 package com.indiScene.commonIO.dto;
 
-
+/**
+@name  : CommonDto
+@date  : 2015. 7. 5.
+@auther: 나혁진
+@description :공통부분을 상속하기위한 commonDto 인터페이스
+ */
 public interface CommonDto   {
 
 	public String getContent();
