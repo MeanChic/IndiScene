@@ -50,9 +50,14 @@ public class CommonIOController  {
 		return mav;
 	}
 	
-
+	/**
+	@name  : download
+	@date  : 2015. 6. 25.
+	@auther: 나혁진
+	@description :멀티파일 다울로드위 위해 service를 호출한다
+	 */
 	@RequestMapping(value="/CommonIO/download.do", method=RequestMethod.GET)
-	public ModelAndView download(HttpServletRequest request, HttpServletResponse response)throws Throwable{
+	public ModelAndView ddownloadownload(HttpServletRequest request, HttpServletResponse response)throws Throwable{
 		logger.info("download------------------------------------");
 		
 		ModelAndView mav = new ModelAndView();

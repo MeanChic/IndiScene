@@ -28,6 +28,12 @@ import com.indiScene.commonIO.dao.CommonIODao;
 import com.indiScene.commonIO.dto.CommonDto;
 import com.indiScene.commonIO.dto.CommonMusicDto;
 
+/**
+@name  : imageUpload
+@date  : 2015. 7. 5.
+@auther: 나혁진
+@description :파일 업로드 등의 공통부분을 정의한 클래스
+ */
 @Component
 public class CommonIOServiceImpl implements CommonIOService {
 	final Logger logger=Logger.getLogger(this.getClass().getName());
@@ -85,7 +91,12 @@ public class CommonIOServiceImpl implements CommonIOService {
 		
 	}
 
-
+	/**
+	@name  : mainImageFind
+	@date  : 2015. 7. 5.
+	@auther: 나혁진
+	@description :리스트에서 최초이미지를 호출하기위한 메소드
+	 */
 	@Override
 	public List<String> mainImageFind(Object list) {
 		List<String> mainImageList=new ArrayList<String>();
@@ -110,6 +121,12 @@ public class CommonIOServiceImpl implements CommonIOService {
 		// TODO Auto-generated method stub
 	}
 	
+	/**
+	@name  : multiFileUpload
+	@date  : 2015. 7. 5.
+	@auther: 나혁진
+	@description :멀티파일을 업로드 하기위한 메소드
+	 */
 	public void multiFileUpload(MultipartHttpServletRequest request,CommonDto dto){
 		List<MultipartFile> upFileList=request.getFiles("file[]"); //넘어오는 다중파일을 List형태로 받는다
 
@@ -153,7 +170,12 @@ public class CommonIOServiceImpl implements CommonIOService {
 		}
 		//멀티파일 처리 끝
 	}
-
+	/**
+	@name  : multiFileDelete
+	@date  : 2015. 7. 5.
+	@auther: 나혁진
+	@description :게시글 삭제를 위한 메소드
+	 */
 	@Override
 	public void multiFileDelete(CommonDto dto) {
 			// TODO Auto-generated method stub
@@ -176,7 +198,12 @@ public class CommonIOServiceImpl implements CommonIOService {
 			}
 		}
 	}
-
+	/**
+	@name  : imageUpload
+	@date  : 2015. 7. 5.
+	@auther: 나혁진
+	@description :이미지 업로드를 정의한 메소드
+	 */
 	@Override
 	public void download(ModelAndView mav) throws IOException {
 		// TODO Auto-generated method stub
@@ -340,5 +367,4 @@ public class CommonIOServiceImpl implements CommonIOService {
 			return compare>0 ? -1 : (compare==0?0:1);
 		}
 	}
-
 }
