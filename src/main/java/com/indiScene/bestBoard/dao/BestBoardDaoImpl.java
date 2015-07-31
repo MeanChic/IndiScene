@@ -12,6 +12,12 @@ import com.indiScene.commonIO.dto.CommonMusicDto;
 import com.indiScene.museBoard.dto.MuseBoardDto;
 import com.indiScene.uploadBoard.dto.UploadBoardDto;
 
+/**
+ * @type : BestBoardDaoImpl
+ * @date : 2015. 7. 20.
+ * @author : Kim MinSic
+ * @description : Bestboard 테이블과 Storage_list 테이블을 관리하는 클래스
+ */
 @Component
 public class BestBoardDaoImpl implements BestBoardDao {
 	@Autowired

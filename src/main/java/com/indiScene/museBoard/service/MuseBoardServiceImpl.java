@@ -26,6 +26,12 @@ import com.indiScene.audioProcessing.KOSTAAudio;
 import com.indiScene.museBoard.dao.MuseBoardDao;
 import com.indiScene.museBoard.dto.MuseBoardDto;
 
+/**
+ * @type : MuseBoardServiceImpl
+ * @date : 2015. 7. 31.
+ * @author : MS
+ * @description : 
+ */
 @Controller
 public class MuseBoardServiceImpl implements MuseBoardService {
 	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
@@ -88,7 +94,7 @@ public class MuseBoardServiceImpl implements MuseBoardService {
 			MultipartFile mf = request.getFile(fileStr);
 			fileList.add(mf);
 //			
-			System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
+			//System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
 		}
 		
 		MuseBoardDto.setRegister_date(new java.util.Date());
@@ -228,7 +234,7 @@ public class MuseBoardServiceImpl implements MuseBoardService {
 			e.printStackTrace();
 		}
 	    pw.write(recordFile);
-//		System.out.println("artist id = " +request.getParameter("artist_id"));
+//		//System.out.println("artist id = " +request.getParameter("artist_id"));
 	}*/
 
 	@Override
@@ -258,7 +264,7 @@ public class MuseBoardServiceImpl implements MuseBoardService {
 		List<MuseBoardDto> list= dao.getBoardList(rowMap);
 		
 	/*	for(MuseBoardDto dto:list){
-//			System.out.println(dto.getFile_path());
+//			//System.out.println(dto.getFile_path());
 			dto.setFile_path(dto.getFile_path().substring(dto.getFile_path().indexOf("\\resources")).replace('\\', '/'));
 			dto.setImage_path(dto.getImage_path().substring(dto.getImage_path().indexOf("\\resources")).replace('\\','/'));
 		}*/
@@ -306,7 +312,7 @@ public class MuseBoardServiceImpl implements MuseBoardService {
 		String pageNumber = request.getParameter("pageNumber");
 		
 		MuseBoardDto board = dao.read(board_num);
-//		System.out.println(board);
+//		//System.out.println(board);
 		
 		String muse_name=request.getParameter("muse_name");
 		
@@ -373,7 +379,7 @@ public class MuseBoardServiceImpl implements MuseBoardService {
 				}	MuseBoardDto.setFile_path(originalDto.getFile_path());
 			}
 			
-			System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
+//			//System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
 		}
 		
 		dao.update(MuseBoardDto);
@@ -512,9 +518,9 @@ public class MuseBoardServiceImpl implements MuseBoardService {
 			String fileStr = iter.next();
 			if(fileStr.equals("musicFile")){
 				mf = request.getFile(fileStr);
-				System.out.println(fileStr+"\t"+mf.getOriginalFilename());
+//				//System.out.println(fileStr+"\t"+mf.getOriginalFilename());
 			}
-			System.out.println(fileStr +"\t"+ request.getFile(fileStr));
+//			//System.out.println(fileStr +"\t"+ request.getFile(fileStr));
 		}
 		
 		String musicFile = null;

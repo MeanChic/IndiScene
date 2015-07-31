@@ -20,6 +20,12 @@ import com.indiScene.bestBoard.dao.BestBoardDao;
 import com.indiScene.bestBoard.dto.BestBoardDto;
 import com.indiScene.commonIO.dto.CommonMusicDto;
 
+/**
+ * @type : BestBoardServiceImpl
+ * @date : 2015. 7. 20.
+ * @author : Kim MinSic
+ * @description : 전반적인 BestBoard와 PlayList의 기능을 구현한 클래스
+ */
 @Component
 public class BestBoardServiceImpl implements BestBoardService {
 //	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
@@ -30,6 +36,12 @@ public class BestBoardServiceImpl implements BestBoardService {
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	
+	/**
+	 * @name : bestList
+	 * @date : 2015. 7. 20.
+	 * @author : Kim MinSic
+	 * @description : bestboard의 Database를 불러와준다.
+	 */
 	@Override
 	public void bestList(ModelAndView mav) {
 		logger.info("best List Service Start");
@@ -60,6 +72,12 @@ public class BestBoardServiceImpl implements BestBoardService {
 		mav.setViewName("bestBoard/list");
 	}
 	
+	/**
+	 * @name : read
+	 * @date : 2015. 7. 23.
+	 * @author : Kim MinSic
+	 * @description : Best 게시판의 게시글을 읽는다.
+	 */
 	@Override
 	public void read(ModelAndView mav) {
 		Map<String, Object> map=mav.getModel();
@@ -82,6 +100,12 @@ public class BestBoardServiceImpl implements BestBoardService {
 		mav.setViewName("bestBoard/read");
 	}
 
+	/**
+	 * @name : musicListAppend
+	 * @date : 2015. 7. 22.
+	 * @author : Kim MinSic
+	 * @description : 선택된 게시물 번호와 사용자 아이디를 Database에 저장한다.
+	 */
 	@Override
 	public void musicListAppend(ModelAndView mav) {
 		Map<String, Object> map=mav.getModel();
@@ -123,6 +147,12 @@ public class BestBoardServiceImpl implements BestBoardService {
 		}
 	}
 	
+	/**
+	 * @name : getMusicList
+	 * @date : 2015. 7. 23.
+	 * @author : Kim MinSic
+	 * @description : 사용자 아이디에 저장된 음악 게시물 번호를 가져온다.
+	 */
 	@Override
 	public void getMusicList(ModelAndView mav){
 		Map<String, Object> map=mav.getModel();
@@ -133,9 +163,9 @@ public class BestBoardServiceImpl implements BestBoardService {
 		String id =request.getParameter("artist_id");
 		
 		List<CommonMusicDto> dtoList = dao.getMusicList(id);
-		System.out.println(dtoList.size());
+//		System.out.println(dtoList.size());
 		dtoList.addAll(dao.getMusicListMuse(id));
-		System.out.println(dtoList.size());
+//		System.out.println(dtoList.size());
 		
 		try{
 			PrintWriter out=response.getWriter();
@@ -149,6 +179,12 @@ public class BestBoardServiceImpl implements BestBoardService {
 		}
 	}
 
+	/**
+	 * @name : musicListDelete
+	 * @date : 2015. 7. 23.
+	 * @author : Kim MinSic
+	 * @description : 플레이리스트를 Database에서 삭제한다.
+	 */
 	@Override
 	public void musicListDelete(ModelAndView mav) {
 		Map<String, Object> map=mav.getModel();

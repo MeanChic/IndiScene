@@ -12,6 +12,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import com.indiScene.uploadBoard.service.UploadBoardServiceImpl;
+
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.filters.HighPass;
 import be.tarsos.dsp.filters.LowPassFS;
@@ -27,7 +29,9 @@ import be.tarsos.dsp.io.jvm.WaveformWriter;
  */
 
 public class KOSTAAudio {
-	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/MergeMusic/";
+//	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/MergeMusic/";
+	private String dir = UploadBoardServiceImpl.dir+"MergeMusic/";
+	
 	/**
 	 * @name : mergeAudio
 	 * @date : 2015. 7. 6.
@@ -59,13 +63,17 @@ public class KOSTAAudio {
 			}
 			
 			sync = (long)(syncSecond*ais1.getFormat().getSampleRate()*ais1.getFormat().getChannels()*ais1.getFormat().getSampleSizeInBits()/8);
+			// sync 값은 입력받은 syncSecond 값에 해당되는 wave Format의 배열 index 값을 계산한다.
+			
 			outArray = new byte[(int)Math.max(sync>=0?buffer1.length:buffer1.length-sync, sync<0?buffer2.length:buffer2.length+sync)];
-			System.out.println(buffer1.length +"\n" + buffer2.length+"\n"+outArray.length);
+			// sync 값까지 포함하여 더욱 긴 음원의 길이에 맞춰서 계산된다.
+//			System.out.println(buffer1.length +"\n" + buffer2.length+"\n"+outArray.length);
 			
 			for(int i = 0 ; i < outArray.length; i++){
+				//index가 각 buffer의 length를 넘어가지 않는 경우.
 				if(i < (sync>=0?buffer1.length:buffer1.length-sync) && i < (sync<0?buffer2.length:buffer2.length+sync)){
 					if(i <45){
-						System.out.println("buffer1["+i+"] : " + buffer1[i] +"\tbuffer2["+i+"] : "+buffer2[i]);
+//						System.out.println("buffer1["+i+"] : " + buffer1[i] +"\tbuffer2["+i+"] : "+buffer2[i]);
 						outArray[i] = buffer1[i];
 					}else{
 						if(sync>=0){
@@ -93,8 +101,8 @@ public class KOSTAAudio {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}catch (ArrayIndexOutOfBoundsException e){
-			System.out.println("outArray length : "+outArray.length);
-			System.out.println("sync : "+sync);
+//			System.out.println("outArray length : "+outArray.length);
+//			System.out.println("sync : "+sync);
 			
 			e.printStackTrace();
 		}
@@ -116,6 +124,7 @@ public class KOSTAAudio {
 			File[] fileList = directory.listFiles();
 			for(File tempFile : fileList){
 				if(tempFile.isFile() && !tempFile.getName().substring(tempFile.getName().length()-4).equals(".wav")){
+					// 확장자가 .wav 가 아닌 파일을 삭제한다.
 					tempFile.delete();
 				}
 			}
@@ -133,7 +142,7 @@ public class KOSTAAudio {
 	private String makeFile(byte[] byteBuffer, AudioInputStream ais, String userId) throws IOException{
 		String timeName = userId+"_"+System.currentTimeMillis();
 //		String outputFilePath = "C:/KMS_MavenSpring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/MergeMusic/"+timeName;
-		String outputFilePath = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/MergeMusic/"+timeName;
+		String outputFilePath = dir+timeName;
 		
 		ByteArrayInputStream bais = new ByteArrayInputStream(byteBuffer);
 		AudioSystem.write(new AudioInputStream(bais,ais.getFormat(),byteBuffer.length), AudioFileFormat.Type.WAVE, new File(outputFilePath));
@@ -155,15 +164,15 @@ public class KOSTAAudio {
 
 		String timeName = userId+"_"+System.currentTimeMillis()+"_Collabo.wav";
 //		String outputFilePath = "C:/Users/KOSTA/git/IndiScene/src/main/webapp/resources/MergeMusic/"+timeName;
-		String outputFilePath = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/MergeMusic/"+timeName;
+		String outputFilePath = dir+timeName;
 		
 		ByteArrayInputStream bais = new ByteArrayInputStream(byteBuffer);
 		AudioInputStream inputStream = new AudioInputStream(bais, JVMAudioInputStream.toAudioFormat(format),floatBuffer.length);
 		JVMAudioInputStream jvmAudioInputStream = new JVMAudioInputStream(inputStream);
 		
 		AudioDispatcher dispatcher = new AudioDispatcher(jvmAudioInputStream,1,0);
-		dispatcher.addAudioProcessor(new LowPassFS(4000,ais.getFormat().getSampleRate()));
-		dispatcher.addAudioProcessor(new HighPass(100,ais.getFormat().getSampleRate()));
+		dispatcher.addAudioProcessor(new LowPassFS(4000,ais.getFormat().getSampleRate()));	//4000Hz 이상 대역의 신호를 감소
+		dispatcher.addAudioProcessor(new HighPass(100,ais.getFormat().getSampleRate()));	//100Hz 이하대역의 신호를 감소
 		dispatcher.addAudioProcessor(new WaveformWriter(format,outputFilePath));
 		dispatcher.run();
 		

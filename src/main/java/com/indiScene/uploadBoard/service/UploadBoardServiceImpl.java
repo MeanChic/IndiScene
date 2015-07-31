@@ -29,9 +29,15 @@ import com.indiScene.reply.dto.ReplyDto;
 import com.indiScene.uploadBoard.dao.UploadBoardDao;
 import com.indiScene.uploadBoard.dto.UploadBoardDto;
 
+/**
+ * @type : UploadBoardServiceImpl
+ * @date : 2015. 7. 13.
+ * @author : Kim MinSic
+ * @description : Process Indi's Music board's request
+ */
 @Controller
 public class UploadBoardServiceImpl implements UploadBoardService {
-	private String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
+	public static String dir = "C:/SPB_Data/git/IndiScene/src/main/webapp/resources/";
 	//private String dir="C:/KMS_MavenSpring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/";
 	//private String dir="C:/mavenspring/apache-tomcat-7.0.59/wtpwebapps/IndiScene/resources/"; //나혁진용
 	
@@ -45,6 +51,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 	private CommonIODao commonIODao;
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	
+	/**
+	 * @name : write
+	 * @date : 2015. 7. 13.
+	 * @author : Kim MinSic
+	 * @description : call write page of upload Board
+	 */
 	@Override
 	public void write(ModelAndView mav) {
 		logger.info("UploadBoard Write Service");
@@ -80,6 +92,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		mav.addObject("seq_level" , seq_level);
 	}
 
+	/**
+	 * @name : writeOk
+	 * @date : 2015. 7. 15.
+	 * @author : Kim MinSic
+	 * @description : Process write OK service of upload board each situation 
+	 */
 	@Override
 	public void writeOk(ModelAndView mav) {
 		logger.info("UploadBoard WriteOk Service");
@@ -95,7 +113,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 			MultipartFile mf = request.getFile(fileStr);
 			fileList.add(mf);
 //			
-			System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
+//			System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
 		}
 		
 		uploadBoardDto.setRegister_date(new java.util.Date());
@@ -191,6 +209,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		mav.setViewName("uploadBoard/writeOk");
 	}
 	
+	/**
+	 * @name : uploadBoardWriteNumber
+	 * @date : 2015. 7. 15.
+	 * @author : Kim MinSic
+	 * @description : tunning numbers of upload board database
+	 */
 	@Override
 	public void uploadBoardWriteNumber(UploadBoardDto boardDto){
 		String board_num = boardDto.getBoard_num();
@@ -230,6 +254,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		logger.info("--"+group_num + "," + seq_num + "," + seq_level);
 	}
 
+	/**
+	 * @name : record
+	 * @date : 2015. 7. 14.
+	 * @author : Kim MinSic
+	 * @description : save temporary record file
+	 */
 	@Override
 	public void record(MultipartHttpServletRequest request,
 			HttpServletResponse response) {
@@ -261,6 +291,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 //		System.out.println("artist id = " +request.getParameter("artist_id"));
 	}
 
+	/**
+	 * @name : list
+	 * @date : 2015. 7. 16.
+	 * @author : Kim MinSic
+	 * @description : get upload board list to client
+	 */
 	@Override
 	public void list(ModelAndView mav) {
 		logger.info("upload List Service Start");
@@ -276,11 +312,11 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		String searchType=request.getParameter("searchType");
 		
 		
-		System.out.println("searchType!!!:"+searchType);
-		System.out.println("searchWord!!!:"+searchWord);
+//		System.out.println("searchType!!!:"+searchType);
+//		System.out.println("searchWord!!!:"+searchWord);
 		
 		if(pageNumber == null) pageNumber ="1";
-		System.out.println("pageNumber!!!:"+pageNumber);
+//		System.out.println("pageNumber!!!:"+pageNumber);
 		
 		int currentPage = Integer.parseInt(pageNumber);
 		int startRow = (currentPage - 1) * boardSize +1;
@@ -295,12 +331,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		}else{
 			if( searchType.equals("total")  || searchType.equals("subject")){
 				countSubjectSearch=commonIODao.getCommonBoardCount("uploadBoard", searchWord, "subject");
-				System.out.println("subjectCheck");
+//				System.out.println("subjectCheck");
 			}
 			
 			if(searchType.equals("total")  || searchType.equals("artist")){
 				countArtistSearch=commonIODao.getCommonBoardCount("uploadBoard", searchWord, "artist_id");
-				System.out.println("artistCheck");
+//				System.out.println("artistCheck");
 			}
 		}
 		
@@ -353,6 +389,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		
 	}
 
+	/**
+	 * @name : read
+	 * @date : 2015. 7. 16.
+	 * @author : Kim MinSic
+	 * @description : get targeted upload board DTO 
+	 */
 	@Override
 	public void read(ModelAndView mav) {
 		Map<String, Object> map=mav.getModel();
@@ -377,6 +419,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		mav.setViewName("uploadBoard/read");
 	}
 
+	/**
+	 * @name : update
+	 * @date : 2015. 7. 17.
+	 * @author : Kim MinSic
+	 * @description : call upload board update page
+	 */
 	@Override
 	public void update(ModelAndView mav) {
 		Map<String, Object> map=mav.getModel();
@@ -394,6 +442,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		mav.setViewName("uploadBoard/update");
 	}
 
+	/**
+	 * @name : updateOk
+	 * @date : 2015. 7. 17.
+	 * @author : Kim MinSic
+	 * @description : board information update
+	 */
 	@Override
 	public void updateOk(ModelAndView mav) {
 		logger.info("UploadBoard UpdateOk Service");
@@ -450,12 +504,18 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 				}	uploadBoardDto.setFile_path(originalDto.getFile_path());
 			}
 			
-			System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
+//			System.out.println(fileStr +"\t"+ mf.getOriginalFilename());
 		}
 		
 		dao.update(uploadBoardDto);
 	}
 
+	/**
+	 * @name : delete
+	 * @date : 2015. 7. 18.
+	 * @author : Kim MinSic
+	 * @description : call upload board delete page
+	 */
 	@Override
 	public void delete(ModelAndView mav){
 		logger.info("UploadBoard Delete Service");
@@ -472,6 +532,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		mav.setViewName("uploadBoard/delete");
 	}
 	
+	/**
+	 * @name : deleteOk
+	 * @date : 2015. 7. 18.
+	 * @author : Kim MinSic
+	 * @description : confirm password to delete board and linked file
+	 */
 	@Override
 	public void deleteOk(ModelAndView mav) {
 		logger.info("UploadBoard DeleteOk Service");
@@ -505,6 +571,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		mav.setViewName("uploadBoard/deleteOk");
 	}
 	
+	/**
+	 * @name : like
+	 * @date : 2015. 7. 19.
+	 * @author : Kim MinSic
+	 * @description : recommend board
+	 */
 	@Override
 	public void like(ModelAndView mav) {
 		logger.info("UploadBoard like Service");
@@ -549,6 +621,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		}
 	}
 
+	/**
+	 * @name : collabo
+	 * @date : 2015. 7. 21.
+	 * @author : Kim MinSic
+	 * @description : call collabo page
+	 */
 	@Override
 	public void collabo(ModelAndView mav) {
 		logger.info("UploadBoard Collabo Service");
@@ -567,6 +645,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		mav.setViewName("uploadBoard/collabo");
 	}
 
+	/**
+	 * @name : collaboAdopt
+	 * @date : 2015. 7. 25.
+	 * @author : Kim MinSic
+	 * @description : make collabo file between uploaded file and new file 
+	 */
 	@Override
 	public void collaboAdopt(ModelAndView mav) {
 		logger.info("UploadBoard collaboAdopt Service");
@@ -582,9 +666,9 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 			String fileStr = iter.next();
 			if(fileStr.equals("musicFile")){
 				mf = request.getFile(fileStr);
-				System.out.println(fileStr+"\t"+mf.getOriginalFilename());
+//				System.out.println(fileStr+"\t"+mf.getOriginalFilename());
 			}
-			System.out.println(fileStr +"\t"+ request.getFile(fileStr));
+//			System.out.println(fileStr +"\t"+ request.getFile(fileStr));
 		}
 		
 		String musicFile = null;
@@ -601,7 +685,7 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		}else{
 			uploadMusicFile = new File(dir+"/uploadBoard/music/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
 			recordFile = new File(dir+"/TemporaryMusic/",request.getParameter("recordFile").substring(request.getParameter("recordFile").lastIndexOf("/")+1));
-			System.out.println("recordFileName : " +request.getParameter("recordFile"));
+//			System.out.println("recordFileName : " +request.getParameter("recordFile"));
 		}
 		
 		try {
@@ -632,10 +716,10 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 		File originalFile = new File(dir+request.getParameter("originalFile").substring(request.getParameter("originalFile").indexOf("/resources")+10));
 		
 		KOSTAAudio kostaAudio = new KOSTAAudio();
-		System.out.println(originalFile.getAbsolutePath());
-		System.out.println(uploadMusicFile.getAbsolutePath());
-		System.out.println( uploadBoardDto.getArtist_id());
-		System.out.println(Double.parseDouble(request.getParameter("sync")));
+//		System.out.println(originalFile.getAbsolutePath());
+//		System.out.println(uploadMusicFile.getAbsolutePath());
+//		System.out.println( uploadBoardDto.getArtist_id());
+//		System.out.println(Double.parseDouble(request.getParameter("sync")));
 		String mergeFile = kostaAudio.mergeAudio(originalFile.getAbsolutePath(), uploadMusicFile.getAbsolutePath(), uploadBoardDto.getArtist_id(), Double.parseDouble(request.getParameter("sync")));
 		
 		try {
@@ -653,6 +737,12 @@ public class UploadBoardServiceImpl implements UploadBoardService {
 //		mav.addObject("board", uploadBoardDto);
 	}
 
+	/**
+	 * @name : collaboOk
+	 * @date : 2015. 7. 26.
+	 * @author : Kim MinSic
+	 * @description : Process collabo OK service of each situation.
+	 */
 	@Override
 	public void collaboOk(ModelAndView mav) {
 		logger.info("UploadBoard CollaboOk Service");

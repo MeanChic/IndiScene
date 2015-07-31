@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 
 import com.indiScene.uploadBoard.dto.UploadBoardDto;
 
+/**
+ * @type : UploadBoardDaoImpl
+ * @date : 2015. 7. 13.
+ * @author : Kim MinSic
+ * @description : manage database class
+ */
 @Component
 public class UploadBoardDaoImpl implements UploadBoardDao {
 	@Autowired
